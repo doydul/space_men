@@ -1,0 +1,2 @@
+- Create GamePhase monobehaviour, to store current phase and callbacks (UnityEvents) for various milestones during each phase, such as end of movement phase.
+- Replace shootingphase and movementphase classes 
