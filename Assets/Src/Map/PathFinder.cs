@@ -20,7 +20,7 @@ public class PathFinder {
     traversed_squares = new List<Vector2>();
     end_nodes = new List<Node>();
   }
-  
+
   public PathFinder(IPathable grid, Vector2 start) {
       _grid = grid;
       _start = start;
@@ -29,18 +29,20 @@ public class PathFinder {
       traversed_squares = new List<Vector2>();
       end_nodes = new List<Node>();
   }
-  
+
   public List<Vector2> FindPath(List<Vector2> targets) {
+    traversed_squares = new List<Vector2>();
+    end_nodes = new List<Node>();
     _targets = targets;
     return FindPath();
   }
 
   public List<Vector2> FindPath() {
     if (HuristicFor(_start) <= 1) return new List<Vector2> { _start };
-    
+
     end_nodes.Add(new Node(_start, null, 0, 0));
     traversed_squares.Add(_start);
-    
+
     while(end_nodes.Count > 0) {
       var node = best_node();
       end_nodes.Remove(node);
@@ -58,7 +60,7 @@ public class PathFinder {
 
     return null;
   }
-  
+
   private int HuristicFor(Vector2 square) {
       int huristic = 999;
       foreach (var target in _targets) {

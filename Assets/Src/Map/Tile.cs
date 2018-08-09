@@ -38,7 +38,8 @@ public class Tile : MonoBehaviour {
         return actor.GetComponent<T>();
     }
 
-    public void Highlight() {
+    public void Highlight(Color color) {
+        highlightSprite.color = color;
         highlightSprite.enabled = true;
     }
 
@@ -49,10 +50,12 @@ public class Tile : MonoBehaviour {
     public void SetFoggy() {
         foggy = true;
         fogSprite.enabled = true;
+        foreground.gameObject.SetActive(false);
     }
 
     public void RemoveFoggy() {
         foggy = false;
         fogSprite.enabled = false;
+        foreground.gameObject.SetActive(true);
     }
 }

@@ -9,14 +9,13 @@ public class Commander : MonoBehaviour {
     public GameUIController UIController;
     public GamePhase gamePhase;
     public UnityEvent PlayerMoved;
+    public UnityEvent SelectionChanged;
 
-    private MapHighlighter highlighter;
-    private Tile selectedTile;
-    private Soldier selectedUnit;
+    public Soldier selectedUnit { get; private set; }
 
     void Awake() {
-        highlighter = new MapHighlighter();
         if (PlayerMoved == null) PlayerMoved = new UnityEvent();
+        if (SelectionChanged == null) SelectionChanged = new UnityEvent();
     }
 
     void Start() {
@@ -25,7 +24,6 @@ public class Commander : MonoBehaviour {
     }
 
     public void ClickTile(Tile tile) {
-        selectedTile = tile;
         var soldier = tile.GetActor<Soldier>();
         if (soldier != null) {
             SelectUnit(soldier);
@@ -51,14 +49,13 @@ public class Commander : MonoBehaviour {
         if (selectedUnit != null) selectedUnit.Deselect();
         selectedUnit = soldier;
         selectedUnit.Select();
-        highlighter.ClearHighlights();
-        highlighter.HighlightTile(soldier.tile);
+        SelectionChanged.Invoke();
     }
 
     private void DeselectUnit() {
         selectedUnit.Deselect();
         selectedUnit = null;
-        highlighter.ClearHighlights();
+        SelectionChanged.Invoke();
     }
 
     private void Move(Tile tile) {
@@ -69,9 +66,8 @@ public class Commander : MonoBehaviour {
         if (tile.open && !tile.occupied && path.Count <= selectedUnit.remainingMovement) {
             selectedUnit.MoveTo(tile);
             selectedUnit.TurnTo(tile.gridLocation - path.Last());
-            highlighter.ClearHighlights();
-            highlighter.HighlightTile(tile);
             PlayerMoved.Invoke();
+            SelectionChanged.Invoke();
         } else {
             DeselectUnit();
         }
@@ -84,9 +80,9 @@ public class Commander : MonoBehaviour {
         if (alien != null && selectedUnit.WithinSightArc(tile.gridLocation) && !los.Blocked()) {
             if (selectedUnit.hasAmmo) {
                 SoldierAttack.Execute(selectedUnit, alien, map);
+                if (alien.dead) SelectionChanged.Invoke();
             }
         } else {
-            highlighter.ClearHighlights();
             DeselectUnit();
         }
     }
