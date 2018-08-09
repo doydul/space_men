@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GamePhase : MonoBehaviour {
     
@@ -19,6 +20,9 @@ public class GamePhase : MonoBehaviour {
     
     private int shootingPhaseIteration;
     
+    public bool movement { get { return phase == Phase.Movement; } }
+    public bool shooting { get { return phase == Phase.Shooting; } }
+    
     void Awake() {
         phase = Phase.Movement;
         if (MovementPhaseEnd == null) MovementPhaseStart = new UnityEvent();
@@ -32,11 +36,13 @@ public class GamePhase : MonoBehaviour {
         if (phase == Phase.Movement) {
             MovementPhaseEnd.Invoke();
             ShootingPhaseStart.Invoke();
+            phase = Phase.Shooting;
             shootingPhaseIteration = 0;
         } else {
             if (shootingPhaseIteration >= SHOOTING_PHASE_ITERATIONS) {
                 ShootingPhaseEnd.Invoke();
                 MovementPhaseStart.Invoke();
+                phase = Phase.Movement;
             } else {
                 shootingPhaseIteration++;
                 ShootingPhaseIterate.Invoke();

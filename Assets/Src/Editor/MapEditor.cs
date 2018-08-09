@@ -203,9 +203,12 @@ public class MapEditor : Editor {
         var foregroundObject = new GameObject();
         var backgroundObject = new GameObject();
         var highlightObject = new GameObject();
+        var fogObject = new GameObject();
         var backgroundSpriteRenderer = backgroundObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
         var highlightSpriteRenderer = highlightObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+        var fogSpriteRenderer = fogObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
         highlightSpriteRenderer.enabled = false;
+        fogSpriteRenderer.enabled = false;
         
         tileObject.transform.parent = map.transform;
         tileObject.transform.localPosition = position;
@@ -215,6 +218,9 @@ public class MapEditor : Editor {
         tile.highlightSprite = highlightSpriteRenderer;
         highlightSpriteRenderer.sprite = map.highlightSprite;
         highlightObject.transform.localScale = SpriteScale(map.highlightSprite);
+        tile.fogSprite = fogSpriteRenderer;
+        fogSpriteRenderer.sprite = map.fogSprite;
+        fogObject.transform.localScale = SpriteScale(map.fogSprite);
         tile.foreground = foregroundObject.transform;
         tile.gridLocation = position;
         foregroundObject.transform.parent = tileObject.transform;
@@ -223,6 +229,8 @@ public class MapEditor : Editor {
         backgroundObject.transform.localPosition = new Vector3(0, 0, 0);
         highlightObject.transform.parent = tileObject.transform;
         highlightObject.transform.localPosition = new Vector3(0, 0, -1);
+        fogObject.transform.parent = tileObject.transform;
+        fogObject.transform.localPosition = new Vector3(0, 0, -3);
         
         return tile;
     }

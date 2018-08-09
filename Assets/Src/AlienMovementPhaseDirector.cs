@@ -11,12 +11,18 @@ public class AlienMovementPhaseDirector : MonoBehaviour {
     
     public Map map;
     public Camera cam;
+    public GamePhase gamePhase;
     
-    public void MoveAliens(Action finished) {
-        StartCoroutine(MoveAliensRoutine(finished));
+    void Start() {
+        gamePhase.ShootingPhaseIterate.AddListener(MoveAliens);
     }
     
-    private IEnumerator MoveAliensRoutine(Action callback) {
+    public void MoveAliens() {
+        // Need to disable phase button
+        StartCoroutine(MoveAliensRoutine());
+    }
+    
+    private IEnumerator MoveAliensRoutine() {
         var targets = map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList();
         var wrapper = new AlienPathingWrapper(map);
         var unMovedAliens = map.GetActors<Alien>();
@@ -47,7 +53,6 @@ public class AlienMovementPhaseDirector : MonoBehaviour {
                 if (remove) unMovedAliens.Remove(alien);
             }
         }
-        callback();
     }
     
     private void CentreCameraOn(Tile tile) {

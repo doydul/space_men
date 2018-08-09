@@ -71,6 +71,9 @@
      <Compile Include="Assets\Src\Data\Squad.cs" />
      <Compile Include="Assets\Src\Data\Weapon.cs" />
      <Compile Include="Assets\Src\Delayer.cs" />
+     <Compile Include="Assets\Src\FogController.cs" />
+     <Compile Include="Assets\Src\FogGrid.cs" />
+     <Compile Include="Assets\Src\GamePhase.cs" />
      <Compile Include="Assets\Src\GameplayOrchestrator.cs" />
      <Compile Include="Assets\Src\ISpawnable.cs" />
      <Compile Include="Assets\Src\ISpawnModule.cs" />
@@ -87,9 +90,7 @@
      <Compile Include="Assets\Src\Map\StartLocation.cs" />
      <Compile Include="Assets\Src\Map\Tile.cs" />
      <Compile Include="Assets\Src\MapInputController.cs" />
-     <Compile Include="Assets\Src\MovementPhase.cs" />
      <Compile Include="Assets\Src\Path.cs" />
-     <Compile Include="Assets\Src\ShootingPhase.cs" />
      <Compile Include="Assets\Src\SingleSpawnModule.cs" />
      <Compile Include="Assets\Src\SpawnableLocations.cs" />
      <Compile Include="Assets\Src\UI\ArmouryMenuController.cs" />

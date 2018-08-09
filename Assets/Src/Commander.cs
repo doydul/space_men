@@ -1,49 +1,48 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Commander : MonoBehaviour {
-    
-    public enum Phase {
-        Movement,
-        Shooting
-    }
-    
+
     public Map map;
     public GameUIController UIController;
-    public AlienMovementPhaseDirector alienDirector;
-    
+    public GamePhase gamePhase;
+    public UnityEvent PlayerMoved;
+
     private MapHighlighter highlighter;
     private Tile selectedTile;
     private Soldier selectedUnit;
-    private ShootingPhase shootingPhase;
-    
-    public Phase phase { get; set; }
-    
+
     void Awake() {
         highlighter = new MapHighlighter();
-        shootingPhase = new ShootingPhase();
+        if (PlayerMoved == null) PlayerMoved = new UnityEvent();
     }
-    
+
+    void Start() {
+        gamePhase.MovementPhaseStart.AddListener(StartMovementPhase);
+        gamePhase.ShootingPhaseStart.AddListener(StartShootingPhase);
+    }
+
     public void ClickTile(Tile tile) {
         selectedTile = tile;
         var soldier = tile.GetActor<Soldier>();
         if (soldier != null) {
             SelectUnit(soldier);
         } else {
-            if (phase == Phase.Movement) {
+            if (gamePhase.movement) {
                 Move(tile);
             } else {
                 Shoot(tile);
             }
         }
-        if (phase == Phase.Movement && selectedUnit != null) {
+        if (gamePhase.movement) {
             UIController.EnableTurnButtons();
         } else {
             UIController.DisableTurnButtons();
         }
     }
-    
+
     public void PressTurnSoldier(Soldier.Direction direction) {
         if (selectedUnit != null) selectedUnit.TurnTo(direction);
     }
@@ -55,13 +54,13 @@ public class Commander : MonoBehaviour {
         highlighter.ClearHighlights();
         highlighter.HighlightTile(soldier.tile);
     }
-    
+
     private void DeselectUnit() {
         selectedUnit.Deselect();
         selectedUnit = null;
         highlighter.ClearHighlights();
     }
-    
+
     private void Move(Tile tile) {
         if (selectedUnit == null) return;
         var start = selectedUnit.gridLocation;
@@ -72,11 +71,12 @@ public class Commander : MonoBehaviour {
             selectedUnit.TurnTo(tile.gridLocation - path.Last());
             highlighter.ClearHighlights();
             highlighter.HighlightTile(tile);
+            PlayerMoved.Invoke();
         } else {
             DeselectUnit();
         }
     }
-    
+
     private void Shoot(Tile tile) {
         if (selectedUnit == null) return;
         var alien = tile.GetActor<Alien>();
@@ -90,36 +90,17 @@ public class Commander : MonoBehaviour {
             DeselectUnit();
         }
     }
-    
+
     private void StartMovementPhase() {
-        phase = Phase.Movement;
         foreach (var soldier in map.GetActors<Soldier>()) {
             soldier.StartMovementPhase();
         }
     }
-    
+
     private void StartShootingPhase() {
-        phase = Phase.Shooting;
-        shootingPhase.Reset();
         UIController.DisableTurnButtons();
         foreach (var soldier in map.GetActors<Soldier>()) {
             soldier.StartShootingPhase();
-        }
-    }
-    
-    public void ProceedPhase() {
-        if (phase == Phase.Movement) {
-            MovementPhase.TriggerPhaseEnd();
-            StartShootingPhase();
-        } else {
-            if (shootingPhase.phaseOver) {
-                StartMovementPhase();
-            } else {
-                shootingPhase.NextIteration();
-                alienDirector.MoveAliens(() => {
-                    
-                });
-            }
         }
     }
 }

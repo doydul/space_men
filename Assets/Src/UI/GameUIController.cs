@@ -34,10 +34,6 @@ public class GameUIController : MonoBehaviour {
         commander.PressTurnSoldier((Soldier.Direction)direction);
     }
     
-    public void PressProceedButton() {
-        commander.ProceedPhase();
-    }
-    
     public void EnableTurnButtons() {
         turnButtonContainer.SetActive(true);
     }
