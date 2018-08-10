@@ -1,5 +1,3 @@
-- highlights to show valid moves, valid shooting targets
-
 - skip shooting phase iterations when there's nothing to do
 
 - victory condition

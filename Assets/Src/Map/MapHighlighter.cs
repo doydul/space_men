@@ -48,8 +48,12 @@ public class MapHighlighter : MonoBehaviour {
             if (tile.open && !tile.occupied) {
                 var targets = new List<Vector2>() { tile.gridLocation };
                 var path = pathFinder.FindPath(targets);
-                if (path != null && path.Count <= selectedUnit.remainingMovement) {
-                    HighlightTile(tile, Color.green);
+                if (path != null) {
+                    if (selectedUnit.tilesMoved + path.Count <= selectedUnit.baseMovement) {
+                        HighlightTile(tile, Color.green);
+                    } else if (path.Count <= selectedUnit.remainingMovement) {
+                        HighlightTile(tile, Color.yellow);
+                    }
                 }
             }
         }
