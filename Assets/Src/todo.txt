@@ -1,7 +1,5 @@
-- set correct orientation when aliens are spawned
-
-- change aspect ratio to landscape
-
 - change mission briefing text
+
+- make ui header do something?
 
 - optimize move highlights (noticeable lag when moving character) (low priority)
