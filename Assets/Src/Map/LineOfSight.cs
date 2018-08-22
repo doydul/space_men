@@ -7,14 +7,15 @@ public class LineOfSight {
   private Vector2 start;
   private Vector2 finish;
   private IBlocker blocker;
-  
+
   public LineOfSight(Vector2 start, Vector2 finish, IBlocker blocker) {
     this.start = start;
     this.finish = finish;
     this.blocker = blocker;
   }
-  
+
   public bool Blocked() {
+    if (!blocker.ValidTarget(finish)) return true;
     float blockage = 0f;
     var delta = finish - start;
     if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y)) {

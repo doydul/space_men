@@ -30,7 +30,15 @@ public class Actor : MonoBehaviour {
     }
 
     public void TurnTo(Vector2 direction) {
-        Face(gridLocation + direction);
+        if (direction.y > 0) {
+            TurnTo(Direction.Up);
+        } else if (direction.y < 0) {
+            TurnTo(Direction.Down);
+        } else if (direction.x > 0) {
+            TurnTo(Direction.Right);
+        } else if (direction.x < 0) {
+            TurnTo(Direction.Left);
+        }
     }
 
     public void Die(float timer = 0) {
@@ -40,15 +48,6 @@ public class Actor : MonoBehaviour {
     }
 
     public void Face(Vector2 targetGridLocation) {
-        var diff = targetGridLocation - gridLocation;
-        if (diff.y > 0) {
-            TurnTo(Direction.Up);
-        } else if (diff.y < 0) {
-            TurnTo(Direction.Down);
-        } else if (diff.x > 0) {
-            TurnTo(Direction.Right);
-        } else if (diff.x < 0) {
-            TurnTo(Direction.Left);
-        }
+        TurnTo(targetGridLocation - gridLocation);
     }
 }

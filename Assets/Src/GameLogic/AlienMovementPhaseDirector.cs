@@ -65,12 +65,16 @@ public class AlienMovementPhaseDirector : MonoBehaviour {
     }
 
     private IEnumerator MoveAlien(Alien alien, Vector2 destination, Vector2 direction) {
-        CentreCameraOn(alien.tile);
-        yield return new WaitForSeconds(MOVEMENT_WAIT_TIME);
+        if (!alien.tile.foggy) {
+            CentreCameraOn(alien.tile);
+            yield return new WaitForSeconds(MOVEMENT_WAIT_TIME);
+        }
         alien.MoveTo(map.GetTileAt(destination));
         alien.TurnTo(direction);
-        CentreCameraOn(alien.tile);
-        yield return new WaitForSeconds(MOVEMENT_WAIT_TIME);
+        if (!alien.tile.foggy) {
+            CentreCameraOn(alien.tile);
+            yield return new WaitForSeconds(MOVEMENT_WAIT_TIME);
+        }
     }
 
     private IEnumerator PerformAttack(Alien alien) {

@@ -3,10 +3,10 @@ using UnityEngine;
 public class VirtualAlien {
 
     public Vector2 gridLocation;
-    public Actor.Direction direction;
+    public string alienType;
 
-    public VirtualAlien(Vector2 gridLocation, Actor.Direction direction) {
+    public VirtualAlien(string alienType, Vector2 gridLocation) {
         this.gridLocation = gridLocation;
-        this.direction = direction;
+        this.alienType = alienType;
     }
 }

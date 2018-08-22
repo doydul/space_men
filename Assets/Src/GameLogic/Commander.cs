@@ -36,7 +36,7 @@ public class Commander : MonoBehaviour {
                 Shoot(tile);
             }
         }
-        if (gamePhase.movement) {
+        if (gamePhase.movement && selectedUnit != null) {
             UIController.EnableTurnButtons();
         } else {
             UIController.DisableTurnButtons();

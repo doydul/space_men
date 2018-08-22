@@ -28,7 +28,7 @@ public class VirtualSpawner {
         int spawnCount = spawnModule.GetVirtualAliensCount();
         var result = new List<VirtualAlien>();
         foreach (var gridLocation in spawnableLocations.GetLocationsNear(spawnLocation, spawnCount)) {
-            result.Add(new VirtualAlien(gridLocation, Actor.Direction.Up));
+            result.Add(new VirtualAlien("Alien", gridLocation));
         }
         return result;
     }

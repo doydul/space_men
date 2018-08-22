@@ -14,4 +14,8 @@ public class SoldierLOSWrapper : IBlocker {
         if (tile.GetActor<Soldier>() != null) return 0.35f;
         return 0;
     }
+
+    public bool ValidTarget(Vector2 gridLocation) {
+        return !map.GetTileAt(gridLocation).foggy;
+    }
 }

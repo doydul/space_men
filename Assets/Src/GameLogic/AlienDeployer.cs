@@ -14,6 +14,9 @@ public class AlienDeployer : MonoBehaviour {
 
     public Spawner[] spawners { get { return map.spawners; } }
 
+    private List<Vector2> soldierLocations { get {
+        return map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList();
+    } }
     private VirtualMap virtualMap;
 
     void Awake() {
@@ -45,7 +48,7 @@ public class AlienDeployer : MonoBehaviour {
     void Spawn() {
         foreach (var virtualAlien in virtualMap.virtualAliens) {
             var tile = map.GetTileAt(virtualAlien.gridLocation);
-            tile.SetActor(InstantiateAlien("Alien"));
+            tile.SetActor(InstantiateAlien(virtualAlien));
         }
         virtualMap.Depopulate();
     }
@@ -72,7 +75,7 @@ public class AlienDeployer : MonoBehaviour {
             }
         }
 
-        virtualMap.Populate(map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList());
+        virtualMap.Populate(soldierLocations);
     }
 
     List<Spawner> AvailableSpawners() {
@@ -94,13 +97,17 @@ public class AlienDeployer : MonoBehaviour {
             if (!tile.foggy) {
                 virtualMap.virtualAliens.Remove(virtualAlien);
                 if (!tile.occupied) {
-                    tile.SetActor(InstantiateAlien("Alien"));
+                    tile.SetActor(InstantiateAlien(virtualAlien));
                 }
             }
         }
     }
 
-    Transform InstantiateAlien(string type) {
-        return MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/" + type)) as Transform;
+    Transform InstantiateAlien(VirtualAlien virtualAlien) {
+        var result = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/" + virtualAlien.alienType)) as Transform;
+        var alien = result.GetComponent<Alien>();
+        var path = new Path(new PathFinder(new AlienPathingWrapper(map), virtualAlien.gridLocation, soldierLocations).FindPath());
+        if (path.Count > 1) alien.TurnTo(path.First(2)[1] - virtualAlien.gridLocation);
+        return result;
     }
 }

@@ -34,7 +34,7 @@ public class Path {
         if (number > nodes.Count) {
           slice = new List<Vector2>(nodes);
         } else {
-          slice = nodes.GetRange(nodes.Count - number - 1, number);
+          slice = nodes.GetRange(nodes.Count - number, number);
         }
         return slice;
     }
