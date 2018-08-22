@@ -63,25 +63,39 @@
      <Compile Include="Assets\Src\Data\Campaign.cs" />
      <Compile Include="Assets\Src\Data\DataPersistence.cs" />
      <Compile Include="Assets\Src\Data\Mission.cs" />
+     <Compile Include="Assets\Src\Data\MissionEnemyProfile.cs" />
      <Compile Include="Assets\Src\Data\SoldierData.cs" />
      <Compile Include="Assets\Src\Data\Squad.cs" />
      <Compile Include="Assets\Src\Data\Weapon.cs" />
      <Compile Include="Assets\Src\Delayer.cs" />
+     <Compile Include="Assets\Src\Experimental\IGameButtonManager.cs" />
+     <Compile Include="Assets\Src\Experimental\IMouseDragManager.cs" />
+     <Compile Include="Assets\Src\Experimental\Injector.cs" />
+     <Compile Include="Assets\Src\Experimental\InputManager.cs" />
+     <Compile Include="Assets\Src\Experimental\MapMover.cs" />
+     <Compile Include="Assets\Src\Experimental\MouseInputController.cs" />
      <Compile Include="Assets\Src\GameLogic\AlienDeployer.cs" />
+     <Compile Include="Assets\Src\GameLogic\AlienFrequencyCalculator.cs" />
+     <Compile Include="Assets\Src\GameLogic\AlienFrequencyInput.cs" />
+     <Compile Include="Assets\Src\GameLogic\AlienFrequencyOutput.cs" />
      <Compile Include="Assets\Src\GameLogic\AlienMovementPhaseDirector.cs" />
      <Compile Include="Assets\Src\GameLogic\Commander.cs" />
      <Compile Include="Assets\Src\GameLogic\FogController.cs" />
      <Compile Include="Assets\Src\GameLogic\FogGrid.cs" />
      <Compile Include="Assets\Src\GameLogic\GamePhase.cs" />
      <Compile Include="Assets\Src\GameLogic\Spawning\AlienSpawnWrapper.cs" />
+     <Compile Include="Assets\Src\GameLogic\Spawning\GroupSpawnModule.cs" />
      <Compile Include="Assets\Src\GameLogic\Spawning\ISpawnable.cs" />
      <Compile Include="Assets\Src\GameLogic\Spawning\ISpawnModule.cs" />
      <Compile Include="Assets\Src\GameLogic\Spawning\SingleSpawnModule.cs" />
      <Compile Include="Assets\Src\GameLogic\Spawning\SpawnableLocations.cs" />
+     <Compile Include="Assets\Src\GameLogic\Spawning\TrickleSpawnModule.cs" />
      <Compile Include="Assets\Src\GameLogic\Spawning\VirtualAlien.cs" />
      <Compile Include="Assets\Src\GameLogic\Spawning\VirtualMap.cs" />
      <Compile Include="Assets\Src\GameLogic\Spawning\VirtualSpawner.cs" />
+     <Compile Include="Assets\Src\GameLogic\VictoryController.cs" />
      <Compile Include="Assets\Src\GameplayOrchestrator.cs" />
+     <Compile Include="Assets\Src\Gaussian.cs" />
      <Compile Include="Assets\Src\Map\AlienPathingWrapper.cs" />
      <Compile Include="Assets\Src\Map\IBlocker.cs" />
      <Compile Include="Assets\Src\Map\IPathable.cs" />
@@ -96,6 +110,7 @@
      <Compile Include="Assets\Src\Map\Tile.cs" />
      <Compile Include="Assets\Src\MapInputController.cs" />
      <Compile Include="Assets\Src\Path.cs" />
+     <Compile Include="Assets\Src\PossibleSoldierActions.cs" />
      <Compile Include="Assets\Src\UI\ArmouryMenuController.cs" />
      <Compile Include="Assets\Src\UI\ButtonHandler.cs" />
      <Compile Include="Assets\Src\UI\GameUIController.cs" />
@@ -107,7 +122,61 @@
      <Compile Include="Assets\Src\UI\TemplarPanelController.cs" />
      <Compile Include="Assets\Src\UI\TemplarViewController.cs" />
      <Compile Include="Assets\Src\UI\UIAnimator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\NotoSans - License.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
      <None Include="Assets\SciFiFlatSkills\ReadMe.txt" />
+     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
      <None Include="Assets\Src\todo.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Hub/Editor/2017.3.1f1/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -198,6 +267,12 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>/Users/lwrigley/Library/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="TextMeshPro-2017.3-Runtime">
+ <HintPath>/Users/lwrigley/Dropbox/Unity/space_men/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="TextMeshPro-2017.3-Editor">
+ <HintPath>/Users/lwrigley/Dropbox/Unity/space_men/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

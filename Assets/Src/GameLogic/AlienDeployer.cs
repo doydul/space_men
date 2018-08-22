@@ -4,9 +4,13 @@ using System.Collections.Generic;
 
 public class AlienDeployer : MonoBehaviour {
 
+    private const int MIN_SPAWN_DISTANCE = 12;
+
     public Map map;
     public GamePhase gamePhase;
     public FogController fogController;
+
+    private AlienFrequencyCalculator frequencyCalculator;
 
     public Spawner[] spawners { get { return map.spawners; } }
 
@@ -14,11 +18,16 @@ public class AlienDeployer : MonoBehaviour {
 
     void Awake() {
         virtualMap = new VirtualMap();
+        frequencyCalculator = new AlienFrequencyCalculator(new List<AlienFrequencyInput>() {
+            new AlienFrequencyInput() {
+                alienType = "Alien",
+                frequency = 2,
+                threat = 1
+            }
+        });
     }
 
     void Start() {
-        CreateVirtualSpawner(spawners[0].gridLocation);
-        virtualMap.Populate(map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList());
         gamePhase.MovementPhaseEnd.AddListener(Iterate);
         fogController.FogChanged.AddListener(SpawnRevealedAliens);
     }
@@ -28,8 +37,7 @@ public class AlienDeployer : MonoBehaviour {
         CreateNewSpawners();
     }
 
-    void CreateVirtualSpawner(Vector2 gridLocation) {
-        var spawnModule = new SingleSpawnModule();
+    void CreateVirtualSpawner(Vector2 gridLocation, ISpawnModule spawnModule) {
         var virtualSpawner = new VirtualSpawner(map, spawnModule, gridLocation);
         virtualMap.AddVirtualSpawner(virtualSpawner);
     }
@@ -43,8 +51,41 @@ public class AlienDeployer : MonoBehaviour {
     }
 
     void CreateNewSpawners() {
-        // create some spawners
+        var availableSpawners = AvailableSpawners();
+
+        var alienProfiles = frequencyCalculator.Iterate();
+        foreach (var profile in alienProfiles) {
+            while (profile.spawnCount > 0) {
+                if (availableSpawners.Count <= 0) break;
+                var spawner = availableSpawners[Random.Range (0, availableSpawners.Count)];
+                availableSpawners.Remove(spawner);
+                if (profile.spawnCount >= 3 && Random.value < 0.5f) {
+                    CreateVirtualSpawner(spawner.gridLocation, new GroupSpawnModule(profile.spawnCount));
+                    profile.spawnCount = 0;
+                } else if (profile.spawnCount >= 3) {
+                    CreateVirtualSpawner(spawner.gridLocation, new TrickleSpawnModule(profile.spawnCount));
+                    profile.spawnCount = 0;
+                } else {
+                    CreateVirtualSpawner(spawner.gridLocation, new SingleSpawnModule());
+                    profile.spawnCount -= 1;
+                }
+            }
+        }
+
         virtualMap.Populate(map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList());
+    }
+
+    List<Spawner> AvailableSpawners() {
+        var result = new List<Spawner>();
+        foreach (var spawner in spawners) {
+            bool include = true;
+            foreach (var soldier in map.GetActors<Soldier>()) {
+                var dist = Mathf.Abs(spawner.gridLocation.x - soldier.gridLocation.x) + Mathf.Abs(spawner.gridLocation.y - soldier.gridLocation.y);
+                if (dist < MIN_SPAWN_DISTANCE) include = false;
+            }
+            if (include) result.Add(spawner);
+        }
+        return result;
     }
 
     void SpawnRevealedAliens() {

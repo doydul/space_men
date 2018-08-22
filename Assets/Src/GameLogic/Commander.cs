@@ -19,8 +19,10 @@ public class Commander : MonoBehaviour {
     }
 
     void Start() {
-        gamePhase.MovementPhaseStart.AddListener(StartMovementPhase);
-        gamePhase.ShootingPhaseStart.AddListener(StartShootingPhase);
+        gamePhase.ShootingPhaseEnd.AddListener(StartMovementPhase);
+        gamePhase.MovementPhaseEnd.AddListener(StartShootingPhase);
+        gamePhase.ShootingPhaseIterateEnd.AddListener(ProceedAutomaticallyIfNecessary);
+        map.SpawnSoldiers(Squad.active.soldiers);
     }
 
     public void ClickTile(Tile tile) {
@@ -66,6 +68,7 @@ public class Commander : MonoBehaviour {
         if (tile.open && !tile.occupied && path.Count <= selectedUnit.remainingMovement) {
             selectedUnit.MoveTo(tile);
             selectedUnit.TurnTo(tile.gridLocation - path.Last());
+            TriggerTileWalkedOnEvents(path.nodes, tile);
             PlayerMoved.Invoke();
             SelectionChanged.Invoke();
         } else {
@@ -87,6 +90,13 @@ public class Commander : MonoBehaviour {
         }
     }
 
+    private void TriggerTileWalkedOnEvents(List<Vector2> path, Tile target) {
+        for (int i = 1; i < path.Count; i++) {
+            map.GetTileAt(path[i]).SoldierEnter.Invoke();
+        }
+        target.SoldierEnter.Invoke();
+    }
+
     private void StartMovementPhase() {
         foreach (var soldier in map.GetActors<Soldier>()) {
             soldier.StartMovementPhase();
@@ -98,5 +108,13 @@ public class Commander : MonoBehaviour {
         foreach (var soldier in map.GetActors<Soldier>()) {
             soldier.StartShootingPhase();
         }
+    }
+
+    private void ProceedAutomaticallyIfNecessary() {
+        foreach (var soldier in map.GetActors<Soldier>()) {
+            var possibleActions = new PossibleSoldierActions(map, soldier);
+            if (possibleActions.Any()) return;
+        }
+        gamePhase.ProceedPhase();
     }
 }

@@ -2,15 +2,15 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class Path {
-    
-    private List<Vector2> nodes;
-    
+
+    public List<Vector2> nodes { get; private set; }
+
     public int Count { get { return nodes.Count; } }
-    
+
     public Path(List<Vector2> nodes) {
         this.nodes = nodes;
     }
-    
+
     public List<Vector2> First(int number) {
         List<Vector2> slice = null;
         if (number > nodes.Count) {
@@ -20,15 +20,15 @@ public class Path {
         }
         return slice;
     }
-    
+
     public Vector2 First() {
         return nodes[0];
     }
-    
+
     public Vector2 Last() {
         return nodes[nodes.Count - 1];
     }
-    
+
     public List<Vector2> Last(int number) {
         List<Vector2> slice = null;
         if (number > nodes.Count) {
@@ -38,13 +38,19 @@ public class Path {
         }
         return slice;
     }
-    
+
     public Vector2 NthFromEnd(int number) {
         return Last(number)[0];
     }
-    
+
     public List<Vector2> FirstReverse(int number) {
         var result = First(number);
+        result.Reverse();
+        return result;
+    }
+
+    public List<Vector2> Reverse() {
+        var result = new List<Vector2>(nodes);
         result.Reverse();
         return result;
     }

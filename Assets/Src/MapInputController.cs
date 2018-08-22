@@ -2,27 +2,23 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class MapInputController : MonoBehaviour {
-    
+
     public Camera cam;
     public Map map;
     public Commander commander;
-    
+
     private bool dragging;
     private bool dragged;
     private Vector3 dragStartPosition;
     private Vector3 mapStartPosition;
-    
+
     void Awake() {
         if (Squad.active == null) {
             DataPersistence.Load();
             Squad.SetActive(DataPersistence.squads[0]);
         }
     }
-    
-    void Start() {
-        map.SpawnSoldiers(Squad.active.soldiers);
-    }
-    
+
     void Update() {
         if (dragging && (Input.mousePosition - dragStartPosition).magnitude > 10) {
             dragged = true;
@@ -46,12 +42,12 @@ public class MapInputController : MonoBehaviour {
           map.transform.localScale = map.transform.localScale * 1.1f;
         }
     }
-    
+
     public void Click(Vector2 mousePosition) {
         if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
         RaycastHit hit;
         Physics.Raycast(cam.ScreenPointToRay(mousePosition), out hit);
-        if (hit.collider != null) { 
+        if (hit.collider != null) {
             var tile = hit.collider.gameObject.GetComponent<Tile>();
             if (tile != null) {
                 commander.ClickTile(tile);

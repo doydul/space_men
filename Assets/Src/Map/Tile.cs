@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 [SelectionBase]
@@ -10,6 +11,7 @@ public class Tile : MonoBehaviour {
     public Transform foreground;
     public SpriteRenderer highlightSprite;
     public SpriteRenderer fogSprite;
+    public UnityEvent SoldierEnter;
 
     public bool open;
 
@@ -20,6 +22,7 @@ public class Tile : MonoBehaviour {
 
     void Awake() {
         fogSprite.color = new Color(1, 1, 1, 0.7f);
+        if (SoldierEnter == null) SoldierEnter = new UnityEvent();
     }
 
     public void SetActor(Transform actor) {
@@ -27,6 +30,7 @@ public class Tile : MonoBehaviour {
         actor.GetComponent<Actor>().tile = this;
         actor.parent = foreground;
         actor.localPosition = Vector3.zero;
+        actor.localScale = new Vector3(1, 1, 1);
     }
 
     public void RemoveActor() {
@@ -57,5 +61,12 @@ public class Tile : MonoBehaviour {
         foggy = false;
         fogSprite.enabled = false;
         foreground.gameObject.SetActive(true);
+    }
+
+    void OnDrawGizmos() {
+        if (SoldierEnter.GetPersistentEventCount() > 0) {
+            Gizmos.color = Color.white;
+            Gizmos.DrawSphere(transform.position, 0.25f);
+        }
     }
 }

@@ -1,7 +1,7 @@
-- skip shooting phase iterations when there's nothing to do
+- set correct orientation when aliens are spawned
 
-- victory condition
+- change aspect ratio to landscape
 
-- create alien spawners (of various types)
+- change mission briefing text
 
-- optimize move highlights (noticeable lag when moving character)
+- optimize move highlights (noticeable lag when moving character) (low priority)

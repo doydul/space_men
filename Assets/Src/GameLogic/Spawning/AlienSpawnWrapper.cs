@@ -9,11 +9,12 @@ public class AlienSpawnWrapper : ISpawnable {
     }
 
     public bool SpawnableLocation(Vector2 gridLocation) {
-        return !WallLocation(gridLocation) && map.GetActorAt<Actor>(gridLocation) == null;
+        var tile = map.GetTileAt(gridLocation);
+        return !WallLocation(gridLocation) && map.GetActorAt<Actor>(gridLocation) == null && tile.foggy;
     }
 
     public bool WallLocation(Vector2 gridLocation) {
         var tile = map.GetTileAt(gridLocation);
-        return tile == null || !tile.open || tile.foggy;
+        return tile == null || !tile.open;
     }
 }

@@ -54,6 +54,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Mission1
   missionName: First Mission
+  enemyProfiles:
+  - alienType: Alien
+    averageOccurrencesPerTurn: 2.5
   briefing: 'Another suicide mission against odds beyond calculation.
 
 
