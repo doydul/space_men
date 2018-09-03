@@ -16,13 +16,9 @@ public class Commander : MonoBehaviour {
     void Awake() {
         if (PlayerMoved == null) PlayerMoved = new UnityEvent();
         if (SelectionChanged == null) SelectionChanged = new UnityEvent();
-    }
-
-    void Start() {
         gamePhase.ShootingPhaseEnd.AddListener(StartMovementPhase);
         gamePhase.MovementPhaseEnd.AddListener(StartShootingPhase);
         gamePhase.ShootingPhaseIterateEnd.AddListener(ProceedAutomaticallyIfNecessary);
-        map.SpawnSoldiers(Squad.active.soldiers);
     }
 
     public void ClickTile(Tile tile) {

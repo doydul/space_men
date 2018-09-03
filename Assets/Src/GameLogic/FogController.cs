@@ -13,10 +13,10 @@ public class FogController : MonoBehaviour {
 
     void Awake() {
         if (FogChanged == null) FogChanged = new UnityEvent();
+        commander.PlayerMoved.AddListener(Recalculate);
     }
 
     void Start() {
-        commander.PlayerMoved.AddListener(Recalculate);
         Recalculate();
     }
 

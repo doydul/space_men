@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_OSX;PLATFORM_STANDALONE;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_VR;ENABLE_SPATIALTRACKING;ENABLE_IL2CPP;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -55,61 +55,25 @@
      <Compile Include="Assets\ComboPack\SciFiSkin\Scripts\TiltWindow.cs" />
      <Compile Include="Assets\Src\Actions\AlienAttack.cs" />
      <Compile Include="Assets\Src\Actions\SoldierAttack.cs" />
-     <Compile Include="Assets\Src\Actors\Actor.cs" />
      <Compile Include="Assets\Src\Actors\Alien.cs" />
      <Compile Include="Assets\Src\Actors\Soldier.cs" />
-     <Compile Include="Assets\Src\BloodSplatController.cs" />
-     <Compile Include="Assets\Src\Data\Armour.cs" />
-     <Compile Include="Assets\Src\Data\Campaign.cs" />
      <Compile Include="Assets\Src\Data\DataPersistence.cs" />
-     <Compile Include="Assets\Src\Data\Mission.cs" />
-     <Compile Include="Assets\Src\Data\MissionEnemyProfile.cs" />
      <Compile Include="Assets\Src\Data\SoldierData.cs" />
      <Compile Include="Assets\Src\Data\Squad.cs" />
-     <Compile Include="Assets\Src\Data\Weapon.cs" />
-     <Compile Include="Assets\Src\Delayer.cs" />
-     <Compile Include="Assets\Src\Experimental\IGameButtonManager.cs" />
-     <Compile Include="Assets\Src\Experimental\IMouseDragManager.cs" />
-     <Compile Include="Assets\Src\Experimental\Injector.cs" />
-     <Compile Include="Assets\Src\Experimental\InputManager.cs" />
-     <Compile Include="Assets\Src\Experimental\MapMover.cs" />
-     <Compile Include="Assets\Src\Experimental\MouseInputController.cs" />
      <Compile Include="Assets\Src\GameLogic\AlienDeployer.cs" />
-     <Compile Include="Assets\Src\GameLogic\AlienFrequencyCalculator.cs" />
-     <Compile Include="Assets\Src\GameLogic\AlienFrequencyInput.cs" />
-     <Compile Include="Assets\Src\GameLogic\AlienFrequencyOutput.cs" />
      <Compile Include="Assets\Src\GameLogic\AlienMovementPhaseDirector.cs" />
      <Compile Include="Assets\Src\GameLogic\Commander.cs" />
      <Compile Include="Assets\Src\GameLogic\FogController.cs" />
-     <Compile Include="Assets\Src\GameLogic\FogGrid.cs" />
-     <Compile Include="Assets\Src\GameLogic\GamePhase.cs" />
      <Compile Include="Assets\Src\GameLogic\Spawning\AlienSpawnWrapper.cs" />
-     <Compile Include="Assets\Src\GameLogic\Spawning\GroupSpawnModule.cs" />
-     <Compile Include="Assets\Src\GameLogic\Spawning\ISpawnable.cs" />
-     <Compile Include="Assets\Src\GameLogic\Spawning\ISpawnModule.cs" />
-     <Compile Include="Assets\Src\GameLogic\Spawning\SingleSpawnModule.cs" />
-     <Compile Include="Assets\Src\GameLogic\Spawning\SpawnableLocations.cs" />
-     <Compile Include="Assets\Src\GameLogic\Spawning\TrickleSpawnModule.cs" />
-     <Compile Include="Assets\Src\GameLogic\Spawning\VirtualAlien.cs" />
      <Compile Include="Assets\Src\GameLogic\Spawning\VirtualMap.cs" />
      <Compile Include="Assets\Src\GameLogic\Spawning\VirtualSpawner.cs" />
      <Compile Include="Assets\Src\GameLogic\VictoryController.cs" />
      <Compile Include="Assets\Src\GameplayOrchestrator.cs" />
-     <Compile Include="Assets\Src\Gaussian.cs" />
      <Compile Include="Assets\Src\Map\AlienPathingWrapper.cs" />
-     <Compile Include="Assets\Src\Map\IBlocker.cs" />
-     <Compile Include="Assets\Src\Map\IPathable.cs" />
-     <Compile Include="Assets\Src\Map\LineOfSight.cs" />
-     <Compile Include="Assets\Src\Map\Map.cs" />
      <Compile Include="Assets\Src\Map\MapHighlighter.cs" />
-     <Compile Include="Assets\Src\Map\PathFinder.cs" />
      <Compile Include="Assets\Src\Map\SoldierLOSWrapper.cs" />
      <Compile Include="Assets\Src\Map\SoldierPathingWrapper.cs" />
-     <Compile Include="Assets\Src\Map\Spawner.cs" />
-     <Compile Include="Assets\Src\Map\StartLocation.cs" />
-     <Compile Include="Assets\Src\Map\Tile.cs" />
      <Compile Include="Assets\Src\MapInputController.cs" />
-     <Compile Include="Assets\Src\Path.cs" />
      <Compile Include="Assets\Src\PossibleSoldierActions.cs" />
      <Compile Include="Assets\Src\UI\ArmouryMenuController.cs" />
      <Compile Include="Assets\Src\UI\ButtonHandler.cs" />
@@ -274,6 +238,10 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>/Users/lwrigley/Library/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{78EFD911-D8AF-4568-82F7-FA39EF2D9611}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

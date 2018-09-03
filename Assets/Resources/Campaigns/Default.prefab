@@ -57,18 +57,18 @@ MonoBehaviour:
   enemyProfiles:
   - alienType: Alien
     averageOccurrencesPerTurn: 2.5
-  briefing: 'Another suicide mission against odds beyond calculation.
+  briefing: 'Each turn is split into 2 phases; Movement and Shooting. Aliens move
+    during the player''s Shooting phase, and the player gets chances to shoot them
+    as they approach.
 
 
-    The Xeno threat grows daily. This is our last chance to gain a foothold before
-    all hope is lost.
+    Soldiers can move, sprint, or stand still on a given turn. Sprinting confers zero
+    shots during the Shooting phase, moving confers half shots and standing still
+    confers the maximum number.
 
 
-    Do not fail us, commander.
-
-
-    Get your team to the waypoint before the Xenos can mobilise their full number.
-    Time is of the essence.'
+    The player wins by reaching the objective, which is marked on the map (there isn''t
+    a win screen at the moment, you''ll just have to congratulate yourself)'
 --- !u!114 &114726355796877630
 MonoBehaviour:
   m_ObjectHideFlags: 1

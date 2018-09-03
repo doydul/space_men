@@ -1,5 +1,3 @@
-- change mission briefing text
-
 - make ui header do something?
 
 - optimize move highlights (noticeable lag when moving character) (low priority)
