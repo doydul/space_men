@@ -5,8 +5,17 @@ public class GameplayOrchestrator : MonoBehaviour {
 
     public Map map;
 
+    public GameLogicComponent gameLogic;
+    public WorldComponent world;
+    public UI ui;
+
     void Awake() {
-        SpawnSoldiers(Squad.active.soldiers);
+        gameLogic.SetWorld(world);
+        gameLogic.SetUserInterface(ui);
+    }
+
+    void Start() {
+        SpawnSoldiers(Squad.GenerateDefault().soldiers);
     }
 
     public void SpawnSoldiers(List<SoldierData> soldierDatas) {
@@ -17,9 +26,9 @@ public class GameplayOrchestrator : MonoBehaviour {
 
     public Soldier Spawn(SoldierData soldierData, Vector2 gridLocation) {
         var trans = Instantiate(Resources.Load<Transform>("Prefabs/Soldier")) as Transform;
-        Debug.Log(trans);
+
         var soldier = trans.GetComponent<Soldier>();
-        soldierData.ToSoldier(soldier);
+        soldier.FromData(soldierData);
 
         map.GetTileAt(gridLocation).SetActor(trans);
         return soldier;

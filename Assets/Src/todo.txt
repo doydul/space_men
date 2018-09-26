@@ -1,3 +1,7 @@
+- explosive weapons
+
+- alien pings when in fog of war
+
 - make ui header do something?
 
 - optimize move highlights (noticeable lag when moving character) (low priority)

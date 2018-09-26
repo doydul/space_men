@@ -78,7 +78,11 @@ public class Commander : MonoBehaviour {
         var los = new LineOfSight(selectedUnit.gridLocation, tile.gridLocation, new SoldierLOSWrapper(map));
         if (alien != null && selectedUnit.WithinSightArc(tile.gridLocation) && !los.Blocked()) {
             if (selectedUnit.hasAmmo) {
-                SoldierAttack.Execute(selectedUnit, alien, map);
+                if (selectedUnit.firesOrdnance) {
+                    SoldierFireOrdnance.Execute(selectedUnit, alien.tile, GameLogicComponent.world);
+                } else {
+                    SoldierAttack.Execute(selectedUnit, alien, GameLogicComponent.world);
+                }
                 if (alien.dead) SelectionChanged.Invoke();
             }
         } else {

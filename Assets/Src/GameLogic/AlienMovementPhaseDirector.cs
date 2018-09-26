@@ -84,7 +84,7 @@ public class AlienMovementPhaseDirector : MonoBehaviour {
                 CentreCameraOn(alien.tile);
                 alien.Face(tile.gridLocation);
                 alien.ShowAttackIndicator();
-                AlienAttack.Execute(alien, soldier, map);
+                AlienAttack.Execute(alien, soldier, GameLogicComponent.world);
                 yield return new WaitForSeconds(COMBAT_WAIT_TIME);
             }
         }
