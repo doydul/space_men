@@ -9,10 +9,8 @@ public class FogController : MonoBehaviour {
 
     public Map map;
     public Commander commander;
-    public UnityEvent FogChanged;
 
     void Awake() {
-        if (FogChanged == null) FogChanged = new UnityEvent();
         commander.PlayerMoved.AddListener(Recalculate);
     }
 
@@ -30,6 +28,6 @@ public class FogController : MonoBehaviour {
                 tile.RemoveFoggy();
             }
         }
-        FogChanged.Invoke();
+        GameEvents.Trigger("FogChanged");
     }
 }

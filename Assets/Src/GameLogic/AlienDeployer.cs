@@ -8,11 +8,11 @@ public class AlienDeployer : MonoBehaviour {
 
     public Map map;
     public GamePhase gamePhase;
-    public FogController fogController;
 
     private AlienFrequencyCalculator frequencyCalculator;
 
     public Spawner[] spawners { get { return map.spawners; } }
+    public List<VirtualAlien> hiddenAliens { get { return virtualMap.virtualAliens; } }
 
     private List<Vector2> soldierLocations { get {
         return map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList();
@@ -32,7 +32,7 @@ public class AlienDeployer : MonoBehaviour {
 
     void Start() {
         gamePhase.MovementPhaseEnd.AddListener(Iterate);
-        fogController.FogChanged.AddListener(SpawnRevealedAliens);
+        GameEvents.On("FogChanged", SpawnRevealedAliens);
     }
 
     void Iterate() {

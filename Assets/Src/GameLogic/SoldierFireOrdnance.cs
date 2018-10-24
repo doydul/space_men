@@ -40,7 +40,6 @@ public static class SoldierFireOrdnance {
 
     private static Vector2 Scatter(Vector2 gridLocation, IWorld world) {
         int scatterDistance = Random.value < 0.5f ? 1 : 2;
-        Debug.Log(scatterDistance);
         var gridIterator = new NthLayerGridIterator(new ExplodableWrapper(world));
         var possibleScatterLocations = gridIterator.Squares(gridLocation, scatterDistance).ToList();
         return possibleScatterLocations[Random.Range(0, possibleScatterLocations.Count)];

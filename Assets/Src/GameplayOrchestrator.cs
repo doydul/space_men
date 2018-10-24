@@ -6,6 +6,7 @@ public class GameplayOrchestrator : MonoBehaviour {
     public Map map;
 
     public GameLogicComponent gameLogic;
+    public GameEvents events;
     public WorldComponent world;
     public UI ui;
 

@@ -41,12 +41,14 @@ public class GamePhase : MonoBehaviour {
             MovementPhaseEnd.Invoke();
             phase = Phase.Shooting;
             ShootingPhaseStart.Invoke();
+            GameEvents.Trigger("ShootingPhaseStart");
             shootingPhaseIteration = 0;
         } else {
             if (shootingPhaseIteration >= SHOOTING_PHASE_ITERATIONS) {
                 ShootingPhaseEnd.Invoke();
                 phase = Phase.Movement;
                 MovementPhaseStart.Invoke();
+                GameEvents.Trigger("MovementPhaseStart");
             } else {
                 shootingPhaseIteration++;
                 ShootingPhaseIterate.Invoke();

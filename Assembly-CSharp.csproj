@@ -79,6 +79,8 @@
      <Compile Include="Assets\Src\Data\SoldierData.cs" />
      <Compile Include="Assets\Src\Data\Squad.cs" />
      <Compile Include="Assets\Src\Data\Weapon.cs" />
+     <Compile Include="Assets\Src\Events\EventListener.cs" />
+     <Compile Include="Assets\Src\Events\GameEvents.cs" />
      <Compile Include="Assets\Src\GameLogic\Actor.cs" />
      <Compile Include="Assets\Src\GameLogic\Alien.cs" />
      <Compile Include="Assets\Src\GameLogic\AlienAttack.cs" />
@@ -96,6 +98,7 @@
      <Compile Include="Assets\Src\GameLogic\IUserInterface.cs" />
      <Compile Include="Assets\Src\GameLogic\IWorld.cs" />
      <Compile Include="Assets\Src\GameLogic\PossibleSoldierActions.cs" />
+     <Compile Include="Assets\Src\GameLogic\RadarBlipController.cs" />
      <Compile Include="Assets\Src\GameLogic\SingleSpawnModule.cs" />
      <Compile Include="Assets\Src\GameLogic\Soldier.cs" />
      <Compile Include="Assets\Src\GameLogic\SoldierAttack.cs" />

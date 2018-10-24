@@ -10,6 +10,14 @@ public class WorldComponent : MonoBehaviour, IWorld {
         mapMarkerController.CreateExplosionMarker(gridLocation, opacity);
     }
 
+    public void CreateRadarBlip(Vector2 gridLocation) {
+        mapMarkerController.CreateRadarBlip(gridLocation);
+    }
+
+    public void ClearRadarBlips() {
+        mapMarkerController.ClearRadarBlips();
+    }
+
     public T GetActorAt<T>(Vector2 gridLocation) {
         return map.GetActorAt<T>(gridLocation);
     }

@@ -1,9 +1,17 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class MapMarkerController : MonoBehaviour {
 
     public Map map;
     public Transform explosionMarkerPrefab;
+    public Transform radarBlipPrefab;
+
+    private List<GameObject> radarBlips;
+
+    void Awake() {
+        radarBlips = new List<GameObject>();
+    }
 
     public void CreateExplosionMarker(Tile tile, float opacity) {
         var transform = Instantiate(explosionMarkerPrefab) as Transform;
@@ -17,5 +25,18 @@ public class MapMarkerController : MonoBehaviour {
 
     public void CreateExplosionMarker(Vector2 gridLocation, float opacity) {
         CreateExplosionMarker(map.GetTileAt(gridLocation), opacity);
+    }
+
+    public void CreateRadarBlip(Vector2 gridLocation) {
+        var transform = Instantiate(radarBlipPrefab) as Transform;
+        transform.parent = map.transform;
+        transform.position = map.GetTileAt(gridLocation).transform.position + new Vector3(0, 0, -3);
+        radarBlips.Add(transform.gameObject);
+    }
+
+    public void ClearRadarBlips() {
+        foreach (var blip in radarBlips) {
+            Destroy(blip);
+        }
     }
 }
