@@ -1,5 +1,1 @@
-# Implement a few weapons
-
-- Implement 5 basic weapons
-
 # Create Inventory Screen

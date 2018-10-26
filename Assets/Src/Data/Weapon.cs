@@ -15,6 +15,7 @@ public class Weapon : ScriptableObject {
     public int damage;
     public int shotsWhenMoving;
     public int shotsWhenStill;
+    public int ammo;
     public float blast;
     public Type type;
     public bool ordnance { get { return blast > 0; } }
