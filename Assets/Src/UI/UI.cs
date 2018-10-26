@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class UI : MonoBehaviour, IUserInterface {
 
@@ -30,5 +31,13 @@ public class UI : MonoBehaviour, IUserInterface {
 
     public void ShowAmmoIndicators(Soldier soldier) {
         soldier.GetComponent<SoldierUIController>().ShowAmmoIndicators();
+    }
+
+    public void ShowVictoryPopup() {
+        gameUIController.ShowVictoryPopup();
+    }
+
+    public void FadeToBlack(Action finished) {
+        gameUIController.FadeToBlack(finished);
     }
 }

@@ -24,7 +24,11 @@ public class Squad {
 
     public static Mission currentMission {
         get {
-            return currentCampaign.missions[instance.currentMissionIndex];
+            if (instance.currentMissionIndex < currentCampaign.missions.Length) {
+                return currentCampaign.missions[instance.currentMissionIndex];
+            } else {
+                return null;
+            }
         }
     }
 
@@ -48,5 +52,9 @@ public class Squad {
 
         result.currentCampaignName = Campaign.DEFAULT;
         return result;
+    }
+
+    public static void IncrementMission() {
+        active.currentMissionIndex++;
     }
 }

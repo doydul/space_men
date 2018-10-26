@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameplayOrchestrator : MonoBehaviour {
 
@@ -33,5 +34,16 @@ public class GameplayOrchestrator : MonoBehaviour {
 
         map.GetTileAt(gridLocation).SetActor(trans);
         return soldier;
+    }
+
+    public void EndMission() {
+        ui.FadeToBlack(() => {
+            Squad.IncrementMission();
+            if (Squad.currentMission != null) {
+                SceneManager.LoadScene("MissionOverview");
+            } else {
+                SceneManager.LoadScene("MainMenu");
+            }
+        });
     }
 }

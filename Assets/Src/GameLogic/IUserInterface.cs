@@ -4,4 +4,6 @@ public interface IUserInterface {
     void Deselect(Soldier soldier);
     void ShowMovementIndicators(Soldier soldier);
     void ShowAmmoIndicators(Soldier soldier);
+
+    void ShowVictoryPopup();
 }

@@ -1,7 +1,5 @@
-- explosive weapons
+# Implement a few weapons
 
-- alien pings when in fog of war
+- Implement 5 basic weapons
 
-- make ui header do something?
-
-- optimize move highlights (noticeable lag when moving character) (low priority)
+# Create Inventory Screen

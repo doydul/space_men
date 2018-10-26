@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameUIController : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class GameUIController : MonoBehaviour {
     public GameObject turnButtonContainer;
     public Image blackFade;
     public Text currentPhaseText;
+    public GameObject victoryPopup;
 
     private UIAnimator fadeAnimator;
 
@@ -23,6 +25,8 @@ public class GameUIController : MonoBehaviour {
         });
 
         blackFade.enabled = true;
+
+        victoryPopup.SetActive(false);
     }
 
     void Start() {
@@ -49,5 +53,14 @@ public class GameUIController : MonoBehaviour {
 
     public void SetShootingPhaseText() {
         currentPhaseText.text = "Shooting Phase";
+    }
+
+    public void ShowVictoryPopup() {
+        victoryPopup.SetActive(true);
+    }
+
+    public void FadeToBlack(Action finished) {
+        blackFade.enabled = true;
+        fadeAnimator.Enqueue(1f, finished);
     }
 }
