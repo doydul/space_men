@@ -16,5 +16,6 @@ MonoBehaviour:
   damage: 1
   shotsWhenMoving: 2
   shotsWhenStill: 4
+  ammo: 24
   blast: 0
   type: 0

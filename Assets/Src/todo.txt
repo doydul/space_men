@@ -1,1 +1,11 @@
-# Create Inventory Screen
+# Squad Screen
+
+- Accessed from the mission briefing screen, at least for now
+
+- 6 boxes (already have)
+
+- Underneath each box is a button marked 'inv' which takes the user to the inventory page for that soldier
+
+- If the portrait for a soldier is pressed, the user is instead taken to the character select screen, where they can choose to replace that soldier in the squad roster
+
+- when selecting items, also shows the items that are currently equipped by soldiers who are not in the roster. Such items will automatically be traded between soldiers if selected

@@ -9,12 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 330a01776318840bd88dc655a2bd4ab8, type: 3}
-  m_Name: New Weapon 3
+  m_Name: Plasma Rifle
   m_EditorClassIdentifier: 
-  accuracy: 0
-  armourPen: 0
-  damage: 0
-  shotsWhenMoving: 0
-  shotsWhenStill: 0
+  accuracy: 70
+  armourPen: 60
+  damage: 1
+  shotsWhenMoving: 2
+  shotsWhenStill: 4
+  ammo: 10
   blast: 0
   type: 0

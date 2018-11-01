@@ -55,8 +55,8 @@ public class Soldier : Actor {
     }
 
     public void FromData(SoldierData soldierData) {
-        armour = Resources.Load<Armour>("Armour/" + soldierData.armour);
-        weapon = Resources.Load<Weapon>("Weapons/" + soldierData.weapon);
+        armour = Armour.Get(soldierData.armour);
+        weapon = Weapon.Get(soldierData.weapon);
     }
 
     public override void MoveTo(Tile newTile) {

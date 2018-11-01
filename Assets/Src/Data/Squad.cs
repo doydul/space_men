@@ -6,7 +6,8 @@ using UnityEngine;
 public class Squad {
 
     public string name;
-    public List<SoldierData> soldiers;
+    public List<SoldierData> activeSoldiers;
+    public List<SoldierData> reserveSoldiers;
     public string currentCampaignName;
     public int currentMissionIndex;
 
@@ -33,7 +34,13 @@ public class Squad {
     }
 
     public Squad() {
-        soldiers = new List<SoldierData>();
+        activeSoldiers = new List<SoldierData>();
+        reserveSoldiers = new List<SoldierData>();
+    }
+
+    public static SoldierData GetSoldier(int index) {
+        if (instance.activeSoldiers.Count <= index) return null;
+        return instance.activeSoldiers[index];
     }
 
     public static void SetActive(Squad activeSquad) {
@@ -42,13 +49,14 @@ public class Squad {
 
     public static Squad GenerateDefault() {
         var result = new Squad();
-        for (int i = 0; i < 4; i++) {
-            //result.soldiers.Add(SoldierData.GenerateDefault());
-            var sol = new SoldierData();
-            sol.armour = SoldierData.DEFAULT_ARMOUR;
-            sol.weapon = "Grenade Launcher";
-            result.soldiers.Add(sol);
+        for (int i = 0; i < 3; i++) {
+            result.activeSoldiers.Add(SoldierData.GenerateDefault());
         }
+
+        var sol = new SoldierData();
+        sol.armour = SoldierData.DEFAULT_ARMOUR;
+        sol.weapon = "Grenade Launcher";
+        result.activeSoldiers.Add(sol);
 
         result.currentCampaignName = Campaign.DEFAULT;
         return result;

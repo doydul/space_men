@@ -19,4 +19,8 @@ public class Weapon : ScriptableObject {
     public float blast;
     public Type type;
     public bool ordnance { get { return blast > 0; } }
+
+    public static Weapon Get(string name) {
+        return Resources.Load<Weapon>("Weapon/" + name);
+    }
 }
