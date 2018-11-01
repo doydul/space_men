@@ -118,7 +118,10 @@
      <Compile Include="Assets\Src\UI\MainMenuController.cs" />
      <Compile Include="Assets\Src\UI\MapInputController.cs" />
      <Compile Include="Assets\Src\UI\MissionOverviewController.cs" />
+     <Compile Include="Assets\Src\UI\SceneMenu.cs" />
      <Compile Include="Assets\Src\UI\SoldierPanelController.cs" />
+     <Compile Include="Assets\Src\UI\SoldierSelectMenuController.cs" />
+     <Compile Include="Assets\Src\UI\SoldierSelectPanelController.cs" />
      <Compile Include="Assets\Src\UI\SoldierUIController.cs" />
      <Compile Include="Assets\Src\UI\SquadPanelController.cs" />
      <Compile Include="Assets\Src\UI\SquadSelectMenuController.cs" />

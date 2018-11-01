@@ -7,19 +7,27 @@ public class SoldierPanelController : MonoBehaviour {
     public GameObject soldierPicture;
     public GameObject invButton;
 
-    private SoldierData _soldier;
-    public SoldierData soldier {
+    private int _soldierIndex;
+    public int soldierIndex {
         set {
-            _soldier = value;
-            if (_soldier == null) {
-                soldierPicture.SetActive(false);
-                invButton.SetActive(false);
-            }
+            _soldierIndex = value;
+        }
+    }
+    public SoldierData soldier {
+        get {
+            return Squad.activeSoldiers[_soldierIndex];
+
+            // _soldier = value;
+            // if (_soldier == null) {
+            //     soldierPicture.SetActive(false);
+            //     invButton.SetActive(false);
+            // }
         }
     }
 
     public void SelectSoldier() {
-        menuController.ClickSoldier(_soldier);
+        Debug.Log(_soldierIndex);
+        menuController.ClickSoldier(_soldierIndex);
     }
 
     public void OpenInventory() {

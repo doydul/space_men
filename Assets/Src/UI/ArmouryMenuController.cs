@@ -5,53 +5,42 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class ArmouryMenuController : MonoBehaviour {
+public class ArmouryMenuController : SceneMenu {
 
-    public Image blackFade;
+    public const string sceneName = "Armoury";
+
     public string templarScene;
     public string missionScene;
     public SoldierPanelController[] soldierPanelControllers;
 
-    private UIAnimator fadeAnimator;
+    public static void OpenMenu() {
+        SceneManager.LoadScene(sceneName);
+    }
 
-    void Awake() {
+    protected override void _Awake() {
         if (Squad.active == null) Squad.SetActive(Squad.GenerateDefault());
 
         for (int i = 0; i < soldierPanelControllers.Length; i++) {
-            soldierPanelControllers[i].soldier = Squad.GetSoldier(i);
+            soldierPanelControllers[i].soldierIndex = i;
         }
-
-        fadeAnimator = new UIAnimator(1f, 1f, this, (value) => {
-            var temp = blackFade.color;
-            temp.a = value;
-            blackFade.color = temp;
-        });
-
-        blackFade.enabled = true;
-    }
-
-    void Start() {
-        fadeAnimator.Enqueue(0f, () => {
-            blackFade.enabled = false;
-        });
     }
 
     public void Continue() {
-        blackFade.enabled = true;
-        fadeAnimator.Enqueue(1f, () => {
+        FadeToBlack(() => {
             SceneManager.LoadScene(missionScene);
         });
     }
 
     void ViewTemplar() {
-        blackFade.enabled = true;
-        fadeAnimator.Enqueue(1f, () => {
+        FadeToBlack(() => {
             SceneManager.LoadScene(templarScene);
         });
     }
 
-    public void ClickSoldier(SoldierData soldier) {
-        // Goto soldier select screen
+    public void ClickSoldier(int soldierIndex) {
+        FadeToBlack(() => {
+            SoldierSelectMenuController.OpenMenu(soldierIndex);
+        });
     }
 
     public void ViewInvectory(SoldierData soldier) {

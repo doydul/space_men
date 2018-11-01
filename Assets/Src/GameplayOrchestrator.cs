@@ -17,7 +17,7 @@ public class GameplayOrchestrator : MonoBehaviour {
     }
 
     void Start() {
-        SpawnSoldiers(Squad.GenerateDefault().activeSoldiers);
+        SpawnSoldiers(Squad.GenerateDefault()._activeSoldiers);
     }
 
     public void SpawnSoldiers(List<SoldierData> soldierDatas) {

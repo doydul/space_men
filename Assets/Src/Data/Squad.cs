@@ -6,8 +6,8 @@ using UnityEngine;
 public class Squad {
 
     public string name;
-    public List<SoldierData> activeSoldiers;
-    public List<SoldierData> reserveSoldiers;
+    public List<SoldierData> _activeSoldiers;
+    public List<SoldierData> _reserveSoldiers;
     public string currentCampaignName;
     public int currentMissionIndex;
 
@@ -16,6 +16,9 @@ public class Squad {
     public static Squad active {
         get { return instance; }
     }
+
+    public static List<SoldierData> activeSoldiers { get { return instance._activeSoldiers; } }
+    public static List<SoldierData> reserveSoldiers { get { return instance._reserveSoldiers; } }
 
     public static Campaign currentCampaign {
         get {
@@ -34,13 +37,13 @@ public class Squad {
     }
 
     public Squad() {
-        activeSoldiers = new List<SoldierData>();
-        reserveSoldiers = new List<SoldierData>();
+        _activeSoldiers = new List<SoldierData>();
+        _reserveSoldiers = new List<SoldierData>();
     }
 
     public static SoldierData GetSoldier(int index) {
-        if (instance.activeSoldiers.Count <= index) return null;
-        return instance.activeSoldiers[index];
+        if (activeSoldiers.Count <= index) return null;
+        return activeSoldiers[index];
     }
 
     public static void SetActive(Squad activeSquad) {
@@ -50,13 +53,18 @@ public class Squad {
     public static Squad GenerateDefault() {
         var result = new Squad();
         for (int i = 0; i < 3; i++) {
-            result.activeSoldiers.Add(SoldierData.GenerateDefault());
+            result._activeSoldiers.Add(SoldierData.GenerateDefault());
         }
 
         var sol = new SoldierData();
         sol.armour = SoldierData.DEFAULT_ARMOUR;
         sol.weapon = "Grenade Launcher";
-        result.activeSoldiers.Add(sol);
+        result._reserveSoldiers.Add(sol);
+
+        sol = new SoldierData();
+        sol.armour = SoldierData.DEFAULT_ARMOUR;
+        sol.weapon = SoldierData.DEFAULT_WEAPON;
+        result._activeSoldiers.Add(sol);
 
         result.currentCampaignName = Campaign.DEFAULT;
         return result;
@@ -64,5 +72,12 @@ public class Squad {
 
     public static void IncrementMission() {
         active.currentMissionIndex++;
+    }
+
+    public static void ReplaceSoldier(int squadPosition, SoldierData reserveSoldier) {
+        var activeMember = activeSoldiers[squadPosition];
+        reserveSoldiers.Add(activeMember);
+        reserveSoldiers.Remove(reserveSoldier);
+        activeSoldiers[squadPosition] = reserveSoldier;
     }
 }
