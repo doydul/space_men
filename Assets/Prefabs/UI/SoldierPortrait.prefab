@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224950346717623418}
-  - component: {fileID: 114329984811892856}
   - component: {fileID: 114908931381487616}
+  - component: {fileID: 114450673036025398}
   m_Layer: 5
   m_Name: SoldierPortrait
   m_TagString: Untagged
@@ -62,7 +62,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114329984811892856
+--- !u!114 &114450673036025398
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -70,11 +70,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1184317741901800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e95c2508f8f54525b345e263bad2b1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 28515595d86e24b8ab000436d73c64cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   menuController: {fileID: 0}
-  soldierPicture: {fileID: 1836505254475934}
+  picture: {fileID: 114775784594418580}
 --- !u!114 &114556993969581422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,8 +143,8 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114329984811892856}
-        m_MethodName: SelectSoldier
+      - m_Target: {fileID: 114450673036025398}
+        m_MethodName: SelectItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

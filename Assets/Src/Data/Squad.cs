@@ -8,6 +8,7 @@ public class Squad {
     public string name;
     public List<SoldierData> _activeSoldiers;
     public List<SoldierData> _reserveSoldiers;
+    public List<InventoryItem> _items;
     public string currentCampaignName;
     public int currentMissionIndex;
 
@@ -19,6 +20,7 @@ public class Squad {
 
     public static List<SoldierData> activeSoldiers { get { return instance._activeSoldiers; } }
     public static List<SoldierData> reserveSoldiers { get { return instance._reserveSoldiers; } }
+    public static List<InventoryItem> items { get { return instance._items; } }
 
     public static Campaign currentCampaign {
         get {
@@ -39,6 +41,7 @@ public class Squad {
     public Squad() {
         _activeSoldiers = new List<SoldierData>();
         _reserveSoldiers = new List<SoldierData>();
+        _items = new List<InventoryItem>();
     }
 
     public static SoldierData GetSoldier(int index) {
@@ -65,6 +68,8 @@ public class Squad {
         sol.armour = SoldierData.DEFAULT_ARMOUR;
         sol.weapon = SoldierData.DEFAULT_WEAPON;
         result._activeSoldiers.Add(sol);
+
+        result._items.Add(new InventoryItem() { name = "Plasma Rifle", isWeapon = true });
 
         result.currentCampaignName = Campaign.DEFAULT;
         return result;

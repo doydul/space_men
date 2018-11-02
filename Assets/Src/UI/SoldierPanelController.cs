@@ -16,21 +16,21 @@ public class SoldierPanelController : MonoBehaviour {
     public SoldierData soldier {
         get {
             return Squad.activeSoldiers[_soldierIndex];
+        }
+    }
 
-            // _soldier = value;
-            // if (_soldier == null) {
-            //     soldierPicture.SetActive(false);
-            //     invButton.SetActive(false);
-            // }
+    void Awake() {
+        if (Squad.activeSoldiers.Count <= _soldierIndex || Squad.activeSoldiers[_soldierIndex] == null) {
+            soldierPicture.SetActive(false);
+            invButton.SetActive(false);
         }
     }
 
     public void SelectSoldier() {
-        Debug.Log(_soldierIndex);
         menuController.ClickSoldier(_soldierIndex);
     }
 
     public void OpenInventory() {
-
+        menuController.ViewSoldier(Squad.activeSoldiers[_soldierIndex]);
     }
 }

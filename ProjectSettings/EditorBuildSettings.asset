@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Campaigns/Default/Mission1.unity
     guid: 7585f0d6278914f9093bbd402dbe8bcf
+  - enabled: 1
+    path: Assets/Scenes/SelectionMenu.unity
+    guid: b0546761b73c44ae4810e6d4a6983f3f

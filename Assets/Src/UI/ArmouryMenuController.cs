@@ -9,8 +9,6 @@ public class ArmouryMenuController : SceneMenu {
 
     public const string sceneName = "Armoury";
 
-    public string templarScene;
-    public string missionScene;
     public SoldierPanelController[] soldierPanelControllers;
 
     public static void OpenMenu() {
@@ -31,20 +29,15 @@ public class ArmouryMenuController : SceneMenu {
         });
     }
 
-    void ViewTemplar() {
+    public void ViewSoldier(SoldierData soldier) {
         FadeToBlack(() => {
-            SceneManager.LoadScene(templarScene);
+            SoldierViewController.OpenMenu(soldier);
         });
     }
 
     public void ClickSoldier(int soldierIndex) {
         FadeToBlack(() => {
-            SoldierSelectMenuController.OpenMenu(soldierIndex);
+            SelectionMenuController.OpenMenu(soldierIndex);
         });
-    }
-
-    public void ViewInvectory(SoldierData soldier) {
-        TemplarViewController.activeSoldier = soldier;
-        ViewTemplar();
     }
 }
