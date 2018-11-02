@@ -27,8 +27,9 @@ public static class SoldierFireOrdnance {
             } else if (targetAlien != null) {
                 if (Random.value <= square.blastCoverage) {
                     if (Random.value * 100 > targetAlien.armour - soldier.armourPen) {
+                        int damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
                         targetAlien.ShowHitIndicator();
-                        targetAlien.Hurt(soldier.damage);
+                        targetAlien.Hurt(damage);
                         world.MakeBloodSplat(targetAlien);
                     } else {
                         targetAlien.ShowDeflectIndicator();

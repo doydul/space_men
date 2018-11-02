@@ -12,7 +12,8 @@ public class Weapon : ScriptableObject {
 
     public int accuracy;
     public int armourPen;
-    public int damage;
+    public int minDamage;
+    public int maxDamage;
     public int shotsWhenMoving;
     public int shotsWhenStill;
     public int ammo;
@@ -21,6 +22,6 @@ public class Weapon : ScriptableObject {
     public bool ordnance { get { return blast > 0; } }
 
     public static Weapon Get(string name) {
-        return Resources.Load<Weapon>("Weapon/" + name);
+        return Resources.Load<Weapon>("Weapons/" + name);
     }
 }

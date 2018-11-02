@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accuracy: 40
   armourPen: 5
-  damage: 1
+  minDamage: 1
+  maxDamage: 1
   shotsWhenMoving: 1
   shotsWhenStill: 1
   ammo: 2

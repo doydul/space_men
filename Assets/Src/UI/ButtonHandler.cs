@@ -28,7 +28,7 @@ public class ButtonHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-        animator.Enqueue(initialScale * 0.9f, null, UIAnimator.AnimationType.EaseOut);
+        animator.Enqueue(initialScale * 0.95f, null, UIAnimator.AnimationType.EaseOut);
     }
 
     public void OnPointerUp(PointerEventData eventData) {

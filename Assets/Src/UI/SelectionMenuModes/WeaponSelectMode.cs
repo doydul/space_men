@@ -6,32 +6,40 @@ public class WeaponSelectMode : SelectionMode {
 
     private SoldierData weaponOwner;
     private List<SelectableItem> selectableWeapons;
-    private string selectedWeapon;
+    private WeaponItem selectedWeapon;
 
     public WeaponSelectMode(SoldierData weaponOwner) {
         this.weaponOwner = weaponOwner;
 
         var weapons = Squad.items.Where(item => item.isWeapon).Select(item => item.name).ToList();
-        weapons.Add(weaponOwner.weapon);
 
         selectableWeapons = new List<SelectableItem>();
+        selectableWeapons.Add(new WeaponItem() { weaponOwner = weaponOwner });
         foreach (var weapon in weapons) {
-            selectableWeapons.Add(new WeaponItem(weapon));
+            selectableWeapons.Add(new WeaponItem() { weapon = weapon });
+        }
+        foreach (var soldier in Squad.reserveSoldiers) {
+            selectableWeapons.Add(new WeaponItem() { weaponOwner = soldier });
         }
     }
 
     public List<SelectableItem> selectableItems { get { return selectableWeapons; } }
 
     public void Select(SelectableItem item) {
-        selectedWeapon = ((WeaponItem)item).weapon;
+        selectedWeapon = (WeaponItem)item;
     }
 
     public void Finalise() {
-        if (selectedWeapon != weaponOwner.weapon) {
+        if (selectedWeapon.GetWeaponString() != weaponOwner.weapon) {
             var oldWeapon = weaponOwner.weapon;
-            weaponOwner.weapon = selectedWeapon;
-            Squad.items.Remove(Squad.items.Single(item => item.name == selectedWeapon));
-            Squad.items.Add(new InventoryItem() { name = oldWeapon, isWeapon = true });
+            if (selectedWeapon.alreadyOwned) {
+                weaponOwner.weapon = selectedWeapon.weaponOwner.weapon;
+                selectedWeapon.weaponOwner.weapon = oldWeapon;
+            } else {
+                weaponOwner.weapon = selectedWeapon.weapon;
+                Squad.items.Remove(Squad.items.Single(item => item.name == selectedWeapon.weapon));
+                Squad.items.Add(new InventoryItem() { name = oldWeapon, isWeapon = true });
+            }
         }
         SoldierViewController.OpenMenu(weaponOwner);
     }
@@ -39,17 +47,24 @@ public class WeaponSelectMode : SelectionMode {
     private class WeaponItem : SelectableItem {
 
         public string weapon;
+        public SoldierData weaponOwner;
 
-        public WeaponItem(string weapon) {
-            this.weapon = weapon;
+        public bool alreadyOwned { get { return weaponOwner != null; } }
+
+        public string GetWeaponString() {
+            if (weapon != null) {
+                return weapon;
+            } else {
+                return weaponOwner.weapon;
+            }
         }
 
         public string leftText { get {
-            return weapon;
+            return GetWeaponString();
         } }
 
         public string rightText { get {
-            return "";
+            return alreadyOwned ? "owned" : "";
         } }
 
         public Sprite sprite { get {

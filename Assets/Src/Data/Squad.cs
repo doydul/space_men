@@ -5,29 +5,13 @@ using UnityEngine;
 [Serializable]
 public class Squad {
 
-    public string name;
-    public List<SoldierData> _activeSoldiers;
-    public List<SoldierData> _reserveSoldiers;
-    public List<InventoryItem> _items;
-    public string currentCampaignName;
-    public int currentMissionIndex;
-
     private static Squad instance;
 
-    public static Squad active {
-        get { return instance; }
-    }
-
+    public static Squad active { get { return instance; } }
     public static List<SoldierData> activeSoldiers { get { return instance._activeSoldiers; } }
     public static List<SoldierData> reserveSoldiers { get { return instance._reserveSoldiers; } }
     public static List<InventoryItem> items { get { return instance._items; } }
-
-    public static Campaign currentCampaign {
-        get {
-            return Campaign.FromString(instance.currentCampaignName);
-        }
-    }
-
+    public static Campaign currentCampaign { get { return Campaign.FromString(instance.currentCampaignName); } }
     public static Mission currentMission {
         get {
             if (instance.currentMissionIndex < currentCampaign.missions.Length) {
@@ -37,6 +21,13 @@ public class Squad {
             }
         }
     }
+
+    public string name;
+    public List<SoldierData> _activeSoldiers;
+    public List<SoldierData> _reserveSoldiers;
+    public List<InventoryItem> _items;
+    public string currentCampaignName;
+    public int currentMissionIndex;
 
     public Squad() {
         _activeSoldiers = new List<SoldierData>();

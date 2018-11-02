@@ -14,6 +14,8 @@ public class SelectionMenuController : SceneMenu {
 
     private static SelectionMode mode;
 
+    private int scrollValue;
+
     public static void OpenMenu(int selectedSoldierIndex) {
         mode = new SoldierSelectMode(selectedSoldierIndex);
         SceneManager.LoadScene(sceneName);
@@ -33,10 +35,7 @@ public class SelectionMenuController : SceneMenu {
             Squad.SetActive(Squad.GenerateDefault());
             mode = new WeaponSelectMode(Squad.activeSoldiers[0]);
         }
-
-        for (int i = 0; i < mode.selectableItems.Count; i++) {
-            selectionPanels[i].selectableItem = mode.selectableItems[i];
-        }
+        PopulateSelectableItemViewport();
     }
 
     public void SelectItem(SelectableItem selectableItem) {
@@ -57,10 +56,22 @@ public class SelectionMenuController : SceneMenu {
     }
 
     public void ScrollLeft() {
-
+        if (scrollValue > 0) scrollValue--;
+        PopulateSelectableItemViewport();
     }
 
     public void ScrollRight() {
+        if (scrollValue < mode.selectableItems.Count - selectionPanels.Count) scrollValue++;
+        PopulateSelectableItemViewport();
+    }
 
+    private void PopulateSelectableItemViewport() {
+        int start = scrollValue;
+        int end = Mathf.Min(start + selectionPanels.Count, mode.selectableItems.Count);
+        int i = 0;
+        for (int j = start; j < end; j++) {
+            selectionPanels[i].selectableItem = mode.selectableItems[j];
+            i++;
+        }
     }
 }

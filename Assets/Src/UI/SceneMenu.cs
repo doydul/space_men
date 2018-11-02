@@ -11,7 +11,7 @@ public abstract class SceneMenu : MonoBehaviour {
     private UIAnimator fadeAnimator;
 
     void Awake() {
-        fadeAnimator = new UIAnimator(1f, 1f, this, (value) => {
+        fadeAnimator = new UIAnimator(1f, 0.5f, this, (value) => {
             var temp = blackFade.color;
             temp.a = value;
             blackFade.color = temp;

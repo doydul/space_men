@@ -5,25 +5,17 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class MainMenuController : MonoBehaviour {
-    
-    public Image blackFade;
-    public string startScene;
-    
-    private UIAnimator fadeAnimator;
-    
-    void Start() {
-        fadeAnimator = new UIAnimator(0f, 1f, this, (value) => {
-            var temp = blackFade.color;
-            temp.a = value;
-            blackFade.color = temp;
-        });
+public class MainMenuController : SceneMenu {
+
+    public const string sceneName = "MainMenu";
+
+    public static void OpenMenu() {
+        SceneManager.LoadScene(sceneName);
     }
-    
+
     public void NewGame() {
-        blackFade.enabled = true;
-        fadeAnimator.Enqueue(1f, () => {
-            SceneManager.LoadScene(startScene);
+        FadeToBlack(() => {
+            SquadSelectMenuController.OpenMenu();
         });
     }
 }

@@ -11,6 +11,10 @@ public class GameplayOrchestrator : MonoBehaviour {
     public WorldComponent world;
     public UI ui;
 
+    public static void StartGame() {
+        SceneManager.LoadScene(Squad.currentMission.sceneName);
+    }
+
     void Awake() {
         gameLogic.SetWorld(world);
         gameLogic.SetUserInterface(ui);
@@ -40,9 +44,9 @@ public class GameplayOrchestrator : MonoBehaviour {
         ui.FadeToBlack(() => {
             Squad.IncrementMission();
             if (Squad.currentMission != null) {
-                SceneManager.LoadScene("MissionOverview");
+                MissionOverviewController.OpenMenu();
             } else {
-                SceneManager.LoadScene("MainMenu");
+                MainMenuController.OpenMenu();
             }
         });
     }

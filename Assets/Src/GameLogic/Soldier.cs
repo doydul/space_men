@@ -31,7 +31,8 @@ public class Soldier : Actor {
     public bool moved { get { return tilesMoved > 0; } }
     public int accuracy { get { return weapon.accuracy; } }
     public int armourPen { get { return weapon.armourPen; } }
-    public int damage { get { return weapon.damage; } }
+    public int minDamage { get { return weapon.minDamage; } }
+    public int maxDamage { get { return weapon.maxDamage; } }
     public float blast { get { return weapon.blast; } }
     public bool firesOrdnance { get { return weapon.ordnance; } }
     public Weapon.Type weaponType { get { return weapon.type; } }

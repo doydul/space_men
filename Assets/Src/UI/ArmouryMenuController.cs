@@ -25,7 +25,7 @@ public class ArmouryMenuController : SceneMenu {
 
     public void Continue() {
         FadeToBlack(() => {
-            SceneManager.LoadScene(missionScene);
+            MissionOverviewController.OpenMenu();
         });
     }
 
