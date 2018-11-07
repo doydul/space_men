@@ -1,1 +1,29 @@
+# Item construction / research screen
 
+- Allows constructing weapons and armour based on blueprints that have been aquired by dismantling existing items
+
+- Also allows 'scrapping' items to return resources
+
+- Allow recruiting of new soldiers
+
+# Implement armour specific abilities
+
+- Scout gets additional movement (maybe two extra squares for running and 4 extra for sprinting?)
+
+- Mid level armour can use heavy weapons
+
+- Dreadnaught armour cannot sprint (but is super beefy)
+
+# Persistent flames from flame weapons
+
+- Should last 1 or 2 turns and set fire to anything that passes through them
+
+- Flames do 1 tick of damage at the moment when the target is set on fire and then 1 tick at the end of each turn thereafter
+
+# Exp and skills system
+
+- Might have to put a pin in this one, but a basic system of earning exp and levelling up would be nice
+
+
+
+# Friendly fire damage from blast weapons

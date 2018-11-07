@@ -11,7 +11,9 @@ public class Squad {
     public static List<SoldierData> activeSoldiers { get { return instance._activeSoldiers; } }
     public static List<SoldierData> reserveSoldiers { get { return instance._reserveSoldiers; } }
     public static List<InventoryItem> items { get { return instance._items; } }
+    public static List<ItemBlueprint> blueprints { get { return instance._blueprints; } }
     public static Campaign currentCampaign { get { return Campaign.FromString(instance.currentCampaignName); } }
+    public static int credits { get { return instance._credits; } }
     public static Mission currentMission {
         get {
             if (instance.currentMissionIndex < currentCampaign.missions.Length) {
@@ -26,13 +28,17 @@ public class Squad {
     public List<SoldierData> _activeSoldiers;
     public List<SoldierData> _reserveSoldiers;
     public List<InventoryItem> _items;
+    public List<ItemBlueprint> _blueprints;
     public string currentCampaignName;
     public int currentMissionIndex;
+
+    public int _credits;
 
     public Squad() {
         _activeSoldiers = new List<SoldierData>();
         _reserveSoldiers = new List<SoldierData>();
         _items = new List<InventoryItem>();
+        _blueprints = new List<ItemBlueprint>();
     }
 
     public static SoldierData GetSoldier(int index) {
@@ -46,6 +52,7 @@ public class Squad {
 
     public static Squad GenerateDefault() {
         var result = new Squad();
+        result._credits = 1000;
         for (int i = 0; i < 3; i++) {
             result._activeSoldiers.Add(SoldierData.GenerateDefault());
         }
@@ -60,10 +67,22 @@ public class Squad {
         sol.weapon = SoldierData.DEFAULT_WEAPON;
         result._activeSoldiers.Add(sol);
 
-        result._items.Add(new InventoryItem() { name = "Plasma Rifle", isWeapon = true });
+        result._items.Add(new InventoryItem() {
+            name = "Assault Rifle",
+            isWeapon = true
+        });
+
+        result._blueprints.Add(new ItemBlueprint() { item = new InventoryItem() {
+            name = "Plasma Rifle",
+            isWeapon = true
+        }});
 
         result.currentCampaignName = Campaign.DEFAULT;
         return result;
+    }
+
+    public static void ChangeCredits(int amount) {
+        instance._credits += amount;
     }
 
     public static void IncrementMission() {

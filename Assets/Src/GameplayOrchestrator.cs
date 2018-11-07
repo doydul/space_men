@@ -42,12 +42,8 @@ public class GameplayOrchestrator : MonoBehaviour {
 
     public void EndMission() {
         ui.FadeToBlack(() => {
+            MissionCompleteViewController.OpenMenu();
             Squad.IncrementMission();
-            if (Squad.currentMission != null) {
-                MissionOverviewController.OpenMenu();
-            } else {
-                MainMenuController.OpenMenu();
-            }
         });
     }
 }

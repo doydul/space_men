@@ -10,6 +10,7 @@ public class ArmouryMenuController : SceneMenu {
     public const string sceneName = "Armoury";
 
     public SoldierPanelController[] soldierPanelControllers;
+    public Text creditsText;
 
     public static void OpenMenu() {
         SceneManager.LoadScene(sceneName);
@@ -21,6 +22,8 @@ public class ArmouryMenuController : SceneMenu {
         for (int i = 0; i < soldierPanelControllers.Length; i++) {
             soldierPanelControllers[i].soldierIndex = i;
         }
+
+        UpdateCreditsText();
     }
 
     public void Continue() {
@@ -39,5 +42,14 @@ public class ArmouryMenuController : SceneMenu {
         FadeToBlack(() => {
             SelectionMenuController.OpenMenu(soldierIndex);
         });
+    }
+
+    public void HireSoldier() {
+        new Barracks(Squad.active).HireSoldier();
+        UpdateCreditsText();
+    }
+
+    private void UpdateCreditsText() {
+        creditsText.text = "Credits: " + Squad.credits;
     }
 }
