@@ -14,6 +14,7 @@ public class Armour : ScriptableObject {
     public int movement;
     public int sprint;
     public Type type;
+    public int value;
 
     public static Armour Get(string name) {
         return Resources.Load<Armour>("Armour/" + name);

@@ -20,3 +20,4 @@ MonoBehaviour:
   ammo: 160
   blast: 0
   type: 0
+  value: 300

@@ -4,26 +4,38 @@ public class Workshop {
 
     private InventoryItem item;
 
-    public bool canAnalyse { get { return Squad.credits >= item.value; } }
-    public bool canFabricate { get { return Squad.credits >= item.value; } }
+    public bool canAnalyse { get { return Squad.credits >= ItemValue(); } }
+    public bool canFabricate { get { return Squad.credits >= ItemValue(); } }
 
     public Workshop(InventoryItem item) {
         this.item = item;
     }
 
     public void ScrapItem() {
-        Squad.ChangeCredits(item.value);
+        Squad.ChangeCredits(ItemValue());
         Squad.items.Remove(item);
     }
 
     public void AnalyseItem() {
-        Squad.ChangeCredits(-item.value);
+        if (!canAnalyse) return;
+        Squad.ChangeCredits(-ItemValue());
         Squad.items.Remove(item);
         Squad.blueprints.Add(new ItemBlueprint() { item = item });
     }
 
     public void FabricateItem() {
-        Squad.ChangeCredits(-item.value);
+        if (!canFabricate) return;
+        Squad.ChangeCredits(-ItemValue());
         Squad.items.Add(item.Dup());
+    }
+
+    // Private
+
+    private int ItemValue() {
+        if (item.isWeapon) {
+            return Weapon.Get(item.name).value;
+        } else {
+            return Armour.Get(item.name).value;
+        }
     }
 }

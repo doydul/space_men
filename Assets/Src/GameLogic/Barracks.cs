@@ -13,6 +13,7 @@ public class Barracks {
     }
 
     public void HireSoldier() {
+        if (!canHire) return;
         squad._credits -= HireCost();
         squad._reserveSoldiers.Add(GenerateDefaultSoldier());
     }

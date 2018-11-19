@@ -1,4 +1,6 @@
-# Item construction / research screen
+# Code
+
+## Item construction / research screen
 
 - Allows constructing weapons and armour based on blueprints that have been aquired by dismantling existing items
 
@@ -6,7 +8,9 @@
 
 - Allow recruiting of new soldiers
 
-# Implement armour specific abilities
+## Weapon specific shooty animations
+
+## Implement armour specific abilities
 
 - Scout gets additional movement (maybe two extra squares for running and 4 extra for sprinting?)
 
@@ -14,16 +18,35 @@
 
 - Dreadnaught armour cannot sprint (but is super beefy)
 
-# Persistent flames from flame weapons
+## Persistent flames from flame weapons
 
 - Should last 1 or 2 turns and set fire to anything that passes through them
 
 - Flames do 1 tick of damage at the moment when the target is set on fire and then 1 tick at the end of each turn thereafter
 
-# Exp and skills system
+## Exp and skills system
 
 - Might have to put a pin in this one, but a basic system of earning exp and levelling up would be nice
 
 
 
-# Friendly fire damage from blast weapons
+## Friendly fire damage from blast weapons
+
+
+# Art
+
+- 3 portraits; one for each armour type. 4 Colour scheme variations each?
+
+- 1 icon version for each armour, showing just the head (4 colours schemes each)
+
+- 1 top down version of each armour for in game, with 4 colour schemes each
+
+- A whole bunch of aliens
+
+- Guns, lots of guns; 4 types (conventional, assault, heavy, flamer) with 4 adjectives (short, explosive, multiple barrels, energy), making 16 potential permutations. These will be displayed in the shop/inventory screen
+
+- In game these will be represented by 3 models, a regular sized gun, a fatter more beefy gun, and a shoulder mounted (heavy) gun. The only necessary adjective is energy, which will be represented by a sort of glow, which can be tuned depending on the intensity of energy-ness that the gun has.
+
+- Map tiles; 1 outer corner tile, 3 wall tiles, 1 inner corner tile, 3 floor tiles, 1 roof tile
+
+- UI; arrow

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorkshopMenuController : SceneMenu {
 
@@ -11,6 +12,7 @@ public class WorkshopMenuController : SceneMenu {
     public WorkshopInfoPanelController infoPanel;
     public List<WorkshopItemDisplayPanelController> inventoryItemPanels;
     public List<WorkshopItemDisplayPanelController> blueprintPanels;
+    public Text creditsText;
 
     private ScrollableList<InventoryItem> inventoryItemScroll;
     private ScrollableList<InventoryItem> blueprintScroll;
@@ -42,6 +44,7 @@ public class WorkshopMenuController : SceneMenu {
     public void UpdateInterface() {
         SetBlueprintPanels();
         SetItemPanels();
+        UpdateCreditsText();
     }
 
     protected override void _Awake() {
@@ -63,6 +66,12 @@ public class WorkshopMenuController : SceneMenu {
 
     public void SelectInventoryItem(InventoryItem item) {
         infoPanel.SelectInventoryItem(item);
+    }
+
+    public void GoBack() {
+        FadeToBlack(() => {
+            ArmouryMenuController.OpenMenu();
+        });
     }
 
     // Pivate
@@ -88,5 +97,9 @@ public class WorkshopMenuController : SceneMenu {
                 blueprintPanels[i].SetItem(blueprintScroll.GetCurrentView()[i]);
             }
         }
+    }
+
+    private void UpdateCreditsText() {
+        creditsText.text = "Credits: " + Squad.credits;
     }
 }

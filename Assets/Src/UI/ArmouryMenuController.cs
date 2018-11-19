@@ -49,6 +49,14 @@ public class ArmouryMenuController : SceneMenu {
         UpdateCreditsText();
     }
 
+    public void OpenWorkshop() {
+        FadeToBlack(() => {
+            WorkshopMenuController.OpenMenu();
+        });
+    }
+
+    // Private
+
     private void UpdateCreditsText() {
         creditsText.text = "Credits: " + Squad.credits;
     }
