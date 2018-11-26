@@ -5,17 +5,30 @@ public class MapHighlighter : MonoBehaviour {
 
     public Map map;
     public GamePhase gamePhase;
-    public Commander commander;
 
-    private List<Tile> highlightedTiles;
+    List<Tile> highlightedTiles;
 
-    private Soldier selectedUnit { get { return commander.selectedUnit; } }
+    ViewableState viewableState { get { return ViewableState.instance; } }
+    Soldier selectedUnit;
 
     void Awake() {
         highlightedTiles = new List<Tile>();
-        commander.SelectionChanged.AddListener(UpdateHighlights);
-        gamePhase.MovementPhaseStart.AddListener(UpdateHighlights);
-        gamePhase.ShootingPhaseStart.AddListener(UpdateHighlights);
+    }
+
+    void Update() {
+        if (viewableState.selectedSoldier != selectedUnit) UpdateHighlights();
+    }
+
+    void UpdateHighlights() {
+        ClearHighlights();
+        if (selectedUnit != null) {
+            HighlightTile(selectedUnit.tile, Color.white);
+            if (viewableState.isMovementPhaseActive) {
+                MovementPhaseHighlights();
+            } else {
+                ShootingPhaseHighlights();
+            }
+        }
     }
 
     void ClearHighlights() {
@@ -28,18 +41,6 @@ public class MapHighlighter : MonoBehaviour {
     void HighlightTile(Tile tile, Color color) {
         tile.Highlight(color);
         highlightedTiles.Add(tile);
-    }
-
-    void UpdateHighlights() {
-        ClearHighlights();
-        if (selectedUnit != null) {
-            HighlightTile(selectedUnit.tile, Color.white);
-            if (gamePhase.movement) {
-                MovementPhaseHighlights();
-            } else {
-                ShootingPhaseHighlights();
-            }
-        }
     }
 
     void MovementPhaseHighlights() {

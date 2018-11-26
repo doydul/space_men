@@ -109,7 +109,17 @@
      <Compile Include="Assets\Src\GameLogic\VirtualSpawner.cs" />
      <Compile Include="Assets\Src\GameLogic\Workshop.cs" />
      <Compile Include="Assets\Src\GameplayOrchestrator.cs" />
+     <Compile Include="Assets\Src\New\CurrentSelectionState.cs" />
      <Compile Include="Assets\Src\New\GameLogicOrchestrator.cs" />
+     <Compile Include="Assets\Src\New\Main.cs" />
+     <Compile Include="Assets\Src\New\MovementPhase.cs" />
+     <Compile Include="Assets\Src\New\Phase.cs" />
+     <Compile Include="Assets\Src\New\PlayerActionHandler.cs" />
+     <Compile Include="Assets\Src\New\ShootingPhase.cs" />
+     <Compile Include="Assets\Src\New\SoldierActionHandler.cs" />
+     <Compile Include="Assets\Src\New\SoldierPathingAndLOS.cs" />
+     <Compile Include="Assets\Src\New\UIInputHandler.cs" />
+     <Compile Include="Assets\Src\New\ViewableState.cs" />
      <Compile Include="Assets\Src\UI\ArmouryMenuController.cs" />
      <Compile Include="Assets\Src\UI\ButtonHandler.cs" />
      <Compile Include="Assets\Src\UI\GameUIController.cs" />

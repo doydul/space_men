@@ -8,16 +8,16 @@ using System;
 
 public class GameUIController : MonoBehaviour {
 
-    public Commander commander;
     public GameObject turnButtonContainer;
     public Image blackFade;
     public Text currentPhaseText;
     public GameObject victoryPopup;
 
-    private UIAnimator fadeAnimator;
+    UIAnimator fadeAnimator;
+    UIHelper uiHelper;
 
     void Awake() {
-        DisableTurnButtons();
+        uiHelper = new UIHelper(turnButtonContainer, currentPhaseText);
         fadeAnimator = new UIAnimator(1f, 1f, this, (value) => {
             var temp = blackFade.color;
             temp.a = value;
@@ -35,24 +35,8 @@ public class GameUIController : MonoBehaviour {
         });
     }
 
-    public void PressTurnSoldier(int direction) {
-        commander.PressTurnSoldier((Soldier.Direction)direction);
-    }
-
-    public void EnableTurnButtons() {
-        turnButtonContainer.SetActive(true);
-    }
-
-    public void DisableTurnButtons() {
-        turnButtonContainer.SetActive(false);
-    }
-
-    public void SetMovementPhaseText() {
-        currentPhaseText.text = "Movement Phase";
-    }
-
-    public void SetShootingPhaseText() {
-        currentPhaseText.text = "Shooting Phase";
+    void Update() {
+        uiHelper.Update(ViewableState.instance);
     }
 
     public void ShowVictoryPopup() {
@@ -62,5 +46,26 @@ public class GameUIController : MonoBehaviour {
     public void FadeToBlack(Action finished) {
         blackFade.enabled = true;
         fadeAnimator.Enqueue(1f, finished);
+    }
+
+    private class UIHelper {
+
+        public UIHelper(GameObject turnButtonContainer, Text currentPhaseText) {
+            this.turnButtonContainer = turnButtonContainer;
+            this.currentPhaseText = currentPhaseText;
+            turnButtonContainer.SetActive(false);
+        }
+
+        GameObject turnButtonContainer;
+        Text currentPhaseText;
+
+        public void Update(ViewableState viewableState) {
+            turnButtonContainer.SetActive(viewableState.canTurnSoldier);
+            if (viewableState.isMovementPhaseActive) {
+                currentPhaseText.text = "Movement Phase";
+            } else {
+                currentPhaseText.text = "Shooting Phase";
+            }
+        }
     }
 }

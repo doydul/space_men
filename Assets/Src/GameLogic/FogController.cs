@@ -8,10 +8,9 @@ public class FogController : MonoBehaviour {
     private const int FOG_RADIUS = 8;
 
     public Map map;
-    public Commander commander;
 
     void Awake() {
-        commander.PlayerMoved.AddListener(Recalculate);
+        GameEvents.On("PlayerMoved", Recalculate);
     }
 
     void Start() {

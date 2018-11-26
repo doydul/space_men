@@ -12,11 +12,6 @@ public class UI : MonoBehaviour, IUserInterface {
         instance = this;
     }
 
-    void Start() {
-        gamePhase.MovementPhaseStart.AddListener(gameUIController.SetMovementPhaseText);
-        gamePhase.ShootingPhaseStart.AddListener(gameUIController.SetShootingPhaseText);
-    }
-
     public void Select(Soldier soldier) {
         soldier.GetComponent<SoldierUIController>().Select();
     }

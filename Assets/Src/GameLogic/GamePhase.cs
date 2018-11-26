@@ -6,10 +6,9 @@ public class GamePhase : MonoBehaviour {
 
     private const int SHOOTING_PHASE_ITERATIONS = 4;
 
-    public enum Phase {
-        Movement,
-        Shooting
-    }
+    public Map map;
+    public AlienMovementPhaseDirector alienMovementPhaseDirector;
+    public AlienDeployer alienDeployer;
 
     public Phase phase { get; private set; }
 
@@ -20,14 +19,11 @@ public class GamePhase : MonoBehaviour {
     public UnityEvent ShootingPhaseIterate;
     public UnityEvent ShootingPhaseIterateEnd;
 
-    private int shootingPhaseIteration;
-
-    public bool movement { get { return phase == Phase.Movement; } }
-    public bool shooting { get { return phase == Phase.Shooting; } }
-    public bool shootingIterationInProgress { get; set; }
+    public bool movement { get { return phase is MovementPhase; } }
+    public bool shooting { get { return phase is ShootingPhase; } }
 
     void Awake() {
-        phase = Phase.Movement;
+        phase = new MovementPhase(map);
         if (MovementPhaseEnd == null) MovementPhaseStart = new UnityEvent();
         if (ShootingPhaseEnd == null) ShootingPhaseStart = new UnityEvent();
         if (MovementPhaseEnd == null) MovementPhaseEnd = new UnityEvent();
@@ -37,30 +33,39 @@ public class GamePhase : MonoBehaviour {
     }
 
     public void ProceedPhase() {
-        if (phase == Phase.Movement) {
-            MovementPhaseEnd.Invoke();
-            phase = Phase.Shooting;
-            ShootingPhaseStart.Invoke();
-            GameEvents.Trigger("ShootingPhaseStart");
-            shootingPhaseIteration = 0;
-        } else {
-            if (shootingPhaseIteration >= SHOOTING_PHASE_ITERATIONS) {
-                ShootingPhaseEnd.Invoke();
-                phase = Phase.Movement;
-                MovementPhaseStart.Invoke();
-                GameEvents.Trigger("MovementPhaseStart");
-            } else {
-                shootingPhaseIteration++;
-                ShootingPhaseIterate.Invoke();
-                StartCoroutine(AwaitShootingIterationEnd());
-            }
-        }
+        phase.Proceed();
+        if (phase.finished) TogglePhase();
+
+        // if (movement) {
+        //     MovementPhaseEnd.Invoke();
+        //     phase = new ShootingPhase(map, alienMovementPhaseDirector);
+        //     phase.Start();
+        //     ShootingPhaseStart.Invoke();
+        //     GameEvents.Trigger("ShootingPhaseStart");
+        //     shootingPhaseIteration = 0;
+        // } else {
+        //     if (shootingPhaseIteration >= SHOOTING_PHASE_ITERATIONS) {
+        //         ShootingPhaseEnd.Invoke();
+        //         phase = new MovementPhase(map);
+        //         phase.Start();
+        //         MovementPhaseStart.Invoke();
+        //         GameEvents.Trigger("MovementPhaseStart");
+        //     } else {
+        //         shootingPhaseIteration++;
+        //         ShootingPhaseIterate.Invoke();
+        //         StartCoroutine(AwaitShootingIterationEnd());
+        //     }
+        // }
     }
 
-    private IEnumerator AwaitShootingIterationEnd() {
-        while (shootingIterationInProgress) {
-            yield return null;
+    void TogglePhase() {
+        if (phase is MovementPhase) {
+            phase = new ShootingPhase(map, alienMovementPhaseDirector, alienDeployer);
+            ShootingPhaseStart.Invoke();
+        } else {
+            phase = new MovementPhase(map);
+            MovementPhaseStart.Invoke();
         }
-        ShootingPhaseIterateEnd.Invoke();
+        phase.Start();
     }
 }

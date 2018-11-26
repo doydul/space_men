@@ -5,8 +5,7 @@ using System;
 public class Weapon : ScriptableObject {
 
     public enum Type {
-        Direct,
-        Blast,
+        Standard,
         Heavy
     }
 
@@ -22,6 +21,7 @@ public class Weapon : ScriptableObject {
     public int value;
 
     public bool ordnance { get { return blast > 0; } }
+    public bool isHeavy { get { return type == Type.Heavy; } }
 
     public static Weapon Get(string name) {
         return Resources.Load<Weapon>("Weapons/" + name);

@@ -8,10 +8,18 @@ public class WeaponSelectMode : SelectionMode {
     private List<SelectableItem> selectableWeapons;
     private WeaponItem selectedWeapon;
 
+    private bool canUseHeavyWeapons { get { return Armour.Get(weaponOwner.armour).isMedium; } }
+
     public WeaponSelectMode(SoldierData weaponOwner) {
         this.weaponOwner = weaponOwner;
 
-        var weapons = Squad.items.Where(item => item.isWeapon).Select(item => item.name).ToList();
+        var weapons = Squad.items.Where((item) => {
+            if (item.isWeapon) {
+                return canUseHeavyWeapons || !Weapon.Get(item.name).isHeavy;
+            } else {
+                return false;
+            }
+        }).Select(item => item.name).ToList();
 
         selectableWeapons = new List<SelectableItem>();
         selectableWeapons.Add(new WeaponItem() { weaponOwner = weaponOwner });

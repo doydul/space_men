@@ -13,14 +13,16 @@ public class Commander : MonoBehaviour {
 
     public Soldier selectedUnit { get; private set; }
 
+    //Done
     void Awake() {
         if (PlayerMoved == null) PlayerMoved = new UnityEvent();
         if (SelectionChanged == null) SelectionChanged = new UnityEvent();
-        gamePhase.ShootingPhaseEnd.AddListener(StartMovementPhase);
-        gamePhase.MovementPhaseEnd.AddListener(StartShootingPhase);
-        gamePhase.ShootingPhaseIterateEnd.AddListener(ProceedAutomaticallyIfNecessary);
+        // gamePhase.ShootingPhaseEnd.AddListener(StartMovementPhase);
+        // gamePhase.MovementPhaseEnd.AddListener(StartShootingPhase);
+        // gamePhase.ShootingPhaseIterateEnd.AddListener(ProceedAutomaticallyIfNecessary);
     }
 
+    //Done
     public void ClickTile(Tile tile) {
         var soldier = tile.GetActor<Soldier>();
         if (soldier != null) {
@@ -33,16 +35,18 @@ public class Commander : MonoBehaviour {
             }
         }
         if (gamePhase.movement && selectedUnit != null) {
-            UIController.EnableTurnButtons();
+            // UIController.EnableTurnButtons();
         } else {
-            UIController.DisableTurnButtons();
+            // UIController.DisableTurnButtons();
         }
     }
 
+    //Done
     public void PressTurnSoldier(Soldier.Direction direction) {
         if (selectedUnit != null) selectedUnit.TurnTo(direction);
     }
 
+    //Done
     private void SelectUnit(Soldier soldier) {
         if (selectedUnit != null) selectedUnit.Deselect();
         selectedUnit = soldier;
@@ -50,12 +54,14 @@ public class Commander : MonoBehaviour {
         SelectionChanged.Invoke();
     }
 
+    //Done
     private void DeselectUnit() {
         selectedUnit.Deselect();
         selectedUnit = null;
         SelectionChanged.Invoke();
     }
 
+    //Done
     private void Move(Tile tile) {
         if (selectedUnit == null) return;
         var start = selectedUnit.gridLocation;
@@ -72,6 +78,7 @@ public class Commander : MonoBehaviour {
         }
     }
 
+    //Done
     private void Shoot(Tile tile) {
         if (selectedUnit == null) return;
         var alien = tile.GetActor<Alien>();
@@ -90,6 +97,7 @@ public class Commander : MonoBehaviour {
         }
     }
 
+    //Done
     private void TriggerTileWalkedOnEvents(List<Vector2> path, Tile target) {
         for (int i = 1; i < path.Count; i++) {
             map.GetTileAt(path[i]).SoldierEnter.Invoke();
@@ -104,7 +112,7 @@ public class Commander : MonoBehaviour {
     }
 
     private void StartShootingPhase() {
-        UIController.DisableTurnButtons();
+        // UIController.DisableTurnButtons();
         foreach (var soldier in map.GetActors<Soldier>()) {
             soldier.StartShootingPhase();
         }

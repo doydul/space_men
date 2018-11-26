@@ -1,13 +1,5 @@
 # Code
 
-## Item construction / research screen
-
-- Allows constructing weapons and armour based on blueprints that have been aquired by dismantling existing items
-
-- Also allows 'scrapping' items to return resources
-
-- Allow recruiting of new soldiers
-
 ## Weapon specific shooty animations
 
 ## Implement armour specific abilities

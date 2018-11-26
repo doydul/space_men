@@ -31,11 +31,10 @@ public class AlienDeployer : MonoBehaviour {
     }
 
     void Start() {
-        gamePhase.MovementPhaseEnd.AddListener(Iterate);
         GameEvents.On("FogChanged", SpawnRevealedAliens);
     }
 
-    void Iterate() {
+    public void Iterate() {
         Spawn();
         CreateNewSpawners();
     }
