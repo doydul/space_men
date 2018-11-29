@@ -10,13 +10,18 @@ public class MapHighlighter : MonoBehaviour {
 
     ViewableState viewableState { get { return ViewableState.instance; } }
     Soldier selectedUnit;
+    Vector2 selectedUnitGridLocation;
 
     void Awake() {
         highlightedTiles = new List<Tile>();
     }
 
     void Update() {
-        if (viewableState.selectedSoldier != selectedUnit) UpdateHighlights();
+        if (viewableState.selectedSoldier != null && selectedUnitGridLocation != viewableState.selectedSoldier.gridLocation) {
+            selectedUnit = viewableState.selectedSoldier;
+            selectedUnitGridLocation = selectedUnit.gridLocation;
+            UpdateHighlights();
+        }
     }
 
     void UpdateHighlights() {

@@ -18,10 +18,9 @@ public class PlayerActionHandler {
         this.selectionState = selectionState;
         this.gamePhase = gamePhase;
         this.soldierActionHandler = soldierActionHandler;
-        InitBindings();
     }
 
-    void InitBindings() {
+    public void InitBindings() {
         input.SetTurnSoldierLeftListener(TurnSoldierLeft);
         input.SetTurnSoldierRightListener(TurnSoldierRight);
         input.SetTurnSoldierUpListener(TurnSoldierUp);

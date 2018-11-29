@@ -2,20 +2,23 @@ public class ShootingPhase : Phase {
 
     private const int SHOOTING_PHASE_ITERATIONS = 4;
 
-    Map map;
-    AlienMovementPhaseDirector alienMovementPhaseDirector;
-    AlienDeployer alienDeployer;
-    int iterations;
-
     public ShootingPhase(
         Map map,
         AlienMovementPhaseDirector alienMovementPhaseDirector,
-        AlienDeployer alienDeployer
+        AlienDeployer alienDeployer,
+        RadarBlipController radarBlipController
     ) {
         this.map = map;
         this.alienMovementPhaseDirector = alienMovementPhaseDirector;
         this.alienDeployer = alienDeployer;
+        this.radarBlipController = radarBlipController;
     }
+
+    Map map;
+    AlienMovementPhaseDirector alienMovementPhaseDirector;
+    AlienDeployer alienDeployer;
+    RadarBlipController radarBlipController;
+    int iterations;
 
     public override bool finished { get {
         return iterations >= SHOOTING_PHASE_ITERATIONS;
@@ -25,14 +28,21 @@ public class ShootingPhase : Phase {
         foreach (var soldier in map.GetActors<Soldier>()) {
             soldier.StartShootingPhase();
         }
-        GameEvents.Trigger("ShootingPhaseStart");
+        radarBlipController.ClearRadarBlips();
     }
 
-    public override void Proceed() {
-        iterations++;
+    public override void End() {
         alienDeployer.Iterate();
+    }
+
+    public override void Proceed(System.Action callback) {
+        iterations++;
         alienMovementPhaseDirector.MoveAliens(() => {
-           if (!AnyPlayerActionsPossible() && !finished) Proceed();
+            if (!AnyPlayerActionsPossible() && !finished) {
+                Proceed(callback);
+            } else {
+                callback();
+            }
         });
     }
 

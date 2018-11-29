@@ -1,32 +1,27 @@
-using UnityEngine;
-using UnityEngine.Events;
-using System.Collections.Generic;
 using System.Linq;
 
-public class FogController : MonoBehaviour {
+public class FogController {
 
     private const int FOG_RADIUS = 8;
 
-    public Map map;
-
-    void Awake() {
-        GameEvents.On("PlayerMoved", Recalculate);
+    public FogController(IGameMap map, IGameEvent fogChanged) {
+        this.map = map;
+        this.fogChanged = fogChanged;
     }
 
-    void Start() {
-        Recalculate();
-    }
+    IGameMap map;
+    IGameEvent fogChanged;
 
-    private void Recalculate() {
-        var targets = map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList();
+    public void Recalculate() {
+        var targets = map.soldiers.Select(soldier => soldier.gridLocation).ToList();
         var fogGrid = new FogGrid(targets, FOG_RADIUS);
-        foreach(Tile tile in map.EnumerateTiles()) {
+        foreach(Tile tile in map.tiles) {
             if (fogGrid.InFog(tile.gridLocation)) {
                 tile.SetFoggy();
             } else {
                 tile.RemoveFoggy();
             }
         }
-        GameEvents.Trigger("FogChanged");
+        fogChanged.Invoke();
     }
 }

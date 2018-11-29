@@ -51,7 +51,7 @@ public class Map : MonoBehaviour {
         return tiles[x, y];
     }
 
-    public IEnumerable EnumerateTiles() {
+    public IEnumerable<Tile> EnumerateTiles() {
         for (int x = 0; x < tiles.GetLength(0); x++) {
             for (int y = 0; y < tiles.GetLength(1); y++) {
                 yield return tiles[x, y];

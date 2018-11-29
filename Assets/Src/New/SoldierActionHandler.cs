@@ -3,13 +3,15 @@ using System.Collections.Generic;
 
 public class SoldierActionHandler {
 
-    IPathingAndLOS pathingAndLOS;
-    GamePhase gamePhase;
-
-    public SoldierActionHandler(IPathingAndLOS pathingAndLOS, GamePhase gamePhase) {
+    public SoldierActionHandler(IPathingAndLOS pathingAndLOS, GamePhase gamePhase, IGameEvent soldierMoved) {
         this.pathingAndLOS = pathingAndLOS;
         this.gamePhase = gamePhase;
+        this.soldierMoved = soldierMoved;
     }
+
+    IPathingAndLOS pathingAndLOS;
+    GamePhase gamePhase;
+    IGameEvent soldierMoved;
 
     public bool AnyActionApplicableFor(Soldier soldier, Tile targetTile) {
         if (soldier == null) return false;
@@ -45,17 +47,13 @@ public class SoldierActionHandler {
         soldier.MoveTo(targetTile);
         soldier.TurnTo(targetTile.gridLocation - path.Last());
         TriggerTileWalkedOnEvents(path.nodes, targetTile);
-        GameEvents.Trigger("PlayerMoved");
+        soldierMoved.Invoke();
     }
 
     void PerformShootingActionFor(Soldier soldier, Tile targetTile) {
         if (!AnyShootingActionApplicableFor(soldier, targetTile)) return;
         var alien = targetTile.GetActor<Alien>();
-        if (soldier.firesOrdnance) {
-            Debug.Log("Firing ordnance");
-        } else {
-            Debug.Log("Firing gun");
-        }
+        GameAction.Shoot(soldier, alien);
     }
 
     void TriggerTileWalkedOnEvents(List<Vector2> path, Tile target) {

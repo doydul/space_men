@@ -1,11 +1,13 @@
 public class MovementPhase : Phase {
 
-    Map map;
-    bool proceeded;
-
-    public MovementPhase(Map map) {
+    public MovementPhase(Map map, RadarBlipController radarBlipController) {
         this.map = map;
+        this.radarBlipController = radarBlipController;
     }
+
+    Map map;
+    RadarBlipController radarBlipController;
+    bool proceeded;
 
     public override bool finished { get {
         return proceeded;
@@ -15,10 +17,11 @@ public class MovementPhase : Phase {
         foreach (var soldier in map.GetActors<Soldier>()) {
             soldier.StartMovementPhase();
         }
-        GameEvents.Trigger("MovementPhaseStart");
+        radarBlipController.ShowRadarBlips();
     }
 
-    public override void Proceed() {
+    public override void Proceed(System.Action callback) {
         proceeded = true;
+        callback();
     }
 }

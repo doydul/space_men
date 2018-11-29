@@ -2,24 +2,14 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 
-public class AlienDeployer : MonoBehaviour {
+public class AlienDeployer {
 
     private const int MIN_SPAWN_DISTANCE = 12;
 
-    public Map map;
-    public GamePhase gamePhase;
+    public AlienDeployer(Map map, GamePhase gamePhase) {
+        this.map = map;
+        this.gamePhase = gamePhase;
 
-    private AlienFrequencyCalculator frequencyCalculator;
-
-    public Spawner[] spawners { get { return map.spawners; } }
-    public List<VirtualAlien> hiddenAliens { get { return virtualMap.virtualAliens; } }
-
-    private List<Vector2> soldierLocations { get {
-        return map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList();
-    } }
-    private VirtualMap virtualMap;
-
-    void Awake() {
         virtualMap = new VirtualMap();
         frequencyCalculator = new AlienFrequencyCalculator(new List<AlienFrequencyInput>() {
             new AlienFrequencyInput() {
@@ -30,9 +20,18 @@ public class AlienDeployer : MonoBehaviour {
         });
     }
 
-    void Start() {
-        GameEvents.On("FogChanged", SpawnRevealedAliens);
-    }
+    Map map;
+    GamePhase gamePhase;
+
+    AlienFrequencyCalculator frequencyCalculator;
+
+    public Spawner[] spawners { get { return map.spawners; } }
+    public List<VirtualAlien> hiddenAliens { get { return virtualMap.virtualAliens; } }
+
+    private List<Vector2> soldierLocations { get {
+        return map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList();
+    } }
+    private VirtualMap virtualMap;
 
     public void Iterate() {
         Spawn();
@@ -90,7 +89,7 @@ public class AlienDeployer : MonoBehaviour {
         return result;
     }
 
-    void SpawnRevealedAliens() {
+    public void SpawnRevealedAliens() {
         foreach (var virtualAlien in new List<VirtualAlien>(virtualMap.virtualAliens)) {
             var tile = map.GetTileAt(virtualAlien.gridLocation);
             if (!tile.foggy) {

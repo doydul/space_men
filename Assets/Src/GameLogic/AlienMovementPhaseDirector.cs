@@ -4,17 +4,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class AlienMovementPhaseDirector : MonoBehaviour {
+public class AlienMovementPhaseDirector {
 
     private const float MOVEMENT_WAIT_TIME = 0.1f;
     private const float COMBAT_WAIT_TIME = 1f;
 
-    public Map map;
-    public Camera cam;
+    public AlienMovementPhaseDirector(Map map, ICameraController cam) {
+        this.map = map;
+        this.cam = cam;
+    }
+
+    Map map;
+    ICameraController cam;
 
     public void MoveAliens(Action finished) {
-        // Need to disable phase button
-        StartCoroutine(MoveAliensRoutine(finished));
+        Main.instance.StartCoroutine(MoveAliensRoutine(finished));
     }
 
     private IEnumerator MoveAliensRoutine(Action finished) {
@@ -33,15 +37,15 @@ public class AlienMovementPhaseDirector : MonoBehaviour {
                     var actor = map.GetActorAt<Actor>(location);
                     if (actor == null) {
                         var direction = location - pathSegment[i + 1];
-                        yield return StartCoroutine(MoveAlien(alien, location, direction));
-                        yield return StartCoroutine(PerformAttack(alien));
+                        yield return Main.instance.StartCoroutine(MoveAlien(alien, location, direction));
+                        yield return Main.instance.StartCoroutine(PerformAttack(alien));
                         break;
                     } else if (actor is Alien && unMovedAliens.Contains((Alien)actor)) {
                         if (alien != actor) {
                             remove = false;
                             break;
                         } else {
-                            yield return StartCoroutine(PerformAttack(alien));
+                            yield return Main.instance.StartCoroutine(PerformAttack(alien));
                         }
                     }
                 }
@@ -51,22 +55,15 @@ public class AlienMovementPhaseDirector : MonoBehaviour {
         finished();
     }
 
-    private void CentreCameraOn(Tile tile) {
-        var temp = cam.transform.position;
-        temp.x = tile.transform.position.x;
-        temp.y = tile.transform.position.y;
-        cam.transform.position = temp;
-    }
-
     private IEnumerator MoveAlien(Alien alien, Vector2 destination, Vector2 direction) {
         if (!alien.tile.foggy) {
-            CentreCameraOn(alien.tile);
+            cam.CentreCameraOn(alien.tile);
             yield return new WaitForSeconds(MOVEMENT_WAIT_TIME);
         }
         alien.MoveTo(map.GetTileAt(destination));
         alien.TurnTo(direction);
         if (!alien.tile.foggy) {
-            CentreCameraOn(alien.tile);
+            cam.CentreCameraOn(alien.tile);
             yield return new WaitForSeconds(MOVEMENT_WAIT_TIME);
         }
     }
@@ -75,7 +72,7 @@ public class AlienMovementPhaseDirector : MonoBehaviour {
         foreach (Tile tile in map.AdjacentTiles(alien.tile)) {
             var soldier = tile.GetActor<Soldier>();
             if (soldier != null) {
-                CentreCameraOn(alien.tile);
+                cam.CentreCameraOn(alien.tile);
                 alien.Face(tile.gridLocation);
                 alien.ShowAttackIndicator();
                 AlienAttack.Execute(alien, soldier, GameLogicComponent.world);

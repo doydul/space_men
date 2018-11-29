@@ -5,11 +5,10 @@ public class StartLocation : MonoBehaviour {
 
     private Tile tile;
 
-    public Vector2 gridLocation { get { return tile.gridLocation; } }
-
-    void Awake() {
-        tile = GetComponent<Tile>();
-    }
+    public Vector2 gridLocation { get {
+        if (tile == null) tile = GetComponent<Tile>();
+        return tile.gridLocation;
+    } }
 
     void OnDrawGizmos() {
         Gizmos.color = Color.blue;
