@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Linq;
 
-public class ShootAction {
+public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
 
     public ShootAction(IWorld world, Exploder exploder) {
         this.world = world;
@@ -11,7 +11,7 @@ public class ShootAction {
     IWorld world;
     Exploder exploder;
 
-    public void Perform(Soldier shooter, Alien target) {
+    public DelayedAction Perform(Soldier shooter, Alien target) {
         shooter.ExpendAmmo();
 
         if (shooter.blast > 0) {
@@ -19,11 +19,13 @@ public class ShootAction {
         } else {
             ShootNormal(shooter, target);
         }
+        return DelayedAction.Resolve();
     }
 
     void ShootNormal(Soldier shooter, Alien target) {
+        bool hit = false;
         if (Random.value * 100 < shooter.accuracy + target.accModifier) {
-
+            hit = true;
             if (Random.value * 100 > target.armour - shooter.armourPen) {
                 int damage = Random.Range(shooter.minDamage, shooter.maxDamage + 1);
                 target.ShowHitIndicator();
@@ -33,6 +35,11 @@ public class ShootAction {
                 target.ShowDeflectIndicator();
             }
         }
+        animationReel.PlayStandardShootAnimation(
+            shooter: shooter,
+            target: target.tile,
+            type: hit ? ShootingAnimationType.Hit : ShootingAnimationType.Missed
+        );
     }
 
     void ShootOrdnance(Soldier shooter, Alien target) {

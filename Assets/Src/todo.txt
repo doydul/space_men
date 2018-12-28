@@ -1,3 +1,9 @@
+# Animations
+
+They must:
+- Set a flag to indicate that animations are currently running
+-
+
 # Code
 
 ## Weapon specific shooty animations

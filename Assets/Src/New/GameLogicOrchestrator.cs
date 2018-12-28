@@ -11,10 +11,11 @@ public class GameLogicOrchestrator {
         SoldierActionHandler.IPathingAndLOS pathingAndLOS,
         IGameMap gameMap,
         ICameraController cameraController,
+        IAnimationReel animationReel,
         IWorld world,
         Map legacyMap
     ) {
-        GameAction.SetShootAction(new ShootAction(world, new Exploder(world)));
+        GameActions.SetFactory(new ActorActionFactory(world, animationReel));
         var alienDeployer = new AlienDeployer(legacyMap, gamePhase);
         var alienMovementPhaseDirector = new AlienMovementPhaseDirector(
             legacyMap,
@@ -45,3 +46,6 @@ public class GameLogicOrchestrator {
         new GameInitializer(legacyMap, fogController).Init();
     }
 }
+
+// Events: SoldierMoved
+// Actions: SoldierShoot, [ShootAtGround, UseSpecialAbility, etc.]

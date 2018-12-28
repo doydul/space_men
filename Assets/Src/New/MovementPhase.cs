@@ -20,8 +20,10 @@ public class MovementPhase : Phase {
         radarBlipController.ShowRadarBlips();
     }
 
-    public override void Proceed(System.Action callback) {
+    public override DelayedAction Proceed() {
+        var result = new DelayedAction();
         proceeded = true;
-        callback();
+        result.Finish();
+        return result;
     }
 }

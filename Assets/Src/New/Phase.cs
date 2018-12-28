@@ -6,5 +6,7 @@ public abstract class Phase {
 
     public virtual void End() {}
 
-    public virtual void Proceed(System.Action callback) {}
+    public virtual DelayedAction Proceed() {
+        return DelayedAction.Resolve();
+    }
 }

@@ -18,6 +18,7 @@ public class Actor : MonoBehaviour {
     public bool dead { get; private set; }
 
     public Vector2 gridLocation { get { return tile.gridLocation; } }
+    public int rotation { get { return (int)direction * 90; } }
 
     public virtual void MoveTo(Tile newTile) {
         tile.RemoveActor();
@@ -26,7 +27,7 @@ public class Actor : MonoBehaviour {
 
     public void TurnTo(Direction direction) {
         this.direction = direction;
-        image.rotation = Quaternion.Euler(0, 0, (int)direction * 90);
+        image.rotation = Quaternion.Euler(0, 0, rotation);
     }
 
     public void TurnTo(Vector2 direction) {

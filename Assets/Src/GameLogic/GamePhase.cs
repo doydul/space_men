@@ -18,7 +18,7 @@ public class GamePhase : MonoBehaviour {
     }
 
     public void ProceedPhase() {
-        phase.Proceed(() => {
+        phase.Proceed().Then(() => {
             if (phase.finished) TogglePhase();
         });
     }

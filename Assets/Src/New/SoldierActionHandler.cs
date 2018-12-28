@@ -53,7 +53,7 @@ public class SoldierActionHandler {
     void PerformShootingActionFor(Soldier soldier, Tile targetTile) {
         if (!AnyShootingActionApplicableFor(soldier, targetTile)) return;
         var alien = targetTile.GetActor<Alien>();
-        GameAction.Shoot(soldier, alien);
+        GameActions.Shoot(soldier, alien);
     }
 
     void TriggerTileWalkedOnEvents(List<Vector2> path, Tile target) {

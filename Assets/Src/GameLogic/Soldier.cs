@@ -5,10 +5,9 @@ public class Soldier : Actor {
 
     public Armour armour;
     public Weapon weapon;
-    public SpriteRenderer muzzleFlashRenderer;
+    public Transform muzzleFlashLocation;
 
     public int health { get; set; }
-    private Delayer muzzleDelayer;
     public int tilesMoved { get; set; }
     public int shotsFiredThisRound { get; set; }
     public int shotsFiredFromClip { get; set; }
@@ -38,13 +37,10 @@ public class Soldier : Actor {
     public Weapon.Type weaponType { get { return weapon.type; } }
     public int maxHealth { get { return 86; } }
 
-    public void Select() { GameLogicComponent.userInterface.Select(this); }
-    public void Deselect() { GameLogicComponent.userInterface.Deselect(this); }
+    public Vector2 muzzlePosition { get { return muzzleFlashLocation.position; } }
 
     void Start() {
         health = 86;
-        muzzleDelayer = new Delayer(this);
-        muzzleFlashRenderer.enabled = false;
         StartMovementPhase();
     }
 
@@ -97,11 +93,6 @@ public class Soldier : Actor {
     public void ExpendAmmo() {
         shotsFiredThisRound += 1;
         shotsFiredFromClip += 1;
-
-        muzzleFlashRenderer.enabled = true;
-        muzzleDelayer.Wait(1, () => {
-            muzzleFlashRenderer.enabled = false;
-        });
     }
 
     public void Hurt(int damage) {

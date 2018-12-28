@@ -9,17 +9,23 @@ public class Main : MonoBehaviour {
     public WorldComponent worldComponent;
     public Camera mainCamera;
 
+    public AnimationInteractor animationInteractor;
+
     GameLogicOrchestrator gameLogicOrchestrator;
     public static Main instance;
 
     void Start() {
         instance = this;
+
+        var worldAnimator = new WorldAnimator(animationInteractor);
+
         gameLogicOrchestrator = new GameLogicOrchestrator(
             gamePhase: gamePhase,
             playerActionInput: uiInputHandler,
             pathingAndLOS: new SoldierPathingAndLOS(map),
             gameMap: new GameMapImpl(map),
             cameraController: new CameraController(mainCamera),
+            animationReel: worldAnimator,
             world: worldComponent,
             legacyMap: map
         );

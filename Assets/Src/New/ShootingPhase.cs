@@ -35,13 +35,19 @@ public class ShootingPhase : Phase {
         alienDeployer.Iterate();
     }
 
-    public override void Proceed(System.Action callback) {
+    public override DelayedAction Proceed() {
+        var result = new DelayedAction();
+        Proceed(result);
+        return result;
+    }
+
+    void Proceed(DelayedAction previousResult) {
         iterations++;
-        alienMovementPhaseDirector.MoveAliens(() => {
+        alienMovementPhaseDirector.MoveAliens().Then(() => {
             if (!AnyPlayerActionsPossible() && !finished) {
-                Proceed(callback);
+                Proceed(previousResult);
             } else {
-                callback();
+                previousResult.Finish();
             }
         });
     }

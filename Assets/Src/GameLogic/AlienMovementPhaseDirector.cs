@@ -17,11 +17,13 @@ public class AlienMovementPhaseDirector {
     Map map;
     ICameraController cam;
 
-    public void MoveAliens(Action finished) {
-        Main.instance.StartCoroutine(MoveAliensRoutine(finished));
+    public DelayedAction MoveAliens() {
+        var result = new DelayedAction();
+        Main.instance.StartCoroutine(MoveAliensRoutine(result));
+        return result;
     }
 
-    private IEnumerator MoveAliensRoutine(Action finished) {
+    IEnumerator MoveAliensRoutine(DelayedAction delayedAction) {
         var targets = map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList();
         var wrapper = new AlienPathingWrapper(map);
         var unMovedAliens = map.GetActors<Alien>();
@@ -52,10 +54,10 @@ public class AlienMovementPhaseDirector {
                 if (remove) unMovedAliens.Remove(alien);
             }
         }
-        finished();
+        delayedAction.Finish();
     }
 
-    private IEnumerator MoveAlien(Alien alien, Vector2 destination, Vector2 direction) {
+    IEnumerator MoveAlien(Alien alien, Vector2 destination, Vector2 direction) {
         if (!alien.tile.foggy) {
             cam.CentreCameraOn(alien.tile);
             yield return new WaitForSeconds(MOVEMENT_WAIT_TIME);
@@ -68,7 +70,7 @@ public class AlienMovementPhaseDirector {
         }
     }
 
-    private IEnumerator PerformAttack(Alien alien) {
+    IEnumerator PerformAttack(Alien alien) {
         foreach (Tile tile in map.AdjacentTiles(alien.tile)) {
             var soldier = tile.GetActor<Soldier>();
             if (soldier != null) {
