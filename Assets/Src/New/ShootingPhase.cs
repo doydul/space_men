@@ -29,9 +29,6 @@ public class ShootingPhase : Phase {
             soldier.StartShootingPhase();
         }
         radarBlipController.ClearRadarBlips();
-    }
-
-    public override void End() {
         alienDeployer.Iterate();
     }
 
