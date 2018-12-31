@@ -47,13 +47,17 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
         if (Random.value * 100 > shooter.accuracy) {
             gridLocation = ScatterOrdnance(gridLocation);
         }
-        exploder.PerformExplosion(new Exploder.ExploderInput() {
-            gridLocation = target.gridLocation,
+        var output = exploder.PerformExplosion(new Exploder.ExploderInput() {
+            gridLocation = gridLocation,
             blastRadius = shooter.blast,
             minDamage = shooter.minDamage,
             maxDamage = shooter.maxDamage,
             armourPen = shooter.armourPen
         });
+        animationReel.PlayOrdnanceShootAnimation(
+            shooter: shooter,
+            exploderOutput: output
+        );
     }
 
     Vector2 ScatterOrdnance(Vector2 gridLocation) {

@@ -1,6 +1,11 @@
 using System;
+using UnityEngine;
 
-public class DelayedAction {
+public class DelayedAction : CustomYieldInstruction {
+
+    public override bool keepWaiting { get {
+        return !finished;
+    } }
 
     public static DelayedAction Resolve() {
         var result = new DelayedAction();

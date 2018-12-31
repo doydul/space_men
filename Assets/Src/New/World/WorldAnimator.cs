@@ -23,16 +23,16 @@ public class WorldAnimator : IAnimationReel {
         return PlayAnimation(WorldState.instance, animation);
     }
 
-    // public DelayedAction PlayOrdnanceShootAnimation(
-    //     Soldier shooter,
-    //     Tile target
-    // ) {
-    //     var animation = new ShootingOrdnanceAnimation(
-    //         shooter: shooter,
-    //         target: target
-    //     );
-    //     return PlayAnimation(WorldState.instance, animation);
-    // }
+    public DelayedAction PlayOrdnanceShootAnimation(
+        Soldier shooter,
+        Exploder.ExploderOutput exploderOutput
+    ) {
+        var animation = new ShootingOrdnanceAnimation(
+            shooter: shooter,
+            exploderOutput: exploderOutput
+        );
+        return PlayAnimation(WorldState.instance, animation);
+    }
 
     DelayedAction PlayAnimation(WorldState worldState, WorldAnimation animation) {
         var result = new DelayedAction();

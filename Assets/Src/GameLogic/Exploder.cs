@@ -12,10 +12,10 @@ public class Exploder {
     public ExploderOutput PerformExplosion(ExploderInput profile) {
         var explosionGenerator = new ExplosionGenerator(new ExplodableWrapper(world));
         var explosion = explosionGenerator.Generate(profile.gridLocation, profile.blastRadius);
-        var output = new ExploderOutput(explosion);
+        var output = new ExploderOutput(world.GetTileAt(profile.gridLocation));
 
         foreach (var square in explosion.squares) {
-            world.CreateExplosionMarker(square.gridLocation, square.blastCoverage);
+            output.AddExplodedTile(world.GetTileAt(square.gridLocation), square.blastCoverage);
 
             var targetSoldier = world.GetActorAt<Soldier>(square.gridLocation);
             var targetAlien = world.GetActorAt<Alien>(square.gridLocation);
@@ -49,16 +49,33 @@ public class Exploder {
 
     public class ExploderOutput {
 
-        public Explosion explosion { get; private set; }
+        public Tile centreTile { get; private set; }
+        public List<ExplodedTile> explodedTiles { get; private set; }
         public List<Actor> hurtActors { get; private set; }
 
-        public ExploderOutput(Explosion explosion) {
-            this.explosion = explosion;
+        public ExploderOutput(Tile centreTile) {
+            this.centreTile = centreTile;
+            explodedTiles = new List<ExplodedTile>();
             hurtActors = new List<Actor>();
         }
 
         public void AddHurtActor(Actor actor) {
             hurtActors.Add(actor);
+        }
+
+        public void AddExplodedTile(Tile tile, float blastCoverage) {
+            explodedTiles.Add(new ExplodedTile(tile, blastCoverage));
+        }
+
+        public class ExplodedTile {
+
+            public Tile tile { get; private set; }
+            public float blastCoverage { get; private set; }
+
+            public ExplodedTile(Tile tile, float blastCoverage) {
+                this.tile = tile;
+                this.blastCoverage = blastCoverage;
+            }
         }
     }
 }

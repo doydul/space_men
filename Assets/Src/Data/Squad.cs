@@ -60,12 +60,12 @@ public class Squad {
         var sol = new SoldierData();
         sol.armour = SoldierData.DEFAULT_ARMOUR;
         sol.weapon = "Grenade Launcher";
-        result._reserveSoldiers.Add(sol);
+        result._activeSoldiers.Add(sol);
 
         sol = new SoldierData();
         sol.armour = SoldierData.DEFAULT_ARMOUR;
         sol.weapon = SoldierData.DEFAULT_WEAPON;
-        result._activeSoldiers.Add(sol);
+        result._reserveSoldiers.Add(sol);
 
         result._items.Add(new InventoryItem() {
             name = "Assault Rifle",
