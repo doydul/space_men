@@ -148,6 +148,7 @@
      <Compile Include="Assets\Src\New\ViewableState.cs" />
      <Compile Include="Assets\Src\New\World\AnimationInteractor.cs" />
      <Compile Include="Assets\Src\New\World\ShootingAnimation.cs" />
+     <Compile Include="Assets\Src\New\World\ShootingOrdnanceAnimation.cs" />
      <Compile Include="Assets\Src\New\World\Tester.cs" />
      <Compile Include="Assets\Src\New\World\Tracer.cs" />
      <Compile Include="Assets\Src\New\World\WorldAnimation.cs" />

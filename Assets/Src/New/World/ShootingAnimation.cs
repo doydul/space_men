@@ -23,10 +23,14 @@ public class ShootingAnimation : WorldAnimation {
     public override IEnumerator Animate(WorldAnimation.IAnimationInteractor interactor, DelayedAction delayedAction) {
         var gunflareObject = interactor.MakeGunflare(shooter.muzzlePosition, shooter.rotation);
         yield return new WaitForSeconds(0.1f);
-        var tracerObject = interactor.MakeTracer(shooter.muzzlePosition, EndPosition());
+        var tracer = interactor.MakeTracer(shooter.muzzlePosition);
+        tracer.StartAnimating(shooter.muzzlePosition, EndPosition(), 1).Then(() => {
+            tracer.Destroy();
+        });
         yield return new WaitForSeconds(0.5f);
         Object.Destroy(gunflareObject);
         yield return new WaitForSeconds(0.5f);
+        delayedAction.Finish();
     }
 
     Vector2 EndPosition() {

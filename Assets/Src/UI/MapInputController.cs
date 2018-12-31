@@ -23,7 +23,7 @@ public class MapInputController : MonoBehaviour {
         if (dragging && (Input.mousePosition - dragStartPosition).magnitude > 10) {
             dragged = true;
             Vector3 delta = Input.mousePosition - dragStartPosition;
-            map.transform.position = mapStartPosition + (delta * 0.01f);
+            map.transform.position = mapStartPosition + (delta * 0.03f);
         }
         if (Input.GetMouseButtonDown(0)) {
             dragStartPosition = Input.mousePosition;

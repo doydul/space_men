@@ -3,13 +3,20 @@ using System.Collections;
 
 public class Tracer : MonoBehaviour {
 
-    public float speed;
+    float speed;
 
-    public void StartAnimating(Vector2 from, Vector2 to) {
-        StartCoroutine(AnimationRoutine(from, to));
+    public DelayedAction StartAnimating(Vector2 from, Vector2 to, float speed) {
+        this.speed = speed;
+        var result = new DelayedAction();
+        StartCoroutine(AnimationRoutine(from, to, result));
+        return result;
     }
 
-    IEnumerator AnimationRoutine(Vector2 from, Vector2 to) {
+    public void Destroy() {
+        Destroy(gameObject);
+    }
+
+    IEnumerator AnimationRoutine(Vector2 from, Vector2 to, DelayedAction delayedAction) {
         int iteration = 0;
         Vector2 direction = (to - from).normalized;
         float rotation = Vector2.Angle(Vector2.up, direction);
@@ -20,6 +27,6 @@ public class Tracer : MonoBehaviour {
             iteration++;
             yield return null;
         }
-        Destroy(gameObject);
+        delayedAction.Finish();
     }
 }

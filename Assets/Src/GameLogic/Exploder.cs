@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Exploder {
 
@@ -8,9 +9,10 @@ public class Exploder {
 
     IWorld world;
 
-    public void PerformExplosion(ExplosionProfile profile) {
+    public ExploderOutput PerformExplosion(ExploderInput profile) {
         var explosionGenerator = new ExplosionGenerator(new ExplodableWrapper(world));
         var explosion = explosionGenerator.Generate(profile.gridLocation, profile.blastRadius);
+        var output = new ExploderOutput(explosion);
 
         foreach (var square in explosion.squares) {
             world.CreateExplosionMarker(square.gridLocation, square.blastCoverage);
@@ -26,20 +28,37 @@ public class Exploder {
                         targetAlien.ShowHitIndicator();
                         targetAlien.Hurt(damage);
                         world.MakeBloodSplat(targetAlien);
+                        output.AddHurtActor(targetAlien);
                     } else {
                         targetAlien.ShowDeflectIndicator();
                     }
                 }
             }
         }
+        return output;
     }
 
-    public struct ExplosionProfile {
+    public struct ExploderInput {
 
         public Vector2 gridLocation;
         public float blastRadius;
         public int minDamage;
         public int maxDamage;
         public int armourPen;
+    }
+
+    public class ExploderOutput {
+
+        public Explosion explosion { get; private set; }
+        public List<Actor> hurtActors { get; private set; }
+
+        public ExploderOutput(Explosion explosion) {
+            this.explosion = explosion;
+            hurtActors = new List<Actor>();
+        }
+
+        public void AddHurtActor(Actor actor) {
+            hurtActors.Add(actor);
+        }
     }
 }
