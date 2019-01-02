@@ -10,8 +10,8 @@ public class ExplosionGenerator {
         this.grid = grid;
     }
 
-    public Explosion Generate(Vector2 gridLocation, float blastSize) {
-        var result = new Explosion();
+    public ExplosionCoverage Generate(Vector2 gridLocation, float blastSize) {
+        var result = new ExplosionCoverage();
 
         var iterator = new LayeredGridIterator(grid, gridLocation);
         foreach (var layer in iterator.Layers()) {

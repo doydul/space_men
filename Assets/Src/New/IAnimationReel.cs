@@ -6,5 +6,5 @@ public enum ShootingAnimationType {
 public interface IAnimationReel {
 
     DelayedAction PlayStandardShootAnimation(Soldier shooter, Tile target, ShootingAnimationType type);
-    DelayedAction PlayOrdnanceShootAnimation(Soldier shooter, Exploder.ExploderOutput exploderOutput);
+    DelayedAction PlayOrdnanceShootAnimation(Soldier shooter, Explosion explosion);
 }

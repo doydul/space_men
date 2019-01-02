@@ -56,7 +56,7 @@
      <Compile Include="Assets\Src\Algorithms\AlienFrequencyCalculator.cs" />
      <Compile Include="Assets\Src\Algorithms\AlienFrequencyInput.cs" />
      <Compile Include="Assets\Src\Algorithms\AlienFrequencyOutput.cs" />
-     <Compile Include="Assets\Src\Algorithms\Explosion.cs" />
+     <Compile Include="Assets\Src\Algorithms\ExplosionCoverage.cs" />
      <Compile Include="Assets\Src\Algorithms\ExplosionGenerator.cs" />
      <Compile Include="Assets\Src\Algorithms\FogGrid.cs" />
      <Compile Include="Assets\Src\Algorithms\Gaussian.cs" />
@@ -94,6 +94,7 @@
      <Compile Include="Assets\Src\GameLogic\CameraController.cs" />
      <Compile Include="Assets\Src\GameLogic\ExplodableWrapper.cs" />
      <Compile Include="Assets\Src\GameLogic\Exploder.cs" />
+     <Compile Include="Assets\Src\GameLogic\Explosion.cs" />
      <Compile Include="Assets\Src\GameLogic\FogController.cs" />
      <Compile Include="Assets\Src\GameLogic\GameLogicComponent.cs" />
      <Compile Include="Assets\Src\GameLogic\GamePhase.cs" />
@@ -128,6 +129,7 @@
      <Compile Include="Assets\Src\New\CurrentSelectionState.cs" />
      <Compile Include="Assets\Src\New\DelayedAction.cs" />
      <Compile Include="Assets\Src\New\FogChanged.cs" />
+     <Compile Include="Assets\Src\New\Game\CombatInstance.cs" />
      <Compile Include="Assets\Src\New\GameActions.cs" />
      <Compile Include="Assets\Src\New\GameInitializer.cs" />
      <Compile Include="Assets\Src\New\GameLogicOrchestrator.cs" />

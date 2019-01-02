@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion {
+public class ExplosionCoverage {
 
     public List<ExplosionSquare> squares { get; private set; }
 
-    public Explosion() {
+    public ExplosionCoverage() {
         squares = new List<ExplosionSquare>();
     }
 

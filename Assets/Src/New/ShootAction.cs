@@ -47,7 +47,7 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
         if (Random.value * 100 > shooter.accuracy) {
             gridLocation = ScatterOrdnance(gridLocation);
         }
-        var output = exploder.PerformExplosion(new Exploder.ExploderInput() {
+        var explosion = exploder.PerformExplosion(new Exploder.ExploderInput() {
             gridLocation = gridLocation,
             blastRadius = shooter.blast,
             minDamage = shooter.minDamage,
@@ -56,7 +56,7 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
         });
         animationReel.PlayOrdnanceShootAnimation(
             shooter: shooter,
-            exploderOutput: output
+            explosion: explosion
         );
     }
 

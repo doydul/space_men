@@ -25,11 +25,11 @@ public class WorldAnimator : IAnimationReel {
 
     public DelayedAction PlayOrdnanceShootAnimation(
         Soldier shooter,
-        Exploder.ExploderOutput exploderOutput
+        Explosion explosion
     ) {
         var animation = new ShootingOrdnanceAnimation(
             shooter: shooter,
-            exploderOutput: exploderOutput
+            explosion: explosion
         );
         return PlayAnimation(WorldState.instance, animation);
     }

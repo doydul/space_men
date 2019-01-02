@@ -5,23 +5,23 @@ using System.Collections.Generic;
 public class ShootingOrdnanceAnimation : WorldAnimation {
 
     Soldier shooter;
-    Exploder.ExploderOutput exploderOutput;
+    Explosion explosion;
 
     List<GameObject> explosionClouds;
 
     public ShootingOrdnanceAnimation(
         Soldier shooter,
-        Exploder.ExploderOutput exploderOutput
+        Explosion explosion
     ) {
         this.shooter = shooter;
-        this.exploderOutput = exploderOutput;
+        this.explosion = explosion;
     }
 
     public override IEnumerator Animate(WorldAnimation.IAnimationInteractor interactor, DelayedAction delayedAction) {
         var gunflareObject = interactor.MakeGunflare(shooter.muzzlePosition, shooter.rotation);
         yield return new WaitForSeconds(0.1f);
         var tracer = interactor.MakeTracer(shooter.muzzlePosition);
-        yield return tracer.StartAnimating(shooter.muzzlePosition, exploderOutput.centreTile.realLocation, 1);
+        yield return tracer.StartAnimating(shooter.muzzlePosition, explosion.centreTile.realLocation, 1);
         tracer.Destroy();
         Object.Destroy(gunflareObject);
         MakeExplosionClouds(interactor);
@@ -32,7 +32,7 @@ public class ShootingOrdnanceAnimation : WorldAnimation {
 
     void MakeExplosionClouds(WorldAnimation.IAnimationInteractor interactor) {
         explosionClouds = new List<GameObject>();
-        foreach (var explodedTile in exploderOutput.explodedTiles) {
+        foreach (var explodedTile in explosion.explodedTiles) {
             explosionClouds.Add(
                 interactor.MakeExplosionCloud(
                     explodedTile.tile.realLocation
