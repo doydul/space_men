@@ -28,11 +28,8 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
             hit = true;
             if (Random.value * 100 > target.armour - shooter.armourPen) {
                 int damage = Random.Range(shooter.minDamage, shooter.maxDamage + 1);
-                target.ShowHitIndicator();
                 target.Hurt(damage);
                 world.MakeBloodSplat(target);
-            } else {
-                target.ShowDeflectIndicator();
             }
         }
         animationReel.PlayStandardShootAnimation(
