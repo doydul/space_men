@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f1317cff8372408d87e475886085f69, type: 3}
-  m_Name: Basic
+  m_Name: Heavy
   m_EditorClassIdentifier: 
-  armourValue: 15
+  armourValue: 70
   type: 0
-  value: 0
+  value: 250
