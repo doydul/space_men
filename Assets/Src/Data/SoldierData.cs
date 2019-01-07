@@ -5,7 +5,7 @@ using System;
 public class SoldierData {
 
     public const string DEFAULT_ARMOUR = "Basic";
-    public const string DEFAULT_WEAPON = "Grenade Launcher";
+    public const string DEFAULT_WEAPON = "Assault Rifle";
 
     public string armour;
     public string weapon;

@@ -32,6 +32,7 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
                 world.MakeBloodSplat(target);
             }
         }
+        if (target.dead) shooter.GetExp(target.expReward);
         animationReel.PlayStandardShootAnimation(
             shooter: shooter,
             target: target.tile,
@@ -51,6 +52,12 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
             maxDamage = shooter.maxDamage,
             armourPen = shooter.armourPen
         });
+        foreach (var actor in explosion.combatInstances.Select(instance => instance.target)) {
+            var alien = (Alien)actor;
+            if (alien != null) {
+                if (alien.dead) shooter.GetExp(alien.expReward);
+            }
+        }
         animationReel.PlayOrdnanceShootAnimation(
             shooter: shooter,
             explosion: explosion

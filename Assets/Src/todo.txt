@@ -1,20 +1,6 @@
-# Animations
-
-They must:
-- Set a flag to indicate that animations are currently running
--
-
 # Code
 
 ## Weapon specific shooty animations
-
-## Implement armour specific abilities
-
-- Scout gets additional movement (maybe two extra squares for running and 4 extra for sprinting?)
-
-- Mid level armour can use heavy weapons
-
-- Dreadnaught armour cannot sprint (but is super beefy)
 
 ## Persistent flames from flame weapons
 

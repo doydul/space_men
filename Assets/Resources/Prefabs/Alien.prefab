@@ -334,6 +334,8 @@ MonoBehaviour:
   damage: 15
   armourPen: 0
   movement: 4
+  threat: 0
+  expReward: 5
   hitIndicator: {fileID: 1374255059101480}
   deflectIndicator: {fileID: 1840634171667852}
   healthIndicator: {fileID: 212688662353051668}

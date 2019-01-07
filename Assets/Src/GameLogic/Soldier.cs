@@ -11,6 +11,7 @@ public class Soldier : Actor {
     public int tilesMoved { get; set; }
     public int shotsFiredThisRound { get; set; }
     public int shotsFiredFromClip { get; set; }
+    public int exp { get; set; }
 
     public int totalShots { get {
         if (sprinted) {
@@ -48,12 +49,19 @@ public class Soldier : Actor {
         var data = new SoldierData();
         if (armour != null) data.armour = armour.name;
         if (weapon != null) data.weapon = weapon.name;
+        data.exp = exp;
         return data;
     }
 
     public void FromData(SoldierData soldierData) {
         armour = Armour.Get(soldierData.armour);
         weapon = Weapon.Get(soldierData.weapon);
+        exp = soldierData.exp;
+    }
+
+    public void GetExp(int amount) {
+        exp += amount;
+        Debug.Log(exp);
     }
 
     public override void MoveTo(Tile newTile) {

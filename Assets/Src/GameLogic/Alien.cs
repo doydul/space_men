@@ -11,6 +11,7 @@ public class Alien : Actor {
     public int armourPen;
     public int movement;
     public float threat;
+    public int expReward;
 
     public GameObject hitIndicator;
     public GameObject deflectIndicator;
@@ -19,6 +20,8 @@ public class Alien : Actor {
 
     private Coroutine disableIndicatorsRoutine;
     private float healthSpriteSize;
+
+    public bool dead { get { return health <= 0; } }
 
     void Awake() {
         health = maxHealth;
@@ -32,7 +35,7 @@ public class Alien : Actor {
     public void Hurt(int damage) {
         health -= damage;
         SetHealthIndicatorSize();
-        if (health <= 0) {
+        if (dead) {
             Die(1);
         }
     }
