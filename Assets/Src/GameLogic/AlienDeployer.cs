@@ -11,13 +11,14 @@ public class AlienDeployer {
         this.gamePhase = gamePhase;
 
         virtualMap = new VirtualMap();
-        frequencyCalculator = new AlienFrequencyCalculator(new List<AlienFrequencyInput>() {
-            new AlienFrequencyInput() {
-                alienType = "Alien",
-                frequency = 2,
-                threat = 1
-            }
-        });
+        var input = Squad.currentMission.enemyProfiles.Select((profile) => {
+            return new AlienFrequencyInput() {
+                alienType = profile.alienType,
+                frequency = profile.averageOccurrencesPerTurn,
+                threat = Resources.Load<AlienData>("Aliens/" + profile.alienType).threat
+            };
+        }).ToList();
+        frequencyCalculator = new AlienFrequencyCalculator(input);
     }
 
     Map map;
@@ -61,13 +62,13 @@ public class AlienDeployer {
                 var spawner = availableSpawners[Random.Range (0, availableSpawners.Count)];
                 availableSpawners.Remove(spawner);
                 if (profile.spawnCount >= 3 && Random.value < 0.5f) {
-                    CreateVirtualSpawner(spawner.gridLocation, new GroupSpawnModule(profile.spawnCount));
+                    CreateVirtualSpawner(spawner.gridLocation, new GroupSpawnModule(profile.alienType, profile.spawnCount));
                     profile.spawnCount = 0;
                 } else if (profile.spawnCount >= 3) {
-                    CreateVirtualSpawner(spawner.gridLocation, new TrickleSpawnModule(profile.spawnCount));
+                    CreateVirtualSpawner(spawner.gridLocation, new TrickleSpawnModule(profile.alienType, profile.spawnCount));
                     profile.spawnCount = 0;
                 } else {
-                    CreateVirtualSpawner(spawner.gridLocation, new SingleSpawnModule());
+                    CreateVirtualSpawner(spawner.gridLocation, new SingleSpawnModule(profile.alienType));
                     profile.spawnCount -= 1;
                 }
             }
@@ -102,10 +103,16 @@ public class AlienDeployer {
     }
 
     Transform InstantiateAlien(VirtualAlien virtualAlien) {
-        var result = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/" + virtualAlien.alienType)) as Transform;
-        var alien = result.GetComponent<Alien>();
+        var alienTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/Alien")) as Transform;
+        var alien = alienTransform.GetComponent<Alien>() as Alien;
+        alien.FromData(Resources.Load<AlienData>("Aliens/" + virtualAlien.alienType));
+        var spriteTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/AlienSprites/" + virtualAlien.alienType + "AlienSprite")) as Transform;
+        spriteTransform.parent = alienTransform;
+        spriteTransform.localPosition = Vector3.zero;
+        alien.image = spriteTransform;
+
         var path = new Path(new PathFinder(new AlienPathingWrapper(map), virtualAlien.gridLocation, soldierLocations).FindPath());
         if (path.Count > 1) alien.TurnTo(path.First(2)[1] - virtualAlien.gridLocation);
-        return result;
+        return alienTransform;
     }
 }

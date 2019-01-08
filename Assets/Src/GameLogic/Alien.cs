@@ -3,15 +3,15 @@ using System.Collections;
 
 public class Alien : Actor {
 
-    public int maxHealth;
-    private int health;
-    public int armour;
-    public int accModifier;
-    public int damage;
-    public int armourPen;
-    public int movement;
-    public float threat;
-    public int expReward;
+    public int maxHealth { get; set; }
+    private int health { get; set; }
+    public int armour { get; set; }
+    public int accModifier { get; set; }
+    public int damage { get; set; }
+    public int armourPen { get; set; }
+    public int movement { get; set; }
+    public float threat { get; set; }
+    public int expReward { get; set; }
 
     public GameObject hitIndicator;
     public GameObject deflectIndicator;
@@ -30,6 +30,18 @@ public class Alien : Actor {
         deflectIndicator.SetActive(false);
         healthIndicator.enabled = false;
         attackIndicator.enabled = false;
+    }
+
+    public void FromData(AlienData data) {
+        maxHealth = data.maxHealth;
+        health = data.maxHealth;
+        armour = data.armour;
+        accModifier = data.accModifier;
+        damage = data.damage;
+        armourPen = data.armourPen;
+        movement = data.movement;
+        threat = data.threat;
+        expReward = data.expReward;
     }
 
     public void Hurt(int damage) {

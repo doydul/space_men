@@ -71,6 +71,7 @@
      <Compile Include="Assets\Src\Algorithms\Path.cs" />
      <Compile Include="Assets\Src\Algorithms\PathFinder.cs" />
      <Compile Include="Assets\Src\Algorithms\SpawnableLocations.cs" />
+     <Compile Include="Assets\Src\Data\AlienData.cs" />
      <Compile Include="Assets\Src\Data\Armour.cs" />
      <Compile Include="Assets\Src\Data\Campaign.cs" />
      <Compile Include="Assets\Src\Data\DataPersistence.cs" />

@@ -1,4 +1,20 @@
+# Polish
+
+- Fix tile highlights so they go away when deselecting and changing phase
+
+- Add impact marker when alien gets shot
+
+- Fix attack marker when alien attacks (currently always points up)
+
+- Re-add templar and alien health bars
+
 # Code
+
+## Alien types
+
+- Add field to aliens indicating chance of causing radar blip
+
+- Add ability for aliens to somehow have different appearance and stats
 
 ## Weapon specific shooty animations
 
@@ -8,11 +24,11 @@
 
 - Flames do 1 tick of damage at the moment when the target is set on fire and then 1 tick at the end of each turn thereafter
 
-## Exp and skills system
+## Skills system
 
 - Might have to put a pin in this one, but a basic system of earning exp and levelling up would be nice
 
-
+## UI for inspecting templars and aliens
 
 ## Friendly fire damage from blast weapons
 

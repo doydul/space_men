@@ -6,4 +6,5 @@ public interface ISpawnModule {
     bool finished { get; }
 
     int GetVirtualAliensCount();
+    string GetAlienType();
 }

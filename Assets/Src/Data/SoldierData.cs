@@ -11,6 +11,7 @@ public class SoldierData {
     public string weapon;
 
     public int exp;
+    public int level;
 
     public static SoldierData GenerateDefault() {
         var result = new SoldierData();
@@ -18,4 +19,14 @@ public class SoldierData {
         result.weapon = DEFAULT_WEAPON;
         return result;
     }
+
+    static int ExpForLevel(int level) {
+        return 10 * level * level;
+    }
+
+    public int currentLevelExp { get { return ExpForLevel(level); } }
+    public int excessExp { get { return exp - currentLevelExp; } }
+    public int expToNextLevel { get { return ExpForLevel(level + 1) - exp; } }
+
+    public bool canLevelUp { get { return expToNextLevel <= 0; } }
 }

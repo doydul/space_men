@@ -55,8 +55,10 @@ MonoBehaviour:
   sceneName: Mission1
   missionName: First Mission
   enemyProfiles:
+  - alienType: Advanced
+    averageOccurrencesPerTurn: 0.5
   - alienType: Alien
-    averageOccurrencesPerTurn: 2.5
+    averageOccurrencesPerTurn: 2
   briefing: 'Each turn is split into 2 phases; Movement and Shooting. Aliens move
     during the player''s Shooting phase, and the player gets chances to shoot them
     as they approach.

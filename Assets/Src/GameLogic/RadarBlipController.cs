@@ -11,7 +11,8 @@ public class RadarBlipController {
     public void ShowRadarBlips() {
         GameLogicComponent.world.ClearRadarBlips();
         foreach (var virtualAlien in alienDeployer.hiddenAliens) {
-            if (virtualAlien.radarPresence > 0.5f) {
+            var alienType = Resources.Load<AlienData>("Aliens/" + virtualAlien.alienType);
+            if (virtualAlien.radarPresence < alienType.chanceOfCreatingRadarBlip) {
                 GameLogicComponent.world.CreateRadarBlip(virtualAlien.gridLocation);
             }
         }
