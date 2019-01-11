@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 public class GridIterator {
 
@@ -13,26 +14,28 @@ public class GridIterator {
     }
 
     public IEnumerable<Vector2> Squares() {
-        if (!grid.ShouldIterate(start)) {
-            yield break;
-        }
+        return GraphNodes().Select(node => node.gridLocation);
+    }
 
-        var leafTiles = new List<Vector2>();
+    public IEnumerable<GraphNode> GraphNodes() {
+        if (!grid.ShouldIterate(start)) yield break;
+
+        var leafNodes = new List<GraphNode>();
         var processedTiles = new List<Vector2>();
-        leafTiles.Add(start);
+        leafNodes.Add(new GraphNode(start, null, 0));
         processedTiles.Add(start);
-        while (leafTiles.Count > 0) {
-            var newLeafTiles = new List<Vector2>();
-            foreach (var leafTile in leafTiles) {
-                yield return leafTile;
-                foreach (Vector2 adjTile in AdjacentLocations(leafTile)) {
+        while (leafNodes.Count > 0) {
+            var newLeafNodes = new List<GraphNode>();
+            foreach (var leafNode in leafNodes) {
+                yield return leafNode;
+                foreach (Vector2 adjTile in AdjacentLocations(leafNode.gridLocation)) {
                     if (grid.ShouldIterate(adjTile) && !processedTiles.Contains(adjTile)) {
-                        newLeafTiles.Add(adjTile);
+                        newLeafNodes.Add(new GraphNode(adjTile, leafNode, leafNode.distance + 1));
                         processedTiles.Add(adjTile);
                     }
                 }
             }
-            leafTiles = newLeafTiles;
+            leafNodes = newLeafNodes;
         }
     }
 
@@ -41,5 +44,34 @@ public class GridIterator {
         yield return new Vector2(gridLocation.x + 1, gridLocation.y);
         yield return new Vector2(gridLocation.x, gridLocation.y - 1);
         yield return new Vector2(gridLocation.x, gridLocation.y + 1);
+    }
+
+    public class GraphNode {
+
+      public Vector2 gridLocation { get; private set; }
+      public GraphNode previousNode { get; private set; }
+      public int distance { get; private set; }
+
+      public GraphNode(Vector2 gridLocation, GraphNode previousNode, int distance) {
+        this.gridLocation = gridLocation;
+        this.previousNode = previousNode;
+        this.distance = distance;
+      }
+
+      public IEnumerable<Vector2> Path() {
+        var activeNode = this;
+        while(activeNode != null) {
+            yield return activeNode.gridLocation;
+            activeNode = activeNode.previousNode;
+        }
+      }
+
+      public IEnumerable<GraphNode> Nodes() {
+          var activeNode = this;
+        while(activeNode != null) {
+            yield return activeNode;
+            activeNode = activeNode.previousNode;
+        }
+      }
     }
 }

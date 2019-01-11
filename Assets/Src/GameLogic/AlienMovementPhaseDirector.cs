@@ -25,34 +25,14 @@ public class AlienMovementPhaseDirector {
 
     IEnumerator MoveAliensRoutine(DelayedAction delayedAction) {
         var targets = map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList();
-        var wrapper = new AlienPathingWrapper(map);
-        var unMovedAliens = map.GetActors<Alien>();
-        while (unMovedAliens.Any()) {
-            var aliensCopy = new List<Alien>(unMovedAliens);
-            foreach (var alien in aliensCopy) {
-                var path = new Path(new PathFinder(wrapper, alien.gridLocation, targets).FindPath());
-
-                bool remove = true;
-                var pathSegment = path.FirstReverse(alien.movement + 1);
-                for (int i = 0; i < pathSegment.Count; i++) {
-                    Vector2 location = pathSegment[i];
-                    var actor = map.GetActorAt<Actor>(location);
-                    if (actor == null) {
-                        var direction = location - pathSegment[i + 1];
-                        yield return Main.instance.StartCoroutine(MoveAlien(alien, location, direction));
-                        yield return Main.instance.StartCoroutine(PerformAttack(alien));
-                        break;
-                    } else if (actor is Alien && unMovedAliens.Contains((Alien)actor)) {
-                        if (alien != actor) {
-                            remove = false;
-                            break;
-                        } else {
-                            yield return Main.instance.StartCoroutine(PerformAttack(alien));
-                        }
-                    }
-                }
-                if (remove) unMovedAliens.Remove(alien);
+        var wrapper = new AlienPathingWrapperI(map);
+        var aliensCopy = map.GetActors<Alien>();
+        foreach (var alien in aliensCopy) {
+            var output = new AlienPathFinder(wrapper).ClosestTargetLocation(alien.gridLocation, alien.movement);
+            if (output.targetLocation != alien.gridLocation) {
+                yield return Main.instance.StartCoroutine(MoveAlien(alien, output.targetLocation, output.facing));
             }
+            yield return Main.instance.StartCoroutine(PerformAttack(alien));
         }
         delayedAction.Finish();
     }
@@ -79,6 +59,7 @@ public class AlienMovementPhaseDirector {
                 alien.ShowAttackIndicator();
                 AlienAttack.Execute(alien, soldier, GameLogicComponent.world);
                 yield return new WaitForSeconds(COMBAT_WAIT_TIME);
+                yield break;
             }
         }
     }
