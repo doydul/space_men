@@ -25,6 +25,8 @@ public class ShootingAnimation : WorldAnimation {
         yield return new WaitForSeconds(0.1f);
         var tracer = interactor.MakeTracer(shooter.muzzlePosition);
         tracer.StartAnimating(shooter.muzzlePosition, EndPosition(), 1).Then(() => {
+            var impact = interactor.MakeTracerImpact(tracer.realLocation);
+            if (type == ShootingAnimationType.Hit) Object.Destroy(impact, 0.5f);
             tracer.Destroy();
         });
         yield return new WaitForSeconds(0.5f);
@@ -34,7 +36,7 @@ public class ShootingAnimation : WorldAnimation {
     }
 
     Vector2 EndPosition() {
-        if (type == ShootingAnimationType.Hit) {
+        if (type != ShootingAnimationType.Missed) {
             return MungedPosition(target.realLocation);
         } else {
             Vector2 projectileDirection = (target.realLocation - shooter.muzzlePosition).normalized;

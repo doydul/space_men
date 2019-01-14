@@ -1,6 +1,7 @@
 public enum ShootingAnimationType {
     Hit,
-    Missed
+    Missed,
+    Deflected
 }
 
 public interface IAnimationReel {

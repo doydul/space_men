@@ -4,6 +4,7 @@ public class AnimationInteractor : WorldAnimation.IAnimationInteractor {
 
     public Transform gunflarePrefab;
     public Transform tracerPrefab;
+    public Transform tracerImpactPrefab;
     public Transform explosionCloudPrefab;
 
     public override GameObject MakeGunflare(Vector2 position, float rotation) {
@@ -18,6 +19,12 @@ public class AnimationInteractor : WorldAnimation.IAnimationInteractor {
         var tracerTransform = Instantiate(tracerPrefab) as Transform;
         tracerTransform.position = Position3D(realLocation);
         return tracerTransform.GetComponent<Tracer>();
+    }
+    
+    public override GameObject MakeTracerImpact(Vector2 realLocation) {
+        var impaceTransform = Instantiate(tracerImpactPrefab) as Transform;
+        impactTransform.position = Position3D(realLocation);
+        return impactTransform;
     }
 
     public override GameObject MakeExplosionCloud(Vector2 realLocation) {

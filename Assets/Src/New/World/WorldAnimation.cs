@@ -11,6 +11,8 @@ public abstract class WorldAnimation {
         public abstract GameObject MakeGunflare(Vector2 position, float rotation);
 
         public abstract Tracer MakeTracer(Vector2 realLocation);
+        
+        public abstract GameObject MakeTracerImpact(Vector2 realLocation);
 
         public abstract GameObject MakeExplosionCloud(Vector2 realLocation);
     }

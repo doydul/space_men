@@ -23,10 +23,11 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
     }
 
     void ShootNormal(Soldier shooter, Alien target) {
-        bool hit = false;
+        ShootingAnimationType type = ShootingAnimationType.Missed;
         if (Random.value * 100 < shooter.accuracy + target.accModifier) {
-            hit = true;
+            type = ShootingAnimationType.Deflected;
             if (Random.value * 100 > target.armour - shooter.armourPen) {
+                type = ShootingAnimationType.Hit;
                 int damage = Random.Range(shooter.minDamage, shooter.maxDamage + 1);
                 target.Hurt(damage);
                 world.MakeBloodSplat(target);
@@ -36,7 +37,7 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
         animationReel.PlayStandardShootAnimation(
             shooter: shooter,
             target: target.tile,
-            type: hit ? ShootingAnimationType.Hit : ShootingAnimationType.Missed
+            type: type
         );
     }
 

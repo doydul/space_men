@@ -4,6 +4,8 @@ using System.Collections;
 public class Tracer : MonoBehaviour {
 
     float speed;
+    
+    Vector2 realPosition { get { return transform.position; } }
 
     public DelayedAction StartAnimating(Vector2 from, Vector2 to, float speed) {
         this.speed = speed;
