@@ -115,8 +115,6 @@
      <Compile Include="Assets\Src\GameLogic\Rewards\SingleItemReward.cs" />
      <Compile Include="Assets\Src\GameLogic\SingleSpawnModule.cs" />
      <Compile Include="Assets\Src\GameLogic\Soldier.cs" />
-     <Compile Include="Assets\Src\GameLogic\SoldierAttack.cs" />
-     <Compile Include="Assets\Src\GameLogic\SoldierFireOrdnance.cs" />
      <Compile Include="Assets\Src\GameLogic\SoldierLOSWrapper.cs" />
      <Compile Include="Assets\Src\GameLogic\SoldierPathingWrapper.cs" />
      <Compile Include="Assets\Src\GameLogic\Tile.cs" />
@@ -153,6 +151,7 @@
      <Compile Include="Assets\Src\New\SoldierPathingAndLOS.cs" />
      <Compile Include="Assets\Src\New\UIInputHandler.cs" />
      <Compile Include="Assets\Src\New\ViewableState.cs" />
+     <Compile Include="Assets\Src\New\World\AlienAttackAnimation.cs" />
      <Compile Include="Assets\Src\New\World\AnimationInteractor.cs" />
      <Compile Include="Assets\Src\New\World\ShootingAnimation.cs" />
      <Compile Include="Assets\Src\New\World\ShootingOrdnanceAnimation.cs" />

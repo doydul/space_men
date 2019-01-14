@@ -18,7 +18,14 @@ public class Actor : MonoBehaviour {
     public bool dead { get; private set; }
 
     public Vector2 gridLocation { get { return tile.gridLocation; } }
+    public Vector2 realLocation { get { return transform.position; } }
     public int rotation { get { return (int)direction * 90; } }
+    public Vector2 facing { get {
+        return new Vector2(
+            (float)Mathf.Sin(rotation * Mathf.PI / 180),
+            (float)Mathf.Cos(rotation * Mathf.PI / 180)
+        );
+    } }
 
     public virtual void MoveTo(Tile newTile) {
         tile.RemoveActor();

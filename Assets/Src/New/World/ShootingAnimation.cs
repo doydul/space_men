@@ -25,8 +25,10 @@ public class ShootingAnimation : WorldAnimation {
         yield return new WaitForSeconds(0.1f);
         var tracer = interactor.MakeTracer(shooter.muzzlePosition);
         tracer.StartAnimating(shooter.muzzlePosition, EndPosition(), 1).Then(() => {
-            var impact = interactor.MakeTracerImpact(tracer.realLocation);
-            if (type == ShootingAnimationType.Hit) Object.Destroy(impact, 0.5f);
+            if (type == ShootingAnimationType.Hit) {
+                var impact = interactor.MakeTracerImpact(tracer.realLocation);
+                Object.Destroy(impact, 0.5f);
+            }
             tracer.Destroy();
         });
         yield return new WaitForSeconds(0.5f);

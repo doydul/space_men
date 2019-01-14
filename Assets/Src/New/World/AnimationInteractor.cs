@@ -6,6 +6,7 @@ public class AnimationInteractor : WorldAnimation.IAnimationInteractor {
     public Transform tracerPrefab;
     public Transform tracerImpactPrefab;
     public Transform explosionCloudPrefab;
+    public Transform alienAttackMarkerPrefab;
 
     public override GameObject MakeGunflare(Vector2 position, float rotation) {
         var spriteTransform = Instantiate(gunflarePrefab) as Transform;
@@ -16,22 +17,25 @@ public class AnimationInteractor : WorldAnimation.IAnimationInteractor {
     }
 
     public override Tracer MakeTracer(Vector2 realLocation) {
-        var tracerTransform = Instantiate(tracerPrefab) as Transform;
-        tracerTransform.position = Position3D(realLocation);
-        return tracerTransform.GetComponent<Tracer>();
+        return MakePrefab(tracerPrefab, realLocation).GetComponent<Tracer>();
     }
-    
+
     public override GameObject MakeTracerImpact(Vector2 realLocation) {
-        var impaceTransform = Instantiate(tracerImpactPrefab) as Transform;
-        impactTransform.position = Position3D(realLocation);
-        return impactTransform;
+        return MakePrefab(tracerImpactPrefab, realLocation);
     }
 
     public override GameObject MakeExplosionCloud(Vector2 realLocation) {
-        var cloudTransform = Instantiate(explosionCloudPrefab) as Transform;
-        var cloudObject = cloudTransform.gameObject;
-        cloudTransform.position = Position3D(realLocation);
-        return cloudObject;
+        return MakePrefab(explosionCloudPrefab, realLocation);
+    }
+
+    public override GameObject MakeAlienAttackMarker(Vector2 realLocation) {
+        return MakePrefab(alienAttackMarkerPrefab, realLocation);
+    }
+
+    GameObject MakePrefab(Transform prefab, Vector2 realLocation) {
+        var transform = Instantiate(prefab) as Transform;
+        transform.position = Position3D(realLocation);
+        return transform.gameObject;
     }
 
     Vector3 Position3D(Vector2 position2D) {

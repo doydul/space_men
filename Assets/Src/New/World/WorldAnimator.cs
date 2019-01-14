@@ -34,6 +34,11 @@ public class WorldAnimator : IAnimationReel {
         return PlayAnimation(WorldState.instance, animation);
     }
 
+    public DelayedAction PlayAlienAttackAnimation(Alien alien) {
+        var animation = new AlienAttackAnimation(alien);
+        return PlayAnimation(WorldState.instance, animation);
+    }
+
     DelayedAction PlayAnimation(WorldState worldState, WorldAnimation animation) {
         var result = new DelayedAction();
         worldState.StartOfAnimation();

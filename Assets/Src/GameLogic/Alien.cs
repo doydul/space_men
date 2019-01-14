@@ -52,17 +52,6 @@ public class Alien : Actor {
         }
     }
 
-    public void ShowHitIndicator() {
-        hitIndicator.SetActive(true);
-        healthIndicator.enabled = true;
-        DisableIndicators();
-    }
-
-    public void ShowDeflectIndicator() {
-        deflectIndicator.SetActive(true);
-        DisableIndicators();
-    }
-
     private void SetHealthIndicatorSize() {
         var currentSize = healthIndicator.size;
         currentSize.x = health * healthSpriteSize / maxHealth;
@@ -79,12 +68,5 @@ public class Alien : Actor {
         hitIndicator.SetActive(false);
         deflectIndicator.SetActive(false);
         healthIndicator.enabled = false;
-    }
-
-    public void ShowAttackIndicator() {
-        attackIndicator.enabled = true;
-        new Delayer(this).Wait(0.5f, () => {
-            attackIndicator.enabled = false;
-        });
     }
 }

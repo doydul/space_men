@@ -9,13 +9,15 @@ public class AlienMovementPhaseDirector {
     private const float MOVEMENT_WAIT_TIME = 0.1f;
     private const float COMBAT_WAIT_TIME = 1f;
 
-    public AlienMovementPhaseDirector(Map map, ICameraController cam) {
+    public AlienMovementPhaseDirector(Map map, ICameraController cam, IAnimationReel animator) {
         this.map = map;
         this.cam = cam;
+        this.animator = animator;
     }
 
     Map map;
     ICameraController cam;
+    IAnimationReel animator;
 
     public DelayedAction MoveAliens() {
         var result = new DelayedAction();
@@ -56,7 +58,7 @@ public class AlienMovementPhaseDirector {
             if (soldier != null) {
                 cam.CentreCameraOn(alien.tile);
                 alien.Face(tile.gridLocation);
-                alien.ShowAttackIndicator();
+                yield return animator.PlayAlienAttackAnimation(alien);
                 AlienAttack.Execute(alien, soldier, GameLogicComponent.world);
                 yield return new WaitForSeconds(COMBAT_WAIT_TIME);
                 yield break;

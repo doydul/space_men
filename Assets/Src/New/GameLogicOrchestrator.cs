@@ -19,7 +19,8 @@ public class GameLogicOrchestrator {
         var alienDeployer = new AlienDeployer(legacyMap, gamePhase);
         var alienMovementPhaseDirector = new AlienMovementPhaseDirector(
             legacyMap,
-            cameraController
+            cameraController,
+            animationReel
         );
         var radarBlipController = new RadarBlipController(alienDeployer);
         GamePhase.phaseFactory = new PhaseFactory(
