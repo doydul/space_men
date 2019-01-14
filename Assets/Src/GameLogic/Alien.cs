@@ -48,7 +48,7 @@ public class Alien : Actor {
         health -= damage;
         SetHealthIndicatorSize();
         if (dead) {
-            Die(1);
+            Die(0.2f);
         }
     }
 

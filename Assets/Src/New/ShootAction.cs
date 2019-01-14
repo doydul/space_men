@@ -28,9 +28,6 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
             type = ShootingAnimationType.Deflected;
             if (Random.value * 100 > target.armour - shooter.armourPen) {
                 type = ShootingAnimationType.Hit;
-                int damage = Random.Range(shooter.minDamage, shooter.maxDamage + 1);
-                target.Hurt(damage);
-                world.MakeBloodSplat(target);
             }
         }
         if (target.dead) shooter.GetExp(target.expReward);
@@ -38,7 +35,13 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
             shooter: shooter,
             target: target.tile,
             type: type
-        );
+        ).Then(() => {
+            if (type == ShootingAnimationType.Hit) {
+                int damage = Random.Range(shooter.minDamage, shooter.maxDamage + 1);
+                target.Hurt(damage);
+                world.MakeBloodSplat(target);
+            }
+        });
     }
 
     void ShootOrdnance(Soldier shooter, Alien target) {

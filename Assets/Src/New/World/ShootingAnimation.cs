@@ -33,7 +33,6 @@ public class ShootingAnimation : WorldAnimation {
         });
         yield return new WaitForSeconds(0.5f);
         Object.Destroy(gunflareObject);
-        yield return new WaitForSeconds(0.5f);
         delayedAction.Finish();
     }
 
