@@ -1,6 +1,6 @@
 public class ShootingPhase : Phase {
 
-    private const int SHOOTING_PHASE_ITERATIONS = 4;
+    private const int SHOOTING_PHASE_ITERATIONS = 3;
 
     public ShootingPhase(
         Map map,
