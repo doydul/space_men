@@ -3,17 +3,23 @@ using System.Collections.Generic;
 
 public class GameInitializer {
 
-    public GameInitializer(Map map, FogController fogController) {
+    public GameInitializer(Map map, FogController fogController, AlienDeployer alienDeployer, RadarBlipController radarBlipController) {
         this.map = map;
         this.fogController = fogController;
+        this.alienDeployer = alienDeployer;
+        this.radarBlipController = radarBlipController;
     }
 
     Map map;
     FogController fogController;
+    AlienDeployer alienDeployer;
+    RadarBlipController radarBlipController;
 
     public void Init() {
         SpawnSoldiers(Squad.GenerateDefault()._activeSoldiers);
         fogController.Recalculate();
+        alienDeployer.Iterate();
+        radarBlipController.ShowRadarBlips();
     }
 
     void SpawnSoldiers(List<SoldierData> soldierDatas) {

@@ -44,7 +44,12 @@ public class GameLogicOrchestrator {
             soldierActionHandler: soldierActionHandler
         );
         playerActionHandler.InitBindings();
-        new GameInitializer(legacyMap, fogController).Init();
+        new GameInitializer(
+            legacyMap,
+            fogController,
+            alienDeployer,
+            radarBlipController
+        ).Init();
     }
 }
 
