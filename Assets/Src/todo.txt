@@ -1,10 +1,6 @@
 # Polish
 
-- Fix tile highlights so they go away when deselecting and changing phase
-
-- Add impact marker when alien gets shot
-
-- Fix attack marker when alien attacks (currently always points up)
+- Fix tile highlights so they go away when deselecting and changing phase (reword highlights in general to make them more robust, and go away when animations are playing)
 
 - Re-add templar and alien health bars
 

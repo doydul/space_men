@@ -9,18 +9,42 @@ public class MapHighlighter : MonoBehaviour {
     List<Tile> highlightedTiles;
 
     ViewableState viewableState { get { return ViewableState.instance; } }
+    WorldState worldState { get { return WorldState.instance; } }
     Soldier selectedUnit;
     Vector2 selectedUnitGridLocation;
+    bool movementPhaseActive;
+    bool animating;
+    
+    int updateCounter;
 
     void Awake() {
         highlightedTiles = new List<Tile>();
+        movementPhaseActive = viewableState.isMovementPhaseActive;
     }
 
     void Update() {
-        if (viewableState.selectedSoldier != null && selectedUnitGridLocation != viewableState.selectedSoldier.gridLocation) {
-            selectedUnit = viewableState.selectedSoldier;
-            selectedUnitGridLocation = selectedUnit.gridLocation;
-            UpdateHighlights();
+        if (animating != worldState.animationInProgress) {
+            animating = worldState.animationInProgress;
+            if (animating) {
+                ClearHighlights();
+            } else {
+                UpdateHighlights();
+            }
+        }
+        if (!animating) {
+            if (movementPhaseActive != viewableState.isMovementPhaseActive) {
+                ClearHighlights();
+                movementPhaseActive = viewableState.isMovementPhaseActive;
+            }
+            if (selectedUnit != viewableState.selectedSoldier) {
+                selectedUnit = viewableState.selectedSoldier;
+                if (selectedUnit != null) selectedUnitGridLocation = selectedUnit.gridLocation;
+                UpdateHighlights();
+            } else if (updateCounter >= 5) {
+                UpdateShootingPhaseHighlights();
+                updateCounter = 0;
+            }
+            updateCounter++;
         }
     }
 
@@ -71,6 +95,12 @@ public class MapHighlighter : MonoBehaviour {
             if (!alien.dead && selectedUnit.WithinSightArc(alien.gridLocation) && !los.Blocked()) {
                 HighlightTile(alien.tile, Color.red);
             }
+        }
+    }
+    
+    void UpdateShootingPhaseHighlights() {
+        if (!movementPhaseActive) {
+            UpdateHighlights();
         }
     }
  }

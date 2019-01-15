@@ -7,7 +7,7 @@ public class WorldState {
 
     static WorldState _instance;
 
-    public bool animationInProgress;
+    public bool animationInProgress { get; private set; }
 
     public void StartOfAnimation() {
         animationInProgress = true;
