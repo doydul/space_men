@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Tracer : MonoBehaviour {
 
-    float speed;
+    public float speed;
 
     public Vector2 realLocation { get { return transform.position; } }
 
-    public DelayedAction StartAnimating(Vector2 from, Vector2 to, float speed) {
+    public DelayedAction StartAnimating(Vector2 from, Vector2 to) {
         this.speed = speed;
         var result = new DelayedAction();
         StartCoroutine(AnimationRoutine(from, to, result));

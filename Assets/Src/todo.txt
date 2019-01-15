@@ -1,24 +1,13 @@
-# Polish
+# Remember
 
-- Fix tile highlights so they go away when deselecting and changing phase (reword highlights in general to make them more robust, and go away when animations are playing)
+- To create a tracer sprite for each type of weapon called #{weapon_name}WeaponSprite
+- Make sure each tracer sprite has a tracer script with assigned speed (around 1)
+
+# Polish
 
 - Re-add templar and alien health bars
 
 # Code
-
-## Alien types
-
-- Add field to aliens indicating chance of causing radar blip
-
-- Add ability for aliens to somehow have different appearance and stats
-
-## Weapon specific shooty animations
-
-## Persistent flames from flame weapons
-
-- Should last 1 or 2 turns and set fire to anything that passes through them
-
-- Flames do 1 tick of damage at the moment when the target is set on fire and then 1 tick at the end of each turn thereafter
 
 ## Skills system
 
@@ -27,6 +16,12 @@
 ## UI for inspecting templars and aliens
 
 ## Friendly fire damage from blast weapons
+
+## Persistent flames from flame weapons
+
+- Should last 1 or 2 turns and set fire to anything that passes through them
+
+- Flames do 1 tick of damage at the moment when the target is set on fire and then 1 tick at the end of each turn thereafter
 
 
 # Art

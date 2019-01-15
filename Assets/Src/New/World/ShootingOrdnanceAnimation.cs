@@ -20,8 +20,8 @@ public class ShootingOrdnanceAnimation : WorldAnimation {
     public override IEnumerator Animate(WorldAnimation.IAnimationInteractor interactor, DelayedAction delayedAction) {
         var gunflareObject = interactor.MakeGunflare(shooter.muzzlePosition, shooter.rotation);
         yield return new WaitForSeconds(0.1f);
-        var tracer = interactor.MakeTracer(shooter.muzzlePosition);
-        yield return tracer.StartAnimating(shooter.muzzlePosition, explosion.centreTile.realLocation, 1);
+        var tracer = interactor.MakeTracer(shooter.muzzlePosition, shooter.weaponName);
+        yield return tracer.StartAnimating(shooter.muzzlePosition, explosion.centreTile.realLocation);
         tracer.Destroy();
         Object.Destroy(gunflareObject);
         MakeExplosionClouds(interactor);

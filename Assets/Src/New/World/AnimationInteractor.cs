@@ -3,7 +3,6 @@ using UnityEngine;
 public class AnimationInteractor : WorldAnimation.IAnimationInteractor {
 
     public Transform gunflarePrefab;
-    public Transform tracerPrefab;
     public Transform tracerImpactPrefab;
     public Transform explosionCloudPrefab;
     public Transform alienAttackMarkerPrefab;
@@ -16,8 +15,10 @@ public class AnimationInteractor : WorldAnimation.IAnimationInteractor {
         return spriteObject;
     }
 
-    public override Tracer MakeTracer(Vector2 realLocation) {
-        return MakePrefab(tracerPrefab, realLocation).GetComponent<Tracer>();
+    public override Tracer MakeTracer(Vector2 realLocation, string weaponName) {
+        var prefab = Resources.Load<Transform>("Weapons/Sprites/" + weaponName + "WeaponSprite");
+        var gameObject = MakePrefab(prefab, realLocation);
+        return gameObject.GetComponent<Tracer>() as Tracer;
     }
 
     public override GameObject MakeTracerImpact(Vector2 realLocation) {

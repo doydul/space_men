@@ -38,8 +38,10 @@ public class Soldier : Actor {
     public bool firesOrdnance { get { return weapon.ordnance; } }
     public Weapon.Type weaponType { get { return weapon.type; } }
     public int maxHealth { get { return 86; } }
-
     public Vector2 muzzlePosition { get { return muzzleFlashLocation.position; } }
+    
+    public string armourName { get { return armour.name; } }
+    public string weaponName { get { return weapon.name; } }
 
     void Start() {
         health = 86;
@@ -48,8 +50,8 @@ public class Soldier : Actor {
 
     public SoldierData ToData() {
         var data = new SoldierData();
-        if (armour != null) data.armour = armour.name;
-        if (weapon != null) data.weapon = weapon.name;
+        if (armour != null) data.armour = armourName;
+        if (weapon != null) data.weapon = weaponName;
         data.exp = exp;
         data.level = level;
         return data;
