@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 public class ExplosionGenerator {
 
@@ -14,13 +15,15 @@ public class ExplosionGenerator {
         var result = new ExplosionCoverage();
 
         var iterator = new LayeredGridIterator(grid, gridLocation);
+        int layerI = -1;
         foreach (var layer in iterator.Layers()) {
-            float blastWave = Mathf.Min(blastSize / layer.Count, 1);
-            foreach (var square in layer) {
-                result.AddSquare(square, blastWave);
+            blastSize -= Mathf.Max(layerI, 0);
+            foreach (var square in layer.OrderBy(x => Random.value).Take((int)blastSize)) {
+                result.AddSquare(square, 1);
+                blastSize--;
             }
-            blastSize -= layer.Count;
             if (blastSize <= 0) break;
+            layerI++;
         }
         return result;
     }

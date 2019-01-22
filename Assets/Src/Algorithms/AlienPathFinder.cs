@@ -45,7 +45,7 @@ public class AlienPathFinder {
         var resultNode = node;
         foreach (var childNode in node.Nodes()) {
             resultNode = childNode;
-            if (resultNode.distance <= movement) break;
+            if (grid.IsValidFinishLocation(resultNode.gridLocation) && resultNode.distance <= movement) break;
         }
         return new Output() {
             targetLocation = resultNode.gridLocation,

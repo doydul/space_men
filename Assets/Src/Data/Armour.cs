@@ -15,19 +15,27 @@ public class Armour : ScriptableObject {
     public int value;
 
     public int movement { get {
-        return type == Type.Light ? 6 : 4;
+        switch(type) {
+            case Type.Light:
+                return 4;
+            case Type.Medium:
+                return 3;
+            case Type.Heavy:
+                return 3;
+        }
+        return 3;
     } }
 
     public int sprint { get {
         switch(type) {
             case Type.Light:
-                return 6;
-            case Type.Medium:
                 return 4;
+            case Type.Medium:
+                return 3;
             case Type.Heavy:
                 return 0;
         }
-        return 4;
+        return 3;
     } }
 
     public bool isLight { get { return type == Type.Light; } }

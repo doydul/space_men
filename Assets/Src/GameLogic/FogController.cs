@@ -2,7 +2,7 @@ using System.Linq;
 
 public class FogController {
 
-    private const int FOG_RADIUS = 8;
+    private const int FOG_RADIUS = 6;
 
     public FogController(IGameMap map, IGameEvent fogChanged) {
         this.map = map;

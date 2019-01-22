@@ -58,7 +58,7 @@ MonoBehaviour:
   - alienType: Advanced
     averageOccurrencesPerTurn: 0.5
   - alienType: Alien
-    averageOccurrencesPerTurn: 2
+    averageOccurrencesPerTurn: 5
   briefing: 'Each turn is split into 2 phases; Movement and Shooting. Aliens move
     during the player''s Shooting phase, and the player gets chances to shoot them
     as they approach.

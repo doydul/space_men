@@ -14,12 +14,12 @@ public class MapHighlighter : MonoBehaviour {
     Vector2 selectedUnitGridLocation;
     bool movementPhaseActive;
     bool animating;
-    
+
     int updateCounter;
 
     void Awake() {
         highlightedTiles = new List<Tile>();
-        movementPhaseActive = viewableState.isMovementPhaseActive;
+        movementPhaseActive = true;
     }
 
     void Update() {
@@ -33,7 +33,7 @@ public class MapHighlighter : MonoBehaviour {
         }
         if (!animating) {
             if (movementPhaseActive != viewableState.isMovementPhaseActive) {
-                ClearHighlights();
+                UpdateHighlights();
                 movementPhaseActive = viewableState.isMovementPhaseActive;
             }
             if (selectedUnit != viewableState.selectedSoldier) {
@@ -97,7 +97,7 @@ public class MapHighlighter : MonoBehaviour {
             }
         }
     }
-    
+
     void UpdateShootingPhaseHighlights() {
         if (!movementPhaseActive) {
             UpdateHighlights();

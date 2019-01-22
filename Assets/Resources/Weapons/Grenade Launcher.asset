@@ -15,9 +15,9 @@ MonoBehaviour:
   armourPen: 15
   minDamage: 1
   maxDamage: 2
-  shotsWhenMoving: 1
+  shotsWhenMoving: 2
   shotsWhenStill: 2
   ammo: 4
-  blast: 3
+  blast: 4
   type: 1
   value: 250

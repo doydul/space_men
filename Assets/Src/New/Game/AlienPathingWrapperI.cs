@@ -11,7 +11,7 @@ public class AlienPathingWrapperI : IAlienGrid {
 
     public bool ShouldIterate(Vector2 gridLocation) {
         var tile = world.GetTileAt(gridLocation);
-        if (tile.actor != null && tile.GetActor<Alien>() == null) return false;
+        if (tile == null || tile.actor != null && tile.GetActor<Alien>() == null) return false;
         return tile.open;
     }
 

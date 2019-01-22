@@ -27,6 +27,7 @@ public class Tile : MonoBehaviour {
     }
 
     public void SetActor(Transform actor) {
+        if (this.actor != null) Debug.Log("Omg what are you doing!");
         this.actor = actor;
         actor.GetComponent<Actor>().tile = this;
         actor.parent = foreground;
@@ -65,6 +66,7 @@ public class Tile : MonoBehaviour {
     }
 
     void OnDrawGizmos() {
+        if (SoldierEnter == null) SoldierEnter = new UnityEvent();
         if (SoldierEnter.GetPersistentEventCount() > 0) {
             Gizmos.color = Color.white;
             Gizmos.DrawSphere(transform.position, 0.25f);

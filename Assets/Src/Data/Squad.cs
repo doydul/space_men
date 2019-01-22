@@ -53,13 +53,18 @@ public class Squad {
     public static Squad GenerateDefault() {
         var result = new Squad();
         result._credits = 1000;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             result._activeSoldiers.Add(SoldierData.GenerateDefault());
         }
 
         var sol = new SoldierData();
         sol.armour = SoldierData.DEFAULT_ARMOUR;
         sol.weapon = "Grenade Launcher";
+        result._activeSoldiers.Add(sol);
+
+         sol = new SoldierData();
+        sol.armour = SoldierData.DEFAULT_ARMOUR;
+        sol.weapon = "Plasma Rifle";
         result._activeSoldiers.Add(sol);
 
         sol = new SoldierData();

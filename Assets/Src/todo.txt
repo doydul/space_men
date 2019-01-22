@@ -1,13 +1,10 @@
-# Remember
-
-- To create a tracer sprite for each type of weapon called #{weapon_name}WeaponSprite
-- Make sure each tracer sprite has a tracer script with assigned speed (around 1)
-
 # Polish
 
 - Re-add templar and alien health bars
 
 # Code
+
+- Allow player to select aliens as well as soldiers, and show how far they can move/attack (also show stats like health, armour, damage)
 
 ## Skills system
 

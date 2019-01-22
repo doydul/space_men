@@ -19,4 +19,4 @@ MonoBehaviour:
   movement: 4
   threat: 1
   expReward: 5
-  chanceOfCreatingRadarBlip: 0.5
+  chanceOfCreatingRadarBlip: 0.3

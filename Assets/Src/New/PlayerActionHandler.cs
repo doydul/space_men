@@ -57,6 +57,7 @@ public class PlayerActionHandler {
         var soldier = tile.GetActor<Soldier>();
         if (soldier != null) {
             selectionState.SelectSoldier(soldier);
+            Debug.Log(soldier.weapon.name);
         } else {
             if (soldierActionHandler.AnyActionApplicableFor(selectionState.GetSelectedSoldier(), tile)) {
                 soldierActionHandler.PerformActionFor(selectionState.GetSelectedSoldier(), tile);
