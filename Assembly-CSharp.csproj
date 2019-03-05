@@ -57,6 +57,7 @@
      <Compile Include="Assets\Src\Algorithms\AlienFrequencyInput.cs" />
      <Compile Include="Assets\Src\Algorithms\AlienFrequencyOutput.cs" />
      <Compile Include="Assets\Src\Algorithms\AlienPathFinder.cs" />
+     <Compile Include="Assets\Src\Algorithms\AlienPathFinder2.cs" />
      <Compile Include="Assets\Src\Algorithms\ExplosionCoverage.cs" />
      <Compile Include="Assets\Src\Algorithms\ExplosionGenerator.cs" />
      <Compile Include="Assets\Src\Algorithms\FogGrid.cs" />
@@ -65,6 +66,7 @@
      <Compile Include="Assets\Src\Algorithms\IBlocker.cs" />
      <Compile Include="Assets\Src\Algorithms\IPathable.cs" />
      <Compile Include="Assets\Src\Algorithms\ISpawnable.cs" />
+     <Compile Include="Assets\Src\Algorithms\Iterators\AdjacentSquaresGridIterator.cs" />
      <Compile Include="Assets\Src\Algorithms\Iterators\GridIterator.cs" />
      <Compile Include="Assets\Src\Algorithms\Iterators\IIterableGrid.cs" />
      <Compile Include="Assets\Src\Algorithms\Iterators\LayeredGridIterator.cs" />
@@ -72,6 +74,7 @@
      <Compile Include="Assets\Src\Algorithms\LineOfSight.cs" />
      <Compile Include="Assets\Src\Algorithms\Path.cs" />
      <Compile Include="Assets\Src\Algorithms\PathFinder.cs" />
+     <Compile Include="Assets\Src\Algorithms\PathFinder2.cs" />
      <Compile Include="Assets\Src\Algorithms\SpawnableLocations.cs" />
      <Compile Include="Assets\Src\Data\AlienData.cs" />
      <Compile Include="Assets\Src\Data\Armour.cs" />

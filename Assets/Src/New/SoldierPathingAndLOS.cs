@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class SoldierPathingAndLOS : SoldierActionHandler.IPathingAndLOS, IBlocker, IPathable {
 
@@ -33,8 +34,8 @@ public class SoldierPathingAndLOS : SoldierActionHandler.IPathingAndLOS, IBlocke
     }
 
     public Path GetPath(Tile startTile, Tile endTile) {
-        var targets = new List<Vector2>() { endTile.gridLocation };
-        return new Path(new PathFinder(this, startTile.gridLocation, targets).FindPath());
+        var wrapper = new SoldierPathingWrapper2(map, endTile.gridLocation);
+        return new Path(new PathFinder2(wrapper).ShortestPath(startTile.gridLocation).path.ToList());
     }
 
     public Tile GetTileAt(Vector2 gridLocation) {

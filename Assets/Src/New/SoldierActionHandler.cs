@@ -33,7 +33,7 @@ public class SoldierActionHandler {
 
     bool AnyMovingActionApplicableFor(Soldier soldier, Tile targetTile) {
         var path = pathingAndLOS.GetPath(soldier.tile, targetTile);
-        return targetTile.open && !targetTile.occupied && path.Count <= soldier.remainingMovement;
+        return targetTile.open && !targetTile.occupied && path.Count - 1 <= soldier.remainingMovement;
     }
 
     bool AnyShootingActionApplicableFor(Soldier soldier, Tile targetTile) {
