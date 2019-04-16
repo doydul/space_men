@@ -26,15 +26,18 @@ public class AlienMovementPhaseDirector {
     }
 
     IEnumerator MoveAliensRoutine(DelayedAction delayedAction) {
-        var targets = map.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToList();
-        var wrapper = new AlienPathingWrapperI(map);
         var aliensCopy = map.GetActors<Alien>();
-        foreach (var alien in aliensCopy) {
-            var output = new AlienPathFinder(wrapper).ClosestTargetLocation(alien.gridLocation, alien.movement);
-            if (output.targetLocation != alien.gridLocation) {
-                yield return Main.instance.StartCoroutine(MoveAlien(alien, output.targetLocation, output.facing));
+        var wrapper = new AlienPathingMapWrapper(map, aliensCopy);
+        while (aliensCopy.Count > 0) {
+            foreach (var alien in aliensCopy) {
+                var output = new AlienPathFinder2(wrapper).BestMoveLocation(alien.gridLocation, alien.movement);
+                var tile = map.GetTileAt(output.targetLocation);
+                if (tile.actor == null || tile.actor == alien) {
+                    aliensCopy.Remove(alien);
+                    yield return Main.instance.StartCoroutine(MoveAlien(alien, output.targetLocation, output.facing));
+                    yield return Main.instance.StartCoroutine(PerformAttack(alien));
+                }
             }
-            yield return Main.instance.StartCoroutine(PerformAttack(alien));
         }
         delayedAction.Finish();
     }

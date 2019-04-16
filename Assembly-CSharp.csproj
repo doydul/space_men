@@ -71,6 +71,7 @@
      <Compile Include="Assets\Src\Algorithms\Iterators\IIterableGrid.cs" />
      <Compile Include="Assets\Src\Algorithms\Iterators\LayeredGridIterator.cs" />
      <Compile Include="Assets\Src\Algorithms\Iterators\NthLayerGridIterator.cs" />
+     <Compile Include="Assets\Src\Algorithms\Iterators\RadiusGridIterator.cs" />
      <Compile Include="Assets\Src\Algorithms\LineOfSight.cs" />
      <Compile Include="Assets\Src\Algorithms\Path.cs" />
      <Compile Include="Assets\Src\Algorithms\PathFinder.cs" />
