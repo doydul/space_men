@@ -13,6 +13,7 @@ public class PathFinder2 {
 
     public PathingNode ShortestPath(Vector2 start) {
         var firstNode = new PathingNode(start, null, 0, 0);
+        var bestSoFar = firstNode;
         if (grid.FinishLocation(start)) return firstNode;
 
         var traversedSquares = new HashSet<Vector2> { start };
@@ -29,12 +30,22 @@ public class PathFinder2 {
                 if (traversedSquares.Contains(square)) continue;
                 int heuristic = grid.HeuristicFor(square);
                 var newNode = new PathingNode(square, node, node.pathLength + 1, heuristic);
-                if (grid.FinishLocation(square)) return newNode;
+                // Debug.Log("new node --------");
+                // Debug.Log(newNode.square);
+                // Debug.Log(newNode.pathLength);
+                if (grid.FinishLocation(square)) {
+                    if (grid.BlockedLocation(square)) {
+                        bestSoFar = newNode;
+                    } else {
+                        return newNode;
+                    }
+                }
                 leafNodes.Add(newNode);
                 traversedSquares.Add(square);
             }
         }
-        return firstNode;
+        Debug.Log("got to the end");
+        return bestSoFar;
     }
 
     // Private
@@ -47,6 +58,7 @@ public class PathFinder2 {
 public interface IPathable2 {
     bool Pathable(Vector2 gridLocation);
     bool FinishLocation(Vector2 gridLocation);
+    bool BlockedLocation(Vector2 gridLocation);
     int HeuristicFor(Vector2 gridLocation);
 }
 
@@ -106,6 +118,10 @@ public class SoldierPathingWrapper2 : IPathable2 {
 
     public bool FinishLocation(Vector2 gridLocation) {
         return gridLocation == target;
+    }
+
+    public bool BlockedLocation(Vector2 gridLocation) {
+        return false;
     }
 
     public int HeuristicFor(Vector2 gridLocation) {

@@ -82,7 +82,7 @@ public class Soldier : Actor {
     public void StartMovementPhase() {
         tilesMoved = 0;
         shotsFiredThisRound = 0;
-        GameLogicComponent.userInterface.ShowMovementIndicators(this);
+        if (GameLogicComponent.instance != null) GameLogicComponent.userInterface.ShowMovementIndicators(this);
     }
 
     public void StartShootingPhase() {

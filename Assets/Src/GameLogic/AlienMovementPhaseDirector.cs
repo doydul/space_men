@@ -29,15 +29,17 @@ public class AlienMovementPhaseDirector {
         var aliensCopy = map.GetActors<Alien>();
         var wrapper = new AlienPathingMapWrapper(map, aliensCopy);
         while (aliensCopy.Count > 0) {
-            foreach (var alien in aliensCopy) {
-                var output = new AlienPathFinder2(wrapper).BestMoveLocation(alien.gridLocation, alien.movement);
+            int unmoved = aliensCopy.Count;
+            foreach (var alien in new List<Alien>(aliensCopy)) {
+                var output = new AlienPathFinder2(wrapper, new BasicAlienPathingWrapper(map)).BestMoveLocation(alien.gridLocation, alien.movement);
                 var tile = map.GetTileAt(output.targetLocation);
-                if (tile.actor == null || tile.actor == alien) {
+                if (tile.actor == null || alien.tile == tile) {
                     aliensCopy.Remove(alien);
-                    yield return Main.instance.StartCoroutine(MoveAlien(alien, output.targetLocation, output.facing));
+                    if (tile.actor == null) yield return Main.instance.StartCoroutine(MoveAlien(alien, output.targetLocation, output.facing));
                     yield return Main.instance.StartCoroutine(PerformAttack(alien));
                 }
             }
+            if (unmoved == aliensCopy.Count) break;
         }
         delayedAction.Finish();
     }

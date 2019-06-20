@@ -1,68 +1,58 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Test : MonoBehaviour {
 
+    public Map map;
+
     void Start() {
-        var pather = new AlienPathFinder(new FakeGrid());
-
-        Debug.Log(pather.ClosestTargetLocation(new Vector2(0, 1), 10));
-        Debug.Log(pather.ClosestTargetLocation(new Vector2(2, 6), 10));
-    }
-}
-
-public class FakeGrid : IAlienGrid {
-
-    bool[,] should;
-    bool[,] target;
-    bool[,] valid;
-
-    public FakeGrid() {
-        should = new bool[8,4] {
-            {false, true, false, false},
-            {true, true, true, true},
-            {false, true, false, false},
-            {false, true, true, true},
-            {false, false, false, true},
-            {false, false, true, true},
-            {false, false, true, false},
-            {false, false, true, true}
-        };
-
-        target = new bool[8,4] {
-            {false, false, false, false},
-            {false, false, false, true},
-            {false, false, false, false},
-            {false, false, false, false},
-            {false, false, false, true},
-            {false, false, false, false},
-            {false, false, false, false},
-            {false, false, false, true}
-        };
-
-        valid = new bool[8,4] {
-            {false, true, false, false},
-            {true, true, false, false},
-            {false, true, false, false},
-            {false, true, true, true},
-            {false, false, false, true},
-            {false, false, true, true},
-            {false, false, true, false},
-            {false, false, false, false}
-        };
+        MakeSoldier();
+        MakeAlien(new Vector2(8, 8));
+        MakeAlien(new Vector2(8, 7));
+        MakeAlien(new Vector2(8, 6));
+        MakeAlien(new Vector2(8, 5));
     }
 
-    public bool ShouldIterate(Vector2 gridLocation) {
-        var x = (int)gridLocation.x;
-        var y = (int)gridLocation.y;
-        if (x < 0 || x >= 4 || y < 0 || y >= 8) return false;
-        return should[(int)gridLocation.y, (int)gridLocation.x];
+    void MakeSoldier() {
+        var soldierData = SoldierData.GenerateDefault();
+        var gridLocation = new Vector2(1, 1);
+        var trans = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/Soldier")) as Transform;
+
+        var soldier = trans.GetComponent<Soldier>();
+        soldier.FromData(soldierData);
+
+        map.GetTileAt(gridLocation).SetActor(trans);
     }
 
-    public bool IsTargetLocation(Vector2 gridLocation) {
-        return target[(int)gridLocation.y, (int)gridLocation.x];
+    void MakeAlien(Vector2 at) {
+        var alienTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/Alien")) as Transform;
+        var alien = alienTransform.GetComponent<Alien>() as Alien;
+        alien.FromData(Resources.Load<AlienData>("Aliens/Alien"));
+        var spriteTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/AlienSprites/AlienAlienSprite")) as Transform;
+        spriteTransform.parent = alienTransform;
+        spriteTransform.localPosition = Vector3.zero;
+        alien.image = spriteTransform;
+
+        map.GetTileAt(at).SetActor(alienTransform);
     }
 
-    public bool IsValidFinishLocation(Vector2 gridLocation) {
-        return valid[(int)gridLocation.y, (int)gridLocation.x];
+    public void TestPathing() {
+        var aliensCopy = map.GetActors<Alien>();
+        var wrapper = new AlienPathingMapWrapper(map, aliensCopy);
+        while (aliensCopy.Count > 0) {
+            int unmoved = aliensCopy.Count;
+            foreach (var alien in new List<Alien>(aliensCopy)) {
+                var output = new AlienPathFinder2(wrapper, new BasicAlienPathingWrapper(map)).BestMoveLocation(alien.gridLocation, alien.movement);
+                var tile = map.GetTileAt(output.targetLocation);
+                if (alien.tile == tile) {
+                    aliensCopy.Remove(alien);
+                } else if (tile.actor == null) {
+                    aliensCopy.Remove(alien);
+                    alien.MoveTo(tile);
+                    alien.TurnTo(output.facing);
+                }
+            }
+            if (unmoved == aliensCopy.Count) break;
+        }
     }
 }
