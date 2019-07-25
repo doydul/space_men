@@ -39,12 +39,14 @@ public class ShootingPhase : Phase {
     }
 
     void Proceed(DelayedAction previousResult) {
+        if (finished) {
+            previousResult.Finish();
+            return;
+        }
         iterations++;
         alienMovementPhaseDirector.MoveAliens().Then(() => {
-            if (!AnyPlayerActionsPossible() && !finished) {
+            if (!AnyPlayerActionsPossible()) {
                 Proceed(previousResult);
-            } else {
-                previousResult.Finish();
             }
         });
     }
