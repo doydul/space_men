@@ -6,12 +6,17 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System;
 
+using TMPro;
+
 public class GameUIController : MonoBehaviour {
 
     public GameObject turnButtonContainer;
     public Image blackFade;
-    public Text currentPhaseText;
+    public TextMeshProUGUI currentPhaseText;
     public GameObject victoryPopup;
+    
+    public GameObject info;
+    public TextMeshProUGUI infoText;
 
     UIAnimator fadeAnimator;
     UIHelper uiHelper;
@@ -33,6 +38,7 @@ public class GameUIController : MonoBehaviour {
         fadeAnimator.Enqueue(0f, () => {
             blackFade.enabled = false;
         });
+        info.SetActive(false);
     }
 
     void Update() {
@@ -50,21 +56,21 @@ public class GameUIController : MonoBehaviour {
 
     private class UIHelper {
 
-        public UIHelper(GameObject turnButtonContainer, Text currentPhaseText) {
+        public UIHelper(GameObject turnButtonContainer, TextMeshProUGUI currentPhaseText) {
             this.turnButtonContainer = turnButtonContainer;
             this.currentPhaseText = currentPhaseText;
             turnButtonContainer.SetActive(false);
         }
 
         GameObject turnButtonContainer;
-        Text currentPhaseText;
+        TextMeshProUGUI currentPhaseText;
 
         public void Update(ViewableState viewableState) {
             turnButtonContainer.SetActive(viewableState.canTurnSoldier);
             if (viewableState.isMovementPhaseActive) {
-                currentPhaseText.text = "Movement Phase";
+                currentPhaseText.SetText("Movement Phase");
             } else {
-                currentPhaseText.text = "Shooting Phase";
+                currentPhaseText.SetText("Shooting Phase");
             }
         }
     }

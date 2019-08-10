@@ -8,7 +8,7 @@ public class Tracer : MonoBehaviour {
     public Vector2 realLocation { get { return transform.position; } }
 
     public DelayedAction StartAnimating(Vector2 from, Vector2 to) {
-        this.speed = speed;
+        speed = 1f;
         var result = new DelayedAction();
         StartCoroutine(AnimationRoutine(from, to, result));
         return result;
