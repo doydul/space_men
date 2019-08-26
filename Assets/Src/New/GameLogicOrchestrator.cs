@@ -13,7 +13,8 @@ public class GameLogicOrchestrator {
         ICameraController cameraController,
         IAnimationReel animationReel,
         IWorld world,
-        Map legacyMap
+        Map legacyMap,
+        UIController uiController
     ) {
         GameActions.SetFactory(new ActorActionFactory(world, animationReel));
         var alienDeployer = new AlienDeployer(legacyMap, gamePhase);
@@ -41,7 +42,8 @@ public class GameLogicOrchestrator {
             input: playerActionInput,
             selectionState: currentSelectionState,
             gamePhase: gamePhase,
-            soldierActionHandler: soldierActionHandler
+            soldierActionHandler: soldierActionHandler,
+            uiController: uiController
         );
         playerActionHandler.InitBindings();
         new GameInitializer(
@@ -52,6 +54,3 @@ public class GameLogicOrchestrator {
         ).Init();
     }
 }
-
-// Events: SoldierMoved
-// Actions: SoldierShoot, [ShootAtGround, UseSpecialAbility, etc.]

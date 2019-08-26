@@ -1,9 +1,5 @@
 # Next Phase
 
-- Better path finding; make sure aliens pack themselves into space better, instead of forming a conga line
-
-- Prevent aliens from getting an extra free move after all shooting has been done (causes unavoidable roadblocks, which are annoying)
-
 - Prevent player from moving through spaces that are adjacent to aliens (feels weird when you can just move right next to them and fire at point blank range)
 
 - Show damage chance above aliens heads?

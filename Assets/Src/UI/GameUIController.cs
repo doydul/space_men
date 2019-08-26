@@ -15,9 +15,6 @@ public class GameUIController : MonoBehaviour {
     public TextMeshProUGUI currentPhaseText;
     public GameObject victoryPopup;
     
-    public GameObject info;
-    public TextMeshProUGUI infoText;
-
     UIAnimator fadeAnimator;
     UIHelper uiHelper;
 
@@ -38,7 +35,6 @@ public class GameUIController : MonoBehaviour {
         fadeAnimator.Enqueue(0f, () => {
             blackFade.enabled = false;
         });
-        info.SetActive(false);
     }
 
     void Update() {
@@ -47,13 +43,13 @@ public class GameUIController : MonoBehaviour {
 
     public void ShowVictoryPopup() {
         victoryPopup.SetActive(true);
-    }
+   }
 
     public void FadeToBlack(Action finished) {
         blackFade.enabled = true;
         fadeAnimator.Enqueue(1f, finished);
     }
-
+    
     private class UIHelper {
 
         public UIHelper(GameObject turnButtonContainer, TextMeshProUGUI currentPhaseText) {

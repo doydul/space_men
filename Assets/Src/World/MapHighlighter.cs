@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class MapHighlighter : MonoBehaviour {
 
+    public static MapHighlighter instance { get; private set; }
+
     public Map map;
     public GamePhase gamePhase;
+    public MapController mapController;
 
     List<Tile> highlightedTiles;
 
@@ -18,6 +21,7 @@ public class MapHighlighter : MonoBehaviour {
     int updateCounter;
 
     void Awake() {
+        instance = this;
         highlightedTiles = new List<Tile>();
         movementPhaseActive = true;
     }
@@ -53,21 +57,22 @@ public class MapHighlighter : MonoBehaviour {
         if (selectedUnit != null) {
             HighlightTile(selectedUnit.tile, Color.white);
             if (viewableState.isMovementPhaseActive) {
-                MovementPhaseHighlights();
+                // MovementPhaseHighlights();
+                mapController.ShowPossibleMovesFor(selectedUnit.index);
             } else {
                 ShootingPhaseHighlights();
             }
         }
     }
 
-    void ClearHighlights() {
+    public void ClearHighlights() {
         foreach (var tile in highlightedTiles) {
             tile.ClearHighlight();
         }
         highlightedTiles.Clear();
     }
 
-    void HighlightTile(Tile tile, Color color) {
+    public void HighlightTile(Tile tile, Color color) {
         tile.Highlight(color);
         highlightedTiles.Add(tile);
     }

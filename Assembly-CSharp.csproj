@@ -88,6 +88,17 @@
     <Compile Include="Assets\Src\Algorithms\PathFinder.cs" />
     <Compile Include="Assets\Src\Algorithms\PathFinder2.cs" />
     <Compile Include="Assets\Src\Algorithms\SpawnableLocations.cs" />
+    <Compile Include="Assets\Src\Data\AlienData.cs" />
+    <Compile Include="Assets\Src\Data\Armour.cs" />
+    <Compile Include="Assets\Src\Data\Campaign.cs" />
+    <Compile Include="Assets\Src\Data\DataPersistence.cs" />
+    <Compile Include="Assets\Src\Data\InventoryItem.cs" />
+    <Compile Include="Assets\Src\Data\ItemBlueprint.cs" />
+    <Compile Include="Assets\Src\Data\Mission.cs" />
+    <Compile Include="Assets\Src\Data\MissionEnemyProfile.cs" />
+    <Compile Include="Assets\Src\Data\SoldierData.cs" />
+    <Compile Include="Assets\Src\Data\Squad.cs" />
+    <Compile Include="Assets\Src\Data\Weapon.cs" />
     <Compile Include="Assets\Src\Events\EventListener.cs" />
     <Compile Include="Assets\Src\Events\GameEvents.cs" />
     <Compile Include="Assets\Src\GameLogic\Actor.cs" />
@@ -131,6 +142,9 @@
     <Compile Include="Assets\Src\GameplayOrchestrator.cs" />
     <Compile Include="Assets\Src\New\ActionImpl.cs" />
     <Compile Include="Assets\Src\New\ActorActionFactory.cs" />
+    <Compile Include="Assets\Src\New\Controllers\Controller.cs" />
+    <Compile Include="Assets\Src\New\Controllers\MapController.cs" />
+    <Compile Include="Assets\Src\New\Controllers\UIController.cs" />
     <Compile Include="Assets\Src\New\CurrentSelectionState.cs" />
     <Compile Include="Assets\Src\New\DelayedAction.cs" />
     <Compile Include="Assets\Src\New\FogChanged.cs" />
@@ -144,10 +158,19 @@
     <Compile Include="Assets\Src\New\IAnimationReel.cs" />
     <Compile Include="Assets\Src\New\IGameEvent.cs" />
     <Compile Include="Assets\Src\New\IGameMap.cs" />
+    <Compile Include="Assets\Src\New\Initializer.cs" />
+    <Compile Include="Assets\Src\New\Interactors\InspectSelectedItemInteractor.cs" />
+    <Compile Include="Assets\Src\New\Interactors\Interactor.cs" />
+    <Compile Include="Assets\Src\New\Interactors\SoldierPossibleMovesInteractor.cs" />
     <Compile Include="Assets\Src\New\Main.cs" />
+    <Compile Include="Assets\Src\New\Migration\MapHack.cs" />
+    <Compile Include="Assets\Src\New\Migration\SoldierDataHack.cs" />
     <Compile Include="Assets\Src\New\MovementPhase.cs" />
     <Compile Include="Assets\Src\New\Phase.cs" />
     <Compile Include="Assets\Src\New\PlayerActionHandler.cs" />
+    <Compile Include="Assets\Src\New\Presenters\Presenter.cs" />
+    <Compile Include="Assets\Src\New\Presenters\SelectedItemInfoPresenter.cs" />
+    <Compile Include="Assets\Src\New\Presenters\SoldierPossibleMovesPresenter.cs" />
     <Compile Include="Assets\Src\New\ShootAction.cs" />
     <Compile Include="Assets\Src\New\ShootingPhase.cs" />
     <Compile Include="Assets\Src\New\SoldierActionHandler.cs" />
@@ -155,6 +178,8 @@
     <Compile Include="Assets\Src\New\SoldierPathingAndLOS.cs" />
     <Compile Include="Assets\Src\New\UIInputHandler.cs" />
     <Compile Include="Assets\Src\New\ViewableState.cs" />
+    <Compile Include="Assets\Src\New\Workers\AdjacentCells.cs" />
+    <Compile Include="Assets\Src\New\Workers\Storage.cs" />
     <Compile Include="Assets\Src\New\World\AlienAttackAnimation.cs" />
     <Compile Include="Assets\Src\New\World\AnimationInteractor.cs" />
     <Compile Include="Assets\Src\New\World\ShootingAnimation.cs" />
@@ -818,10 +843,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Data.csproj">
-      <Project>{DCE87752-BF18-7720-5A64-7D071E08B4B6}</Project>
-      <Name>Data</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
       <Project>{AA35C94F-BCE5-0C35-5305-FA28AE047143}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
@@ -829,6 +850,14 @@
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{5BB89CC1-A2A7-A194-3FAD-3E25AD8E230D}</Project>
       <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="Data.csproj">
+      <Project>{DCE87752-BF18-7720-5A64-7D071E08B4B6}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="Interfaces.csproj">
+      <Project>{C919E239-0BF9-36FB-9553-7A2536A79CF8}</Project>
+      <Name>Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

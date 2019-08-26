@@ -7,17 +7,20 @@ public class PlayerActionHandler {
     CurrentSelectionState selectionState;
     GamePhase gamePhase;
     SoldierActionHandler soldierActionHandler;
+    UIController uiController;
 
     public PlayerActionHandler(
         IPlayerActionInput input,
         CurrentSelectionState selectionState,
         GamePhase gamePhase,
-        SoldierActionHandler soldierActionHandler
+        SoldierActionHandler soldierActionHandler,
+        UIController uiController
     ) {
         this.input = input;
         this.selectionState = selectionState;
         this.gamePhase = gamePhase;
         this.soldierActionHandler = soldierActionHandler;
+        this.uiController = uiController;
     }
 
     public void InitBindings() {
@@ -27,6 +30,7 @@ public class PlayerActionHandler {
         input.SetTurnSoldierDownListener(TurnSoldierDown);
         input.SetContinueButtonListener(ContinueButton);
         input.SetInteractWithTileListener(InteractWithTile);
+        input.SetInfoButtonListener(InfoButton);
     }
 
     void TurnSoldierLeft() {
@@ -52,12 +56,21 @@ public class PlayerActionHandler {
     void ContinueButton() {
         gamePhase.ProceedPhase();
     }
+    
+    void InfoButton(bool open) {
+        if (open) { 
+            if (selectionState.soldierSelected) {
+                uiController.InspectSoldier(selectionState.GetSelectedSoldier().index);
+            }
+        } else {
+            uiController.CloseInfoPanel();
+        }
+    }
 
     void InteractWithTile(Tile tile) {
         var soldier = tile.GetActor<Soldier>();
         if (soldier != null) {
             selectionState.SelectSoldier(soldier);
-            Debug.Log(soldier.weapon.name);
         } else {
             if (soldierActionHandler.AnyActionApplicableFor(selectionState.GetSelectedSoldier(), tile)) {
                 soldierActionHandler.PerformActionFor(selectionState.GetSelectedSoldier(), tile);
@@ -75,5 +88,6 @@ public class PlayerActionHandler {
         public abstract void SetTurnSoldierDownListener(Action listener);
         public abstract void SetContinueButtonListener(Action listener);
         public abstract void SetInteractWithTileListener(Action<Tile> listener);
+        public abstract void SetInfoButtonListener(Action<bool> listener);
     }
 }

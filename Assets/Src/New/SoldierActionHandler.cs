@@ -32,8 +32,7 @@ public class SoldierActionHandler {
     }
 
     bool AnyMovingActionApplicableFor(Soldier soldier, Tile targetTile) {
-        var path = pathingAndLOS.GetPath(soldier.tile, targetTile);
-        return targetTile.open && !targetTile.occupied && path.Count - 1 <= soldier.remainingMovement;
+        return SoldierPossibleMovesPresenter.instance.ValidMoveLocation(targetTile.gridLocation);
     }
 
     bool AnyShootingActionApplicableFor(Soldier soldier, Tile targetTile) {
@@ -48,6 +47,7 @@ public class SoldierActionHandler {
         soldier.TurnTo(targetTile.gridLocation - path.Last());
         TriggerTileWalkedOnEvents(path.nodes, targetTile);
         soldierMoved.Invoke();
+        MapController.instance.ShowPossibleMovesFor(soldier.index);
     }
 
     void PerformShootingActionFor(Soldier soldier, Tile targetTile) {
@@ -70,5 +70,7 @@ public class SoldierActionHandler {
         Path GetPath(Tile startTile, Tile endTile);
 
         Tile GetTileAt(Vector2 gridLocation);
+        
+        bool ValidMoveLocation(Vector2 gridLocation);
     }
 }

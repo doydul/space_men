@@ -22,15 +22,18 @@ public class ShootingAnimation : WorldAnimation {
 
     public override IEnumerator Animate(WorldAnimation.IAnimationInteractor interactor, DelayedAction delayedAction) {
         var gunflareObject = interactor.MakeGunflare(shooter.muzzlePosition, shooter.rotation);
+        // yield return new WaitForSeconds(0.1f);
+        // var tracer = interactor.MakeTracer(shooter.muzzlePosition, shooter.weaponName);
+        // tracer.StartAnimating(shooter.muzzlePosition, EndPosition()).Then(() => {
+        //     if (type == ShootingAnimationType.Hit) {
+        //         var impact = interactor.MakeTracerImpact(tracer.realLocation);
+        //         Object.Destroy(impact, 0.5f);
+        //     }
+        //     tracer.Destroy();
+        // });
         yield return new WaitForSeconds(0.1f);
-        var tracer = interactor.MakeTracer(shooter.muzzlePosition, shooter.weaponName);
-        tracer.StartAnimating(shooter.muzzlePosition, EndPosition()).Then(() => {
-            if (type == ShootingAnimationType.Hit) {
-                var impact = interactor.MakeTracerImpact(tracer.realLocation);
-                Object.Destroy(impact, 0.5f);
-            }
-            tracer.Destroy();
-        });
+        var impact = interactor.MakeTracerImpact(EndPosition());
+        Object.Destroy(impact, 0.5f);
         yield return new WaitForSeconds(0.5f);
         Object.Destroy(gunflareObject);
         delayedAction.Finish();

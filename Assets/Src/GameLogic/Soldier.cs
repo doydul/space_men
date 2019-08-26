@@ -6,7 +6,8 @@ public class Soldier : Actor {
     public Armour armour;
     public Weapon weapon;
     public Transform muzzleFlashLocation;
-
+    
+    public int index { get; set; }
     public int health { get; set; }
     public int tilesMoved { get; set; }
     public int shotsFiredThisRound { get; set; }
@@ -57,7 +58,8 @@ public class Soldier : Actor {
         return data;
     }
 
-    public void FromData(SoldierData soldierData) {
+    public void FromData(SoldierData soldierData, int index = 0) {
+        this.index = index;
         armour = Armour.Get(soldierData.armour);
         weapon = Weapon.Get(soldierData.weapon);
         exp = soldierData.exp;

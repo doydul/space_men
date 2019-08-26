@@ -44,7 +44,6 @@ public class PathFinder2 {
                 traversedSquares.Add(square);
             }
         }
-        Debug.Log("got to the end");
         return bestSoFar;
     }
 

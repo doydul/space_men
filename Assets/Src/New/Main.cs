@@ -10,11 +10,14 @@ public class Main : MonoBehaviour {
     public Camera mainCamera;
 
     public AnimationInteractor animationInteractor;
+    
+    public UIController uiController;
 
     GameLogicOrchestrator gameLogicOrchestrator;
     public static Main instance;
 
     void Start() {
+        Application.targetFrameRate = 30;
         instance = this;
 
         var worldAnimator = new WorldAnimator(animationInteractor);
@@ -27,7 +30,8 @@ public class Main : MonoBehaviour {
             cameraController: new CameraController(mainCamera),
             animationReel: worldAnimator,
             world: worldComponent,
-            legacyMap: map
+            legacyMap: map,
+            uiController: uiController
         );
     }
 }

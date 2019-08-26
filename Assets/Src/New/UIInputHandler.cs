@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class UIInputHandler : PlayerActionHandler.IPlayerActionInput {
 
@@ -8,6 +9,7 @@ public class UIInputHandler : PlayerActionHandler.IPlayerActionInput {
     Action turnSoldierDownListener;
     Action continueButtonListener;
     Action<Tile> interactWithTileListener;
+    Action<bool> infoButtonListener;
 
     public override void SetTurnSoldierLeftListener(Action listener) {
         turnSoldierLeftListener = listener;
@@ -32,6 +34,10 @@ public class UIInputHandler : PlayerActionHandler.IPlayerActionInput {
     public override void SetInteractWithTileListener(Action<Tile> listener) {
         interactWithTileListener = listener;
     }
+    
+    public override void SetInfoButtonListener(Action<bool> listener) {
+        infoButtonListener = listener;
+    }
 
     public void TriggerTurnSoldierLeft() {
         turnSoldierLeftListener();
@@ -55,5 +61,13 @@ public class UIInputHandler : PlayerActionHandler.IPlayerActionInput {
 
     public void TriggerInteractWithTile(Tile tile) {
         interactWithTileListener(tile);
+    }
+    
+    void Update() {
+        if (Input.GetKeyDown("i")) {
+            infoButtonListener(true);
+        } else if (Input.GetKeyUp("i")) {
+            infoButtonListener(false);
+        }
     }
 }
