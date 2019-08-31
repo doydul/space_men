@@ -41,7 +41,7 @@ namespace Interactors {
 }
 EOF
 
-cat > ./Interactors/${modelName}Presenter.cs <<EOF
+cat > ./Presenters/${modelName}Presenter.cs <<EOF
 using Data;
 
 public class ${modelName}Presenter : Presenter, IPresenter<${modelName}Output> {
