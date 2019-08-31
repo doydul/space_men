@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using Interactors;
+using Workers;
 
 public class Initializer : MonoBehaviour {
     
@@ -11,6 +12,8 @@ public class Initializer : MonoBehaviour {
     public SoldierPossibleMovesPresenter soldierPossibleMovesPresenter;
     
     void Awake() {
+        Storage.Init(new MissionStore());
+        
         var inspectSelectedItemInteractor = new InspectSelectedItemInteractor();
         inspectSelectedItemInteractor.presenter = selectedItemInfoPresenter;
         uiController.inspectItemIntractor = inspectSelectedItemInteractor;

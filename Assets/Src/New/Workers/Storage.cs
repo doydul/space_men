@@ -1,17 +1,25 @@
+using Data;
+
 namespace Workers {
     
     public class Storage {
         
         static Storage _instance;
+        static IMissionStore missionStore;
         
         public static Storage instance { get {
-            if (_instance == null) Init();
+            if (_instance == null) _instance = new Storage();
             return _instance;
         } }
         
-        static void Init() {
-            _instance = new Storage();
+        public static void Init(IMissionStore missionStore) {
+            Storage.missionStore = missionStore;
         }
+        
+        string currentCampaign = "Default";
+        string currentMission = "Mission1";
+        
+        GamePhase currentPhase;
         
         public Data.Soldier GetSoldier(int index) {
             var soldier = SoldierDataHack.soldiers[index];
@@ -30,6 +38,22 @@ namespace Workers {
 
         public Data.Map GetMap() {
             return MapHack.GetData();
+        }
+        
+        public Data.Mission GetMission(string campaignName, string missionName) {
+            return IMissionStore.GetMission(campaignName, missionName);
+        }
+        
+        public Data.Mission GetCurrentMission() {
+            return GetMission(currentCampaign, currentMission);
+        }
+        
+        public GamePhase GetCurrentPhase() {
+            return currentPhase;
+        }
+
+        public void SetCurrentPhase(GamePhase value) {
+            currentPhase = value;
         }
     }
 }

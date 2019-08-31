@@ -64,9 +64,6 @@
   <ItemGroup>
     <Compile Include="Assets\ComboPack\SciFiSkin\Scripts\ShowSliderValue.cs" />
     <Compile Include="Assets\ComboPack\SciFiSkin\Scripts\TiltWindow.cs" />
-    <Compile Include="Assets\Src\Algorithms\AlienFrequencyCalculator.cs" />
-    <Compile Include="Assets\Src\Algorithms\AlienFrequencyInput.cs" />
-    <Compile Include="Assets\Src\Algorithms\AlienFrequencyOutput.cs" />
     <Compile Include="Assets\Src\Algorithms\AlienPathFinder.cs" />
     <Compile Include="Assets\Src\Algorithms\AlienPathFinder2.cs" />
     <Compile Include="Assets\Src\Algorithms\ExplosionCoverage.cs" />
@@ -166,6 +163,7 @@
     <Compile Include="Assets\Src\New\Migration\MapHack.cs" />
     <Compile Include="Assets\Src\New\Migration\SoldierDataHack.cs" />
     <Compile Include="Assets\Src\New\MovementPhase.cs" />
+    <Compile Include="Assets\Src\New\Other\MissionStore.cs" />
     <Compile Include="Assets\Src\New\Phase.cs" />
     <Compile Include="Assets\Src\New\PlayerActionHandler.cs" />
     <Compile Include="Assets\Src\New\Presenters\Presenter.cs" />

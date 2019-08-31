@@ -11,20 +11,12 @@ public class AlienDeployer {
         this.gamePhase = gamePhase;
 
         virtualMap = new VirtualMap();
-        var input = Squad.currentMission.enemyProfiles.Select((profile) => {
-            return new AlienFrequencyInput() {
-                alienType = profile.alienType,
-                frequency = profile.averageOccurrencesPerTurn,
-                threat = Resources.Load<AlienData>("Aliens/" + profile.alienType).threat
-            };
-        }).ToList();
-        frequencyCalculator = new AlienFrequencyCalculator(input);
+        
+        // Squad.currentMission.enemyProfiles
     }
 
     Map map;
     GamePhase gamePhase;
-
-    AlienFrequencyCalculator frequencyCalculator;
 
     public Spawner[] spawners { get { return map.spawners; } }
     public List<VirtualAlien> hiddenAliens { get { return virtualMap.virtualAliens; } }
@@ -55,24 +47,24 @@ public class AlienDeployer {
     void CreateNewSpawners() {
         var availableSpawners = AvailableSpawners();
 
-        var alienProfiles = frequencyCalculator.Iterate();
-        foreach (var profile in alienProfiles) {
-            while (profile.spawnCount > 0) {
-                if (availableSpawners.Count <= 0) break;
-                var spawner = availableSpawners[Random.Range (0, availableSpawners.Count)];
-                availableSpawners.Remove(spawner);
-                if (profile.spawnCount >= 3 && Random.value < 0.5f) {
-                    CreateVirtualSpawner(spawner.gridLocation, new GroupSpawnModule(profile.alienType, profile.spawnCount));
-                    profile.spawnCount = 0;
-                } else if (profile.spawnCount >= 3) {
-                    CreateVirtualSpawner(spawner.gridLocation, new TrickleSpawnModule(profile.alienType, profile.spawnCount));
-                    profile.spawnCount = 0;
-                } else {
-                    CreateVirtualSpawner(spawner.gridLocation, new SingleSpawnModule(profile.alienType));
-                    profile.spawnCount -= 1;
-                }
-            }
-        }
+        // var alienProfiles = frequencyCalculator.Iterate();
+        // foreach (var profile in alienProfiles) {
+        //     while (profile.spawnCount > 0) {
+        //         if (availableSpawners.Count <= 0) break;
+        //         var spawner = availableSpawners[Random.Range (0, availableSpawners.Count)];
+        //         availableSpawners.Remove(spawner);
+        //         if (profile.spawnCount >= 3 && Random.value < 0.5f) {
+        //             CreateVirtualSpawner(spawner.gridLocation, new GroupSpawnModule(profile.alienType, profile.spawnCount));
+        //             profile.spawnCount = 0;
+        //         } else if (profile.spawnCount >= 3) {
+        //             CreateVirtualSpawner(spawner.gridLocation, new TrickleSpawnModule(profile.alienType, profile.spawnCount));
+        //             profile.spawnCount = 0;
+        //         } else {
+        //             CreateVirtualSpawner(spawner.gridLocation, new SingleSpawnModule(profile.alienType));
+        //             profile.spawnCount -= 1;
+        //         }
+        //     }
+        // }
 
         virtualMap.Populate(soldierLocations);
     }
