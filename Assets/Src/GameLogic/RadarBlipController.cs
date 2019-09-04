@@ -1,9 +1,12 @@
 using UnityEngine;
 
 public class RadarBlipController {
-
+    
+    public static RadarBlipController instance { get; private set; }
+    
     public RadarBlipController(AlienDeployer alienDeployer) {
         this.alienDeployer = alienDeployer;
+        instance = this;
     }
 
     AlienDeployer alienDeployer;

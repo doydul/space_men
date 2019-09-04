@@ -5,11 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class AlienMovementPhaseDirector {
+    
+    public static AlienMovementPhaseDirector instance { get; private set; }
 
     private const float MOVEMENT_WAIT_TIME = 0.1f;
     private const float COMBAT_WAIT_TIME = 1f;
 
     public AlienMovementPhaseDirector(Map map, ICameraController cam, IAnimationReel animator) {
+        instance = this;
         this.map = map;
         this.cam = cam;
         this.animator = animator;

@@ -1,9 +1,9 @@
 public static class StartMovementPhaseHack {
     
     public static void StartMovementPhase() {
-        // foreach (var soldier in map.GetActors<Soldier>()) {
-        //     soldier.StartMovementPhase();
-        // }
-        // radarBlipController.ShowRadarBlips();
+        foreach (var soldier in Map.instance.GetActors<Soldier>()) {
+            soldier.StartMovementPhase();
+        }
+        RadarBlipController.instance.ShowRadarBlips();
     }
 }

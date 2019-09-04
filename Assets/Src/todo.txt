@@ -1,3 +1,11 @@
+# Refactoring alien spawner
+
+- Test current progress phase interactor in editor
+
+- If that works, replace call to AlienTurnHack.SpawnAliens(); with new version that uses new spawn mechanic (involves implementing new worker using SpawnProfile data object)
+
+
+
 # Next Phase
 
 - Show damage chance above aliens heads?

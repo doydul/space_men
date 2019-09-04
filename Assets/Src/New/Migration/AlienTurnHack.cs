@@ -1,10 +1,12 @@
+using UnityEngine;
+
 public static class AlienTurnHack {
 
-    public void SpawnAliens() {
-
+    public static void SpawnAliens() {
+        AlienDeployer.instance.Iterate();
     }
 
-    public void MoveAliens() {
-        
+    public static void MoveAliens() {
+        AlienMovementPhaseDirector.instance.MoveAliens();
     }
 }

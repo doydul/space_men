@@ -158,10 +158,13 @@
     <Compile Include="Assets\Src\New\Initializer.cs" />
     <Compile Include="Assets\Src\New\Interactors\InspectSelectedItemInteractor.cs" />
     <Compile Include="Assets\Src\New\Interactors\Interactor.cs" />
+    <Compile Include="Assets\Src\New\Interactors\ProgressGamePhaseInteractor.cs" />
     <Compile Include="Assets\Src\New\Interactors\SoldierPossibleMovesInteractor.cs" />
     <Compile Include="Assets\Src\New\Main.cs" />
+    <Compile Include="Assets\Src\New\Migration\AlienTurnHack.cs" />
     <Compile Include="Assets\Src\New\Migration\MapHack.cs" />
     <Compile Include="Assets\Src\New\Migration\SoldierDataHack.cs" />
+    <Compile Include="Assets\Src\New\Migration\StartMovementPhaseHack.cs" />
     <Compile Include="Assets\Src\New\MovementPhase.cs" />
     <Compile Include="Assets\Src\New\Other\MissionStore.cs" />
     <Compile Include="Assets\Src\New\Phase.cs" />

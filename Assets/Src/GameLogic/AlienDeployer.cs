@@ -3,10 +3,13 @@ using System.Linq;
 using System.Collections.Generic;
 
 public class AlienDeployer {
+    
+    public static AlienDeployer instance { get; private set; }
 
     private const int MIN_SPAWN_DISTANCE = 12;
 
     public AlienDeployer(Map map, GamePhase gamePhase) {
+        instance = this;
         this.map = map;
         this.gamePhase = gamePhase;
 
@@ -47,24 +50,8 @@ public class AlienDeployer {
     void CreateNewSpawners() {
         var availableSpawners = AvailableSpawners();
 
-        // var alienProfiles = frequencyCalculator.Iterate();
-        // foreach (var profile in alienProfiles) {
-        //     while (profile.spawnCount > 0) {
-        //         if (availableSpawners.Count <= 0) break;
-        //         var spawner = availableSpawners[Random.Range (0, availableSpawners.Count)];
-        //         availableSpawners.Remove(spawner);
-        //         if (profile.spawnCount >= 3 && Random.value < 0.5f) {
-        //             CreateVirtualSpawner(spawner.gridLocation, new GroupSpawnModule(profile.alienType, profile.spawnCount));
-        //             profile.spawnCount = 0;
-        //         } else if (profile.spawnCount >= 3) {
-        //             CreateVirtualSpawner(spawner.gridLocation, new TrickleSpawnModule(profile.alienType, profile.spawnCount));
-        //             profile.spawnCount = 0;
-        //         } else {
-        //             CreateVirtualSpawner(spawner.gridLocation, new SingleSpawnModule(profile.alienType));
-        //             profile.spawnCount -= 1;
-        //         }
-        //     }
-        // }
+        var spawner = availableSpawners[Random.Range (0, availableSpawners.Count)];
+        CreateVirtualSpawner(spawner.gridLocation, new SingleSpawnModule("alien"));
 
         virtualMap.Populate(soldierLocations);
     }

@@ -1,8 +1,10 @@
 using Interactors;
+using Data;
 
 public class UIController : Controller {
     
     public InspectSelectedItemInteractor inspectItemIntractor { private get; set; }
+    public ProgressGamePhaseInteractor progressGamePhaseInteractor { private get; set; }
     
     public void InspectSoldier(int soldierIndex) {
         var input = new InspectSelectedItemDataObject {
@@ -15,5 +17,9 @@ public class UIController : Controller {
     
     public void CloseInfoPanel() {
         inspectItemIntractor.Interact(new InspectSelectedItemDataObject());
+    }
+    
+    public void ProgressGamePhase() {
+        progressGamePhaseInteractor.Interact(new ProgressGamePhaseInput());
     }
 }

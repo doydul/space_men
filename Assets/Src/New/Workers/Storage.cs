@@ -19,7 +19,7 @@ namespace Workers {
         string currentCampaign = "Default";
         string currentMission = "Mission1";
         
-        GamePhase currentPhase;
+        Data.GamePhase currentPhase;
         
         public Data.Soldier GetSoldier(int index) {
             var soldier = SoldierDataHack.soldiers[index];
@@ -41,19 +41,23 @@ namespace Workers {
         }
         
         public Data.Mission GetMission(string campaignName, string missionName) {
-            return IMissionStore.GetMission(campaignName, missionName);
+            return missionStore.GetMission(campaignName, missionName);
         }
         
         public Data.Mission GetCurrentMission() {
             return GetMission(currentCampaign, currentMission);
         }
         
-        public GamePhase GetCurrentPhase() {
+        public Data.GamePhase GetCurrentPhase() {
             return currentPhase;
         }
 
-        public void SetCurrentPhase(GamePhase value) {
+        public void SetCurrentPhase(Data.GamePhase value) {
             currentPhase = value;
+        }
+        
+        public void UpdateSoldier(int soldierIndex, Data.Soldier newValue) {
+            // TODO when this is no longer just a hack
         }
     }
 }
