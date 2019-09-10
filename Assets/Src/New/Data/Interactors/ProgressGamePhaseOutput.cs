@@ -2,8 +2,9 @@ namespace Data {
     
     public struct ProgressGamePhaseOutput {
         
-        public GamePhase currentPhase;
+        public Data.GamePhase currentPhase;
         public AlienAction[] alienActions;
+        public Data.Alien[] newAliens;
     }
 
     public struct AlienAction {

@@ -18,22 +18,40 @@ public class Initializer : MonoBehaviour {
             },
             { typeof(MapController),
                 new Dictionary<Type, Type> {
-                    { typeof(SoldierPossibleMovesInteractor), typeof(SoldierPossibleMovesPresenter) }
+                    { typeof(SoldierPossibleMovesInteractor), typeof(SoldierPossibleMovesPresenter) },
+                    { typeof(MissionStartInteractor), typeof(MissionStartPresenter) }
                 }
             }
         };
     
-    void Awake() {
+    GameState gameState;
+    
+    void Start() {
         Storage.Init(new MissionStore());
+
+        gameState = new GameState();
+        var mapStore = new MapStore();
+        mapStore.map = Map.instance;
+        gameState.mapStore = mapStore;
+        gameState.Init();
         
+        LoadDynamicDependencies();
+        
+        FindObjectOfType<MapController>().StartMission();
+    }
+
+    void LoadDynamicDependencies() {
         foreach (var controllerType in controllerInteractorPresenterMapping) {
             var controller = FindObjectOfType(controllerType.Key);
             foreach (var interactorType in controllerType.Value) {
                 var interactor = Activator.CreateInstance(interactorType.Key);
                 if (interactorType.Value != null) { 
-                    var prop = interactorType.Key.GetProperty("presenter");
+                    var presprop = interactorType.Key.GetProperty("presenter");
                     var presenter = FindObjectOfType(interactorType.Value);
-                    prop.SetValue(interactor, presenter);
+                    presprop.SetValue(interactor, presenter);
+
+                    var gamestateprop = interactorType.Key.GetProperty("gameState");
+                    gamestateprop.SetValue(interactor, gameState);
                 }
                 foreach (var property in controllerType.Key.GetProperties()) {
                     if (property.PropertyType == interactorType.Key) {

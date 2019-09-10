@@ -3,10 +3,13 @@ using System.Linq;
 public class FogController {
 
     private const int FOG_RADIUS = 6;
+    
+    public static FogController instance { get; private set; }
 
     public FogController(IGameMap map, IGameEvent fogChanged) {
         this.map = map;
         this.fogChanged = fogChanged;
+        instance = this;
     }
 
     IGameMap map;

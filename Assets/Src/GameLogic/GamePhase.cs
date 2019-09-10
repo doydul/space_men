@@ -10,8 +10,8 @@ public class GamePhase : MonoBehaviour {
 
     public Phase phase { get; private set; }
 
-    public bool movement { get { return phase is MovementPhase; } }
-    public bool shooting { get { return phase is ShootingPhase; } }
+    public bool movement { get { return Workers.Storage.instance.GetCurrentPhase() == Data.GamePhase.Movement; } }
+    public bool shooting { get { return Workers.Storage.instance.GetCurrentPhase() == Data.GamePhase.Shooting; } }
 
     void Start() {
         phase = phaseFactory.MakeMovementPhase();

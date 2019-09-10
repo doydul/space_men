@@ -1,39 +1,46 @@
 # Refactoring alien spawner
 
-- Test current progress phase interactor in editor
+- Refactor MapState and GameState to use classes internally instead of structs
 
-- If that works, replace call to AlienTurnHack.SpawnAliens(); with new version that uses new spawn mechanic (involves implementing new worker using SpawnProfile data object)
+- Also make internal actor representation polymorphic
+
+- Remove alienIndex and soldierIndex from Cell object, replace with actorIndex
+
+- Test again in editor 
+
+- Implement moving of soldier via interactor
+
+- Follow notes in ProgressGamePhaseInteractor
 
 
 
-# Next Phase
 
-- Show damage chance above aliens heads?
+# Random Ideas
 
-
-
-# Polish
-
-- Re-add templar and alien health bars
-
-# Code
-
+- Re-add templar and alien health bars (show temporarily after something gets hurt)
 - Allow player to select aliens as well as soldiers, and show how far they can move/attack (also show stats like health, armour, damage)
-
-## Skills system
-
-- Might have to put a pin in this one, but a basic system of earning exp and levelling up would be nice
+- Friendly fire damage from blast weapons
+- Persistent flames from flame weapons
+- Show damage chance above aliens heads?
 
 ## UI for inspecting templars and aliens
 
-## Friendly fire damage from blast weapons
+### Movement Phase
 
-## Persistent flames from flame weapons
+- Click on soldier, select soldier
+- Click on alien, select alien
 
-- Should last 1 or 2 turns and set fire to anything that passes through them
+### Shooting Phase
 
-- Flames do 1 tick of damage at the moment when the target is set on fire and then 1 tick at the end of each turn thereafter
+- Click soldier, select soldier,
+- Click alien who is _not_ currently a valid shooting target, select alien
 
+### General
+
+- Needs to be a button somewhere to toggle info view (current keyboard shortcut is no good)
+- When soldier is selected, shows valid moves / shoot targets
+- When alien is selected, shows how far the alien can move, with different colours denoting the number of move iterations
+- When anything is selected, should activate it's healthbar
 
 # Art
 

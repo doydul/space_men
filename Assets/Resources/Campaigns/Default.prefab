@@ -1,22 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1255004536557680}
-  m_IsPrefabParent: 1
 --- !u!1 &1255004536557680
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4686101733372730}
   - component: {fileID: 114726355796877630}
@@ -30,9 +20,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4686101733372730
 Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255004536557680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5890994, y: -0.5261255, z: -6.9590735}
@@ -41,11 +32,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114726355796877630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255004536557680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea375a0775b94ead99ec3e73782413c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114326124306294568
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255004536557680}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -56,9 +60,20 @@ MonoBehaviour:
   missionName: First Mission
   enemyProfiles:
   - alienType: Advanced
-    averageOccurrencesPerTurn: 0.5
+    groupSize: 1
+    spawnType: 0
+    chance: 0.2
+    cooldown: 3
   - alienType: Alien
-    averageOccurrencesPerTurn: 5
+    groupSize: 3
+    spawnType: 0
+    chance: 0.3
+    cooldown: 3
+  - alienType: Alien
+    groupSize: 1
+    spawnType: 0
+    chance: 0.5
+    cooldown: 0
   briefing: 'Each turn is split into 2 phases; Movement and Shooting. Aliens move
     during the player''s Shooting phase, and the player gets chances to shoot them
     as they approach.
@@ -71,14 +86,3 @@ MonoBehaviour:
 
     The player wins by reaching the objective, which is marked on the map (there isn''t
     a win screen at the moment, you''ll just have to congratulate yourself)'
---- !u!114 &114726355796877630
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255004536557680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ea375a0775b94ead99ec3e73782413c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

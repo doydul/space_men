@@ -10,11 +10,16 @@ public class MapController : Controller {
     }
     
     public SoldierPossibleMovesInteractor soldierPossibleMovesInteractor { private get; set; }
+    public MissionStartInteractor missionStartInteractor { private get; set; }
     
     public void ShowPossibleMovesFor(int soldierIndex) {
         var input = new SoldierPossibleMovesInput {
             soldierIndex = soldierIndex
         };
         soldierPossibleMovesInteractor.Interact(input);
+    }
+    
+    public void StartMission() {
+        missionStartInteractor.Interact(new MissionStartInput());
     }
 }

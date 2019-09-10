@@ -9,12 +9,12 @@ namespace Interactors {
         
         public void Interact(SoldierPossibleMovesInput input) {
             var soldier = Storage.instance.GetSoldier(input.soldierIndex);
-            var map = Storage.instance.GetMap();
+            var map = gameState.map;
             
             var result = new List<CheckedCell>();
             var checkedPositions = new List<Position>() { soldier.position };
             var LeafCells = new List<CheckedCell>() { new CheckedCell {
-                cell = map.cells[soldier.position.x, soldier.position.y],
+                cell = map.GetCell(soldier.position.x, soldier.position.y),
                 distance = 0
             } };
 

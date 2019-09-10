@@ -4,20 +4,17 @@ namespace Workers {
     
     public class Storage {
         
-        static Storage _instance;
         static IMissionStore missionStore;
         
-        public static Storage instance { get {
-            if (_instance == null) _instance = new Storage();
-            return _instance;
-        } }
+        public static Storage instance { get; private set; }
         
         public static void Init(IMissionStore missionStore) {
             Storage.missionStore = missionStore;
+            instance = new Storage();
         }
         
         string currentCampaign = "Default";
-        string currentMission = "Mission1";
+        string currentMission = "First Mission";
         
         Data.GamePhase currentPhase;
         
@@ -34,10 +31,6 @@ namespace Workers {
                 moved = soldier.tilesMoved,
                 position = new Data.Position { x = (int)soldier.gridLocation.x, y = (int)soldier.gridLocation.y}
             };
-        }
-
-        public Data.Map GetMap() {
-            return MapHack.GetData();
         }
         
         public Data.Mission GetMission(string campaignName, string missionName) {
