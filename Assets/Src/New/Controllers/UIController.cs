@@ -6,7 +6,7 @@ public class UIController : Controller {
     public InspectSelectedItemInteractor inspectItemIntractor { private get; set; }
     public ProgressGamePhaseInteractor progressGamePhaseInteractor { private get; set; }
     
-    public void InspectSoldier(int soldierIndex) {
+    public void InspectSoldier(long soldierIndex) {
         var input = new InspectSelectedItemDataObject {
             isBeingOpened = true,
             isSoldier = true,

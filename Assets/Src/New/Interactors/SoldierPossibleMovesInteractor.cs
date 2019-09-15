@@ -8,7 +8,7 @@ namespace Interactors {
     public class SoldierPossibleMovesInteractor : Interactor<SoldierPossibleMovesOutput> {
         
         public void Interact(SoldierPossibleMovesInput input) {
-            var soldier = Storage.instance.GetSoldier(input.soldierIndex);
+            var soldier = gameState.GetActor(input.soldierIndex) as SoldierActor;
             var map = gameState.map;
             
             var result = new List<CheckedCell>();
@@ -25,8 +25,8 @@ namespace Interactors {
                     foreach (var adjCell in new AdjacentCells(map).Iterate(cell.cell.position)) {
                         if (!checkedPositions.Contains(adjCell.position)) { 
                             if (!adjCell.isWall &&
-                                (adjCell.actorType == ActorType.None || adjCell.actorType == ActorType.Soldier) &&
-                                !(new AdjacentCells(map).Iterate(adjCell.position).Any(c => c.actorType == ActorType.Alien))) {
+                                (!adjCell.actor.exists || adjCell.actor is SoldierActor) &&
+                                !(new AdjacentCells(map).Iterate(adjCell.position).Any(c => c.actor is AlienActor))) {
                                 var checkedCell = new CheckedCell {
                                     cell = adjCell,
                                     distance = cell.distance + 1
@@ -43,7 +43,7 @@ namespace Interactors {
             
             presenter.Present(new SoldierPossibleMovesOutput {
                 possibleMoveLocations = result.Where(checkedCell =>
-                    checkedCell.cell.actorType == ActorType.None &&
+                    !checkedCell.cell.actor.exists &&
                     !checkedCell.cell.isFoggy
                 ).Select(checkedCell => new PossibleMoveLocation {
                     position = checkedCell.cell.position,
@@ -55,7 +55,7 @@ namespace Interactors {
     
     struct CheckedCell {
         
-        public Cell cell;
+        public CellType cell;
         public int distance;
     }
 }

@@ -1,18 +1,21 @@
 # Refactoring alien spawner
 
-- Refactor MapState and GameState to use classes internally instead of structs
+## Implement class that will find the spawn locations of aliens given the spawn point location (and add to ProgressGamePhaseInteractor)
 
-- Also make internal actor representation polymorphic
+##
 
-- Remove alienIndex and soldierIndex from Cell object, replace with actorIndex
+- Implement ProgressGamePhasePresenter (update current phase text, change soldier icons if phase has changed, create new aliens, move aliens, and show attack animations for aliens)
 
-- Test again in editor 
+- Implement alien movement as part of ProgressGamePhaseInteractor
 
-- Implement moving of soldier via interactor
+- Implement soldier turning as an interactor (important for shooting!)
 
-- Follow notes in ProgressGamePhaseInteractor
+- Implement Shooting as interactor
 
 
+# Not Urgent
+
+- Trigger walk on tile events in MoveSoldierPresenter
 
 
 # Random Ideas

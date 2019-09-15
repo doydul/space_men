@@ -13,13 +13,14 @@ public class Initializer : MonoBehaviour {
             { typeof(UIController),
                 new Dictionary<Type, Type> {
                     { typeof(InspectSelectedItemInteractor), typeof(SelectedItemInfoPresenter) },
-                    { typeof(ProgressGamePhaseInteractor), null }
+                    { typeof(ProgressGamePhaseInteractor), typeof(ProgressGamePhasePresenter) }
                 }
             },
             { typeof(MapController),
                 new Dictionary<Type, Type> {
                     { typeof(SoldierPossibleMovesInteractor), typeof(SoldierPossibleMovesPresenter) },
-                    { typeof(MissionStartInteractor), typeof(MissionStartPresenter) }
+                    { typeof(MissionStartInteractor), typeof(MissionStartPresenter) },
+                    { typeof(MoveSoldierInteractor), typeof(MoveSoldierPresenter) }
                 }
             }
         };

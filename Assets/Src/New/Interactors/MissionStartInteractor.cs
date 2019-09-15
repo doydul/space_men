@@ -9,22 +9,23 @@ namespace Interactors {
             var output = new MissionStartOutput();
             
             var squad = GenerateDefaultSquad();
-            output.soldiers = new SoldierWithIndex[squad.Length];
+            output.soldiers = new Data.Soldier[squad.Length];
             
+            int index = 0;
             foreach (var soldier in squad) {
-                var index = gameState.AddSoldier(soldier);
-                output.soldiers[index] = new SoldierWithIndex {
-                    soldier = soldier,
-                    index = index
-                };
+                gameState.AddActor(soldier);
+                output.soldiers[index] = soldier.ToValueType();
+                index++;
             }
+            
+            AlienPathingGrid.Calculate(gameState);
             
             presenter.Present(output);
         }
         
-        Data.Soldier[] GenerateDefaultSquad() {
+        SoldierActor[] GenerateDefaultSquad() {
             var spawners = gameState.map.spawners;
-            return new Data.Soldier[4] {
+            return new SoldierActor[4] {
                 SoldierGenerator.Default().At(spawners[0]).Build(),
                 SoldierGenerator.Default().At(spawners[1]).Build(),
                 SoldierGenerator.WithWeapon("Grenade Launcher").At(spawners[2]).Build(),

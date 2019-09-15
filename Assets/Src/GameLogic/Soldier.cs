@@ -7,7 +7,7 @@ public class Soldier : Actor {
     public Weapon weapon;
     public Transform muzzleFlashLocation;
     
-    public int index { get; set; }
+    public long index { get; set; }
     public int health { get; set; }
     public int tilesMoved { get; set; }
     public int shotsFiredThisRound { get; set; }

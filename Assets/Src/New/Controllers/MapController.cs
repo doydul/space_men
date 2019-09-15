@@ -11,8 +11,9 @@ public class MapController : Controller {
     
     public SoldierPossibleMovesInteractor soldierPossibleMovesInteractor { private get; set; }
     public MissionStartInteractor missionStartInteractor { private get; set; }
+    public MoveSoldierInteractor moveSoldierInteractor { private get; set; }
     
-    public void ShowPossibleMovesFor(int soldierIndex) {
+    public void ShowPossibleMovesFor(long soldierIndex) {
         var input = new SoldierPossibleMovesInput {
             soldierIndex = soldierIndex
         };
@@ -21,5 +22,15 @@ public class MapController : Controller {
     
     public void StartMission() {
         missionStartInteractor.Interact(new MissionStartInput());
+    }
+    
+    public void MoveSoldier(long soldierIndex, UnityEngine.Vector2 targetLocation) {
+        moveSoldierInteractor.Interact(new MoveSoldierInput {
+            soldierIndex = soldierIndex,
+            targetPosition = new Position(
+                (int)targetLocation.x,
+                (int)targetLocation.y
+            ) 
+        });
     }
 }

@@ -1,11 +1,12 @@
+using Data;
+
 namespace Workers {
     
     public static class SoldierGenerator {
         
         public static Builder Default() {
-            return new Builder(new Data.Soldier {
-                health = 86,
-                maxHealth = 86,
+            return new Builder(new SoldierActor {
+                health = new Health(86),
                 armourName = "Basic",
                 weaponName = "Assault Rifle",
                 baseMovement = 4,
@@ -27,9 +28,9 @@ namespace Workers {
         
         public class Builder {
             
-            Data.Soldier data;
+            SoldierActor data;
             
-            public Builder(Data.Soldier data) {
+            public Builder(SoldierActor data) {
                 this.data = data;
             }
             
@@ -54,7 +55,7 @@ namespace Workers {
                 return this;
             }
             
-            public Data.Soldier Build() {
+            public SoldierActor Build() {
                 return data;
             }
         }

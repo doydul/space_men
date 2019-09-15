@@ -13,7 +13,7 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
         SoldierDataHack.Init();
         foreach (var soldier in input.soldiers) {
             SoldierDataHack.soldiers.Add(
-                InstantiateSoldier(soldier.soldier, soldier.index)
+                InstantiateSoldier(soldier, soldier.index)
             );
         }
         FogController.instance.Recalculate();
@@ -21,7 +21,7 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
         RadarBlipController.instance.ShowRadarBlips();
     }
     
-    Soldier InstantiateSoldier(Data.Soldier soldierData, int index) {
+    Soldier InstantiateSoldier(Data.Soldier soldierData, long index) {
         var trans = Instantiate(Resources.Load<Transform>("Prefabs/Soldier")) as Transform;
 
         var soldier = trans.GetComponent<Soldier>();

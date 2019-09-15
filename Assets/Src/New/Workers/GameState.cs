@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Workers {
     
     public class GameState {
@@ -6,47 +8,25 @@ namespace Workers {
 
         public MapState map { get; private set; }
         
-        ActorStore<Data.Soldier> soldiers;
-        ActorStore<Data.Alien> aliens;
+        Actors actors;
 
         public void Init() {
-            soldiers = new ActorStore<Data.Soldier>();
-            aliens = new ActorStore<Data.Alien>();
+            actors = new Actors();
 
             map = new MapState();
             map.Init(mapStore.GetMap());
         }
-        
-        public int AddSoldier(Data.Soldier soldier) {
-            return soldiers.AddActor(soldier);
-        }
-        
-        public void UpdateSoldier(int index, Data.Soldier soldier) {
-            soldiers.UpdateActor(index, soldier);
-        }
-        
-        public int[] GetSoldierIndexes() {
-            return soldiers.GetIndexes();
-        }
 
-        public Data.Soldier GetSoldier(int index) {
-            return soldiers.GetActor(index);
+        public Data.Actor GetActor(long uniqueId) {
+            return actors.GetActor(uniqueId);
         }
         
-        public int AddAlien(Data.Alien alien) {
-            return aliens.AddActor(alien);
+        public IEnumerable<Data.Actor> GetActors() {
+            return actors.GetActors();
         }
         
-        public void UpdateAlien(int index, Data.Alien alien) {
-            aliens.UpdateActor(index, alien);
-        }
-        
-        public int[] GetAlienIndexes() {
-            return aliens.GetIndexes();
-        }
-        
-        public Data.Alien GetAlien(int index) {
-            return aliens.GetActor(index);
+        public long AddActor(Data.Actor actor) {
+            return actors.AddActor(actor);
         }
     }
 }

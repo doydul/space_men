@@ -41,13 +41,7 @@ public class SoldierActionHandler {
     }
 
     void PerformMoveActionFor(Soldier soldier, Tile targetTile) {
-        if (!AnyMovingActionApplicableFor(soldier, targetTile)) return;
-        var path = pathingAndLOS.GetPath(soldier.tile, targetTile);
-        soldier.MoveTo(targetTile);
-        soldier.TurnTo(targetTile.gridLocation - path.Last());
-        TriggerTileWalkedOnEvents(path.nodes, targetTile);
-        soldierMoved.Invoke();
-        MapController.instance.ShowPossibleMovesFor(soldier.index);
+        MapController.instance.MoveSoldier(soldier.index, targetTile.gridLocation);
     }
 
     void PerformShootingActionFor(Soldier soldier, Tile targetTile) {

@@ -1,13 +1,16 @@
-using Data;
-using Workers;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+
+using Data;
+using Workers;
 
 namespace Interactors {
     
     public class ProgressGamePhaseInteractor : Interactor<ProgressGamePhaseOutput> {
 
         private const int SHOOTING_PHASE_ITERATIONS = 3;
+        private const int MIN_SPAWN_DISTANCE = 12;
         
         int stage;
         AlienSpawnerGenerator alienSpawnerGenerator;
@@ -21,9 +24,9 @@ namespace Interactors {
         public void Interact(ProgressGamePhaseInput input) {
             var currentPhase = Storage.instance.GetCurrentPhase();
             if (currentPhase == Data.GamePhase.Movement) {
-                StartShootingPhase();
+                presenter.Present(StartShootingPhase());
             } else {
-                ProgessShootingPhase();
+                presenter.Present(ProgessShootingPhase());
             }
         }
 
@@ -56,26 +59,61 @@ namespace Interactors {
         void StartMovementPhase() {
             Storage.instance.SetCurrentPhase(Data.GamePhase.Movement);
             StartMovementPhaseHack.StartMovementPhase();
-            // Reset soldier variables and change from sprint symbols to ammo symbols
+            foreach (var actor in gameState.GetActors()) {
+                if (actor is SoldierActor) {
+                    var soldier = actor as SoldierActor;
+                    soldier.ammoSpent = 0;
+                    soldier.moved = 0;
+                }
+            }
         }
         
         void SpawnAliens(ref ProgressGamePhaseOutput result) {
+            var newAliens = new List<Data.Alien>();
             var newSpawners = alienSpawnerGenerator.Iterate();
-            var spawnPoints = GetAvailableSpawnPoints(newSpawners.Length);
+            var spawnPoints = GetRandomSpawnPoints(newSpawners.Length);
             for (int i = 0; i < newSpawners.Length; i++) {
                 newSpawners[i].position = spawnPoints[i];
             }
             alienSpawners.AddRange(newSpawners);
             
-            foreach (var spawner in alienSpawners) {
-                // Add aliens to result
+            foreach (var spawner in new List<AlienSpawner>(alienSpawners)) {
+                if (spawner.spawnType == Data.AlienSpawnType.Trickle) {
+                    newAliens.Add(new Data.Alien {
+                       alienType = spawner.alienType,
+                       position = spawner.position // TODO need to work out the position properly
+                    });
+                    spawner.remainingAliens -= 1;
+                } else {
+                    for (int i = 0; i < spawner.remainingAliens; i++) {
+                        newAliens.Add(new Data.Alien {
+                           alienType = spawner.alienType,
+                           position = spawner.position // TODO need to work out the position properly
+                        });
+                    }
+                    spawner.remainingAliens = 0;
+                }
+                if (spawner.remainingAliens <= 0) alienSpawners.Remove(spawner);
             }
+            result.newAliens = newAliens.ToArray();
         }
         
-        Position[] GetAvailableSpawnPoints(int count) {
-            // gameState.map.alienSpawners;
-            // Filter out spawners that are too close or already occupied and return a random sample
-            return null;
+        Position[] GetRandomSpawnPoints(int count) {
+            var result = new Position[count];
+            var filteredSpawners = gameState.map.alienSpawners.Where(gameStateSpawner => {
+                return !alienSpawners.Any(spawner => spawner.position == gameStateSpawner);
+            }).Where(gameStateSpawner => {
+                return !gameState.GetActors().Any(actor => {
+                    return actor is SoldierActor && (actor.position - gameStateSpawner).distance < MIN_SPAWN_DISTANCE;
+                });
+            }).ToList();
+            
+            for (int i = 0; i < count; i++) {
+                var randomIndex = Random.Range(0, filteredSpawners.Count);
+                result[i] = filteredSpawners[randomIndex];
+                filteredSpawners.RemoveAt(randomIndex);
+            }
+            return result;
         }
     }
 }

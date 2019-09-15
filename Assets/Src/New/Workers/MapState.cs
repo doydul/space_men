@@ -1,12 +1,13 @@
 using Data;
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Workers {
 
     public class MapState {
 
-        public Cell[,] cells;
+        public CellType[,] cells;
         
         public int width { get { return cells.GetLength(0); } }
         public int height { get { return cells.GetLength(1); } }
@@ -15,21 +16,30 @@ namespace Workers {
         public Position[] alienSpawners { get; private set; }
 
         public void Init(Cell[,] cells) {
-            this.cells = cells;
+            SetCells(cells);
             InitSpawners();
             InitAlienSpawners();
         }
 
-        public Cell GetCell(Position position) {
+        public CellType GetCell(Position position) {
             return cells[position.x, position.y];
         }
         
-        public Cell GetCell(int x, int y) {
+        public CellType GetCell(int x, int y) {
             return cells[x, y];
         }
 
-        public void UpdateCell(Position position, Cell updatedCell) {
+        public void UpdateCell(Position position, CellType updatedCell) {
             cells[position.x, position.y] = updatedCell;
+        }
+        
+        void SetCells(Cell[,] cells) {
+            this.cells = new CellType[cells.GetLength(0), cells.GetLength(1)];
+            for (int i = 0; i < cells.GetLength(0); i++) {
+                for (int j = 0; j < cells.GetLength(1); j++) {
+                    this.cells[i, j] = CellType.FromValueType(cells[i, j]);
+                }
+            }
         }
         
         void InitSpawners() {

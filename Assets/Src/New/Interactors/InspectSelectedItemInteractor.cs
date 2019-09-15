@@ -1,4 +1,5 @@
 using Workers;
+using Data;
 
 namespace Interactors {
     
@@ -12,8 +13,8 @@ namespace Interactors {
             }
             result.showInfoPanel = true;
             if (input.isSoldier) {
-                var soldierData = Storage.instance.GetSoldier(input.soldierIndex);
-                result.infoText = "health: " + soldierData.health + "/" + soldierData.maxHealth + "\n" +
+                var soldierData = gameState.GetActor(input.soldierIndex) as SoldierActor;
+                result.infoText = "health: " + soldierData.health.current + "/" + soldierData.health.max + "\n" +
                                   "armour: " + soldierData.armourName + "\n"+
                                   "weapon: " + soldierData.weaponName + "\n"+
                                   "exp: " + soldierData.exp;

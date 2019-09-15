@@ -144,6 +144,7 @@
     <Compile Include="Assets\Src\New\Controllers\UIController.cs" />
     <Compile Include="Assets\Src\New\CurrentSelectionState.cs" />
     <Compile Include="Assets\Src\New\DelayedAction.cs" />
+    <Compile Include="Assets\Src\New\DependencyInjector.cs" />
     <Compile Include="Assets\Src\New\FogChanged.cs" />
     <Compile Include="Assets\Src\New\Game\AlienPathingWrapperI.cs" />
     <Compile Include="Assets\Src\New\Game\CombatInstance.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Assets\Src\New\Interactors\InspectSelectedItemInteractor.cs" />
     <Compile Include="Assets\Src\New\Interactors\Interactor.cs" />
     <Compile Include="Assets\Src\New\Interactors\MissionStartInteractor.cs" />
+    <Compile Include="Assets\Src\New\Interactors\MoveSoldierInteractor.cs" />
     <Compile Include="Assets\Src\New\Interactors\ProgressGamePhaseInteractor.cs" />
     <Compile Include="Assets\Src\New\Interactors\SoldierPossibleMovesInteractor.cs" />
     <Compile Include="Assets\Src\New\Main.cs" />
@@ -171,7 +173,9 @@
     <Compile Include="Assets\Src\New\Phase.cs" />
     <Compile Include="Assets\Src\New\PlayerActionHandler.cs" />
     <Compile Include="Assets\Src\New\Presenters\MissionStartPresenter.cs" />
+    <Compile Include="Assets\Src\New\Presenters\MoveSoldierPresenter.cs" />
     <Compile Include="Assets\Src\New\Presenters\Presenter.cs" />
+    <Compile Include="Assets\Src\New\Presenters\ProgressGamePhasePresenter.cs" />
     <Compile Include="Assets\Src\New\Presenters\SelectedItemInfoPresenter.cs" />
     <Compile Include="Assets\Src\New\Presenters\SoldierPossibleMovesPresenter.cs" />
     <Compile Include="Assets\Src\New\ShootAction.cs" />
@@ -181,9 +185,12 @@
     <Compile Include="Assets\Src\New\SoldierPathingAndLOS.cs" />
     <Compile Include="Assets\Src\New\UIInputHandler.cs" />
     <Compile Include="Assets\Src\New\ViewableState.cs" />
-    <Compile Include="Assets\Src\New\Workers\ActorStore.cs" />
+    <Compile Include="Assets\Src\New\Workers\Actors.cs" />
     <Compile Include="Assets\Src\New\Workers\AdjacentCells.cs" />
+    <Compile Include="Assets\Src\New\Workers\AlienPathingGrid.cs" />
+    <Compile Include="Assets\Src\New\Workers\AlienSpawn.cs" />
     <Compile Include="Assets\Src\New\Workers\AlienSpawnerGenerator.cs" />
+    <Compile Include="Assets\Src\New\Workers\CellIterator.cs" />
     <Compile Include="Assets\Src\New\Workers\GameState.cs" />
     <Compile Include="Assets\Src\New\Workers\MapState.cs" />
     <Compile Include="Assets\Src\New\Workers\SoldierGenerator.cs" />

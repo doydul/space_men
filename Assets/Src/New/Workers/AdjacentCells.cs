@@ -11,7 +11,7 @@ namespace Workers {
             this.map = map;
         }
         
-        public IEnumerable<Cell> Iterate(Position position) {
+        public IEnumerable<CellType> Iterate(Position position) {
             var x = position.x;
             var y = position.y;
             if (CellExists(x - 1, y)) yield return map.GetCell(x - 1, y);
