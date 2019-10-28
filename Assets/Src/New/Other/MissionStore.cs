@@ -1,4 +1,5 @@
 using System.Linq;
+using System;
 
 public class MissionStore : IMissionStore {
     
@@ -17,7 +18,7 @@ public class MissionStore : IMissionStore {
     
     Data.SpawnProfile ProfileConverter(MissionEnemyProfile profile) {
         return new Data.SpawnProfile {
-            alienType = profile.alienType,
+            alienType = (Data.AlienType)Enum.Parse(typeof(Data.AlienType), profile.alienType, true),
             groupSize = profile.groupSize,
             spawnType = (Data.AlienSpawnType)profile.spawnType,
             chance = profile.chance,

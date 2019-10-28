@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using UnityEngine;
 
 using Data;
 
@@ -11,19 +12,37 @@ namespace Workers {
         private const int MAX_SPAWN_DISTANCE = 13;
         
         Position spawnPoint;
-        Data.Alien[] aliens;
-        
-        public AlienSpawn(Position spawnPoint, Data.Alien[] aliens) {
+        Queue<Data.AlienType> aliens;
+
+        public AlienSpawn(Position spawnPoint, Data.AlienType[] aliens) {
             this.spawnPoint = spawnPoint;
-            this.aliens = aliens;
+            this.aliens = new Queue<Data.AlienType>(aliens);
         }
         
-        public void Execute(GameState gameState) {
-            var iterator = new CellIterator(spawnPoint, cell => !cell.isWall);
+        public Data.Alien[] Execute(GameState gameState, AlienPathingGrid pathingGrid) {
+            var result = new List<Data.Alien>();
+            int spawnDistance = UnityEngine.Random.Range(MIN_SPAWN_DISTANCE, MAX_SPAWN_DISTANCE);
             
-            foreach (var node in iterator.Iterate(gameState.map)) {
-                // YOU ARE HERE
+            var squareIteration = pathingGrid.GetSquare(spawnPoint);
+            if (squareIteration.distanceToNearestSoldier < MIN_SPAWN_DISTANCE) return result.ToArray();
+            while (squareIteration.distanceToNearestSoldier > spawnDistance) {
+                squareIteration = squareIteration.nextSquare;
             }
+
+            var iterator = new CellIterator(squareIteration.position, cell => !cell.isWall);
+            foreach (var node in iterator.Iterate(gameState.map)) {
+                var square = pathingGrid.GetSquare(node.cell.position);
+                if (!node.cell.hasActor && square.distanceToNearestSoldier >= MIN_SPAWN_DISTANCE) {
+                    var alienType = aliens.Dequeue();
+                    result.Add(new Data.Alien {
+                        alienType = alienType,
+                        position = node.cell.position,
+                        facing = square.facing
+                    });
+                }
+                if (aliens.Count <= 0) break;
+            }
+            return result.ToArray();
         }
     }
 }

@@ -164,10 +164,10 @@
     <Compile Include="Assets\Src\New\Interactors\ProgressGamePhaseInteractor.cs" />
     <Compile Include="Assets\Src\New\Interactors\SoldierPossibleMovesInteractor.cs" />
     <Compile Include="Assets\Src\New\Main.cs" />
-    <Compile Include="Assets\Src\New\Migration\AlienTurnHack.cs" />
     <Compile Include="Assets\Src\New\Migration\SoldierDataHack.cs" />
     <Compile Include="Assets\Src\New\Migration\StartMovementPhaseHack.cs" />
     <Compile Include="Assets\Src\New\MovementPhase.cs" />
+    <Compile Include="Assets\Src\New\Other\AlienStore.cs" />
     <Compile Include="Assets\Src\New\Other\MapStore.cs" />
     <Compile Include="Assets\Src\New\Other\MissionStore.cs" />
     <Compile Include="Assets\Src\New\Phase.cs" />
@@ -187,7 +187,9 @@
     <Compile Include="Assets\Src\New\ViewableState.cs" />
     <Compile Include="Assets\Src\New\Workers\Actors.cs" />
     <Compile Include="Assets\Src\New\Workers\AdjacentCells.cs" />
+    <Compile Include="Assets\Src\New\Workers\AlienGenerator.cs" />
     <Compile Include="Assets\Src\New\Workers\AlienPathingGrid.cs" />
+    <Compile Include="Assets\Src\New\Workers\Aliens.cs" />
     <Compile Include="Assets\Src\New\Workers\AlienSpawn.cs" />
     <Compile Include="Assets\Src\New\Workers\AlienSpawnerGenerator.cs" />
     <Compile Include="Assets\Src\New\Workers\CellIterator.cs" />
@@ -195,6 +197,7 @@
     <Compile Include="Assets\Src\New\Workers\MapState.cs" />
     <Compile Include="Assets\Src\New\Workers\SoldierGenerator.cs" />
     <Compile Include="Assets\Src\New\Workers\SoldierMove.cs" />
+    <Compile Include="Assets\Src\New\Workers\Soldiers.cs" />
     <Compile Include="Assets\Src\New\Workers\Storage.cs" />
     <Compile Include="Assets\Src\New\World\AlienAttackAnimation.cs" />
     <Compile Include="Assets\Src\New\World\AnimationInteractor.cs" />
@@ -859,6 +862,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Data.csproj">
+      <Project>{DCE87752-BF18-7720-5A64-7D071E08B4B6}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
       <Project>{AA35C94F-BCE5-0C35-5305-FA28AE047143}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
@@ -866,10 +873,6 @@
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{5BB89CC1-A2A7-A194-3FAD-3E25AD8E230D}</Project>
       <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="Data.csproj">
-      <Project>{DCE87752-BF18-7720-5A64-7D071E08B4B6}</Project>
-      <Name>Data</Name>
     </ProjectReference>
     <ProjectReference Include="Interfaces.csproj">
       <Project>{C919E239-0BF9-36FB-9553-7A2536A79CF8}</Project>

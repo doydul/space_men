@@ -30,7 +30,7 @@ namespace Workers {
         }
 
         long GenerateUniqueId() {
-            return System.DateTime.Now.ToFileTime();
+            return System.DateTime.Now.ToFileTime() + UnityEngine.Random.Range(0, 1000);
         }
     }
 }

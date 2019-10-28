@@ -8,9 +8,11 @@ namespace Data {
     }
 
     public struct AlienAction {
-
+        
+        public long index;
         public AlienActionType type;
         public Position position;
+        public Direction facing;
         public int damage;
         public AttackResult attackResult;
     }

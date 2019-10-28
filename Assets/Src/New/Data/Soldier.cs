@@ -5,7 +5,7 @@ namespace Data {
         public long index;
         public int health;
         public int maxHealth;
-        public string armourName;
+        public ArmourType armourType;
         public string weaponName;
         public int exp;
         public int baseMovement;

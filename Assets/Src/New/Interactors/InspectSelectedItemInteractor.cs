@@ -15,7 +15,7 @@ namespace Interactors {
             if (input.isSoldier) {
                 var soldierData = gameState.GetActor(input.soldierIndex) as SoldierActor;
                 result.infoText = "health: " + soldierData.health.current + "/" + soldierData.health.max + "\n" +
-                                  "armour: " + soldierData.armourName + "\n"+
+                                  "armour: " + soldierData.armourType.ToString() + "\n"+
                                   "weapon: " + soldierData.weaponName + "\n"+
                                   "exp: " + soldierData.exp;
             } else {

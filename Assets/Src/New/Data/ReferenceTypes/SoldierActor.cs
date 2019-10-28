@@ -2,7 +2,7 @@ namespace Data {
   
     public class SoldierActor : Actor {
 
-        public string armourName { get; set; }
+        public ArmourType armourType { get; set; }
         public string weaponName { get; set; }
         public int exp { get; set; }
         public int baseMovement { get; set; }
@@ -16,7 +16,7 @@ namespace Data {
                 index = uniqueId,
                 health = health.current,
                 maxHealth = health.max,
-                armourName = armourName,
+                armourType = armourType,
                 weaponName = weaponName,
                 exp = exp,
                 baseMovement = baseMovement,
@@ -24,5 +24,11 @@ namespace Data {
                 position = position
             };
         }
+    }
+    
+    public enum ArmourType {
+        Basic,
+        Heavy,
+        Medium
     }
 }

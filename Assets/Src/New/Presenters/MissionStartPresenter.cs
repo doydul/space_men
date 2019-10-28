@@ -26,7 +26,7 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
 
         var soldier = trans.GetComponent<Soldier>();
         soldier.index = index;
-        soldier.armour = Armour.Get(soldierData.armourName);
+        soldier.armour = Armour.Get(soldierData.armourType.ToString());
         soldier.weapon = Weapon.Get(soldierData.weaponName);
         soldier.exp = soldierData.exp;
 

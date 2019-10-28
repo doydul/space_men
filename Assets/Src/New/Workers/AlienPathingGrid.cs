@@ -19,7 +19,7 @@ namespace Workers {
         
         GridSquare[,] gridSquares;
         
-        public AlienPathingGrid(GameState gameState) {
+        AlienPathingGrid(GameState gameState) {
             this.gameState = gameState;
         }
         
@@ -52,7 +52,7 @@ namespace Workers {
                             position: position,
                             nextSquare: nextSquare,
                             distanceToNearestSoldier: node.distanceFromStart,
-                            facing = facing
+                            facing: facing
                         );
                         if (nextSquare != null) nextSquare.previousSquare = gridSquares[position.x, position.y];
                     }
@@ -71,6 +71,10 @@ namespace Workers {
             } else {
                 return Direction.Right;
             }
+        }
+
+        public GridSquare GetSquare(Position position) {
+            return gridSquares[position.x, position.y];
         }
         
         public class GridSquare {

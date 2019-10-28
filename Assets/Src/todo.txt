@@ -2,11 +2,12 @@
 
 ## Implement class that will find the spawn locations of aliens given the spawn point location (and add to ProgressGamePhaseInteractor)
 
-##
+- Create worker to fetch soldier stats (just need armour stats at the moment)
+- Fetch soldier and alien stats inside progress game phase interactor in order to calculate alien attack result
 
-- Implement ProgressGamePhasePresenter (update current phase text, change soldier icons if phase has changed, create new aliens, move aliens, and show attack animations for aliens)
+- Implement aliens attacking (finish implementing AttackActionsFor method and then implement attack animation in presenter)
 
-- Implement alien movement as part of ProgressGamePhaseInteractor
+- Implement ProgressGamePhasePresenter (update current phase text, change soldier icons if phase has changed, move aliens, and show attack animations for aliens)
 
 - Implement soldier turning as an interactor (important for shooting!)
 

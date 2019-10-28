@@ -23,7 +23,6 @@ namespace Workers {
             return new Data.Soldier {
                 health = soldier.health,
                 maxHealth = soldier.maxHealth,
-                armourName = soldier.armourName,
                 weaponName = soldier.weaponName,
                 exp = soldier.exp,
                 baseMovement = soldier.baseMovement,

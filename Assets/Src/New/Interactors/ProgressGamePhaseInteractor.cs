@@ -25,6 +25,8 @@ namespace Interactors {
             var currentPhase = Storage.instance.GetCurrentPhase();
             if (currentPhase == Data.GamePhase.Movement) {
                 presenter.Present(StartShootingPhase());
+            } else if (stage >= SHOOTING_PHASE_ITERATIONS) {
+                presenter.Present(StartMovementPhase());
             } else {
                 presenter.Present(ProgessShootingPhase());
             }
@@ -33,9 +35,10 @@ namespace Interactors {
         ProgressGamePhaseOutput StartShootingPhase() {
             var result = new ProgressGamePhaseOutput { currentPhase = Data.GamePhase.Shooting };
             
+            AlienPathingGrid.Calculate(gameState);
+            
             stage = 0;
             Storage.instance.SetCurrentPhase(Data.GamePhase.Shooting);
-            AlienTurnHack.SpawnAliens();
             
             SpawnAliens(ref result);
             
@@ -44,19 +47,19 @@ namespace Interactors {
 
         ProgressGamePhaseOutput ProgessShootingPhase() {
             var result = new ProgressGamePhaseOutput();
-            if (stage >= SHOOTING_PHASE_ITERATIONS) {
-                StartMovementPhase();
-                result.currentPhase = Data.GamePhase.Movement;
-                return result;
-            }
             stage++;
             result.currentPhase = Data.GamePhase.Shooting;
-            AlienTurnHack.MoveAliens();
+
+            MoveAliens(ref result);
+
             // if player has no actions to take, proceed again
             return result;
         }
 
-        void StartMovementPhase() {
+        ProgressGamePhaseOutput StartMovementPhase() {
+            var result = new ProgressGamePhaseOutput();
+            result.currentPhase = Data.GamePhase.Movement;
+
             Storage.instance.SetCurrentPhase(Data.GamePhase.Movement);
             StartMovementPhaseHack.StartMovementPhase();
             foreach (var actor in gameState.GetActors()) {
@@ -66,6 +69,7 @@ namespace Interactors {
                     soldier.moved = 0;
                 }
             }
+            return result;
         }
         
         void SpawnAliens(ref ProgressGamePhaseOutput result) {
@@ -77,25 +81,108 @@ namespace Interactors {
             }
             alienSpawners.AddRange(newSpawners);
             
+            var alienSpawns = new List<AlienSpawn>();
             foreach (var spawner in new List<AlienSpawner>(alienSpawners)) {
                 if (spawner.spawnType == Data.AlienSpawnType.Trickle) {
-                    newAliens.Add(new Data.Alien {
-                       alienType = spawner.alienType,
-                       position = spawner.position // TODO need to work out the position properly
-                    });
+                    alienSpawns.Add(new AlienSpawn(spawner.position, new AlienType[] { spawner.alienType }));
                     spawner.remainingAliens -= 1;
                 } else {
+                    var types = new AlienType[spawner.remainingAliens];
                     for (int i = 0; i < spawner.remainingAliens; i++) {
-                        newAliens.Add(new Data.Alien {
-                           alienType = spawner.alienType,
-                           position = spawner.position // TODO need to work out the position properly
-                        });
+                        types[i] = spawner.alienType;
                     }
+                    alienSpawns.Add(new AlienSpawn(spawner.position, types));
                     spawner.remainingAliens = 0;
                 }
                 if (spawner.remainingAliens <= 0) alienSpawners.Remove(spawner);
             }
+
+            foreach (var alienSpawn in alienSpawns) {
+                var aliens = alienSpawn.Execute(gameState, AlienPathingGrid.instance);
+                foreach (var alien in aliens) {
+                    newAliens.Add(AddAlienToGameState(alien));
+                }
+            }
+
             result.newAliens = newAliens.ToArray();
+        }
+
+        Data.Alien AddAlienToGameState(Data.Alien alien) {
+            alien.index = gameState.AddActor(AlienGenerator.FromValueType(alien).Build());
+            return alien;
+        } 
+
+        void MoveAliens(ref ProgressGamePhaseOutput result) {
+            var resultList = new List<AlienAction>();
+            var pathingGrid = AlienPathingGrid.instance;
+            var map = gameState.map;
+            var aliens = Aliens.Iterate(gameState).ToList();
+            var aliensCopy = new List<AlienActor>(aliens);
+            while (aliens.Any()) {
+                foreach (var alien in aliensCopy) {
+                    var iterator = new CellIterator(alien.position, cell => !cell.isWall && (alien.position - cell.position).distance <= alien.movement);
+                    AlienPathingGrid.GridSquare bestSquare = null;
+                    foreach (var node in iterator.Iterate(map)) {
+                        var currentSquare = pathingGrid.GetSquare(node.cell.position);
+                        var currentCell = map.GetCell(currentSquare.position);
+                        if (
+                            (
+                                bestSquare == null ||
+                                bestSquare.distanceToNearestSoldier > currentSquare.distanceToNearestSoldier
+                            ) &&
+                            (
+                                !currentCell.hasActor ||
+                                aliens.Contains(currentCell.actor)
+                            )
+                        ) {
+                            bestSquare = currentSquare;
+                        }
+                    }
+                    if (!map.GetCell(bestSquare.position).hasActor) {
+                        MoveAlien(alien, bestSquare.position);
+                        aliens.Remove(alien);
+                        resultList.Add(new AlienAction {
+                            index = alien.uniqueId,
+                            type = AlienActionType.Move,
+                            position = bestSquare.position,
+                            facing = bestSquare.facing
+                        });
+                        resultList.AddRange(PerformAttackActions(alien));
+                    } else if (map.GetCell(bestSquare.position).actor == alien) {
+                        aliens.Remove(alien);
+                    }
+                }
+                if (aliensCopy.Count == aliens.Count) break;
+            }
+            result.alienActions = resultList.ToArray();
+        }
+        
+        List<AlienAction> PerformAttackActions(AlienActor alien) {
+            // var result = new List<AlienAction>();
+            // foreach (var cell in new AdjacentCells(gameState.map).Iterate(alien.position)) {
+            //     if (cell.actor is SoldierActor) {
+            //         result.Add(PerformAttack(alien, cell.actor as SoldierActor));
+            //     }
+            // }
+            return null;
+        }
+        
+        void MoveAlien(AlienActor alien, Position position) {
+            gameState.map.GetCell(alien.position).ClearActor();
+            alien.position = position;
+            gameState.map.GetCell(position).actor = alien;
+        }
+        
+        AlienAction PerformAttack(AlienActor alien, SoldierActor soldier) {
+            // Calculate damage and attack result, using alien stats from some sort of alien fetcher worker
+            
+            return new AlienAction {
+                index = alien.uniqueId,
+                type = AlienActionType.Attack,
+                position = soldier.position,
+                // damage = damage,
+                // attackResult = attackResult
+            };
         }
         
         Position[] GetRandomSpawnPoints(int count) {

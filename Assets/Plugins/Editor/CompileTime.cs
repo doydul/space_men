@@ -32,7 +32,7 @@ using UnityEngine;
              isTrackingTime = false;
              var compileTime = finishTime - startTime;
              PlayerPrefs.DeleteKey("CompileStartTime");
-             Debug.Log("Script compilation time: \n" + compileTime.ToString("0.000") + "s");
+             Debug.Log("Script compilation time: " + compileTime.ToString("0.000") + "s");
          }
      }
  }

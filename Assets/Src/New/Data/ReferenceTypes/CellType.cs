@@ -6,6 +6,7 @@ namespace Data {
         public bool isFoggy { get; set; }
         public Position position { get; set; }
         public Data.Actor actor { get; set; }
+        public bool hasActor { get { return actor.exists; } }
         public bool isSpawnPoint { get; set; }
         public bool isAlienSpawnPoint { get; set; }
         

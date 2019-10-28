@@ -30,8 +30,8 @@ public class AlienDeployer {
     private VirtualMap virtualMap;
 
     public void Iterate() {
-        Spawn();
-        CreateNewSpawners();
+        // Spawn();
+        // CreateNewSpawners();
     }
 
     void CreateVirtualSpawner(Vector2 gridLocation, ISpawnModule spawnModule) {
