@@ -1,9 +1,15 @@
-using Data;
 using UnityEngine;
+using TMPro;
+
+using Data;
 
 public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhaseOutput> {
   
     public Map map;
+    public TMP_Text gamePhaseText;
+    public GameObject turnButtonContainer;
+
+    Data.GamePhase currentPhase;
 
     public static ProgressGamePhasePresenter instance { get; private set; }
     
@@ -12,14 +18,12 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     }
     
     public void Present(ProgressGamePhaseOutput input) {
-        UnityEngine.Debug.Log("GAME PHASE PROGRESSED");
-        UnityEngine.Debug.Log("Phase " + input.currentPhase);
-        if (input.newAliens != null) { 
-            foreach (var alien in input.newAliens) {
-                UnityEngine.Debug.Log("New Alien:");
-                UnityEngine.Debug.Log(alien.alienType);
-            }
+        if (currentPhase != input.currentPhase) {
+            UpdateUI(input.currentPhase);
+            UpdatePhaseText(input.currentPhase);
+            currentPhase = input.currentPhase;
         }
+
         if (input.alienActions != null) {
             foreach (var action in input.alienActions) {
                 if (action.type == AlienActionType.Move) {
@@ -28,15 +32,41 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
                         new Vector2(action.position.x, action.position.y),
                         ConvertDirection(action.facing)
                     );
+                } else {
+                    GetAlienByIndex(action.index).Face(new Vector2(action.position.x, action.position.y));
+                    UnityEngine.Debug.Log(action.damage);
+                    if (action.attackResult == AttackResult.Killed) {
+                        var tile = map.GetTileAt(new Vector2(action.position.x, action.position.y));
+                        tile.GetActor<Soldier>().Destroy();
+                        tile.RemoveActor();
+                    }
                 }
             }
         }
-        UnityEngine.Debug.Log("--------------------");
 
         if (input.newAliens != null) {
             foreach (var newAlien in input.newAliens) {
                 InstantiateAlien(newAlien);
             }
+        }
+    }
+
+    void UpdateUI(Data.GamePhase gamePhase) {
+        turnButtonContainer.SetActive(gamePhase == Data.GamePhase.Movement);
+        foreach (var soldier in map.GetActors<Soldier>()) {
+            if (gamePhase == Data.GamePhase.Movement) {
+                soldier.StartMovementPhase();
+            } else {
+                soldier.StartShootingPhase();
+            }
+        }
+    }
+
+    void UpdatePhaseText(Data.GamePhase gamePhase) {
+        if (gamePhase == Data.GamePhase.Movement) {
+            gamePhaseText.text = "Movement Phase";
+        } else {
+            gamePhaseText.text = "Shooting Phase";
         }
     }
 

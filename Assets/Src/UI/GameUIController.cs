@@ -16,10 +16,8 @@ public class GameUIController : MonoBehaviour {
     public GameObject victoryPopup;
     
     UIAnimator fadeAnimator;
-    UIHelper uiHelper;
 
     void Awake() {
-        uiHelper = new UIHelper(turnButtonContainer, currentPhaseText);
         fadeAnimator = new UIAnimator(1f, 1f, this, (value) => {
             var temp = blackFade.color;
             temp.a = value;
@@ -37,10 +35,6 @@ public class GameUIController : MonoBehaviour {
         });
     }
 
-    void Update() {
-        uiHelper.Update(ViewableState.instance);
-    }
-
     public void ShowVictoryPopup() {
         victoryPopup.SetActive(true);
    }
@@ -48,26 +42,5 @@ public class GameUIController : MonoBehaviour {
     public void FadeToBlack(Action finished) {
         blackFade.enabled = true;
         fadeAnimator.Enqueue(1f, finished);
-    }
-    
-    private class UIHelper {
-
-        public UIHelper(GameObject turnButtonContainer, TextMeshProUGUI currentPhaseText) {
-            this.turnButtonContainer = turnButtonContainer;
-            this.currentPhaseText = currentPhaseText;
-            turnButtonContainer.SetActive(false);
-        }
-
-        GameObject turnButtonContainer;
-        TextMeshProUGUI currentPhaseText;
-
-        public void Update(ViewableState viewableState) {
-            turnButtonContainer.SetActive(viewableState.canTurnSoldier);
-            if (viewableState.isMovementPhaseActive) {
-                currentPhaseText.SetText("Movement Phase");
-            } else {
-                currentPhaseText.SetText("Shooting Phase");
-            }
-        }
     }
 }

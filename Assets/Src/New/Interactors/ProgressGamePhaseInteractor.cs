@@ -11,18 +11,21 @@ namespace Interactors {
 
         private const int SHOOTING_PHASE_ITERATIONS = 3;
         private const int MIN_SPAWN_DISTANCE = 12;
+
+        public IAlienStore alienStore { private get; set; }
+        public ISoldierStore soldierStore { private get; set; }
         
         int stage;
         AlienSpawnerGenerator alienSpawnerGenerator;
         List<AlienSpawner> alienSpawners;
-        
+
         public ProgressGamePhaseInteractor() {
             alienSpawnerGenerator = new AlienSpawnerGenerator(Storage.instance.GetCurrentMission());
             alienSpawners = new List<AlienSpawner>();
         }
 
         public void Interact(ProgressGamePhaseInput input) {
-            var currentPhase = Storage.instance.GetCurrentPhase();
+            var currentPhase = gameState.currentPhase;
             if (currentPhase == Data.GamePhase.Movement) {
                 presenter.Present(StartShootingPhase());
             } else if (stage >= SHOOTING_PHASE_ITERATIONS) {
@@ -38,7 +41,7 @@ namespace Interactors {
             AlienPathingGrid.Calculate(gameState);
             
             stage = 0;
-            Storage.instance.SetCurrentPhase(Data.GamePhase.Shooting);
+            gameState.SetCurrentPhase(Data.GamePhase.Shooting);
             
             SpawnAliens(ref result);
             
@@ -59,9 +62,9 @@ namespace Interactors {
         ProgressGamePhaseOutput StartMovementPhase() {
             var result = new ProgressGamePhaseOutput();
             result.currentPhase = Data.GamePhase.Movement;
+            RemoveDeadSoldiers();
 
-            Storage.instance.SetCurrentPhase(Data.GamePhase.Movement);
-            StartMovementPhaseHack.StartMovementPhase();
+            gameState.SetCurrentPhase(Data.GamePhase.Movement);
             foreach (var actor in gameState.GetActors()) {
                 if (actor is SoldierActor) {
                     var soldier = actor as SoldierActor;
@@ -120,7 +123,7 @@ namespace Interactors {
             var aliensCopy = new List<AlienActor>(aliens);
             while (aliens.Any()) {
                 foreach (var alien in aliensCopy) {
-                    var iterator = new CellIterator(alien.position, cell => !cell.isWall && (alien.position - cell.position).distance <= alien.movement);
+                    var iterator = new CellIterator(alien.position, cell => !cell.isWall && !cell.actor.isSoldier && (alien.position - cell.position).distance <= alien.movement);
                     AlienPathingGrid.GridSquare bestSquare = null;
                     foreach (var node in iterator.Iterate(map)) {
                         var currentSquare = pathingGrid.GetSquare(node.cell.position);
@@ -150,6 +153,7 @@ namespace Interactors {
                         resultList.AddRange(PerformAttackActions(alien));
                     } else if (map.GetCell(bestSquare.position).actor == alien) {
                         aliens.Remove(alien);
+                        resultList.AddRange(PerformAttackActions(alien));
                     }
                 }
                 if (aliensCopy.Count == aliens.Count) break;
@@ -158,13 +162,15 @@ namespace Interactors {
         }
         
         List<AlienAction> PerformAttackActions(AlienActor alien) {
-            // var result = new List<AlienAction>();
-            // foreach (var cell in new AdjacentCells(gameState.map).Iterate(alien.position)) {
-            //     if (cell.actor is SoldierActor) {
-            //         result.Add(PerformAttack(alien, cell.actor as SoldierActor));
-            //     }
-            // }
-            return null;
+            var result = new List<AlienAction>();
+            foreach (var cell in new AdjacentCells(gameState.map).Iterate(alien.position)) {
+                if (cell.actor is SoldierActor) {
+                    if (!cell.actor.health.dead) {
+                        result.Add(PerformAttack(alien, cell.actor as SoldierActor));
+                    }
+                }
+            }
+            return result;
         }
         
         void MoveAlien(AlienActor alien, Position position) {
@@ -174,14 +180,24 @@ namespace Interactors {
         }
         
         AlienAction PerformAttack(AlienActor alien, SoldierActor soldier) {
-            // Calculate damage and attack result, using alien stats from some sort of alien fetcher worker
+            var alienStats = alienStore.GetAlienStats(alien.type);
+            var armourStats = soldierStore.GetArmourStats(soldier.armourType);
+
+            int damage = 0;
+            AttackResult attackResult = AttackResult.Deflected;
+            if (UnityEngine.Random.Range(0, 100) > armourStats.armourValue - alienStats.armourPen) {
+                damage = alienStats.damage;
+                attackResult = AttackResult.Hit;
+                soldier.health.Damage(damage);
+                if (soldier.health.dead) attackResult = AttackResult.Killed;
+            }
             
             return new AlienAction {
                 index = alien.uniqueId,
                 type = AlienActionType.Attack,
                 position = soldier.position,
-                // damage = damage,
-                // attackResult = attackResult
+                damage = damage,
+                attackResult = attackResult
             };
         }
         
@@ -201,6 +217,14 @@ namespace Interactors {
                 filteredSpawners.RemoveAt(randomIndex);
             }
             return result;
+        }
+
+        void RemoveDeadSoldiers() {
+            foreach (var soldier in Soldiers.Iterate(gameState)) {
+                if (soldier.health.dead) {
+                    gameState.RemoveActor(soldier.uniqueId);
+                }
+            }
         }
     }
 }

@@ -20,7 +20,8 @@ public class Initializer : MonoBehaviour {
                 new Dictionary<Type, Type> {
                     { typeof(SoldierPossibleMovesInteractor), typeof(SoldierPossibleMovesPresenter) },
                     { typeof(MissionStartInteractor), typeof(MissionStartPresenter) },
-                    { typeof(MoveSoldierInteractor), typeof(MoveSoldierPresenter) }
+                    { typeof(MoveSoldierInteractor), typeof(MoveSoldierPresenter) },
+                    { typeof(ActorActionsInteractor), typeof(ActorActionsPresenter) }
                 }
             }
         };
@@ -37,6 +38,9 @@ public class Initializer : MonoBehaviour {
         gameState.Init();
         
         LoadDynamicDependencies();
+        var uiController = FindObjectOfType<UIController>();
+        uiController.progressGamePhaseInteractor.alienStore = new AlienStore();
+        uiController.progressGamePhaseInteractor.soldierStore = new SoldierStore();
         
         FindObjectOfType<MapController>().StartMission();
     }

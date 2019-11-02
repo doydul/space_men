@@ -8,6 +8,8 @@ namespace Data {
         public Direction facing { get; set; }
         
         public virtual bool exists { get { return true; } }
+        public virtual bool isSoldier { get { return false; } }
+        public virtual bool isAlien { get { return false; } }
 
         public void SetUniqueId(long id) {
             if (uniqueId != 0) throw new System.Exception("Unique ID can only be set once");

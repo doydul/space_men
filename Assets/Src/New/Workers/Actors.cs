@@ -22,7 +22,7 @@ namespace Workers {
         }
         
         public IEnumerable<Data.Actor> GetActors() {
-            return actors.Values;
+            return new List<Data.Actor>(actors.Values);
         }
 
         public void RemoveActor(long id) {

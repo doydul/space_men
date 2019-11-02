@@ -115,6 +115,10 @@ public class Soldier : Actor {
             Destroy(gameObject, 1);
         }
     }
+    
+    public void Destroy() {
+        Destroy(gameObject);
+    }
 
     public void ShowHitIndicator() {
 

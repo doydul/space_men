@@ -2,6 +2,8 @@ namespace Data {
   
     public class SoldierActor : Actor {
 
+        public override bool isSoldier { get { return true; } }
+
         public ArmourType armourType { get; set; }
         public string weaponName { get; set; }
         public int exp { get; set; }
@@ -24,11 +26,5 @@ namespace Data {
                 position = position
             };
         }
-    }
-    
-    public enum ArmourType {
-        Basic,
-        Heavy,
-        Medium
     }
 }

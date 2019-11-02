@@ -1,18 +1,27 @@
 # Refactoring alien spawner
 
-## Implement class that will find the spawn locations of aliens given the spawn point location (and add to ProgressGamePhaseInteractor)
+## Bugs
+- Aliens jump around a bit weirdly if they are already next to a soldier at the start of their movement (need a way of making their behaviour more predictable and less weird)
 
-- Create worker to fetch soldier stats (just need armour stats at the moment)
-- Fetch soldier and alien stats inside progress game phase interactor in order to calculate alien attack result
+- Find the root of where soldier clicks are handles (MapInputController)
+- Create interactor that will return the list of available actions for a soldier
+- Use this when a soldier is selected to mark which tiles are interactable, and what the interaction is (copy and paste some stuff from possible moves interactor)
+- Use existing movesoldierinteractor when the action is move
+- Selection of soldiers still handled by UI (but should be moved from MapHighlighter to MapInputController)
+- Inspect selected item interactor should be removed: all soldier and alien state should already be known by the UI, ready to be displayed when something is selected
+- Possible soldier moves interactor should also be removed
 
-- Implement aliens attacking (finish implementing AttackActionsFor method and then implement attack animation in presenter)
-
-- Implement ProgressGamePhasePresenter (update current phase text, change soldier icons if phase has changed, move aliens, and show attack animations for aliens)
+- Remove references to Storage class in interactor and in GamePhase
 
 - Implement soldier turning as an interactor (important for shooting!)
 
 - Implement Shooting as interactor
 
+## Do animations
+- Zoom camera on aliens as they move, like it did before
+- Add delay between moving aliens, to make it more dramatic
+- Add alien attack icon 
+- Animate soldier shooting too i guess
 
 # Not Urgent
 
@@ -63,3 +72,38 @@
 - Map tiles; 1 outer corner tile, 3 wall tiles, 1 inner corner tile, 3 floor tiles, 1 roof tile
 
 - UI; arrow
+
+
+# Next Milestone
+
+- Reimplement alien movement and attack animations
+
+- Reimplement alien radar blips
+
+- Refactor remaining in game actions:
+  - Soldier turning
+  - Soldier shooting
+
+- Improve UI to acceptable levels:
+  - Button for inspecting soldier stats
+  - Health bars on Map
+  - Ability to inspect alien stats and show possible alien moves on Map
+  - Combat indicators to show combat results like 'missed', 'deflected' (damage dealth will be indicated by health bar)
+
+- Implement secondary objectives to give weapon rewards
+
+- Content:
+  - A basic set of weapons, up to level 2 (10 per level, so 20 in total)
+  - Basic set of armour (1 per type per level, makes 6)
+  - Some level 1 and level 2 aliens (4 level 1, 3 level 2, 7 total)
+  - One campaign, over 5 levels with a different type of objective for each one (might be too ambitious!)
+
+# Principles
+
+- Clarity: How easy it is to see/find all the consequences of a given action
+
+- Flexibility: How easy is it to add new functionality
+
+- Dependence: How difficult is it to change without breaking other parts of the application or preventing compilation
+
+- Complexity: Does the benefit outweight the complexity that it introduces

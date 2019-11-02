@@ -14,4 +14,22 @@ namespace Data {
         
         public Position position;
     }
+
+    public enum ArmourType {
+        Basic,
+        Heavy,
+        Medium
+    }
+
+    public enum ArmourWeight {
+        Light,
+        Medium,
+        Heavy
+    }
+
+    public struct ArmourStats {
+        public ArmourWeight weight;
+        public int armourValue;
+        public int cost;
+    }
 }

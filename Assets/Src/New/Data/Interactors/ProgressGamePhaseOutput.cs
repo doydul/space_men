@@ -25,6 +25,7 @@ namespace Data {
     public enum AttackResult {
         Hit,
         Missed,
-        Deflected
+        Deflected,
+        Killed
     }
 }

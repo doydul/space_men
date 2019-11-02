@@ -27,20 +27,12 @@ public class ViewableState {
     GamePhase gamePhase;
     CurrentSelectionState currentSelection;
 
-    public bool canTurnSoldier { get {
-        return gamePhase.movement && currentSelection.soldierSelected;
-    } }
-
     public Soldier selectedSoldier { get {
         return currentSelection.GetSelectedSoldier();
     } }
 
     public bool isMovementPhaseActive { get {
         return gamePhase.movement;
-    } }
-
-    public bool isShootingPhaseActive { get {
-        return gamePhase.shooting;
     } }
 
     public List<Tile> selectedTiles { get {

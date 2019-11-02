@@ -10,6 +10,8 @@ namespace Workers {
         
         Actors actors;
 
+        public Data.GamePhase currentPhase { get; private set; }
+
         public void Init() {
             actors = new Actors();
 
@@ -27,6 +29,14 @@ namespace Workers {
         
         public long AddActor(Data.Actor actor) {
             return actors.AddActor(actor);
+        }
+
+        public void RemoveActor(long actorId) {
+            actors.RemoveActor(actorId);
+        }
+
+        public void SetCurrentPhase(Data.GamePhase gamePhase) {
+            currentPhase = gamePhase;
         }
     }
 }
