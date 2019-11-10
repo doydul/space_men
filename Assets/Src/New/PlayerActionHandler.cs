@@ -32,7 +32,6 @@ public class PlayerActionHandler {
         input.SetTurnSoldierDownListener(TurnSoldierDown);
         input.SetContinueButtonListener(ContinueButton);
         input.SetInteractWithTileListener(InteractWithTile);
-        input.SetInfoButtonListener(InfoButton);
     }
 
     void TurnSoldierLeft() {
@@ -57,16 +56,6 @@ public class PlayerActionHandler {
 
     void ContinueButton() {
         gamePhase.ProceedPhase();
-    }
-    
-    void InfoButton(bool open) {
-        if (open) { 
-            if (selectionState.soldierSelected) {
-                uiController.InspectSoldier(selectionState.GetSelectedSoldier().index);
-            }
-        } else {
-            uiController.CloseInfoPanel();
-        }
     }
 
     void InteractWithTile(Tile tile) {

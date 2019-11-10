@@ -13,15 +13,6 @@ public class SoldierActionHandler {
     GamePhase gamePhase;
     IGameEvent soldierMoved;
 
-    public bool AnyActionApplicableFor(Soldier soldier, Tile targetTile) {
-        if (soldier == null) return false;
-        if (gamePhase.movement) {
-            return AnyMovingActionApplicableFor(soldier, targetTile);
-        } else {
-            return AnyShootingActionApplicableFor(soldier, targetTile);
-        }
-    }
-
     public void PerformActionFor(Soldier soldier, Tile targetTile) {
         if (soldier == null) return;
         if (gamePhase.movement) {
@@ -29,10 +20,6 @@ public class SoldierActionHandler {
         } else {
             PerformShootingActionFor(soldier, targetTile);
         }
-    }
-
-    bool AnyMovingActionApplicableFor(Soldier soldier, Tile targetTile) {
-        return SoldierPossibleMovesPresenter.instance.ValidMoveLocation(targetTile.gridLocation);
     }
 
     bool AnyShootingActionApplicableFor(Soldier soldier, Tile targetTile) {

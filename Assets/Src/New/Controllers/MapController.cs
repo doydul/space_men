@@ -11,19 +11,11 @@ public class MapController : Controller {
         instance = this;
     }
     
-    public SoldierPossibleMovesInteractor soldierPossibleMovesInteractor { private get; set; }
     public MissionStartInteractor missionStartInteractor { private get; set; }
     public MoveSoldierInteractor moveSoldierInteractor { private get; set; }
     public ActorActionsInteractor actorActionsInteractor { private get; set; }
     public TurnSoldierInteractor turnSoldierInteractor { private get; set; }
     public SoldierShootInteractor soldierShootInteractor { get; set; }
-    
-    public void ShowPossibleMovesFor(long soldierIndex) {
-        var input = new SoldierPossibleMovesInput {
-            soldierIndex = soldierIndex
-        };
-        soldierPossibleMovesInteractor.Interact(input);
-    }
     
     public void StartMission() {
         missionStartInteractor.Interact(new MissionStartInput());

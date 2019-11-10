@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <CscToolPath>/Applications/Unity/Hub/Editor/2019.2.0f1/Unity.app/Contents/Tools/RoslynScripts</CscToolPath>
-    <CscToolExe>unity_csc.sh</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -154,12 +152,10 @@
      <Compile Include="Assets\Src\New\IGameMap.cs" />
      <Compile Include="Assets\Src\New\Initializer.cs" />
      <Compile Include="Assets\Src\New\Interactors\ActorActionsInteractor.cs" />
-     <Compile Include="Assets\Src\New\Interactors\InspectSelectedItemInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\Interactor.cs" />
      <Compile Include="Assets\Src\New\Interactors\MissionStartInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\MoveSoldierInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\ProgressGamePhaseInteractor.cs" />
-     <Compile Include="Assets\Src\New\Interactors\SoldierPossibleMovesInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\SoldierShootInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\TurnSoldierInteractor.cs" />
      <Compile Include="Assets\Src\New\Main.cs" />
@@ -175,8 +171,6 @@
      <Compile Include="Assets\Src\New\Presenters\MoveSoldierPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\Presenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\ProgressGamePhasePresenter.cs" />
-     <Compile Include="Assets\Src\New\Presenters\SelectedItemInfoPresenter.cs" />
-     <Compile Include="Assets\Src\New\Presenters\SoldierPossibleMovesPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\SoldierShootPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\TurnSoldierPresenter.cs" />
      <Compile Include="Assets\Src\New\ShootAction.cs" />
