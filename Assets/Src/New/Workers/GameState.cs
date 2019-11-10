@@ -32,6 +32,9 @@ namespace Workers {
         }
 
         public void RemoveActor(long actorId) {
+            var actor = GetActor(actorId);
+            var cell = map.GetCell(actor.position);
+            cell.ClearActor();
             actors.RemoveActor(actorId);
         }
 

@@ -5,6 +5,9 @@ using Data;
 public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
   
     public static MoveSoldierPresenter instance { get; private set; }
+
+    public UIData uiData;
+    public MapController mapController;
     
     void Awake() {
         instance = this;
@@ -13,12 +16,14 @@ public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
     public Map map;
     
     public void Present(MoveSoldierOutput input) {
-        UnityEngine.Debug.Log(input);
+        var tile = map.GetTileAt(new Vector2(input.newPosition.x, input.newPosition.y));
         var soldier = GetSoldierByIndex(input.soldierIndex);
         soldier.tile.RemoveActor();
-        map.GetTileAt(new Vector2(input.newPosition.x, input.newPosition.y)).SetActor(soldier.transform);
+        tile.SetActor(soldier.transform);
         soldier.TurnTo(ConvertDirection(input.newFacing));
+        uiData.selectedTile = tile;
         FogController.instance.Recalculate();
+        mapController.DisplayActions(input.soldierIndex);
     }
 
     Soldier GetSoldierByIndex(long index) {

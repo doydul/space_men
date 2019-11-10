@@ -2,5 +2,6 @@ using Data;
 
 public interface ISoldierStore {
     
-    ArmourStats GetArmourStats(ArmourType armourType);
+    ArmourStats GetArmourStats(string armourName);
+    WeaponStats GetWeaponStats(string weaponName);
 }

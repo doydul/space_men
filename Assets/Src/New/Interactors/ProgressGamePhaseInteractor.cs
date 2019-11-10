@@ -77,6 +77,7 @@ namespace Interactors {
         
         void SpawnAliens(ref ProgressGamePhaseOutput result) {
             var newAliens = new List<Data.Alien>();
+            var radarBlips = new List<Position>();
             var newSpawners = alienSpawnerGenerator.Iterate();
             var spawnPoints = GetRandomSpawnPoints(newSpawners.Length);
             for (int i = 0; i < newSpawners.Length; i++) {
@@ -103,11 +104,16 @@ namespace Interactors {
             foreach (var alienSpawn in alienSpawns) {
                 var aliens = alienSpawn.Execute(gameState, AlienPathingGrid.instance);
                 foreach (var alien in aliens) {
+                    var alienStats = alienStore.GetAlienStats(alien.alienType);
                     newAliens.Add(AddAlienToGameState(alien));
+                    if (Random.Range(0, 100) <= alienStats.radarBlipChance) {
+                        radarBlips.Add(alien.position);
+                    }
                 }
             }
 
             result.newAliens = newAliens.ToArray();
+            result.radarBlips = radarBlips.ToArray();
         }
 
         Data.Alien AddAlienToGameState(Data.Alien alien) {
@@ -181,11 +187,11 @@ namespace Interactors {
         
         AlienAction PerformAttack(AlienActor alien, SoldierActor soldier) {
             var alienStats = alienStore.GetAlienStats(alien.type);
-            var armourStats = soldierStore.GetArmourStats(soldier.armourType);
+            var armourStats = soldierStore.GetArmourStats(soldier.armourName);
 
             int damage = 0;
             AttackResult attackResult = AttackResult.Deflected;
-            if (UnityEngine.Random.Range(0, 100) > armourStats.armourValue - alienStats.armourPen) {
+            if (Random.Range(0, 100) >= armourStats.armourValue - alienStats.armourPen) {
                 damage = alienStats.damage;
                 attackResult = AttackResult.Hit;
                 soldier.health.Damage(damage);

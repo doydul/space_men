@@ -20,5 +20,6 @@ namespace Data {
         public int damage;
         public int armourPen;
         public int movement;
+        public int radarBlipChance;
     }
 }

@@ -59,21 +59,11 @@ MonoBehaviour:
   sceneName: Mission1
   missionName: First Mission
   enemyProfiles:
-  - alienType: Advanced
-    groupSize: 1
-    spawnType: 0
-    chance: 0.2
-    cooldown: 3
   - alienType: Alien
     groupSize: 3
     spawnType: 0
-    chance: 0.3
+    chance: 1
     cooldown: 3
-  - alienType: Alien
-    groupSize: 1
-    spawnType: 0
-    chance: 0.5
-    cooldown: 0
   briefing: 'Each turn is split into 2 phases; Movement and Shooting. Aliens move
     during the player''s Shooting phase, and the player gets chances to shoot them
     as they approach.

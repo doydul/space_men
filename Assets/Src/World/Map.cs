@@ -57,6 +57,13 @@ public class Map : MonoBehaviour {
         return tiles[x, y];
     }
 
+    public Actor GetActorByIndex(long index) {
+        foreach (var actor in GetActors<Actor>()) {
+            if (actor.index == index) return actor;
+        }
+        throw new System.Exception("Actor could not be found");
+    }
+
     public IEnumerable<Tile> EnumerateTiles() {
         for (int x = 0; x < tiles.GetLength(0); x++) {
             for (int y = 0; y < tiles.GetLength(1); y++) {

@@ -7,7 +7,7 @@ namespace Workers {
         public static Builder Default() {
             return new Builder(new SoldierActor {
                 health = new Health(86),
-                armourType = ArmourType.Basic,
+                armourName = "Basic",
                 weaponName = "Assault Rifle",
                 baseMovement = 4,
                 totalMovement = 8
@@ -18,8 +18,8 @@ namespace Workers {
             return Default().WithWeapon(weaponName);
         }
         
-        public static Builder WithArmour(ArmourType armourType) {
-            return Default().WithArmour(armourType);
+        public static Builder WithArmour(string armourName) {
+            return Default().WithArmour(armourName);
         }
         
         public static Builder At(Data.Position position) {
@@ -41,9 +41,9 @@ namespace Workers {
                 return this;
             }
             
-            public Builder WithArmour(ArmourType armourType) {
+            public Builder WithArmour(string armourName) {
                 var newData = data;
-                newData.armourType = armourType;
+                newData.armourName = armourName;
                 data = newData;
                 return this;
             }

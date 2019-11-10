@@ -14,7 +14,8 @@ public class AlienStore : IAlienStore {
             accModifier = data.accModifier,
             damage = data.damage,
             armourPen = data.armourPen,
-            movement = data.movement
+            movement = data.movement,
+            radarBlipChance = data.chanceOfCreatingRadarBlip
         };
     }
     

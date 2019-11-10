@@ -11,5 +11,5 @@ public class AlienData : ScriptableObject {
     public int movement;
     public float threat;
     public int expReward;
-    public float chanceOfCreatingRadarBlip;
+    public int chanceOfCreatingRadarBlip;
 }

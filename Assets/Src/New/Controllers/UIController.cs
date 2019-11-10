@@ -16,10 +16,10 @@ public class UIController : Controller {
     }
     
     public void CloseInfoPanel() {
-        inspectItemIntractor.Interact(new InspectSelectedItemDataObject());
+        if (!disabled) inspectItemIntractor.Interact(new InspectSelectedItemDataObject());
     }
     
     public void ProgressGamePhase() {
-        progressGamePhaseInteractor.Interact(new ProgressGamePhaseInput());
+        if (!disabled) progressGamePhaseInteractor.Interact(new ProgressGamePhaseInput());
     }
 }

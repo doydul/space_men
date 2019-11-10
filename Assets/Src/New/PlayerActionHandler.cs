@@ -1,6 +1,8 @@
 using UnityEngine;
 using System;
 
+using Data;
+
 public class PlayerActionHandler {
 
     IPlayerActionInput input;
@@ -71,11 +73,20 @@ public class PlayerActionHandler {
         var soldier = tile.GetActor<Soldier>();
         if (soldier != null) {
             selectionState.SelectSoldier(soldier);
+            UIData.instance.selectedTile = tile;
+            MapController.instance.DisplayActions(soldier.index);
         } else {
-            if (soldierActionHandler.AnyActionApplicableFor(selectionState.GetSelectedSoldier(), tile)) {
-                soldierActionHandler.PerformActionFor(selectionState.GetSelectedSoldier(), tile);
+            ActorAction action;
+            if (UIData.instance.ActionFor(tile, out action)) {
+                if (action.type == ActorActionType.Move) {
+                    MapController.instance.MoveSoldier(selectionState.GetSelectedSoldier().index, tile.gridLocation);
+                } else if (action.type == ActorActionType.Shoot) {
+                    MapController.instance.SoldierShoot(selectionState.GetSelectedSoldier().index, action.actorTargetIndex);
+                }
             } else {
                 selectionState.DeselectSoldier();
+                UIData.instance.ClearSelection();
+                MapHighlighter.instance.ClearHighlights();
             }
         }
     }

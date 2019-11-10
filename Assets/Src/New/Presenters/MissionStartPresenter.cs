@@ -10,11 +10,8 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
     }
     
     public void Present(MissionStartOutput input) {
-        SoldierDataHack.Init();
         foreach (var soldier in input.soldiers) {
-            SoldierDataHack.soldiers.Add(
-                InstantiateSoldier(soldier, soldier.index)
-            );
+            InstantiateSoldier(soldier, soldier.index);
         }
         FogController.instance.Recalculate();
         AlienDeployer.instance.Iterate();
@@ -26,8 +23,8 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
 
         var soldier = trans.GetComponent<Soldier>();
         soldier.index = index;
-        soldier.armour = Armour.Get(soldierData.armourType.ToString());
-        soldier.weapon = Weapon.Get(soldierData.weaponName);
+        soldier.armour = Armour.Get(soldierData.armourName.ToString());
+        soldier.weapon = Weapon.Get(soldierData.weaponName.ToString());
         soldier.exp = soldierData.exp;
 
         Map.instance.GetTileAt(new Vector2(soldierData.position.x, soldierData.position.y)).SetActor(trans);

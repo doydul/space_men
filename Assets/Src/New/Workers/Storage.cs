@@ -18,20 +18,6 @@ namespace Workers {
         
         Data.GamePhase currentPhase;
         
-        public Data.Soldier GetSoldier(int index) {
-            var soldier = SoldierDataHack.soldiers[index];
-            return new Data.Soldier {
-                health = soldier.health,
-                maxHealth = soldier.maxHealth,
-                weaponName = soldier.weaponName,
-                exp = soldier.exp,
-                baseMovement = soldier.baseMovement,
-                totalMovement = soldier.totalMovement,
-                moved = soldier.tilesMoved,
-                position = new Data.Position { x = (int)soldier.gridLocation.x, y = (int)soldier.gridLocation.y}
-            };
-        }
-        
         public Data.Mission GetMission(string campaignName, string missionName) {
             return missionStore.GetMission(campaignName, missionName);
         }

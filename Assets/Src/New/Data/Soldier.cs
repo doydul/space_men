@@ -5,7 +5,7 @@ namespace Data {
         public long index;
         public int health;
         public int maxHealth;
-        public ArmourType armourType;
+        public string armourName;
         public string weaponName;
         public int exp;
         public int baseMovement;
@@ -13,12 +13,6 @@ namespace Data {
         public int moved;
         
         public Position position;
-    }
-
-    public enum ArmourType {
-        Basic,
-        Heavy,
-        Medium
     }
 
     public enum ArmourWeight {
@@ -31,5 +25,16 @@ namespace Data {
         public ArmourWeight weight;
         public int armourValue;
         public int cost;
+    }
+
+    public struct WeaponStats {
+        public int accuracy;
+        public int armourPen;
+        public int minDamage;
+        public int maxDamage;
+        public int shotsWhenMoving;
+        public int shotsWhenStill;
+        public float blast;
+        public int value;
     }
 }

@@ -4,7 +4,7 @@ namespace Data {
 
         public override bool isSoldier { get { return true; } }
 
-        public ArmourType armourType { get; set; }
+        public string armourName { get; set; }
         public string weaponName { get; set; }
         public int exp { get; set; }
         public int baseMovement { get; set; }
@@ -18,7 +18,7 @@ namespace Data {
                 index = uniqueId,
                 health = health.current,
                 maxHealth = health.max,
-                armourType = armourType,
+                armourName = armourName,
                 weaponName = weaponName,
                 exp = exp,
                 baseMovement = baseMovement,

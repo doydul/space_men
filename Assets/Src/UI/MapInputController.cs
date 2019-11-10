@@ -7,10 +7,10 @@ public class MapInputController : MonoBehaviour {
     public Map map;
     public UIInputHandler inputHandler;
 
-    private bool dragging;
-    private bool dragged;
-    private Vector3 dragStartPosition;
-    private Vector3 mapStartPosition;
+    bool dragging;
+    bool dragged;
+    Vector3 dragStartPosition;
+    Vector3 mapStartPosition;
 
     void Awake() {
         if (Squad.active == null) {

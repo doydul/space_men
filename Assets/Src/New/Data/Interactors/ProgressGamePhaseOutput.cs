@@ -5,6 +5,7 @@ namespace Data {
         public Data.GamePhase currentPhase;
         public AlienAction[] alienActions;
         public Data.Alien[] newAliens;
+        public Position[] radarBlips;
     }
 
     public struct AlienAction {

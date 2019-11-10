@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Data;
+
 public class MapHighlighter : MonoBehaviour {
 
     public static MapHighlighter instance { get; private set; }
@@ -30,7 +32,6 @@ public class MapHighlighter : MonoBehaviour {
         ClearHighlights();
         if (selectedUnit != null) {
             HighlightTile(selectedUnit.tile, Color.white);
-            mapController.ShowPossibleMovesFor(selectedUnit.index);
         }
     }
 
@@ -44,5 +45,18 @@ public class MapHighlighter : MonoBehaviour {
     public void HighlightTile(Tile tile, Color color) {
         tile.Highlight(color);
         highlightedTiles.Add(tile);
+    }
+
+    public void HighlightPossibleActions(ActorAction[] actorActions) {
+        ClearHighlights();
+        if (actorActions == null) return;
+        foreach (var action in actorActions) {
+            if (action.type == ActorActionType.Move) {
+                var color = action.sprint ? Color.yellow : Color.green;
+                HighlightTile(map.GetTileAt(new Vector2(action.target.x, action.target.y)), color);
+            } else if (action.type == ActorActionType.Shoot) {
+                HighlightTile(map.GetTileAt(new Vector2(action.target.x, action.target.y)), Color.red);
+            }
+        }
     }
  }

@@ -21,10 +21,14 @@ public class Initializer : MonoBehaviour {
                     { typeof(SoldierPossibleMovesInteractor), typeof(SoldierPossibleMovesPresenter) },
                     { typeof(MissionStartInteractor), typeof(MissionStartPresenter) },
                     { typeof(MoveSoldierInteractor), typeof(MoveSoldierPresenter) },
-                    { typeof(ActorActionsInteractor), typeof(ActorActionsPresenter) }
+                    { typeof(ActorActionsInteractor), typeof(ActorActionsPresenter) },
+                    { typeof(TurnSoldierInteractor), typeof(TurnSoldierPresenter) },
+                    { typeof(SoldierShootInteractor), typeof(SoldierShootPresenter) }
                 }
             }
         };
+    
+    static List<object> dependencies;
     
     GameState gameState;
     
@@ -36,11 +40,13 @@ public class Initializer : MonoBehaviour {
         mapStore.map = Map.instance;
         gameState.mapStore = mapStore;
         gameState.Init();
+
+        dependencies = new List<object>();
+        dependencies.Add(gameState);
+        dependencies.Add(new AlienStore());
+        dependencies.Add(new SoldierStore());
         
         LoadDynamicDependencies();
-        var uiController = FindObjectOfType<UIController>();
-        uiController.progressGamePhaseInteractor.alienStore = new AlienStore();
-        uiController.progressGamePhaseInteractor.soldierStore = new SoldierStore();
         
         FindObjectOfType<MapController>().StartMission();
     }
@@ -54,9 +60,14 @@ public class Initializer : MonoBehaviour {
                     var presprop = interactorType.Key.GetProperty("presenter");
                     var presenter = FindObjectOfType(interactorType.Value);
                     presprop.SetValue(interactor, presenter);
-
-                    var gamestateprop = interactorType.Key.GetProperty("gameState");
-                    gamestateprop.SetValue(interactor, gameState);
+                }
+                foreach (var property in interactorType.Key.GetProperties()) {
+                    foreach (var dependency in dependencies) {
+                        if (property.PropertyType.IsAssignableFrom(dependency.GetType())) {
+                            property.SetValue(interactor, dependency);
+                            break;
+                        }
+                    }
                 }
                 foreach (var property in controllerType.Key.GetProperties()) {
                     if (property.PropertyType == interactorType.Key) {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 using Data;
 
@@ -8,8 +9,14 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     public Map map;
     public TMP_Text gamePhaseText;
     public GameObject turnButtonContainer;
+    public UIData uiData;
+    public MapHighlighter mapHighlighter;
+    public Transform cameraTransform;
+    public RadarBlipLayer radarBlipLayer;
 
-    Data.GamePhase currentPhase;
+    public SFXLayer sfxLayer;
+
+    public Transform alienAttackPrefab; 
 
     public static ProgressGamePhasePresenter instance { get; private set; }
     
@@ -18,30 +25,10 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     }
     
     public void Present(ProgressGamePhaseOutput input) {
-        if (currentPhase != input.currentPhase) {
+        if (uiData.gamePhase != input.currentPhase) {
             UpdateUI(input.currentPhase);
             UpdatePhaseText(input.currentPhase);
-            currentPhase = input.currentPhase;
-        }
-
-        if (input.alienActions != null) {
-            foreach (var action in input.alienActions) {
-                if (action.type == AlienActionType.Move) {
-                    MoveAlien(
-                        GetAlienByIndex(action.index),
-                        new Vector2(action.position.x, action.position.y),
-                        ConvertDirection(action.facing)
-                    );
-                } else {
-                    GetAlienByIndex(action.index).Face(new Vector2(action.position.x, action.position.y));
-                    UnityEngine.Debug.Log(action.damage);
-                    if (action.attackResult == AttackResult.Killed) {
-                        var tile = map.GetTileAt(new Vector2(action.position.x, action.position.y));
-                        tile.GetActor<Soldier>().Destroy();
-                        tile.RemoveActor();
-                    }
-                }
-            }
+            uiData.gamePhase = input.currentPhase;
         }
 
         if (input.newAliens != null) {
@@ -49,10 +36,55 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
                 InstantiateAlien(newAlien);
             }
         }
+
+        radarBlipLayer.ClearBlips();
+        if (input.radarBlips != null) {
+            foreach (var blipPosition in input.radarBlips) {
+                var tile = map.GetTileAt(new Vector2(blipPosition.x, blipPosition.y));
+                radarBlipLayer.AddBlip(tile.transform.position);
+            }
+        }
+
+        if (input.alienActions != null) {
+            StartCoroutine(AlienActionAnimation(input));
+        }
+    }
+
+    IEnumerator AlienActionAnimation(ProgressGamePhaseOutput input) {
+        foreach (var action in input.alienActions) {
+            if (action.type == AlienActionType.Move) {
+                var alien = GetAlienByIndex(action.index);
+                var gridLocation = new Vector2(action.position.x, action.position.y);
+                MoveAlien(
+                    alien,
+                    gridLocation,
+                    ConvertDirection(action.facing)
+                );
+                if (!map.GetTileAt(gridLocation).foggy) {
+                    FocusCameraOn(alien.transform);
+                    yield return new WaitForSeconds(1);
+                }
+            } else {
+                var alien = GetAlienByIndex(action.index);
+                var tile = map.GetTileAt(new Vector2(action.position.x, action.position.y));
+                var target = tile.GetActor<Soldier>();
+                alien.Face(new Vector2(action.position.x, action.position.y));
+                yield return new WaitForSeconds(0.5f);
+                var attackSprite = sfxLayer.SpawnPrefab(alienAttackPrefab, Vector3.Lerp(alien.transform.position, target.transform.position, 0.5f), alien.transform.rotation);
+                yield return new WaitForSeconds(0.5f);
+                Destroy(attackSprite);
+                if (action.attackResult == AttackResult.Killed) {
+                    target.Destroy();
+                    tile.RemoveActor();
+                }
+            }
+        }
     }
 
     void UpdateUI(Data.GamePhase gamePhase) {
-        turnButtonContainer.SetActive(gamePhase == Data.GamePhase.Movement);
+        turnButtonContainer.SetActive(false);
+        uiData.ClearSelection();
+        mapHighlighter.ClearHighlights();
         foreach (var soldier in map.GetActors<Soldier>()) {
             if (gamePhase == Data.GamePhase.Movement) {
                 soldier.StartMovementPhase();
@@ -107,5 +139,11 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
             if (alien.index == index) return alien;
         }
         throw new System.Exception("Alien could not be found");
+    }
+
+    void FocusCameraOn(Transform target) {
+        var cameraPosition = target.position;
+        cameraPosition.z = cameraTransform.position.z;
+        cameraTransform.position = cameraPosition;
     }
 }

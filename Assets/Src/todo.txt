@@ -2,20 +2,12 @@
 
 ## Bugs
 - Aliens jump around a bit weirdly if they are already next to a soldier at the start of their movement (need a way of making their behaviour more predictable and less weird)
+- Progress turn button can be pressed while animations are still running
 
-- Find the root of where soldier clicks are handles (MapInputController)
-- Create interactor that will return the list of available actions for a soldier
-- Use this when a soldier is selected to mark which tiles are interactable, and what the interaction is (copy and paste some stuff from possible moves interactor)
-- Use existing movesoldierinteractor when the action is move
-- Selection of soldiers still handled by UI (but should be moved from MapHighlighter to MapInputController)
 - Inspect selected item interactor should be removed: all soldier and alien state should already be known by the UI, ready to be displayed when something is selected
 - Possible soldier moves interactor should also be removed
 
 - Remove references to Storage class in interactor and in GamePhase
-
-- Implement soldier turning as an interactor (important for shooting!)
-
-- Implement Shooting as interactor
 
 ## Do animations
 - Zoom camera on aliens as they move, like it did before
@@ -80,9 +72,9 @@
 
 - Reimplement alien radar blips
 
-- Refactor remaining in game actions:
-  - Soldier turning
-  - Soldier shooting
+- Refactor remaining in game actions: ✓✓
+  - Soldier turning ✓
+  - Soldier shooting ✓
 
 - Improve UI to acceptable levels:
   - Button for inspecting soldier stats
@@ -101,9 +93,6 @@
 # Principles
 
 - Clarity: How easy it is to see/find all the consequences of a given action
-
-- Flexibility: How easy is it to add new functionality
-
+- Flexibility: How easy is it to add new functionality without altering existing classes
 - Dependence: How difficult is it to change without breaking other parts of the application or preventing compilation
-
 - Complexity: Does the benefit outweight the complexity that it introduces
