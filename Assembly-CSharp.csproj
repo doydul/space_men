@@ -196,7 +196,6 @@
      <Compile Include="Assets\Src\New\Workers\SoldierGenerator.cs" />
      <Compile Include="Assets\Src\New\Workers\SoldierMove.cs" />
      <Compile Include="Assets\Src\New\Workers\Soldiers.cs" />
-     <Compile Include="Assets\Src\New\Workers\Storage.cs" />
      <Compile Include="Assets\Src\New\World\AlienAttackAnimation.cs" />
      <Compile Include="Assets\Src\New\World\AnimationInteractor.cs" />
      <Compile Include="Assets\Src\New\World\ShootingAnimation.cs" />

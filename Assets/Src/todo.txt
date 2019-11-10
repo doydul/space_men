@@ -4,8 +4,6 @@
 - Aliens jump around a bit weirdly if they are already next to a soldier at the start of their movement (need a way of making their behaviour more predictable and less weird)
 - Progress turn button can be pressed while animations are still running
 
-- Possible soldier moves interactor should also be removed
-
 - Remove references to Storage class in interactor and in GamePhase
 
 ## Do animations

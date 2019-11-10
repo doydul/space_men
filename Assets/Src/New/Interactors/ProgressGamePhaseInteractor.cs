@@ -14,17 +14,18 @@ namespace Interactors {
 
         public IAlienStore alienStore { private get; set; }
         public ISoldierStore soldierStore { private get; set; }
+        public IMissionStore missionStore { private get; set; }
         
         int stage;
         AlienSpawnerGenerator alienSpawnerGenerator;
         List<AlienSpawner> alienSpawners;
 
         public ProgressGamePhaseInteractor() {
-            alienSpawnerGenerator = new AlienSpawnerGenerator(Storage.instance.GetCurrentMission());
             alienSpawners = new List<AlienSpawner>();
         }
 
         public void Interact(ProgressGamePhaseInput input) {
+            if (alienSpawnerGenerator == null) alienSpawnerGenerator = new AlienSpawnerGenerator(missionStore.GetMission(gameState.campaign, gameState.mission));
             var currentPhase = gameState.currentPhase;
             if (currentPhase == Data.GamePhase.Movement) {
                 presenter.Present(StartShootingPhase());

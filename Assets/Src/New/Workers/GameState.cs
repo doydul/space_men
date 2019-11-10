@@ -11,12 +11,16 @@ namespace Workers {
         Actors actors;
 
         public Data.GamePhase currentPhase { get; private set; }
+        public string campaign { get; private set; }
+        public string mission { get; private set; }
 
-        public void Init() {
+        public void Init(string campaignName, string missionName) {
             actors = new Actors();
 
             map = new MapState();
             map.Init(mapStore.GetMap());
+            this.campaign = campaignName;
+            this.mission = missionName;
         }
 
         public Data.Actor GetActor(long uniqueId) {

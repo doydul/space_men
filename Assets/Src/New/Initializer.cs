@@ -31,18 +31,17 @@ public class Initializer : MonoBehaviour {
     GameState gameState;
     
     void Start() {
-        Storage.Init(new MissionStore());
-
         gameState = new GameState();
         var mapStore = new MapStore();
         mapStore.map = Map.instance;
         gameState.mapStore = mapStore;
-        gameState.Init();
+        gameState.Init("Default", "First Mission");
 
         dependencies = new List<object>();
         dependencies.Add(gameState);
         dependencies.Add(new AlienStore());
         dependencies.Add(new SoldierStore());
+        dependencies.Add(new MissionStore());
         
         LoadDynamicDependencies();
         
