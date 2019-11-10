@@ -12,11 +12,11 @@ namespace Workers {
         private const int MAX_SPAWN_DISTANCE = 13;
         
         Position spawnPoint;
-        Queue<Data.AlienType> aliens;
+        Queue<string> aliens;
 
-        public AlienSpawn(Position spawnPoint, Data.AlienType[] aliens) {
+        public AlienSpawn(Position spawnPoint, string[] aliens) {
             this.spawnPoint = spawnPoint;
-            this.aliens = new Queue<Data.AlienType>(aliens);
+            this.aliens = new Queue<string>(aliens);
         }
         
         public Data.Alien[] Execute(GameState gameState, AlienPathingGrid pathingGrid) {

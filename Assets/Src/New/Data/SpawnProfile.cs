@@ -2,7 +2,7 @@ namespace Data {
   
     public struct SpawnProfile {
 
-        public AlienType alienType;
+        public string alienType;
         public int groupSize;
         public AlienSpawnType spawnType;
         public float chance;

@@ -5,6 +5,6 @@ namespace Data {
         public override bool isAlien { get { return true; } }
 
         public int movement { get; set; }
-        public AlienType type { get; set; }
+        public string type { get; set; }
     }
 }

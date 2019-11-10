@@ -14,8 +14,8 @@ namespace Data {
         public AlienActionType type;
         public Position position;
         public Direction facing;
-        public int damage;
-        public AttackResult attackResult;
+
+        public DamageInstance damageInstance;
     }
 
     public enum AlienActionType {

@@ -6,8 +6,8 @@ using Data;
 
 public class AlienStore : IAlienStore {
     
-    public AlienStats GetAlienStats(AlienType alienType) {
-        var data = GetData(alienType.ToString());
+    public AlienStats GetAlienStats(string alienType) {
+        var data = GetData(alienType);
         return new AlienStats {
             health = data.maxHealth,
             armour = data.armour,
@@ -15,7 +15,9 @@ public class AlienStore : IAlienStore {
             damage = data.damage,
             armourPen = data.armourPen,
             movement = data.movement,
-            radarBlipChance = data.chanceOfCreatingRadarBlip
+            radarBlipChance = data.chanceOfCreatingRadarBlip,
+            maxHealth = data.maxHealth,
+            name = alienType
         };
     }
     

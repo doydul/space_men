@@ -25,6 +25,7 @@ namespace Data {
         public ArmourWeight weight;
         public int armourValue;
         public int cost;
+        public int maxHealth;
     }
 
     public struct WeaponStats {

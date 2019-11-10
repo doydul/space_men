@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -13,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accuracy: 70
   armourPen: 0
-  minDamage: 1
-  maxDamage: 1
+  minDamage: 3
+  maxDamage: 5
   shotsWhenMoving: 2
   shotsWhenStill: 4
   ammo: 24

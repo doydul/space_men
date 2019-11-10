@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 
 public class Soldier : Actor {
 
@@ -7,7 +6,6 @@ public class Soldier : Actor {
     public Weapon weapon;
     public Transform muzzleFlashLocation;
     
-    public int health { get; set; }
     public int tilesMoved { get; set; }
     public int shotsFiredThisRound { get; set; }
     public int shotsFiredFromClip { get; set; }
@@ -37,7 +35,6 @@ public class Soldier : Actor {
     public float blast { get { return weapon.blast; } }
     public bool firesOrdnance { get { return weapon.ordnance; } }
     public Weapon.Type weaponType { get { return weapon.type; } }
-    public int maxHealth { get { return 86; } }
     public Vector2 muzzlePosition { get { return muzzleFlashLocation.position; } }
     
     public string armourName { get { return armour.name; } }

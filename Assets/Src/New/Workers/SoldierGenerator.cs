@@ -6,7 +6,7 @@ namespace Workers {
         
         public static Builder Default() {
             return new Builder(new SoldierActor {
-                health = new Health(86),
+                health = new Health(15),
                 armourName = "Basic",
                 weaponName = "Assault Rifle",
                 baseMovement = 4,
@@ -20,6 +20,10 @@ namespace Workers {
         
         public static Builder WithArmour(string armourName) {
             return Default().WithArmour(armourName);
+        }
+
+        public static Builder WithMaxHealth(int maxHealth) {
+            return Default().WithMaxHealth(maxHealth);
         }
         
         public static Builder At(Data.Position position) {
@@ -45,6 +49,11 @@ namespace Workers {
                 var newData = data;
                 newData.armourName = armourName;
                 data = newData;
+                return this;
+            }
+
+            public Builder WithMaxHealth(int maxHealth) {
+                data.health = new Health(maxHealth);
                 return this;
             }
             

@@ -13,6 +13,7 @@ public class Armour : ScriptableObject {
     public int armourValue;
     public Type type;
     public int value;
+    public int maxHealth;
 
     public int movement { get {
         switch(type) {

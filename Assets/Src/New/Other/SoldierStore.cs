@@ -11,7 +11,8 @@ public class SoldierStore : ISoldierStore {
         return new ArmourStats {
             armourValue = data.armourValue,
             weight = ConvertArmourWeight(data.type),
-            cost = data.value
+            cost = data.value,
+            maxHealth = data.maxHealth
         };
     }
 

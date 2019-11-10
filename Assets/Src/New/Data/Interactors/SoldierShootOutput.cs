@@ -15,5 +15,6 @@ namespace Data {
         public AttackResult attackResult;
         public long perpetratorIndex;
         public long victimIndex;
+        public int victimHealthAfterDamage;
     }
 }

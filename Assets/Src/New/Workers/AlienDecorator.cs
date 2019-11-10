@@ -16,6 +16,7 @@ namespace Workers
         public Position position { get { return alien.position; } }
         public int armour { get { return stats.armour; } }
         public bool dead { get { return alien.health.dead; } }
+        public int currentHealth { get { return alien.health.current; } }
 
         public void Damage(int amount) {
             alien.health.Damage(amount);

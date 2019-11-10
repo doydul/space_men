@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Grenade Launcher
   m_EditorClassIdentifier: 
   accuracy: 50
-  armourPen: 15
+  armourPen: 10
   minDamage: 1
-  maxDamage: 2
+  maxDamage: 6
   shotsWhenMoving: 2
   shotsWhenStill: 2
   ammo: 4

@@ -4,11 +4,11 @@ namespace Workers {
     
     public static class AlienGenerator {
         
-        public static Builder FromValueType(Data.Alien alienStruct) {
+        public static Builder FromStats(AlienStats stats) {
             return new Builder(new AlienActor {
-                position = alienStruct.position,
-                health = new Health(1),
-                movement = 3
+                health = new Health(stats.maxHealth),
+                movement = stats.movement,
+                type = stats.name
             });
         }
         
@@ -22,6 +22,11 @@ namespace Workers {
             
             public AlienActor Build() {
                 return actor;
+            }
+
+            public Builder At(Position position) {
+                actor.position = position;
+                return this;
             }
         }
     }

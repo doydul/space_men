@@ -16,7 +16,8 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
 
     public SFXLayer sfxLayer;
 
-    public Transform alienAttackPrefab; 
+    public Transform alienAttackPrefab;
+    public Transform healthBarPrefab;
 
     public static ProgressGamePhasePresenter instance { get; private set; }
     
@@ -69,11 +70,18 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
                 var tile = map.GetTileAt(new Vector2(action.position.x, action.position.y));
                 var target = tile.GetActor<Soldier>();
                 alien.Face(new Vector2(action.position.x, action.position.y));
+                target.health = action.damageInstance.victimHealthAfterDamage;
                 yield return new WaitForSeconds(0.5f);
                 var attackSprite = sfxLayer.SpawnPrefab(alienAttackPrefab, Vector3.Lerp(alien.transform.position, target.transform.position, 0.5f), alien.transform.rotation);
                 yield return new WaitForSeconds(0.5f);
                 Destroy(attackSprite);
-                if (action.attackResult == AttackResult.Killed) {
+                var healthBarGO = sfxLayer.SpawnPrefab(healthBarPrefab, target.transform.position);
+                var healthBar = healthBarGO.GetComponent<HealthBar>();
+                healthBar.SetPercentage(target.healthPercentage);
+                Debug.Log(target.healthPercentage);
+                yield return new WaitForSeconds(1);
+                Destroy(healthBarGO);
+                if (action.damageInstance.attackResult == AttackResult.Killed) {
                     target.Destroy();
                     tile.RemoveActor();
                 }

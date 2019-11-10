@@ -130,6 +130,7 @@
      <Compile Include="Assets\Src\GameplayOrchestrator.cs" />
      <Compile Include="Assets\Src\New\ActionImpl.cs" />
      <Compile Include="Assets\Src\New\ActorActionFactory.cs" />
+     <Compile Include="Assets\Src\New\Components\HealthBar.cs" />
      <Compile Include="Assets\Src\New\Components\RadarBlipLayer.cs" />
      <Compile Include="Assets\Src\New\Components\SFXLayer.cs" />
      <Compile Include="Assets\Src\New\Components\UIData.cs" />

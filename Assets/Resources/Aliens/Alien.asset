@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c82adb107c94f71a0fd866728d0893, type: 3}
   m_Name: Alien
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 3
   armour: 30
   accModifier: 0
-  damage: 15
-  armourPen: 0
+  damage: 2
+  armourPen: 10
   movement: 4
   threat: 1
   expReward: 5

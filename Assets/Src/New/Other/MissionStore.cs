@@ -18,7 +18,7 @@ public class MissionStore : IMissionStore {
     
     Data.SpawnProfile ProfileConverter(MissionEnemyProfile profile) {
         return new Data.SpawnProfile {
-            alienType = (Data.AlienType)Enum.Parse(typeof(Data.AlienType), profile.alienType, true),
+            alienType = profile.alienType,
             groupSize = profile.groupSize,
             spawnType = (Data.AlienSpawnType)profile.spawnType,
             chance = profile.chance,

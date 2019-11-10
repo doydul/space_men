@@ -26,6 +26,8 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
         soldier.armour = Armour.Get(soldierData.armourName.ToString());
         soldier.weapon = Weapon.Get(soldierData.weaponName.ToString());
         soldier.exp = soldierData.exp;
+        soldier.maxHealth = soldierData.maxHealth;
+        soldier.health = soldierData.health;
 
         Map.instance.GetTileAt(new Vector2(soldierData.position.x, soldierData.position.y)).SetActor(trans);
         return soldier;

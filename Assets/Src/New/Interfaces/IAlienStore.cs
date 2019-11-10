@@ -2,5 +2,5 @@ using Data;
 
 public interface IAlienStore {
     
-    AlienStats GetAlienStats(AlienType alienType);
+    AlienStats GetAlienStats(string alienType);
 }

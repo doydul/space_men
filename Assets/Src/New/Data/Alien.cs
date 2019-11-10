@@ -3,14 +3,9 @@ namespace Data {
     public struct Alien {
         
         public long index;
-        public AlienType alienType;
+        public string alienType;
         public Position position;
         public Direction facing;
-    }
-
-    public enum AlienType {
-        Alien,
-        Advanced
     }
     
     public struct AlienStats {
@@ -21,5 +16,7 @@ namespace Data {
         public int armourPen;
         public int movement;
         public int radarBlipChance;
+        public int maxHealth;
+        public string name;
     }
 }

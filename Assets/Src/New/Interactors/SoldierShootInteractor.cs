@@ -54,6 +54,7 @@ namespace Interactors {
                     damageInstance.damageInflicted = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
                     damageInstance.attackResult = AttackResult.Hit;
                     alien.Damage(damageInstance.damageInflicted);
+                    damageInstance.victimHealthAfterDamage = alien.currentHealth;
                     if (alien.dead) {
                         damageInstance.attackResult = AttackResult.Killed;
                         gameState.RemoveActor(alien.uniqueId);
@@ -96,6 +97,7 @@ namespace Interactors {
                         health.Damage(damage);
                         damageInstance.damageInflicted = damage;
                         damageInstance.attackResult = AttackResult.Hit;
+                        damageInstance.victimHealthAfterDamage = health.current;
                         if (health.dead) {
                             damageInstance.attackResult = AttackResult.Killed;
                             gameState.RemoveActor(cell.actor.uniqueId);

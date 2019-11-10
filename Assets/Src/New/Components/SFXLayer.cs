@@ -8,7 +8,7 @@ public class SFXLayer : MonoBehaviour {
         return position3D;
     }
 
-    public GameObject SpawnPrefab(Transform prefab, Vector2 location, Quaternion rotation) {
+    public GameObject SpawnPrefab(Transform prefab, Vector2 location, Quaternion rotation = default(Quaternion)) {
         var transform = Instantiate(prefab) as Transform;
         transform.position = Position3D(location);
         transform.SetParent(this.transform, true);

@@ -89,10 +89,10 @@ namespace Interactors {
             var alienSpawns = new List<AlienSpawn>();
             foreach (var spawner in new List<AlienSpawner>(alienSpawners)) {
                 if (spawner.spawnType == Data.AlienSpawnType.Trickle) {
-                    alienSpawns.Add(new AlienSpawn(spawner.position, new AlienType[] { spawner.alienType }));
+                    alienSpawns.Add(new AlienSpawn(spawner.position, new string[] { spawner.alienType }));
                     spawner.remainingAliens -= 1;
                 } else {
-                    var types = new AlienType[spawner.remainingAliens];
+                    var types = new string[spawner.remainingAliens];
                     for (int i = 0; i < spawner.remainingAliens; i++) {
                         types[i] = spawner.alienType;
                     }
@@ -118,7 +118,7 @@ namespace Interactors {
         }
 
         Data.Alien AddAlienToGameState(Data.Alien alien) {
-            alien.index = gameState.AddActor(AlienGenerator.FromValueType(alien).Build());
+            alien.index = gameState.AddActor(AlienGenerator.FromStats(alienStore.GetAlienStats(alien.alienType)).At(alien.position).Build());
             return alien;
         } 
 
@@ -203,8 +203,14 @@ namespace Interactors {
                 index = alien.uniqueId,
                 type = AlienActionType.Attack,
                 position = soldier.position,
-                damage = damage,
-                attackResult = attackResult
+
+                damageInstance = new DamageInstance {
+                    perpetratorIndex = alien.uniqueId,
+                    victimIndex = soldier.uniqueId,
+                    damageInflicted = damage,
+                    attackResult = attackResult,
+                    victimHealthAfterDamage = soldier.health.current
+                }
             };
         }
         

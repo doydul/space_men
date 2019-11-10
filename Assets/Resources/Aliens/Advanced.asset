@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c82adb107c94f71a0fd866728d0893, type: 3}
   m_Name: Advanced
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  armour: 70
-  accModifier: 5
-  damage: 20
-  armourPen: 0
-  movement: 3
+  maxHealth: 16
+  armour: 20
+  accModifier: 15
+  damage: 3
+  armourPen: 40
+  movement: 2
   threat: 3
   expReward: 10
   chanceOfCreatingRadarBlip: 70

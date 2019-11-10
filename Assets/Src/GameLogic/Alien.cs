@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Alien : Actor {
 
-    public int maxHealth { get; set; }
-    private int health { get; set; }
     public int armour { get; set; }
     public int accModifier { get; set; }
     public int damage { get; set; }

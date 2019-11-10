@@ -15,3 +15,4 @@ MonoBehaviour:
   armourValue: 30
   type: 0
   value: 350
+  maxHealth: 18

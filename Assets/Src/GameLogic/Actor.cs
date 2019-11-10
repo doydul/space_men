@@ -18,6 +18,9 @@ public class Actor : MonoBehaviour {
     public Direction direction { get; private set; }
     public bool dead { get; private set; }
 
+    public int maxHealth { get; set; }
+    public int health { get; set; }
+    public int healthPercentage { get { return health * 100 / maxHealth; } }
     public Vector2 gridLocation { get { return tile.gridLocation; } }
     public Vector2 realLocation { get { return transform.position; } }
     public int rotation { get { return (int)direction * 90; } }
