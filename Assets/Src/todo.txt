@@ -2,11 +2,8 @@
 
 ## Bugs
 - Aliens jump around a bit weirdly if they are already next to a soldier at the start of their movement (need a way of making their behaviour more predictable and less weird)
-- Progress turn button can be pressed while animations are still running
+- Progress turn button can be pressed while animations are still running (because input is only disabled in soldier shoot presenter, not in game phase presenter)
 
-- Set value of alien health according to victim new health variable in shooting presenter
-- Spawn prefab in soldier shoot presenter and access health bar script via GetComponent();
-- Destroy prefab after delay
 
 
 # Not Urgent
@@ -71,12 +68,13 @@
   - Soldier shooting ✓
 
 - Improve UI to acceptable levels:
-  - Health bars on Map
+  - Health bars on Map ✓
   - Button for inspecting soldier stats
   - Ability to inspect alien stats and show possible alien moves on Map
-  - Combat indicators to show combat results like 'missed', 'deflected' (damage dealth will be indicated by health bar)
+  - Combat indicators to show combat results like 'missed', 'deflected' (damage dealt will be indicated by health bar)
 
 - Implement secondary objectives to give weapon rewards
+  - Add back walk on tile trigger functionality
 
 - Content:
   - A basic set of weapons, up to level 2 (10 per level, so 20 in total)

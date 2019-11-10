@@ -16,6 +16,7 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
     public Transform gunflarePrefab;
     public Transform hitPrefab;
     public Transform explosionCloudPrefab;
+    public Transform healthBarPrefab;
     
     void Awake() {
         instance = this;
@@ -48,6 +49,10 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
             yield return new WaitForSeconds(1);
             Destroy(hitSFX);
         }
+        if (damageInstance.attackResult == AttackResult.Hit) {
+            alien.health = damageInstance.victimHealthAfterDamage;
+            yield return HealthBarAnimation(alien.transform.position, alien.healthPercentage);
+        }
         if (damageInstance.attackResult == AttackResult.Killed) {
             alien.Die();
         }
@@ -68,10 +73,22 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
             Destroy(cloudObject);
         }
         foreach (var damageInstance in input.damageInstances) {
-            var alien = map.GetActorByIndex(damageInstance.victimIndex);
-            // Show health bar i guess?
-            if (damageInstance.attackResult == AttackResult.Killed) alien.Die();
+            var actor = map.GetActorByIndex(damageInstance.victimIndex);
+            if (damageInstance.attackResult == AttackResult.Killed) {
+                actor.Die();
+            } else if (damageInstance.attackResult == AttackResult.Hit) {
+                actor.health = damageInstance.victimHealthAfterDamage;
+                yield return HealthBarAnimation(actor.transform.position, actor.healthPercentage);
+            }
         }
+    }
+
+    IEnumerator HealthBarAnimation(Vector2 position, int percentage) {
+        var healthBarGO = sfxLayer.SpawnPrefab(healthBarPrefab, position);
+        var healthBar = healthBarGO.GetComponent<HealthBar>();
+        healthBar.SetPercentage(percentage);
+        yield return new WaitForSeconds(1);
+        Destroy(healthBarGO);
     }
 
     void DisableAllInput() {

@@ -59,8 +59,8 @@ MonoBehaviour:
   sceneName: Mission1
   missionName: First Mission
   enemyProfiles:
-  - alienType: Alien
-    groupSize: 3
+  - alienType: Advanced
+    groupSize: 1
     spawnType: 0
     chance: 1
     cooldown: 3

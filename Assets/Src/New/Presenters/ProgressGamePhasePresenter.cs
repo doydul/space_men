@@ -78,7 +78,6 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
                 var healthBarGO = sfxLayer.SpawnPrefab(healthBarPrefab, target.transform.position);
                 var healthBar = healthBarGO.GetComponent<HealthBar>();
                 healthBar.SetPercentage(target.healthPercentage);
-                Debug.Log(target.healthPercentage);
                 yield return new WaitForSeconds(1);
                 Destroy(healthBarGO);
                 if (action.damageInstance.attackResult == AttackResult.Killed) {
