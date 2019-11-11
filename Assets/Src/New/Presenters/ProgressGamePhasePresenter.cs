@@ -112,12 +112,13 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     Transform InstantiateAlien(Data.Alien newAlien) {
         var alienTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/Alien")) as Transform;
         var alien = alienTransform.GetComponent<Alien>() as Alien;
-        alien.FromData(Resources.Load<AlienData>("Aliens/" + newAlien.alienType.ToString()));
+        alien.FromData(Resources.Load<AlienData>("Aliens/" + newAlien.alienType));
         var spriteTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/AlienSprites/" + newAlien.alienType.ToString() + "AlienSprite")) as Transform;
         spriteTransform.parent = alienTransform;
         spriteTransform.localPosition = Vector3.zero;
         alien.image = spriteTransform;
         alien.index = newAlien.index;
+        alien.type = newAlien.alienType;
 
         alien.TurnTo(ConvertDirection(newAlien.facing));
         map.GetTileAt(new Vector2(newAlien.position.x, newAlien.position.y)).SetActor(alienTransform);

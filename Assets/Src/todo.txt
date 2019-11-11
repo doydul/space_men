@@ -4,7 +4,12 @@
 - Aliens jump around a bit weirdly if they are already next to a soldier at the start of their movement (need a way of making their behaviour more predictable and less weird)
 - Progress turn button can be pressed while animations are still running (because input is only disabled in soldier shoot presenter, not in game phase presenter)
 
+- Make it possible to select aliens
+- Make it possible to inspect aliens
 
+- Add new action type to actor actions output, to signify that a location should be highlighted but not clickable (so we can show things to the user such as how far an alien can attack)
+- Implement something in actor actions which, when the selected item is an alien, will return a list of squares it can attack in the coming phase
+- Implement showing of these marker actions (show them in map highlighter, but don't add them to uidata if they are of this type)
 
 # Not Urgent
 

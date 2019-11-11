@@ -41,7 +41,6 @@ public class Soldier : Actor {
     public string weaponName { get { return weapon.name; } }
 
     void Start() {
-        health = 86;
         StartMovementPhase();
     }
 
@@ -78,9 +77,9 @@ public class Soldier : Actor {
     }
 
     public void StartMovementPhase() {
-        tilesMoved = 0;
-        shotsFiredThisRound = 0;
-        if (GameLogicComponent.instance != null) GameLogicComponent.userInterface.ShowMovementIndicators(this);
+        // tilesMoved = 0;
+        // shotsFiredThisRound = 0;
+        // if (GameLogicComponent.instance != null) GameLogicComponent.userInterface.ShowMovementIndicators(this);
     }
 
     public void StartShootingPhase() {

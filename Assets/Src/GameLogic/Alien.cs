@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Alien : Actor {
 
+    public string type { get; set; }
     public int armour { get; set; }
     public int accModifier { get; set; }
     public int damage { get; set; }

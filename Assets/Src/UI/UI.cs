@@ -5,7 +5,6 @@ public class UI : MonoBehaviour, IUserInterface {
 
     public static UI instance;
 
-    public GamePhase gamePhase;
     public GameUIController gameUIController;
 
     void Awake() {
@@ -20,16 +19,11 @@ public class UI : MonoBehaviour, IUserInterface {
         soldier.GetComponent<SoldierUIController>().Deselect();
     }
 
-    public void ShowMovementIndicators(Soldier soldier) {
-        soldier.GetComponent<SoldierUIController>().ShowMovementIndicators();
-    }
-
     public void ShowAmmoIndicators(Soldier soldier) {
         soldier.GetComponent<SoldierUIController>().ShowAmmoIndicators();
     }
 
     public void ShowVictoryPopup() {
-        gameUIController.ShowVictoryPopup();
     }
 
     public void FadeToBlack(Action finished) {

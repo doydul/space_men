@@ -11,6 +11,8 @@ public class UIData : MonoBehaviour {
     public Data.GamePhase gamePhase { get; set; }
     public Tile selectedTile { get; set; }
 
+    public Actor selectedActor { get { return selectedTile.actor.GetComponent<Actor>(); } }
+
     void Awake() {
         instance = this;
         actorActions = new ActorAction[0];
