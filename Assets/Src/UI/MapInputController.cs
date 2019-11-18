@@ -50,7 +50,7 @@ public class MapInputController : MonoBehaviour {
         if (hit.collider != null) {
             var tile = hit.collider.gameObject.GetComponent<Tile>();
             if (tile != null) {
-                inputHandler.TriggerInteractWithTile(tile);
+                PlayerActionHandler.instance.InteractWithTile(tile);
             }
         }
     }

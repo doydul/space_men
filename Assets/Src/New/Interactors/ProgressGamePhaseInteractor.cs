@@ -45,6 +45,9 @@ namespace Interactors {
             gameState.SetCurrentPhase(Data.GamePhase.Shooting);
             
             SpawnAliens(ref result);
+            foreach (var alien in Aliens.Iterate(gameState)) {
+                alien.movesRemaining = alien.movement * SHOOTING_PHASE_ITERATIONS;
+            }
             
             return result;
         }
@@ -71,6 +74,9 @@ namespace Interactors {
                     var soldier = actor as SoldierActor;
                     soldier.ammoSpent = 0;
                     soldier.moved = 0;
+                } else if (actor is AlienActor) {
+                    var alien = actor as AlienActor;
+                    alien.movesRemaining = alien.movement * SHOOTING_PHASE_ITERATIONS;
                 }
             }
             return result;
@@ -127,6 +133,7 @@ namespace Interactors {
             var pathingGrid = AlienPathingGrid.instance;
             var map = gameState.map;
             var aliens = Aliens.Iterate(gameState).ToList();
+            aliens.ForEach(alien => alien.movesRemaining -= alien.movement);
             var aliensCopy = new List<AlienActor>(aliens);
             while (aliens.Any()) {
                 foreach (var alien in aliensCopy) {

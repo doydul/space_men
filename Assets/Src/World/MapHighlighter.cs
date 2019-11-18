@@ -56,6 +56,8 @@ public class MapHighlighter : MonoBehaviour {
                 HighlightTile(map.GetTileAt(new Vector2(action.target.x, action.target.y)), color);
             } else if (action.type == ActorActionType.Shoot) {
                 HighlightTile(map.GetTileAt(new Vector2(action.target.x, action.target.y)), Color.red);
+            } else if (action.type == ActorActionType.PossibleMove) {
+                HighlightTile(map.GetTileAt(new Vector2(action.target.x, action.target.y)), Color.red);
             }
         }
     }

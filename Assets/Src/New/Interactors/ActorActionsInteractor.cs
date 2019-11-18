@@ -22,7 +22,10 @@ namespace Interactors {
 
         void GetMoveActions(long index, ref ActorActionsOutput output) {
             var actor = gameState.GetActor(index);
-            if (actor is AlienActor) return;
+            if (actor is AlienActor) {
+                GetAlienActions(index, ref output);
+                return;
+            }
             var soldier = actor as SoldierActor;
             var map = gameState.map;
             
@@ -73,7 +76,12 @@ namespace Interactors {
 
         void GetShootActions(long index, ref ActorActionsOutput output) {
             var result = new List<ActorAction>();
-            var soldier = gameState.GetActor(index) as SoldierActor;
+            var actor = gameState.GetActor(index);
+            if (actor is AlienActor) {
+                GetAlienActions(index, ref output);
+                return;
+            }
+            var soldier = actor as SoldierActor;
 
             foreach (var alien in Aliens.Iterate(gameState)) {
                 if (
@@ -90,6 +98,26 @@ namespace Interactors {
             }
 
             output.actions = result.ToArray();
+        }
+
+        void GetAlienActions(long index, ref ActorActionsOutput output) {
+            var result = new List<Position>();
+            var alien = gameState.GetActor(index) as AlienActor;
+            var iterator = new CellIterator(alien.position, cell => !cell.isWall && !cell.actor.isSoldier);
+            foreach (var node in iterator.Iterate(gameState.map)) {
+                if (node.distanceFromStart > alien.movesRemaining) {
+                    break;
+                } else {
+                    result.Add(node.cell.position);
+                }
+            }
+            output.actions = result.Select((position) => {
+                return new ActorAction {
+                    index = alien.uniqueId,
+                    type = ActorActionType.PossibleMove,
+                    target = position
+                };
+            }).ToArray();
         }
 
         bool WithinSightArc(Position shooterPosition, Direction shooterFacing, Position targetPosition) {

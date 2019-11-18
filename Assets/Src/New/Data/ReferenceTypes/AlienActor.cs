@@ -6,5 +6,6 @@ namespace Data {
 
         public int movement { get; set; }
         public string type { get; set; }
+        public int movesRemaining { get; set; }
     }
 }

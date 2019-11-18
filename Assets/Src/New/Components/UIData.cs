@@ -24,7 +24,7 @@ public class UIData : MonoBehaviour {
         foreach (var action in actorActions) {
             if (action.target == tilePosition) {
                 actorAction = action;
-                return true;
+                return !(action.type == ActorActionType.PossibleMove);
             }
         }
         return false;

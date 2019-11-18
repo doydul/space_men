@@ -5,6 +5,8 @@ using Data;
 
 public class PlayerActionHandler {
 
+    public static PlayerActionHandler instance { get; private set; }
+
     IPlayerActionInput input;
     CurrentSelectionState selectionState;
     GamePhase gamePhase;
@@ -23,54 +25,21 @@ public class PlayerActionHandler {
         this.gamePhase = gamePhase;
         this.soldierActionHandler = soldierActionHandler;
         this.uiController = uiController;
+        instance = this;
     }
 
-    public void InitBindings() {
-        input.SetTurnSoldierLeftListener(TurnSoldierLeft);
-        input.SetTurnSoldierRightListener(TurnSoldierRight);
-        input.SetTurnSoldierUpListener(TurnSoldierUp);
-        input.SetTurnSoldierDownListener(TurnSoldierDown);
-        input.SetContinueButtonListener(ContinueButton);
-        input.SetInteractWithTileListener(InteractWithTile);
-    }
-
-    void TurnSoldierLeft() {
-        if (selectionState.soldierSelected)
-            selectionState.GetSelectedSoldier().TurnTo(Soldier.Direction.Left);
-    }
-
-    void TurnSoldierRight() {
-        if (selectionState.soldierSelected)
-            selectionState.GetSelectedSoldier().TurnTo(Soldier.Direction.Right);
-    }
-
-    void TurnSoldierUp() {
-        if (selectionState.soldierSelected)
-            selectionState.GetSelectedSoldier().TurnTo(Soldier.Direction.Up);
-    }
-
-    void TurnSoldierDown() {
-        if (selectionState.soldierSelected)
-            selectionState.GetSelectedSoldier().TurnTo(Soldier.Direction.Down);
-    }
-
-    void ContinueButton() {
-        gamePhase.ProceedPhase();
-    }
-
-    void InteractWithTile(Tile tile) {
-        var soldier = tile.GetActor<Soldier>();
-        if (soldier != null) {
-            selectionState.SelectSoldier(soldier);
+    public void InteractWithTile(Tile tile) {
+        var actor = tile.GetActor<Actor>();
+        if (actor != null) {
             UIData.instance.selectedTile = tile;
-            MapController.instance.DisplayActions(soldier.index);
+            MapController.instance.DisplayActions(actor.index);
         } else {
             ActorAction action;
             if (UIData.instance.ActionFor(tile, out action)) {
                 if (action.type == ActorActionType.Move) {
-                    MapController.instance.MoveSoldier(selectionState.GetSelectedSoldier().index, tile.gridLocation);
+                    MapController.instance.MoveSoldier(action.index, tile.gridLocation);
                 } else if (action.type == ActorActionType.Shoot) {
-                    MapController.instance.SoldierShoot(selectionState.GetSelectedSoldier().index, action.actorTargetIndex);
+                    MapController.instance.SoldierShoot(action.index, action.actorTargetIndex);
                 }
             } else {
                 selectionState.DeselectSoldier();

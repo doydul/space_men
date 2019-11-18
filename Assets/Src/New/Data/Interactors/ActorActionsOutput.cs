@@ -17,6 +17,8 @@ namespace Data {
     public enum ActorActionType {
         Move,
         Shoot,
-        Turn
+        Turn,
+        PossibleMove,
+        PossibleAttack
     }
 }

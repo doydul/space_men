@@ -21,7 +21,7 @@ namespace Workers {
             var checkedPositions = new List<Position> { start };
             yield return new Node { cell = map.GetCell(start) };
             
-            int distance = 0;
+            int distance = 1;
             while (leafCells.Count > 0) {
                 var newLeafCells = new List<CellType>();
                 foreach (var leafCell in leafCells) {
