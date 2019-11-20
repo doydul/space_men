@@ -30,22 +30,20 @@ public class PlayerActionHandler {
 
     public void InteractWithTile(Tile tile) {
         var actor = tile.GetActor<Actor>();
-        if (actor != null) {
+        ActorAction action;
+        if (UIData.instance.ActionFor(tile, out action)) {
+            if (action.type == ActorActionType.Move) {
+                MapController.instance.MoveSoldier(action.index, tile.gridLocation);
+            } else if (action.type == ActorActionType.Shoot) {
+                MapController.instance.SoldierShoot(action.index, action.actorTargetIndex);
+            }
+        } else if (actor != null) {
             UIData.instance.selectedTile = tile;
             MapController.instance.DisplayActions(actor.index);
         } else {
-            ActorAction action;
-            if (UIData.instance.ActionFor(tile, out action)) {
-                if (action.type == ActorActionType.Move) {
-                    MapController.instance.MoveSoldier(action.index, tile.gridLocation);
-                } else if (action.type == ActorActionType.Shoot) {
-                    MapController.instance.SoldierShoot(action.index, action.actorTargetIndex);
-                }
-            } else {
-                selectionState.DeselectSoldier();
-                UIData.instance.ClearSelection();
-                MapHighlighter.instance.ClearHighlights();
-            }
+            selectionState.DeselectSoldier();
+            UIData.instance.ClearSelection();
+            MapHighlighter.instance.ClearHighlights();
         }
     }
 

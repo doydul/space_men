@@ -32,6 +32,8 @@ namespace Workers {
         }
         
         public long AddActor(Data.Actor actor) {
+            var cell = map.GetCell(actor.position);
+            cell.actor = actor;
             return actors.AddActor(actor);
         }
 

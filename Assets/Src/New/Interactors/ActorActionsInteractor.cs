@@ -51,17 +51,14 @@ namespace Interactors {
                                 };
                                 newLeafCells.Add(checkedCell);
                                 checkedPositions.Add(adjCell.position);
-                                result.Add(checkedCell);
+                                if (!adjCell.actor.exists && !adjCell.isFoggy) result.Add(checkedCell);
                             }
                         }
                     }
                 }
                 LeafCells = newLeafCells;
             }
-            var actionsList = result.Where(checkedCell =>
-                    !checkedCell.cell.actor.exists &&
-                    !checkedCell.cell.isFoggy
-                ).Select(checkedCell => new ActorAction {
+            var actionsList = result.Select(checkedCell => new ActorAction {
                     type = ActorActionType.Move,
                     index = soldier.uniqueId,
                     target = checkedCell.cell.position,

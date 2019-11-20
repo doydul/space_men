@@ -28,9 +28,15 @@ public class InfoPanel : MonoBehaviour {
     }
 
     public void Display(Alien alien) {
-        Close();
+        Open();
         var text = "";
-        text += "Type: " + alien.GetType();
+        text += "Type: " + alien.type + "\n";
+        text += "HP: " + alien.health + "/" + alien.maxHealth + "\n";
+        text += "Move Speed: " + alien.movement + "\n";
+        text += "Damage: " + alien.damage + "\n";
+        text += "Armour Penetration: " + alien.armourPen + "\n";
+
+        infoText.text = text;
     }
 
     public void Display(Actor actor) {
