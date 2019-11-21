@@ -56,26 +56,13 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         foreach (var action in input.alienActions) {
             if (action.type == AlienActionType.Move) {
                 var alien = GetAlienByIndex(action.index);
-                var gridLocation = new Vector2(action.position.x, action.position.y);
-                MoveAlien(
-                    alien,
-                    gridLocation,
-                    ConvertDirection(action.facing)
-                );
-                if (!map.GetTileAt(gridLocation).foggy) {
-                    FocusCameraOn(alien.transform);
-                    yield return new WaitForSeconds(1);
-                }
+                yield return MoveAlienWithAnimation(alien, new Vector2(action.position.x, action.position.y), ConvertDirection(action.facing));
             } else {
                 var alien = GetAlienByIndex(action.index);
                 var tile = map.GetTileAt(new Vector2(action.position.x, action.position.y));
                 var target = tile.GetActor<Soldier>();
-                alien.Face(new Vector2(action.position.x, action.position.y));
                 target.health = action.damageInstance.victimHealthAfterDamage;
-                yield return new WaitForSeconds(0.5f);
-                var attackSprite = sfxLayer.SpawnPrefab(alienAttackPrefab, Vector3.Lerp(alien.transform.position, target.transform.position, 0.5f), alien.transform.rotation);
-                yield return new WaitForSeconds(0.5f);
-                Destroy(attackSprite);
+                yield return AlienAttackAnimation(alien, target);
                 if (action.damageInstance.attackResult == AttackResult.Hit) {
                     var healthBarGO = sfxLayer.SpawnPrefab(healthBarPrefab, target.transform.position);
                     var healthBar = healthBarGO.GetComponent<HealthBar>();
@@ -138,6 +125,26 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
             return Actor.Direction.Left;
         } else {
             return Actor.Direction.Right;
+        }
+    }
+
+    IEnumerator AlienAttackAnimation(Alien alien, Actor target) {
+        alien.Face(target.gridLocation);
+        yield return new WaitForSeconds(0.5f);
+        var attackSprite = sfxLayer.SpawnPrefab(alienAttackPrefab, Vector3.Lerp(alien.realLocation, target.realLocation, 0.5f), alien.transform.rotation);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(attackSprite);
+    }
+
+    IEnumerator MoveAlienWithAnimation(Alien alien, Vector2 gridLocation, Actor.Direction newFacing) {
+        MoveAlien(
+            alien,
+            gridLocation,
+            newFacing
+        );
+        if (!map.GetTileAt(gridLocation).foggy) {
+            FocusCameraOn(alien.transform);
+            yield return new WaitForSeconds(1);
         }
     }
 

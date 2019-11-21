@@ -4,8 +4,8 @@
 - Aliens jump around a bit weirdly if they are already next to a soldier at the start of their movement (need a way of making their behaviour more predictable and less weird)
 - Progress turn button can be pressed while animations are still running (because input is only disabled in soldier shoot presenter, not in game phase presenter)
 - Soldiers can't shoot past other soldiers
-
-- Refactor progress game phase interactor, so that each sub animation (showing health bar, showing attack indicator etc) has its own method
+- Soldier ammo indicators dont update
+- Soldier movement indicators dont update
 
 - In soldier move action, return list of tiles the soldier walked over
 - Use these in presenter to trigger on walked on event (maybe use Unitys messaging system?)
@@ -62,12 +62,12 @@
   - Soldier turning ✓
   - Soldier shooting ✓
 
-- Improve UI to acceptable levels:
+- Improve UI to acceptable levels: ✓
   - Health bars on Map ✓
   - Button for inspecting soldier stats ✓
   - See alien possible moves on map ✓
   - Ability to inspect alien stats ✓
-  - Combat indicators to show combat results like 'missed', 'deflected' (damage dealt will be indicated by health bar)
+  - Combat indicators to show combat results like 'missed', 'deflected' (damage dealt will be indicated by health bar) ✓
 
 - Objectives and Win Conditions:
   - Add back walk on tile trigger functionality
