@@ -3,8 +3,13 @@
 ## Bugs
 - Aliens jump around a bit weirdly if they are already next to a soldier at the start of their movement (need a way of making their behaviour more predictable and less weird)
 - Progress turn button can be pressed while animations are still running (because input is only disabled in soldier shoot presenter, not in game phase presenter)
+- Soldiers can't shoot past other soldiers
 
-- 
+- Refactor progress game phase interactor, so that each sub animation (showing health bar, showing attack indicator etc) has its own method
+
+- In soldier move action, return list of tiles the soldier walked over
+- Use these in presenter to trigger on walked on event (maybe use Unitys messaging system?)
+- Create ScriptingController that will expose events that can be used to create missions and stuff
 
 # Not Urgent
 
@@ -23,22 +28,10 @@
 
 ## UI for inspecting templars and aliens
 
-### Movement Phase
-
-- Click on soldier, select soldier
-- Click on alien, select alien
-
-### Shooting Phase
-
-- Click soldier, select soldier,
-- Click alien who is _not_ currently a valid shooting target, select alien
-
 ### General
 
-- Needs to be a button somewhere to toggle info view (current keyboard shortcut is no good)
-- When soldier is selected, shows valid moves / shoot targets
-- When alien is selected, shows how far the alien can move, with different colours denoting the number of move iterations
 - When anything is selected, should activate it's healthbar
+- When alien is selected, shows how far the alien can move, with different colours denoting the number of move iterations
 
 # Art
 
@@ -65,7 +58,7 @@
 
 - Reimplement alien radar blips ✓
 
-- Refactor remaining in game actions: ✓✓
+- Refactor remaining in game actions: ✓
   - Soldier turning ✓
   - Soldier shooting ✓
 
@@ -76,8 +69,12 @@
   - Ability to inspect alien stats ✓
   - Combat indicators to show combat results like 'missed', 'deflected' (damage dealt will be indicated by health bar)
 
-- Implement secondary objectives to give weapon rewards
+- Objectives and Win Conditions:
   - Add back walk on tile trigger functionality
+  - Support for 2 or 3 different win conditions
+    - Simple get all soldiers within target area
+    - Win after X number of turns
+  - Implement secondary objectives to give weapon rewards
 
 - Content:
   - A basic set of weapons, up to level 2 (10 per level, so 20 in total)
@@ -91,3 +88,5 @@
 - Flexibility: How easy is it to add new functionality without altering existing classes
 - Dependence: How difficult is it to change without breaking other parts of the application or preventing compilation
 - Complexity: Does the benefit outweight the complexity that it introduces
+- Tell Don't Ask
+- Seperate Logic and Data

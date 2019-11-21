@@ -17,6 +17,8 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
     public Transform hitPrefab;
     public Transform explosionCloudPrefab;
     public Transform healthBarPrefab;
+    public Transform missMarkerPrefab;
+    public Transform deflectMarkerPrefab;
     
     void Awake() {
         instance = this;
@@ -52,9 +54,10 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
         if (damageInstance.attackResult == AttackResult.Hit) {
             alien.health = damageInstance.victimHealthAfterDamage;
             yield return HealthBarAnimation(alien.transform.position, alien.healthPercentage);
-        }
-        if (damageInstance.attackResult == AttackResult.Killed) {
+        } else if (damageInstance.attackResult == AttackResult.Killed) {
             alien.Die();
+        } else {
+            yield return MarkerAnimationFor(damageInstance);
         }
     }
 
@@ -79,6 +82,8 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
             } else if (damageInstance.attackResult == AttackResult.Hit) {
                 actor.health = damageInstance.victimHealthAfterDamage;
                 yield return HealthBarAnimation(actor.transform.position, actor.healthPercentage);
+            } else {
+                yield return MarkerAnimationFor(damageInstance);
             }
         }
     }
@@ -89,6 +94,15 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
         healthBar.SetPercentage(percentage);
         yield return new WaitForSeconds(1);
         Destroy(healthBarGO);
+    }
+
+    IEnumerator MarkerAnimationFor(DamageInstance damageInstance) {
+        if (damageInstance.attackResult != AttackResult.Missed && damageInstance.attackResult != AttackResult.Deflected) yield break;
+        var actor = map.GetActorByIndex(damageInstance.victimIndex);
+        var prefab = damageInstance.attackResult == AttackResult.Missed ? missMarkerPrefab : deflectMarkerPrefab;
+        var marker =  sfxLayer.SpawnPrefab(prefab, actor.realLocation);
+        yield return new WaitForSeconds(1);
+        Destroy(marker);
     }
 
     void DisableAllInput() {

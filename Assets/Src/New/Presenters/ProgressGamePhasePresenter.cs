@@ -18,6 +18,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
 
     public Transform alienAttackPrefab;
     public Transform healthBarPrefab;
+    public Transform deflectMarkerPrefab;
 
     public static ProgressGamePhasePresenter instance { get; private set; }
     
@@ -75,12 +76,15 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
                 var attackSprite = sfxLayer.SpawnPrefab(alienAttackPrefab, Vector3.Lerp(alien.transform.position, target.transform.position, 0.5f), alien.transform.rotation);
                 yield return new WaitForSeconds(0.5f);
                 Destroy(attackSprite);
-                var healthBarGO = sfxLayer.SpawnPrefab(healthBarPrefab, target.transform.position);
-                var healthBar = healthBarGO.GetComponent<HealthBar>();
-                healthBar.SetPercentage(target.healthPercentage);
-                yield return new WaitForSeconds(1);
-                Destroy(healthBarGO);
-                if (action.damageInstance.attackResult == AttackResult.Killed) {
+                if (action.damageInstance.attackResult == AttackResult.Hit) {
+                    var healthBarGO = sfxLayer.SpawnPrefab(healthBarPrefab, target.transform.position);
+                    var healthBar = healthBarGO.GetComponent<HealthBar>();
+                    healthBar.SetPercentage(target.healthPercentage);
+                    yield return new WaitForSeconds(1);
+                    Destroy(healthBarGO);
+                } else if (action.damageInstance.attackResult == AttackResult.Hit) {
+                    yield return MarkerAnimationFor(action.damageInstance);
+                } else if (action.damageInstance.attackResult == AttackResult.Killed) {
                     target.Destroy();
                     tile.RemoveActor();
                 }
@@ -135,6 +139,14 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         } else {
             return Actor.Direction.Right;
         }
+    }
+
+    IEnumerator MarkerAnimationFor(DamageInstance damageInstance) {
+        if (damageInstance.attackResult != AttackResult.Deflected) yield break;
+        var actor = map.GetActorByIndex(damageInstance.victimIndex);
+        var marker =  sfxLayer.SpawnPrefab(deflectMarkerPrefab, actor.realLocation);
+        yield return new WaitForSeconds(1);
+        Destroy(marker);
     }
     
     void MoveAlien(Alien alien, Vector2 destination, Actor.Direction direction) {
