@@ -8,7 +8,7 @@ namespace Interactors {
         public void Interact(FinishMissionInput input) {
             var output = new FinishMissionOutput();
             
-            // TODO
+            
             
             presenter.Present(output);
         }

@@ -13,6 +13,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     public MapHighlighter mapHighlighter;
     public Transform cameraTransform;
     public RadarBlipLayer radarBlipLayer;
+    public GameObject missions;
 
     public SFXLayer sfxLayer;
 
@@ -31,6 +32,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
             UpdateUI(input.currentPhase);
             UpdatePhaseText(input.currentPhase);
             uiData.gamePhase = input.currentPhase;
+            missions.SendMessage("OnPhaseChange");
         }
 
         if (input.newAliens != null) {

@@ -122,7 +122,6 @@
      <Compile Include="Assets\Src\GameLogic\SoldierPathingWrapper.cs" />
      <Compile Include="Assets\Src\GameLogic\Tile.cs" />
      <Compile Include="Assets\Src\GameLogic\TrickleSpawnModule.cs" />
-     <Compile Include="Assets\Src\GameLogic\VictoryController.cs" />
      <Compile Include="Assets\Src\GameLogic\VirtualAlien.cs" />
      <Compile Include="Assets\Src\GameLogic\VirtualMap.cs" />
      <Compile Include="Assets\Src\GameLogic\VirtualSpawner.cs" />
@@ -133,6 +132,10 @@
      <Compile Include="Assets\Src\New\Components\HealthBar.cs" />
      <Compile Include="Assets\Src\New\Components\InfoPanel.cs" />
      <Compile Include="Assets\Src\New\Components\RadarBlipLayer.cs" />
+     <Compile Include="Assets\Src\New\Components\Scripting\ExtractionObjective.cs" />
+     <Compile Include="Assets\Src\New\Components\Scripting\GenericObjective.cs" />
+     <Compile Include="Assets\Src\New\Components\Scripting\ObjectiveCondition.cs" />
+     <Compile Include="Assets\Src\New\Components\Scripting\SoldierPresenceCondition.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\SoldierTraverseTrigger.cs" />
      <Compile Include="Assets\Src\New\Components\SFXLayer.cs" />
      <Compile Include="Assets\Src\New\Components\UIData.cs" />

@@ -3,9 +3,9 @@ using UnityEngine.Events;
 
 public class SoldierTraverseTrigger : MonoBehaviour {
 
-    public UnityEvent callback;
+    public UnityEvent trigger;
 
     void OnTraverse() {
-        callback.Invoke();
+        trigger.Invoke();
     }
 }

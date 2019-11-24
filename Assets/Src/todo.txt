@@ -7,7 +7,11 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
-- Create missions object in scene and attach new script that will fire the mission complete event when all soldiers are within given area
+- Add rewards data to mission component (primary and seconday rewards)
+  - Secondaries will have an index which links to the secondary mission objectives
+- Implement loading of reward data through mission store
+- Award rewards for finishing mission
+- Add action to scripting controller for completing secondary missions
 
 # Not Urgent
 
