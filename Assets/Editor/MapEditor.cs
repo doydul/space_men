@@ -196,7 +196,7 @@ public class MapEditor : Editor {
         tile.backgroundSprite.sprite = sprite;
     }
     
-    private Tile MakeTile(Vector2 position) {
+    private Tile MakeTile(Vector2 position, Transform parent) {
         var tileObject = new GameObject();
         var tile = tileObject.AddComponent<Tile>() as Tile;
         tileObject.AddComponent<BoxCollider>();
@@ -210,7 +210,8 @@ public class MapEditor : Editor {
         highlightSpriteRenderer.enabled = false;
         fogSpriteRenderer.enabled = false;
         
-        tileObject.transform.parent = map.transform;
+        tileObject.name = "Tile " + position.x + ", " + position.y;
+        tileObject.transform.parent = parent;
         tileObject.transform.localPosition = position;
         tile.backgroundSprite = backgroundSpriteRenderer;
         backgroundSpriteRenderer.sprite = map.wallTopSprite;
@@ -244,8 +245,11 @@ public class MapEditor : Editor {
     private void Generate() {
         Tile[,] tiles = new Tile[map.width, map.height];
         for (int x = 0; x < map.width; x++) {
+            var columnObject = new GameObject().transform;
+            columnObject.name = "Column " + x;
+            columnObject.transform.parent = map.transform;
             for (int y = 0; y < map.height; y++) {
-                tiles[x, y] = MakeTile(new Vector2(x, y));
+                tiles[x, y] = MakeTile(new Vector2(x, y), columnObject.transform);
             }
         }
     }

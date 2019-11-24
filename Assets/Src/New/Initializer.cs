@@ -23,6 +23,11 @@ public class Initializer : MonoBehaviour {
                     { typeof(TurnSoldierInteractor), typeof(TurnSoldierPresenter) },
                     { typeof(SoldierShootInteractor), typeof(SoldierShootPresenter) }
                 }
+            },
+            { typeof(ScriptingController),
+                new Dictionary<Type, Type> {
+                    { typeof(FinishMissionInteractor), typeof(FinishMissionPresenter) }
+                }
             }
         };
     

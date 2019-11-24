@@ -7,9 +7,7 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
-- In soldier move action, return list of tiles the soldier walked over
-- Use these in presenter to trigger on walked on event (maybe use Unitys messaging system?)
-- Create ScriptingController that will expose events that can be used to create missions and stuff
+- Create missions object in scene and attach new script that will fire the mission complete event when all soldiers are within given area
 
 # Not Urgent
 

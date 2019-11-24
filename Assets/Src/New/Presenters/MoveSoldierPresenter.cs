@@ -24,6 +24,14 @@ public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
         uiData.selectedTile = tile;
         FogController.instance.Recalculate();
         mapController.DisplayActions(input.soldierIndex);
+        TriggerTraversedTileEvents(input);
+    }
+
+    void TriggerTraversedTileEvents(MoveSoldierOutput input) {
+        foreach (var position in input.traversedCells) {
+            var tile = map.GetTileAt(new Vector2(position.x, position.y));
+            tile.SendMessage("OnTraverse", null, SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     Soldier GetSoldierByIndex(long index) {

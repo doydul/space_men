@@ -11,6 +11,8 @@ namespace Workers {
         long soldierIndex;
         Position targetPosition;
 
+        public Position[] traversedCells { get; private set; }
+
         public SoldierMove(long soldierIndex, Position targetPosition) {
             this.soldierIndex = soldierIndex;
             this.targetPosition = targetPosition;
@@ -26,6 +28,7 @@ namespace Workers {
             var path = GetPath(map, currentCell.position, targetCell.position);
             if (path.length > soldier.remainingMovement) throw new System.Exception("Soldier doesn't have enough movement remaining");
             
+            traversedCells = path.Nodes().Select(node => node.position).Where(pos => pos != soldier.position).ToArray();
             soldier.moved += path.length;
             soldier.facing = path.facing;
             soldier.position = targetPosition;
@@ -37,7 +40,7 @@ namespace Workers {
             var iterator = new AdjacentCells(map);
 
             var checkedPositions = new List<Position>() { start };
-            var leafNodes = new List<Node>() { new Node(start, Direction.Up, 0) };
+            var leafNodes = new List<Node>() { new Node(start, Direction.Up, 0, null) };
             while (leafNodes.Count > 0) {
                 var newLeafNodes = new List<Node>();
                 foreach (var node in leafNodes) {
@@ -49,7 +52,8 @@ namespace Workers {
                             var newNode = new Node(
                                 adjCell.position,
                                 GetFacing(node.position, adjCell.position),
-                                node.length + 1
+                                node.length + 1,
+                                node
                             );
                             if (newNode.position == finish) return newNode;
                             newLeafNodes.Add(newNode);
@@ -78,11 +82,21 @@ namespace Workers {
             public Position position { get; }
             public Direction facing { get; }
             public int length { get; }
+            public Node previousNode { get; }
 
-            public Node(Position position, Direction facing, int length) {
+            public Node(Position position, Direction facing, int length, Node previousNode) {
                 this.position = position;
                 this.facing = facing;
                 this.length = length;
+                this.previousNode = previousNode;
+            }
+
+            public IEnumerable<Node> Nodes() {
+                Node currentNode = this;
+                while (currentNode != null) {
+                    yield return currentNode;
+                    currentNode = currentNode.previousNode;
+                }
             }
         }
     }    
