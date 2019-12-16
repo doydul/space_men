@@ -1,39 +1,42 @@
 # Refactoring alien spawner
 
 ## Bugs
-- Aliens jump around a bit weirdly if they are already next to a soldier at the start of their movement (need a way of making their behaviour more predictable and less weird)
 - Progress turn button can be pressed while animations are still running (because input is only disabled in soldier shoot presenter, not in game phase presenter)
 - Soldiers can't shoot past other soldiers
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
-- Add rewards data to mission component (primary and seconday rewards)
-  - Secondaries will have an index which links to the secondary mission objectives
-- Implement loading of reward data through mission store
-- Award rewards for finishing mission
-- Add action to scripting controller for completing secondary missions
+- Create new initializer that will handle initialization outside of the game scene
+- Create EquipItem interactor
+- Create CreateBlueprint interactor
+- Create AddSoldierToSquad interactor
+- Create RemoveSoldierFromSquad interactor
+- Hookup metagame actions:
+  - Hookup EquipItem action
+  - Hookup CreateBlueprint action
+  - Hookup AddSoldierToSquad action
+  - Hookup RemoveSoldierFromSquad action
+
+- Implement metagamestate
+  - Add method for loading metagame state from Persistent storage somehow
+  - Meta soldier needs to somehow link to soldiers in gamestate so we know whos died
 
 # Not Urgent
 
+- Should current mission data such as alien spawn rates be stored in scene, since there is one scene for each mission anyway?
 - Implement listing of alien possible attacks
 - Show the possible attack locations in presenter
-- Trigger walk on tile events in MoveSoldierPresenter
+- Aliens jump around a bit weirdly if they are already next to a soldier at the start of their movement (need a way of making their behaviour more predictable and less weird)
 
 
 # Random Ideas
 
-- Re-add templar and alien health bars (show temporarily after something gets hurt)
-- Allow player to select aliens as well as soldiers, and show how far they can move/attack (also show stats like health, armour, damage)
-- Friendly fire damage from blast weapons
 - Persistent flames from flame weapons
 - Show damage chance above aliens heads?
 
 ## UI for inspecting templars and aliens
 
-### General
-
 - When anything is selected, should activate it's healthbar
-- When alien is selected, shows how far the alien can move, with different colours denoting the number of move iterations
 
 # Art
 
@@ -71,12 +74,16 @@
   - Ability to inspect alien stats ✓
   - Combat indicators to show combat results like 'missed', 'deflected' (damage dealt will be indicated by health bar) ✓
 
-- Objectives and Win Conditions:
-  - Add back walk on tile trigger functionality
-  - Support for 2 or 3 different win conditions
-    - Simple get all soldiers within target area
-    - Win after X number of turns
-  - Implement secondary objectives to give weapon rewards
+- Objectives and Win Conditions: ✓
+  - Add back walk on tile trigger functionality ✓
+  - Support for 2 or 3 different win conditions ✓
+    - Simple get all soldiers within target area ✓
+    - Scripting system in place ✓
+  - Implement secondary objectives to give weapon rewards ✓
+
+- Metagame:
+  - Reimplement equipping items
+  - Reimplement creating blueprints
 
 - Content:
   - A basic set of weapons, up to level 2 (10 per level, so 20 in total)
@@ -92,3 +99,11 @@
 - Complexity: Does the benefit outweight the complexity that it introduces
 - Tell Don't Ask
 - Seperate Logic and Data
+
+# Girls names
+
+Mary
+Sophie
+Alice
+Alexandra
+Miko

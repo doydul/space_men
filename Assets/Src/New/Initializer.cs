@@ -26,7 +26,13 @@ public class Initializer : MonoBehaviour {
             },
             { typeof(ScriptingController),
                 new Dictionary<Type, Type> {
-                    { typeof(FinishMissionInteractor), typeof(FinishMissionPresenter) }
+                    { typeof(FinishMissionInteractor), typeof(FinishMissionPresenter) },
+                    { typeof(CompleteSecondaryMissionInteractor), typeof(CompleteSecondaryMissionPresenter) }
+                }
+            },
+            { typeof(MetaGameController),
+                new Dictionary<Type, Type> {
+                    // { typeof(DoSomeActionInteractor), typeof(DoSomeActionPresenter) }
                 }
             }
         };
@@ -36,17 +42,20 @@ public class Initializer : MonoBehaviour {
     GameState gameState;
     
     void Start() {
+        MetaGameState.Init();
+
         gameState = new GameState();
         var mapStore = new MapStore();
         mapStore.map = Map.instance;
         gameState.mapStore = mapStore;
-        gameState.Init("Default", "First Mission");
+        gameState.Init("Default", "First Mission"); // TODO: load from metagame state
 
         dependencies = new List<object>();
         dependencies.Add(gameState);
         dependencies.Add(new AlienStore());
         dependencies.Add(new SoldierStore());
         dependencies.Add(new MissionStore());
+        dependencies.Add(MetaGameState.instance);
         
         LoadDynamicDependencies();
         

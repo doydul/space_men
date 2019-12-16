@@ -1,6 +1,8 @@
 using System.Linq;
 using System;
 
+using Data;
+
 public class MissionStore : IMissionStore {
     
     public Data.Mission GetMission(string campaignName, string missionName) {
@@ -9,7 +11,9 @@ public class MissionStore : IMissionStore {
                 return new Data.Mission {
                     missionName = missionName,
                     briefing = mission.briefing,
-                    spawnProfiles = mission.enemyProfiles.Select(profile => ProfileConverter(profile)).ToArray()
+                    spawnProfiles = mission.enemyProfiles.Select(profile => ProfileConverter(profile)).ToArray(),
+                    rewards = mission.rewards.Select(reward => RewardConverter(reward)).ToArray(),
+                    secondaryMissions = mission.secondaryMissions.Select(secMission => SecondaryMissionConverter(secMission)).ToArray()
                 };
             }
         }
@@ -23,6 +27,22 @@ public class MissionStore : IMissionStore {
             spawnType = (Data.AlienSpawnType)profile.spawnType,
             chance = profile.chance,
             cooldown = profile.cooldown
+        };
+    }
+
+    IReward RewardConverter(MissionReward reward) {
+        if (reward.type == MissionReward.Type.Armour) {
+            return new ArmourReward(reward.itemName);
+        } else if (reward.type == MissionReward.Type.Weapon) {
+            return new WeaponReward(reward.itemName);
+        } else {
+            return new CreditReward(reward.credits);
+        }
+    }
+
+    Data.SecondaryMission SecondaryMissionConverter(SecondaryMission secondaryMission) {
+        return new Data.SecondaryMission {
+            rewards = secondaryMission.rewards.Select(reward => RewardConverter(reward)).ToArray()
         };
     }
 }

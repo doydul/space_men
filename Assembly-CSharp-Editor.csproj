@@ -697,10 +697,6 @@
       <Project>{393026D3-7461-AED6-3D07-FD6D44939530}</Project>
       <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
-    <ProjectReference Include="Data.csproj">
-      <Project>{DCE87752-BF18-7720-5A64-7D071E08B4B6}</Project>
-      <Name>Data</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
       <Project>{AA35C94F-BCE5-0C35-5305-FA28AE047143}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
@@ -708,10 +704,6 @@
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{5BB89CC1-A2A7-A194-3FAD-3E25AD8E230D}</Project>
       <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="Interfaces.csproj">
-      <Project>{C919E239-0BF9-36FB-9553-7A2536A79CF8}</Project>
-      <Name>Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

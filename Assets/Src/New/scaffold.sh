@@ -61,3 +61,4 @@ public class ${modelName}Presenter : Presenter, IPresenter<${modelName}Output> {
 }
 
 EOF
+

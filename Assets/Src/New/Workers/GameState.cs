@@ -9,6 +9,7 @@ namespace Workers {
         public MapState map { get; private set; }
         
         Actors actors;
+        HashSet<int> completedSecondaryObjectives;
 
         public Data.GamePhase currentPhase { get; private set; }
         public string campaign { get; private set; }
@@ -16,6 +17,7 @@ namespace Workers {
 
         public void Init(string campaignName, string missionName) {
             actors = new Actors();
+            completedSecondaryObjectives = new HashSet<int>();
 
             map = new MapState();
             map.Init(mapStore.GetMap());
@@ -46,6 +48,14 @@ namespace Workers {
 
         public void SetCurrentPhase(Data.GamePhase gamePhase) {
             currentPhase = gamePhase;
+        }
+
+        public void MarkSecondaryObjectiveComplete(int index) {
+            completedSecondaryObjectives.Add(index);
+        }
+
+        public bool IsSecondaryObjectiveComplete(int index) {
+            return completedSecondaryObjectives.Contains(index);
         }
     }
 }

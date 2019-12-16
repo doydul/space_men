@@ -84,6 +84,8 @@
      <Compile Include="Assets\Src\Data\ItemBlueprint.cs" />
      <Compile Include="Assets\Src\Data\Mission.cs" />
      <Compile Include="Assets\Src\Data\MissionEnemyProfile.cs" />
+     <Compile Include="Assets\Src\Data\MissionReward.cs" />
+     <Compile Include="Assets\Src\Data\SecondaryMission.cs" />
      <Compile Include="Assets\Src\Data\SoldierData.cs" />
      <Compile Include="Assets\Src\Data\Squad.cs" />
      <Compile Include="Assets\Src\Data\Weapon.cs" />
@@ -144,6 +146,41 @@
      <Compile Include="Assets\Src\New\Controllers\ScriptingController.cs" />
      <Compile Include="Assets\Src\New\Controllers\UIController.cs" />
      <Compile Include="Assets\Src\New\CurrentSelectionState.cs" />
+     <Compile Include="Assets\Src\New\Data\Alien.cs" />
+     <Compile Include="Assets\Src\New\Data\Cell.cs" />
+     <Compile Include="Assets\Src\New\Data\Enums\ActorType.cs" />
+     <Compile Include="Assets\Src\New\Data\Enums\Direction.cs" />
+     <Compile Include="Assets\Src\New\Data\Enums\MovementType.cs" />
+     <Compile Include="Assets\Src\New\Data\GamePhase.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\FinishMissionInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\FinishMissionOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\MissionStartInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\MissionStartOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\MoveSoldierInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\MoveSoldierOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\ProgressGamePhaseInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\ProgressGamePhaseOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\SelectedItemInfoPresenterInputData.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\SoldierShootInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\SoldierShootOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\TurnSoldierInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\TurnSoldierOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Mission.cs" />
+     <Compile Include="Assets\Src\New\Data\Position.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\Actor.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\AlienActor.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\AlienSpawner.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\ArmourReward.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\CellType.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\CreditReward.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\Health.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\NullActor.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\SoldierActor.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\WeaponReward.cs" />
+     <Compile Include="Assets\Src\New\Data\Soldier.cs" />
+     <Compile Include="Assets\Src\New\Data\SpawnProfile.cs" />
      <Compile Include="Assets\Src\New\DelayedAction.cs" />
      <Compile Include="Assets\Src\New\DependencyInjector.cs" />
      <Compile Include="Assets\Src\New\FogChanged.cs" />
@@ -166,6 +203,13 @@
      <Compile Include="Assets\Src\New\Interactors\ProgressGamePhaseInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\SoldierShootInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\TurnSoldierInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interfaces\IAlienStore.cs" />
+     <Compile Include="Assets\Src\New\Interfaces\IInstantiator.cs" />
+     <Compile Include="Assets\Src\New\Interfaces\IMapStore.cs" />
+     <Compile Include="Assets\Src\New\Interfaces\IMissionStore.cs" />
+     <Compile Include="Assets\Src\New\Interfaces\IPresenter.cs" />
+     <Compile Include="Assets\Src\New\Interfaces\IReward.cs" />
+     <Compile Include="Assets\Src\New\Interfaces\ISoldierStore.cs" />
      <Compile Include="Assets\Src\New\Main.cs" />
      <Compile Include="Assets\Src\New\MovementPhase.cs" />
      <Compile Include="Assets\Src\New\Other\AlienStore.cs" />
@@ -201,6 +245,7 @@
      <Compile Include="Assets\Src\New\Workers\CellLayerIterator.cs" />
      <Compile Include="Assets\Src\New\Workers\GameState.cs" />
      <Compile Include="Assets\Src\New\Workers\MapState.cs" />
+     <Compile Include="Assets\Src\New\Workers\MetaGameState.cs" />
      <Compile Include="Assets\Src\New\Workers\SoldierDecorator.cs" />
      <Compile Include="Assets\Src\New\Workers\SoldierGenerator.cs" />
      <Compile Include="Assets\Src\New\Workers\SoldierMove.cs" />
@@ -868,10 +913,6 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Data.csproj">
-      <Project>{DCE87752-BF18-7720-5A64-7D071E08B4B6}</Project>
-      <Name>Data</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
       <Project>{AA35C94F-BCE5-0C35-5305-FA28AE047143}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
@@ -879,10 +920,6 @@
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{5BB89CC1-A2A7-A194-3FAD-3E25AD8E230D}</Project>
       <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="Interfaces.csproj">
-      <Project>{C919E239-0BF9-36FB-9553-7A2536A79CF8}</Project>
-      <Name>Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

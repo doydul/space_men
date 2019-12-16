@@ -8,7 +8,7 @@ namespace Interactors {
         public void Interact(MissionStartInput input) {
             var output = new MissionStartOutput();
             
-            var squad = GenerateDefaultSquad();
+            var squad = GenerateDefaultSquad(); // TODO: load from metagamestate instead
             output.soldiers = new Data.Soldier[squad.Length];
             
             int index = 0;

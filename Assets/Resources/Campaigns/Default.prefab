@@ -64,6 +64,15 @@ MonoBehaviour:
     spawnType: 0
     chance: 1
     cooldown: 3
+  rewards:
+  - type: 0
+    itemName: 
+    credits: 1000
+  secondaryMissions:
+  - rewards:
+      type: 1
+      itemName: Plasma Rifle
+      credits: 0
   briefing: 'Each turn is split into 2 phases; Movement and Shooting. Aliens move
     during the player''s Shooting phase, and the player gets chances to shoot them
     as they approach.
