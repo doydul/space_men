@@ -143,6 +143,7 @@
      <Compile Include="Assets\Src\New\Components\UIData.cs" />
      <Compile Include="Assets\Src\New\Controllers\Controller.cs" />
      <Compile Include="Assets\Src\New\Controllers\MapController.cs" />
+     <Compile Include="Assets\Src\New\Controllers\MetaGameController.cs" />
      <Compile Include="Assets\Src\New\Controllers\ScriptingController.cs" />
      <Compile Include="Assets\Src\New\Controllers\UIController.cs" />
      <Compile Include="Assets\Src\New\CurrentSelectionState.cs" />
@@ -154,6 +155,8 @@
      <Compile Include="Assets\Src\New\Data\GamePhase.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\CompleteSecondaryMissionInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\CompleteSecondaryMissionOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\FinishMissionInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\FinishMissionOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\MissionStartInput.cs" />
@@ -176,11 +179,19 @@
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\CellType.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\CreditReward.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\Health.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaArmour.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaItem.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaSoldier.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaWeapon.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\NullActor.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\SoldierActor.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\WeaponReward.cs" />
      <Compile Include="Assets\Src\New\Data\Soldier.cs" />
      <Compile Include="Assets\Src\New\Data\SpawnProfile.cs" />
+     <Compile Include="Assets\Src\New\DataTypes\Credits.cs" />
+     <Compile Include="Assets\Src\New\DataTypes\IDDictionary.cs" />
+     <Compile Include="Assets\Src\New\DataTypes\MetaItems.cs" />
+     <Compile Include="Assets\Src\New\DataTypes\MetaSoldiers.cs" />
      <Compile Include="Assets\Src\New\DelayedAction.cs" />
      <Compile Include="Assets\Src\New\DependencyInjector.cs" />
      <Compile Include="Assets\Src\New\FogChanged.cs" />
@@ -195,7 +206,9 @@
      <Compile Include="Assets\Src\New\IGameEvent.cs" />
      <Compile Include="Assets\Src\New\IGameMap.cs" />
      <Compile Include="Assets\Src\New\Initializer.cs" />
+     <Compile Include="Assets\Src\New\InitializerBase.cs" />
      <Compile Include="Assets\Src\New\Interactors\ActorActionsInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\CompleteSecondaryMissionInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\FinishMissionInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\Interactor.cs" />
      <Compile Include="Assets\Src\New\Interactors\MissionStartInteractor.cs" />
@@ -219,6 +232,7 @@
      <Compile Include="Assets\Src\New\Phase.cs" />
      <Compile Include="Assets\Src\New\PlayerActionHandler.cs" />
      <Compile Include="Assets\Src\New\Presenters\ActorActionsPresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\CompleteSecondaryMissionPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\FinishMissionPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\MissionStartPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\MoveSoldierPresenter.cs" />

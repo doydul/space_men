@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace DataTypes {
 
     public class MetaSoldiers {
@@ -23,7 +25,7 @@ namespace DataTypes {
         }
 
         public void Remove(long id) {
-            metaSoldiers.Remove(id);
+            metaSoldiers.RemoveElement(id);
         }
     }
 }

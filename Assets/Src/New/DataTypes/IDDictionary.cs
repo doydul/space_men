@@ -12,7 +12,7 @@ namespace DataTypes {
 
         public long AddElement(T element) {
             var id = GenerateUniqueId();
-            elements.Add(id, actor);
+            elements.Add(id, element);
             return id;
         }
 

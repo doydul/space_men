@@ -6,6 +6,7 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
+- Pull common initializer code into base class
 - Create new initializer that will handle initialization outside of the game scene
 - Create EquipItem interactor
 - Create CreateBlueprint interactor

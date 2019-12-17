@@ -35,7 +35,7 @@ namespace DataTypes {
 
         public void Remove(long id) {
             var item = Get(id);
-            allMetaItems.Remove(id);
+            allMetaItems.RemoveElement(id);
             inventoryItems.Remove(item);
         }
     }

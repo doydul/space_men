@@ -1,10 +1,6 @@
 using UnityEngine;
 using System;
-using System.Reflection;
 using System.Collections.Generic;
-
-using Interactors;
-using Workers;
 
 public abstract class InitializerBase : MonoBehaviour {
     
