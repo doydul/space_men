@@ -146,6 +146,7 @@
      <Compile Include="Assets\Src\New\Controllers\MetaGameController.cs" />
      <Compile Include="Assets\Src\New\Controllers\ScriptingController.cs" />
      <Compile Include="Assets\Src\New\Controllers\UIController.cs" />
+     <Compile Include="Assets\Src\New\Controllers\WorkshopController.cs" />
      <Compile Include="Assets\Src\New\CurrentSelectionState.cs" />
      <Compile Include="Assets\Src\New\Data\Alien.cs" />
      <Compile Include="Assets\Src\New\Data\Cell.cs" />
@@ -304,6 +305,7 @@
      <Compile Include="Assets\Src\UI\WorkshopItemDisplayPanelController.cs" />
      <Compile Include="Assets\Src\UI\WorkshopMenuController.cs" />
      <Compile Include="Assets\Src\Util\Delayer.cs" />
+     <Compile Include="Assets\Src\WorkshopInitializer.cs" />
      <Compile Include="Assets\Src\World\BloodSplatController.cs" />
      <Compile Include="Assets\Src\World\Map.cs" />
      <Compile Include="Assets\Src\World\MapHighlighter.cs" />
