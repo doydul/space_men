@@ -6,8 +6,8 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
-- Create new initializer that will handle initialization in the workshop scene
-- Create workshop controller
+- Create interface/class that will retrieve metagamestate from Persistent storage
+- Parse MetaGameSave into the actual metagamestate class
 
 - Create EquipItem interactor
 - Create CreateBlueprint interactor
