@@ -153,6 +153,7 @@
      <Compile Include="Assets\Src\New\Data\Cell.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\ActorType.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\Direction.cs" />
+     <Compile Include="Assets\Src\New\Data\Enums\MetaItemTypeSave.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\MovementType.cs" />
      <Compile Include="Assets\Src\New\Data\GamePhase.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsInput.cs" />
@@ -172,6 +173,8 @@
      <Compile Include="Assets\Src\New\Data\Interactors\SoldierShootOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\TurnSoldierInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\TurnSoldierOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\MetaGameSave.cs" />
+     <Compile Include="Assets\Src\New\Data\MetaItemSave.cs" />
      <Compile Include="Assets\Src\New\Data\Mission.cs" />
      <Compile Include="Assets\Src\New\Data\Position.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\Actor.cs" />
@@ -184,6 +187,7 @@
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaArmour.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaItem.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaSoldier.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaSoldierSave.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaWeapon.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\NullActor.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\SoldierActor.cs" />
@@ -221,6 +225,7 @@
      <Compile Include="Assets\Src\New\Interfaces\IAlienStore.cs" />
      <Compile Include="Assets\Src\New\Interfaces\IInstantiator.cs" />
      <Compile Include="Assets\Src\New\Interfaces\IMapStore.cs" />
+     <Compile Include="Assets\Src\New\Interfaces\IMetaGameStateStore.cs" />
      <Compile Include="Assets\Src\New\Interfaces\IMissionStore.cs" />
      <Compile Include="Assets\Src\New\Interfaces\IPresenter.cs" />
      <Compile Include="Assets\Src\New\Interfaces\IReward.cs" />
@@ -229,8 +234,10 @@
      <Compile Include="Assets\Src\New\MovementPhase.cs" />
      <Compile Include="Assets\Src\New\Other\AlienStore.cs" />
      <Compile Include="Assets\Src\New\Other\MapStore.cs" />
+     <Compile Include="Assets\Src\New\Other\MetaGameStateStore.cs" />
      <Compile Include="Assets\Src\New\Other\MissionStore.cs" />
      <Compile Include="Assets\Src\New\Other\SoldierStore.cs" />
+     <Compile Include="Assets\Src\New\Other\Test2.cs" />
      <Compile Include="Assets\Src\New\Phase.cs" />
      <Compile Include="Assets\Src\New\PlayerActionHandler.cs" />
      <Compile Include="Assets\Src\New\Presenters\ActorActionsPresenter.cs" />
