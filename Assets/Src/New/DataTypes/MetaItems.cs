@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DataTypes {
 
@@ -15,10 +16,29 @@ namespace DataTypes {
         }
 
         public long Add(MetaItem metaItem) {
-            var id = allMetaItems.AddElement(metaItem);
-            metaItem.uniqueId = id;
             inventoryItems.Add(metaItem);
-            return id;
+            if (metaItem.uniqueId != 0) {
+                allMetaItems.AddElement(metaItem, metaItem.uniqueId);
+                return metaItem.uniqueId;
+            } else {
+                var id = allMetaItems.AddElement(metaItem);
+                metaItem.uniqueId = id;
+                return id;
+            }
+        }
+
+        public void AddBlueprint(MetaItem metaItem) {
+            blueprints.Add(metaItem);
+        }
+
+        public void MoveItemToInventory(long itemId) {
+            if (!inventoryItems.Any(item => item.uniqueId == itemId)) {
+                inventoryItems.Add(allMetaItems.GetElement(itemId));
+            }
+        }
+
+        public void RemoveItemFromInventory(long itemId) {
+            inventoryItems.Remove(allMetaItems.GetElement(itemId));
         }
 
         public MetaItem Get(long id) {
@@ -27,6 +47,10 @@ namespace DataTypes {
         
         public IEnumerable<MetaItem> GetAll() {
             return allMetaItems.GetElements();
+        }
+
+        public IEnumerable<MetaItem> GetBlueprints() {
+            return new List<MetaItem>(blueprints);
         }
 
         public IEnumerable<MetaItem> GetInventoryItems() {

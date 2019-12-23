@@ -27,12 +27,18 @@ public class Initializer : InitializerBase {
     }
 
     protected override void GenerateDependencies() {
-        MetaGameState.Init();
+        MetaGameState.Load(0, new MetaGameSave {
+            credits = 100,
+            soldiers = new MetaSoldierSave[0],
+            items = new MetaItemSave[0],
+            currentCampaign = "Default",
+            currentMission = "First Mission"
+        });
         var gameState = new GameState();
         var mapStore = new MapStore();
         mapStore.map = Map.instance;
         gameState.mapStore = mapStore;
-        gameState.Init("Default", "First Mission"); // TODO: load from metagame state
+        gameState.Init(MetaGameState.instance.currentCampaign, MetaGameState.instance.currentMission);
 
         dependencies.Add(gameState);
         dependencies.Add(new AlienStore());

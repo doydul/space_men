@@ -6,8 +6,8 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
-- Create interface/class that will retrieve metagamestate from Persistent storage
-- Parse MetaGameSave into the actual metagamestate class
+- Implement LoadGameInteractor
+  - The new interactor just needs to use the MetaGameStateStore class (injected in using IMetaGameStateStore interface) and call GetSave with the corresponding slot index
 
 - Create EquipItem interactor
 - Create CreateBlueprint interactor

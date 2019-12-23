@@ -11,9 +11,14 @@ namespace DataTypes {
         }
 
         public long Add(MetaSoldier metaSoldier) {
-            var id = metaSoldiers.AddElement(metaSoldier);
-            metaSoldier.uniqueId = id;
-            return id;
+            if (metaSoldier.uniqueId != 0) {
+                metaSoldiers.AddElement(metaSoldier, metaSoldier.uniqueId);
+                return metaSoldier.uniqueId;
+            } else {
+                var id = metaSoldiers.AddElement(metaSoldier);
+                metaSoldier.uniqueId = id;
+                return id;
+            }
         }
 
         public MetaSoldier Get(long id) {

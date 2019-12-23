@@ -16,6 +16,11 @@ namespace DataTypes {
             return id;
         }
 
+        public long AddElement(T element, long id) {
+            elements.Add(id, element);
+            return id;
+        }
+
         public T GetElement(long id) {
             return elements[id];
         }
