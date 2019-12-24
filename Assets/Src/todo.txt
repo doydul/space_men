@@ -6,8 +6,7 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
-- Implement LoadGameInteractor
-  - The new interactor just needs to use the MetaGameStateStore class (injected in using IMetaGameStateStore interface) and call GetSave with the corresponding slot index
+- Make mission use the name of the mission scene as the mission name and vice versa
 
 - Create EquipItem interactor
 - Create CreateBlueprint interactor

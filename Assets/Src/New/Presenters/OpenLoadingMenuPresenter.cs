@@ -8,6 +8,7 @@ public class OpenLoadingMenuPresenter : Presenter, IPresenter<OpenLoadingMenuOut
         instance = this;
     }
 
+    public LoadGameController loadGameController;
     public SavePageSlot[] slots;
     
     public void Present(OpenLoadingMenuOutput input) {

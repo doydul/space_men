@@ -49,6 +49,19 @@ namespace Workers {
                     instance.metaItems.Add(metaItem);
                 }
             }
+            foreach (var itemSave in save.blueprints) {
+                MetaItem metaItem;
+                if (itemSave.type == MetaItemTypeSave.Armour) {
+                    metaItem = new MetaArmour {
+                        name = itemSave.name
+                    };
+                } else {
+                    metaItem = new MetaWeapon {
+                        name = itemSave.name
+                    };
+                }
+                instance.metaItems.AddBlueprint(metaItem);
+            }
             instance.credits.Add(save.credits);
             instance.currentCampaign = save.currentCampaign;
             instance.currentMission = save.currentMission;
