@@ -6,8 +6,6 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
-- Make mission use the name of the mission scene as the mission name and vice versa
-
 - Create EquipItem interactor
 - Create CreateBlueprint interactor
 - Create AddSoldierToSquad interactor
@@ -17,6 +15,8 @@
   - Hookup CreateBlueprint action
   - Hookup AddSoldierToSquad action
   - Hookup RemoveSoldierFromSquad action
+
+- Refactor MetaGameState so that it _isn't_ injected in, but instead is just fetched as a singleton (because the decision of which MetaGameState object to use should not be left up to the initializer)
 
 - Implement metagamestate
   - Add method for loading metagame state from Persistent storage somehow

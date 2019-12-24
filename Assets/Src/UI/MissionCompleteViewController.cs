@@ -20,7 +20,6 @@ public class MissionCompleteViewController : SceneMenu {
     public void Continue() {
         FadeToBlack(() => {
             if (Squad.currentMission != null) {
-                MissionOverviewController.OpenMenu();
             } else {
                 MainMenuController.OpenMenu();
             }

@@ -21,8 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SquadSelect.unity
     guid: efc1850791b6145f59b7573f7c3595c2
   - enabled: 1
-    path: Assets/Scenes/Campaigns/Default/Mission1.unity
+    path: Assets/Scenes/Campaigns/Default/First Mission.unity
     guid: 7585f0d6278914f9093bbd402dbe8bcf
   - enabled: 1
     path: Assets/Scenes/SelectionMenu.unity
     guid: b0546761b73c44ae4810e6d4a6983f3f
+  m_configObjects: {}

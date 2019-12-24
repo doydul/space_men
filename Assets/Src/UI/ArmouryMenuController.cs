@@ -28,7 +28,6 @@ public class ArmouryMenuController : SceneMenu {
 
     public void Continue() {
         FadeToBlack(() => {
-            MissionOverviewController.OpenMenu();
         });
     }
 

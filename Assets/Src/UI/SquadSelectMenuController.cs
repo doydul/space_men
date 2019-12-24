@@ -27,7 +27,6 @@ public class SquadSelectMenuController : SceneMenu {
         }
 
         FadeToBlack(() => {
-            MissionOverviewController.OpenMenu();
         });
     }
 
