@@ -29,22 +29,22 @@ namespace Interactors {
                 items = new MetaItemSave[] {
                     new MetaItemSave {
                         uniqueId = 1,
-                        name = "Default",
+                        name = "Basic",
                         type = MetaItemTypeSave.Armour
                     },
                     new MetaItemSave {
                         uniqueId = 2,
-                        name = "Default",
+                        name = "Basic",
                         type = MetaItemTypeSave.Armour
                     },
                     new MetaItemSave {
                         uniqueId = 3,
-                        name = "Default",
+                        name = "Basic",
                         type = MetaItemTypeSave.Armour
                     },
                     new MetaItemSave {
                         uniqueId = 4,
-                        name = "Default",
+                        name = "Basic",
                         type = MetaItemTypeSave.Armour
                     },
                     new MetaItemSave {
@@ -53,17 +53,17 @@ namespace Interactors {
                         type = MetaItemTypeSave.Weapon
                     },
                     new MetaItemSave {
-                        uniqueId = 5,
+                        uniqueId = 6,
                         name = "Assault Rifle",
                         type = MetaItemTypeSave.Weapon
                     },
                     new MetaItemSave {
-                        uniqueId = 5,
+                        uniqueId = 7,
                         name = "Assault Rifle",
                         type = MetaItemTypeSave.Weapon
                     },
                     new MetaItemSave {
-                        uniqueId = 5,
+                        uniqueId = 8,
                         name = "Assault Rifle",
                         type = MetaItemTypeSave.Weapon
                     }

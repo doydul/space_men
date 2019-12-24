@@ -1,3 +1,4 @@
+using System.Linq;
 using Data;
 using Workers;
 
@@ -5,11 +6,16 @@ namespace Interactors {
     
     public class MissionStartInteractor : Interactor<MissionStartOutput> {
 
+        public MetaGameState metaGameState { private get; set; }
+
         public void Interact(MissionStartInput input) {
             var output = new MissionStartOutput();
             
-            var squad = GenerateDefaultSquad(); // TODO: load from metagamestate instead
-            output.soldiers = new Data.Soldier[squad.Length];
+            var squad = metaGameState.metaSoldiers.GetAll().Select(metaSoldier => SoldierFromMetaSoldier(metaSoldier)).ToList();
+            for (int i = 0; i < squad.Count; i++) {
+                squad[i].position = gameState.map.spawners[i];
+            }
+            output.soldiers = new Data.Soldier[squad.Count];
             
             int index = 0;
             foreach (var soldier in squad) {
@@ -21,6 +27,13 @@ namespace Interactors {
             AlienPathingGrid.Calculate(gameState);
             
             presenter.Present(output);
+        }
+
+        SoldierActor SoldierFromMetaSoldier(MetaSoldier metaSoldier) {
+            return SoldierGenerator.Default()
+                                   .WithArmour(metaSoldier.armour.name)
+                                   .WithWeapon(metaSoldier.weapon.name)
+                                   .Build();
         }
         
         SoldierActor[] GenerateDefaultSquad() {

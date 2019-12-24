@@ -6,6 +6,9 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
+- Create way to convert meta soldiers into soldiers
+- Make MissionStartInteractor use metagame state to fetch soldiers
+
 - Create EquipItem interactor
 - Create CreateBlueprint interactor
 - Create AddSoldierToSquad interactor

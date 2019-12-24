@@ -27,13 +27,6 @@ public class Initializer : InitializerBase {
     }
 
     protected override void GenerateDependencies() {
-        MetaGameState.Load(0, new MetaGameSave {
-            credits = 100,
-            soldiers = new MetaSoldierSave[0],
-            items = new MetaItemSave[0],
-            currentCampaign = "Default",
-            currentMission = "First Mission"
-        });
         var gameState = new GameState();
         var mapStore = new MapStore();
         mapStore.map = Map.instance;
