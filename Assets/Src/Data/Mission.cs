@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Mission : MonoBehaviour {
 
-    public string sceneName;
     public string missionName;
     public MissionEnemyProfile[] enemyProfiles;
     public MissionReward[] rewards;

@@ -12,7 +12,7 @@ public class GameplayOrchestrator : MonoBehaviour {
     public UI ui;
 
     public static void StartGame() {
-        SceneManager.LoadScene(Squad.currentMission.sceneName);
+        SceneManager.LoadScene(Squad.currentMission.missionName);
     }
 
     void Awake() {
