@@ -6,8 +6,6 @@ namespace Interactors {
     
     public class MissionStartInteractor : Interactor<MissionStartOutput> {
 
-        public MetaGameState metaGameState { private get; set; }
-
         public void Interact(MissionStartInput input) {
             var output = new MissionStartOutput();
             

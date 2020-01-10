@@ -6,20 +6,8 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
-- Create way to convert meta soldiers into soldiers
-- Make MissionStartInteractor use metagame state to fetch soldiers
+- Hookup mission complete scene so that it shows the rewards that have been won (held in mission complete initializer)
 
-- Create EquipItem interactor
-- Create CreateBlueprint interactor
-- Create AddSoldierToSquad interactor
-- Create RemoveSoldierFromSquad interactor
-- Hookup metagame actions:
-  - Hookup EquipItem action
-  - Hookup CreateBlueprint action
-  - Hookup AddSoldierToSquad action
-  - Hookup RemoveSoldierFromSquad action
-
-- Refactor MetaGameState so that it _isn't_ injected in, but instead is just fetched as a singleton (because the decision of which MetaGameState object to use should not be left up to the initializer)
 
 - Implement metagamestate
   - Add method for loading metagame state from Persistent storage somehow

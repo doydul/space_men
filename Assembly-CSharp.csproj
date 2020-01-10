@@ -132,9 +132,12 @@
      <Compile Include="Assets\Src\New\ActionImpl.cs" />
      <Compile Include="Assets\Src\New\ActorActionFactory.cs" />
      <Compile Include="Assets\Src\New\Components\BlackFade.cs" />
+     <Compile Include="Assets\Src\New\Components\Debug\PressSpaceTrigger.cs" />
      <Compile Include="Assets\Src\New\Components\HealthBar.cs" />
      <Compile Include="Assets\Src\New\Components\InfoPanel.cs" />
+     <Compile Include="Assets\Src\New\Components\MissionCompletePanel.cs" />
      <Compile Include="Assets\Src\New\Components\RadarBlipLayer.cs" />
+     <Compile Include="Assets\Src\New\Components\RewardIcon.cs" />
      <Compile Include="Assets\Src\New\Components\SavePageSlot.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\ExtractionObjective.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\GenericObjective.cs" />
@@ -147,12 +150,14 @@
      <Compile Include="Assets\Src\New\Controllers\LoadGameController.cs" />
      <Compile Include="Assets\Src\New\Controllers\MapController.cs" />
      <Compile Include="Assets\Src\New\Controllers\MetaGameController.cs" />
+     <Compile Include="Assets\Src\New\Controllers\MissionCompleteController.cs" />
      <Compile Include="Assets\Src\New\Controllers\MissionOverviewController.cs" />
      <Compile Include="Assets\Src\New\Controllers\ScriptingController.cs" />
      <Compile Include="Assets\Src\New\Controllers\UIController.cs" />
      <Compile Include="Assets\Src\New\Controllers\WorkshopController.cs" />
      <Compile Include="Assets\Src\New\CurrentSelectionState.cs" />
      <Compile Include="Assets\Src\New\Data\Alien.cs" />
+     <Compile Include="Assets\Src\New\Data\Campaign.cs" />
      <Compile Include="Assets\Src\New\Data\Cell.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\ActorType.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\Direction.cs" />
@@ -225,6 +230,7 @@
      <Compile Include="Assets\Src\New\Initializers\Initializer.cs" />
      <Compile Include="Assets\Src\New\Initializers\InitializerBase.cs" />
      <Compile Include="Assets\Src\New\Initializers\LoadGameInitializer.cs" />
+     <Compile Include="Assets\Src\New\Initializers\MissionCompleteInitializer.cs" />
      <Compile Include="Assets\Src\New\Initializers\MissionOverviewInitializer.cs" />
      <Compile Include="Assets\Src\New\Initializers\WorkshopInitializer.cs" />
      <Compile Include="Assets\Src\New\Interactors\ActorActionsInteractor.cs" />
@@ -241,6 +247,7 @@
      <Compile Include="Assets\Src\New\Interactors\SoldierShootInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\TurnSoldierInteractor.cs" />
      <Compile Include="Assets\Src\New\Interfaces\IAlienStore.cs" />
+     <Compile Include="Assets\Src\New\Interfaces\ICampaignStore.cs" />
      <Compile Include="Assets\Src\New\Interfaces\IInstantiator.cs" />
      <Compile Include="Assets\Src\New\Interfaces\IMapStore.cs" />
      <Compile Include="Assets\Src\New\Interfaces\IMetaGameStateStore.cs" />
@@ -251,6 +258,8 @@
      <Compile Include="Assets\Src\New\Main.cs" />
      <Compile Include="Assets\Src\New\MovementPhase.cs" />
      <Compile Include="Assets\Src\New\Other\AlienStore.cs" />
+     <Compile Include="Assets\Src\New\Other\CampaignStore.cs" />
+     <Compile Include="Assets\Src\New\Other\DebugSaveGenerator.cs" />
      <Compile Include="Assets\Src\New\Other\MapStore.cs" />
      <Compile Include="Assets\Src\New\Other\MetaGameStateStore.cs" />
      <Compile Include="Assets\Src\New\Other\MissionStore.cs" />

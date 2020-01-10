@@ -27,17 +27,21 @@ public class Initializer : InitializerBase {
     }
 
     protected override void GenerateDependencies() {
+        if (MetaGameState.instance == null) {
+            MetaGameState.Load(0, DebugSaveGenerator.Generate());
+        }
+
         var gameState = new GameState();
         var mapStore = new MapStore();
         mapStore.map = Map.instance;
         gameState.mapStore = mapStore;
-        gameState.Init(MetaGameState.instance.currentCampaign, MetaGameState.instance.currentMission);
+        gameState.Init();
 
         dependencies.Add(gameState);
         dependencies.Add(new AlienStore());
         dependencies.Add(new SoldierStore());
         dependencies.Add(new MissionStore());
-        dependencies.Add(MetaGameState.instance);
+        dependencies.Add(new CampaignStore());
     }
 
     protected override void Initialize() {

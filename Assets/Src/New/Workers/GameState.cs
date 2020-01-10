@@ -15,14 +15,14 @@ namespace Workers {
         public string campaign { get; private set; }
         public string mission { get; private set; }
 
-        public void Init(string campaignName, string missionName) {
+        public void Init() {
             actors = new Actors();
             completedSecondaryObjectives = new HashSet<int>();
 
             map = new MapState();
             map.Init(mapStore.GetMap());
-            this.campaign = campaignName;
-            this.mission = missionName;
+            this.campaign = MetaGameState.instance.currentCampaign;
+            this.mission = MetaGameState.instance.currentMission;
         }
 
         public Data.Actor GetActor(long uniqueId) {

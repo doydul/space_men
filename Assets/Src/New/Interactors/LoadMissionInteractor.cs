@@ -5,8 +5,6 @@ namespace Interactors {
     
     public class LoadMissionInteractor : Interactor<LoadMissionOutput> {
 
-        public MetaGameState metaGameState { private get; set; }
-
         public void Interact(LoadMissionInput input) {
             var output = new LoadMissionOutput();
             

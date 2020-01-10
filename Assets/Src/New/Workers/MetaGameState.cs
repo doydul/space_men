@@ -83,6 +83,6 @@ namespace Workers {
         public MetaItems metaItems { get; private set; }
         public Credits credits { get; private set; }
         public string currentCampaign { get; private set; }
-        public string currentMission { get; private set; }
+        public string currentMission { get; set; }
     }
 }

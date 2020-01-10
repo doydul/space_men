@@ -15,7 +15,6 @@ public class MissionOverviewInitializer : InitializerBase {
 
     protected override void GenerateDependencies() {
         dependencies.Add(new MissionStore());
-        dependencies.Add(MetaGameState.instance);
     }
 
     protected override void Initialize() {

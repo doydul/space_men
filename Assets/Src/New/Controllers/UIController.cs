@@ -1,10 +1,12 @@
 using Interactors;
 using Data;
+using UnityEngine.SceneManagement;
 
 public class UIController : Controller {
     
-    public InfoPanel infoPanel;
+    public InfoPanel infoPanel; // TODO refactor these to use pure presenters
     public UIData uiData;
+    public BlackFade blackFade;
 
     public ProgressGamePhaseInteractor progressGamePhaseInteractor { get; set; }
     
@@ -13,10 +15,18 @@ public class UIController : Controller {
     }
     
     public void ShowSelectedActorInfo() {
-        infoPanel.Display(uiData.selectedActor);
+        if (!disabled) infoPanel.Display(uiData.selectedActor);
     }
 
     public void CloseInfoPanel() {
-        infoPanel.Close();
+        if (!disabled) infoPanel.Close();
+    }
+
+    public void ContinueToRewardOverview() {
+        if (!disabled) {
+            blackFade.BeginFade(() => {
+                SceneManager.LoadScene("MissionCompleteView");
+            });
+        }
     }
 }
