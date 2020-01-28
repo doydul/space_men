@@ -1,13 +1,16 @@
 using Interactors;
 using Data;
+using UnityEngine.SceneManagement;
 
 public class MissionCompleteController : Controller {
 
-    // public DoSomeActionInteractor doSomeActionInteractor { get; set; }
+    public BlackFade blackFade;
 
-    public void DoSomeAction() {
+    public void ProceedToArmoury() {
         if (!disabled) {
-            // doSomeActionInteractor.Interact(new DoSomeActionInput());
+            blackFade.BeginFade(() => {
+                SceneManager.LoadScene("Armoury");
+            });
         }
     }
 }

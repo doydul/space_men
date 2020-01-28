@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4686101733372730}
   - component: {fileID: 114726355796877630}
   - component: {fileID: 114326124306294568}
+  - component: {fileID: 4691909577446419039}
   m_Layer: 0
   m_Name: Default
   m_TagString: Untagged
@@ -84,3 +85,20 @@ MonoBehaviour:
 
     The player wins by reaching the objective, which is marked on the map (there isn''t
     a win screen at the moment, you''ll just have to congratulate yourself)'
+--- !u!114 &4691909577446419039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255004536557680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 945effe1041334de8beca324f2fa5d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionName: Second Mission
+  enemyProfiles: []
+  rewards: []
+  secondaryMissions: []
+  briefing: This is the second mission

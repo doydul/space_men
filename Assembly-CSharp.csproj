@@ -146,6 +146,7 @@
      <Compile Include="Assets\Src\New\Components\Scripting\SoldierTraverseTrigger.cs" />
      <Compile Include="Assets\Src\New\Components\SFXLayer.cs" />
      <Compile Include="Assets\Src\New\Components\UIData.cs" />
+     <Compile Include="Assets\Src\New\Controllers\ArmouryController.cs" />
      <Compile Include="Assets\Src\New\Controllers\Controller.cs" />
      <Compile Include="Assets\Src\New\Controllers\LoadGameController.cs" />
      <Compile Include="Assets\Src\New\Controllers\MapController.cs" />

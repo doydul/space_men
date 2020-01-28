@@ -6,11 +6,9 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
-- Hookup mission complete scene so that it shows the rewards that have been won (held in mission complete initializer)
-
-
+- Decide where the mission complete screen will lead to
+- Reimplement workshop and loadout pages
 - Implement metagamestate
-  - Add method for loading metagame state from Persistent storage somehow
   - Meta soldier needs to somehow link to soldiers in gamestate so we know whos died
 
 # Not Urgent
