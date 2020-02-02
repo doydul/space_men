@@ -5,9 +5,11 @@ namespace DataTypes {
     public class MetaSoldiers {
 
         IDDictionary<MetaSoldier> metaSoldiers;
+        MetaSoldier[] squad;
 
         public MetaSoldiers() {
             metaSoldiers = new IDDictionary<MetaSoldier>();
+            squad = new MetaSoldier[6];
         }
 
         public long Add(MetaSoldier metaSoldier) {
@@ -21,12 +23,21 @@ namespace DataTypes {
             }
         }
 
+        public void UpdateSquadRoster(long soldierId, int squadIndex) {
+            var metaSoldier = Get(soldierId);
+            squad[squadIndex] = metaSoldier;
+        }
+
         public MetaSoldier Get(long id) {
             return metaSoldiers.GetElement(id);
         }
         
         public IEnumerable<MetaSoldier> GetAll() {
             return metaSoldiers.GetElements();
+        }
+
+        public IEnumerable<MetaSoldier> GetSquad() {
+            return new List<MetaSoldier>(squad);
         }
 
         public void Remove(long id) {

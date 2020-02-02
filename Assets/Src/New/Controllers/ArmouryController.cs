@@ -2,14 +2,11 @@ using Interactors;
 using Data;
 using UnityEngine.SceneManagement;
 
-// { typeof(ArmouryController),
-//     new Dictionary<Type, Type> {
-//         { typeof(DoSomeActionInteractor), typeof(DoSomeActionPresenter) }
-//     }
-// }
 public class ArmouryController : Controller {
 
     public BlackFade blackFade;
+
+    public OpenInventoryInteractor openInventoryInteractor { get; set; }
 
     public void ProceedToMissionOverview() {
         if (!disabled) {
@@ -23,6 +20,22 @@ public class ArmouryController : Controller {
         if (!disabled) {
             blackFade.BeginFade(() => {
                 SceneManager.LoadScene("WorkshopMenu");
+            });
+        }
+    }
+
+    public void GoToSelectSoldierScreen(long metaSoldierId) {
+        if (!disabled) {
+            blackFade.BeginFade(() => {
+                SceneManager.LoadScene("SelectionMenu");
+            });
+        }
+    }
+
+    public void GoToInventoryScreen(long metaSoldierId) {
+        if (!disabled) {
+            openInventoryInteractor.Interact(new OpenInventoryInput {
+                metaSoldierId = metaSoldierId
             });
         }
     }

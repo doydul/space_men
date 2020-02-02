@@ -62,6 +62,9 @@ namespace Workers {
                 }
                 instance.metaItems.AddBlueprint(metaItem);
             }
+            for (int i = 0; i < save.squadIds.Length; i++) {
+                instance.metaSoldiers.UpdateSquadRoster(save.squadIds[i], i);
+            }
             instance.credits.Add(save.credits);
             instance.currentCampaign = save.currentCampaign;
             instance.currentMission = save.currentMission;

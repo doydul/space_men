@@ -6,7 +6,11 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
-- Decide where the mission complete screen will lead to
+- implement armouryMenu class
+- Implement ConfirmSelection method on selection menu controller
+- Rework Args objects so they don't belong to the initializers anymore (make a new folder called Args for different types of scene args)
+- Make unified system for getting soldier, weapon and armour icons so they can be shown in the ui
+- In SelectionMenuPanel, use icon system to retrieve the icon that should be shown for a given selectable
 - Reimplement workshop and loadout pages
 - Implement metagamestate
   - Meta soldier needs to somehow link to soldiers in gamestate so we know whos died

@@ -9,11 +9,9 @@ cat > ./Controllers/${modelName}Controller.cs <<EOF
 using Interactors;
 using Data;
 
-// { typeof(${modelName}Controller),
-//     new Dictionary<Type, Type> {
-//         { typeof(DoSomeActionInteractor), typeof(DoSomeActionPresenter) }
-//     }
-// }
+// controllerMapping.Add(typeof(${modelName}Controller), new Dictionary<Type, Type> {
+//    { typeof(DoSomeActionInteractor), typeof(DoSomeActionPresenter) }
+// });
 public class ${modelName}Controller : Controller {
 
     // public DoSomeActionInteractor doSomeActionInteractor { get; set; }

@@ -44,6 +44,16 @@ public class DebugSaveGenerator {
                     uniqueId = 8,
                     name = "Assault Rifle",
                     type = MetaItemTypeSave.Weapon
+                },
+                new MetaItemSave {
+                    uniqueId = 9,
+                    name = "Plasma Rifle",
+                    type = MetaItemTypeSave.Weapon
+                },
+                new MetaItemSave {
+                    uniqueId = 10,
+                    name = "Grenade Launcher",
+                    type = MetaItemTypeSave.Weapon
                 }
             },
             blueprints = new MetaItemSave[] {
@@ -77,6 +87,9 @@ public class DebugSaveGenerator {
                     armourId = 4,
                     weaponId = 8
                 }
+            },
+            squadIds = new long[] {
+                1, 2, 3, 4
             }
         };
     }

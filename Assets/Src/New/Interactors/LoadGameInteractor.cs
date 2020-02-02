@@ -99,6 +99,9 @@ namespace Interactors {
                         armourId = 4,
                         weaponId = 8
                     }
+                },
+                squadIds = new long[] {
+                    1, 2, 3, 4
                 }
             };
         }
