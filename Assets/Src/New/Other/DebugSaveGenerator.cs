@@ -54,6 +54,16 @@ public class DebugSaveGenerator {
                     uniqueId = 10,
                     name = "Grenade Launcher",
                     type = MetaItemTypeSave.Weapon
+                },
+                new MetaItemSave {
+                    uniqueId = 11,
+                    name = "Medium",
+                    type = MetaItemTypeSave.Armour
+                },
+                new MetaItemSave {
+                    uniqueId = 12,
+                    name = "Heavy",
+                    type = MetaItemTypeSave.Armour
                 }
             },
             blueprints = new MetaItemSave[] {

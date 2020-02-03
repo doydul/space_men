@@ -1,3 +1,5 @@
+using System.Linq;
+
 using Data;
 using Workers;
 
@@ -8,7 +10,19 @@ namespace Interactors {
         public void Interact(OpenArmourSelectInput input) {
             var output = new OpenArmourSelectOutput();
             
-            // TODO
+            var metaSoldier = metaGameState.metaSoldiers.Get(input.metaSoldierId);
+            output.inventoryArmour = metaGameState.metaItems
+                                          .GetInventoryItems()
+                                          .Where(item => item is MetaArmour)
+                                          .Select(item => new OpenArmourSelectOutput.ArmourInfo {
+                                              itemId = item.uniqueId,
+                                              name = item.name
+                                          }).ToArray();
+            output.currentArmour = new OpenArmourSelectOutput.ArmourInfo {
+                itemId = metaSoldier.armour.uniqueId,
+                name = metaSoldier.armour.name
+            };
+            output.soldierId = metaSoldier.uniqueId;
             
             presenter.Present(output);
         }

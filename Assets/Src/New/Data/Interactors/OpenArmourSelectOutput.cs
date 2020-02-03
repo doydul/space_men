@@ -1,7 +1,9 @@
 namespace Data {
     
     public struct OpenArmourSelectOutput {
-        public ArmourInfo[] inventoryArmours;
+        
+        public long soldierId;
+        public ArmourInfo[] inventoryArmour;
         public ArmourInfo currentArmour;
 
         public struct ArmourInfo {
