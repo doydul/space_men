@@ -6,10 +6,17 @@
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
-- Implement armour selection process (new interactor which mirrors open weapon select interactor)
-- Reimplement workshop and loadout pages
-- Implement metagamestate
-  - Meta soldier needs to somehow link to soldiers in gamestate so we know whos died
+- Create OpenSoldierSelect interactor
+  - Calculate which soldiers are not currently in the squad and then open the selection scene
+  - Some parts of the selection scene will need to be adjusted so they can accept soldiers instead of just guns and armour
+- Create AddSoldierToSquad interactor
+  - Will take a soldier id and a squad index
+  - Selection controller will need to selectively use the new interactor when confirming selection
+- Implement soldier select (choosing which dudes will go in the squad)
+- Reimplement workshop page
+- Add back button to selection page
+  - add a back action callback to selection view args
+- Meta soldier needs to somehow link to soldiers in gamestate so we know whos died
 
 # Not Urgent
 

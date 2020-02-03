@@ -6,8 +6,6 @@ public class ArmouryController : Controller {
 
     public BlackFade blackFade;
 
-    public OpenInventoryInteractor openInventoryInteractor { get; set; }
-
     public void ProceedToMissionOverview() {
         if (!disabled) {
             blackFade.BeginFade(() => {
@@ -34,8 +32,10 @@ public class ArmouryController : Controller {
 
     public void GoToInventoryScreen(long metaSoldierId) {
         if (!disabled) {
-            openInventoryInteractor.Interact(new OpenInventoryInput {
-                metaSoldierId = metaSoldierId
+            blackFade.BeginFade(() => {
+                InventoryInitializer.OpenScene(new InventoryInitializer.Args {
+                    metaSoldierId = metaSoldierId
+                });
             });
         }
     }

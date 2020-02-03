@@ -23,7 +23,7 @@ public class SelectionMenuInitializer : InitializerBase {
     }
 
     protected override void GenerateDependencies() {
-        // dependencies.Add(new SomeDep());
+        dependencies.Add(args);
     }
 
     protected override void Initialize() {
@@ -31,6 +31,7 @@ public class SelectionMenuInitializer : InitializerBase {
     }
 
     public struct Args {
+        public Action backAction;
         public Selectable[] selectables;
         public Selectable currentSelection;
 

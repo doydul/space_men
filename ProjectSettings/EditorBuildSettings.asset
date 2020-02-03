@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Armoury.unity
     guid: a190ee0de428c49ca990f746b8ea0b16
   - enabled: 1
-    path: Assets/Scenes/TemplarView.unity
+    path: Assets/Scenes/InventoryView.unity
     guid: 94aafde64e09c479e95dfc4c1aa58331
   - enabled: 1
     path: Assets/Scenes/SquadSelect.unity

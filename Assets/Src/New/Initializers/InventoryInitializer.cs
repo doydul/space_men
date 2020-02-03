@@ -10,12 +10,13 @@ public class InventoryInitializer : InitializerBase {
     static Args args { get; set; }
 
     public static void OpenScene(Args arguments) {
-        SceneManager.LoadScene("TemplarView");
         args = arguments;
+        SceneManager.LoadScene("InventoryView");
     }
 
     protected override void GenerateControllerMapping() {
         controllerMapping.Add(typeof(InventoryController), new Dictionary<Type, Type> {
+            { typeof(OpenInventoryInteractor), typeof(OpenInventoryPresenter) },
             { typeof(OpenWeaponSelectInteractor), typeof(OpenWeaponSelectPresenter) },
             { typeof(OpenArmourSelectInteractor), typeof(OpenArmourSelectPresenter) }
         });
@@ -24,12 +25,10 @@ public class InventoryInitializer : InitializerBase {
     protected override void GenerateDependencies() {}
 
     protected override void Initialize() {
-        FindObjectOfType<InventoryController>().args = args;
+        FindObjectOfType<InventoryController>().InitPage(args);
     }
 
     public struct Args {
         public long metaSoldierId;
-        public string armourName;
-        public string weaponName;
     }
 }

@@ -14,6 +14,11 @@ public class OpenWeaponSelectPresenter : Presenter, IPresenter<OpenWeaponSelectO
     public void Present(OpenWeaponSelectOutput input) {
         blackFade.BeginFade(() => {
             SelectionMenuInitializer.OpenScene(new SelectionMenuInitializer.Args {
+                backAction = () => {
+                    InventoryInitializer.OpenScene(new InventoryInitializer.Args {
+                        metaSoldierId = input.soldierId
+                    });
+                },
                 currentSelection = new SelectionMenuInitializer.Args.Selectable {
                     type = SelectionMenuInitializer.Args.SelectableType.Weapons,
                     id = input.currentWeapon.itemId,

@@ -28,6 +28,14 @@ public abstract class InitializerBase : MonoBehaviour {
                 if (interactorType.Value != null) { 
                     var presprop = interactorType.Key.GetProperty("presenter");
                     var presenter = FindObjectOfType(interactorType.Value);
+                    foreach (var property in interactorType.Value.GetProperties()) {
+                        foreach (var dependency in dependencies) {
+                            if (property.PropertyType.IsAssignableFrom(dependency.GetType())) {
+                                property.SetValue(presenter, dependency);
+                                break;
+                            }
+                        }
+                    }
                     presprop.SetValue(interactor, presenter);
                 }
                 foreach (var property in interactorType.Key.GetProperties()) {

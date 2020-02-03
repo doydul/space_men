@@ -16,9 +16,6 @@ public class ArmouryInitializer : InitializerBase {
     }
 
     protected override void GenerateControllerMapping() {
-        controllerMapping.Add(typeof(ArmouryController), new Dictionary<Type, Type> {
-            { typeof(OpenInventoryInteractor), typeof(OpenInventoryPresenter) }
-        });
     }
 
     protected override void GenerateDependencies() {

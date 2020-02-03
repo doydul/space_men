@@ -4,20 +4,16 @@ public class OpenInventoryPresenter : Presenter, IPresenter<OpenInventoryOutput>
     
     public static OpenInventoryPresenter instance { get; private set; }
 
-    public BlackFade blackFade;
-    
     void Awake() {
         instance = this;
     }
+
+    public Icon weaponIcon;
+    public Icon armourIcon;
     
     public void Present(OpenInventoryOutput input) {
-        blackFade.BeginFade(() => {
-            InventoryInitializer.OpenScene(new InventoryInitializer.Args {
-                metaSoldierId = input.metaSoldierId,
-                armourName = input.armourName,
-                weaponName = input.weaponName
-            });
-        });
+        weaponIcon.Init(Weapon.Get(input.weaponName));
+        armourIcon.Init(Armour.Get(input.armourName));
     }
 }
 
