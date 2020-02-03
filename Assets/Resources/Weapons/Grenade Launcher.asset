@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330a01776318840bd88dc655a2bd4ab8, type: 3}
   m_Name: Grenade Launcher
   m_EditorClassIdentifier: 
+  icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
   accuracy: 50
   armourPen: 10
   minDamage: 1

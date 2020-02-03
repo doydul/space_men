@@ -9,6 +9,8 @@ public class Weapon : ScriptableObject {
         Heavy
     }
 
+    public Transform icon;
+
     public int accuracy;
     public int armourPen;
     public int minDamage;

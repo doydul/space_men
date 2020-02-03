@@ -3,16 +3,16 @@ using UnityEngine.UI;
 
 public class SelectionMenuPanel : MonoBehaviour {
     
-    public Image foregroundImage;
+    public Icon icon;
 
     public SelectionMenuInitializer.Args.Selectable selectable { private get; set; }
     public SelectionMenuController controller { private get; set; }
 
     public void Init() {
         if (selectable.type == SelectionMenuInitializer.Args.SelectableType.Weapons) {
-                
+            icon.Init(Weapon.Get(selectable.name));
         } else if (selectable.type == SelectionMenuInitializer.Args.SelectableType.Armour) {
-            // TODO
+            icon.Init(Armour.Get(selectable.name));
         } else {
             // TODO
         }

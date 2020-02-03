@@ -16,7 +16,6 @@ namespace DataTypes {
         }
 
         public long Add(MetaItem metaItem) {
-            inventoryItems.Add(metaItem);
             if (metaItem.uniqueId != 0) {
                 allMetaItems.AddElement(metaItem, metaItem.uniqueId);
                 return metaItem.uniqueId;

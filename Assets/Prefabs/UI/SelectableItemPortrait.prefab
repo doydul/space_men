@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 114908931381487616}
   - component: {fileID: 8440723367151946311}
   m_Layer: 5
-  m_Name: SoldierPortrait
+  m_Name: SelectableItemPortrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2590875b48e4b16b29fbb364f7d302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foregroundImage: {fileID: 114775784594418580}
+  icon: {fileID: 8059850315367149426}
 --- !u!1 &1482208900194208
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224192978289978510}
   - component: {fileID: 222593467522786132}
-  - component: {fileID: 114775784594418580}
+  - component: {fileID: 8059850315367149426}
   m_Layer: 5
   m_Name: Foreground
   m_TagString: Untagged
@@ -200,7 +200,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836505254475934}
   m_CullTransparentMesh: 0
---- !u!114 &114775784594418580
+--- !u!114 &8059850315367149426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,24 +209,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1836505254475934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e352c4fc39c44f438d162b02944de2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: afedafc706f5240b8bd95fb685d92eed, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1

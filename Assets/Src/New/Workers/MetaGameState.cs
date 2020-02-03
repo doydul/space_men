@@ -33,21 +33,20 @@ namespace Workers {
                 });
             }
             foreach (var itemSave in save.items) {
-                if (!itemsAlreadyUsed.Contains(itemSave.uniqueId)) {
-                    MetaItem metaItem;
-                    if (itemSave.type == MetaItemTypeSave.Armour) {
-                        metaItem = new MetaArmour {
-                            uniqueId = itemSave.uniqueId,
-                            name = itemSave.name
-                        };
-                    } else {
-                        metaItem = new MetaWeapon {
-                            uniqueId = itemSave.uniqueId,
-                            name = itemSave.name
-                        };
-                    }
-                    instance.metaItems.Add(metaItem);
+                MetaItem metaItem;
+                if (itemSave.type == MetaItemTypeSave.Armour) {
+                    metaItem = new MetaArmour {
+                        uniqueId = itemSave.uniqueId,
+                        name = itemSave.name
+                    };
+                } else {
+                    metaItem = new MetaWeapon {
+                        uniqueId = itemSave.uniqueId,
+                        name = itemSave.name
+                    };
                 }
+                instance.metaItems.Add(metaItem);
+                if (!itemsAlreadyUsed.Contains(itemSave.uniqueId)) instance.metaItems.MoveItemToInventory(metaItem.uniqueId);
             }
             foreach (var itemSave in save.blueprints) {
                 MetaItem metaItem;

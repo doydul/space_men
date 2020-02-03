@@ -10,6 +10,8 @@ public class Armour : ScriptableObject {
         Heavy
     }
 
+    public Transform icon;
+
     public int armourValue;
     public Type type;
     public int value;

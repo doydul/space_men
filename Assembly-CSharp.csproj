@@ -135,6 +135,7 @@
      <Compile Include="Assets\Src\New\Components\BlackFade.cs" />
      <Compile Include="Assets\Src\New\Components\Debug\PressSpaceTrigger.cs" />
      <Compile Include="Assets\Src\New\Components\HealthBar.cs" />
+     <Compile Include="Assets\Src\New\Components\Icon.cs" />
      <Compile Include="Assets\Src\New\Components\InfoPanel.cs" />
      <Compile Include="Assets\Src\New\Components\MissionCompletePanel.cs" />
      <Compile Include="Assets\Src\New\Components\RadarBlipLayer.cs" />

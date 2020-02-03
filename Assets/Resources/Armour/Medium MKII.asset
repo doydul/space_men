@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1317cff8372408d87e475886085f69, type: 3}
   m_Name: Medium MKII
   m_EditorClassIdentifier: 
+  icon: {fileID: 6049137105121139426, guid: 7e0702b01691f4610824edfb221641a6, type: 3}
   armourValue: 55
   type: 1
   value: 450

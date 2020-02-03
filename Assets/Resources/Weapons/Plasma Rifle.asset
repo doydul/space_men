@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330a01776318840bd88dc655a2bd4ab8, type: 3}
   m_Name: Plasma Rifle
   m_EditorClassIdentifier: 
+  icon: {fileID: 3337276378440721920, guid: 2a73a4dc1089e4ac89c8b19edd6c8c9b, type: 3}
   accuracy: 70
   armourPen: 50
   minDamage: 3

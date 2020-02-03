@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330a01776318840bd88dc655a2bd4ab8, type: 3}
   m_Name: Carbine
   m_EditorClassIdentifier: 
+  icon: {fileID: 5026745411207313143, guid: e40f3473f69924114bb79a48f410c9e7, type: 3}
   accuracy: 65
   armourPen: 0
   minDamage: 1
