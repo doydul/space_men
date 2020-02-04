@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DataTypes {
 
@@ -38,6 +39,10 @@ namespace DataTypes {
 
         public IEnumerable<MetaSoldier> GetSquad() {
             return new List<MetaSoldier>(squad);
+        }
+
+        public MetaSoldier GetAtSquadIndex(int index) {
+            return squad[index];
         }
 
         public void Remove(long id) {

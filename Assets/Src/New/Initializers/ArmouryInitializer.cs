@@ -8,14 +8,15 @@ using Data;
 
 public class ArmouryInitializer : InitializerBase {
 
-    static ArmouryMenuArgs args { get; set; }
-
-    public static void OpenScene(ArmouryMenuArgs arguments) {
+    public static void OpenScene() {
         SceneManager.LoadScene("Armoury");
-        args = arguments;
     }
 
     protected override void GenerateControllerMapping() {
+        controllerMapping.Add(typeof(ArmouryController), new Dictionary<Type, Type> {
+            { typeof(OpenArmouryInteractor), typeof(OpenArmouryPresenter) },
+            { typeof(OpenSoldierSelectInteractor), typeof(OpenSoldierSelectPresenter) }
+        });
     }
 
     protected override void GenerateDependencies() {
@@ -23,11 +24,6 @@ public class ArmouryInitializer : InitializerBase {
     }
 
     protected override void Initialize() {
-        FindObjectOfType<ArmouryMenu>().Init(args);
+        FindObjectOfType<ArmouryController>().InitPage();
     }
-}
-
-public struct ArmouryMenuArgs {
-
-    public SoldierDisplayInfo[] soldierInfo;
 }

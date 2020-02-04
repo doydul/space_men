@@ -10,8 +10,10 @@ public class SoldierArmouryPanel : MonoBehaviour {
     public GameObject invButton;
 
     SoldierDisplayInfo soldierInfo;
+    int index;
 
-    public void SetSoldierInfo(SoldierDisplayInfo soldierInfo) {
+    public void SetSoldierInfo(int index, SoldierDisplayInfo soldierInfo) {
+        this.index = index;
         this.soldierInfo = soldierInfo;
         if (this.soldierInfo.soldierId == null) {
             soldierPicture.SetActive(false);
@@ -23,7 +25,7 @@ public class SoldierArmouryPanel : MonoBehaviour {
     }
 
     public void SelectSoldier() {
-        controller.GoToSelectSoldierScreen(soldierInfo.soldierId);
+        controller.GoToSelectSoldierScreen(index);
     }
 
     public void OpenInventory() {

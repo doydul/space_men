@@ -5,7 +5,9 @@ using System.Collections;
 using Data;
 
 public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhaseOutput> {
-  
+    
+    public MapController mapInput;
+    public UIController uiInput;
     public Map map;
     public TMP_Text gamePhaseText;
     public GameObject turnButtonContainer;
@@ -28,6 +30,9 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     }
     
     public void Present(ProgressGamePhaseOutput input) {
+        mapInput.Disable();
+        uiInput.Disable();
+
         if (uiData.gamePhase != input.currentPhase) {
             UpdateUI(input.currentPhase);
             UpdatePhaseText(input.currentPhase);
@@ -51,6 +56,9 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
 
         if (input.alienActions != null) {
             StartCoroutine(AlienActionAnimation(input));
+        } else {
+            mapInput.Enable();
+            uiInput.Enable();
         }
     }
 
@@ -79,6 +87,9 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
                 }
             }
         }
+        
+        mapInput.Enable();
+        uiInput.Enable();
     }
 
     void UpdateUI(Data.GamePhase gamePhase) {

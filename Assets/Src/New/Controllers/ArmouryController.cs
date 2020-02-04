@@ -6,6 +6,13 @@ public class ArmouryController : Controller {
 
     public BlackFade blackFade;
 
+    public OpenArmouryInteractor openArmouryInteractor { private get; set; }
+    public OpenSoldierSelectInteractor openSoldierSelectInteractor { private get; set; }
+
+    public void InitPage() {
+        openArmouryInteractor.Interact(new OpenArmouryInput());
+    }
+
     public void ProceedToMissionOverview() {
         if (!disabled) {
             blackFade.BeginFade(() => {
@@ -22,10 +29,10 @@ public class ArmouryController : Controller {
         }
     }
 
-    public void GoToSelectSoldierScreen(long metaSoldierId) {
+    public void GoToSelectSoldierScreen(int squadPositionIndex) {
         if (!disabled) {
-            blackFade.BeginFade(() => {
-                SceneManager.LoadScene("SelectionMenu");
+            openSoldierSelectInteractor.Interact(new OpenSoldierSelectInput {
+                squadPositionIndex = squadPositionIndex
             });
         }
     }

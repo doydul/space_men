@@ -14,7 +14,7 @@ public class SelectionMenuPanel : MonoBehaviour {
         } else if (selectable.type == SelectionMenuInitializer.Args.SelectableType.Armour) {
             icon.Init(Armour.Get(selectable.name));
         } else {
-            // TODO
+            icon.Init();
         }
     }
 

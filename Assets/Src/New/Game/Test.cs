@@ -1,58 +1,73 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Workers;
+using Data;
+using System.Linq;
 
 public class Test : MonoBehaviour {
 
-    public Map map;
+    public MapState map;
 
     void Start() {
-        MakeSoldier();
-        MakeAlien(new Vector2(8, 8));
-        MakeAlien(new Vector2(8, 7));
-        MakeAlien(new Vector2(8, 6));
-        MakeAlien(new Vector2(8, 5));
+        MakeMap();
+        // TestIterator();
+        // TestLayerIterator();
+        MakeExplosion();
     }
 
-    void MakeSoldier() {
-        var soldierData = SoldierData.GenerateDefault();
-        var gridLocation = new Vector2(1, 1);
-        var trans = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/Soldier")) as Transform;
-
-        var soldier = trans.GetComponent<Soldier>();
-        soldier.FromData(soldierData);
-
-        map.GetTileAt(gridLocation).SetActor(trans);
-    }
-
-    void MakeAlien(Vector2 at) {
-        var alienTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/Alien")) as Transform;
-        var alien = alienTransform.GetComponent<Alien>() as Alien;
-        alien.FromData(Resources.Load<AlienData>("Aliens/Alien"));
-        var spriteTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/AlienSprites/AlienAlienSprite")) as Transform;
-        spriteTransform.parent = alienTransform;
-        spriteTransform.localPosition = Vector3.zero;
-        alien.image = spriteTransform;
-
-        map.GetTileAt(at).SetActor(alienTransform);
-    }
-
-    public void TestPathing() {
-        var aliensCopy = map.GetActors<Alien>();
-        var wrapper = new AlienPathingMapWrapper(map, aliensCopy);
-        while (aliensCopy.Count > 0) {
-            int unmoved = aliensCopy.Count;
-            foreach (var alien in new List<Alien>(aliensCopy)) {
-                var output = new AlienPathFinder2(wrapper, new BasicAlienPathingWrapper(map)).BestMoveLocation(alien.gridLocation, alien.movement);
-                var tile = map.GetTileAt(output.targetLocation);
-                if (alien.tile == tile) {
-                    aliensCopy.Remove(alien);
-                } else if (tile.actor == null) {
-                    aliensCopy.Remove(alien);
-                    alien.MoveTo(tile);
-                    alien.TurnTo(output.facing);
-                }
-            }
-            if (unmoved == aliensCopy.Count) break;
+    void TestIterator() {
+        var it = new CellIterator(new Position(3, 3), cell => true);
+        foreach (var node in it.Iterate(map)) {
+            var pos = node.cell.position;
+            Debug.Log("(" + pos.x + ", " + pos.y + ")");
         }
+    }
+
+    void TestLayerIterator() {
+        var it = new CellLayerIterator(new Position(3, 3), cell => true);
+        foreach (var layer in it.Iterate(map)) {
+            Debug.Log("XXXXXX " + layer.distanceFromStart);
+            foreach (var node in layer.nodes) {
+                var pos = node.cell.position;
+                // Debug.Log("(" + pos.x + ", " + pos.y + ")");
+            }
+        }
+    }
+
+    void MakeMap() {
+        map = new MapState();
+        var cells = new Cell[7, 7];
+        for (int x = 0; x < 7; x++) {
+            for (int y = 0; y < 7; y++) {
+                cells[x, y] = new Cell { position = new Position(x, y) };
+            }
+        }
+        map.Init(cells);
+    }
+
+    void MakeExplosion() {
+        var result = GenerateExplosion(new Position(3, 3), 0, 5);
+        Debug.Log("Result: ");
+        foreach (var pos in result) {
+            Debug.Log("(" + pos.x + ", " + pos.y + ")");
+        }
+    }
+
+    Position[] GenerateExplosion(Position targetPosition, int accuracy, int blastSize) {
+        var result = new List<Position>();
+        var realPosition = targetPosition;
+
+        var iterator = new CellLayerIterator(targetPosition, cell => !cell.isWall);
+        int layerI = -4;
+        foreach (var layer in iterator.Iterate(map)) {
+            blastSize -= Mathf.Max(layerI, 0);
+            foreach (var node in layer.nodes.OrderBy(x => Random.value).Take(blastSize)) {
+                result.Add(node.cell.position);
+                blastSize--;
+            }
+            if (blastSize <= 0) break;
+            layerI += 2;
+        }
+        return result.ToArray();
     }
 }

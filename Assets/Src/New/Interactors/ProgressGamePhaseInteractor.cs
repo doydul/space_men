@@ -44,7 +44,6 @@ namespace Interactors {
             stage = 0;
             gameState.SetCurrentPhase(Data.GamePhase.Shooting);
             
-            SpawnAliens(ref result);
             foreach (var alien in Aliens.Iterate(gameState)) {
                 alien.movesRemaining = alien.movement * SHOOTING_PHASE_ITERATIONS;
             }
@@ -69,6 +68,9 @@ namespace Interactors {
             RemoveDeadSoldiers();
 
             gameState.SetCurrentPhase(Data.GamePhase.Movement);
+
+            SpawnAliens(ref result);
+
             foreach (var actor in gameState.GetActors()) {
                 if (actor is SoldierActor) {
                     var soldier = actor as SoldierActor;
@@ -132,10 +134,10 @@ namespace Interactors {
             var resultList = new List<AlienAction>();
             var pathingGrid = AlienPathingGrid.instance;
             var map = gameState.map;
-            var aliens = Aliens.Iterate(gameState).ToList();
-            aliens.ForEach(alien => alien.movesRemaining -= alien.movement);
-            var aliensCopy = new List<AlienActor>(aliens);
-            while (aliens.Any()) {
+            var aliensStillToMove = Aliens.Iterate(gameState).ToList();
+            aliensStillToMove.ForEach(alien => alien.movesRemaining -= alien.movement);
+            while (aliensStillToMove.Any()) {
+                var aliensCopy = new List<AlienActor>(aliensStillToMove);
                 foreach (var alien in aliensCopy) {
                     var iterator = new CellIterator(alien.position, cell => !cell.isWall && !cell.actor.isSoldier && (alien.position - cell.position).distance <= alien.movement);
                     AlienPathingGrid.GridSquare bestSquare = null;
@@ -149,15 +151,17 @@ namespace Interactors {
                             ) &&
                             (
                                 !currentCell.hasActor ||
-                                aliens.Contains(currentCell.actor)
+                                aliensStillToMove.Contains(currentCell.actor)
                             )
                         ) {
                             bestSquare = currentSquare;
                         }
                     }
-                    if (!map.GetCell(bestSquare.position).hasActor) {
+                    if (bestSquare == null) {
+                        aliensStillToMove.Remove(alien);
+                    } else if (!map.GetCell(bestSquare.position).hasActor) {
                         MoveAlien(alien, bestSquare.position);
-                        aliens.Remove(alien);
+                        aliensStillToMove.Remove(alien);
                         resultList.Add(new AlienAction {
                             index = alien.uniqueId,
                             type = AlienActionType.Move,
@@ -166,11 +170,11 @@ namespace Interactors {
                         });
                         resultList.AddRange(PerformAttackActions(alien));
                     } else if (map.GetCell(bestSquare.position).actor == alien) {
-                        aliens.Remove(alien);
+                        aliensStillToMove.Remove(alien);
                         resultList.AddRange(PerformAttackActions(alien));
                     }
                 }
-                if (aliensCopy.Count == aliens.Count) break;
+                if (aliensCopy.Count == aliensStillToMove.Count) break;
             }
             result.alienActions = resultList.ToArray();
         }

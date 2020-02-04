@@ -50,7 +50,7 @@ namespace Interactors {
                 victimIndex = alien.uniqueId
             };
             if (Random.Range(0, 100) < soldier.accuracy) {
-                if (Random.Range(0, 100) - soldier.armourPen < alien.armour) {
+                if (Random.Range(0, 100) > alien.armour - soldier.armourPen) {
                     damageInstance.damageInflicted = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
                     damageInstance.attackResult = AttackResult.Hit;
                     alien.Damage(damageInstance.damageInflicted);

@@ -17,7 +17,7 @@ MonoBehaviour:
   accModifier: 0
   damage: 2
   armourPen: 10
-  movement: 4
+  movement: 3
   threat: 1
   expReward: 5
   chanceOfCreatingRadarBlip: 50

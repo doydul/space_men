@@ -59,11 +59,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionName: First Mission
   enemyProfiles:
+  - alienType: Alien
+    groupSize: 5
+    spawnType: 1
+    chance: 1
+    cooldown: 5
+  - alienType: Alien
+    groupSize: 3
+    spawnType: 0
+    chance: 0.2
+    cooldown: 4
   - alienType: Advanced
     groupSize: 1
     spawnType: 0
-    chance: 1
-    cooldown: 3
+    chance: 0.2
+    cooldown: 2
+  - alienType: Swarmer
+    groupSize: 10
+    spawnType: 0
+    chance: 0.2
+    cooldown: 5
   rewards:
   - type: 0
     itemName: 

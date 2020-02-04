@@ -11,6 +11,10 @@ public class Icon : MonoBehaviour {
         Populate(armour.icon);
     }
 
+    public void Init() {
+        Populate(Resources.Load<Transform>("SoldierIcons/DefaultSoldierIcon"));
+    }
+
     void Populate(Transform iconPrefab) {
         var iconTransform = Instantiate(iconPrefab) as Transform;
         iconTransform.SetParent(transform, false);

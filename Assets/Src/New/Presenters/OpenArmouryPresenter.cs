@@ -1,8 +1,6 @@
 using Data;
 
 public class OpenArmouryPresenter : Presenter, IPresenter<OpenArmouryOutput> {
-    
-    public BlackFade blackFade;
 
     public static OpenArmouryPresenter instance { get; private set; }
     
@@ -11,11 +9,7 @@ public class OpenArmouryPresenter : Presenter, IPresenter<OpenArmouryOutput> {
     }
     
     public void Present(OpenArmouryOutput input) {
-        blackFade.BeginFade(() => {
-            ArmouryInitializer.OpenScene(new ArmouryMenuArgs {
-                soldierInfo = input.squadSoldiers
-            });
-        });
+        FindObjectOfType<ArmouryMenu>().Init(input.squadSoldiers);
     }
 }
 

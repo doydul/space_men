@@ -19,6 +19,7 @@ namespace Workers {
             var random = new System.Random();
             foreach (var wrapper in wrappers) {
                 var profile = wrapper.profile;
+                wrapper.cooldownTimer--;
                 if (wrapper.cooldownTimer <= 0 && random.NextDouble() < profile.chance) {
                     result.Add(new AlienSpawner {
                         alienType = profile.alienType,

@@ -31,7 +31,7 @@ namespace Workers {
                         nodes = layerNodes.ToArray()
                     };
                     distance++;
-                    layerNodes = new List<CellIterator.Node>();
+                    layerNodes = new List<CellIterator.Node> { node };
                 } else {
                     throw new Exception("Iteration ocurring in wrong order!");
                 }

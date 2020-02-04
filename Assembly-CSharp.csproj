@@ -198,6 +198,8 @@
      <Compile Include="Assets\Src\New\Data\Interactors\OpenLoadingMenuOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\OpenMissionOverviewInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\OpenMissionOverviewOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\OpenSoldierSelectInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\OpenSoldierSelectOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\OpenWeaponSelectInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\OpenWeaponSelectOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ProgressGamePhaseInput.cs" />
@@ -268,6 +270,7 @@
      <Compile Include="Assets\Src\New\Interactors\OpenInventoryInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\OpenLoadingMenuInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\OpenMissionOverviewInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\OpenSoldierSelectInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\OpenWeaponSelectInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\ProgressGamePhaseInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\SoldierShootInteractor.cs" />
@@ -305,6 +308,7 @@
      <Compile Include="Assets\Src\New\Presenters\OpenInventoryPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\OpenLoadingMenuPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\OpenMissionOverviewPresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\OpenSoldierSelectPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\OpenWeaponSelectPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\Presenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\ProgressGamePhasePresenter.cs" />

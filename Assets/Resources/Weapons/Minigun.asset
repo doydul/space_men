@@ -15,8 +15,8 @@ MonoBehaviour:
   icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
   accuracy: 60
   armourPen: 10
-  minDamage: 1
-  maxDamage: 1
+  minDamage: 3
+  maxDamage: 5
   shotsWhenMoving: 0
   shotsWhenStill: 10
   ammo: 160

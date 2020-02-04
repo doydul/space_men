@@ -4,11 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class MissionCompleteController : Controller {
 
-    public OpenArmouryInteractor openArmouryInteractor { private get; set; }
+    public BlackFade blackFade;
 
     public void ProceedToArmoury() {
         if (!disabled) {
-            openArmouryInteractor.Interact(new OpenArmouryInput());
+            blackFade.BeginFade(() => {
+                ArmouryInitializer.OpenScene();
+            });
         }
     }
 }

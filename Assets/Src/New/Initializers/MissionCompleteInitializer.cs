@@ -15,9 +15,6 @@ public class MissionCompleteInitializer : InitializerBase {
     }
 
     protected override void GenerateControllerMapping() {
-        controllerMapping.Add(typeof(MissionCompleteController), new Dictionary<Type, Type> {
-            { typeof(OpenArmouryInteractor), typeof(OpenArmouryPresenter) }
-        });
     }
 
     protected override void GenerateDependencies() {

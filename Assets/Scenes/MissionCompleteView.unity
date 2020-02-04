@@ -930,6 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f8b22a429da43e5812355f20e6755e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackFade: {fileID: 1110349257}
 --- !u!4 &958594623
 Transform:
   m_ObjectHideFlags: 0
@@ -1384,7 +1385,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1904815714}
-  - component: {fileID: 1904815713}
   m_Layer: 0
   m_Name: Presenters
   m_TagString: Untagged
@@ -1392,19 +1392,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1904815713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904815712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc0a08a4c2f484a428bc85120b45853d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blackFade: {fileID: 1110349257}
 --- !u!4 &1904815714
 Transform:
   m_ObjectHideFlags: 0

@@ -154,9 +154,9 @@ namespace Interactors {
             if (cell.isWall) {
                 return 1;
             } else if (cell.actor.isSoldier) {
-                return 0.5f;
-            } else if (cell.actor.isAlien) {
                 return 0.35f;
+            } else if (cell.actor.isAlien) {
+                return 0.2f;
             }
             return 0;
         }

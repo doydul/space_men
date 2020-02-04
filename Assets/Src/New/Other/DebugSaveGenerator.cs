@@ -32,17 +32,17 @@ public class DebugSaveGenerator {
                 },
                 new MetaItemSave {
                     uniqueId = 6,
-                    name = "Assault Rifle",
+                    name = "Carbine",
                     type = MetaItemTypeSave.Weapon
                 },
                 new MetaItemSave {
                     uniqueId = 7,
-                    name = "Assault Rifle",
+                    name = "Flamer",
                     type = MetaItemTypeSave.Weapon
                 },
                 new MetaItemSave {
                     uniqueId = 8,
-                    name = "Assault Rifle",
+                    name = "Plasma Rifle",
                     type = MetaItemTypeSave.Weapon
                 },
                 new MetaItemSave {
@@ -96,7 +96,12 @@ public class DebugSaveGenerator {
                     uniqueId = 4,
                     armourId = 4,
                     weaponId = 8
-                }
+                },
+                // new MetaSoldierSave {
+                //     uniqueId = 5,
+                //     armourId = 11,
+                //     weaponId = 9
+                // }
             },
             squadIds = new long[] {
                 1, 2, 3, 4

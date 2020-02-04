@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
   accuracy: 40
-  armourPen: 5
+  armourPen: 20
   minDamage: 1
-  maxDamage: 1
+  maxDamage: 3
   shotsWhenMoving: 1
   shotsWhenStill: 1
   ammo: 2
