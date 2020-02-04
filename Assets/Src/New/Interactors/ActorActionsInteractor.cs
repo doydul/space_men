@@ -134,13 +134,13 @@ namespace Interactors {
             float blockage = 0f;
             var delta = targetPosition - shooterPosition;
             if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y)) {
-                var ratio = delta.y / Mathf.Abs(delta.x);
+                var ratio = (float)delta.y / Mathf.Abs(delta.x);
                 for (int i = 0; i < Mathf.Abs(delta.x) - 0.1f; i++) {
                     var location = new Position(shooterPosition.x + i * (int)Mathf.Sign(delta.x), Mathf.RoundToInt(shooterPosition.y + ratio * i));
-                    blockage += Blockage(location);
+                    if (location != shooterPosition) blockage += Blockage(location);
                 }
             } else {
-                var ratio = delta.x / Mathf.Abs(delta.y);
+                var ratio = (float)delta.x / Mathf.Abs(delta.y);
                 for (int i = 0; i < Mathf.Abs(delta.y) - 0.1f; i++) {
                     var location = new Position(Mathf.RoundToInt(shooterPosition.x + ratio * i), shooterPosition.y + i * (int)Mathf.Sign(delta.y));
                     blockage += Blockage(location);
@@ -154,7 +154,7 @@ namespace Interactors {
             if (cell.isWall) {
                 return 1;
             } else if (cell.actor.isSoldier) {
-                return 0.35f;
+                return 0.5f;
             } else if (cell.actor.isAlien) {
                 return 0.2f;
             }

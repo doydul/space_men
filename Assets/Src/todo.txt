@@ -1,7 +1,6 @@
 # Refactoring alien spawner
 
 ## Bugs
-- Soldiers can shoot through walls
 - Soldier ammo indicators dont update
 - Soldier movement indicators dont update
 
