@@ -15,7 +15,7 @@
 - Level content:
 
 ## Bugs
-- 
+- ammo doesnt decrement
 
 ## Gameplay
 - Implement threat timer
