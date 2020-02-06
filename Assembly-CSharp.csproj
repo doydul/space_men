@@ -175,6 +175,8 @@
      <Compile Include="Assets\Src\New\Data\GamePhase.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\AddSoldierToSquadInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\AddSoldierToSquadOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\CompleteSecondaryMissionInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\CompleteSecondaryMissionOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\EquipItemInput.cs" />
@@ -258,6 +260,7 @@
      <Compile Include="Assets\Src\New\Initializers\SelectionMenuInitializer.cs" />
      <Compile Include="Assets\Src\New\Initializers\WorkshopInitializer.cs" />
      <Compile Include="Assets\Src\New\Interactors\ActorActionsInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\AddSoldierToSquadInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\CompleteSecondaryMissionInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\EquipItemInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\FinishMissionInteractor.cs" />
@@ -297,6 +300,7 @@
      <Compile Include="Assets\Src\New\Phase.cs" />
      <Compile Include="Assets\Src\New\PlayerActionHandler.cs" />
      <Compile Include="Assets\Src\New\Presenters\ActorActionsPresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\AddSoldierToSquadPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\CompleteSecondaryMissionPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\EquipItemPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\FinishMissionPresenter.cs" />

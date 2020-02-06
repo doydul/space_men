@@ -97,11 +97,11 @@ public class DebugSaveGenerator {
                     armourId = 4,
                     weaponId = 8
                 },
-                // new MetaSoldierSave {
-                //     uniqueId = 5,
-                //     armourId = 11,
-                //     weaponId = 9
-                // }
+                new MetaSoldierSave {
+                    uniqueId = 5,
+                    armourId = 11,
+                    weaponId = 9
+                }
             },
             squadIds = new long[] {
                 1, 2, 3, 4

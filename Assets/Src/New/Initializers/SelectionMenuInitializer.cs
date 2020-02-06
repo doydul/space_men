@@ -18,7 +18,8 @@ public class SelectionMenuInitializer : InitializerBase {
 
     protected override void GenerateControllerMapping() {
         controllerMapping.Add(typeof(SelectionMenuController), new Dictionary<Type, Type> {
-           { typeof(EquipItemInteractor), typeof(EquipItemPresenter) }
+           { typeof(EquipItemInteractor), typeof(EquipItemPresenter) },
+           { typeof(AddSoldierToSquadInteractor), typeof(AddSoldierToSquadPresenter) }
         });
     }
 
@@ -36,6 +37,7 @@ public class SelectionMenuInitializer : InitializerBase {
         public Selectable currentSelection;
 
         public struct Selectable {
+            public int index;
             public long newOwnerId;
             public SelectableType type;
             public long id;

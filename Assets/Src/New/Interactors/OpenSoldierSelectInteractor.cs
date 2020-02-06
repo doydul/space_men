@@ -9,6 +9,7 @@ namespace Interactors {
         public void Interact(OpenSoldierSelectInput input) {
             var output = new OpenSoldierSelectOutput();
             
+            output.index = input.squadPositionIndex;
             var currentMetaSoldier = metaGameState.metaSoldiers.GetAtSquadIndex(input.squadPositionIndex);
             var squadIds = metaGameState.metaSoldiers.GetSquad()
                                                      .Where(metaSoldier => metaSoldier != null)
