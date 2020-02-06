@@ -814,6 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44333479e1b224c69956bb6bea59e582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackFade: {fileID: 1738874200}
 --- !u!4 &1332977041
 Transform:
   m_ObjectHideFlags: 0
@@ -999,8 +1000,8 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Back
+      - m_Target: {fileID: 1332977040}
+        m_MethodName: GoBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

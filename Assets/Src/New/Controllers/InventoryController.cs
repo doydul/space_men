@@ -9,6 +9,8 @@ public class InventoryController : Controller {
     public OpenWeaponSelectInteractor openWeaponSelectInteractor { private get; set; }
     public OpenArmourSelectInteractor openArmourSelectInteractor { private get; set; }
 
+    public BlackFade blackFade;
+
     public void InitPage(InventoryInitializer.Args args) {
         this.args = args;
         openInventoryInteractor.Interact(new OpenInventoryInput {
@@ -28,6 +30,14 @@ public class InventoryController : Controller {
         if (!disabled) {
             openArmourSelectInteractor.Interact(new OpenArmourSelectInput {
                 metaSoldierId = args.metaSoldierId
+            });
+        }
+    }
+
+    public void GoBack() {
+        if (!disabled) {
+            blackFade.BeginFade(() => {
+                ArmouryInitializer.OpenScene();
             });
         }
     }

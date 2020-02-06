@@ -1,7 +1,6 @@
 # Planning
 ## Alpha (one fully playable level)
 - Threat timer: 15
-- Squad roster edit: 5
 - Misc: 5
 - Workshop page: 30
 - Soldier perma-death: 5
@@ -25,16 +24,11 @@
 - Implement a secondary objective using the scripting system (with some UI to confirm that the objective has been completed)
 
 ## Features
-- Create AddSoldierToSquad interactor
-  - Will take a soldier id and a squad index
-  - Selection controller will need to selectively use the new interactor when confirming selection
-- Implement soldier select (choosing which dudes will go in the squad)
 - Hookup back button in inventory page
 - Reimplement workshop page
 - Add back button to selection page
 - Meta soldier needs to somehow link to soldiers in gamestate so we know whos died
 - Stop mission start interactor from spawning soldiers who aren't in the current squad
-- Reimplement fog (currently it is only aesthetic and doesn't effect gameplay)
 - Implement hiring solders from the armoury page
 
 # Refactoring
