@@ -24,11 +24,10 @@
 - Implement a secondary objective using the scripting system (with some UI to confirm that the objective has been completed)
 
 ## Features
-- Hookup back button in inventory page
+- Stop mission start interactor from spawning soldiers who aren't in the current squad
 - Reimplement workshop page
 - Add back button to selection page
 - Meta soldier needs to somehow link to soldiers in gamestate so we know whos died
-- Stop mission start interactor from spawning soldiers who aren't in the current squad
 - Implement hiring solders from the armoury page
 
 # Refactoring

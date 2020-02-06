@@ -9,7 +9,10 @@ namespace Interactors {
         public void Interact(MissionStartInput input) {
             var output = new MissionStartOutput();
             
-            var squad = metaGameState.metaSoldiers.GetAll().Select(metaSoldier => SoldierFromMetaSoldier(metaSoldier)).ToList();
+            var squad = metaGameState.metaSoldiers.GetSquad()
+                                                  .Where(soldier => soldier != null)
+                                                  .Select(metaSoldier => SoldierFromMetaSoldier(metaSoldier))
+                                                  .ToList();
             for (int i = 0; i < squad.Count; i++) {
                 squad[i].position = gameState.map.spawners[i];
             }
