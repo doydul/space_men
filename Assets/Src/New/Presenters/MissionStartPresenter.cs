@@ -8,12 +8,14 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
     void Awake() {
         instance = this;
     }
+
+    public Map map;
     
     public void Present(MissionStartOutput input) {
         foreach (var soldier in input.soldiers) {
             InstantiateSoldier(soldier, soldier.index);
         }
-        FogController.instance.Recalculate();
+        SetFog(input.fogs);
         AlienDeployer.instance.Iterate();
         RadarBlipController.instance.ShowRadarBlips();
     }
@@ -31,6 +33,15 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
 
         Map.instance.GetTileAt(new Vector2(soldierData.position.x, soldierData.position.y)).SetActor(trans);
         return soldier;
+    }
+
+    void SetFog(Fog[] fogs) {
+        foreach (var tile in map.EnumerateTiles()) {
+            tile.RemoveFoggy();
+        }
+        foreach (var fog in fogs) {
+            map.GetTileAt(new Vector2(fog.position.x, fog.position.y)).SetFoggy();
+        }
     }
 }
 

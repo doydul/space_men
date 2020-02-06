@@ -171,6 +171,7 @@
      <Compile Include="Assets\Src\New\Data\Enums\Direction.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\MetaItemTypeSave.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\MovementType.cs" />
+     <Compile Include="Assets\Src\New\Data\Fog.cs" />
      <Compile Include="Assets\Src\New\Data\GamePhase.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsOutput.cs" />
@@ -331,6 +332,7 @@
      <Compile Include="Assets\Src\New\Workers\AlienSpawnerGenerator.cs" />
      <Compile Include="Assets\Src\New\Workers\CellIterator.cs" />
      <Compile Include="Assets\Src\New\Workers\CellLayerIterator.cs" />
+     <Compile Include="Assets\Src\New\Workers\FogHandler.cs" />
      <Compile Include="Assets\Src\New\Workers\GameState.cs" />
      <Compile Include="Assets\Src\New\Workers\MapState.cs" />
      <Compile Include="Assets\Src\New\Workers\MetaGameState.cs" />

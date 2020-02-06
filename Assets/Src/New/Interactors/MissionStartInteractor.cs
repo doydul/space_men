@@ -21,8 +21,9 @@ namespace Interactors {
                 output.soldiers[index] = soldier.ToValueType();
                 index++;
             }
-            
             AlienPathingGrid.Calculate(gameState);
+
+            output.fogs = FogHandler.ApplyFog(gameState);
             
             presenter.Present(output);
         }

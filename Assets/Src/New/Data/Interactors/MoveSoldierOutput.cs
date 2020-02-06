@@ -7,5 +7,6 @@ namespace Data {
         public Position[] traversedCells;
         public Direction newFacing;
         public MovementType movementType;
+        public Fog[] newFogs;
     }
 }

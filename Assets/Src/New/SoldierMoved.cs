@@ -7,6 +7,6 @@ public class SoldierMoved : IGameEvent {
     FogController fogController;
 
     public void Invoke() {
-        fogController.Recalculate();
+        // fogController.Recalculate();
     }
 }

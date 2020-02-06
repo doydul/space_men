@@ -28,7 +28,7 @@ public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
         tile.SetActor(soldier.transform);
         soldier.TurnTo(ConvertDirection(input.newFacing));
         uiData.selectedTile = tile;
-        FogController.instance.Recalculate();
+        SetFog(input.newFogs);
         mapController.DisplayActions(input.soldierIndex);
         TriggerTraversedTileEvents(input);
     }
@@ -56,6 +56,15 @@ public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
             return Actor.Direction.Left;
         } else {
             return Actor.Direction.Right;
+        }
+    }
+
+    void SetFog(Fog[] fogs) {
+        foreach (var tile in map.EnumerateTiles()) {
+            tile.RemoveFoggy();
+        }
+        foreach (var fog in fogs) {
+            map.GetTileAt(new Vector2(fog.position.x, fog.position.y)).SetFoggy();
         }
     }
 }

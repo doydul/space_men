@@ -20,6 +20,7 @@ namespace Interactors {
             output.newFacing = soldier.facing;
             output.movementType = soldier.moved <= armourStats.movement ? MovementType.Running : MovementType.Sprinting;
             output.traversedCells = soldierMove.traversedCells;
+            output.newFogs = FogHandler.ApplyFog(gameState);
             
             presenter.Present(output);
         }

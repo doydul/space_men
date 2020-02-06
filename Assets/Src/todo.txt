@@ -1,7 +1,5 @@
 # Planning
 ## Alpha (one fully playable level)
-- Soldier indicators: 5
-- Fog: 15
 - Threat timer: 15
 - Squad roster edit: 5
 - Misc: 5
@@ -17,12 +15,9 @@
 - Level content:
 
 ## Bugs
-- Aliens sometimes spawn in plain sight (the fix here is to implement fog in the gameplay module, using path distance rather than absolute distance)
-- Aliens can be targeted while in the fog of war (because fog isn't implemented in the gameplay module)
+- 
 
 ## Gameplay
-- Reimplement soldier ammo indicators
-- Implement fog in gameplay module
 - Implement threat timer
   - Each mission needs threat timer number (to denote turns before threat increases)
   - Each mission needs an array of threat increase objects to indicate the extra spawners that will exist when threat increases
