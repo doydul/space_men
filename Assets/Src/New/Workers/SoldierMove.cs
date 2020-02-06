@@ -26,7 +26,6 @@ namespace Workers {
             var currentCell = map.GetCell(soldier.position);
             
             var path = GetPath(map, currentCell.position, targetCell.position);
-            if (path.length > soldier.remainingMovement) throw new System.Exception("Soldier doesn't have enough movement remaining");
             
             traversedCells = path.Nodes().Select(node => node.position).Where(pos => pos != soldier.position).ToArray();
             soldier.moved += path.length;

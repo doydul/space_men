@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System.Linq;
 
 using Data;
 
@@ -36,6 +37,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         if (uiData.gamePhase != input.currentPhase) {
             UpdateUI(input.currentPhase);
             UpdatePhaseText(input.currentPhase);
+            UpdateSoldierIndicators(input.currentPhase, input.shootingStats);
             uiData.gamePhase = input.currentPhase;
             missions.SendMessage("OnPhaseChange");
         }
@@ -113,6 +115,22 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         }
     }
 
+    void UpdateSoldierIndicators(Data.GamePhase gamePhase, ShootingStats[] shootingStats) {
+        if (gamePhase == Data.GamePhase.Shooting) {
+            foreach (var stats in shootingStats) {
+                var soldier = map.GetActorByIndex(stats.soldierID) as Soldier;
+                var soldierUI = soldier.GetComponent<SoldierUIController>();
+                soldierUI.HideAll();
+                soldierUI.SetAmmoCount(stats.shots);
+            }
+        } else {
+            foreach (var soldier in map.GetActors<Soldier>()) {
+                var soldierUI = soldier.GetComponent<SoldierUIController>();
+                soldierUI.HideAll();
+            }
+        }
+    }
+
     Transform InstantiateAlien(Data.Alien newAlien) {
         var alienTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/Alien")) as Transform;
         var alien = alienTransform.GetComponent<Alien>() as Alien;
@@ -157,7 +175,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         );
         if (!map.GetTileAt(gridLocation).foggy) {
             FocusCameraOn(alien.transform);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.25f);
         }
     }
 

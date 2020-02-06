@@ -64,11 +64,6 @@ MonoBehaviour:
     spawnType: 1
     chance: 1
     cooldown: 5
-  - alienType: Alien
-    groupSize: 3
-    spawnType: 0
-    chance: 0.2
-    cooldown: 4
   - alienType: Advanced
     groupSize: 1
     spawnType: 0
@@ -78,7 +73,17 @@ MonoBehaviour:
     groupSize: 10
     spawnType: 0
     chance: 0.2
-    cooldown: 5
+    cooldown: 4
+  - alienType: Swarmer
+    groupSize: 4
+    spawnType: 0
+    chance: 0.3
+    cooldown: 2
+  - alienType: Alien
+    groupSize: 1
+    spawnType: 0
+    chance: 0.3
+    cooldown: 1
   rewards:
   - type: 0
     itemName: 

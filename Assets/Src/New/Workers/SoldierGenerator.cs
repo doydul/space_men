@@ -8,9 +8,7 @@ namespace Workers {
             return new Builder(new SoldierActor {
                 health = new Health(15),
                 armourName = "Basic",
-                weaponName = "Assault Rifle",
-                baseMovement = 4,
-                totalMovement = 8
+                weaponName = "Assault Rifle"
             });
         }
         

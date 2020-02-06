@@ -12,15 +12,15 @@ public class UI : MonoBehaviour, IUserInterface {
     }
 
     public void Select(Soldier soldier) {
-        soldier.GetComponent<SoldierUIController>().Select();
+        // soldier.GetComponent<SoldierUIController>().Select();
     }
 
     public void Deselect(Soldier soldier) {
-        soldier.GetComponent<SoldierUIController>().Deselect();
+        // soldier.GetComponent<SoldierUIController>().Deselect();
     }
 
     public void ShowAmmoIndicators(Soldier soldier) {
-        soldier.GetComponent<SoldierUIController>().ShowAmmoIndicators();
+        // soldier.GetComponent<SoldierUIController>().ShowAmmoIndicators();
     }
 
     public void ShowVictoryPopup() {

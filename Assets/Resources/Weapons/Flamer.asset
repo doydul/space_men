@@ -18,7 +18,7 @@ MonoBehaviour:
   minDamage: 1
   maxDamage: 3
   shotsWhenMoving: 1
-  shotsWhenStill: 1
+  shotsWhenStill: 2
   ammo: 2
   blast: 6
   type: 1

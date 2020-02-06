@@ -18,6 +18,12 @@ public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
     public void Present(MoveSoldierOutput input) {
         var tile = map.GetTileAt(new Vector2(input.newPosition.x, input.newPosition.y));
         var soldier = GetSoldierByIndex(input.soldierIndex);
+        var soldierUI = soldier.GetComponent<SoldierUIController>();
+        if (input.movementType == MovementType.Running) {
+            soldierUI.SetMoved();
+        } else if (input.movementType == MovementType.Sprinting) {
+            soldierUI.SetSprinted();
+        }
         soldier.tile.RemoveActor();
         tile.SetActor(soldier.transform);
         soldier.TurnTo(ConvertDirection(input.newFacing));

@@ -1,11 +1,36 @@
-# Refactoring alien spawner
+# Planning
+## Alpha (one fully playable level)
+- Soldier indicators: 5
+- Fog: 15
+- Threat timer: 15
+- Squad roster edit: 5
+- Misc: 5
+- Workshop page: 30
+- Soldier perma-death: 5
+- Hiring soldiers: 5
+- Primary and secondary mission implementation: 8
+93 (about 6 evenings?)
+## Beta (one fully playable campaign)
+- Items content: 
+- Aliens content:
+- More mission objectives: 
+- Level content:
 
 ## Bugs
-- Soldier ammo indicators dont update
-- Soldier movement indicators dont update
+- Aliens sometimes spawn in plain sight (the fix here is to implement fog in the gameplay module, using path distance rather than absolute distance)
+- Aliens can be targeted while in the fog of war (because fog isn't implemented in the gameplay module)
 
-- Play test a few games with nominal weapons and enemies
+## Gameplay
+- Reimplement soldier ammo indicators
+- Implement fog in gameplay module
+- Implement threat timer
+  - Each mission needs threat timer number (to denote turns before threat increases)
+  - Each mission needs an array of threat increase objects to indicate the extra spawners that will exist when threat increases
+  - Fire scripting events when threat increases?
+  - Add UI to show threat level, and number of turns until threat increases
+- Implement a secondary objective using the scripting system (with some UI to confirm that the objective has been completed)
 
+## Features
 - Create AddSoldierToSquad interactor
   - Will take a soldier id and a squad index
   - Selection controller will need to selectively use the new interactor when confirming selection
@@ -13,9 +38,13 @@
 - Hookup back button in inventory page
 - Reimplement workshop page
 - Add back button to selection page
-  - add a back action callback to selection view args
 - Meta soldier needs to somehow link to soldiers in gamestate so we know whos died
 - Stop mission start interactor from spawning soldiers who aren't in the current squad
+- Reimplement fog (currently it is only aesthetic and doesn't effect gameplay)
+- Implement hiring solders from the armoury page
+
+# Refactoring
+- Store ArmourStats and WeaponStats objects on soldier actor, to avoid having to fetch them all the time
 
 # Not Urgent
 
@@ -33,24 +62,6 @@
 ## UI for inspecting templars and aliens
 
 - When anything is selected, should activate it's healthbar
-
-# Art
-
-- 3 portraits; one for each armour type. 4 Colour scheme variations each?
-
-- 1 icon version for each armour, showing just the head (4 colours schemes each)
-
-- 1 top down version of each armour for in game, with 4 colour schemes each
-
-- A whole bunch of aliens
-
-- Guns, lots of guns; 4 types (conventional, assault, heavy, flamer) with 4 adjectives (short, explosive, multiple barrels, energy), making 16 potential permutations. These will be displayed in the shop/inventory screen
-
-- In game these will be represented by 3 models, a regular sized gun, a fatter more beefy gun, and a shoulder mounted (heavy) gun. The only necessary adjective is energy, which will be represented by a sort of glow, which can be tuned depending on the intensity of energy-ness that the gun has.
-
-- Map tiles; 1 outer corner tile, 3 wall tiles, 1 inner corner tile, 3 floor tiles, 1 roof tile
-
-- UI; arrow
 
 
 # Next Milestone
@@ -78,12 +89,16 @@
   - Implement secondary objectives to give weapon rewards ✓
 
 - Metagame:
-  - Reimplement equipping items
+  - Reimplement equipping items ✓
   - Reimplement creating blueprints
+
+- Gameplay:
+  - Implement threat meter
+  - Reimplement fog
 
 - Content:
   - A basic set of weapons, up to level 2 (10 per level, so 20 in total)
-  - Basic set of armour (1 per type per level, makes 6)
+  - Basic set of armour (1 per type per level, makes 6) ✓
   - Some level 1 and level 2 aliens (4 level 1, 3 level 2, 7 total)
   - One campaign, over 5 levels with a different type of objective for each one (might be too ambitious!)
 
@@ -95,11 +110,3 @@
 - Complexity: Does the benefit outweight the complexity that it introduces
 - Tell Don't Ask
 - Seperate Logic and Data
-
-# Girls names
-
-Mary
-Sophie
-Alice
-Alexandra
-Miko

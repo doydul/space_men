@@ -27,17 +27,35 @@ namespace Interactors {
         public void Interact(ProgressGamePhaseInput input) {
             if (alienSpawnerGenerator == null) alienSpawnerGenerator = new AlienSpawnerGenerator(missionStore.GetMission(gameState.campaign, gameState.mission));
             var currentPhase = gameState.currentPhase;
+            var result = new ProgressGamePhaseOutput();
             if (currentPhase == Data.GamePhase.Movement) {
-                presenter.Present(StartShootingPhase());
+                StartShootingPhase(ref result);
             } else if (stage >= SHOOTING_PHASE_ITERATIONS) {
-                presenter.Present(StartMovementPhase());
+                StartMovementPhase(ref result);
             } else {
-                presenter.Present(ProgessShootingPhase());
+                ProgressShootingPhase(ref result);
             }
+            presenter.Present(result);
         }
 
-        ProgressGamePhaseOutput StartShootingPhase() {
-            var result = new ProgressGamePhaseOutput { currentPhase = Data.GamePhase.Shooting };
+        void StartShootingPhase(ref ProgressGamePhaseOutput result) {
+            result.currentPhase = Data.GamePhase.Shooting;
+            result.shootingStats = gameState.GetActors()
+                                            .Where(actor => actor.isSoldier)
+                                            .Select((actor) => {
+                                                var soldier = actor as SoldierActor;
+                                                var weaponStats = soldierStore.GetWeaponStats(soldier.weaponName);
+                                                var armourStats = soldierStore.GetArmourStats(soldier.armourName);
+                                                int shots;
+                                                if (soldier.moved > armourStats.movement) {
+                                                    shots = 0;
+                                                } else if (soldier.moved > 0) {
+                                                    shots = weaponStats.shotsWhenMoving;
+                                                } else {
+                                                    shots = weaponStats.shotsWhenStill;
+                                                }
+                                                return new ShootingStats { soldierID = soldier.uniqueId, shots = shots };
+                                            }).ToArray();
             
             AlienPathingGrid.Calculate(gameState);
             
@@ -47,23 +65,25 @@ namespace Interactors {
             foreach (var alien in Aliens.Iterate(gameState)) {
                 alien.movesRemaining = alien.movement * SHOOTING_PHASE_ITERATIONS;
             }
-            
-            return result;
+
+            if (NoActionsToTake()) {
+                ProgressShootingPhase(ref result);
+            }
         }
 
-        ProgressGamePhaseOutput ProgessShootingPhase() {
-            var result = new ProgressGamePhaseOutput();
+        void ProgressShootingPhase(ref ProgressGamePhaseOutput result) {
             stage++;
             result.currentPhase = Data.GamePhase.Shooting;
 
             MoveAliens(ref result);
 
-            // if player has no actions to take, proceed again
-            return result;
+            while (stage < SHOOTING_PHASE_ITERATIONS && NoActionsToTake()) {
+                stage++;
+                MoveAliens(ref result);
+            }
         }
 
-        ProgressGamePhaseOutput StartMovementPhase() {
-            var result = new ProgressGamePhaseOutput();
+        void StartMovementPhase(ref ProgressGamePhaseOutput result) {
             result.currentPhase = Data.GamePhase.Movement;
             RemoveDeadSoldiers();
 
@@ -81,7 +101,17 @@ namespace Interactors {
                     alien.movesRemaining = alien.movement * SHOOTING_PHASE_ITERATIONS;
                 }
             }
-            return result;
+        }
+
+        bool NoActionsToTake() {
+            foreach (var actor in gameState.GetActors().Where(actor => actor is SoldierActor)) {
+                var soldier = actor as SoldierActor;
+                var weaponStats = soldierStore.GetWeaponStats(soldier.weaponName);
+                var armourStats = soldierStore.GetArmourStats(soldier.armourName);
+                var wrapper = new SoldierDecorator(soldier, weaponStats, armourStats);
+                if (SoldierActions.ShootingActionsFor(gameState, wrapper).Any()) return false;
+            }
+            return true;
         }
         
         void SpawnAliens(ref ProgressGamePhaseOutput result) {
@@ -176,7 +206,11 @@ namespace Interactors {
                 }
                 if (aliensCopy.Count == aliensStillToMove.Count) break;
             }
-            result.alienActions = resultList.ToArray();
+            if (result.alienActions == null) {
+                result.alienActions = resultList.ToArray();
+            } else {
+                result.alienActions = result.alienActions.Concat(resultList).ToArray();
+            }
         }
         
         List<AlienAction> PerformAttackActions(AlienActor alien) {

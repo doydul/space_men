@@ -12,7 +12,9 @@ public class SoldierStore : ISoldierStore {
             armourValue = data.armourValue,
             weight = ConvertArmourWeight(data.type),
             cost = data.value,
-            maxHealth = data.maxHealth
+            maxHealth = data.maxHealth,
+            movement = data.movement,
+            sprint = data.sprint
         };
     }
 

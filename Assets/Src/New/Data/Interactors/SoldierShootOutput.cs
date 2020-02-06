@@ -3,7 +3,7 @@ namespace Data {
     public struct SoldierShootOutput {
         
         public long soldierIndex;
-        public int ammoSpent;
+        public int shotsLeft;
         public string weaponName;
         public DamageInstance[] damageInstances;
         public Position[] blastCoverage;

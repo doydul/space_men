@@ -334,6 +334,7 @@
      <Compile Include="Assets\Src\New\Workers\GameState.cs" />
      <Compile Include="Assets\Src\New\Workers\MapState.cs" />
      <Compile Include="Assets\Src\New\Workers\MetaGameState.cs" />
+     <Compile Include="Assets\Src\New\Workers\SoldierActions.cs" />
      <Compile Include="Assets\Src\New\Workers\SoldierDecorator.cs" />
      <Compile Include="Assets\Src\New\Workers\SoldierGenerator.cs" />
      <Compile Include="Assets\Src\New\Workers\SoldierMove.cs" />

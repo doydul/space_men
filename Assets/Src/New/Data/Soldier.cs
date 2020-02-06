@@ -8,8 +8,6 @@ namespace Data {
         public string armourName;
         public string weaponName;
         public int exp;
-        public int baseMovement;
-        public int totalMovement;
         public int moved;
         
         public Position position;
@@ -26,6 +24,8 @@ namespace Data {
         public int armourValue;
         public int cost;
         public int maxHealth;
+        public int movement;
+        public int sprint;
     }
 
     public struct WeaponStats {

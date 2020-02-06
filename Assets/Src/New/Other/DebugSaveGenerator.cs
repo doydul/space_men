@@ -7,7 +7,7 @@ public class DebugSaveGenerator {
             items = new MetaItemSave[] {
                 new MetaItemSave {
                     uniqueId = 1,
-                    name = "Basic",
+                    name = "Medium",
                     type = MetaItemTypeSave.Armour
                 },
                 new MetaItemSave {

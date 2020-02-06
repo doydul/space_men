@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 2
   armour: 60
   accModifier: 5
-  damage: 2
+  damage: 5
   armourPen: 30
   movement: 3
   threat: 3

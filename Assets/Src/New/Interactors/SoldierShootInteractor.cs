@@ -33,7 +33,7 @@ namespace Interactors {
             if (!soldierDecorator.CanShoot()) return;
 
             soldierDecorator.IncrementAmmoSpent();
-            output.ammoSpent = 1;
+            output.shotsLeft = soldierDecorator.shotsRemaining;
 
             if (soldierDecorator.blast > 0) {
                 ShootBlastWeapon(soldierDecorator, alienDecorator, ref output);
