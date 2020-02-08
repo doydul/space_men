@@ -104,9 +104,9 @@ MonoBehaviour:
     credits: 1000
   secondaryMissions:
   - rewards:
-    - type: 0
-      itemName: 
-      credits: 100
+    - type: 1
+      itemName: Minigun
+      credits: 0
   briefing: 'Each turn is split into 2 phases; Movement and Shooting. Aliens move
     during the player''s Shooting phase, and the player gets chances to shoot them
     as they approach.

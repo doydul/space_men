@@ -46,4 +46,9 @@ public class InfoPanel : MonoBehaviour {
             Display(actor as Alien);
         }
     }
+
+    public void Display(string text) {
+        Open();
+        infoText.text = text;
+    }
 }
