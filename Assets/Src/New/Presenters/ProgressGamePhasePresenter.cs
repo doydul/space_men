@@ -36,6 +36,10 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         uiInput.Disable();
 
         threatCounterText.text = "turns until threat increase: " + input.threatCountdown;
+        if (input.currentThreatLevel != uiData.threatLevel) {
+            uiData.threatLevel = input.currentThreatLevel;
+            missions.SendMessage("OnThreatEscalation", input.currentThreatLevel);
+        }
 
         if (uiData.gamePhase != input.currentPhase) {
             UpdateUI(input.currentPhase);

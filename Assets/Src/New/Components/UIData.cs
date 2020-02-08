@@ -9,6 +9,7 @@ public class UIData : MonoBehaviour {
 
     public ActorAction[] actorActions { get; set; }
     public Data.GamePhase gamePhase { get; set; }
+    public int threatLevel { get; set; }
     public Tile selectedTile { get; set; }
 
     public Actor selectedActor { get { return selectedTile.actor.GetComponent<Actor>(); } }
