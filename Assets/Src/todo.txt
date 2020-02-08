@@ -1,6 +1,6 @@
 # Planning
 ## Alpha (one fully playable level)
-- 
+- Add canvas scaler
 51 (about 3.5 evenings?)
 ## Beta (one fully playable campaign)
 - Misc: 3
@@ -13,6 +13,7 @@
 - Level content:
 
 ## Bugs
+- Game hud needs to be scaled
 
 ## Features
 - Reimplement workshop page
