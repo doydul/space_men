@@ -1,6 +1,6 @@
 # Planning
 ## Alpha (one fully playable level)
-- Primary and secondary mission implementation: 8
+- 
 51 (about 3.5 evenings?)
 ## Beta (one fully playable campaign)
 - Misc: 3
