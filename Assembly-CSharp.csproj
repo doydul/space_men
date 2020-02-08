@@ -85,6 +85,7 @@
      <Compile Include="Assets\Src\Data\Mission.cs" />
      <Compile Include="Assets\Src\Data\MissionEnemyProfile.cs" />
      <Compile Include="Assets\Src\Data\MissionReward.cs" />
+     <Compile Include="Assets\Src\Data\MissionThreatProfile.cs" />
      <Compile Include="Assets\Src\Data\SecondaryMission.cs" />
      <Compile Include="Assets\Src\Data\SoldierData.cs" />
      <Compile Include="Assets\Src\Data\Squad.cs" />

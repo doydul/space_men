@@ -11,6 +11,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     public UIController uiInput;
     public Map map;
     public TMP_Text gamePhaseText;
+    public TMP_Text threatCounterText;
     public GameObject turnButtonContainer;
     public UIData uiData;
     public MapHighlighter mapHighlighter;
@@ -33,6 +34,8 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     public void Present(ProgressGamePhaseOutput input) {
         mapInput.Disable();
         uiInput.Disable();
+
+        threatCounterText.text = "turns until threat increase: " + input.threatCountdown;
 
         if (uiData.gamePhase != input.currentPhase) {
             UpdateUI(input.currentPhase);

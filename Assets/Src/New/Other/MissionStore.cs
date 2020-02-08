@@ -11,6 +11,10 @@ public class MissionStore : IMissionStore {
                 return new Data.Mission {
                     missionName = missionName,
                     briefing = mission.briefing,
+                    threatTimer = mission.threatTimer,
+                    threatProfiles = mission.threatProfiles.Select(profile => new ThreatProfile {
+                        spawnProfiles = profile.enemyProfiles.Select(enemyProfile => ProfileConverter(enemyProfile)).ToArray()
+                    }).ToArray(),
                     spawnProfiles = mission.enemyProfiles.Select(profile => ProfileConverter(profile)).ToArray(),
                     rewards = mission.rewards.Select(reward => RewardConverter(reward)).ToArray(),
                     secondaryMissions = mission.secondaryMissions.Select(secMission => SecondaryMissionConverter(secMission)).ToArray()

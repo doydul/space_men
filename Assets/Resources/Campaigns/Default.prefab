@@ -84,6 +84,20 @@ MonoBehaviour:
     spawnType: 0
     chance: 0.3
     cooldown: 1
+  threatTimer: 14
+  threatProfiles:
+  - enemyProfiles:
+    - alienType: Alien
+      groupSize: 1
+      spawnType: 0
+      chance: 0.25
+      cooldown: 1
+  - enemyProfiles:
+    - alienType: Advanced
+      groupSize: 3
+      spawnType: 0
+      chance: 0.5
+      cooldown: 3
   rewards:
   - type: 0
     itemName: 
@@ -119,6 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionName: Second Mission
   enemyProfiles: []
+  threatTimer: 0
+  threatProfiles: []
   rewards: []
   secondaryMissions: []
   briefing: This is the second mission

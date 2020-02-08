@@ -5,6 +5,8 @@ namespace Data {
         public string missionName;
         public string briefing;
         public SpawnProfile[] spawnProfiles;
+        public int threatTimer;
+        public ThreatProfile[] threatProfiles;
         public IReward[] rewards;
         public SecondaryMission[] secondaryMissions;
     }
@@ -12,5 +14,10 @@ namespace Data {
     public struct SecondaryMission {
 
         public IReward[] rewards;
+    }
+
+    public struct ThreatProfile {
+
+        public SpawnProfile[] spawnProfiles;
     }
 }

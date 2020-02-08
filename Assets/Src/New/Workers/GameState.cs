@@ -12,6 +12,8 @@ namespace Workers {
         HashSet<int> completedSecondaryObjectives;
 
         public Data.GamePhase currentPhase { get; private set; }
+        public int threatTimer { get; private set; }
+        public int currentThreatLevel { get; private set; }
         public string campaign { get; private set; }
         public string mission { get; private set; }
 
@@ -56,6 +58,15 @@ namespace Workers {
 
         public bool IsSecondaryObjectiveComplete(int index) {
             return completedSecondaryObjectives.Contains(index);
+        }
+
+        public void IncrementThreatTimer() {
+            threatTimer++;
+        }
+
+        public void IncrementThreatLevel() {
+            threatTimer = 0;
+            currentThreatLevel++;
         }
     }
 }

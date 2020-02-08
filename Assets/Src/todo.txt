@@ -1,12 +1,12 @@
 # Planning
 ## Alpha (one fully playable level)
 - Threat timer: 15
-- Misc: 5
+- Misc: 3
 - Workshop page: 30
 - Soldier perma-death: 5
 - Hiring soldiers: 5
 - Primary and secondary mission implementation: 8
-93 (about 6 evenings?)
+66 (about 6 evenings?)
 ## Beta (one fully playable campaign)
 - Items content: 
 - Aliens content:
@@ -17,14 +17,11 @@
 
 ## Gameplay
 - Implement threat timer
-  - Each mission needs threat timer number (to denote turns before threat increases)
-  - Each mission needs an array of threat increase objects to indicate the extra spawners that will exist when threat increases
   - Fire scripting events when threat increases?
   - Add UI to show threat level, and number of turns until threat increases
 - Implement a secondary objective using the scripting system (with some UI to confirm that the objective has been completed)
 
 ## Features
-- Stop mission start interactor from spawning soldiers who aren't in the current squad
 - Reimplement workshop page
 - Add back button to selection page
 - Meta soldier needs to somehow link to soldiers in gamestate so we know whos died

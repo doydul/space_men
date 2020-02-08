@@ -3,6 +3,8 @@ namespace Data {
     public struct ProgressGamePhaseOutput {
         
         public Data.GamePhase currentPhase;
+        public int threatCountdown;
+        public int currentThreatLevel;
         public AlienAction[] alienActions;
         public Data.Alien[] newAliens;
         public Position[] radarBlips;

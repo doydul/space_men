@@ -7,7 +7,8 @@ namespace Workers {
     public class AlienSpawnerGenerator {
         
         Data.Mission mission;
-        ProfileWrapper[] wrappers;
+        List<ProfileWrapper> wrappers;
+        int threatIndex;
         
         public AlienSpawnerGenerator(Data.Mission mission) {
             this.mission = mission;
@@ -31,11 +32,20 @@ namespace Workers {
             }
             return result.ToArray();
         }
+
+        public void EscalateThreat() {
+            threatIndex++;
+            if (threatIndex <= mission.threatProfiles.Length) {
+                wrappers.AddRange(mission.threatProfiles[threatIndex - 1].spawnProfiles.Select(profile => {
+                    return new ProfileWrapper { profile = profile };
+                }));
+            }
+        }
         
         void InitWrappers() {
             wrappers = mission.spawnProfiles.Select(profile => {
                 return new ProfileWrapper { profile = profile };
-            }).ToArray();
+            }).ToList();
         }
         
         class ProfileWrapper {

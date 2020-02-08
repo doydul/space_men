@@ -85,6 +85,14 @@ namespace Interactors {
 
         void StartMovementPhase(ref ProgressGamePhaseOutput result) {
             result.currentPhase = Data.GamePhase.Movement;
+            var mission = missionStore.GetMission(gameState.campaign, gameState.mission);
+            gameState.IncrementThreatTimer();
+            if (gameState.threatTimer >= mission.threatTimer) {
+                gameState.IncrementThreatLevel();
+                alienSpawnerGenerator.EscalateThreat();
+            }
+            result.currentThreatLevel = gameState.currentThreatLevel;
+            result.threatCountdown = mission.threatTimer - gameState.threatTimer;
             RemoveDeadSoldiers();
 
             gameState.SetCurrentPhase(Data.GamePhase.Movement);
