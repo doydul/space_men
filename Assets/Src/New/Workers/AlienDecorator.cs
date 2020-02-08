@@ -15,6 +15,7 @@ namespace Workers
         public long uniqueId { get { return alien.uniqueId; } }
         public Position position { get { return alien.position; } }
         public int armour { get { return stats.armour; } }
+        public int accModifier { get { return stats.accModifier; } }
         public bool dead { get { return alien.health.dead; } }
         public int currentHealth { get { return alien.health.current; } }
 

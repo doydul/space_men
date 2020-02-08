@@ -40,6 +40,7 @@ public class PlayerActionHandler {
         } else if (actor != null) {
             UIData.instance.selectedTile = tile;
             MapController.instance.DisplayActions(actor.index);
+            MapHighlighter.instance.HighlightTile(tile, Color.white);
         } else {
             selectionState.DeselectSoldier();
             UIData.instance.ClearSelection();

@@ -1,7 +1,6 @@
 # Planning
 ## Alpha (one fully playable level)
-- Add canvas scaler
-51 (about 3.5 evenings?)
+- Tweaks: 30
 ## Beta (one fully playable campaign)
 - Misc: 3
 - Workshop page: 30
@@ -12,8 +11,8 @@
 - More mission objectives: 
 - Level content:
 
-## Bugs
-- Sometimes get error when we try to add actors with the same name
+## To Do
+- Fix null ref when pressing info button with nothing selected
 
 ## Features
 - Reimplement workshop page

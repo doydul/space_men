@@ -40,6 +40,10 @@ public class InfoPanel : MonoBehaviour {
     }
 
     public void Display(Actor actor) {
+        if (actor == null) {
+            Display("Nothing selected");
+            return;
+        }
         if (actor is Soldier) {
             Display(actor as Soldier);
         } else if (actor is Alien) {

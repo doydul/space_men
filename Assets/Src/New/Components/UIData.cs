@@ -12,7 +12,7 @@ public class UIData : MonoBehaviour {
     public int threatLevel { get; set; }
     public Tile selectedTile { get; set; }
 
-    public Actor selectedActor { get { return selectedTile.actor.GetComponent<Actor>(); } }
+    public Actor selectedActor { get { return selectedTile != null ? selectedTile.actor.GetComponent<Actor>() : null; } }
 
     void Awake() {
         instance = this;

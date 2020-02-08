@@ -20,6 +20,6 @@ MonoBehaviour:
   shotsWhenMoving: 1
   shotsWhenStill: 2
   ammo: 2
-  blast: 6
+  blast: 7
   type: 1
   value: 100
