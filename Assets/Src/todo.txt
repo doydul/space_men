@@ -12,7 +12,7 @@
 - Level content:
 
 ## To Do
-- Fix null ref when pressing info button with nothing selected
+- Add header with icons for weapon and armour
 
 ## Features
 - Reimplement workshop page
