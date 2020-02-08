@@ -1,21 +1,18 @@
 # Planning
 ## Alpha (one fully playable level)
+- Primary and secondary mission implementation: 8
+51 (about 3.5 evenings?)
+## Beta (one fully playable campaign)
 - Misc: 3
 - Workshop page: 30
 - Soldier perma-death: 5
 - Hiring soldiers: 5
-- Primary and secondary mission implementation: 8
-51 (about 3.5 evenings?)
-## Beta (one fully playable campaign)
 - Items content: 
 - Aliens content:
 - More mission objectives: 
 - Level content:
 
 ## Bugs
-
-## Gameplay
-- Implement a secondary objective using the scripting system (with some UI to confirm that the objective has been completed)
 
 ## Features
 - Reimplement workshop page
