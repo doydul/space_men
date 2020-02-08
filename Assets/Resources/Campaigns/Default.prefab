@@ -84,6 +84,11 @@ MonoBehaviour:
     spawnType: 0
     chance: 0.3
     cooldown: 1
+  - alienType: Fatty
+    groupSize: 1
+    spawnType: 0
+    chance: 0.2
+    cooldown: 2
   threatTimer: 14
   threatProfiles:
   - enemyProfiles:
@@ -112,13 +117,14 @@ MonoBehaviour:
     as they approach.
 
 
-    Soldiers can move, sprint, or stand still on a given turn. Sprinting confers zero
-    shots during the Shooting phase, moving confers half shots and standing still
-    confers the maximum number.
+    Soldiers can move, sprint, or stand still on a given
+    turn. Sprinting confers zero shots during the Shooting phase, moving confers
+    half shots and standing still confers the maximum number.
 
 
-    The player wins by reaching the objective, which is marked on the map (there isn''t
-    a win screen at the moment, you''ll just have to congratulate yourself)'
+    The player wins
+    by reaching the objective, which is marked on the map (there isn''t a win screen
+    at the moment, you''ll just have to congratulate yourself)'
 --- !u!114 &4691909577446419039
 MonoBehaviour:
   m_ObjectHideFlags: 0

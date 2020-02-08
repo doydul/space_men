@@ -5,6 +5,8 @@ namespace DataTypes {
     public class IDDictionary<T> {
 
         Dictionary<long, T> elements;
+        int currentFrame;
+        int idTicker;
         
         public IDDictionary() {
             elements = new Dictionary<long, T>();
@@ -34,7 +36,12 @@ namespace DataTypes {
         }
 
         long GenerateUniqueId() {
-            return System.DateTime.Now.ToFileTime() + UnityEngine.Random.Range(0, 1000);
+            if (currentFrame != UnityEngine.Time.frameCount) {
+                currentFrame = UnityEngine.Time.frameCount;
+                idTicker = 0;
+            }
+            idTicker++;
+            return (System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond) * 100 + idTicker;
         }
     }
 }

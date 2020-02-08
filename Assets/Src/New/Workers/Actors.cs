@@ -1,36 +1,32 @@
 using System.Collections.Generic;
+using DataTypes;
 
 namespace Workers {
     
     public class Actors {
 
-        Dictionary<long, Data.Actor> actors;
+        IDDictionary<Data.Actor> actors;
         
         public Actors() {
-            actors = new Dictionary<long, Data.Actor>();
+            actors = new IDDictionary<Data.Actor>();
         }
 
         public long AddActor(Data.Actor actor) {
-            var id = GenerateUniqueId();
-            actors.Add(id, actor);
-            actor.uniqueId = id;
-            return id;
+            var uniqueId = actors.AddElement(actor);
+            actor.uniqueId = uniqueId;
+            return uniqueId;
         }
 
         public Data.Actor GetActor(long id) {
-            return actors[id];
+            return actors.GetElement(id);
         }
         
         public IEnumerable<Data.Actor> GetActors() {
-            return new List<Data.Actor>(actors.Values);
+            return actors.GetElements();
         }
 
         public void RemoveActor(long id) {
-            actors.Remove(id);
-        }
-
-        long GenerateUniqueId() {
-            return System.DateTime.Now.ToFileTime() + UnityEngine.Random.Range(0, 1000);
+            actors.RemoveElement(id);
         }
     }
 }

@@ -13,7 +13,7 @@
 - Level content:
 
 ## Bugs
-- Game hud needs to be scaled
+- Sometimes get error when we try to add actors with the same name
 
 ## Features
 - Reimplement workshop page
