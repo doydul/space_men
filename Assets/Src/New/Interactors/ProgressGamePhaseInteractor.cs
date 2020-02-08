@@ -25,7 +25,8 @@ namespace Interactors {
         }
 
         public void Interact(ProgressGamePhaseInput input) {
-            if (alienSpawnerGenerator == null) alienSpawnerGenerator = new AlienSpawnerGenerator(missionStore.GetMission(gameState.campaign, gameState.mission));
+            var mission = missionStore.GetMission(gameState.campaign, gameState.mission);
+            if (alienSpawnerGenerator == null) alienSpawnerGenerator = new AlienSpawnerGenerator(mission);
             var currentPhase = gameState.currentPhase;
             var result = new ProgressGamePhaseOutput();
             if (currentPhase == Data.GamePhase.Movement) {
@@ -35,6 +36,8 @@ namespace Interactors {
             } else {
                 ProgressShootingPhase(ref result);
             }
+            result.currentThreatLevel = gameState.currentThreatLevel;
+            result.threatCountdown = mission.threatTimer - gameState.threatTimer;
             presenter.Present(result);
         }
 
@@ -91,8 +94,7 @@ namespace Interactors {
                 gameState.IncrementThreatLevel();
                 alienSpawnerGenerator.EscalateThreat();
             }
-            result.currentThreatLevel = gameState.currentThreatLevel;
-            result.threatCountdown = mission.threatTimer - gameState.threatTimer;
+            
             RemoveDeadSoldiers();
 
             gameState.SetCurrentPhase(Data.GamePhase.Movement);
