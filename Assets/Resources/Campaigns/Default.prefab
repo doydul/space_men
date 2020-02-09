@@ -87,8 +87,8 @@ MonoBehaviour:
   - alienType: Fatty
     groupSize: 1
     spawnType: 0
-    chance: 0.2
-    cooldown: 2
+    chance: 0.15
+    cooldown: 4
   threatTimer: 14
   threatProfiles:
   - enemyProfiles:
