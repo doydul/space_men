@@ -13,6 +13,7 @@
 
 ## To Do
 - Add header with icons for weapon and armour
+- Move all soldier turn arrows inward
 
 ## Features
 - Reimplement workshop page

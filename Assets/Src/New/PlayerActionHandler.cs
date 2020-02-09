@@ -39,9 +39,12 @@ public class PlayerActionHandler {
             }
         } else if (actor != null) {
             UIData.instance.selectedTile = tile;
+            Header.instance.Display(actor);
             MapController.instance.DisplayActions(actor.index);
             MapHighlighter.instance.HighlightTile(tile, Color.white);
         } else {
+            TurnButtons.instance.Hide();
+            Header.instance.Hide();
             selectionState.DeselectSoldier();
             UIData.instance.ClearSelection();
             MapHighlighter.instance.ClearHighlights();

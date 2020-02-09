@@ -127,6 +127,7 @@
      <Compile Include="Assets\Src\New\Components\ArmouryMenu.cs" />
      <Compile Include="Assets\Src\New\Components\BlackFade.cs" />
      <Compile Include="Assets\Src\New\Components\Debug\PressSpaceTrigger.cs" />
+     <Compile Include="Assets\Src\New\Components\Header.cs" />
      <Compile Include="Assets\Src\New\Components\HealthBar.cs" />
      <Compile Include="Assets\Src\New\Components\Icon.cs" />
      <Compile Include="Assets\Src\New\Components\InfoPanel.cs" />
@@ -144,6 +145,7 @@
      <Compile Include="Assets\Src\New\Components\SelectionMenu.cs" />
      <Compile Include="Assets\Src\New\Components\SelectionMenuPanel.cs" />
      <Compile Include="Assets\Src\New\Components\SoldierArmouryPanel.cs" />
+     <Compile Include="Assets\Src\New\Components\TurnButtons.cs" />
      <Compile Include="Assets\Src\New\Components\UIData.cs" />
      <Compile Include="Assets\Src\New\Controllers\ArmouryController.cs" />
      <Compile Include="Assets\Src\New\Controllers\Controller.cs" />
