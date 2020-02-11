@@ -35,7 +35,7 @@ public class Header : MonoBehaviour {
         text += "HP: " + alien.health + "/" + alien.maxHealth + "\n";
         text += "Move Speed: " + alien.movement + "\n";
         text += "Damage: " + alien.damage + "\n";
-        text += "Armour Penetration: " + alien.armourPen + "\n";
+        text += "Armour(%): " + alien.armour + "\n";
 
         infoText.text = text;
     }

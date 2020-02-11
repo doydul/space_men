@@ -79,7 +79,7 @@ MonoBehaviour:
     spawnType: 0
     chance: 0.3
     cooldown: 2
-  - alienType: Alien
+  - alienType: Sprinter
     groupSize: 1
     spawnType: 0
     chance: 0.3

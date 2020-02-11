@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1317cff8372408d87e475886085f69, type: 3}
   m_Name: Medium
   m_EditorClassIdentifier: 
-  icon: {fileID: 6049137105121139426, guid: 7e0702b01691f4610824edfb221641a6, type: 3}
+  icon: {fileID: 6112543359969127321, guid: a1b4dd143a2ea40d6b7591e0c8f15021, type: 3}
   armourValue: 50
   type: 1
   value: 120

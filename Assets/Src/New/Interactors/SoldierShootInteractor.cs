@@ -122,7 +122,8 @@ namespace Interactors {
             var iterator = new CellLayerIterator(targetPosition, cell => !cell.isWall);
             int layerI = -4;
             foreach (var layer in iterator.Iterate(gameState.map)) {
-                blastSize -= Mathf.Max(layerI, 0);
+                // Try without blast damping
+                // blastSize -= Mathf.Max(layerI, 0); 
                 foreach (var node in layer.nodes.OrderBy(x => Random.value).Take(blastSize)) {
                     result.Add(node.cell.position);
                     blastSize--;

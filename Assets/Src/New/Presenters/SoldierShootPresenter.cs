@@ -12,6 +12,7 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
     public Map map;
     public MapController mapInput;
     public UIController uiInput;
+    public BloodSplatController bloodSplats;
 
     public Transform gunflarePrefab;
     public Transform hitPrefab;
@@ -49,6 +50,7 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
         yield return new WaitForSeconds(1);
         Destroy(muzzleFlash);
         if (damageInstance.attackResult == AttackResult.Hit || damageInstance.attackResult == AttackResult.Killed) {
+            bloodSplats.MakeSplat(alien);
             var hitSFX = sfxLayer.SpawnPrefab(hitPrefab, alien.transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
             yield return new WaitForSeconds(1);
             Destroy(hitSFX);
@@ -82,8 +84,10 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
         foreach (var damageInstance in input.damageInstances) {
             var actor = map.GetActorByIndex(damageInstance.victimIndex);
             if (damageInstance.attackResult == AttackResult.Killed) {
+                bloodSplats.MakeSplat(actor);
                 actor.Die();
             } else if (damageInstance.attackResult == AttackResult.Hit) {
+                bloodSplats.MakeSplat(actor);
                 actor.health = damageInstance.victimHealthAfterDamage;
                 yield return HealthBarAnimation(actor.transform.position, actor.healthPercentage);
             } else {

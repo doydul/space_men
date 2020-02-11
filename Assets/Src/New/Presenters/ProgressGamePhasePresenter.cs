@@ -18,6 +18,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     public Transform cameraTransform;
     public RadarBlipLayer radarBlipLayer;
     public GameObject missions;
+    public BloodSplatController bloodSplats;
 
     public SFXLayer sfxLayer;
 
@@ -86,11 +87,13 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
                     var healthBarGO = sfxLayer.SpawnPrefab(healthBarPrefab, target.transform.position);
                     var healthBar = healthBarGO.GetComponent<HealthBar>();
                     healthBar.SetPercentage(target.healthPercentage);
+                    bloodSplats.MakeSplat(target);
                     yield return new WaitForSeconds(1);
                     Destroy(healthBarGO);
-                } else if (action.damageInstance.attackResult == AttackResult.Hit) {
+                } else if (action.damageInstance.attackResult == AttackResult.Deflected) {
                     yield return MarkerAnimationFor(action.damageInstance);
                 } else if (action.damageInstance.attackResult == AttackResult.Killed) {
+                    bloodSplats.MakeSplat(target);
                     target.Destroy();
                     tile.RemoveActor();
                 }

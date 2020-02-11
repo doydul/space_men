@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Alien
   m_EditorClassIdentifier: 
   maxHealth: 3
-  armour: 30
+  armour: 0
   accModifier: 0
-  damage: 4
-  armourPen: 10
+  damage: 3
+  armourPen: 0
   movement: 3
   threat: 1
   expReward: 5

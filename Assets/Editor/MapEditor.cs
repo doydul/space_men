@@ -246,6 +246,7 @@ public class MapEditor : Editor {
         Tile[,] tiles = new Tile[map.width, map.height];
         for (int x = 0; x < map.width; x++) {
             var columnObject = new GameObject().transform;
+            columnObject.localPosition = Vector3.zero;
             columnObject.name = "Column " + x;
             columnObject.transform.parent = map.transform;
             for (int y = 0; y < map.height; y++) {
