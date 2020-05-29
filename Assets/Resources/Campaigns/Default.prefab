@@ -60,47 +60,22 @@ MonoBehaviour:
   missionName: First Mission
   enemyProfiles:
   - alienType: Alien
-    groupSize: 5
-    spawnType: 1
+    groupSize: 3
+    iterations: 10
     chance: 1
-    cooldown: 5
-  - alienType: Advanced
-    groupSize: 1
-    spawnType: 0
-    chance: 0.2
-    cooldown: 2
-  - alienType: Swarmer
-    groupSize: 10
-    spawnType: 0
-    chance: 0.2
-    cooldown: 4
-  - alienType: Swarmer
-    groupSize: 4
-    spawnType: 0
-    chance: 0.3
-    cooldown: 2
-  - alienType: Sprinter
-    groupSize: 1
-    spawnType: 0
-    chance: 0.3
-    cooldown: 1
-  - alienType: Fatty
-    groupSize: 1
-    spawnType: 0
-    chance: 0.15
-    cooldown: 4
+    cooldown: 10
   threatTimer: 14
   threatProfiles:
   - enemyProfiles:
     - alienType: Alien
       groupSize: 1
-      spawnType: 0
+      iterations: 0
       chance: 0.25
       cooldown: 1
   - enemyProfiles:
     - alienType: Advanced
       groupSize: 3
-      spawnType: 0
+      iterations: 0
       chance: 0.5
       cooldown: 3
   rewards:

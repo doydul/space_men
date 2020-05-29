@@ -136,18 +136,13 @@ namespace Interactors {
             
             var alienSpawns = new List<AlienSpawn>();
             foreach (var spawner in new List<AlienSpawner>(alienSpawners)) {
-                if (spawner.spawnType == Data.AlienSpawnType.Trickle) {
-                    alienSpawns.Add(new AlienSpawn(spawner.position, new string[] { spawner.alienType }));
-                    spawner.remainingAliens -= 1;
-                } else {
-                    var types = new string[spawner.remainingAliens];
-                    for (int i = 0; i < spawner.remainingAliens; i++) {
-                        types[i] = spawner.alienType;
-                    }
-                    alienSpawns.Add(new AlienSpawn(spawner.position, types));
-                    spawner.remainingAliens = 0;
+                var types = new string[spawner.groupSize];
+                for (int i = 0; i < spawner.groupSize; i++) {
+                    types[i] = spawner.alienType;
                 }
-                if (spawner.remainingAliens <= 0) alienSpawners.Remove(spawner);
+                alienSpawns.Add(new AlienSpawn(spawner.position, types));
+                spawner.remainingIterations -= 1;
+                if (spawner.remainingIterations <= 0) alienSpawners.Remove(spawner);
             }
 
             foreach (var alienSpawn in alienSpawns) {

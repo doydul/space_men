@@ -28,7 +28,7 @@ public class MissionStore : IMissionStore {
         return new Data.SpawnProfile {
             alienType = profile.alienType,
             groupSize = profile.groupSize,
-            spawnType = (Data.AlienSpawnType)profile.spawnType,
+            iterations = profile.iterations,
             chance = profile.chance,
             cooldown = profile.cooldown
         };

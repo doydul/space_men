@@ -24,8 +24,8 @@ namespace Workers {
                 if (wrapper.cooldownTimer <= 0 && random.NextDouble() < profile.chance) {
                     result.Add(new AlienSpawner {
                         alienType = profile.alienType,
-                        remainingAliens = profile.groupSize,
-                        spawnType = profile.spawnType
+                        remainingIterations = profile.iterations,
+                        groupSize = profile.groupSize
                     });
                     wrapper.cooldownTimer = profile.cooldown;
                 }
