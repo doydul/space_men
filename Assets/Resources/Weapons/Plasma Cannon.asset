@@ -22,4 +22,4 @@ MonoBehaviour:
   ammo: 10
   blast: 4
   type: 1
-  value: 200
+  cost: 100

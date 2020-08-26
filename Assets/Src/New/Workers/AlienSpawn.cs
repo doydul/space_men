@@ -31,6 +31,7 @@ namespace Workers {
 
             var iterator = new CellIterator(squareIteration.position, cell => !cell.isWall);
             foreach (var node in iterator.Iterate(gameState.map)) {
+                if (aliens.Count <= 0) break;
                 var square = pathingGrid.GetSquare(node.cell.position);
                 if (!node.cell.hasActor && square.distanceToNearestSoldier >= MIN_SPAWN_DISTANCE) {
                     var alienType = aliens.Dequeue();
@@ -40,7 +41,6 @@ namespace Workers {
                         facing = square.facing
                     });
                 }
-                if (aliens.Count <= 0) break;
             }
             return result.ToArray();
         }

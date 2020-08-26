@@ -60,22 +60,56 @@ MonoBehaviour:
   missionName: First Mission
   enemyProfiles:
   - alienType: Alien
-    groupSize: 3
-    iterations: 10
-    chance: 1
-    cooldown: 10
+    groupSizeMin: 1
+    groupSizeMax: 1
+    iterationsMin: 1
+    iterationsMax: 1
+    chance: 0.5
+    cooldown: 1
+  - alienType: Alien
+    groupSizeMin: 1
+    groupSizeMax: 1
+    iterationsMin: 1
+    iterationsMax: 1
+    chance: 0.5
+    cooldown: 1
+  - alienType: Alien
+    groupSizeMin: 2
+    groupSizeMax: 3
+    iterationsMin: 5
+    iterationsMax: 10
+    chance: 0.5
+    cooldown: 7
+  - alienType: Alien
+    groupSizeMin: 3
+    groupSizeMax: 7
+    iterationsMin: 1
+    iterationsMax: 1
+    chance: 0.5
+    cooldown: 3
+  - alienType: Swarmer
+    groupSizeMin: 3
+    groupSizeMax: 5
+    iterationsMin: 1
+    iterationsMax: 1
+    chance: 0.5
+    cooldown: 1
   threatTimer: 14
   threatProfiles:
   - enemyProfiles:
     - alienType: Alien
-      groupSize: 1
-      iterations: 0
+      groupSizeMin: 0
+      groupSizeMax: 0
+      iterationsMin: 0
+      iterationsMax: 0
       chance: 0.25
       cooldown: 1
   - enemyProfiles:
     - alienType: Advanced
-      groupSize: 3
-      iterations: 0
+      groupSizeMin: 0
+      groupSizeMax: 0
+      iterationsMin: 0
+      iterationsMax: 0
       chance: 0.5
       cooldown: 3
   rewards:

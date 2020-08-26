@@ -27,8 +27,10 @@ public class MissionStore : IMissionStore {
     Data.SpawnProfile ProfileConverter(MissionEnemyProfile profile) {
         return new Data.SpawnProfile {
             alienType = profile.alienType,
-            groupSize = profile.groupSize,
-            iterations = profile.iterations,
+            groupSizeMin = profile.groupSizeMin,
+            groupSizeMax = profile.groupSizeMax,
+            iterationsMin = profile.iterationsMin,
+            iterationsMax = profile.iterationsMax,
             chance = profile.chance,
             cooldown = profile.cooldown
         };

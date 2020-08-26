@@ -24,8 +24,9 @@ namespace Workers {
                 if (wrapper.cooldownTimer <= 0 && random.NextDouble() < profile.chance) {
                     result.Add(new AlienSpawner {
                         alienType = profile.alienType,
-                        remainingIterations = profile.iterations,
-                        groupSize = profile.groupSize
+                        remainingIterations = UnityEngine.Random.Range(profile.iterationsMin, profile.iterationsMax),
+                        groupSizeMin = profile.groupSizeMin,
+                        groupSizeMax = profile.groupSizeMax
                     });
                     wrapper.cooldownTimer = profile.cooldown;
                 }

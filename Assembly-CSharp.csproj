@@ -147,6 +147,7 @@
      <Compile Include="Assets\Src\New\Components\SoldierArmouryPanel.cs" />
      <Compile Include="Assets\Src\New\Components\TurnButtons.cs" />
      <Compile Include="Assets\Src\New\Components\UIData.cs" />
+     <Compile Include="Assets\Src\New\Components\WorkshopMenu.cs" />
      <Compile Include="Assets\Src\New\Controllers\ArmouryController.cs" />
      <Compile Include="Assets\Src\New\Controllers\Controller.cs" />
      <Compile Include="Assets\Src\New\Controllers\InventoryController.cs" />
@@ -173,6 +174,10 @@
      <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\AddSoldierToSquadInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\AddSoldierToSquadOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\AnalyseItemInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\AnalyseItemOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\BuildItemInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\BuildItemOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\CompleteSecondaryMissionInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\CompleteSecondaryMissionOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\EquipItemInput.cs" />
@@ -201,9 +206,15 @@
      <Compile Include="Assets\Src\New\Data\Interactors\OpenSoldierSelectOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\OpenWeaponSelectInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\OpenWeaponSelectOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\OpenWorkshopInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\OpenWorkshopOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ProgressGamePhaseInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ProgressGamePhaseOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\ScrapItemInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\ScrapItemOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\SelectedItemInfoPresenterInputData.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\SelectionMenuCancelInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\SelectionMenuCancelOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\SoldierShootInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\SoldierShootOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\TurnSoldierInput.cs" />
@@ -257,6 +268,8 @@
      <Compile Include="Assets\Src\New\Initializers\WorkshopInitializer.cs" />
      <Compile Include="Assets\Src\New\Interactors\ActorActionsInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\AddSoldierToSquadInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\AnalyseItemInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\BuildItemInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\CompleteSecondaryMissionInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\EquipItemInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\FinishMissionInteractor.cs" />
@@ -272,7 +285,10 @@
      <Compile Include="Assets\Src\New\Interactors\OpenMissionOverviewInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\OpenSoldierSelectInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\OpenWeaponSelectInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\OpenWorkshopInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\ProgressGamePhaseInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\ScrapItemInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\SelectionMenuCancelInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\SoldierShootInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\TurnSoldierInteractor.cs" />
      <Compile Include="Assets\Src\New\Interfaces\IAlienStore.cs" />
@@ -297,6 +313,8 @@
      <Compile Include="Assets\Src\New\PlayerActionHandler.cs" />
      <Compile Include="Assets\Src\New\Presenters\ActorActionsPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\AddSoldierToSquadPresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\AnalyseItemPresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\BuildItemPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\CompleteSecondaryMissionPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\EquipItemPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\FinishMissionPresenter.cs" />
@@ -311,8 +329,11 @@
      <Compile Include="Assets\Src\New\Presenters\OpenMissionOverviewPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\OpenSoldierSelectPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\OpenWeaponSelectPresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\OpenWorkshopPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\Presenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\ProgressGamePhasePresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\ScrapItemPresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\SelectionMenuCancelPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\SoldierShootPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\TurnSoldierPresenter.cs" />
      <Compile Include="Assets\Src\New\ShootAction.cs" />
@@ -341,6 +362,7 @@
      <Compile Include="Assets\Src\New\Workers\SoldierGenerator.cs" />
      <Compile Include="Assets\Src\New\Workers\SoldierMove.cs" />
      <Compile Include="Assets\Src\New\Workers\Soldiers.cs" />
+     <Compile Include="Assets\Src\New\Workers\WorkshopItemList.cs" />
      <Compile Include="Assets\Src\New\World\AlienAttackAnimation.cs" />
      <Compile Include="Assets\Src\New\World\AnimationInteractor.cs" />
      <Compile Include="Assets\Src\New\World\ShootingAnimation.cs" />

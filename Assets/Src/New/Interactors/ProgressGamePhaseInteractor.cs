@@ -38,6 +38,7 @@ namespace Interactors {
             }
             result.currentThreatLevel = gameState.currentThreatLevel;
             result.threatCountdown = mission.threatTimer - gameState.threatTimer;
+            result.currentPart = stage;
             presenter.Present(result);
         }
 
@@ -136,8 +137,9 @@ namespace Interactors {
             
             var alienSpawns = new List<AlienSpawn>();
             foreach (var spawner in new List<AlienSpawner>(alienSpawners)) {
-                var types = new string[spawner.groupSize];
-                for (int i = 0; i < spawner.groupSize; i++) {
+                var groupSize = UnityEngine.Random.Range(spawner.groupSizeMin, spawner.groupSizeMax);
+                var types = new string[groupSize];
+                for (int i = 0; i < groupSize; i++) {
                     types[i] = spawner.alienType;
                 }
                 alienSpawns.Add(new AlienSpawn(spawner.position, types));

@@ -20,7 +20,7 @@ public class Weapon : ScriptableObject {
     public int ammo;
     public float blast;
     public Type type;
-    public int value;
+    public int cost;
 
     public bool ordnance { get { return blast > 0; } }
     public bool isHeavy { get { return type == Type.Heavy; } }

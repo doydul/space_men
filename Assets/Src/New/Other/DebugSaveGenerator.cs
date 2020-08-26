@@ -1,7 +1,7 @@
 public class DebugSaveGenerator {
     public static MetaGameSave Generate() {
         return new MetaGameSave {
-            credits = 0,
+            credits = 100,
             currentCampaign = "Default",
             currentMission = "First Mission",
             items = new MetaItemSave[] {
@@ -27,12 +27,12 @@ public class DebugSaveGenerator {
                 },
                 new MetaItemSave {
                     uniqueId = 5,
-                    name = "Assault Rifle",
+                    name = "Minigun",
                     type = MetaItemTypeSave.Weapon
                 },
                 new MetaItemSave {
                     uniqueId = 6,
-                    name = "Carbine",
+                    name = "Assault Rifle",
                     type = MetaItemTypeSave.Weapon
                 },
                 new MetaItemSave {
@@ -42,7 +42,7 @@ public class DebugSaveGenerator {
                 },
                 new MetaItemSave {
                     uniqueId = 8,
-                    name = "Plasma Rifle",
+                    name = "Assault Rifle",
                     type = MetaItemTypeSave.Weapon
                 },
                 new MetaItemSave {

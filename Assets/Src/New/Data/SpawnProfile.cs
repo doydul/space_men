@@ -3,8 +3,10 @@ namespace Data {
     public struct SpawnProfile {
 
         public string alienType;
-        public int groupSize;
-        public int iterations;
+        public int groupSizeMin;
+        public int groupSizeMax;
+        public int iterationsMin;
+        public int iterationsMax;
         public float chance;
         public int cooldown;
     }

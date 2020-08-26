@@ -7,6 +7,7 @@ public class SelectionMenuController : Controller {
 
     public EquipItemInteractor equipItemInteractor { private get; set; }
     public AddSoldierToSquadInteractor addSoldierToSquadInteractor { private get; set; }
+    public SelectionMenuCancelInteractor selectionMenuCancelInteractor { private get; set; }
 
     SelectionMenuInitializer.Args.Selectable selectable;
 
@@ -30,6 +31,12 @@ public class SelectionMenuController : Controller {
                     soldierId = selectable.newOwnerId
                 });
             }
+        }
+    }
+
+    public void GoBack() {
+        if (!disabled) {
+            selectionMenuCancelInteractor.Interact(new SelectionMenuCancelInput());
         }
     }
 }

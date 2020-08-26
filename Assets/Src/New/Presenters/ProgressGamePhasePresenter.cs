@@ -39,15 +39,15 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         threatCounterText.text = "turns until threat increase: " + input.threatCountdown;
         if (input.currentThreatLevel != uiData.threatLevel) {
             uiData.threatLevel = input.currentThreatLevel;
-            missions.SendMessage("OnThreatEscalation", input.currentThreatLevel);
+            missions.SendMessage("OnThreatEscalation", input.currentThreatLevel, SendMessageOptions.DontRequireReceiver);
         }
 
+        UpdatePhaseText(input.currentPhase, input.currentPart);
         if (uiData.gamePhase != input.currentPhase) {
             UpdateUI(input.currentPhase);
-            UpdatePhaseText(input.currentPhase);
             UpdateSoldierIndicators(input.currentPhase, input.shootingStats);
             uiData.gamePhase = input.currentPhase;
-            missions.SendMessage("OnPhaseChange");
+            missions.SendMessage("OnPhaseChange", null, SendMessageOptions.DontRequireReceiver);
         }
 
         if (input.newAliens != null) {
@@ -117,11 +117,11 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         }
     }
 
-    void UpdatePhaseText(Data.GamePhase gamePhase) {
+    void UpdatePhaseText(Data.GamePhase gamePhase, int part) {
         if (gamePhase == Data.GamePhase.Movement) {
             gamePhaseText.text = "Movement Phase";
         } else {
-            gamePhaseText.text = "Shooting Phase";
+            gamePhaseText.text = "Shooting Phase part " + part + "/3";
         }
     }
 

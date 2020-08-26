@@ -3,6 +3,7 @@ namespace Data {
     public struct ProgressGamePhaseOutput {
         
         public Data.GamePhase currentPhase;
+        public int currentPart;
         public int threatCountdown;
         public int currentThreatLevel;
         public AlienAction[] alienActions;

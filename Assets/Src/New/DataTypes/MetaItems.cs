@@ -48,6 +48,10 @@ namespace DataTypes {
             return allMetaItems.GetElements();
         }
 
+        public MetaItem GetBlueprint(string name) {
+            return blueprints.First(item => item.name == name);
+        }
+
         public IEnumerable<MetaItem> GetBlueprints() {
             return new List<MetaItem>(blueprints);
         }

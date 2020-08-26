@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330a01776318840bd88dc655a2bd4ab8, type: 3}
   m_Name: Annihilator
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   accuracy: 60
   armourPen: 200
   minDamage: 60
@@ -21,4 +22,4 @@ MonoBehaviour:
   ammo: 1
   blast: 0
   type: 0
-  value: 300
+  cost: 100

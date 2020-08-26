@@ -1,7 +1,8 @@
 # Planning
 ## Beta (one fully playable campaign)
-- Misc: 3
+- tutorial
 - Workshop page: 30
+- Misc: 3
 - Soldier perma-death: 5
 - Hiring soldiers: 5
 - Items content: 
@@ -9,18 +10,43 @@
 - More mission objectives: 
 - Level content:
 
+## Tutorial
+tutorial level is a small level with enemies that spawn individually when the player moves over certain squares.
+starts out showing just a single soldier, with a curser indicator so the player will click him.
+upon click, we show a widget that will explain movement and turning.
+when the player moves soldier, widget will appear that explains phases and phase button.
+after advancing phase, alien will appear. widget will appear explaining alien movement.
+
+### Tasks
+- new action in scripting controller that allows manual creation of aliens
+- reusable UI widget for showing tutorial information
+  - shows an 'I' icon which is clickable
+  - upon click will show expanded information window with close button
+  - widget will need to be able to move along with some objects as they move
+- (tangentally related) show current shooting phase iteration on screen
+- curser icon which indicates non-verbally that something should be clicked on, and will disapear when the thing is clicked on
+
 ## To Do
-- Replace alien sprites with new higher contrast ones
+- make a reusable worker that generates the list of items for workshop
+- fill out analyse, scrap and build interactors (and presenters)
+  - presenters will need to remove from or regenerate the list of items
+
 - Maybe create system for loading in different soldier sprites?
 
 ## Alpha ToDo
 - Reimplement workshop page
-- Add back button to selection page
-- Don't show soldier icon or inv button on squad page for slots that are empty
-- Meta soldier needs to somehow link to soldiers in gamestate so we know whos died
-- Create a tutorial level
+  - 
 - Implement hiring solders from the armoury page
 - Add some proper icons for post mission reward summary
+- Meta soldier needs to somehow link to soldiers in gamestate so we know whos died
+- Don't show soldier icon or inv button on squad page for slots that are empty
+
+- Make common game objects into prefab so that they can be easily copied and changed between scenes
+- Create a tutorial level
+  - Need start of game trigger to open initial tutorial prompt
+  - Additional prompts will be activated by walking on certain squares 
+  - Will need new ScriptingController action/interactor for spawning aliens
+  - Will need new ScriptingController action/interactor for limiting soldier movement
 - Create more levels!
 - Create more aliens!
 - Create more weapons! (specifically level 2 and maybe 3 weapons)
@@ -57,3 +83,17 @@
 - Complexity: Does the benefit outweight the complexity that it introduces
 - Tell Don't Ask
 - Seperate Logic and Data
+
+
+# First prompt
+*Movement Phase*
+The highlighted squares show where your soldier can move. Green squares show the area in which your soldier can move whilst still being able to shoot in the shooting phase. The arrows at each side of the screen allow you to manually set the soldiers orientation. The soldiers facing cannot be changed during the shooting phase, so choose wisely.
+
+# Second prompt
+When you're done moving, press the Continue button to advance to the shooting phase. 
+
+# Third prompt
+*Shooting Phase*
+The shooting phase is when you can shoot, but it's also when the aliens will make their moves. Each alien will move 3 times, and before/after each move you will get a chance to shoot them if any of your soldiers are able to. If none of your soldiers can shoot, either because they've run out of shots or because they're facing the wrong way, then the aliens will move automatically. Otherwise, they will move when you press the Continue button.
+
+Each soldier's available shots are displayed above their head. Clicking on a soldier will highlight their available targets in red. Then, click on a highlighted enemy to shoot.

@@ -33,9 +33,9 @@ public class Workshop {
 
     private int ItemValue() {
         if (item.isWeapon) {
-            return Weapon.Get(item.name).value;
+            return 0;
         } else {
-            return Armour.Get(item.name).value;
+            return 0;
         }
     }
 }

@@ -26,16 +26,20 @@ namespace Data {
         public int maxHealth;
         public int movement;
         public int sprint;
+
+        public bool isNull => cost == -1;
     }
 
     public struct WeaponStats {
         public int accuracy;
         public int armourPen;
+        public int cost;
         public int minDamage;
         public int maxDamage;
         public int shotsWhenMoving;
         public int shotsWhenStill;
         public float blast;
-        public int value;
+
+        public bool isNull => cost == -1;
     }
 }

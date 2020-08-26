@@ -8,6 +8,7 @@ public class SoldierStore : ISoldierStore {
     
     public ArmourStats GetArmourStats(string armourName) {
         var data = GetArmourData(armourName);
+        if (data == null) return new ArmourStats { cost = -1 };
         return new ArmourStats {
             armourValue = data.armourValue,
             weight = ConvertArmourWeight(data.type),
@@ -20,15 +21,16 @@ public class SoldierStore : ISoldierStore {
 
     public WeaponStats GetWeaponStats(string weaponName) {
         var data = GetWeaponData(weaponName);
+        if (data == null) return new WeaponStats { cost = -1 };
         return new WeaponStats {
             accuracy = data.accuracy,
             armourPen = data.armourPen,
+            cost = data.cost,
             minDamage = data.minDamage,
             maxDamage = data.maxDamage,
             shotsWhenMoving = data.shotsWhenMoving,
             shotsWhenStill = data.shotsWhenStill,
-            blast = data.blast,
-            value = data.value
+            blast = data.blast
         };
     }
     

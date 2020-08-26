@@ -19,7 +19,8 @@ public class SelectionMenuInitializer : InitializerBase {
     protected override void GenerateControllerMapping() {
         controllerMapping.Add(typeof(SelectionMenuController), new Dictionary<Type, Type> {
            { typeof(EquipItemInteractor), typeof(EquipItemPresenter) },
-           { typeof(AddSoldierToSquadInteractor), typeof(AddSoldierToSquadPresenter) }
+           { typeof(AddSoldierToSquadInteractor), typeof(AddSoldierToSquadPresenter) },
+           { typeof(SelectionMenuCancelInteractor), typeof(SelectionMenuCancelPresenter) }
         });
     }
 

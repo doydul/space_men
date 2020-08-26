@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330a01776318840bd88dc655a2bd4ab8, type: 3}
   m_Name: Shoulder Cannon
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   accuracy: 55
   armourPen: 30
   minDamage: 3
@@ -21,4 +22,4 @@ MonoBehaviour:
   ammo: 30
   blast: 0
   type: 1
-  value: 100
+  cost: 100

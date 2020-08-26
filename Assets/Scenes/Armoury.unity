@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -321,8 +322,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &730870168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,8 +340,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7a40b681996c4458fa329b02c4c00c48, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -492,8 +489,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1040986243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,8 +507,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7a40b681996c4458fa329b02c4c00c48, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -588,8 +581,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 5158c86ffc0d74f388794795d81753e1, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -628,6 +619,11 @@ PrefabInstance:
     - target: {fileID: 1291440949037546, guid: 5fa3105823d3d4ee497919ab99c76bb9, type: 3}
       propertyPath: m_Name
       value: TemplarPanel (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114762012764290164, guid: 5fa3105823d3d4ee497919ab99c76bb9,
+        type: 3}
+      propertyPath: menuController
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 224356809489874058, guid: 5fa3105823d3d4ee497919ab99c76bb9,
         type: 3}
@@ -734,11 +730,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.0005001
       objectReference: {fileID: 0}
-    - target: {fileID: 114762012764290164, guid: 5fa3105823d3d4ee497919ab99c76bb9,
-        type: 3}
-      propertyPath: menuController
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4290017254835821228, guid: 5fa3105823d3d4ee497919ab99c76bb9,
         type: 3}
       propertyPath: controller
@@ -819,8 +810,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: e39c0291083514a31a9b8b673f61c6ed, type: 3}
     m_FontSize: 14
@@ -898,8 +887,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: e39c0291083514a31a9b8b673f61c6ed, type: 3}
     m_FontSize: 20
@@ -936,6 +923,11 @@ PrefabInstance:
     - target: {fileID: 1291440949037546, guid: 5fa3105823d3d4ee497919ab99c76bb9, type: 3}
       propertyPath: m_Name
       value: TemplarPanel (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114762012764290164, guid: 5fa3105823d3d4ee497919ab99c76bb9,
+        type: 3}
+      propertyPath: menuController
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 224356809489874058, guid: 5fa3105823d3d4ee497919ab99c76bb9,
         type: 3}
@@ -1042,11 +1034,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.0005001
       objectReference: {fileID: 0}
-    - target: {fileID: 114762012764290164, guid: 5fa3105823d3d4ee497919ab99c76bb9,
-        type: 3}
-      propertyPath: menuController
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4290017254835821228, guid: 5fa3105823d3d4ee497919ab99c76bb9,
         type: 3}
       propertyPath: controller
@@ -1127,8 +1114,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: f442af2f2a7454efbbcd76533a40ebba, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1208,8 +1193,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 5158c86ffc0d74f388794795d81753e1, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1252,11 +1235,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2072790639}
     m_Modifications:
-    - target: {fileID: 3538526670334117597, guid: d14f6be9efaf7415bab1abc0d08d6016,
-        type: 3}
-      propertyPath: m_Name
-      value: BlackFade
-      objectReference: {fileID: 0}
     - target: {fileID: 3538526670334117596, guid: d14f6be9efaf7415bab1abc0d08d6016,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1362,6 +1340,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3538526670334117597, guid: d14f6be9efaf7415bab1abc0d08d6016,
+        type: 3}
+      propertyPath: m_Name
+      value: BlackFade
+      objectReference: {fileID: 0}
     - target: {fileID: 3538526670334117599, guid: d14f6be9efaf7415bab1abc0d08d6016,
         type: 3}
       propertyPath: m_Color.a
@@ -1442,6 +1425,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1861662668}
     m_Modifications:
+    - target: {fileID: 114762012764290164, guid: 5fa3105823d3d4ee497919ab99c76bb9,
+        type: 3}
+      propertyPath: menuController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 224173931211314898, guid: 5fa3105823d3d4ee497919ab99c76bb9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224173931211314898, guid: 5fa3105823d3d4ee497919ab99c76bb9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224356809489874058, guid: 5fa3105823d3d4ee497919ab99c76bb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1532,31 +1530,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114762012764290164, guid: 5fa3105823d3d4ee497919ab99c76bb9,
+    - target: {fileID: 224943061020071708, guid: 5fa3105823d3d4ee497919ab99c76bb9,
         type: 3}
-      propertyPath: menuController
-      value: 
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4290017254835821228, guid: 5fa3105823d3d4ee497919ab99c76bb9,
         type: 3}
       propertyPath: controller
       value: 
       objectReference: {fileID: 652351691}
-    - target: {fileID: 224943061020071708, guid: 5fa3105823d3d4ee497919ab99c76bb9,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224173931211314898, guid: 5fa3105823d3d4ee497919ab99c76bb9,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224173931211314898, guid: 5fa3105823d3d4ee497919ab99c76bb9,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fa3105823d3d4ee497919ab99c76bb9, type: 3}
 --- !u!114 &1854135156 stripped
@@ -1626,14 +1609,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: e39c0291083514a31a9b8b673f61c6ed, type: 3}
-    m_FontSize: 14
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1704,8 +1685,8 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OpenWorkshop
+      - m_Target: {fileID: 652351691}
+        m_MethodName: ProceedToWorkshop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1715,8 +1696,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1858177923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1735,8 +1714,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7a40b681996c4458fa329b02c4c00c48, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1853,7 +1830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -154.6, y: -86.2}
+  m_AnchoredPosition: {x: -154.6, y: -86.20001}
   m_SizeDelta: {x: -359.3, y: -289.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1967363523
@@ -1874,8 +1851,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: e39c0291083514a31a9b8b673f61c6ed, type: 3}
     m_FontSize: 12
@@ -2071,6 +2046,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TemplarPanel (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114762012764290164, guid: 5fa3105823d3d4ee497919ab99c76bb9,
+        type: 3}
+      propertyPath: menuController
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 224356809489874058, guid: 5fa3105823d3d4ee497919ab99c76bb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2175,11 +2155,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0005001
-      objectReference: {fileID: 0}
-    - target: {fileID: 114762012764290164, guid: 5fa3105823d3d4ee497919ab99c76bb9,
-        type: 3}
-      propertyPath: menuController
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4290017254835821228, guid: 5fa3105823d3d4ee497919ab99c76bb9,
         type: 3}
