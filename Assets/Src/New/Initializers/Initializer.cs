@@ -19,7 +19,8 @@ public class Initializer : InitializerBase {
         });
         controllerMapping.Add(typeof(ScriptingController), new Dictionary<Type, Type> {
             { typeof(FinishMissionInteractor), typeof(FinishMissionPresenter) },
-            { typeof(CompleteSecondaryMissionInteractor), typeof(CompleteSecondaryMissionPresenter) }
+            { typeof(CompleteSecondaryMissionInteractor), typeof(CompleteSecondaryMissionPresenter) },
+            { typeof(SpawnAliensInteractor), typeof(SpawnAliensPresenter) }
         });
         // controllerMapping.Add(typeof(MetaGameController), new Dictionary<Type, Type> {
             

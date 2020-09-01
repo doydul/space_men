@@ -15,11 +15,11 @@ public class MapEditor : Editor {
     }
     
     public void OnEnable() {
-        SceneView.onSceneGUIDelegate = GridUpdate;
+        SceneView.duringSceneGui += GridUpdate;
     }
     
     public void OnDisable() {
-        SceneView.onSceneGUIDelegate = null;
+        SceneView.duringSceneGui -= GridUpdate;
         editMode = false;
     }
     
@@ -113,35 +113,40 @@ public class MapEditor : Editor {
     }
     
     private IEnumerable AdjacentTiles(Tile tile) {
-        if (tile.gridLocation.x - 1 >= 0) {
-            yield return GetTileAt(tile.gridLocation.x - 1, tile.gridLocation.y);
-        }
-        if (tile.gridLocation.x + 1 < map.width) {
-            yield return GetTileAt(tile.gridLocation.x + 1, tile.gridLocation.y);
-        }
-        if (tile.gridLocation.y - 1 >= 0) {
-            yield return GetTileAt(tile.gridLocation.x, tile.gridLocation.y - 1);
-        }
-        if (tile.gridLocation.y + 1 < map.height) {
-            yield return GetTileAt(tile.gridLocation.x, tile.gridLocation.y + 1);
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 3; x++) {
+                int realx = (int)tile.gridLocation.x + x - 1;
+                int realy = (int)tile.gridLocation.y + y - 1;
+                if (realx >= 0 && realx < map.width && realy >= 0 && realy < map.height) {
+                    yield return GetTileAt(realx, realy);
+                }
+            }
         }
     }
     
     private string WallPattern(Tile tile) {
         var result = "";
-        if (tile.gridLocation.x - 1 >= 0) {
-            result += GetTileAt(tile.gridLocation.x - 1, tile.gridLocation.y).open ? "0" : "1";
-        } else { result += "1"; }
-        if (tile.gridLocation.x + 1 < map.width) {
-            result += GetTileAt(tile.gridLocation.x + 1, tile.gridLocation.y).open ? "0" : "1";
-        } else { result += "1"; }
-        if (tile.gridLocation.y - 1 >= 0) {
-            result += GetTileAt(tile.gridLocation.x, tile.gridLocation.y - 1).open ? "0" : "1";
-        } else { result += "1"; }
-        if (tile.gridLocation.y + 1 < map.height) {
-            result += GetTileAt(tile.gridLocation.x, tile.gridLocation.y + 1).open ? "0" : "1";
-        } else { result += "1"; }
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 3; x++) {
+                int realx = (int)tile.gridLocation.x + x - 1;
+                int realy = (int)tile.gridLocation.y + y - 1;
+                result += IsWallAt(realx, realy) ? "1" : "0";
+            }
+        }
         return result;
+    }
+
+    private bool IsWallAtIndex(Tile tile, int index) {
+        var pattern = WallPattern(tile);
+        return pattern[index] == '1';
+    }
+
+    private bool IsWallAt(float x, float y) {
+        if (x >= 0 && x < map.width && y >= 0 && y < map.height) {
+            return !GetTileAt(x, y).open;
+        } else {
+            return true;
+        }
     }
     
     private Tile GetTileAt(float x, float y) {
@@ -150,48 +155,53 @@ public class MapEditor : Editor {
         }
         return null;
     }
-    
+
+    // 678
+    // 345
+    // 012
+
     private void SetSprite(Tile tile) {
         Sprite sprite = null;
         var background = tile.backgroundSprite.transform;
-        switch(WallPattern(tile)) {
-            case "1111":
-                sprite = map.wallTopSprite;
-                break;
-                
-            case "1011":
-                sprite = map.wallSprite;
-                background.eulerAngles = new Vector3(0, 0, 0);
-                break;
-            case "1101":
-                sprite = map.wallSprite;
-                background.eulerAngles = new Vector3(0, 0, -90);
-                break;
-            case "0111":
-                sprite = map.wallSprite;
-                background.eulerAngles = new Vector3(0, 0, 180);
-                break;
-            case "1110":
-                sprite = map.wallSprite;
-                background.eulerAngles = new Vector3(0, 0, 90);
-                break;
-            
-            case "1001":
-                sprite = map.outerCornerSprite;
-                background.eulerAngles = new Vector3(0, 0, 0);
-                break;
-            case "0101":
-                sprite = map.outerCornerSprite;
-                background.eulerAngles = new Vector3(0, 0, -90);
-                break;
-            case "0110":
-                sprite = map.outerCornerSprite;
-                background.eulerAngles = new Vector3(0, 0, 180); //top left
-                break;
-            case "1010":
-                sprite = map.outerCornerSprite;
-                background.eulerAngles = new Vector3(0, 0, 90); // top right
-                break;
+
+        if (!IsWallAtIndex(tile, 5) && !IsWallAtIndex(tile, 1)) {
+            sprite = map.outerCornerSprite;
+            background.eulerAngles = new Vector3(0, 0, -0);
+        } else if (!IsWallAtIndex(tile, 1) && !IsWallAtIndex(tile, 3)) {
+            sprite = map.outerCornerSprite;
+            background.eulerAngles = new Vector3(0, 0, -90);
+        } else if (!IsWallAtIndex(tile, 3) && !IsWallAtIndex(tile, 7)) {
+            sprite = map.outerCornerSprite;
+            background.eulerAngles = new Vector3(0, 0, -180);
+        } else if (!IsWallAtIndex(tile, 7) && !IsWallAtIndex(tile, 5)) {
+            sprite = map.outerCornerSprite;
+            background.eulerAngles = new Vector3(0, 0, -270);
+        } else if (!IsWallAtIndex(tile, 5)) {
+            sprite = map.wallSprite;
+            background.eulerAngles = new Vector3(0, 0, -0);
+        } else if (!IsWallAtIndex(tile, 1)) {
+            sprite = map.wallSprite;
+            background.eulerAngles = new Vector3(0, 0, -90);
+        } else if (!IsWallAtIndex(tile, 3)) {
+            sprite = map.wallSprite;
+            background.eulerAngles = new Vector3(0, 0, -180);
+        } else if (!IsWallAtIndex(tile, 7)) {
+            sprite = map.wallSprite;
+            background.eulerAngles = new Vector3(0, 0, -270);
+        } else if (!IsWallAtIndex(tile, 8)) {
+            sprite = map.innerCornerSprite;
+            background.eulerAngles = new Vector3(0, 0, -0);
+        } else if (!IsWallAtIndex(tile, 2)) {
+            sprite = map.innerCornerSprite;
+            background.eulerAngles = new Vector3(0, 0, -90);
+        } else if (!IsWallAtIndex(tile, 0)) {
+            sprite = map.innerCornerSprite;
+            background.eulerAngles = new Vector3(0, 0, -180);
+        } else if (!IsWallAtIndex(tile, 6)) {
+            sprite = map.innerCornerSprite;
+            background.eulerAngles = new Vector3(0, 0, -270);
+        } else {
+            sprite = map.wallTopSprite;
         }
         tile.backgroundSprite.sprite = sprite;
     }

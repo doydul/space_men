@@ -16,15 +16,24 @@ starts out showing just a single soldier, with a curser indicator so the player 
 upon click, we show a widget that will explain movement and turning.
 when the player moves soldier, widget will appear that explains phases and phase button.
 after advancing phase, alien will appear. widget will appear explaining alien movement.
+- when soldier clicked
+- when soldier moved
+- when phase advanced
 
 ### Tasks
-- new action in scripting controller that allows manual creation of aliens
 - reusable UI widget for showing tutorial information
   - shows an 'I' icon which is clickable
   - upon click will show expanded information window with close button
   - widget will need to be able to move along with some objects as they move
-- (tangentally related) show current shooting phase iteration on screen
-- curser icon which indicates non-verbally that something should be clicked on, and will disapear when the thing is clicked on
+- curser  icon which indicates non-verbally that something should be clicked on, and will disapear when the thing is clicked on
+### Sub Tasks
+- create script to attach to TutorialPanel
+  - needs to turn off GO on start
+  - needs to have method to show
+  - needs to hide again when cross is pressed
+  - needs to have callback that triggers when dialogue is closed
+- create tutorial manager script
+  - handles triggers that cause each tutorial dialogue to show
 
 ## To Do
 - make a reusable worker that generates the list of items for workshop
@@ -74,6 +83,15 @@ after advancing phase, alien will appear. widget will appear explaining alien mo
 
 - Persistent flames from flame weapons
 - Show damage chance above aliens heads?
+
+# Scripting Events
+## Globale
+- OnPhaseChange
+- OnThreatEscalation
+- OnSelectSoldier
+- OnMoveSoldier
+## On Tile
+- OnTraverse
 
 # Principles
 

@@ -19,6 +19,7 @@ Texture2D:
   m_TextureFormat: 1
   m_MipCount: 1
   m_IsReadable: 1
+  m_IgnoreMasterTextureLimit: 0
   m_StreamingMipmaps: 0
   m_StreamingMipmapsPriority: 0
   m_AlphaIsTransparency: 0
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Bordered
   m_EditorClassIdentifier: 
-  hashCode: -44778683
+  hashCode: 489122989
   material: {fileID: 4159730233007327878}
   materialHashCode: -1192316676
   m_Version: 1.1.0

@@ -8,6 +8,7 @@ public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
 
     public UIData uiData;
     public MapController mapController;
+    public Scripting scripting;
     
     void Awake() {
         instance = this;
@@ -31,6 +32,7 @@ public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
         SetFog(input.newFogs);
         mapController.DisplayActions(input.soldierIndex);
         TriggerTraversedTileEvents(input);
+        scripting.Trigger(Scripting.Event.OnMoveSoldier);
     }
 
     void TriggerTraversedTileEvents(MoveSoldierOutput input) {

@@ -42,6 +42,9 @@ public class PlayerActionHandler {
             Header.instance.Display(actor);
             MapController.instance.DisplayActions(actor.index);
             MapHighlighter.instance.HighlightTile(tile, Color.white);
+            if (actor is Soldier) {
+                Scripting.instance.Trigger(Scripting.Event.OnSelectSoldier);
+            }
         } else {
             TurnButtons.instance.Hide();
             Header.instance.Hide();
