@@ -1,13 +1,13 @@
 public class DebugSaveGenerator {
     public static MetaGameSave Generate() {
         return new MetaGameSave {
-            credits = 100,
+            credits = 0,
             currentCampaign = "Default",
             currentMission = "First Mission",
             items = new MetaItemSave[] {
                 new MetaItemSave {
                     uniqueId = 1,
-                    name = "Medium",
+                    name = "Basic",
                     type = MetaItemTypeSave.Armour
                 },
                 new MetaItemSave {
@@ -17,58 +17,18 @@ public class DebugSaveGenerator {
                 },
                 new MetaItemSave {
                     uniqueId = 3,
-                    name = "Basic",
-                    type = MetaItemTypeSave.Armour
+                    name = "Assault Rifle",
+                    type = MetaItemTypeSave.Weapon
                 },
                 new MetaItemSave {
                     uniqueId = 4,
-                    name = "Basic",
-                    type = MetaItemTypeSave.Armour
-                },
-                new MetaItemSave {
-                    uniqueId = 5,
-                    name = "Minigun",
-                    type = MetaItemTypeSave.Weapon
-                },
-                new MetaItemSave {
-                    uniqueId = 6,
                     name = "Assault Rifle",
                     type = MetaItemTypeSave.Weapon
-                },
-                new MetaItemSave {
-                    uniqueId = 7,
-                    name = "Flamer",
-                    type = MetaItemTypeSave.Weapon
-                },
-                new MetaItemSave {
-                    uniqueId = 8,
-                    name = "Assault Rifle",
-                    type = MetaItemTypeSave.Weapon
-                },
-                new MetaItemSave {
-                    uniqueId = 9,
-                    name = "Plasma Rifle",
-                    type = MetaItemTypeSave.Weapon
-                },
-                new MetaItemSave {
-                    uniqueId = 10,
-                    name = "Grenade Launcher",
-                    type = MetaItemTypeSave.Weapon
-                },
-                new MetaItemSave {
-                    uniqueId = 11,
-                    name = "Medium",
-                    type = MetaItemTypeSave.Armour
-                },
-                new MetaItemSave {
-                    uniqueId = 12,
-                    name = "Heavy",
-                    type = MetaItemTypeSave.Armour
                 }
             },
             blueprints = new MetaItemSave[] {
                 new MetaItemSave {
-                    name = "Default",
+                    name = "Basic",
                     type = MetaItemTypeSave.Armour
                 },
                 new MetaItemSave {
@@ -80,31 +40,16 @@ public class DebugSaveGenerator {
                 new MetaSoldierSave {
                     uniqueId = 1,
                     armourId = 1,
-                    weaponId = 5
+                    weaponId = 3
                 },
                 new MetaSoldierSave {
                     uniqueId = 2,
                     armourId = 2,
-                    weaponId = 6
-                },
-                new MetaSoldierSave {
-                    uniqueId = 3,
-                    armourId = 3,
-                    weaponId = 7
-                },
-                new MetaSoldierSave {
-                    uniqueId = 4,
-                    armourId = 4,
-                    weaponId = 8
-                },
-                new MetaSoldierSave {
-                    uniqueId = 5,
-                    armourId = 11,
-                    weaponId = 9
+                    weaponId = 4
                 }
             },
             squadIds = new long[] {
-                1, 2, 3, 4
+                1, 2
             }
         };
     }

@@ -12,6 +12,7 @@ namespace Interactors {
             var squad = metaGameState.metaSoldiers.GetSquad()
                                                   .Where(soldier => soldier != null)
                                                   .Select(metaSoldier => SoldierFromMetaSoldier(metaSoldier))
+                                                  .Take(gameState.map.spawners.Length)
                                                   .ToList();
             for (int i = 0; i < squad.Count; i++) {
                 squad[i].position = gameState.map.spawners[i];
@@ -35,6 +36,7 @@ namespace Interactors {
             return SoldierGenerator.Default()
                                    .WithArmour(metaSoldier.armour.name)
                                    .WithWeapon(metaSoldier.weapon.name)
+                                   .WithMetaSoldierId(metaSoldier.uniqueId)
                                    .Build();
         }
         

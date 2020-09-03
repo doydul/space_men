@@ -1894,6 +1894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e695bac27f45c438cbb330e358de2aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scripting: {fileID: 2813923837347895489}
   map: {fileID: 8640662348927887907}
 --- !u!114 &8640662349757446151
 MonoBehaviour:

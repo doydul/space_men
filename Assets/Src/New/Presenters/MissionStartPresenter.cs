@@ -4,11 +4,12 @@ using UnityEngine;
 public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
   
     public static MissionStartPresenter instance { get; private set; }
-    
+
     void Awake() {
         instance = this;
     }
 
+    public Scripting scripting;
     public Map map;
     
     public void Present(MissionStartOutput input) {
@@ -18,6 +19,7 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
         SetFog(input.fogs);
         AlienDeployer.instance.Iterate();
         RadarBlipController.instance.ShowRadarBlips();
+        scripting.Trigger(Scripting.Event.OnMissionStart);
     }
     
     Soldier InstantiateSoldier(Data.Soldier soldierData, long index) {

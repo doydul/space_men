@@ -52,35 +52,35 @@ public class Squad {
 
     public static Squad GenerateDefault() {
         var result = new Squad();
-        result._credits = 1000;
+        // result._credits = 1000;
         for (int i = 0; i < 2; i++) {
             result._activeSoldiers.Add(SoldierData.GenerateDefault());
         }
 
-        var sol = new SoldierData();
-        sol.armour = SoldierData.DEFAULT_ARMOUR;
-        sol.weapon = "Grenade Launcher";
-        result._activeSoldiers.Add(sol);
+        // var sol = new SoldierData();
+        // sol.armour = SoldierData.DEFAULT_ARMOUR;
+        // sol.weapon = "Grenade Launcher";
+        // result._activeSoldiers.Add(sol);
 
-         sol = new SoldierData();
-        sol.armour = SoldierData.DEFAULT_ARMOUR;
-        sol.weapon = "Plasma Rifle";
-        result._activeSoldiers.Add(sol);
+        //  sol = new SoldierData();
+        // sol.armour = SoldierData.DEFAULT_ARMOUR;
+        // sol.weapon = "Plasma Rifle";
+        // result._activeSoldiers.Add(sol);
 
-        sol = new SoldierData();
-        sol.armour = SoldierData.DEFAULT_ARMOUR;
-        sol.weapon = SoldierData.DEFAULT_WEAPON;
-        result._reserveSoldiers.Add(sol);
+        // sol = new SoldierData();
+        // sol.armour = SoldierData.DEFAULT_ARMOUR;
+        // sol.weapon = SoldierData.DEFAULT_WEAPON;
+        // result._reserveSoldiers.Add(sol);
 
-        result._items.Add(new InventoryItem() {
-            name = "Assault Rifle",
-            isWeapon = true
-        });
+        // result._items.Add(new InventoryItem() {
+        //     name = "Assault Rifle",
+        //     isWeapon = true
+        // });
 
-        result._blueprints.Add(new ItemBlueprint() { item = new InventoryItem() {
-            name = "Plasma Rifle",
-            isWeapon = true
-        }});
+        // result._blueprints.Add(new ItemBlueprint() { item = new InventoryItem() {
+        //     name = "Plasma Rifle",
+        //     isWeapon = true
+        // }});
 
         result.currentCampaignName = Campaign.DEFAULT;
         return result;

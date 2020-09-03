@@ -13,6 +13,7 @@ public class Scripting : MonoBehaviour {
     }
 
     public enum Event {
+        OnMissionStart,
         OnPhaseChange,
         OnThreatEscalation,
         OnSelectSoldier,

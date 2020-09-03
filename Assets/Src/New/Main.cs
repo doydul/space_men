@@ -16,7 +16,7 @@ public class Main : MonoBehaviour {
     GameLogicOrchestrator gameLogicOrchestrator;
     public static Main instance;
 
-    void Start() {
+    void Awake() {
         Application.targetFrameRate = 30;
         instance = this;
 

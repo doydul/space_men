@@ -23,6 +23,10 @@ namespace Workers {
         public static Builder WithMaxHealth(int maxHealth) {
             return Default().WithMaxHealth(maxHealth);
         }
+
+        public static Builder WithMetaSoldierId(long uniqueId) {
+            return Default().WithMetaSoldierId(uniqueId);
+        }
         
         public static Builder At(Data.Position position) {
             return Default().At(position);
@@ -52,6 +56,11 @@ namespace Workers {
 
             public Builder WithMaxHealth(int maxHealth) {
                 data.health = new Health(maxHealth);
+                return this;
+            }
+
+            public Builder WithMetaSoldierId(long uniqueId) {
+                data.metaSoldierId = uniqueId;
                 return this;
             }
             

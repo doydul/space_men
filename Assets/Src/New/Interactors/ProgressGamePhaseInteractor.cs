@@ -288,6 +288,7 @@ namespace Interactors {
             foreach (var soldier in Soldiers.Iterate(gameState)) {
                 if (soldier.health.dead) {
                     gameState.RemoveActor(soldier.uniqueId);
+                    metaGameState.metaSoldiers.Remove(soldier.metaSoldierId);
                 }
             }
         }

@@ -15,7 +15,7 @@ public class SoldierArmouryPanel : MonoBehaviour {
     public void SetSoldierInfo(int index, SoldierDisplayInfo soldierInfo) {
         this.index = index;
         this.soldierInfo = soldierInfo;
-        if (this.soldierInfo.soldierId == null) {
+        if (this.soldierInfo == null) {
             soldierPicture.SetActive(false);
             invButton.SetActive(false);
         } else {

@@ -58,60 +58,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionName: First Mission
-  enemyProfiles:
-  - alienType: Alien
-    groupSizeMin: 1
-    groupSizeMax: 1
-    iterationsMin: 1
-    iterationsMax: 1
-    chance: 0.5
-    cooldown: 1
-  - alienType: Alien
-    groupSizeMin: 1
-    groupSizeMax: 1
-    iterationsMin: 1
-    iterationsMax: 1
-    chance: 0.5
-    cooldown: 1
-  - alienType: Alien
-    groupSizeMin: 2
-    groupSizeMax: 3
-    iterationsMin: 5
-    iterationsMax: 10
-    chance: 0.5
-    cooldown: 7
-  - alienType: Alien
-    groupSizeMin: 3
-    groupSizeMax: 7
-    iterationsMin: 1
-    iterationsMax: 1
-    chance: 0.5
-    cooldown: 3
-  - alienType: Swarmer
-    groupSizeMin: 3
-    groupSizeMax: 5
-    iterationsMin: 1
-    iterationsMax: 1
-    chance: 0.5
-    cooldown: 1
-  threatTimer: 14
-  threatProfiles:
-  - enemyProfiles:
-    - alienType: Alien
-      groupSizeMin: 0
-      groupSizeMax: 0
-      iterationsMin: 0
-      iterationsMax: 0
-      chance: 0.25
-      cooldown: 1
-  - enemyProfiles:
-    - alienType: Advanced
-      groupSizeMin: 0
-      groupSizeMax: 0
-      iterationsMin: 0
-      iterationsMax: 0
-      chance: 0.5
-      cooldown: 3
+  enemyProfiles: []
+  threatTimer: 100
+  threatProfiles: []
   rewards:
   - type: 0
     itemName: 

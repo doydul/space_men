@@ -47,6 +47,9 @@ namespace DataTypes {
 
         public void Remove(long id) {
             metaSoldiers.RemoveElement(id);
+            for (int i = 0; i < squad.Length; i++) {
+                if (squad[i] != null && squad[i].uniqueId == id) squad[i] = null;
+            }
         }
     }
 }

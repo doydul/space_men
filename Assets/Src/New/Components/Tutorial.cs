@@ -6,6 +6,8 @@ public class Tutorial : MonoBehaviour {
     public TutorialPanel secondPanel;
     public TutorialPanel thirdPanel;
     public TutorialPanel fourthPanel;
+    public ScriptingController controller;
+    public Tile alienSpawnTile;
 
     void OnSelectSoldier() {
         if (!firstPanel.shown) firstPanel.Show();
@@ -17,6 +19,10 @@ public class Tutorial : MonoBehaviour {
 
     void OnPhaseChange() {
         if (!thirdPanel.shown) thirdPanel.Show();
+    }
+
+    void OnMissionStart() {
+        controller.SpawnAliens("Alien", (int)alienSpawnTile.gridLocation.x, (int)alienSpawnTile.gridLocation.y, Data.Direction.Up);
     }
 
     public void HandleThirdPanelClosed() {

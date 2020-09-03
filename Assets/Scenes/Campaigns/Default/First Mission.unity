@@ -3295,6 +3295,7 @@ GameObject:
   - component: {fileID: 359358154}
   - component: {fileID: 359358156}
   - component: {fileID: 359358155}
+  - component: {fileID: 359358157}
   m_Layer: 0
   m_Name: Tile 2, 8
   m_TagString: Untagged
@@ -3355,6 +3356,18 @@ MonoBehaviour:
       m_Calls: []
   open: 1
   gridLocation: {x: 2, y: 8}
+--- !u!114 &359358157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359358153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3203828eeb2443a8db3842491234ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &361262291
 GameObject:
   m_ObjectHideFlags: 0
@@ -14908,6 +14921,8 @@ MonoBehaviour:
   secondPanel: {fileID: 757535241}
   thirdPanel: {fileID: 757535242}
   fourthPanel: {fileID: 757535243}
+  controller: {fileID: 1067892548}
+  alienSpawnTile: {fileID: 2112755529}
 --- !u!1 &1720155017
 GameObject:
   m_ObjectHideFlags: 0

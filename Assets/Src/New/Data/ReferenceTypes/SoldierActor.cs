@@ -4,6 +4,7 @@ namespace Data {
 
         public override bool isSoldier { get { return true; } }
 
+        public long metaSoldierId { get; set; }
         public string armourName { get; set; }
         public string weaponName { get; set; }
         public int exp { get; set; }
