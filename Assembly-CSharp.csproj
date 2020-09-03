@@ -137,6 +137,7 @@
      <Compile Include="Assets\Src\New\Components\SelectionMenu.cs" />
      <Compile Include="Assets\Src\New\Components\SelectionMenuPanel.cs" />
      <Compile Include="Assets\Src\New\Components\SoldierArmouryPanel.cs" />
+     <Compile Include="Assets\Src\New\Components\SoldierIcon.cs" />
      <Compile Include="Assets\Src\New\Components\TurnButtons.cs" />
      <Compile Include="Assets\Src\New\Components\Tutorial.cs" />
      <Compile Include="Assets\Src\New\Components\TutorialPanel.cs" />

@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  soldierPicture: {fileID: 1125150610726798}
+  soldierIcon: {fileID: 2502722817843008950}
   invButton: {fileID: 1023049092082908}
 --- !u!1 &1662016575780536
 GameObject:
@@ -348,6 +348,7 @@ GameObject:
   - component: {fileID: 224220709554849856}
   - component: {fileID: 222634555815104564}
   - component: {fileID: 114584914717645486}
+  - component: {fileID: 2502722817843008950}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -410,6 +411,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2502722817843008950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662016575780536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e2907bd72e842719539c9f74e6fafc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 114584914717645486}
 --- !u!1 &1911538328085546
 GameObject:
   m_ObjectHideFlags: 0

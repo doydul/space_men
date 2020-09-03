@@ -21,7 +21,7 @@ after advancing phase, alien will appear. widget will appear explaining alien mo
 - when phase advanced
 
 ## Alpha ToDo
-- Meta soldier needs to somehow link to soldiers in gamestate so we know whos died
+- Allow filling empty holes in squad
 - Implement hiring solders from the armoury page
 - Add some proper icons for post mission reward summary
 

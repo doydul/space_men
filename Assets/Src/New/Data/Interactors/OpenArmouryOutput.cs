@@ -8,6 +8,7 @@ namespace Data {
 
     public class SoldierDisplayInfo {
         
+        public bool empty;
         public long soldierId;
         public string weaponName;
         public string armourName;

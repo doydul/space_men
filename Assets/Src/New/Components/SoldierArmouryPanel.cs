@@ -6,7 +6,7 @@ using Data;
 public class SoldierArmouryPanel : MonoBehaviour {
 
     public ArmouryController controller;
-    public GameObject soldierPicture;
+    public SoldierIcon soldierIcon;
     public GameObject invButton;
 
     SoldierDisplayInfo soldierInfo;
@@ -15,11 +15,10 @@ public class SoldierArmouryPanel : MonoBehaviour {
     public void SetSoldierInfo(int index, SoldierDisplayInfo soldierInfo) {
         this.index = index;
         this.soldierInfo = soldierInfo;
+        soldierIcon.SetSoldierInfo(soldierInfo);
         if (this.soldierInfo == null) {
-            soldierPicture.SetActive(false);
             invButton.SetActive(false);
         } else {
-            soldierPicture.SetActive(true);
             invButton.SetActive(true);
         }
     }

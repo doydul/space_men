@@ -1,31 +1,30 @@
 public class DebugSaveGenerator {
     public static MetaGameSave Generate() {
+        int soldierNum = 5;
+        var items = new MetaItemSave[soldierNum * 2];
+        var soldiers = new MetaSoldierSave[soldierNum];
+        for (int i = 0; i < soldierNum; i++) {
+            items[i * 2] = new MetaItemSave {
+                uniqueId = i * 2,
+                name = "Basic",
+                type = MetaItemTypeSave.Armour
+            };
+            items[i * 2 + 1] = new MetaItemSave {
+                uniqueId = i * 2 + 1,
+                name = "Assault Rifle",
+                type = MetaItemTypeSave.Weapon
+            };
+            soldiers[i] = new MetaSoldierSave {
+                uniqueId = i,
+                armourId = i * 2,
+                weaponId = i * 2 + 1
+            };
+        }
         return new MetaGameSave {
             credits = 0,
             currentCampaign = "Default",
             currentMission = "First Mission",
-            items = new MetaItemSave[] {
-                new MetaItemSave {
-                    uniqueId = 1,
-                    name = "Basic",
-                    type = MetaItemTypeSave.Armour
-                },
-                new MetaItemSave {
-                    uniqueId = 2,
-                    name = "Basic",
-                    type = MetaItemTypeSave.Armour
-                },
-                new MetaItemSave {
-                    uniqueId = 3,
-                    name = "Assault Rifle",
-                    type = MetaItemTypeSave.Weapon
-                },
-                new MetaItemSave {
-                    uniqueId = 4,
-                    name = "Assault Rifle",
-                    type = MetaItemTypeSave.Weapon
-                }
-            },
+            items = items,
             blueprints = new MetaItemSave[] {
                 new MetaItemSave {
                     name = "Basic",
@@ -36,20 +35,9 @@ public class DebugSaveGenerator {
                     type = MetaItemTypeSave.Weapon
                 }
             },
-            soldiers = new MetaSoldierSave[] {
-                new MetaSoldierSave {
-                    uniqueId = 1,
-                    armourId = 1,
-                    weaponId = 3
-                },
-                new MetaSoldierSave {
-                    uniqueId = 2,
-                    armourId = 2,
-                    weaponId = 4
-                }
-            },
+            soldiers = soldiers,
             squadIds = new long[] {
-                1, 2
+                1, 2, 3, 4
             }
         };
     }
