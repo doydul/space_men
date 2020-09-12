@@ -8,14 +8,17 @@ public class Initializer : InitializerBase {
 
     protected override void GenerateControllerMapping() {
         controllerMapping.Add(typeof(UIController), new Dictionary<Type, Type> {
-            { typeof(ProgressGamePhaseInteractor), typeof(ProgressGamePhasePresenter) }
+            { typeof(ProgressGamePhaseInteractor), typeof(ProgressGamePhasePresenter) },
+            { typeof(OpenShipAbilitiesInteractor), typeof(OpenShipAbilitiesPresenter) },
+            { typeof(DisplayShipAbilityTargetsInteractor), typeof(DisplayShipAbilityTargetsPresenter) }
         });
         controllerMapping.Add(typeof(MapController), new Dictionary<Type, Type> {
             { typeof(MissionStartInteractor), typeof(MissionStartPresenter) },
             { typeof(MoveSoldierInteractor), typeof(MoveSoldierPresenter) },
             { typeof(ActorActionsInteractor), typeof(ActorActionsPresenter) },
             { typeof(TurnSoldierInteractor), typeof(TurnSoldierPresenter) },
-            { typeof(SoldierShootInteractor), typeof(SoldierShootPresenter) }
+            { typeof(SoldierShootInteractor), typeof(SoldierShootPresenter) },
+            { typeof(ExecuteShipAbilityInteractor), typeof(ExecuteShipAbilityPresenter) }
         });
         controllerMapping.Add(typeof(ScriptingController), new Dictionary<Type, Type> {
             { typeof(FinishMissionInteractor), typeof(FinishMissionPresenter) },
@@ -38,11 +41,13 @@ public class Initializer : InitializerBase {
         gameState.mapStore = mapStore;
         gameState.Init();
 
-        dependencies.Add(gameState);
+        // dependencies.Add(gameState);
         dependencies.Add(new AlienStore());
         dependencies.Add(new SoldierStore());
         dependencies.Add(new MissionStore());
         dependencies.Add(new CampaignStore());
+
+        factory.RegisterDependency(typeof(GameState), gameState);
     }
 
     protected override void Initialize() {

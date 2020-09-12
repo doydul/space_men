@@ -9,6 +9,8 @@ public class UIController : Controller {
     public BlackFade blackFade;
 
     public ProgressGamePhaseInteractor progressGamePhaseInteractor { get; set; }
+    public OpenShipAbilitiesInteractor openShipAbilitiesInteractor { get; set; }
+    public DisplayShipAbilityTargetsInteractor displayShipAbilityTargetsInteractor { get; set; }
     
     public void ProgressGamePhase() {
         if (!disabled) progressGamePhaseInteractor.Interact(new ProgressGamePhaseInput());
@@ -33,5 +35,17 @@ public class UIController : Controller {
     public void ShowMessagePopup(string message) {
         if (disabled) return;
         infoPanel.Display(message);
+    }
+
+    public void OpenShipAbilitiesPanel() {
+        if (disabled) return;
+        openShipAbilitiesInteractor.Interact(new OpenShipAbilitiesInput {});
+    }
+
+    public void DisplayShipAbilityTargets(ShipAbilityType abilityType) {
+        if (disabled) return;
+        displayShipAbilityTargetsInteractor.Interact(new DisplayShipAbilityTargetsInput {
+            abilityType = abilityType
+        });
     }
 }

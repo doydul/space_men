@@ -1,36 +1,22 @@
 # Planning
 ## Beta (one fully playable campaign)
-- tutorial
-- Workshop page: 30
 - Misc: 3
-- Soldier perma-death: 5
-- Hiring soldiers: 5
 - Items content: 
 - Aliens content:
 - More mission objectives: 
 - Level content:
 
-## Tutorial
-tutorial level is a small level with enemies that spawn individually when the player moves over certain squares.
-starts out showing just a single soldier, with a curser indicator so the player will click him.
-upon click, we show a widget that will explain movement and turning.
-when the player moves soldier, widget will appear that explains phases and phase button.
-after advancing phase, alien will appear. widget will appear explaining alien movement.
-- when soldier clicked
-- when soldier moved
-- when phase advanced
+## Next
+- ship teleporter
+  - introduce menu for ship abilities
+    - Move teleportsoldier ability logic into its own class
+      - should contain methods for checking if the ability is usable, getting the reason its _not_ usable, getting possible targets, and executing
+
 
 ## Alpha ToDo
-- Allow filling empty holes in squad
-- Implement hiring solders from the armoury page
 - Add some proper icons for post mission reward summary
+- add ability to scroll in item/soldier select screen
 
-- Make common game objects into prefab so that they can be easily copied and changed between scenes
-- Create a tutorial level
-  - Need start of game trigger to open initial tutorial prompt
-  - Additional prompts will be activated by walking on certain squares 
-  - Will need new ScriptingController action/interactor for spawning aliens
-  - Will need new ScriptingController action/interactor for limiting soldier movement
 - Create more levels!
 - Create more aliens!
 - Create more weapons! (specifically level 2 and maybe 3 weapons)
@@ -58,6 +44,13 @@ after advancing phase, alien will appear. widget will appear explaining alien mo
 
 - Persistent flames from flame weapons
 - Show damage chance above aliens heads?
+
+# New Interactor Checklist
+- add line from interactor into initializer
+- add new property on controller to store the interactor
+- add presenter script to scene
+- *do implementation*
+- add any required inspector variables to presenter and controller
 
 # Principles
 

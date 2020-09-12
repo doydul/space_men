@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DataTypes;
 
 namespace Workers {
     
@@ -16,10 +17,12 @@ namespace Workers {
         public int currentThreatLevel { get; private set; }
         public string campaign { get; private set; }
         public string mission { get; private set; }
+        public ShipEnergy shipEnergy { get; private set; }
 
         public void Init() {
             actors = new Actors();
             completedSecondaryObjectives = new HashSet<int>();
+            shipEnergy = new ShipEnergy();
 
             map = new MapState();
             map.Init(mapStore.GetMap());

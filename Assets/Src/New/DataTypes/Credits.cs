@@ -8,6 +8,10 @@ namespace DataTypes {
             value = initialValue;
         }
 
+        public bool ContainsAtleast(int amount) {
+            return value >= amount;
+        }
+
         public void Add(int amount) {
             value += amount;
         }

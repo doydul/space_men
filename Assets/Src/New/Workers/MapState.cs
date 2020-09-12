@@ -29,6 +29,14 @@ namespace Workers {
             return cells[x, y];
         }
 
+        public IEnumerable<CellType> GetAllCells() {
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    yield return cells[x, y];
+                }
+            }
+        }
+
         public void UpdateCell(Position position, CellType updatedCell) {
             cells[position.x, position.y] = updatedCell;
         }

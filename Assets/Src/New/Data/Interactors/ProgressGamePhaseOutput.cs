@@ -10,6 +10,7 @@ namespace Data {
         public Data.Alien[] newAliens;
         public Position[] radarBlips;
         public ShootingStats[] shootingStats;
+        public ShipEnergyEvent? shipEnergyEvent;
     }
 
     public struct AlienAction {
@@ -25,6 +26,10 @@ namespace Data {
     public struct ShootingStats {
         public long soldierID;
         public int shots;
+    }
+
+    public struct ShipEnergyEvent {
+        public int netChange;
     }
 
     public enum AlienActionType {

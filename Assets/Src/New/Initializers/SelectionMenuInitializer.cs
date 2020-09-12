@@ -43,6 +43,7 @@ public class SelectionMenuInitializer : InitializerBase {
             public SelectableType type;
             public long id;
             public string name;
+            public string description;
         }
 
         public enum SelectableType {

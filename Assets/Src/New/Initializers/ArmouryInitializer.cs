@@ -8,6 +8,8 @@ using Data;
 
 public class ArmouryInitializer : InitializerBase {
 
+    public SoldierNameGenerator nameGenerator;
+
     public static void OpenScene() {
         SceneManager.LoadScene("Armoury");
     }
@@ -15,12 +17,17 @@ public class ArmouryInitializer : InitializerBase {
     protected override void GenerateControllerMapping() {
         controllerMapping.Add(typeof(ArmouryController), new Dictionary<Type, Type> {
             { typeof(OpenArmouryInteractor), typeof(OpenArmouryPresenter) },
-            { typeof(OpenSoldierSelectInteractor), typeof(OpenSoldierSelectPresenter) }
+            { typeof(OpenSoldierSelectInteractor), typeof(OpenSoldierSelectPresenter) },
+            { typeof(HireSolderInteractor), typeof(HireSolderPresenter) }
         });
     }
 
     protected override void GenerateDependencies() {
-        // dependencies.Add(new SomeDep());
+        if (MetaGameState.instance == null) {
+            MetaGameState.Load(0, DebugSaveGenerator.Generate());
+        }
+
+        dependencies.Add(new SoldierNameGeneratorWrapper(nameGenerator));
     }
 
     protected override void Initialize() {

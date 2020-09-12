@@ -12,6 +12,8 @@ namespace DataTypes {
             elements = new Dictionary<long, T>();
         }
 
+        public int Count => elements.Count;
+
         public long AddElement(T element) {
             var id = GenerateUniqueId();
             elements.Add(id, element);

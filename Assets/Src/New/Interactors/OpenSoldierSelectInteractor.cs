@@ -17,6 +17,7 @@ namespace Interactors {
             if (currentMetaSoldier != null) {
                 output.currentSoldier = new SoldierDisplayInfo {
                     soldierId = currentMetaSoldier.uniqueId,
+                    name = currentMetaSoldier.name,
                     weaponName = currentMetaSoldier.weapon.name,
                     armourName = currentMetaSoldier.armour.name
                 };
@@ -29,8 +30,10 @@ namespace Interactors {
                                                                   .Where(metaSoldier => !squadIds.Contains(metaSoldier.uniqueId))
                                                                   .Select(metaSoldier => new SoldierDisplayInfo {
                                                                       soldierId = metaSoldier.uniqueId,
+                                                                      name = metaSoldier.name,
                                                                       weaponName = metaSoldier.weapon.name,
-                                                                      armourName = metaSoldier.armour.name
+                                                                      armourName = metaSoldier.armour.name,
+                                                                      exp = metaSoldier.exp
                                                                   })
                                                                   .ToArray();
             

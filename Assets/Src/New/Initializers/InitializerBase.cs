@@ -6,6 +6,7 @@ public abstract class InitializerBase : MonoBehaviour {
     
     protected Dictionary<Type, Dictionary<Type, Type>> controllerMapping;
     protected List<object> dependencies;
+    protected DependencyInjector factory;
 
     protected abstract void GenerateControllerMapping();
     protected abstract void GenerateDependencies();
@@ -13,6 +14,7 @@ public abstract class InitializerBase : MonoBehaviour {
     
     void Start() {
         dependencies = new List<object>();
+        factory = new DependencyInjector();
         controllerMapping = new Dictionary<Type, Dictionary<Type, Type>>();
         GenerateControllerMapping();
         GenerateDependencies();
@@ -24,7 +26,7 @@ public abstract class InitializerBase : MonoBehaviour {
         foreach (var controllerType in controllerMapping) {
             var controller = FindObjectOfType(controllerType.Key);
             foreach (var interactorType in controllerType.Value) {
-                var interactor = Activator.CreateInstance(interactorType.Key);
+                var interactor = factory.MakeObject(interactorType.Key);
                 if (interactorType.Value != null) { 
                     var presprop = interactorType.Key.GetProperty("presenter");
                     var presenter = FindObjectOfType(interactorType.Value);

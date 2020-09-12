@@ -19,6 +19,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     public RadarBlipLayer radarBlipLayer;
     public GameObject missions;
     public BloodSplatController bloodSplats;
+    public ShipEnergyDisplay shipEnergyDisplay;
 
     public SFXLayer sfxLayer;
 
@@ -69,6 +70,12 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         } else {
             mapInput.Enable();
             uiInput.Enable();
+        }
+
+        if (input.shipEnergyEvent.HasValue) {
+            for (int i = 0; i < input.shipEnergyEvent.Value.netChange; i++) {
+                shipEnergyDisplay.FillNextPip();
+            }
         }
     }
 

@@ -19,7 +19,8 @@ namespace Data {
                 armourName = armourName,
                 weaponName = weaponName,
                 exp = exp,
-                position = position
+                position = position,
+                facing = facing
             };
         }
     }

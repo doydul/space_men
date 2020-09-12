@@ -31,12 +31,15 @@ public class PlayerActionHandler {
     public void InteractWithTile(Tile tile) {
         var actor = tile.GetActor<Actor>();
         ActorAction action;
+        ShipAction shipAction;
         if (UIData.instance.ActionFor(tile, out action)) {
             if (action.type == ActorActionType.Move) {
                 MapController.instance.MoveSoldier(action.index, tile.gridLocation);
             } else if (action.type == ActorActionType.Shoot) {
                 MapController.instance.SoldierShoot(action.index, action.actorTargetIndex);
             }
+        } else if (UIData.instance.ShipActionFor(tile, out shipAction)) {
+            MapController.instance.PerformShipAction(tile, shipAction.type);
         } else if (actor != null) {
             UIData.instance.selectedTile = tile;
             Header.instance.Display(actor);

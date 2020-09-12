@@ -35,5 +35,6 @@ public class SelectionMenu : MonoBehaviour {
 
     public void DisplaySelectable(SelectionMenuInitializer.Args.Selectable selectable) {
         leftText.text = selectable.name;
+        rightText.text = selectable.description;
     }
 }

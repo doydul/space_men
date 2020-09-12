@@ -8,6 +8,8 @@ namespace DataTypes {
         IDDictionary<MetaSoldier> metaSoldiers;
         MetaSoldier[] squad;
 
+        public int squadCount => squad.Count(metaSoldier => metaSoldier != null);
+
         public MetaSoldiers() {
             metaSoldiers = new IDDictionary<MetaSoldier>();
             squad = new MetaSoldier[6];
@@ -29,6 +31,20 @@ namespace DataTypes {
             squad[squadIndex] = metaSoldier;
         }
 
+        public bool FillFirstEmptySquadSlot(long soldierId) {
+            for (int i = 0; i < squad.Length; i++) {
+                if (squad[i] == null) {
+                    UpdateSquadRoster(soldierId, i);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool Any() {
+            return metaSoldiers.Count > 0;
+        }
+
         public MetaSoldier Get(long id) {
             return metaSoldiers.GetElement(id);
         }
@@ -39,6 +55,10 @@ namespace DataTypes {
 
         public IEnumerable<MetaSoldier> GetSquad() {
             return new List<MetaSoldier>(squad);
+        }
+
+        public IEnumerable<MetaSoldier> GetIdle() {
+            return metaSoldiers.GetElements().Where(metaSoldier => !squad.Contains(metaSoldier));
         }
 
         public MetaSoldier GetAtSquadIndex(int index) {

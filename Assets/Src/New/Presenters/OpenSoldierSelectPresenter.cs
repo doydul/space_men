@@ -21,16 +21,25 @@ public class OpenSoldierSelectPresenter : Presenter, IPresenter<OpenSoldierSelec
                     index = input.index,
                     type = SelectionMenuInitializer.Args.SelectableType.Soldiers,
                     id = input.currentSoldier.soldierId,
-                    name = "Dave"
+                    name = input.currentSoldier.name,
+                    description = DescriptionFor(input.currentSoldier)
                 },
                 selectables = input.selectableSoldiers.Select(soldier => new SelectionMenuInitializer.Args.Selectable {
                     index = input.index,
                     type = SelectionMenuInitializer.Args.SelectableType.Soldiers,
                     id = soldier.soldierId,
-                    name = "Dave"
+                    name = soldier.name,
+                    description = DescriptionFor(soldier)
                 }).ToArray()
             });
         });
+    }
+
+    string DescriptionFor(SoldierDisplayInfo soldierInfo) {
+        if (soldierInfo == null || soldierInfo.empty) return "";
+        return "weapon: " + soldierInfo.weaponName + "\n"
+             + "armour: " + soldierInfo.armourName + "\n"
+             + "exp: " + soldierInfo.exp;
     }
 }
 

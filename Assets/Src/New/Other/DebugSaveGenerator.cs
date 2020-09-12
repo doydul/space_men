@@ -1,6 +1,6 @@
 public class DebugSaveGenerator {
     public static MetaGameSave Generate() {
-        int soldierNum = 5;
+        int soldierNum = 6;
         var items = new MetaItemSave[soldierNum * 2];
         var soldiers = new MetaSoldierSave[soldierNum];
         for (int i = 0; i < soldierNum; i++) {
@@ -16,12 +16,13 @@ public class DebugSaveGenerator {
             };
             soldiers[i] = new MetaSoldierSave {
                 uniqueId = i,
+                name = "Dave",
                 armourId = i * 2,
                 weaponId = i * 2 + 1
             };
         }
         return new MetaGameSave {
-            credits = 0,
+            credits = 1000,
             currentCampaign = "Default",
             currentMission = "First Mission",
             items = items,

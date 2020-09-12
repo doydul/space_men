@@ -2,8 +2,8 @@ namespace Data {
 
     public enum Direction {
         Up,
-        Right,
+        Left,
         Down,
-        Left
+        Right
     }
 }

@@ -112,6 +112,12 @@ namespace Interactors {
                     alien.movesRemaining = alien.movement * SHOOTING_PHASE_ITERATIONS;
                 }
             }
+
+            IncreaseShipEnergy(ref result);            
+        }
+
+        void IncreaseShipEnergy(ref ProgressGamePhaseOutput result) {
+            if (gameState.shipEnergy.Increase()) result.shipEnergyEvent = new ShipEnergyEvent { netChange = 1 };
         }
 
         bool NoActionsToTake() {

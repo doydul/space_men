@@ -9,6 +9,7 @@ namespace Data {
         public string weaponName;
         public int exp;
         public int moved;
+        public Direction facing;
         
         public Position position;
     }

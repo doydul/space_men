@@ -10,7 +10,9 @@ namespace Data {
         
         public bool empty;
         public long soldierId;
+        public string name;
         public string weaponName;
         public string armourName;
+        public int exp;
     }
 }

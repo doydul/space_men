@@ -8,6 +8,7 @@ public class ArmouryController : Controller {
 
     public OpenArmouryInteractor openArmouryInteractor { private get; set; }
     public OpenSoldierSelectInteractor openSoldierSelectInteractor { private get; set; }
+    public HireSolderInteractor hireSolderInteractor { private get; set; }
 
     public void InitPage() {
         openArmouryInteractor.Interact(new OpenArmouryInput());
@@ -44,6 +45,12 @@ public class ArmouryController : Controller {
                     metaSoldierId = metaSoldierId
                 });
             });
+        }
+    }
+
+    public void HireSoldier() {
+        if (!disabled) {
+            hireSolderInteractor.Interact(new HireSolderInput());
         }
     }
 }

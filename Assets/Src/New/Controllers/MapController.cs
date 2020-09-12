@@ -16,6 +16,7 @@ public class MapController : Controller {
     public ActorActionsInteractor actorActionsInteractor { private get; set; }
     public TurnSoldierInteractor turnSoldierInteractor { private get; set; }
     public SoldierShootInteractor soldierShootInteractor { get; set; }
+    public ExecuteShipAbilityInteractor executeShipAbilityInteractor { get; set; }
     
     public void StartMission() {
         missionStartInteractor.Interact(new MissionStartInput());
@@ -76,6 +77,17 @@ public class MapController : Controller {
         turnSoldierInteractor.Interact(new TurnSoldierInput {
             index = uiData.selectedTile.GetActor<Soldier>().index,
             newFacing = Direction.Down
+        });
+    }
+
+    public void PerformShipAction(Tile tile, ShipAbilityType abilityType) {
+        if (disabled) return;
+        long selectedSoldierId = uiData.selectedMetaSoldier?.soldierId ?? 0;
+        var tilePos = tile.gridLocation;
+        executeShipAbilityInteractor.Interact(new ExecuteShipAbilityInput {
+            abilityType = abilityType,
+            targetPosition = new Position((int)tilePos.x, (int)tilePos.y),
+            metaSoldierId = selectedSoldierId
         });
     }
 }

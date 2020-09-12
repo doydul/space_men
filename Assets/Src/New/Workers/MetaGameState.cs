@@ -27,6 +27,7 @@ namespace Workers {
                 };
                 instance.metaSoldiers.Add(new MetaSoldier {
                     uniqueId = soldierSave.uniqueId,
+                    name = soldierSave.name,
                     armour = metaArmour,
                     weapon = metaWeapon,
                     exp = soldierSave.exp

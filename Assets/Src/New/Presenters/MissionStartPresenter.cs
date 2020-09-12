@@ -10,6 +10,7 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
     }
 
     public Scripting scripting;
+    public ShipEnergyDisplay shipEnergyDisplay;
     public Map map;
     
     public void Present(MissionStartOutput input) {
@@ -19,6 +20,7 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
         SetFog(input.fogs);
         AlienDeployer.instance.Iterate();
         RadarBlipController.instance.ShowRadarBlips();
+        shipEnergyDisplay.Init(5);
         scripting.Trigger(Scripting.Event.OnMissionStart);
     }
     
