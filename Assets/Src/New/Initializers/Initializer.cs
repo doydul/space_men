@@ -48,6 +48,7 @@ public class Initializer : InitializerBase {
         dependencies.Add(new CampaignStore());
 
         factory.RegisterDependency(typeof(GameState), gameState);
+        factory.RegisterDependency(typeof(MetaGameState), MetaGameState.instance);
     }
 
     protected override void Initialize() {

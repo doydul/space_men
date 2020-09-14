@@ -6,21 +6,21 @@ namespace Interactors {
     
     public class OpenShipAbilitiesInteractor : Interactor<OpenShipAbilitiesOutput> {
 
+        [Dependency] GameState gameState;
+        [Dependency] IInstantiator factory;
+
         public void Interact(OpenShipAbilitiesInput input) {
             var output = new OpenShipAbilitiesOutput();
-            
-            output.abilities = new ShipAbilityInfo[] {
-                new ShipAbilityInfo {
-                    type = ShipAbilityType.TeleportSoldierIn,
-                    usable = gameState.currentPhase == Data.GamePhase.Movement
-                          && gameState.shipEnergy.full
-                          && metaGameState.metaSoldiers.GetIdle().Any()
-                },
-                new ShipAbilityInfo {
-                    type = ShipAbilityType.TeleportAmmoIn,
-                    usable = gameState.shipEnergy.full
-                }
+
+            var shipAbilities = new ShipAbility[] {
+                factory.MakeObject<TeleportSoldierIn>(new TeleportSoldierIn.Input()),
+                factory.MakeObject<TeleportAmmoIn>(new TeleportAmmoIn.Input())
             };
+
+            output.abilities = shipAbilities.Select(shipAbility => new ShipAbilityInfo {
+                type = shipAbility.type,
+                usable = shipAbility.usable
+            }).ToArray();
             
             presenter.Present(output);
         }

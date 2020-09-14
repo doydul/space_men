@@ -4,6 +4,8 @@ namespace Data {
         
         public long soldierIndex;
         public int shotsLeft;
+        public int ammoLeft;
+        public int maxAmmo;
         public string weaponName;
         public DamageInstance[] damageInstances;
         public Position[] blastCoverage;

@@ -5,6 +5,8 @@ namespace Interactors {
     
     public class TurnSoldierInteractor : Interactor<TurnSoldierOutput> {
 
+        [Dependency] GameState gameState;
+
         public void Interact(TurnSoldierInput input) {
             var output = new TurnSoldierOutput {
                 index = input.index,

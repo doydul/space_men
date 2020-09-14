@@ -5,6 +5,7 @@ namespace Interactors {
     
     public class SpawnAliensInteractor : Interactor<SpawnAliensOutput> {
 
+        [Dependency] GameState gameState;
         public IAlienStore alienStore { private get; set; }
 
         public void Interact(SpawnAliensInput input) {

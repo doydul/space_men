@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 public class DependencyInjector : IInstantiator {
@@ -17,7 +18,7 @@ public class DependencyInjector : IInstantiator {
 	public T MakeObject<T>(params object[] args) where T : class {
 		var constructor = typeof(T).GetConstructors()[0];
 		var constructorParameters = constructor.GetParameters();
-		if (args.Length != constructorParameters.Length) throw new Exception("wrong number of constructor arguments");
+		if (args.Length != constructorParameters.Count(param => !param.IsOptional)) throw new Exception("wrong number of constructor arguments");
 		var instance = Activator.CreateInstance(typeof(T), args) as T;
 
 		var privateInstanceFields = typeof(T).GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
@@ -37,7 +38,7 @@ public class DependencyInjector : IInstantiator {
 	public object MakeObject(Type T, params object[] args) {
 		var constructor = T.GetConstructors()[0];
 		var constructorParameters = constructor.GetParameters();
-		if (args.Length != constructorParameters.Length) throw new Exception("wrong number of constructor arguments");
+		if (args.Length != constructorParameters.Count(param => !param.IsOptional)) throw new Exception("wrong number of constructor arguments");
 		var instance = Activator.CreateInstance(T, args);
 
 		var privateInstanceFields = T.GetFields(BindingFlags.NonPublic | BindingFlags.Instance);

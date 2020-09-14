@@ -1,8 +1,10 @@
+using Workers;
+
 namespace Data {
     
     public struct ExecuteShipAbilityOutput {
         
-        public Data.Soldier? newSoldier;
+        public ShipAbilityOutput shipAbilityOutput;
         public int newShipEnergyLevel;
     }
 }

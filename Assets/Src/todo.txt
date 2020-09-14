@@ -7,10 +7,13 @@
 - Level content:
 
 ## Next
-- ship teleporter
-  - introduce menu for ship abilities
-    - Move teleportsoldier ability logic into its own class
-      - should contain methods for checking if the ability is usable, getting the reason its _not_ usable, getting possible targets, and executing
+- implement ammo crate
+  - crate contains 8 charges
+  - when on top of the crate, a button should be shown to pick up ammo
+  - picking up ammo fully refills soldiers ammo but makes them unable to shoot that turn
+- implement teleport of ammo crate
+  - costs 2 ship energy
+  - creates crate at designated location
 
 
 ## Alpha ToDo

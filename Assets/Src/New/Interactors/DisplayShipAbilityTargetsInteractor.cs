@@ -6,38 +6,29 @@ namespace Interactors {
     
     public class DisplayShipAbilityTargetsInteractor : Interactor<DisplayShipAbilityTargetsOutput> {
 
+        [Dependency] GameState gameState;
+        [Dependency] IInstantiator factory;
+
         public void Interact(DisplayShipAbilityTargetsInput input) {
             var output = new DisplayShipAbilityTargetsOutput();
-            if (!gameState.shipEnergy.full) return;
             
-            switch(input.abilityType) {
-                case ShipAbilityType.TeleportAmmoIn:
-                    GenerateTelePortAmmoInTargets(ref output);
-                    break;
-
-                case ShipAbilityType.TeleportSoldierIn:
-                    GenerateTelePortSoldierInTargets(ref output);
-                    break;
-            }
+            var shipAbilities = new ShipAbility[] {
+                factory.MakeObject<TeleportSoldierIn>(new TeleportSoldierIn.Input()),
+                factory.MakeObject<TeleportAmmoIn>(new TeleportAmmoIn.Input())
+            };
             
-            presenter.Present(output);
-        }
+            var ability = shipAbilities.First(shipAbility => shipAbility.type == input.abilityType);
 
-        void GenerateTelePortAmmoInTargets(ref DisplayShipAbilityTargetsOutput output) {
-            output.possibleActions = gameState.map.GetAllCells()
-                .Where(cell => !cell.isFoggy && !cell.isWall && !cell.hasActor)
-                .Select(cell => new ShipAction { type = ShipAbilityType.TeleportAmmoIn, target = cell.position })
-                .ToArray();
-        }
+            if (!ability.usable) return;
 
-        void GenerateTelePortSoldierInTargets(ref DisplayShipAbilityTargetsOutput output) {
-            output.possibleActions = gameState.map.GetAllCells()
-                .Where(cell => !cell.isFoggy && !cell.isWall && !cell.hasActor)
-                .Select(cell => new ShipAction { type = ShipAbilityType.TeleportSoldierIn, target = cell.position })
+            output.possibleActions = ability.possibleTargetSquares
+                .Select(pos => new ShipAction { type = ability.type, target = pos })
                 .ToArray();
-            output.possibleTargetMetaSoldiers = metaGameState.metaSoldiers.GetIdle()
+            output.possibleTargetMetaSoldiers = ability.possibleTargetMetaSoldiers
                 .Select(metaSoldier => ConvertMetaSoldier(metaSoldier))
                 .ToArray();
+            
+            presenter.Present(output);
         }
 
         SoldierDisplayInfo ConvertMetaSoldier(MetaSoldier metaSoldier) {

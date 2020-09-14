@@ -8,8 +8,11 @@ public class ShipAbilityButton : MonoBehaviour {
     public Image image;
     public Sprite teleportSoldierInSprite;
     public Sprite teleportAmmoInSprite;
+    public GameObject greyOverlay;
 
     public Action OnClick;
+
+    bool disabled;
 
     public void DisplaySpriteFor(ShipAbilityType abilityType) {
         switch(abilityType) {
@@ -23,7 +26,17 @@ public class ShipAbilityButton : MonoBehaviour {
         }
     }
 
+    public void Disable() {
+        greyOverlay.SetActive(true);
+        disabled = true;
+    }
+
+    public void Enable() {
+        greyOverlay.SetActive(false);
+        disabled = false;
+    }
+
     public void HandleClick() {
-        OnClick();
+        if (!disabled) OnClick();
     }
 }

@@ -8,6 +8,7 @@ namespace Interactors {
     
     public class ActorActionsInteractor : Interactor<ActorActionsOutput> {
 
+        [Dependency] GameState gameState;
         public ISoldierStore soldierStore { private get; set; }
 
         public void Interact(ActorActionsInput input) {

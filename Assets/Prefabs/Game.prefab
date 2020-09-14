@@ -3250,6 +3250,7 @@ MonoBehaviour:
   map: {fileID: 8640662348927887907}
   uiData: {fileID: 8640662349498499150}
   mapHighlighter: {fileID: 8640662348927887918}
+  shipAbilitiesPanel: {fileID: 6388236434985050249}
   metaSoldierSelectPanel: {fileID: 8016390758625395125}
 --- !u!114 &3962371843279780890
 MonoBehaviour:

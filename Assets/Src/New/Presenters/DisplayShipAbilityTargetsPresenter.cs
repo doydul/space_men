@@ -8,6 +8,7 @@ public class DisplayShipAbilityTargetsPresenter : Presenter, IPresenter<DisplayS
     public Map map;
     public UIData uiData;
     public MapHighlighter mapHighlighter;
+    public ShipAbilitiesPanel shipAbilitiesPanel;
     public MetaSoldierSelectPanel metaSoldierSelectPanel;
     
     void Awake() {
@@ -15,6 +16,7 @@ public class DisplayShipAbilityTargetsPresenter : Presenter, IPresenter<DisplayS
     }
     
     public void Present(DisplayShipAbilityTargetsOutput input) {
+        shipAbilitiesPanel.Close();
         if (input.possibleTargetMetaSoldiers != null) {
             metaSoldierSelectPanel.Open(input.possibleTargetMetaSoldiers, (selectedSoldier) => {
                 uiData.selectedMetaSoldier = selectedSoldier;

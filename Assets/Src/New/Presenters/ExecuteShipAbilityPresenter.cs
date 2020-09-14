@@ -17,8 +17,8 @@ public class ExecuteShipAbilityPresenter : Presenter, IPresenter<ExecuteShipAbil
     public void Present(ExecuteShipAbilityOutput input) {
         shipEnergyDisplay.Drain();
 
-        if (input.newSoldier.HasValue) {
-            InstantiateSoldier(input.newSoldier.Value);
+        if (input.shipAbilityOutput.newSoldier.HasValue) {
+            InstantiateSoldier(input.shipAbilityOutput.newSoldier.Value);
         }
 
         uiData.ClearSelection();

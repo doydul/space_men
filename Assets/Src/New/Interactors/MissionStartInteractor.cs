@@ -6,6 +6,8 @@ namespace Interactors {
     
     public class MissionStartInteractor : Interactor<MissionStartOutput> {
 
+        [Dependency] GameState gameState;
+
         public void Interact(MissionStartInput input) {
             var output = new MissionStartOutput();
             

@@ -7,6 +7,7 @@ namespace Interactors {
     
     public class FinishMissionInteractor : Interactor<FinishMissionOutput> {
 
+        [Dependency] GameState gameState;
         public IMissionStore missionStore { private get; set; }
         public ICampaignStore campaignStore { private get; set; }
 

@@ -31,9 +31,12 @@ public class ShipAbilitiesPanel : MonoBehaviour {
         var script = button.GetComponent<ShipAbilityButton>();
         script.DisplaySpriteFor(shipAbility.type);
         script.OnClick = () => {
-            Close();
             controller.DisplayShipAbilityTargets(shipAbility.type);
         };
-        // TODO: grey out button if it isn't usable
+        if (shipAbility.usable) {
+            script.Enable();
+        } else {
+            script.Disable();
+        }
     }
 }

@@ -14,15 +14,15 @@ namespace Workers
             this.armourStats = armourStats;
         }
 
-        public long uniqueId { get { return soldier.uniqueId; } }
-        public string weaponName { get { return soldier.weaponName; } }
-        public Position position { get { return soldier.position; } }
-        public Direction facing { get { return soldier.facing; } }
-        public int accuracy { get { return weaponStats.accuracy; } }
-        public int armourPen { get { return weaponStats.armourPen; } }
-        public int minDamage { get { return weaponStats.minDamage; } }
-        public int maxDamage { get { return weaponStats.maxDamage; } }
-        public int blast { get { return (int)weaponStats.blast; } }
+        public long uniqueId => soldier.uniqueId;
+        public string weaponName => soldier.weaponName;
+        public Position position => soldier.position;
+        public Direction facing => soldier.facing;
+        public int accuracy => weaponStats.accuracy;
+        public int armourPen => weaponStats.armourPen;
+        public int minDamage => weaponStats.minDamage;
+        public int maxDamage => weaponStats.maxDamage;
+        public int blast => (int)weaponStats.blast;
         public int totalShots { get {
             if (soldier.moved > armourStats.movement) {
                 return 0;
@@ -32,14 +32,19 @@ namespace Workers
                 return weaponStats.shotsWhenStill;
             }
         } }
-        public int shotsRemaining { get { return totalShots - soldier.ammoSpent; } }
+        public int shotsRemaining => totalShots - soldier.shotsFiredThisTurn;
+        public int maxAmmo => weaponStats.ammo;
+        public int ammoRemaining => weaponStats.ammo - soldier.ammoSpent;
 
         public bool CanShoot() {
-            return soldier.moved <= 0 && soldier.ammoSpent < weaponStats.shotsWhenStill ||
-                   soldier.moved <= armourStats.movement && soldier.ammoSpent < weaponStats.shotsWhenMoving;
+            return (soldier.moved <= 0 && soldier.shotsFiredThisTurn < weaponStats.shotsWhenStill ||
+                   soldier.moved <= armourStats.movement && soldier.shotsFiredThisTurn < weaponStats.shotsWhenMoving)
+                   && shotsRemaining > 0
+                   && ammoRemaining > 0;
         }
 
-        public void IncrementAmmoSpent() {
+        public void IncrementShotsFired() {
+            soldier.shotsFiredThisTurn += 1;
             soldier.ammoSpent += 1;
         }
 

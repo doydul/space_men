@@ -39,6 +39,7 @@ namespace Data {
         public int maxDamage;
         public int shotsWhenMoving;
         public int shotsWhenStill;
+        public int ammo;
         public float blast;
 
         public bool isNull => cost == -1;

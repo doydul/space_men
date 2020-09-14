@@ -5,6 +5,7 @@ namespace Interactors {
     
     public class CompleteSecondaryMissionInteractor : Interactor<CompleteSecondaryMissionOutput> {
         
+        [Dependency] GameState gameState;
         public IMissionStore missionStore { private get; set; }
 
         public void Interact(CompleteSecondaryMissionInput input) {

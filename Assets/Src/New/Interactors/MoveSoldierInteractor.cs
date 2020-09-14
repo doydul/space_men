@@ -5,6 +5,7 @@ namespace Interactors {
     
     public class MoveSoldierInteractor : Interactor<MoveSoldierOutput> {
 
+        [Dependency] GameState gameState;
         public ISoldierStore soldierStore { private get; set; }
 
         public void Interact(MoveSoldierInput input) {

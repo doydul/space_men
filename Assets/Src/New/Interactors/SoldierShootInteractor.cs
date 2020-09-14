@@ -9,6 +9,7 @@ namespace Interactors {
     
     public class SoldierShootInteractor : Interactor<SoldierShootOutput> {
 
+        [Dependency] GameState gameState;
         public IAlienStore alienStore { private get; set; }
         public ISoldierStore soldierStore { private get; set; }
 
@@ -32,8 +33,10 @@ namespace Interactors {
 
             if (!soldierDecorator.CanShoot()) return;
 
-            soldierDecorator.IncrementAmmoSpent();
+            soldierDecorator.IncrementShotsFired();
             output.shotsLeft = soldierDecorator.shotsRemaining;
+            output.ammoLeft = soldierDecorator.ammoRemaining;
+            output.maxAmmo = soldierDecorator.maxAmmo;
 
             if (soldierDecorator.blast > 0) {
                 ShootBlastWeapon(soldierDecorator, alienDecorator, ref output);

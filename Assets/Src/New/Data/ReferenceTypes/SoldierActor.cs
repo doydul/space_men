@@ -9,6 +9,7 @@ namespace Data {
         public string weaponName { get; set; }
         public int exp { get; set; }
         public int moved { get; set; }
+        public int shotsFiredThisTurn { get; set; }
         public int ammoSpent { get; set; }
         
         public Data.Soldier ToValueType() {

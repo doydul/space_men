@@ -12,6 +12,7 @@ namespace Interactors {
         private const int SHOOTING_PHASE_ITERATIONS = 3;
         private const int MIN_SPAWN_DISTANCE = 12;
 
+        [Dependency] GameState gameState;
         public IAlienStore alienStore { private get; set; }
         public ISoldierStore soldierStore { private get; set; }
         public IMissionStore missionStore { private get; set; }
@@ -105,7 +106,7 @@ namespace Interactors {
             foreach (var actor in gameState.GetActors()) {
                 if (actor is SoldierActor) {
                     var soldier = actor as SoldierActor;
-                    soldier.ammoSpent = 0;
+                    soldier.shotsFiredThisTurn = 0;
                     soldier.moved = 0;
                 } else if (actor is AlienActor) {
                     var alien = actor as AlienActor;

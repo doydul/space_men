@@ -30,6 +30,7 @@ public class SoldierStore : ISoldierStore {
             maxDamage = data.maxDamage,
             shotsWhenMoving = data.shotsWhenMoving,
             shotsWhenStill = data.shotsWhenStill,
+            ammo = data.ammo,
             blast = data.blast
         };
     }
