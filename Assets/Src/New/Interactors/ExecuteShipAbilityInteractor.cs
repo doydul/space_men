@@ -17,7 +17,9 @@ namespace Interactors {
                     metaSoldierId = input.metaSoldierId,
                     targetSquare = input.targetPosition
                 }),
-                factory.MakeObject<TeleportAmmoIn>(new TeleportAmmoIn.Input())
+                factory.MakeObject<TeleportAmmoIn>(new TeleportAmmoIn.Input {
+                    targetSquare = input.targetPosition
+                })
             };
 
             var ability = shipAbilities.First(shipAbility => shipAbility.type == input.abilityType);

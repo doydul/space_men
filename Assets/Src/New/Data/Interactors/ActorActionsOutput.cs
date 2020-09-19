@@ -19,6 +19,7 @@ namespace Data {
         Shoot,
         Turn,
         PossibleMove,
-        PossibleAttack
+        PossibleAttack,
+        CollectAmmo
     }
 }

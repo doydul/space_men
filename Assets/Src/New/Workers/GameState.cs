@@ -38,16 +38,20 @@ namespace Workers {
             return actors.GetActors();
         }
         
-        public long AddActor(Data.Actor actor) {
+        public long AddActor(Data.Actor actor, bool background = false) {
             var cell = map.GetCell(actor.position);
-            cell.actor = actor;
+            if (background) {
+                cell.backgroundActor = actor;
+            } else {
+                cell.actor = actor;
+            }
             return actors.AddActor(actor);
         }
 
         public void RemoveActor(long actorId) {
             var actor = GetActor(actorId);
             var cell = map.GetCell(actor.position);
-            cell.ClearActor();
+            cell.RemoveActor(actorId);
             actors.RemoveActor(actorId);
         }
 

@@ -13,6 +13,8 @@ namespace Interactors {
         private const int MIN_SPAWN_DISTANCE = 12;
 
         [Dependency] GameState gameState;
+        [Dependency] IInstantiator factory;
+
         public IAlienStore alienStore { private get; set; }
         public ISoldierStore soldierStore { private get; set; }
         public IMissionStore missionStore { private get; set; }
@@ -108,6 +110,7 @@ namespace Interactors {
                     var soldier = actor as SoldierActor;
                     soldier.shotsFiredThisTurn = 0;
                     soldier.moved = 0;
+                    soldier.shootingDisabled = false;
                 } else if (actor is AlienActor) {
                     var alien = actor as AlienActor;
                     alien.movesRemaining = alien.movement * SHOOTING_PHASE_ITERATIONS;
@@ -124,9 +127,7 @@ namespace Interactors {
         bool NoActionsToTake() {
             foreach (var actor in gameState.GetActors().Where(actor => actor is SoldierActor)) {
                 var soldier = actor as SoldierActor;
-                var weaponStats = soldierStore.GetWeaponStats(soldier.weaponName);
-                var armourStats = soldierStore.GetArmourStats(soldier.armourName);
-                var wrapper = new SoldierDecorator(soldier, weaponStats, armourStats);
+                var wrapper = factory.MakeObject<SoldierDecorator>(soldier);
                 if (SoldierActions.ShootingActionsFor(gameState, wrapper).Any()) return false;
             }
             return true;

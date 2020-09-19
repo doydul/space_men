@@ -18,7 +18,8 @@ public class Initializer : InitializerBase {
             { typeof(ActorActionsInteractor), typeof(ActorActionsPresenter) },
             { typeof(TurnSoldierInteractor), typeof(TurnSoldierPresenter) },
             { typeof(SoldierShootInteractor), typeof(SoldierShootPresenter) },
-            { typeof(ExecuteShipAbilityInteractor), typeof(ExecuteShipAbilityPresenter) }
+            { typeof(ExecuteShipAbilityInteractor), typeof(ExecuteShipAbilityPresenter) },
+            { typeof(CollectAmmoInteractor), typeof(CollectAmmoPresenter) }
         });
         controllerMapping.Add(typeof(ScriptingController), new Dictionary<Type, Type> {
             { typeof(FinishMissionInteractor), typeof(FinishMissionPresenter) },
@@ -49,6 +50,7 @@ public class Initializer : InitializerBase {
 
         factory.RegisterDependency(typeof(GameState), gameState);
         factory.RegisterDependency(typeof(MetaGameState), MetaGameState.instance);
+        factory.RegisterDependency(typeof(ISoldierStore), new SoldierStore());
     }
 
     protected override void Initialize() {

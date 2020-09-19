@@ -7,8 +7,10 @@ public class ActorActionsPresenter : Presenter, IPresenter<ActorActionsOutput> {
     public static ActorActionsPresenter instance { get; private set; }
 
     public UIData uiData;
+    public Map map;
     public MapHighlighter mapHighlighter;
-    public GameObject turnButtonsContainer;
+    public TurnButtons turnButtons;
+    public WorldButton collectAmmoButton;
     
     void Awake() {
         instance = this;
@@ -18,9 +20,15 @@ public class ActorActionsPresenter : Presenter, IPresenter<ActorActionsOutput> {
         uiData.actorActions = input.actions;
         mapHighlighter.HighlightPossibleActions(input.actions);
         if (input.actions.Any(action => action.type == ActorActionType.Turn)) {
-            turnButtonsContainer.SetActive(true);
+            turnButtons.Show();
         } else {
-            turnButtonsContainer.SetActive(false);
+            turnButtons.Hide();
+        }
+        if (input.actions.Any(action => action.type == ActorActionType.CollectAmmo)) {
+            var ammoAction = input.actions.First(action => action.type == ActorActionType.CollectAmmo);
+            collectAmmoButton.Show(map.GetTileAt(new Vector2(ammoAction.target.x, ammoAction.target.y)));
+        } else {
+            collectAmmoButton.Hide();
         }
     }
 }

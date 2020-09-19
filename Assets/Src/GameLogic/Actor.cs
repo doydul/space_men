@@ -55,7 +55,7 @@ public class Actor : MonoBehaviour {
 
     public void Die(float timer = 0) {
         dead = true;
-        tile.RemoveActor();
+        tile.RemoveActorByIndex(index);
         Destroy(this.gameObject, timer);
     }
 

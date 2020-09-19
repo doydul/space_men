@@ -9,6 +9,8 @@ namespace Interactors {
     public class ActorActionsInteractor : Interactor<ActorActionsOutput> {
 
         [Dependency] GameState gameState;
+        [Dependency] IInstantiator factory;
+
         public ISoldierStore soldierStore { private get; set; }
 
         public void Interact(ActorActionsInput input) {
@@ -30,8 +32,7 @@ namespace Interactors {
                 return;
             }
             var soldier = actor as SoldierActor;
-            var armour = soldierStore.GetArmourStats(soldier.armourName);
-            var remainingMovement = armour.movement + armour.sprint - soldier.moved;
+            var wrapper = factory.MakeObject<SoldierDecorator>(soldier);
             var map = gameState.map;
             
             var result = new List<CheckedCell>();
@@ -44,7 +45,7 @@ namespace Interactors {
             while (LeafCells.Count > 0) {
                 var newLeafCells = new List<CheckedCell>();
                 foreach (var cell in LeafCells) {
-                    if (cell.distance >= remainingMovement) continue;
+                    if (cell.distance >= wrapper.remainingMovement) continue;
                     foreach (var adjCell in new AdjacentCells(map).Iterate(cell.cell.position)) {
                         if (!checkedPositions.Contains(adjCell.position)) { 
                             if (!adjCell.isWall &&
@@ -67,12 +68,19 @@ namespace Interactors {
                     type = ActorActionType.Move,
                     index = soldier.uniqueId,
                     target = checkedCell.cell.position,
-                    sprint = soldier.moved + checkedCell.distance > armour.movement
+                    sprint = soldier.moved + checkedCell.distance > wrapper.movement
                 }).ToList(); 
             actionsList.Add(new ActorAction {
                 type = ActorActionType.Turn,
                 index = soldier.uniqueId
             });
+            if (map.GetCell(soldier.position.x, soldier.position.y).backgroundActor.isCrate && wrapper.ammoRemaining < wrapper.maxAmmo) {
+                actionsList.Add(new ActorAction {
+                    type = ActorActionType.CollectAmmo,
+                    index = soldier.uniqueId,
+                    target = soldier.position
+                });
+            }
             output.actions = actionsList.ToArray();
         }
 
@@ -83,9 +91,7 @@ namespace Interactors {
                 return;
             }
             var soldier = actor as SoldierActor;
-            var weaponStats = soldierStore.GetWeaponStats(soldier.weaponName);
-            var armourStats = soldierStore.GetArmourStats(soldier.armourName);
-            var wrapper = new SoldierDecorator(soldier, weaponStats, armourStats);
+            var wrapper = factory.MakeObject<SoldierDecorator>(soldier);
             var result = SoldierActions.ShootingActionsFor(gameState, wrapper);
 
             output.actions = result.ToArray();

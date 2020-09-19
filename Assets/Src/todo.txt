@@ -7,13 +7,14 @@
 - Level content:
 
 ## Next
-- implement ammo crate
-  - crate contains 8 charges
-  - when on top of the crate, a button should be shown to pick up ammo
-  - picking up ammo fully refills soldiers ammo but makes them unable to shoot that turn
-- implement teleport of ammo crate
-  - costs 2 ship energy
-  - creates crate at designated location
+- rework mission class so that it goes in the scene instead of in a prefab
+  - campaign should be a scriptable object which basically just contains the names of each mission scene
+  - the mission monobehaviours will be read from the scene instead of from the campaign object
+  
+- UI for ammo
+  - Soldier.cs should keep track of ammo
+  - header should display soldier current/max ammo 
+
 
 
 ## Alpha ToDo
@@ -53,6 +54,7 @@
 - add new property on controller to store the interactor
 - add presenter script to scene
 - *do implementation*
+- create method in controller that calls interactor
 - add any required inspector variables to presenter and controller
 
 # Principles

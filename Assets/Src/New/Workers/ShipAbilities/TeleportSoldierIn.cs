@@ -45,11 +45,6 @@ namespace Workers {
             };
         }
 
-        bool DoTeleportSoldierIn(ExecuteShipAbilityInput input, ref ExecuteShipAbilityOutput output) {
-            
-            return true;
-        }
-
         SoldierActor SoldierFromMetaSoldier(MetaSoldier metaSoldier) {
             return SoldierGenerator.Default()
                                    .WithArmour(metaSoldier.armour.name)

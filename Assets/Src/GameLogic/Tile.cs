@@ -6,9 +6,11 @@ using System.Collections;
 public class Tile : MonoBehaviour {
 
     public Transform actor;
+    public Transform backgroundActor;
 
     public SpriteRenderer backgroundSprite;
     public Transform foreground;
+    public Transform midground;
     public SpriteRenderer highlightSprite;
     public SpriteRenderer fogSprite;
     public UnityEvent SoldierEnter;
@@ -26,17 +28,34 @@ public class Tile : MonoBehaviour {
         if (SoldierEnter == null) SoldierEnter = new UnityEvent();
     }
 
-    public void SetActor(Transform actor) {
+    public void SetActor(Transform actor, bool background = false) {
         if (this.actor != null) Debug.Log("Omg what are you doing!");
-        this.actor = actor;
+        if (background) {
+            backgroundActor = actor;
+            actor.parent = midground;
+        } else {
+            this.actor = actor;
+            actor.parent = foreground;
+        }
         actor.GetComponent<Actor>().tile = this;
-        actor.parent = foreground;
         actor.localPosition = Vector3.zero;
         actor.localScale = new Vector3(1, 1, 1);
     }
 
     public void RemoveActor() {
         actor = null;
+    }
+
+    public void RemoveBackgroundActor() {
+        backgroundActor = null;
+    }
+
+    public void RemoveActorByIndex(long index) {
+        if (actor.GetComponent<Actor>().index == index) {
+            RemoveActor();
+        } else {
+            RemoveBackgroundActor();
+        }
     }
 
     public T GetActor<T>() {

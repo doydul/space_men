@@ -15,13 +15,30 @@ namespace Workers {
 
         public override bool usable { get {
             return gameState.currentPhase == Data.GamePhase.Movement
-                          && gameState.shipEnergy.full;
+                && gameState.shipEnergy.value >= 2;
         } }
         public override ShipAbilityType type => ShipAbilityType.TeleportAmmoIn;
+        public override Position[] possibleTargetSquares { get {
+            return gameState.map.GetAllCells()
+                .Where(cell => !cell.isFoggy && !cell.isWall && !cell.hasActor)
+                .Select(cell => cell.position)
+                .ToArray();
+        } }
 
         public override ShipAbilityOutput Execute() {
-            return new ShipAbilityOutput {
+            var crateActor = new CrateActor {
+                position = input.targetSquare,
+                health = new Health(8)
+            };
+            gameState.AddActor(crateActor, true);
+            gameState.shipEnergy.Change(-2);
 
+            return new ShipAbilityOutput {
+                newAmmoCrate = new Crate {
+                    index = crateActor.uniqueId,
+                    position = crateActor.position,
+                    remainingUses = crateActor.health.current
+                }
             };
         }
 

@@ -24,6 +24,13 @@ public class ShipEnergyDisplay : MonoBehaviour {
         nextPipIndex++;
     }
 
+    public void SetLevel(int level) {
+        Drain();
+        for (int i = 0; i < level; i++) {
+            FillNextPip();
+        }
+    }
+
     public void Drain() {
         foreach (var pip in pips) {
             pip.Drain();

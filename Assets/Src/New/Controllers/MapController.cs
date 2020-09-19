@@ -17,6 +17,7 @@ public class MapController : Controller {
     public TurnSoldierInteractor turnSoldierInteractor { private get; set; }
     public SoldierShootInteractor soldierShootInteractor { get; set; }
     public ExecuteShipAbilityInteractor executeShipAbilityInteractor { get; set; }
+    public CollectAmmoInteractor collectAmmoInteractor { get; set; }
     
     public void StartMission() {
         missionStartInteractor.Interact(new MissionStartInput());
@@ -88,6 +89,14 @@ public class MapController : Controller {
             abilityType = abilityType,
             targetPosition = new Position((int)tilePos.x, (int)tilePos.y),
             metaSoldierId = selectedSoldierId
+        });
+    }
+
+    public void CollectAmmo() {
+        if (disabled) return;
+        var soldierIndex = uiData.selectedActor.index;
+        collectAmmoInteractor.Interact(new CollectAmmoInput {
+            soldierIndex = soldierIndex
         });
     }
 }

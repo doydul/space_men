@@ -96,9 +96,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionName: Second Mission
-  enemyProfiles: []
-  threatTimer: 0
-  threatProfiles: []
+  enemyProfiles:
+  - alienType: Alien
+    groupSizeMin: 1
+    groupSizeMax: 1
+    iterationsMin: 5
+    iterationsMax: 5
+    chance: 1
+    cooldown: 5
+  - alienType: Alien
+    groupSizeMin: 2
+    groupSizeMax: 2
+    iterationsMin: 1
+    iterationsMax: 1
+    chance: 0.25
+    cooldown: 3
+  threatTimer: 10
+  threatProfiles:
+  - enemyProfiles:
+    - alienType: Swarmer
+      groupSizeMin: 3
+      groupSizeMax: 3
+      iterationsMin: 1
+      iterationsMax: 1
+      chance: 0.5
+      cooldown: 2
   rewards: []
   secondaryMissions: []
   briefing: This is the second mission

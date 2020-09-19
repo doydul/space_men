@@ -211,6 +211,7 @@ public class MapEditor : Editor {
         var tile = tileObject.AddComponent<Tile>() as Tile;
         tileObject.AddComponent<BoxCollider>();
         var foregroundObject = new GameObject();
+        var midgroundObject = new GameObject();
         var backgroundObject = new GameObject();
         var highlightObject = new GameObject();
         var fogObject = new GameObject();
@@ -233,9 +234,12 @@ public class MapEditor : Editor {
         fogSpriteRenderer.sprite = map.fogSprite;
         fogObject.transform.localScale = SpriteScale(map.fogSprite);
         tile.foreground = foregroundObject.transform;
+        tile.midground = midgroundObject.transform;
         tile.gridLocation = position;
         foregroundObject.transform.parent = tileObject.transform;
         foregroundObject.transform.localPosition = new Vector3(0, 0, -2);
+        midgroundObject.transform.parent = tileObject.transform;
+        midgroundObject.transform.localPosition = new Vector3(0, 0, -1.5f);
         backgroundObject.transform.parent = tileObject.transform;
         backgroundObject.transform.localPosition = new Vector3(0, 0, 0);
         highlightObject.transform.parent = tileObject.transform;

@@ -17,7 +17,7 @@ public class DisplayShipAbilityTargetsPresenter : Presenter, IPresenter<DisplayS
     
     public void Present(DisplayShipAbilityTargetsOutput input) {
         shipAbilitiesPanel.Close();
-        if (input.possibleTargetMetaSoldiers != null) {
+        if (input.possibleTargetMetaSoldiers != null && input.possibleTargetMetaSoldiers.Length > 0) {
             metaSoldierSelectPanel.Open(input.possibleTargetMetaSoldiers, (selectedSoldier) => {
                 uiData.selectedMetaSoldier = selectedSoldier;
                 uiData.shipActions = input.possibleActions;

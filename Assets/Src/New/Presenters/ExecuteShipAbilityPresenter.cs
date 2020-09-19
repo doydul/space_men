@@ -9,16 +9,20 @@ public class ExecuteShipAbilityPresenter : Presenter, IPresenter<ExecuteShipAbil
     public Map map;
     public ShipEnergyDisplay shipEnergyDisplay;
     public MapHighlighter mapHighlighter;
+    public Transform ammoCratePrefab;
     
     void Awake() {
         instance = this;
     }
     
     public void Present(ExecuteShipAbilityOutput input) {
-        shipEnergyDisplay.Drain();
+        shipEnergyDisplay.SetLevel(input.newShipEnergyLevel);
 
         if (input.shipAbilityOutput.newSoldier.HasValue) {
             InstantiateSoldier(input.shipAbilityOutput.newSoldier.Value);
+        }
+        if (input.shipAbilityOutput.newAmmoCrate.HasValue) {
+            InstantiateCrate(input.shipAbilityOutput.newAmmoCrate.Value);
         }
 
         uiData.ClearSelection();
@@ -39,6 +43,12 @@ public class ExecuteShipAbilityPresenter : Presenter, IPresenter<ExecuteShipAbil
 
         map.GetTileAt(new Vector2(soldierData.position.x, soldierData.position.y)).SetActor(trans);
         return soldier;
+    }
+
+    void InstantiateCrate(Data.Crate crateData) {
+        var trans = Instantiate(ammoCratePrefab) as Transform;
+        var tile = map.GetTileAt(new Vector2(crateData.position.x, crateData.position.y));
+        tile.SetActor(trans, true);
     }
 }
 

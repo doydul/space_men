@@ -82,6 +82,7 @@
      <Compile Include="Assets\Src\GameLogic\AlienMovementPhaseDirector.cs" />
      <Compile Include="Assets\Src\GameLogic\AlienPathingWrapper.cs" />
      <Compile Include="Assets\Src\GameLogic\AlienSpawnWrapper.cs" />
+     <Compile Include="Assets\Src\GameLogic\AmmoCrate.cs" />
      <Compile Include="Assets\Src\GameLogic\Barracks.cs" />
      <Compile Include="Assets\Src\GameLogic\CameraController.cs" />
      <Compile Include="Assets\Src\GameLogic\ExplodableWrapper.cs" />
@@ -167,6 +168,7 @@
      <Compile Include="Assets\Src\New\Data\Alien.cs" />
      <Compile Include="Assets\Src\New\Data\Campaign.cs" />
      <Compile Include="Assets\Src\New\Data\Cell.cs" />
+     <Compile Include="Assets\Src\New\Data\Crate.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\ActorType.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\Direction.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\MetaItemTypeSave.cs" />
@@ -181,6 +183,8 @@
      <Compile Include="Assets\Src\New\Data\Interactors\AnalyseItemOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\BuildItemInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\BuildItemOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\CollectAmmoInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\CollectAmmoOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\CompleteSecondaryMissionInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\CompleteSecondaryMissionOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\DisplayShipAbilityTargetsInput.cs" />
@@ -241,6 +245,7 @@
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\AlienSpawner.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\ArmourReward.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\CellType.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\CrateActor.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\CreditReward.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\Health.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaArmour.cs" />
@@ -285,6 +290,7 @@
      <Compile Include="Assets\Src\New\Interactors\AddSoldierToSquadInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\AnalyseItemInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\BuildItemInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\CollectAmmoInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\CompleteSecondaryMissionInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\DisplayShipAbilityTargetsInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\EquipItemInteractor.cs" />
@@ -336,6 +342,7 @@
      <Compile Include="Assets\Src\New\Presenters\AddSoldierToSquadPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\AnalyseItemPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\BuildItemPresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\CollectAmmoPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\CompleteSecondaryMissionPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\DisplayShipAbilityTargetsPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\EquipItemPresenter.cs" />
@@ -402,6 +409,8 @@
      <Compile Include="Assets\Src\New\World\WorldAnimation.cs" />
      <Compile Include="Assets\Src\New\World\WorldAnimator.cs" />
      <Compile Include="Assets\Src\New\World\WorldState.cs" />
+     <Compile Include="Assets\Src\New\WorldButton.cs" />
+     <Compile Include="Assets\Src\New\WorldButtonsContainer.cs" />
      <Compile Include="Assets\Src\UI\ButtonHandler.cs" />
      <Compile Include="Assets\Src\UI\GameUIController.cs" />
      <Compile Include="Assets\Src\UI\IDisplayableItem.cs" />

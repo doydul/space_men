@@ -9,6 +9,7 @@ public class MapInputController : MonoBehaviour {
 
     bool dragging;
     bool dragged;
+    bool uiClicked;
     Vector3 dragStartPosition;
     Vector3 mapStartPosition;
 
@@ -26,14 +27,21 @@ public class MapInputController : MonoBehaviour {
             map.transform.position = mapStartPosition + (delta * 0.03f);
         }
         if (Input.GetMouseButtonDown(0)) {
-            dragStartPosition = Input.mousePosition;
-            mapStartPosition = map.transform.position;
-            dragging = true;
+            if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) {
+                uiClicked = true;
+            } else {
+                dragStartPosition = Input.mousePosition;
+                mapStartPosition = map.transform.position;
+                dragging = true;
+            }
         }
         if (Input.GetMouseButtonUp(0)) {
-            if (!dragged) Click(Input.mousePosition);
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && !uiClicked && !dragged) {
+                Click(Input.mousePosition);
+            }
             dragging = false;
             dragged = false;
+            uiClicked = false;
         }
         if (Input.GetKeyDown("-")) {
           map.transform.localScale = map.transform.localScale * 0.9f;
@@ -44,7 +52,6 @@ public class MapInputController : MonoBehaviour {
     }
 
     public void Click(Vector2 mousePosition) {
-        if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
         RaycastHit hit;
         Physics.Raycast(cam.ScreenPointToRay(mousePosition), out hit);
         if (hit.collider != null) {

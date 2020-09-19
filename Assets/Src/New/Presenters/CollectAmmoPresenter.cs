@@ -1,0 +1,28 @@
+using Data;
+
+public class CollectAmmoPresenter : Presenter, IPresenter<CollectAmmoOutput> {
+  
+    public static CollectAmmoPresenter instance { get; private set; }
+
+    public MapController mapController;
+    public Scripting scripting;
+    public Map map;
+    
+    void Awake() {
+        instance = this;
+    }
+    
+    public void Present(CollectAmmoOutput input) {
+        if (input.remainingCrateSupplies <= 0) {
+            var soldier = map.GetActorByIndex(input.soldierIndex);
+            var tile = map.GetTileAt(soldier.gridLocation);
+            var crate = tile.backgroundActor.GetComponent<Actor>();
+            tile.RemoveBackgroundActor();
+            crate.Die();
+        }
+        scripting.Trigger(Scripting.Event.OnCollectAmmo);
+        mapController.DisplayActions(input.soldierIndex);
+        // TODO change soldiers ammo (currently we don't display ammo anywhere)
+    }
+}
+

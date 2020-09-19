@@ -11,6 +11,7 @@ namespace Data {
         public int moved { get; set; }
         public int shotsFiredThisTurn { get; set; }
         public int ammoSpent { get; set; }
+        public bool shootingDisabled { get; set; }
         
         public Data.Soldier ToValueType() {
             return new Data.Soldier {

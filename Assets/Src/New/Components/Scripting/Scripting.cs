@@ -18,6 +18,7 @@ public class Scripting : MonoBehaviour {
         OnThreatEscalation,
         OnSelectSoldier,
         OnMoveSoldier,
-        OnTraverse
+        OnTraverse,
+        OnCollectAmmo
     }
 }

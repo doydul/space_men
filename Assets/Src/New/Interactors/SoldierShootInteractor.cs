@@ -10,6 +10,8 @@ namespace Interactors {
     public class SoldierShootInteractor : Interactor<SoldierShootOutput> {
 
         [Dependency] GameState gameState;
+        [Dependency] IInstantiator factory;
+
         public IAlienStore alienStore { private get; set; }
         public ISoldierStore soldierStore { private get; set; }
 
@@ -18,11 +20,7 @@ namespace Interactors {
             
             var soldier = gameState.GetActor(input.index) as SoldierActor;
             var alien = gameState.GetActor(input.targetIndex) as AlienActor;
-            var soldierDecorator = new SoldierDecorator(
-                soldier,
-                soldierStore.GetWeaponStats(soldier.weaponName),
-                soldierStore.GetArmourStats(soldier.armourName)
-            );
+            var soldierDecorator = factory.MakeObject<SoldierDecorator>(soldier);
             var alienDecorator = new AlienDecorator(
                 alien,
                 alienStore.GetAlienStats(alien.type)

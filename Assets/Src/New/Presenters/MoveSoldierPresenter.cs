@@ -46,7 +46,7 @@ public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
         foreach (var soldier in map.GetActors<Soldier>()) {
             if (soldier.index == index) return soldier;
         }
-        throw new System.Exception("Soldier could not be found");
+        throw new System.Exception("Soldier could not be found: " + index);
     }
 
     Actor.Direction ConvertDirection(Data.Direction direction) {
