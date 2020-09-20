@@ -123234,6 +123234,141 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: threatProfiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: threatProfiles.Array.data[0].enemyProfiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: missionName
+      value: Second Mission
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[0].alienType
+      value: Alien
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[0].groupSizeMin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[0].groupSizeMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[0].iterationsMin
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[0].iterationsMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[0].chance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[0].cooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[1].alienType
+      value: Alien
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[1].groupSizeMin
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[1].groupSizeMax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[1].iterationsMin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[1].iterationsMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[1].chance
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: enemyProfiles.Array.data[1].cooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: threatTimer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: threatProfiles.Array.data[0].enemyProfiles.Array.data[0].alienType
+      value: Swarmer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: threatProfiles.Array.data[0].enemyProfiles.Array.data[0].groupSizeMin
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: threatProfiles.Array.data[0].enemyProfiles.Array.data[0].groupSizeMax
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: threatProfiles.Array.data[0].enemyProfiles.Array.data[0].iterationsMin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: threatProfiles.Array.data[0].enemyProfiles.Array.data[0].iterationsMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: threatProfiles.Array.data[0].enemyProfiles.Array.data[0].chance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: threatProfiles.Array.data[0].enemyProfiles.Array.data[0].cooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: briefing
+      value: This is the second mission
+      objectReference: {fileID: 0}
     - target: {fileID: 4445236857069892565, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -123423,6 +123558,11 @@ PrefabInstance:
         type: 3}
       propertyPath: height
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8640662349426691727, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 8641362589518881506, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}

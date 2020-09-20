@@ -17,7 +17,7 @@ namespace Interactors {
 
         public IAlienStore alienStore { private get; set; }
         public ISoldierStore soldierStore { private get; set; }
-        public IMissionStore missionStore { private get; set; }
+        [Dependency] IMissionStore missionStore;
         
         int stage;
         AlienSpawnerGenerator alienSpawnerGenerator;

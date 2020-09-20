@@ -15,7 +15,7 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
     
     public void Present(MissionStartOutput input) {
         foreach (var soldier in input.soldiers) {
-            InstantiateSoldier(soldier, soldier.index);
+            InstantiateSoldier(soldier, soldier.soldierId);
         }
         SetFog(input.fogs);
         AlienDeployer.instance.Iterate();
@@ -24,7 +24,7 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
         scripting.Trigger(Scripting.Event.OnMissionStart);
     }
     
-    Soldier InstantiateSoldier(Data.Soldier soldierData, long index) {
+    Soldier InstantiateSoldier(SoldierDisplayInfo soldierData, long index) {
         var trans = Instantiate(Resources.Load<Transform>("Prefabs/Soldier")) as Transform;
 
         var soldier = trans.GetComponent<Soldier>();

@@ -6,6 +6,8 @@ using Workers;
 
 public class Initializer : InitializerBase {
 
+    public MissionStore missionStore;
+
     protected override void GenerateControllerMapping() {
         controllerMapping.Add(typeof(UIController), new Dictionary<Type, Type> {
             { typeof(ProgressGamePhaseInteractor), typeof(ProgressGamePhasePresenter) },
@@ -45,12 +47,12 @@ public class Initializer : InitializerBase {
         // dependencies.Add(gameState);
         dependencies.Add(new AlienStore());
         dependencies.Add(new SoldierStore());
-        dependencies.Add(new MissionStore());
         dependencies.Add(new CampaignStore());
 
         factory.RegisterDependency(typeof(GameState), gameState);
         factory.RegisterDependency(typeof(MetaGameState), MetaGameState.instance);
         factory.RegisterDependency(typeof(ISoldierStore), new SoldierStore());
+        factory.RegisterDependency(typeof(IMissionStore), missionStore);
     }
 
     protected override void Initialize() {

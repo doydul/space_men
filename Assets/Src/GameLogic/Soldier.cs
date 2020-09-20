@@ -9,6 +9,7 @@ public class Soldier : Actor {
     public int tilesMoved { get; set; }
     public int shotsFiredThisRound { get; set; }
     public int shotsFiredFromClip { get; set; }
+    public int maxAmmo { get; set; }
     public int exp { get; set; }
     public int level { get; set; }
 
@@ -99,9 +100,8 @@ public class Soldier : Actor {
       }
     }
 
-    public void ExpendAmmo() {
-        shotsFiredThisRound += 1;
-        shotsFiredFromClip += 1;
+    public void SetAmmo(int ammo) {
+        shotsFiredFromClip = ammo;
     }
 
     public void Hurt(int damage) {

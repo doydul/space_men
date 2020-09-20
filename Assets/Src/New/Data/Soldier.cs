@@ -1,19 +1,5 @@
 namespace Data {
 
-    public struct Soldier {
-        
-        public long index;
-        public int health;
-        public int maxHealth;
-        public string armourName;
-        public string weaponName;
-        public int exp;
-        public int moved;
-        public Direction facing;
-        
-        public Position position;
-    }
-
     public enum ArmourWeight {
         Light,
         Medium,

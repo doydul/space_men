@@ -16,11 +16,7 @@ public class Squad {
     public static int credits { get { return instance._credits; } }
     public static Mission currentMission {
         get {
-            if (instance.currentMissionIndex < currentCampaign.missions.Length) {
-                return currentCampaign.missions[instance.currentMissionIndex];
-            } else {
-                return null;
-            }
+            return null;
         }
     }
 

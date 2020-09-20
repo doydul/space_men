@@ -2,7 +2,7 @@ namespace Data {
     
     public struct MissionStartOutput {
         
-        public Data.Soldier[] soldiers;
+        public SoldierDisplayInfo[] soldiers;
         public Fog[] fogs;
     }
 }

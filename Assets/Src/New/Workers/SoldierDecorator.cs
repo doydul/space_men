@@ -6,6 +6,7 @@ namespace Workers
 
         [Dependency] ISoldierStore soldierStore;
         [Dependency] GameState gameState;
+        [Dependency] MetaGameState metaGameState;
 
         SoldierActor soldier;
 
@@ -20,6 +21,7 @@ namespace Workers
         public string weaponName => soldier.weaponName;
         public Position position => soldier.position;
         public Direction facing => soldier.facing;
+        public int armour => armourStats.armourValue;
         public int movement => armourStats.movement;
         public int sprint => armourStats.sprint;
         public int remainingMovement => armourStats.movement + armourStats.sprint - soldier.moved;
@@ -65,6 +67,30 @@ namespace Workers
 
         public void DisableShooting() {
             soldier.shootingDisabled = true;
+        }
+
+        public SoldierDisplayInfo GenerateDisplayInfo() {
+            var metaSoldier = metaGameState.metaSoldiers.Get(soldier.metaSoldierId);
+            return new SoldierDisplayInfo {
+                soldierId = soldier.uniqueId,
+                name = metaSoldier.name,
+                weaponName = soldier.weaponName,
+                armourName = soldier.armourName,
+                exp = soldier.exp,
+                facing = facing,
+                movement = movement,
+                sprint = sprint,
+                remainingMovement = remainingMovement,
+                accuracy = accuracy,
+                armourPen = armourPen,
+                shotsRemaining = shotsRemaining,
+                ammoSpent = ammoSpent,
+                maxAmmo = maxAmmo,
+                armour = armour,
+                maxHealth = soldier.health.max,
+                health = soldier.health.current,
+                position = soldier.position
+            };
         }
     }
 }

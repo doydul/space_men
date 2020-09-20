@@ -7,10 +7,6 @@
 - Level content:
 
 ## Next
-- rework mission class so that it goes in the scene instead of in a prefab
-  - campaign should be a scriptable object which basically just contains the names of each mission scene
-  - the mission monobehaviours will be read from the scene instead of from the campaign object
-  
 - UI for ammo
   - Soldier.cs should keep track of ammo
   - header should display soldier current/max ammo 

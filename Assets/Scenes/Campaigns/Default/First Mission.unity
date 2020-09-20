@@ -4679,7 +4679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554866767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.70626676, y: 0.37935194, z: 56.56756}
+  m_LocalPosition: {x: -1.6, y: 0.37935194, z: 56.56756}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6510,7 +6510,7 @@ PrefabInstance:
     - target: {fileID: 6322048076920656183, guid: e7c7a2cd95ef9489ca18527eba8339bb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6322048076920656183, guid: e7c7a2cd95ef9489ca18527eba8339bb,
         type: 3}
@@ -19743,6 +19743,63 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: rewards.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: secondaryMissions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: secondaryMissions.Array.data[0].rewards.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: missionName
+      value: First Mission
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: threatTimer
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: rewards.Array.data[0].credits
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: secondaryMissions.Array.data[0].rewards.Array.data[0].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: secondaryMissions.Array.data[0].rewards.Array.data[0].itemName
+      value: Minigun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: briefing
+      value: 'Each turn is split into 2 phases; Movement and Shooting. Aliens move
+        during the player''s Shooting phase, and the player gets chances to shoot
+        them as they approach.
+
+
+        Soldiers can move, sprint, or stand still
+        on a given turn. Sprinting confers zero shots during the Shooting phase,
+        moving confers half shots and standing still confers the maximum number.
+
+
+        The
+        player wins by reaching the objective, which is marked on the map (there
+        isn''t a win screen at the moment, you''ll just have to congratulate yourself)'
+      objectReference: {fileID: 0}
     - target: {fileID: 4194368055957326038, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -19918,6 +19975,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6113535053246914716, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6802588672163919578, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -19948,11 +20010,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8402132747215630407, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8426339512536388769, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1845584327}
+    - target: {fileID: 8426339512536388769, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8427904404355010351, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
       propertyPath: m_LocalPosition.z

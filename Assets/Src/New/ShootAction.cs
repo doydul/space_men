@@ -12,8 +12,6 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
     Exploder exploder;
 
     public DelayedAction Perform(Soldier shooter, Alien target) {
-        shooter.ExpendAmmo();
-
         if (shooter.blast > 0) {
             ShootOrdnance(shooter, target);
         } else {

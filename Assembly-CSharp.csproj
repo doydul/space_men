@@ -121,6 +121,7 @@
      <Compile Include="Assets\Src\New\Components\BlackFade.cs" />
      <Compile Include="Assets\Src\New\Components\Debug\PressSpaceTrigger.cs" />
      <Compile Include="Assets\Src\New\Components\EnergyDisplayPip.cs" />
+     <Compile Include="Assets\Src\New\Components\GameHUD.cs" />
      <Compile Include="Assets\Src\New\Components\Header.cs" />
      <Compile Include="Assets\Src\New\Components\HealthBar.cs" />
      <Compile Include="Assets\Src\New\Components\Icon.cs" />
@@ -128,6 +129,7 @@
      <Compile Include="Assets\Src\New\Components\MetaSoldierButton.cs" />
      <Compile Include="Assets\Src\New\Components\MetaSoldierSelectPanel.cs" />
      <Compile Include="Assets\Src\New\Components\MissionCompletePanel.cs" />
+     <Compile Include="Assets\Src\New\Components\MissionOverview.cs" />
      <Compile Include="Assets\Src\New\Components\RadarBlipLayer.cs" />
      <Compile Include="Assets\Src\New\Components\RewardIcon.cs" />
      <Compile Include="Assets\Src\New\Components\SFXLayer.cs" />
@@ -258,6 +260,7 @@
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\WeaponReward.cs" />
      <Compile Include="Assets\Src\New\Data\ShipAbilityOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Soldier.cs" />
+     <Compile Include="Assets\Src\New\Data\SoldierDisplayInfo.cs" />
      <Compile Include="Assets\Src\New\Data\SpawnProfile.cs" />
      <Compile Include="Assets\Src\New\DataTypes\Credits.cs" />
      <Compile Include="Assets\Src\New\DataTypes\IDDictionary.cs" />

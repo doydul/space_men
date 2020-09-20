@@ -1,15 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Campaign : MonoBehaviour {
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Campaign", order = 1)]
+public class Campaign : ScriptableObject {
     
     public const string DEFAULT = "Default";
-    
-    public Mission[] missions {
-        get {
-            return GetComponents<Mission>();
-        }
-    }
+
+    public string[] missionNames;
     
     public static Campaign FromString(string campaignName) {
         return Resources.Load<Campaign>("Campaigns/" + campaignName);

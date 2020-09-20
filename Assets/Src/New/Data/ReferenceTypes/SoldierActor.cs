@@ -12,18 +12,5 @@ namespace Data {
         public int shotsFiredThisTurn { get; set; }
         public int ammoSpent { get; set; }
         public bool shootingDisabled { get; set; }
-        
-        public Data.Soldier ToValueType() {
-            return new Data.Soldier {
-                index = uniqueId,
-                health = health.current,
-                maxHealth = health.max,
-                armourName = armourName,
-                weaponName = weaponName,
-                exp = exp,
-                position = position,
-                facing = facing
-            };
-        }
     }
 }

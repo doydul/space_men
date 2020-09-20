@@ -18,8 +18,8 @@ public class ExecuteShipAbilityPresenter : Presenter, IPresenter<ExecuteShipAbil
     public void Present(ExecuteShipAbilityOutput input) {
         shipEnergyDisplay.SetLevel(input.newShipEnergyLevel);
 
-        if (input.shipAbilityOutput.newSoldier.HasValue) {
-            InstantiateSoldier(input.shipAbilityOutput.newSoldier.Value);
+        if (input.shipAbilityOutput.newSoldier != null) {
+            InstantiateSoldier(input.shipAbilityOutput.newSoldier);
         }
         if (input.shipAbilityOutput.newAmmoCrate.HasValue) {
             InstantiateCrate(input.shipAbilityOutput.newAmmoCrate.Value);
@@ -29,11 +29,11 @@ public class ExecuteShipAbilityPresenter : Presenter, IPresenter<ExecuteShipAbil
         mapHighlighter.ClearHighlights();
     }
 
-    Soldier InstantiateSoldier(Data.Soldier soldierData) {
+    Soldier InstantiateSoldier(SoldierDisplayInfo soldierData) {
         var trans = Instantiate(Resources.Load<Transform>("Prefabs/Soldier")) as Transform;
 
         var soldier = trans.GetComponent<Soldier>();
-        soldier.index = soldierData.index;
+        soldier.index = soldierData.soldierId;
         soldier.armour = Armour.Get(soldierData.armourName.ToString());
         soldier.weapon = Weapon.Get(soldierData.weaponName.ToString());
         soldier.exp = soldierData.exp;

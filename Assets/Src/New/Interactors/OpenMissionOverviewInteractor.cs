@@ -5,7 +5,7 @@ namespace Interactors {
     
     public class OpenMissionOverviewInteractor : Interactor<OpenMissionOverviewOutput> {
 
-        public IMissionStore missionStore { private get; set; }
+        [Dependency] IMissionStore missionStore;
 
         public void Interact(OpenMissionOverviewInput input) {
             var output = new OpenMissionOverviewOutput();

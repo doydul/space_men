@@ -7,6 +7,7 @@ namespace Workers {
 
         [Dependency] GameState gameState;
         [Dependency] MetaGameState metaGameState;
+        [Dependency] IInstantiator factory;
 
         Input input;
 
@@ -35,13 +36,14 @@ namespace Workers {
             var metaSoldier = metaGameState.metaSoldiers.Get(input.metaSoldierId);
             metaGameState.metaSoldiers.FillFirstEmptySquadSlot(input.metaSoldierId);
             var soldier = SoldierFromMetaSoldier(metaSoldier);
+            var decorator = factory.MakeObject<SoldierDecorator>(soldier);
             soldier.position = input.targetSquare;
             soldier.facing = (Direction)UnityEngine.Random.Range(0, 4);
             gameState.AddActor(soldier);
             gameState.shipEnergy.Drain();
 
             return new ShipAbilityOutput {
-                newSoldier = soldier.ToValueType()
+                newSoldier = decorator.GenerateDisplayInfo()
             };
         }
 

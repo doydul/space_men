@@ -7,6 +7,7 @@ namespace Interactors {
     public class MissionStartInteractor : Interactor<MissionStartOutput> {
 
         [Dependency] GameState gameState;
+        [Dependency] IInstantiator factory;
 
         public void Interact(MissionStartInput input) {
             var output = new MissionStartOutput();
@@ -19,12 +20,12 @@ namespace Interactors {
             for (int i = 0; i < squad.Count; i++) {
                 squad[i].position = gameState.map.spawners[i];
             }
-            output.soldiers = new Data.Soldier[squad.Count];
+            output.soldiers = new SoldierDisplayInfo[squad.Count];
             
             int index = 0;
             foreach (var soldier in squad) {
                 gameState.AddActor(soldier);
-                output.soldiers[index] = soldier.ToValueType();
+                output.soldiers[index] = factory.MakeObject<SoldierDecorator>(soldier).GenerateDisplayInfo();
                 index++;
             }
             AlienPathingGrid.Calculate(gameState);

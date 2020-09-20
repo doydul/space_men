@@ -2,7 +2,7 @@ namespace Data {
 
     public struct ShipAbilityOutput {
 
-        public Data.Soldier? newSoldier;
+        public SoldierDisplayInfo newSoldier;
         public Crate? newAmmoCrate;
     }
 }
