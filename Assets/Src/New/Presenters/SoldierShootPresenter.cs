@@ -47,6 +47,7 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
         var alien = map.GetActorByIndex(damageInstance.victimIndex) as Alien;
         var muzzleFlash = sfxLayer.SpawnPrefab(gunflarePrefab, soldier.muzzleFlashLocation.position, soldier.muzzleFlashLocation.rotation);
         soldierUI.SetAmmoCount(input.shotsLeft);
+        soldier.ammo = input.ammoLeft;
         yield return new WaitForSeconds(1);
         Destroy(muzzleFlash);
         if (damageInstance.attackResult == AttackResult.Hit || damageInstance.attackResult == AttackResult.Killed) {

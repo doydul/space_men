@@ -4246,6 +4246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxLayer: {fileID: 8640662348792897040}
   map: {fileID: 8640662348927887907}
+  header: {fileID: 8640662347679489820}
   mapInput: {fileID: 8640662349672773028}
   uiInput: {fileID: 8640662349672773029}
   bloodSplats: {fileID: 8640662348927887904}
@@ -4361,6 +4362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapController: {fileID: 8640662349672773028}
   scripting: {fileID: 2813923837347895489}
+  header: {fileID: 8640662347679489820}
   map: {fileID: 8640662348927887907}
 --- !u!1 &8640662349757879848
 GameObject:

@@ -8,7 +8,7 @@ public class Soldier : Actor {
     
     public int tilesMoved { get; set; }
     public int shotsFiredThisRound { get; set; }
-    public int shotsFiredFromClip { get; set; }
+    public int ammo { get; set; }
     public int maxAmmo { get; set; }
     public int exp { get; set; }
     public int level { get; set; }
@@ -72,11 +72,6 @@ public class Soldier : Actor {
         base.MoveTo(newTile);
     }
 
-    public void Reload() {
-        shotsFiredFromClip = 0;
-        tilesMoved = 100;
-    }
-
     public void StartMovementPhase() {
         // tilesMoved = 0;
         // shotsFiredThisRound = 0;
@@ -98,10 +93,6 @@ public class Soldier : Actor {
       } else {
         return distance.x < 0 && Mathf.Abs(distance.y) <= Mathf.Abs(distance.x);
       }
-    }
-
-    public void SetAmmo(int ammo) {
-        shotsFiredFromClip = ammo;
     }
 
     public void Hurt(int damage) {

@@ -8,8 +8,7 @@
 
 ## Next
 - UI for ammo
-  - Soldier.cs should keep track of ammo
-  - header should display soldier current/max ammo 
+  - make Header auto-update when actors stats change
 
 
 

@@ -31,6 +31,8 @@ public class MissionStartPresenter : Presenter, IPresenter<MissionStartOutput> {
         soldier.index = index;
         soldier.armour = Armour.Get(soldierData.armourName.ToString());
         soldier.weapon = Weapon.Get(soldierData.weaponName.ToString());
+        soldier.ammo = soldierData.maxAmmo;
+        soldier.maxAmmo = soldierData.maxAmmo;
         soldier.exp = soldierData.exp;
         soldier.maxHealth = soldierData.maxHealth;
         soldier.health = soldierData.health;

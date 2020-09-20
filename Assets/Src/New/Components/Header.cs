@@ -14,34 +14,29 @@ public class Header : MonoBehaviour {
     public Icon armourIcon;
     public TMP_Text infoText;
 
+    Actor displayedActor;
+
+    void Update() {
+        if (displayedActor != null) {
+            infoText.text = DescriptionFor(displayedActor);
+        }
+    }
+
     public void Display(Soldier soldier) {
         weaponIcon.Enable();
         armourIcon.Enable();
         weaponIcon.Init(Weapon.Get(soldier.weaponName));
         armourIcon.Init(Armour.Get(soldier.armourName));
-        var text = "";
-        text += "HP: " + soldier.health + "/" + soldier.maxHealth + "\n";
-        text += "Weapon: " + soldier.weaponName + "\n";
-        text += "Armour: " + soldier.armourName;
-
-        infoText.text = text;
     }
 
     public void Display(Alien alien) {
         weaponIcon.Disable();
         armourIcon.Disable();
-        var text = "";
-        text += "Type: " + alien.type + "\n";
-        text += "HP: " + alien.health + "/" + alien.maxHealth + "\n";
-        text += "Move Speed: " + alien.movement + "\n";
-        text += "Damage: " + alien.damage + "\n";
-        text += "Armour(%): " + alien.armour + "\n";
-
-        infoText.text = text;
     }
 
     public void Display(Actor actor) {
         if (actor == null) return;
+        displayedActor = actor;
         Show();
         if (actor is Soldier) {
             Display(actor as Soldier);
@@ -50,11 +45,30 @@ public class Header : MonoBehaviour {
         }
     }
 
+    public string DescriptionFor(Actor actor) {
+        var text = "";
+        if (actor is Alien) {
+            var alien = actor as Alien;
+            text += "Type: " + alien.type + "\n";
+            text += "HP: " + alien.health + "/" + alien.maxHealth + "\n";
+            text += "Move Speed: " + alien.movement + "\n";
+            text += "Damage: " + alien.damage + "\n";
+            text += "Armour(%): " + alien.armour + "\n";
+        } else if (actor is Soldier) {
+            var soldier = actor as Soldier;
+            text += "HP: " + soldier.health + "/" + soldier.maxHealth + "ammo: " + soldier.ammo + "/" + soldier.maxAmmo + "\n";
+            text += "Weapon: " + soldier.weaponName + "\n";
+            text += "Armour: " + soldier.armourName;
+        }
+        return text;
+    }
+
     public void Show() {
         gameObject.SetActive(true);
     }
 
     public void Hide() {
+        displayedActor = null;
         gameObject.SetActive(false);
     }
 }

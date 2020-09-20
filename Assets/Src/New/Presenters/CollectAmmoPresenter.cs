@@ -13,8 +13,9 @@ public class CollectAmmoPresenter : Presenter, IPresenter<CollectAmmoOutput> {
     }
     
     public void Present(CollectAmmoOutput input) {
+        var soldier = map.GetActorByIndex(input.soldierIndex) as Soldier;
+        soldier.ammo = input.newAmmoCount;
         if (input.remainingCrateSupplies <= 0) {
-            var soldier = map.GetActorByIndex(input.soldierIndex);
             var tile = map.GetTileAt(soldier.gridLocation);
             var crate = tile.backgroundActor.GetComponent<Actor>();
             tile.RemoveBackgroundActor();
