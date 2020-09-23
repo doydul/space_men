@@ -117,6 +117,7 @@
      <Compile Include="Assets\Src\New\ActionImpl.cs" />
      <Compile Include="Assets\Src\New\ActorActionFactory.cs" />
      <Compile Include="Assets\Src\New\Attributes\Dependency.cs" />
+     <Compile Include="Assets\Src\New\Attributes\MakeObject.cs" />
      <Compile Include="Assets\Src\New\Components\ArmouryMenu.cs" />
      <Compile Include="Assets\Src\New\Components\BlackFade.cs" />
      <Compile Include="Assets\Src\New\Components\Debug\PressSpaceTrigger.cs" />

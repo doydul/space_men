@@ -19,7 +19,6 @@ public class Initializer : InitializerBase {
             { typeof(MoveSoldierInteractor), typeof(MoveSoldierPresenter) },
             { typeof(ActorActionsInteractor), typeof(ActorActionsPresenter) },
             { typeof(TurnSoldierInteractor), typeof(TurnSoldierPresenter) },
-            { typeof(SoldierShootInteractor), typeof(SoldierShootPresenter) },
             { typeof(ExecuteShipAbilityInteractor), typeof(ExecuteShipAbilityPresenter) },
             { typeof(CollectAmmoInteractor), typeof(CollectAmmoPresenter) }
         });
@@ -53,6 +52,7 @@ public class Initializer : InitializerBase {
         factory.RegisterDependency(typeof(MetaGameState), MetaGameState.instance);
         factory.RegisterDependency(typeof(ISoldierStore), new SoldierStore());
         factory.RegisterDependency(typeof(IMissionStore), missionStore);
+        factory.RegisterDependency(typeof(IAlienStore), new AlienStore());
     }
 
     protected override void Initialize() {

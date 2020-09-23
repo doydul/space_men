@@ -2,7 +2,7 @@ namespace Interactors {
     
     public abstract class Interactor<T> {
         
-        public IPresenter<T> presenter { protected get; set; }
+        [Dependency] protected IPresenter<T> presenter;
         public Workers.MetaGameState metaGameState => Workers.MetaGameState.instance;
     }
 }

@@ -26,7 +26,6 @@ cat > ./Interactors/${modelName}Interactor.cs <<EOF
 using Data;
 using Workers;
 
-// { typeof(${modelName}Interactor), typeof(${modelName}Presenter) }
 namespace Interactors {
     
     public class ${modelName}Interactor : Interactor<${modelName}Output> {

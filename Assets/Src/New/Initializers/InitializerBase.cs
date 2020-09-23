@@ -23,23 +23,15 @@ public abstract class InitializerBase : MonoBehaviour {
     }
 
     void LoadDynamicDependencies() {
+        var presenters = FindObjectsOfType<Presenter>();
+        foreach (var presenter in presenters) {
+            factory.InjectDependencies(presenter);
+            factory.RegisterDependency(presenter.GetType().GetInterfaces()[0], presenter);
+        }
         foreach (var controllerType in controllerMapping) {
             var controller = FindObjectOfType(controllerType.Key);
             foreach (var interactorType in controllerType.Value) {
                 var interactor = factory.MakeObject(interactorType.Key);
-                if (interactorType.Value != null) { 
-                    var presprop = interactorType.Key.GetProperty("presenter");
-                    var presenter = FindObjectOfType(interactorType.Value);
-                    foreach (var property in interactorType.Value.GetProperties()) {
-                        foreach (var dependency in dependencies) {
-                            if (property.PropertyType.IsAssignableFrom(dependency.GetType())) {
-                                property.SetValue(presenter, dependency);
-                                break;
-                            }
-                        }
-                    }
-                    presprop.SetValue(interactor, presenter);
-                }
                 foreach (var property in interactorType.Key.GetProperties()) {
                     foreach (var dependency in dependencies) {
                         if (property.PropertyType.IsAssignableFrom(dependency.GetType())) {
@@ -55,6 +47,11 @@ public abstract class InitializerBase : MonoBehaviour {
                     }
                 }
             }
+        }
+
+        var controllers = FindObjectsOfType<Controller>();
+        foreach (var controller in controllers) {
+            factory.InjectDependencies(controller);
         }
     }
 }

@@ -7,10 +7,13 @@
 - Level content:
 
 ## Next
-- UI for ammo
-  - make Header auto-update when actors stats change
-
-
+- soldier abilities
+  - new type of actor action which returns all possible special abilities at that time
+  - UI just above footer? displaying all the possible abilities
+    - new prefab/script that can store a soldier action and display the correct icon for that ability, plus return it when the icon is clicked
+  - new interactor for getting special action targets
+    - takes soldier id, action type
+  - new interactor for executing special action
 
 ## Alpha ToDo
 - Add some proper icons for post mission reward summary
@@ -21,15 +24,10 @@
 - Create more weapons! (specifically level 2 and maybe 3 weapons)
 
 ## Beta ToDo
-- Ammo and reloading!
 - Other misc abilities (explosive weapon fire at ground)
 - Exp system!
 - Unlockable soldier abilities!
-- Ship teleporter! (to replace fallen soldiers mid battle)
 - Special abilities for aliens!
-
-# Refactoring
-- Store ArmourStats and WeaponStats objects on soldier actor, to avoid having to fetch them all the time
 
 # Not Urgent
 

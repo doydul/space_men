@@ -11,9 +11,8 @@ namespace Interactors {
 
         [Dependency] GameState gameState;
         [Dependency] IInstantiator factory;
-
-        public IAlienStore alienStore { private get; set; }
-        public ISoldierStore soldierStore { private get; set; }
+        [Dependency] IAlienStore alienStore;
+        [Dependency] ISoldierStore soldierStore;
 
         public void Interact(SoldierShootInput input) {
             var output = new SoldierShootOutput();

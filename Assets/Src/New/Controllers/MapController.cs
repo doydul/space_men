@@ -15,9 +15,9 @@ public class MapController : Controller {
     public MoveSoldierInteractor moveSoldierInteractor { private get; set; }
     public ActorActionsInteractor actorActionsInteractor { private get; set; }
     public TurnSoldierInteractor turnSoldierInteractor { private get; set; }
-    public SoldierShootInteractor soldierShootInteractor { get; set; }
     public ExecuteShipAbilityInteractor executeShipAbilityInteractor { get; set; }
     public CollectAmmoInteractor collectAmmoInteractor { get; set; }
+    [MakeObject] SoldierShootInteractor soldierShootInteractor;
     
     public void StartMission() {
         missionStartInteractor.Interact(new MissionStartInput());
