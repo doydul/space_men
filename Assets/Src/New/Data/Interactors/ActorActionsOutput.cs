@@ -12,6 +12,7 @@ namespace Data {
         public Position target;
         public long actorTargetIndex;
         public bool sprint;
+        public SpecialActionType specialAction;
     }
 
     public enum ActorActionType {
@@ -20,6 +21,12 @@ namespace Data {
         Turn,
         PossibleMove,
         PossibleAttack,
+        CollectAmmo,
+        Special
+    }
+
+    public enum SpecialActionType {
+        FireAtGround,
         CollectAmmo
     }
 }

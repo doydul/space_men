@@ -1,6 +1,6 @@
 public class DebugSaveGenerator {
     public static MetaGameSave Generate() {
-        int soldierNum = 6;
+        int soldierNum = 4;
         var items = new MetaItemSave[soldierNum * 2 + 3];
         var soldiers = new MetaSoldierSave[soldierNum];
         for (int i = 0; i < soldierNum; i++) {
@@ -15,12 +15,15 @@ public class DebugSaveGenerator {
                 type = MetaItemTypeSave.Weapon
             };
             soldiers[i] = new MetaSoldierSave {
-                uniqueId = i,
+                uniqueId = i + 1,
                 name = "Dave",
                 armourId = i * 2,
                 weaponId = i * 2 + 1
             };
         }
+        var sol = soldiers[0];
+        sol.weaponId = items.Length - 3;
+        soldiers[0] = sol;
         items[items.Length - 3] = new MetaItemSave {
                 uniqueId = items.Length - 3,
                 name = "Grenade Launcher",
@@ -28,7 +31,7 @@ public class DebugSaveGenerator {
             };
         items[items.Length - 2] = new MetaItemSave {
                 uniqueId = items.Length - 2,
-                name = "Grenade Launcher",
+                name = "Minigun",
                 type = MetaItemTypeSave.Weapon
             };
         items[items.Length - 1] = new MetaItemSave {

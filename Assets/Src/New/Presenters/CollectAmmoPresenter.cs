@@ -23,7 +23,6 @@ public class CollectAmmoPresenter : Presenter, IPresenter<CollectAmmoOutput> {
         }
         scripting.Trigger(Scripting.Event.OnCollectAmmo);
         mapController.DisplayActions(input.soldierIndex);
-        // TODO change soldiers ammo (currently we don't display ammo anywhere)
     }
 }
 

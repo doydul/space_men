@@ -30,6 +30,7 @@ namespace Workers
         public int minDamage => weaponStats.minDamage;
         public int maxDamage => weaponStats.maxDamage;
         public int blast => (int)weaponStats.blast;
+        public bool hasBlastWeapon => blast > 0;
         public int totalShots { get {
             if (soldier.moved > armourStats.movement) {
                 return 0;

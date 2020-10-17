@@ -18,6 +18,7 @@ public class MapController : Controller {
     public ExecuteShipAbilityInteractor executeShipAbilityInteractor { get; set; }
     public CollectAmmoInteractor collectAmmoInteractor { get; set; }
     [MakeObject] SoldierShootInteractor soldierShootInteractor;
+    [MakeObject] ExecuteSpecialAbilityInteractor executeSpecialAbilityInteractor;
     
     public void StartMission() {
         missionStartInteractor.Interact(new MissionStartInput());
@@ -97,6 +98,15 @@ public class MapController : Controller {
         var soldierIndex = uiData.selectedActor.index;
         collectAmmoInteractor.Interact(new CollectAmmoInput {
             soldierIndex = soldierIndex
+        });
+    }
+
+    public void PerformSpecialAction(Tile tile, SpecialActionType actionType) {
+        if (disabled) return;
+        executeSpecialAbilityInteractor.Interact(new ExecuteSpecialAbilityInput {
+            soldierId = uiData.selectedActor.index,
+            type = actionType,
+            targetSquare = tile == null ? default(Position) : new Position((int)tile.gridLocation.x, (int)tile.gridLocation.y)
         });
     }
 }

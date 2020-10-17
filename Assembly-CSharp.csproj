@@ -118,6 +118,8 @@
      <Compile Include="Assets\Src\New\ActorActionFactory.cs" />
      <Compile Include="Assets\Src\New\Attributes\Dependency.cs" />
      <Compile Include="Assets\Src\New\Attributes\MakeObject.cs" />
+     <Compile Include="Assets\Src\New\Components\AbilityIcon.cs" />
+     <Compile Include="Assets\Src\New\Components\AllControllers.cs" />
      <Compile Include="Assets\Src\New\Components\ArmouryMenu.cs" />
      <Compile Include="Assets\Src\New\Components\BlackFade.cs" />
      <Compile Include="Assets\Src\New\Components\Debug\PressSpaceTrigger.cs" />
@@ -150,6 +152,8 @@
      <Compile Include="Assets\Src\New\Components\SoldierArmouryPanel.cs" />
      <Compile Include="Assets\Src\New\Components\SoldierIcon.cs" />
      <Compile Include="Assets\Src\New\Components\SoldierNameGenerator.cs" />
+     <Compile Include="Assets\Src\New\Components\SpecialAbilityPanel.cs" />
+     <Compile Include="Assets\Src\New\Components\StandardAnimations.cs" />
      <Compile Include="Assets\Src\New\Components\TurnButtons.cs" />
      <Compile Include="Assets\Src\New\Components\Tutorial.cs" />
      <Compile Include="Assets\Src\New\Components\TutorialPanel.cs" />
@@ -192,10 +196,14 @@
      <Compile Include="Assets\Src\New\Data\Interactors\CompleteSecondaryMissionOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\DisplayShipAbilityTargetsInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\DisplayShipAbilityTargetsOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\DisplaySpecialAbilityTargetsInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\DisplaySpecialAbilityTargetsOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\EquipItemInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\EquipItemOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ExecuteShipAbilityInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ExecuteShipAbilityOutput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\ExecuteSpecialAbilityInput.cs" />
+     <Compile Include="Assets\Src\New\Data\Interactors\ExecuteSpecialAbilityOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\FinishMissionInput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\FinishMissionOutput.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\HireSolderInput.cs" />
@@ -263,6 +271,7 @@
      <Compile Include="Assets\Src\New\Data\Soldier.cs" />
      <Compile Include="Assets\Src\New\Data\SoldierDisplayInfo.cs" />
      <Compile Include="Assets\Src\New\Data\SpawnProfile.cs" />
+     <Compile Include="Assets\Src\New\Data\SpecialAbilityOutput.cs" />
      <Compile Include="Assets\Src\New\DataTypes\Credits.cs" />
      <Compile Include="Assets\Src\New\DataTypes\IDDictionary.cs" />
      <Compile Include="Assets\Src\New\DataTypes\MetaItems.cs" />
@@ -297,8 +306,11 @@
      <Compile Include="Assets\Src\New\Interactors\CollectAmmoInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\CompleteSecondaryMissionInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\DisplayShipAbilityTargetsInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\DisplaySpecialAbilityTargetsInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\EquipItemInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\ExecuteShipAbilityInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\ExecuteSpecialAbilityInteractor.cs" />
+     <Compile Include="Assets\Src\New\Interactors\Explosion.cs" />
      <Compile Include="Assets\Src\New\Interactors\FinishMissionInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\HireSolderInteractor.cs" />
      <Compile Include="Assets\Src\New\Interactors\Interactor.cs" />
@@ -349,8 +361,10 @@
      <Compile Include="Assets\Src\New\Presenters\CollectAmmoPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\CompleteSecondaryMissionPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\DisplayShipAbilityTargetsPresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\DisplaySpecialAbilityTargetsPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\EquipItemPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\ExecuteShipAbilityPresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\ExecuteSpecialAbilityPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\FinishMissionPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\HireSolderPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\LoadGamePresenter.cs" />
@@ -391,6 +405,7 @@
      <Compile Include="Assets\Src\New\Workers\Aliens.cs" />
      <Compile Include="Assets\Src\New\Workers\CellIterator.cs" />
      <Compile Include="Assets\Src\New\Workers\CellLayerIterator.cs" />
+     <Compile Include="Assets\Src\New\Workers\FireArc.cs" />
      <Compile Include="Assets\Src\New\Workers\FogHandler.cs" />
      <Compile Include="Assets\Src\New\Workers\GameState.cs" />
      <Compile Include="Assets\Src\New\Workers\MapState.cs" />
@@ -403,6 +418,10 @@
      <Compile Include="Assets\Src\New\Workers\SoldierGenerator.cs" />
      <Compile Include="Assets\Src\New\Workers\SoldierMove.cs" />
      <Compile Include="Assets\Src\New\Workers\Soldiers.cs" />
+     <Compile Include="Assets\Src\New\Workers\SpecialAbilities\CollectAmmo.cs" />
+     <Compile Include="Assets\Src\New\Workers\SpecialAbilities\FireAtGround.cs" />
+     <Compile Include="Assets\Src\New\Workers\SpecialAbilities\SpecialAbility.cs" />
+     <Compile Include="Assets\Src\New\Workers\SpecialActions.cs" />
      <Compile Include="Assets\Src\New\Workers\WorkshopItemList.cs" />
      <Compile Include="Assets\Src\New\World\AlienAttackAnimation.cs" />
      <Compile Include="Assets\Src\New\World\AnimationInteractor.cs" />

@@ -11,6 +11,7 @@ public class ActorActionsPresenter : Presenter, IPresenter<ActorActionsOutput> {
     public MapHighlighter mapHighlighter;
     public TurnButtons turnButtons;
     public WorldButton collectAmmoButton;
+    public SpecialAbilityPanel abilityPanel;
     
     void Awake() {
         instance = this;
@@ -30,6 +31,7 @@ public class ActorActionsPresenter : Presenter, IPresenter<ActorActionsOutput> {
         } else {
             collectAmmoButton.Hide();
         }
+        abilityPanel.Open(input.actions);
     }
 }
 

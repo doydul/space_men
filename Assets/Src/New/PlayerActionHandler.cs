@@ -37,6 +37,8 @@ public class PlayerActionHandler {
                 MapController.instance.MoveSoldier(action.index, tile.gridLocation);
             } else if (action.type == ActorActionType.Shoot) {
                 MapController.instance.SoldierShoot(action.index, action.actorTargetIndex);
+            } else if (action.type == ActorActionType.Special) {
+                MapController.instance.PerformSpecialAction(tile, action.specialAction);
             }
         } else if (UIData.instance.ShipActionFor(tile, out shipAction)) {
             MapController.instance.PerformShipAction(tile, shipAction.type);
@@ -55,6 +57,7 @@ public class PlayerActionHandler {
             UIData.instance.ClearSelection();
             MapHighlighter.instance.ClearHighlights();
             WorldButtonsContainer.instance.HideAll();
+            SpecialAbilityPanel.instance.Close();
         }
     }
 

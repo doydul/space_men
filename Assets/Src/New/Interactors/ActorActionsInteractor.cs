@@ -21,6 +21,8 @@ namespace Interactors {
             } else {
                 GetShootActions(input.index, ref output);
             }
+            var specialActions = factory.MakeObject<SpecialActions>(input.index, default(Position));
+            output.actions = output.actions.Concat(specialActions.GetSpecialActions()).ToArray();
             
             presenter.Present(output);
         }
@@ -74,13 +76,6 @@ namespace Interactors {
                 type = ActorActionType.Turn,
                 index = soldier.uniqueId
             });
-            if (map.GetCell(soldier.position.x, soldier.position.y).backgroundActor.isCrate && wrapper.ammoRemaining < wrapper.maxAmmo) {
-                actionsList.Add(new ActorAction {
-                    type = ActorActionType.CollectAmmo,
-                    index = soldier.uniqueId,
-                    target = soldier.position
-                });
-            }
             output.actions = actionsList.ToArray();
         }
 

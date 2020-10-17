@@ -11,6 +11,7 @@ public class UIController : Controller {
     public ProgressGamePhaseInteractor progressGamePhaseInteractor { get; set; }
     public OpenShipAbilitiesInteractor openShipAbilitiesInteractor { get; set; }
     public DisplayShipAbilityTargetsInteractor displayShipAbilityTargetsInteractor { get; set; }
+    [MakeObject] DisplaySpecialAbilityTargetsInteractor displaySpecialAbilityTargetsInteractor;
     
     public void ProgressGamePhase() {
         if (!disabled) progressGamePhaseInteractor.Interact(new ProgressGamePhaseInput());
@@ -46,6 +47,14 @@ public class UIController : Controller {
         if (disabled) return;
         displayShipAbilityTargetsInteractor.Interact(new DisplayShipAbilityTargetsInput {
             abilityType = abilityType
+        });
+    }
+
+    public void DisplaySpecialAbilityTargets(SpecialActionType actionType) {
+        if (disabled) return;
+        displaySpecialAbilityTargetsInteractor.Interact(new DisplaySpecialAbilityTargetsInput {
+            soldierId = uiData.selectedActor.index,
+            type = actionType
         });
     }
 }

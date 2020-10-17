@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 using Data;
 
-namespace Workers
-{
+namespace Workers {
     public static class SoldierActions {
 
         public static ActorAction[] ShootingActionsFor(GameState gameState, SoldierDecorator soldier) {
