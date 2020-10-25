@@ -6,8 +6,7 @@ public class SelectionMenu : MonoBehaviour {
     
     public SelectionMenuController selectionMenuController;
     public Transform selectionMenuPanelPrefab;
-    public ScrollRect selectablesScroll;
-    public Transform selectionMenuPanelContainer;
+    public ScrollableSelector selector;
     public TMP_Text leftText;
     public TMP_Text rightText;
 
@@ -25,12 +24,11 @@ public class SelectionMenu : MonoBehaviour {
         foreach (var selectable in args.selectables) {
             var selectionMenuPanelTransform = Instantiate(selectionMenuPanelPrefab) as Transform;
             var selectionMenuPanel = selectionMenuPanelTransform.GetComponent<SelectionMenuPanel>();
-            selectionMenuPanelTransform.SetParent(selectionMenuPanelContainer, false);
+            selector.AddButton(selectionMenuPanelTransform);
             selectionMenuPanel.selectable = selectable;
             selectionMenuPanel.controller = selectionMenuController;
             selectionMenuPanel.Init();
         }
-        selectablesScroll.normalizedPosition = Vector2.zero;
     }
 
     public void DisplaySelectable(SelectionMenuInitializer.Args.Selectable selectable) {

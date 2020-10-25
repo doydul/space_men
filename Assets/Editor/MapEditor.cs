@@ -263,6 +263,7 @@ public class MapEditor : Editor {
             columnObject.localPosition = Vector3.zero;
             columnObject.name = "Column " + x;
             columnObject.transform.parent = map.transform;
+            columnObject.localPosition = Vector3.zero;
             for (int y = 0; y < map.height; y++) {
                 tiles[x, y] = MakeTile(new Vector2(x, y), columnObject.transform);
             }

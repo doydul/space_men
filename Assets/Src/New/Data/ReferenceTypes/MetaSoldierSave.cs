@@ -6,4 +6,6 @@ public struct MetaSoldierSave {
     public long armourId;
     public long weaponId;
     public int exp;
+    public int spentAbilityPoints;
+    public UnlockableType[] unlockedAbilities;
 }

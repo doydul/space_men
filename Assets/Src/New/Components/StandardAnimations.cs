@@ -31,12 +31,12 @@ public class StandardAnimations : MonoBehaviour {
         var damageInstance = damageInstances[0];
         var alien = map.GetActorByIndex(damageInstance.victimIndex) as Alien;
         var muzzleFlash = sfxLayer.SpawnPrefab(gunflarePrefab, soldier.muzzleFlashLocation.position, soldier.muzzleFlashLocation.rotation);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         Destroy(muzzleFlash);
         if (damageInstance.attackResult == AttackResult.Hit || damageInstance.attackResult == AttackResult.Killed) {
             bloodSplats.MakeSplat(alien);
             var hitSFX = sfxLayer.SpawnPrefab(hitPrefab, alien.transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             Destroy(hitSFX);
         }
         if (damageInstance.attackResult == AttackResult.Hit) {

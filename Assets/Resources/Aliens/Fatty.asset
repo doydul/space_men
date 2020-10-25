@@ -18,6 +18,6 @@ MonoBehaviour:
   damage: 6
   armourPen: 40
   movement: 2
-  threat: 10
+  threat: 20
   expReward: 10
   chanceOfCreatingRadarBlip: 90

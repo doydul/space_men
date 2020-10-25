@@ -3,7 +3,7 @@ namespace Data {
     public struct ExecuteSpecialAbilityInput {
         
         public long soldierId;
-        public SpecialActionType type;
+        public SpecialAbilityType type;
         public Position targetSquare;
     }
 }

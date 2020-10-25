@@ -2,7 +2,7 @@ namespace Data {
     
     public struct ExecuteSpecialAbilityOutput {
         
-        public SpecialActionType type;
+        public SpecialAbilityType type;
         public SpecialAbilityOutput abilityOutput;
     }
 }

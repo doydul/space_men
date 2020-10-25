@@ -19,5 +19,5 @@ MonoBehaviour:
   armourPen: 50
   movement: 4
   threat: 10
-  expReward: 1
+  expReward: 7
   chanceOfCreatingRadarBlip: 80

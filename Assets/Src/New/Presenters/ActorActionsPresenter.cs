@@ -25,12 +25,6 @@ public class ActorActionsPresenter : Presenter, IPresenter<ActorActionsOutput> {
         } else {
             turnButtons.Hide();
         }
-        if (input.actions.Any(action => action.type == ActorActionType.CollectAmmo)) {
-            var ammoAction = input.actions.First(action => action.type == ActorActionType.CollectAmmo);
-            collectAmmoButton.Show(map.GetTileAt(new Vector2(ammoAction.target.x, ammoAction.target.y)));
-        } else {
-            collectAmmoButton.Hide();
-        }
         abilityPanel.Open(input.actions);
     }
 }

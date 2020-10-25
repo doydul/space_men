@@ -17,6 +17,7 @@ namespace Data {
         public int movement;
         public int radarBlipChance;
         public int maxHealth;
+        public int expReward;
         public string name;
     }
 }

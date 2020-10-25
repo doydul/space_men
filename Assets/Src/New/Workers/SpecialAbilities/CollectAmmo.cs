@@ -21,7 +21,7 @@ namespace Workers {
         }
 
         public override bool usable => soldier.cell.backgroundActor.isCrate && soldier.ammoSpent > 0;
-        public override SpecialActionType type => SpecialActionType.CollectAmmo;
+        public override SpecialAbilityType type => SpecialAbilityType.CollectAmmo;
         public override bool executeImmediately => true;
 
         public override SpecialAbilityOutput Execute() {

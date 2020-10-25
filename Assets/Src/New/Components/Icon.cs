@@ -13,15 +13,22 @@ public class Icon : MonoBehaviour {
         Populate(armour.icon);
     }
 
+    public void Init(int credits) {
+        var icon = Populate(Resources.Load<Transform>("Weapons/Icons/CreditsIcon"));
+        var script = icon.GetComponent<CreditsIcon>();
+        script.SetCredits(credits);
+    }
+
     public void Init() {
         Populate(Resources.Load<Transform>("SoldierIcons/DefaultSoldierIcon"));
     }
 
-    void Populate(Transform iconPrefab) {
+    Transform Populate(Transform iconPrefab) {
         if (currentImage != null) Destroy(currentImage);
         var iconTransform = Instantiate(iconPrefab) as Transform;
         iconTransform.SetParent(transform, false);
         currentImage = iconTransform.gameObject;
+        return iconTransform;
     }
 
     public void Enable() {

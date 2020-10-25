@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Advanced
   m_EditorClassIdentifier: 
   maxHealth: 2
-  armour: 60
+  armour: 70
   accModifier: 5
   damage: 5
   armourPen: 30

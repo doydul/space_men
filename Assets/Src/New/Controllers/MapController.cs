@@ -101,7 +101,7 @@ public class MapController : Controller {
         });
     }
 
-    public void PerformSpecialAction(Tile tile, SpecialActionType actionType) {
+    public void PerformSpecialAction(Tile tile, SpecialAbilityType actionType) {
         if (disabled) return;
         executeSpecialAbilityInteractor.Interact(new ExecuteSpecialAbilityInput {
             soldierId = uiData.selectedActor.index,

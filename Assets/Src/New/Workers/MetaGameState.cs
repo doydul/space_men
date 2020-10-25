@@ -30,7 +30,9 @@ namespace Workers {
                     name = soldierSave.name,
                     armour = metaArmour,
                     weapon = metaWeapon,
-                    exp = soldierSave.exp
+                    exp = soldierSave.exp,
+                    spentAbilityPoints = soldierSave.spentAbilityPoints,
+                    unlockedAbilities = soldierSave.unlockedAbilities
                 });
             }
             foreach (var itemSave in save.items) {

@@ -56,7 +56,6 @@ public class PlayerActionHandler {
             selectionState.DeselectSoldier();
             UIData.instance.ClearSelection();
             MapHighlighter.instance.ClearHighlights();
-            WorldButtonsContainer.instance.HideAll();
             SpecialAbilityPanel.instance.Close();
         }
     }

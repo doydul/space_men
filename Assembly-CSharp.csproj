@@ -122,6 +122,7 @@
      <Compile Include="Assets\Src\New\Components\AllControllers.cs" />
      <Compile Include="Assets\Src\New\Components\ArmouryMenu.cs" />
      <Compile Include="Assets\Src\New\Components\BlackFade.cs" />
+     <Compile Include="Assets\Src\New\Components\CreditsIcon.cs" />
      <Compile Include="Assets\Src\New\Components\Debug\PressSpaceTrigger.cs" />
      <Compile Include="Assets\Src\New\Components\EnergyDisplayPip.cs" />
      <Compile Include="Assets\Src\New\Components\GameHUD.cs" />
@@ -141,9 +142,11 @@
      <Compile Include="Assets\Src\New\Components\Scripting\ExtractionObjective.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\GenericObjective.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\ObjectiveCondition.cs" />
+     <Compile Include="Assets\Src\New\Components\Scripting\ReachHereObjective.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\Scripting.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\SoldierPresenceCondition.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\SoldierTraverseTrigger.cs" />
+     <Compile Include="Assets\Src\New\Components\ScrollableSelector.cs" />
      <Compile Include="Assets\Src\New\Components\SelectionMenu.cs" />
      <Compile Include="Assets\Src\New\Components\SelectionMenuPanel.cs" />
      <Compile Include="Assets\Src\New\Components\ShipAbilitiesPanel.cs" />
@@ -158,6 +161,7 @@
      <Compile Include="Assets\Src\New\Components\Tutorial.cs" />
      <Compile Include="Assets\Src\New\Components\TutorialPanel.cs" />
      <Compile Include="Assets\Src\New\Components\UIData.cs" />
+     <Compile Include="Assets\Src\New\Components\UnlockableNode.cs" />
      <Compile Include="Assets\Src\New\Components\WorkshopMenu.cs" />
      <Compile Include="Assets\Src\New\Controllers\ArmouryController.cs" />
      <Compile Include="Assets\Src\New\Controllers\Controller.cs" />
@@ -180,6 +184,8 @@
      <Compile Include="Assets\Src\New\Data\Enums\Direction.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\MetaItemTypeSave.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\MovementType.cs" />
+     <Compile Include="Assets\Src\New\Data\Enums\SpecialAbilityType.cs" />
+     <Compile Include="Assets\Src\New\Data\Enums\UnlockableType.cs" />
      <Compile Include="Assets\Src\New\Data\Fog.cs" />
      <Compile Include="Assets\Src\New\Data\GamePhase.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsInput.cs" />
@@ -343,6 +349,7 @@
      <Compile Include="Assets\Src\New\Interfaces\IReward.cs" />
      <Compile Include="Assets\Src\New\Interfaces\ISoldierNameGenerator.cs" />
      <Compile Include="Assets\Src\New\Interfaces\ISoldierStore.cs" />
+     <Compile Include="Assets\Src\New\Interfaces\IUnlockableStore.cs" />
      <Compile Include="Assets\Src\New\Main.cs" />
      <Compile Include="Assets\Src\New\MovementPhase.cs" />
      <Compile Include="Assets\Src\New\Other\AlienStore.cs" />
@@ -410,6 +417,7 @@
      <Compile Include="Assets\Src\New\Workers\GameState.cs" />
      <Compile Include="Assets\Src\New\Workers\MapState.cs" />
      <Compile Include="Assets\Src\New\Workers\MetaGameState.cs" />
+     <Compile Include="Assets\Src\New\Workers\MetaSoldierDecorator.cs" />
      <Compile Include="Assets\Src\New\Workers\ShipAbilities\ShipAbility.cs" />
      <Compile Include="Assets\Src\New\Workers\ShipAbilities\TeleportAmmoIn.cs" />
      <Compile Include="Assets\Src\New\Workers\ShipAbilities\TeleportSoldierIn.cs" />
@@ -422,6 +430,9 @@
      <Compile Include="Assets\Src\New\Workers\SpecialAbilities\FireAtGround.cs" />
      <Compile Include="Assets\Src\New\Workers\SpecialAbilities\SpecialAbility.cs" />
      <Compile Include="Assets\Src\New\Workers\SpecialActions.cs" />
+     <Compile Include="Assets\Src\New\Workers\Unlockable.cs" />
+     <Compile Include="Assets\Src\New\Workers\UnlockableGraph.cs" />
+     <Compile Include="Assets\Src\New\Workers\UnlockableStore.cs" />
      <Compile Include="Assets\Src\New\Workers\WorkshopItemList.cs" />
      <Compile Include="Assets\Src\New\World\AlienAttackAnimation.cs" />
      <Compile Include="Assets\Src\New\World\AnimationInteractor.cs" />

@@ -7,19 +7,23 @@
 - Level content:
 
 ## Next
-- create scrollable list prefab/component that allows scrolling list of items
+- create basic screen which can display unlockables
+  - create unlockable item script/prefab
+    - has a list of inspector variables, one for each unlockable type, that stores a sprite
+    - has init method that takes unlockable type and displays the correct sprite with reflection
+  - create hella sweet script that can layout the unlockables in a tree configuration
+  - create UnlockablesInitializer
+  - create OpenUnlockablesScreen interactor
+    - should return list of unlockables and unspent ability point count
+  - create UnlockAbilityInteractor
+  - create back button
 
 ## Bugs
 - actor actions don't get cleared when a ship ability is selected
 
 ## Alpha ToDo
-- Other misc abilities (explosive weapon fire at ground) 1.5
-- Add some proper icons for post mission reward summary 2
-- add ability to scroll in item/soldier select screen 2
 - Exp system! 4
-  - once exp reaches certain pre defined levels, soldier gains an ability point
-    - total ability points can be calculated from exp, so just need to store spent ability points
-  - unlockable abilities need to have pre-requisits that have to be unlocked first
+  - meta soldier must be able to store record of which abilities have been picked
   - need interactor for returning all abilities
     - should show which ones have already been unlocked for the given soldier, and how many unspent ability points
   - need interactor for unlocking an ability
@@ -31,6 +35,9 @@
   - shows all soldiers, including those in squad
   - has buttons that either take you to the soldiers inventory or just take you straight to weapon and armour select
 - persistent flames 1.5
+- create mechanism for saving game state
+  - add method to MetaGameState called CreateSave or something
+  - pass that to IMetaGameStateStore
 - don't remove metasoldiers when they die, just mark them dead instead 2
   - dead soldiers can still be part of the squad, they will have skull and crossbones over their face in armoury
   - do not spawn dead soldiers in mission, or allow them to be added to the squad

@@ -17,6 +17,7 @@ public class AlienStore : IAlienStore {
             movement = data.movement,
             radarBlipChance = data.chanceOfCreatingRadarBlip,
             maxHealth = data.maxHealth,
+            expReward = data.expReward,
             name = alienType
         };
     }

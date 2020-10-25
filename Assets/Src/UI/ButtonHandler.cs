@@ -6,8 +6,9 @@ public class ButtonHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public UnityEvent action;
 
-    private UIAnimator animator;
-    private float initialScale;
+    UIAnimator animator;
+    float initialScale;
+    bool clickDisabled;
 
     public bool animating {
         get {
@@ -31,7 +32,16 @@ public class ButtonHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerUp(PointerEventData eventData) {
         animator.Enqueue(initialScale, () => {
-            if (action != null) action.Invoke();
+            if (action != null && !clickDisabled) action.Invoke();
         }, UIAnimator.AnimationType.EaseIn);
+    }
+
+    public void Enable() {
+        clickDisabled = false;
+    }
+
+    public void Disable() {
+        clickDisabled = true;
+        OnPointerUp(null);
     }
 }

@@ -13,13 +13,13 @@ public class AbilityIcon : MonoBehaviour {
 
     bool disabled;
 
-    public void DisplaySpriteFor(SpecialActionType abilityType) {
+    public void DisplaySpriteFor(SpecialAbilityType abilityType) {
         switch(abilityType) {
-            case SpecialActionType.FireAtGround:
+            case SpecialAbilityType.FireAtGround:
                 image.sprite = fireAtGroundSprite;
                 break;
 
-            case SpecialActionType.CollectAmmo:
+            case SpecialAbilityType.CollectAmmo:
                 image.sprite = collectAmmoSprite;
                 break;
         }

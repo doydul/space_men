@@ -19,7 +19,7 @@ public class ExecuteSpecialAbilityPresenter : Presenter, IPresenter<ExecuteSpeci
     }
     
     public void Present(ExecuteSpecialAbilityOutput input) {
-        if (input.type == SpecialActionType.FireAtGround) {
+        if (input.type == SpecialAbilityType.FireAtGround) {
             var soldier = map.GetActorByIndex(input.abilityOutput.soldierIndex) as Soldier;
             var soldierUI = soldier.GetComponent<SoldierUIController>();
             soldierUI.SetAmmoCount(input.abilityOutput.shotsLeft);

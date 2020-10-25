@@ -21,7 +21,7 @@ namespace Workers {
         }
 
         public override bool usable => soldier.hasBlastWeapon && soldier.CanShoot() && gameState.currentPhase == Data.GamePhase.Shooting;
-        public override SpecialActionType type => SpecialActionType.FireAtGround;
+        public override SpecialAbilityType type => SpecialAbilityType.FireAtGround;
         public override Position[] possibleTargetSquares { get {
             var fireArc = factory.MakeObject<FireArc>(soldier.position, soldier.facing);
             var iterator = new CellIterator(soldier.position, cell => !cell.isFoggy);

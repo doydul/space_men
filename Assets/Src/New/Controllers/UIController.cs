@@ -50,7 +50,7 @@ public class UIController : Controller {
         });
     }
 
-    public void DisplaySpecialAbilityTargets(SpecialActionType actionType) {
+    public void DisplaySpecialAbilityTargets(SpecialAbilityType actionType) {
         if (disabled) return;
         displaySpecialAbilityTargetsInteractor.Interact(new DisplaySpecialAbilityTargetsInput {
             soldierId = uiData.selectedActor.index,

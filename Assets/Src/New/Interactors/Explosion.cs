@@ -61,6 +61,10 @@ namespace Workers {
                         if (health.dead) {
                             damageInstance.attackResult = AttackResult.Killed;
                             gameState.RemoveActor(cell.actor.uniqueId);
+                            if (cell.actor.isAlien) {
+                                var cellAlien = cell.actor as AlienActor;
+                                soldier.GainExp(alienStore.GetAlienStats(cellAlien.type).expReward);
+                            }
                         }
                     } else {
                         damageInstance.attackResult = AttackResult.Deflected;

@@ -26,6 +26,7 @@ public class SelectionMenuInitializer : InitializerBase {
 
     protected override void GenerateDependencies() {
         dependencies.Add(args);
+        factory.RegisterDependency(typeof(Args), args);
     }
 
     protected override void Initialize() {

@@ -4,6 +4,6 @@ namespace Data {
         
         public bool executeImmediately;
         public ActorAction[] possibleActions;
-        public SpecialActionType type;
+        public SpecialAbilityType type;
     }
 }

@@ -6,7 +6,7 @@ public class EquipItemPresenter : Presenter, IPresenter<EquipItemOutput> {
 
     public BlackFade blackFade;
     
-    public SelectionMenuInitializer.Args args { private get; set; }
+    [Dependency] SelectionMenuInitializer.Args args;
 
     void Awake() {
         instance = this;

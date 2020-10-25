@@ -1,23 +1,24 @@
 using Data;
 
-namespace Workers
-{
-    public class AlienDecorator
-    {
-        AlienActor alien;
-        AlienStats stats;
+namespace Workers {
+    public class AlienDecorator {
 
-        public AlienDecorator(AlienActor alien, AlienStats stats) {
+        [Dependency] IAlienStore alienStore;
+
+        AlienActor alien;
+
+        public AlienDecorator(AlienActor alien) {
             this.alien = alien;
-            this.stats = stats;
         }
 
-        public long uniqueId { get { return alien.uniqueId; } }
-        public Position position { get { return alien.position; } }
-        public int armour { get { return stats.armour; } }
-        public int accModifier { get { return stats.accModifier; } }
-        public bool dead { get { return alien.health.dead; } }
-        public int currentHealth { get { return alien.health.current; } }
+        public AlienStats stats => alienStore.GetAlienStats(alien.type);
+        public long uniqueId => alien.uniqueId;
+        public Position position => alien.position;
+        public int armour => stats.armour;
+        public int accModifier => stats.accModifier;
+        public bool dead => alien.health.dead;
+        public int currentHealth => alien.health.current;
+        public int expReward => stats.expReward;
 
         public void Damage(int amount) {
             alien.health.Damage(amount);

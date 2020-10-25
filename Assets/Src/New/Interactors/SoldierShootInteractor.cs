@@ -20,10 +20,7 @@ namespace Interactors {
             var soldier = gameState.GetActor(input.index) as SoldierActor;
             var alien = gameState.GetActor(input.targetIndex) as AlienActor;
             var soldierDecorator = factory.MakeObject<SoldierDecorator>(soldier);
-            var alienDecorator = new AlienDecorator(
-                alien,
-                alienStore.GetAlienStats(alien.type)
-            );
+            var alienDecorator = factory.MakeObject<AlienDecorator>(alien);
 
             output.soldierIndex = input.index;
             output.weaponName = soldierDecorator.weaponName;
@@ -58,6 +55,7 @@ namespace Interactors {
                     if (alien.dead) {
                         damageInstance.attackResult = AttackResult.Killed;
                         gameState.RemoveActor(alien.uniqueId);
+                        soldier.GainExp(alien.expReward);
                     }
                 } else {
                     damageInstance.attackResult = AttackResult.Deflected;
@@ -101,6 +99,10 @@ namespace Interactors {
                         if (health.dead) {
                             damageInstance.attackResult = AttackResult.Killed;
                             gameState.RemoveActor(cell.actor.uniqueId);
+                            if (cell.actor.isAlien) {
+                                var cellAlien = cell.actor as AlienActor;
+                                soldier.GainExp(alienStore.GetAlienStats(cellAlien.type).expReward);
+                            }
                         }
                     } else {
                         damageInstance.attackResult = AttackResult.Deflected;

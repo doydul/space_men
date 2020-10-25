@@ -1,4 +1,5 @@
 using Data;
+using UnityEngine;
 
 namespace Workers
 {
@@ -16,6 +17,7 @@ namespace Workers
 
         public WeaponStats weaponStats => soldierStore.GetWeaponStats(soldier.weaponName);
         public ArmourStats armourStats => soldierStore.GetArmourStats(soldier.armourName);
+        public MetaSoldier metaSoldier => metaGameState.metaSoldiers.Get(soldier.metaSoldierId);
         public CellType cell => gameState.map.GetCell(soldier.position);
         public long uniqueId => soldier.uniqueId;
         public string weaponName => soldier.weaponName;
@@ -31,6 +33,7 @@ namespace Workers
         public int maxDamage => weaponStats.maxDamage;
         public int blast => (int)weaponStats.blast;
         public bool hasBlastWeapon => blast > 0;
+        public int exp => metaSoldier.exp;
         public int totalShots { get {
             if (soldier.moved > armourStats.movement) {
                 return 0;
@@ -44,6 +47,10 @@ namespace Workers
         public int maxAmmo => weaponStats.ammo;
         public int ammoSpent => soldier.ammoSpent;
         public int ammoRemaining => weaponStats.ammo - soldier.ammoSpent;
+
+        public void GainExp(int amount) {
+            metaSoldier.exp += amount;
+        }
 
         public bool CanShoot() {
             return (soldier.moved <= 0 && soldier.shotsFiredThisTurn < weaponStats.shotsWhenStill ||
@@ -77,7 +84,7 @@ namespace Workers
                 name = metaSoldier.name,
                 weaponName = soldier.weaponName,
                 armourName = soldier.armourName,
-                exp = soldier.exp,
+                exp = exp,
                 facing = facing,
                 movement = movement,
                 sprint = sprint,
