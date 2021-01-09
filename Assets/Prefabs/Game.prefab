@@ -3166,7 +3166,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8640662348792897055}
+  - component: {fileID: 2104393105623264521}
   - component: {fileID: 8640662348792897040}
   m_Layer: 0
   m_Name: SFX
@@ -3175,8 +3175,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &8640662348792897055
-RectTransform:
+--- !u!4 &2104393105623264521
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3189,11 +3189,6 @@ RectTransform:
   m_Father: {fileID: 8640662348927887906}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8640662348792897040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3394,7 +3389,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8640662348792897055}
+  - {fileID: 2104393105623264521}
   - {fileID: 8640662348933302571}
   - {fileID: 8640662349426691727}
   m_Father: {fileID: 8640662348702646487}

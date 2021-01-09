@@ -9,9 +9,12 @@ public class ReachHereObjective : MonoBehaviour {
     public SoldierPresenceCondition[] conditions;
     public UnityEvent trigger;
 
+    bool triggered;
+
     void OnPhaseChange() {
-        if (conditions.Where((condition => condition.satisfied)).Count() >= soldierCountRequired) {
+        if (!triggered && conditions.Where((condition => condition.satisfied)).Count() >= soldierCountRequired) {
             trigger.Invoke();
+            triggered = true;
         }
     }
 }

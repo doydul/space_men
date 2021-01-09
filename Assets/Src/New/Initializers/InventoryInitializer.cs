@@ -22,7 +22,9 @@ public class InventoryInitializer : InitializerBase {
         });
     }
 
-    protected override void GenerateDependencies() {}
+    protected override void GenerateDependencies() {
+        factory.RegisterDependency(typeof(ISoldierStore), new SoldierStore());
+    }
 
     protected override void Initialize() {
         FindObjectOfType<InventoryController>().InitPage(args);

@@ -2438,6 +2438,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &275913179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8640662348927887907, guid: 001ef4c90adb843a382267516c72979f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8640662348860803815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b391550e2f54f84879178133d4dbfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &281413923
 GameObject:
   m_ObjectHideFlags: 0
@@ -15738,6 +15750,33 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8640662348860803815}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1719713902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719713901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dcd47e1bee2d4ddd89556ef2a53b959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 275913179}
+  trigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1067892548}
+        m_MethodName: FinishMission
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1719713904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19728,7 +19767,7 @@ PrefabInstance:
     - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
       propertyPath: secondaryMissions.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
@@ -19743,12 +19782,12 @@ PrefabInstance:
     - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
       propertyPath: threatTimer
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
       propertyPath: rewards.Array.data[0].credits
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
@@ -19763,19 +19802,8 @@ PrefabInstance:
     - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
       propertyPath: briefing
-      value: 'Each turn is split into 2 phases; Movement and Shooting. Aliens move
-        during the player''s Shooting phase, and the player gets chances to shoot
-        them as they approach.
-
-
-        Soldiers can move, sprint, or stand still
-        on a given turn. Sprinting confers zero shots during the Shooting phase,
-        moving confers half shots and standing still confers the maximum number.
-
-
-        The
-        player wins by reaching the objective, which is marked on the map (there
-        isn''t a win screen at the moment, you''ll just have to congratulate yourself)'
+      value: This is the tutorial mission where you will learn the basics of how
+        to kill aliens.
       objectReference: {fileID: 0}
     - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
@@ -19786,6 +19814,36 @@ PrefabInstance:
         type: 3}
       propertyPath: rewards.Array.data[0].itemName
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: rewards.Array.data[1].credits
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: rewards.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: rewards.Array.data[1].itemName
+      value: Needler
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: rewards.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: rewards.Array.data[2].itemName
+      value: Medium
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946455903066904863, guid: 001ef4c90adb843a382267516c72979f,
+        type: 3}
+      propertyPath: rewards.Array.data[2].credits
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4194368055957326038, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
@@ -20045,7 +20103,7 @@ PrefabInstance:
     - target: {fileID: 8640662348702646487, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.145508
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8640662348702646487, guid: 001ef4c90adb843a382267516c72979f,
         type: 3}

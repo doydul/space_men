@@ -24,10 +24,10 @@ public class SoldierPathingAndLOS : SoldierActionHandler.IPathingAndLOS, IBlocke
     public bool LocationPathable(Vector2 gridLocation) {
         var tile = GetTileAt(gridLocation);
         if (tile.actor != null && tile.GetActor<Soldier>() == null) return false;
-        foreach (var square in new AdjacentSquaresGridIterator(this).Squares(gridLocation)) {
-            var adjTile = GetTileAt(square);
-            if (tile.GetActor<Alien>() != null) return false;
-        }
+        // foreach (var square in new AdjacentSquaresGridIterator(this).Squares(gridLocation)) {
+        //     var adjTile = GetTileAt(square);
+        //     if (tile.GetActor<Alien>() != null) return false;
+        // }
         return tile.open;
     }
     

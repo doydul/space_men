@@ -7,6 +7,14 @@
 - Level content:
 
 ## Next
+- create critical hit marker
+- make sure critical hit marker shows even when attack is fatal
+- create a new medium enemy which moves 2 squares but does high damage and high armour pen
+- create a new fast enemy which does high damage but does no armour pen
+- improve ui 
+  - make shooting phase progress automatically to movement if there are no actions to take
+  - add warning ui for when a soldier is low on health or ammo
+
 - create basic screen which can display unlockables
   - create unlockable item script/prefab
     - has a list of inspector variables, one for each unlockable type, that stores a sprite
@@ -20,6 +28,8 @@
 
 ## Bugs
 - actor actions don't get cleared when a ship ability is selected
+- if you go into weapon/armour/soldier select and press select before selecting anything, causes backtrace and you have to go back
+- if soldier kills himself, he cannot be replaced with teleport?
 
 ## Alpha ToDo
 - Exp system! 4

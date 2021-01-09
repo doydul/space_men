@@ -138,7 +138,9 @@
      <Compile Include="Assets\Src\New\Components\RewardIcon.cs" />
      <Compile Include="Assets\Src\New\Components\SFXLayer.cs" />
      <Compile Include="Assets\Src\New\Components\SavePageSlot.cs" />
+     <Compile Include="Assets\Src\New\Components\Scripting\AlienDeadCondition.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\DisableObject.cs" />
+     <Compile Include="Assets\Src\New\Components\Scripting\EliminationObjective.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\ExtractionObjective.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\GenericObjective.cs" />
      <Compile Include="Assets\Src\New\Components\Scripting\ObjectiveCondition.cs" />

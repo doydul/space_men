@@ -46,8 +46,7 @@ namespace Workers {
                     foreach (var adjCell in iterator.Iterate(node.position)) {
                         if (!checkedPositions.Contains(adjCell.position) &&
                             !adjCell.isWall &&
-                            (!adjCell.actor.exists || adjCell.actor is SoldierActor) &&
-                            !(new AdjacentCells(map).Iterate(adjCell.position).Any(c => c.actor is AlienActor))) {
+                            (!adjCell.actor.exists || adjCell.actor is SoldierActor)) {
                             var newNode = new Node(
                                 adjCell.position,
                                 GetFacing(node.position, adjCell.position),

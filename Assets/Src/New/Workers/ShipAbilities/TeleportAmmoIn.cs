@@ -15,7 +15,7 @@ namespace Workers {
 
         public override bool usable { get {
             return gameState.currentPhase == Data.GamePhase.Movement
-                && gameState.shipEnergy.value >= 2;
+                && gameState.shipEnergy.value >= 5;
         } }
         public override ShipAbilityType type => ShipAbilityType.TeleportAmmoIn;
         public override Position[] possibleTargetSquares { get {
@@ -31,7 +31,7 @@ namespace Workers {
                 health = new Health(8)
             };
             gameState.AddActor(crateActor, true);
-            gameState.shipEnergy.Change(-2);
+            gameState.shipEnergy.Change(-5);
 
             return new ShipAbilityOutput {
                 newAmmoCrate = new Crate {

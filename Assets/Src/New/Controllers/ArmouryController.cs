@@ -9,6 +9,7 @@ public class ArmouryController : Controller {
     public OpenArmouryInteractor openArmouryInteractor { private get; set; }
     public OpenSoldierSelectInteractor openSoldierSelectInteractor { private get; set; }
     public HireSolderInteractor hireSolderInteractor { private get; set; }
+    [MakeObject] LoadMissionInteractor loadMissionInteractor;
 
     public void InitPage() {
         openArmouryInteractor.Interact(new OpenArmouryInput());
@@ -51,6 +52,12 @@ public class ArmouryController : Controller {
     public void HireSoldier() {
         if (!disabled) {
             hireSolderInteractor.Interact(new HireSolderInput());
+        }
+    }
+
+    public void StartMission() {
+        if (!disabled) {
+            loadMissionInteractor.Interact(new LoadMissionInput());
         }
     }
 }

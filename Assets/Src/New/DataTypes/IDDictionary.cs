@@ -37,7 +37,7 @@ namespace DataTypes {
             elements.Remove(id);
         }
 
-        long GenerateUniqueId() {
+        public long GenerateUniqueId() {
             if (currentFrame != UnityEngine.Time.frameCount) {
                 currentFrame = UnityEngine.Time.frameCount;
                 idTicker = 0;

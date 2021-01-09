@@ -8,6 +8,7 @@ namespace Data {
         public struct WeaponInfo {
             public long itemId;
             public string name;
+            public WeaponStats weaponStats;
         }
     }
 }

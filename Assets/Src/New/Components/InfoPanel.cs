@@ -6,10 +6,6 @@ public class InfoPanel : MonoBehaviour {
     public TMP_Text infoText;
     public GameObject infoPanelGO;
 
-    void Awake() {
-        Close();
-    }
-
     void Open() {
         infoPanelGO.SetActive(true);
     }

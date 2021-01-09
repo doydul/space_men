@@ -19,6 +19,7 @@ public class Scripting : MonoBehaviour {
         OnSelectSoldier,
         OnMoveSoldier,
         OnTraverse,
-        OnCollectAmmo
+        OnCollectAmmo,
+        OnActorKilled
     }
 }

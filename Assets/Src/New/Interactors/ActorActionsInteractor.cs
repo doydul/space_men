@@ -21,8 +21,11 @@ namespace Interactors {
             } else {
                 GetShootActions(input.index, ref output);
             }
-            var specialActions = factory.MakeObject<SpecialActions>(input.index, default(Position));
-            output.actions = output.actions.Concat(specialActions.GetSpecialActions()).ToArray();
+            var actor = gameState.GetActor(input.index);
+            if (actor is SoldierActor) {
+                var specialActions = factory.MakeObject<SpecialActions>(input.index, default(Position));
+                output.actions = output.actions.Concat(specialActions.GetSpecialActions()).ToArray();
+            }
             
             presenter.Present(output);
         }
@@ -51,8 +54,7 @@ namespace Interactors {
                     foreach (var adjCell in new AdjacentCells(map).Iterate(cell.cell.position)) {
                         if (!checkedPositions.Contains(adjCell.position)) { 
                             if (!adjCell.isWall &&
-                                (!adjCell.actor.exists || adjCell.actor is SoldierActor) &&
-                                !(new AdjacentCells(map).Iterate(adjCell.position).Any(c => c.actor is AlienActor))) {
+                                (!adjCell.actor.exists || adjCell.actor is SoldierActor)) {
                                 var checkedCell = new CheckedCell {
                                     cell = adjCell,
                                     distance = cell.distance + 1

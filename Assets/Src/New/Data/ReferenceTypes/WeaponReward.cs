@@ -11,7 +11,7 @@ namespace Data {
         }
 
         public void Grant(MetaGameState metaGameState) {
-            metaGameState.metaItems.Add(new MetaWeapon {
+            metaGameState.metaItems.AddInventoryItem(new MetaWeapon {
                 name = weaponName
             });
         }

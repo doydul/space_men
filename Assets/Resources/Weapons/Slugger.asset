@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Slugger
   m_EditorClassIdentifier: 
   icon: {fileID: 5026745411207313143, guid: e40f3473f69924114bb79a48f410c9e7, type: 3}
-  accuracy: 45
+  accuracy: 40
   armourPen: 10
-  minDamage: 2
-  maxDamage: 3
+  minDamage: 8
+  maxDamage: 12
   shotsWhenMoving: 2
   shotsWhenStill: 4
-  ammo: 18
+  ammo: 20
   blast: 0
   type: 0
-  cost: 100
+  cost: 40

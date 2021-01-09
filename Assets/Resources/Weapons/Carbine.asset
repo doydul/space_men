@@ -16,10 +16,10 @@ MonoBehaviour:
   accuracy: 65
   armourPen: 0
   minDamage: 3
-  maxDamage: 5
+  maxDamage: 4
   shotsWhenMoving: 3
   shotsWhenStill: 3
-  ammo: 30
+  ammo: 20
   blast: 0
   type: 0
-  cost: 100
+  cost: 50

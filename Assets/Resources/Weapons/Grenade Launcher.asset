@@ -19,7 +19,7 @@ MonoBehaviour:
   maxDamage: 10
   shotsWhenMoving: 1
   shotsWhenStill: 1
-  ammo: 4
+  ammo: 10
   blast: 5
-  type: 1
+  type: 0
   cost: 100

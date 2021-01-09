@@ -7,6 +7,8 @@ namespace Interactors {
     
     public class OpenArmourSelectInteractor : Interactor<OpenArmourSelectOutput> {
 
+        [Dependency] ISoldierStore soldierStore;
+
         public void Interact(OpenArmourSelectInput input) {
             var output = new OpenArmourSelectOutput();
             
@@ -16,7 +18,8 @@ namespace Interactors {
                                           .Where(item => item is MetaArmour)
                                           .Select(item => new OpenArmourSelectOutput.ArmourInfo {
                                               itemId = item.uniqueId,
-                                              name = item.name
+                                              name = item.name,
+                                              armourStats = soldierStore.GetArmourStats(item.name)
                                           }).ToArray();
             output.currentArmour = new OpenArmourSelectOutput.ArmourInfo {
                 itemId = metaSoldier.armour.uniqueId,

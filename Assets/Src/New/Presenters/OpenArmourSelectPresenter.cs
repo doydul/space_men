@@ -29,10 +29,20 @@ public class OpenArmourSelectPresenter : Presenter, IPresenter<OpenArmourSelectO
                     newOwnerId = input.soldierId,
                     type = SelectionMenuInitializer.Args.SelectableType.Armour,
                     id = item.itemId,
-                    name = item.name
+                    name = item.name,
+                    description = GenerateArmourDescription(item.armourStats)
                 }).ToArray()
             });
         });
+    }
+
+    string GenerateArmourDescription(ArmourStats armourStats) {
+        return "type: " + armourStats.weight + "\n" +
+               "block %: " + armourStats.armourValue + "\n" +
+               "hp: " + armourStats.maxHealth + "\n" +
+               "base movement: " + armourStats.movement + "\n" +
+               "max movement: " + (armourStats.sprint + armourStats.movement) + "\n" +
+               "value: " + armourStats.cost;
     }
 }
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   armour: 0
   accModifier: -10
   damage: 4
-  armourPen: 50
+  armourPen: 0
   movement: 4
   threat: 10
   expReward: 7

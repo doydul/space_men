@@ -26,6 +26,12 @@ namespace DataTypes {
             }
         }
 
+        public long AddInventoryItem(MetaItem metaItem) {
+            var id = Add(metaItem);
+            MoveItemToInventory(id);
+            return id;
+        }
+
         public void AddBlueprint(MetaItem metaItem) {
             blueprints.Add(metaItem);
         }

@@ -56,6 +56,7 @@ public class Actor : MonoBehaviour {
     public void Die(float timer = 0) {
         dead = true;
         tile.RemoveActorByIndex(index);
+        Scripting.instance.Trigger(Scripting.Event.OnActorKilled);
         Destroy(this.gameObject, timer);
     }
 

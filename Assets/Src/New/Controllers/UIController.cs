@@ -34,7 +34,6 @@ public class UIController : Controller {
     }
 
     public void ShowMessagePopup(string message) {
-        if (disabled) return;
         infoPanel.Display(message);
     }
 

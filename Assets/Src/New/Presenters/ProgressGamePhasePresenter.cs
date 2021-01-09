@@ -90,7 +90,10 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
                 var target = tile.GetActor<Soldier>();
                 target.health = action.damageInstance.victimHealthAfterDamage;
                 yield return AlienAttackAnimation(alien, target);
-                if (action.damageInstance.attackResult == AttackResult.Hit) {
+                if (action.damageInstance.attackResult == AttackResult.Hit || action.damageInstance.attackResult == AttackResult.CriticalHit) {
+                    if (action.damageInstance.attackResult == AttackResult.CriticalHit) {
+                        StartCoroutine(MarkerAnimationFor(action.damageInstance));
+                    }
                     var healthBarGO = sfxLayer.SpawnPrefab(healthBarPrefab, target.transform.position);
                     var healthBar = healthBarGO.GetComponent<HealthBar>();
                     healthBar.SetPercentage(target.healthPercentage);
@@ -197,7 +200,8 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     }
 
     IEnumerator MarkerAnimationFor(DamageInstance damageInstance) {
-        if (damageInstance.attackResult != AttackResult.Deflected) yield break;
+        if (damageInstance.attackResult != AttackResult.Deflected && damageInstance.attackResult != AttackResult.CriticalHit) yield break;
+        // TODO add marker for critical hit
         var actor = map.GetActorByIndex(damageInstance.victimIndex);
         var marker =  sfxLayer.SpawnPrefab(deflectMarkerPrefab, actor.realLocation);
         yield return new WaitForSeconds(1);

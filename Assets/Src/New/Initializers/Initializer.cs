@@ -57,5 +57,6 @@ public class Initializer : InitializerBase {
 
     protected override void Initialize() {
         FindObjectOfType<MapController>().StartMission();
+        FindObjectOfType<UIController>().ProgressGamePhase();
     }
 }

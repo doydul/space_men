@@ -28,10 +28,22 @@ public class OpenWeaponSelectPresenter : Presenter, IPresenter<OpenWeaponSelectO
                     newOwnerId = input.soldierId,
                     type = SelectionMenuInitializer.Args.SelectableType.Weapons,
                     id = item.itemId,
-                    name = item.name
+                    name = item.name,
+                    description = GenerateWeaponDescription(item.weaponStats)
                 }).ToArray()
             });
         });
+    }
+
+    string GenerateWeaponDescription(WeaponStats weaponStats) {
+        return "accuracy: " + weaponStats.accuracy + "\n" +
+               "armour penetration %: " + weaponStats.armourPen + "\n" +
+               "damage: " + weaponStats.minDamage + "-" + weaponStats.maxDamage + "\n" +
+               "shots after moving: " + weaponStats.shotsWhenMoving + "\n" +
+               "shots when stationary: " + weaponStats.shotsWhenStill + "\n" +
+               (weaponStats.blast > 0 ? "blast: " + weaponStats.blast : "") +
+               "ammo capacity: " + weaponStats.ammo + "\n" +
+               "value: " + weaponStats.cost;
     }
 }
 

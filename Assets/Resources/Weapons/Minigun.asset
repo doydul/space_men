@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
   accuracy: 60
-  armourPen: 10
+  armourPen: 5
   minDamage: 3
   maxDamage: 5
   shotsWhenMoving: 0
-  shotsWhenStill: 10
+  shotsWhenStill: 8
   ammo: 160
   blast: 0
   type: 0

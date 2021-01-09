@@ -10,7 +10,8 @@ namespace Interactors {
     public class ProgressGamePhaseInteractor : Interactor<ProgressGamePhaseOutput> {
 
         private const int SHOOTING_PHASE_ITERATIONS = 3;
-        private const int MIN_SPAWN_DISTANCE = 12;
+        private const int MIN_SPAWN_DISTANCE = 9;
+        private const int CRITICAL_HIT_CHANCE = 20;
 
         [Dependency] GameState gameState;
         [Dependency] IInstantiator factory;
@@ -22,6 +23,7 @@ namespace Interactors {
         int stage;
         AlienSpawnerGenerator alienSpawnerGenerator;
         List<AlienSpawner> alienSpawners;
+        bool notFirstCall;
 
         public ProgressGamePhaseInteractor() {
             alienSpawners = new List<AlienSpawner>();
@@ -32,12 +34,17 @@ namespace Interactors {
             if (alienSpawnerGenerator == null) alienSpawnerGenerator = new AlienSpawnerGenerator(mission);
             var currentPhase = gameState.currentPhase;
             var result = new ProgressGamePhaseOutput();
-            if (currentPhase == Data.GamePhase.Movement) {
-                StartShootingPhase(ref result);
-            } else if (stage >= SHOOTING_PHASE_ITERATIONS) {
-                StartMovementPhase(ref result);
+            if (!notFirstCall) {
+                notFirstCall = true;
+                SpawnAliens(ref result);
             } else {
-                ProgressShootingPhase(ref result);
+                if (currentPhase == Data.GamePhase.Movement) {
+                    StartShootingPhase(ref result);
+                } else if (stage >= SHOOTING_PHASE_ITERATIONS) {
+                    StartMovementPhase(ref result);
+                } else {
+                    ProgressShootingPhase(ref result);
+                }
             }
             result.currentThreatLevel = gameState.currentThreatLevel;
             result.threatCountdown = mission.threatTimer - gameState.threatTimer;
@@ -253,8 +260,13 @@ namespace Interactors {
             int damage = 0;
             AttackResult attackResult = AttackResult.Deflected;
             if (Random.Range(0, 100) >= armourStats.armourValue - alienStats.armourPen) {
-                damage = alienStats.damage;
-                attackResult = AttackResult.Hit;
+                if (Random.Range(0, 100) <= CRITICAL_HIT_CHANCE) {
+                    damage = Mathf.CeilToInt(alienStats.damage * 2.5f);
+                    attackResult = AttackResult.CriticalHit;
+                } else {
+                    damage = alienStats.damage;
+                    attackResult = AttackResult.Hit;
+                }
                 soldier.health.Damage(damage);
                 if (soldier.health.dead) attackResult = AttackResult.Killed;
             }
@@ -283,6 +295,13 @@ namespace Interactors {
                     return actor is SoldierActor && (actor.position - gameStateSpawner).distance < MIN_SPAWN_DISTANCE;
                 });
             }).ToList();
+            if (filteredSpawners.Count < count) {
+                return gameState.map.alienSpawners.Where(gameStateSpawner => {
+                    return !alienSpawners.Any(spawner => spawner.position == gameStateSpawner);
+                }).OrderByDescending(spawner => {
+                    return gameState.GetActors().Where(actor => actor is SoldierActor).Min(soldier => (soldier.position - spawner).distance);
+                }).Take(count).ToArray();
+            }
             
             for (int i = 0; i < count; i++) {
                 var randomIndex = Random.Range(0, filteredSpawners.Count);

@@ -9,6 +9,7 @@ namespace Data {
         public struct ArmourInfo {
             public long itemId;
             public string name;
+            public ArmourStats armourStats;
         }
     }
 }

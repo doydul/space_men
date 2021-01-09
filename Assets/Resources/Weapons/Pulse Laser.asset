@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330a01776318840bd88dc655a2bd4ab8, type: 3}
   m_Name: Pulse Laser
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  accuracy: 80
-  armourPen: 30
-  minDamage: 1
-  maxDamage: 1
+  icon: {fileID: 3337276378440721920, guid: 2a73a4dc1089e4ac89c8b19edd6c8c9b, type: 3}
+  accuracy: 75
+  armourPen: 50
+  minDamage: 2
+  maxDamage: 3
   shotsWhenMoving: 2
-  shotsWhenStill: 3
-  ammo: 12
+  shotsWhenStill: 4
+  ammo: 18
   blast: 0
   type: 0
-  cost: 100
+  cost: 80
