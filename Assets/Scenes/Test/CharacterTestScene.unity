@@ -232,6 +232,100 @@ Transform:
   m_Father: {fileID: 835788471}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &130208754
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 324427876752696253, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304501975212591857, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_Name
+      value: DeflectedMarker
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017761014879641952, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017761014879641952, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017761014879641952, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017761014879641952, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9937055
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.1123023
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4c6addbf0fad46a880f95d2944a7d39, type: 3}
 --- !u!1 &191412063
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,8 +418,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
+  backgroundActor: {fileID: 0}
   backgroundSprite: {fileID: 29759055}
   foreground: {fileID: 262479841}
+  midground: {fileID: 0}
   highlightSprite: {fileID: 2066376826}
   fogSprite: {fileID: 1702833682}
   SoldierEnter:
@@ -425,8 +521,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
+  backgroundActor: {fileID: 0}
   backgroundSprite: {fileID: 2093742802}
   foreground: {fileID: 1591501562}
+  midground: {fileID: 0}
   highlightSprite: {fileID: 836476425}
   fogSprite: {fileID: 677987795}
   SoldierEnter:
@@ -945,8 +1043,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
+  backgroundActor: {fileID: 0}
   backgroundSprite: {fileID: 304088043}
   foreground: {fileID: 361677961}
+  midground: {fileID: 0}
   highlightSprite: {fileID: 1824959227}
   fogSprite: {fileID: 885052033}
   SoldierEnter:
@@ -1016,8 +1116,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
+  backgroundActor: {fileID: 0}
   backgroundSprite: {fileID: 2088353962}
   foreground: {fileID: 31046578}
+  midground: {fileID: 0}
   highlightSprite: {fileID: 1450638159}
   fogSprite: {fileID: 521661621}
   SoldierEnter:
@@ -1330,8 +1432,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
+  backgroundActor: {fileID: 0}
   backgroundSprite: {fileID: 1536535702}
   foreground: {fileID: 191412064}
+  midground: {fileID: 0}
   highlightSprite: {fileID: 1722711450}
   fogSprite: {fileID: 1312585857}
   SoldierEnter:
@@ -1563,8 +1667,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
+  backgroundActor: {fileID: 0}
   backgroundSprite: {fileID: 1639431345}
   foreground: {fileID: 2006729077}
+  midground: {fileID: 0}
   highlightSprite: {fileID: 1266022658}
   fogSprite: {fileID: 842705661}
   SoldierEnter:
@@ -2021,8 +2127,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
+  backgroundActor: {fileID: 0}
   backgroundSprite: {fileID: 1335304107}
   foreground: {fileID: 1200961855}
+  midground: {fileID: 0}
   highlightSprite: {fileID: 1147835300}
   fogSprite: {fileID: 1571901881}
   SoldierEnter:
@@ -2287,8 +2395,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
+  backgroundActor: {fileID: 0}
   backgroundSprite: {fileID: 1079663724}
   foreground: {fileID: 430910491}
+  midground: {fileID: 0}
   highlightSprite: {fileID: 1183960367}
   fogSprite: {fileID: 1847093021}
   SoldierEnter:
@@ -2358,8 +2468,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
+  backgroundActor: {fileID: 0}
   backgroundSprite: {fileID: 1903162772}
   foreground: {fileID: 615698870}
+  midground: {fileID: 0}
   highlightSprite: {fileID: 2086867292}
   fogSprite: {fileID: 965379757}
   SoldierEnter:
@@ -2855,7 +2967,7 @@ RectTransform:
   - {fileID: 313810530}
   - {fileID: 1460479623}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

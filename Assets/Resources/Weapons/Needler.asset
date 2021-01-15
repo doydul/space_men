@@ -23,3 +23,5 @@ MonoBehaviour:
   blast: 0
   type: 0
   cost: 40
+  description: fires a barrage of tiny needles, good for clearing groups of smaller
+    targets

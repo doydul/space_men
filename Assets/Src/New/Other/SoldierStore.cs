@@ -31,7 +31,8 @@ public class SoldierStore : ISoldierStore {
             shotsWhenMoving = data.shotsWhenMoving,
             shotsWhenStill = data.shotsWhenStill,
             ammo = data.ammo,
-            blast = data.blast
+            blast = data.blast,
+            description = data.description
         };
     }
     

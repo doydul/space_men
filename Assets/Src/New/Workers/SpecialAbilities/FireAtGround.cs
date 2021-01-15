@@ -31,25 +31,36 @@ namespace Workers {
                 .ToArray();
         } }
 
-        public override SpecialAbilityOutput Execute() {
-            var result = new SpecialAbilityOutput();
+        public override object Execute() {
+            var output = new Output();
             var explosion = factory.MakeObject<Explosion>();
             explosion.CalculateFromSoldier(soldier.uniqueId, input.targetSquare);
 
             soldier.IncrementShotsFired();
-            result.soldierIndex = soldier.uniqueId;
-            result.weaponName = soldier.weaponName;
-            result.shotsLeft = soldier.shotsRemaining;
-            result.ammoLeft = soldier.ammoRemaining;
-            result.maxAmmo = soldier.maxAmmo;
-            result.damageInstances = explosion.damageInstances;
-            result.blastCoverage = explosion.coveredTiles;
-            return result;
+            output.soldierIndex = soldier.uniqueId;
+            output.weaponName = soldier.weaponName;
+            output.shotsLeft = soldier.shotsRemaining;
+            output.ammoLeft = soldier.ammoRemaining;
+            output.maxAmmo = soldier.maxAmmo;
+            output.explosion = new ExplosionData {
+                squaresCovered = explosion.coveredTiles,
+                damageInstances = explosion.damageInstances
+            };
+            return output;
         }
 
         public struct Input {
             public long soldierId;
             public Position targetSquare;
+        }
+
+        public struct Output {
+            public long soldierIndex;
+            public string weaponName;
+            public int shotsLeft;
+            public int ammoLeft;
+            public int maxAmmo;
+            public ExplosionData explosion;
         }
     }
 }

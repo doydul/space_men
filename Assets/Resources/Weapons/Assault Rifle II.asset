@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330a01776318840bd88dc655a2bd4ab8, type: 3}
+  m_Name: Assault Rifle II
+  m_EditorClassIdentifier: 
+  icon: {fileID: 5026745411207313143, guid: e40f3473f69924114bb79a48f410c9e7, type: 3}
+  accuracy: 75
+  armourPen: 0
+  minDamage: 3
+  maxDamage: 6
+  shotsWhenMoving: 2
+  shotsWhenStill: 4
+  ammo: 24
+  blast: 0
+  type: 0
+  cost: 60
+  description: an improvement over the basic assault rifle. this model has an attached
+    grenade launcher which can fire once per deployment.

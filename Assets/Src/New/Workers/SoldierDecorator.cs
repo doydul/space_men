@@ -77,6 +77,22 @@ namespace Workers
             soldier.shootingDisabled = true;
         }
 
+        public void SetData(object datum) {
+            soldier.SetData(datum);
+        }
+
+        public void AddData(object datum) {
+            soldier.AddData(datum);
+        }
+
+        public T GetData<T>() {
+            return soldier.GetData<T>();
+        }
+
+        public T[] GetAllData<T>() {
+            return soldier.GetAllData<T>();
+        }
+
         public SoldierDisplayInfo GenerateDisplayInfo() {
             var metaSoldier = metaGameState.metaSoldiers.Get(soldier.metaSoldierId);
             return new SoldierDisplayInfo {

@@ -1,4 +1,6 @@
 public enum SpecialAbilityType {
     FireAtGround,
-    CollectAmmo
+    Grenade,
+    CollectAmmo,
+    StunShot
 }

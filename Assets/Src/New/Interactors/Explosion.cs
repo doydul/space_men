@@ -23,7 +23,8 @@ namespace Workers {
                 accuracy = soldier.accuracy,
                 blastSize = soldier.blast,
                 minDamage = soldier.minDamage,
-                maxDamage = soldier.maxDamage
+                maxDamage = soldier.maxDamage,
+                armourPen = soldier.armourPen
             };
             Calculate(config);
         }
@@ -52,8 +53,8 @@ namespace Workers {
                         perpetratorIndex = config.soldierId,
                         victimIndex = cell.actor.uniqueId
                     };
-                    if (Random.Range(0, 100) >= armour) {
-                        var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
+                    if (Random.Range(0, 100) > armour - config.armourPen) {
+                        var damage = Random.Range(config.minDamage, config.maxDamage + 1);
                         health.Damage(damage);
                         damageInstance.damageInflicted = damage;
                         damageInstance.attackResult = AttackResult.Hit;
@@ -118,6 +119,7 @@ namespace Workers {
             public int blastSize;
             public int minDamage;
             public int maxDamage;
+            public int armourPen;
         }
     }
 }

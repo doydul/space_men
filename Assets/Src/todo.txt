@@ -7,7 +7,19 @@
 - Level content:
 
 ## Next
-- create critical hit marker
+- implement new special ability that stuns an alien
+
+- refactor special ability stuff
+  - use reflection in execute special ability presenter
+  - in ability icon, allow adding new icons in inspecto[r
+  - remove need for special ability type
+  - refactor any other cases that use switch statements
+  - find way to avoid specifying abilities individually in SpecialActions
+
+- create generic word marker to and use it to implement stun shot marker
+
+- persistent flames
+
 - make sure critical hit marker shows even when attack is fatal
 - create a new medium enemy which moves 2 squares but does high damage and high armour pen
 - create a new fast enemy which does high damage but does no armour pen
@@ -15,7 +27,7 @@
   - make shooting phase progress automatically to movement if there are no actions to take
   - add warning ui for when a soldier is low on health or ammo
 
-- create basic screen which can display unlockables
+- create basic screen which can display unlockables (ON HOLD)
   - create unlockable item script/prefab
     - has a list of inspector variables, one for each unlockable type, that stores a sprite
     - has init method that takes unlockable type and displays the correct sprite with reflection

@@ -23,3 +23,6 @@ MonoBehaviour:
   blast: 0
   type: 0
   cost: 50
+  description: the shorter barrel and smaller callibre rounds compared with assault
+    rifle make this weapon easier to fire on the move, but give less damage output
+    when standing still

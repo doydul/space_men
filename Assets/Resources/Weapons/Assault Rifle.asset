@@ -23,3 +23,4 @@ MonoBehaviour:
   blast: 0
   type: 0
   cost: 20
+  description: basic assault weapon. effective against basic enemies

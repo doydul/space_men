@@ -23,3 +23,4 @@ MonoBehaviour:
   blast: 7
   type: 0
   cost: 100
+  description: designed for clearing large groups of smaller enemies

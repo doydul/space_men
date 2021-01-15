@@ -23,3 +23,6 @@ MonoBehaviour:
   blast: 0
   type: 0
   cost: 80
+  description: the pulse laser is effective against enemies with high armour values,
+    but lacks raw damage output. once per deployment, it can fire a charged shot
+    which stuns the target making them unable to act for the remainder of their turn

@@ -10,6 +10,6 @@ namespace Workers {
         } }
         public virtual bool executeImmediately => false;
         
-        public abstract SpecialAbilityOutput Execute();
+        public abstract object Execute();
     }
 }

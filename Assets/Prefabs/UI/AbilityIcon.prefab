@@ -199,7 +199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1387060887095673774}
   fireAtGroundSprite: {fileID: 21300000, guid: dc42a4b6ac7113347bcf32122ed5f035, type: 3}
+  grenadeSprite: {fileID: 21300000, guid: 80ea80d5b60bca74797c393d77100cf5, type: 3}
   collectAmmoSprite: {fileID: 21300000, guid: 0d2fe07a5928f3a43b87ff2e6ac87631, type: 3}
+  stunShotSprite: {fileID: 21300000, guid: 604cb4fdec5cfb344ae65c5f206e2116, type: 3}
 --- !u!114 &2032454241940995338
 MonoBehaviour:
   m_ObjectHideFlags: 0

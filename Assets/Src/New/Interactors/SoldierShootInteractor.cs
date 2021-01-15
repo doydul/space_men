@@ -90,7 +90,7 @@ namespace Interactors {
                         perpetratorIndex = soldier.uniqueId,
                         victimIndex = cell.actor.uniqueId
                     };
-                    if (Random.Range(0, 100) >= armour) {
+                    if (Random.Range(0, 100) > armour - soldier.armourPen) {
                         var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
                         health.Damage(damage);
                         damageInstance.damageInflicted = damage;

@@ -25,32 +25,34 @@ public class StandardAnimations : MonoBehaviour {
         StartCoroutine(DoExplosiveShootAnimation(soldierIndex, blastCoverage, damageInstances, callback));
     }
 
-    IEnumerator DoNormalShootAnimation(long soldierIndex, DamageInstance[] damageInstances, Action callback) {
+    public IEnumerator DoNormalShootAnimation(long soldierIndex, DamageInstance[] damageInstances, Action callback = null) {
         var soldier = map.GetActorByIndex(soldierIndex) as Soldier;
         var soldierUI = soldier.GetComponent<SoldierUIController>();
-        var damageInstance = damageInstances[0];
-        var alien = map.GetActorByIndex(damageInstance.victimIndex) as Alien;
         var muzzleFlash = sfxLayer.SpawnPrefab(gunflarePrefab, soldier.muzzleFlashLocation.position, soldier.muzzleFlashLocation.rotation);
         yield return new WaitForSeconds(0.5f);
         Destroy(muzzleFlash);
-        if (damageInstance.attackResult == AttackResult.Hit || damageInstance.attackResult == AttackResult.Killed) {
-            bloodSplats.MakeSplat(alien);
-            var hitSFX = sfxLayer.SpawnPrefab(hitPrefab, alien.transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
-            yield return new WaitForSeconds(0.5f);
-            Destroy(hitSFX);
+        if (damageInstances.Length > 0) {
+            var damageInstance = damageInstances[0];
+            var alien = map.GetActorByIndex(damageInstance.victimIndex) as Alien;
+            if (damageInstance.attackResult == AttackResult.Hit || damageInstance.attackResult == AttackResult.Killed) {
+                bloodSplats.MakeSplat(alien);
+                var hitSFX = sfxLayer.SpawnPrefab(hitPrefab, alien.transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
+                yield return new WaitForSeconds(0.5f);
+                Destroy(hitSFX);
+            }
+            if (damageInstance.attackResult == AttackResult.Hit) {
+                alien.health = damageInstance.victimHealthAfterDamage;
+                yield return HealthBarAnimation(alien.transform.position, alien.healthPercentage);
+            } else if (damageInstance.attackResult == AttackResult.Killed) {
+                alien.Die();
+            } else {
+                yield return MarkerAnimationFor(damageInstance);
+            }
         }
-        if (damageInstance.attackResult == AttackResult.Hit) {
-            alien.health = damageInstance.victimHealthAfterDamage;
-            yield return HealthBarAnimation(alien.transform.position, alien.healthPercentage);
-        } else if (damageInstance.attackResult == AttackResult.Killed) {
-            alien.Die();
-        } else {
-            yield return MarkerAnimationFor(damageInstance);
-        }
-        callback();
+        if (callback != null) callback();
     }
 
-    IEnumerator DoExplosiveShootAnimation(long soldierIndex, Position[] blastCoverage, DamageInstance[] damageInstances, Action callback) {
+    public IEnumerator DoExplosiveShootAnimation(long soldierIndex, Position[] blastCoverage, DamageInstance[] damageInstances, Action callback = null) {
         var soldier = map.GetActorByIndex(soldierIndex) as Soldier;
         var soldierUI = soldier.GetComponent<SoldierUIController>();
         var muzzleFlash = sfxLayer.SpawnPrefab(gunflarePrefab, soldier.muzzleFlashLocation.position, soldier.muzzleFlashLocation.rotation);
@@ -78,7 +80,7 @@ public class StandardAnimations : MonoBehaviour {
                 yield return MarkerAnimationFor(damageInstance);
             }
         }
-        callback();
+        if (callback != null) callback();
     }
 
     IEnumerator HealthBarAnimation(Vector2 position, int percentage) {

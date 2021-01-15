@@ -78,6 +78,7 @@ namespace Interactors {
             
             foreach (var alien in Aliens.Iterate(gameState)) {
                 alien.movesRemaining = alien.movement * SHOOTING_PHASE_ITERATIONS;
+                alien.EraseData<StunStatus>();
             }
 
             if (NoActionsToTake()) {
@@ -186,7 +187,9 @@ namespace Interactors {
             var resultList = new List<AlienAction>();
             var pathingGrid = AlienPathingGrid.instance;
             var map = gameState.map;
-            var aliensStillToMove = Aliens.Iterate(gameState).ToList();
+            var aliensStillToMove = Aliens.Iterate(gameState)
+                .Where(alien => !alien.GetData<StunStatus>().isStunned)
+                .ToList();
             aliensStillToMove.ForEach(alien => alien.movesRemaining -= alien.movement);
             while (aliensStillToMove.Any()) {
                 var aliensCopy = new List<AlienActor>(aliensStillToMove);

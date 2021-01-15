@@ -20,7 +20,6 @@ public class Initializer : InitializerBase {
             { typeof(ActorActionsInteractor), typeof(ActorActionsPresenter) },
             { typeof(TurnSoldierInteractor), typeof(TurnSoldierPresenter) },
             { typeof(ExecuteShipAbilityInteractor), typeof(ExecuteShipAbilityPresenter) },
-            { typeof(CollectAmmoInteractor), typeof(CollectAmmoPresenter) }
         });
         controllerMapping.Add(typeof(ScriptingController), new Dictionary<Type, Type> {
             { typeof(FinishMissionInteractor), typeof(FinishMissionPresenter) },

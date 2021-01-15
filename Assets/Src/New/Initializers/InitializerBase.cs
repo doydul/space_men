@@ -26,7 +26,7 @@ public abstract class InitializerBase : MonoBehaviour {
         var presenters = FindObjectsOfType<Presenter>();
         foreach (var presenter in presenters) {
             factory.InjectDependencies(presenter);
-            factory.RegisterDependency(presenter.GetType().GetInterfaces()[0], presenter);
+            if (presenter.GetType().GetInterfaces().Length > 0) factory.RegisterDependency(presenter.GetType().GetInterfaces()[0], presenter);
         }
         foreach (var controllerType in controllerMapping) {
             var controller = FindObjectOfType(controllerType.Key);

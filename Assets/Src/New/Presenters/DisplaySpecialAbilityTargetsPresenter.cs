@@ -24,6 +24,7 @@ public class DisplaySpecialAbilityTargetsPresenter : Presenter, IPresenter<Displ
     }
 
     void DisplayMapHighlights(ActorAction[] possibleActions) {
+        Debug.Log("Number of possible actions: " + possibleActions.Length);
         foreach (var action in possibleActions) {
             mapHighlighter.HighlightTile(map.GetTileAt(new Vector2(action.target.x, action.target.y)), Color.red);
         }

@@ -23,3 +23,6 @@ MonoBehaviour:
   blast: 5
   type: 0
   cost: 100
+  description: the grenade launcher is a versatile weapon, able to deal with groups
+    of enemies while also dealing significant damage to single targets. it suffers
+    however from a low fire rate and high damage variance.q

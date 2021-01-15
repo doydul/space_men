@@ -7,7 +7,9 @@ public class AbilityIcon : MonoBehaviour {
     
     public Image image;
     public Sprite fireAtGroundSprite;
+    public Sprite grenadeSprite;
     public Sprite collectAmmoSprite;
+    public Sprite stunShotSprite;
 
     public Action OnClick;
 
@@ -19,8 +21,16 @@ public class AbilityIcon : MonoBehaviour {
                 image.sprite = fireAtGroundSprite;
                 break;
 
+            case SpecialAbilityType.Grenade://
+                image.sprite = grenadeSprite;
+                break;
+
             case SpecialAbilityType.CollectAmmo:
                 image.sprite = collectAmmoSprite;
+                break;
+
+            case SpecialAbilityType.StunShot:
+                image.sprite = stunShotSprite;
                 break;
         }
     }

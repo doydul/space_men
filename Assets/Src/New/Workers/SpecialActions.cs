@@ -28,7 +28,9 @@ namespace Workers {
         public SpecialAbility[] GetAbilities() {
             return new SpecialAbility[] {
                 factory.MakeObject<FireAtGround>(new FireAtGround.Input { soldierId = soldierId, targetSquare = target }),
-                factory.MakeObject<CollectAmmo>(new CollectAmmo.Input { soldierId = soldierId })
+                factory.MakeObject<Grenade>(new Grenade.Input { soldierId = soldierId, targetSquare = target }),
+                factory.MakeObject<CollectAmmo>(new CollectAmmo.Input { soldierId = soldierId }),
+                factory.MakeObject<StunShot>(new StunShot.Input { soldierId = soldierId, targetSquare = target })
             };
         }
     }

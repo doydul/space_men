@@ -24,26 +24,33 @@ namespace Workers {
         public override SpecialAbilityType type => SpecialAbilityType.CollectAmmo;
         public override bool executeImmediately => true;
 
-        public override SpecialAbilityOutput Execute() {
-            var result = new SpecialAbilityOutput();
+        public override object Execute() {
+            var output = new Output();
             soldier.RefillAmmo();
             soldier.DisableShooting();
             var crate = soldier.cell.backgroundActor;
             crate.health.Damage(1);
 
-            result.soldierIndex = soldier.uniqueId;
-            result.maxAmmoCount = soldier.maxAmmo;
-            result.newAmmoCount = soldier.ammoRemaining;
-            result.remainingCrateSupplies = crate.health.current;
+            output.soldierIndex = soldier.uniqueId;
+            output.maxAmmoCount = soldier.maxAmmo;
+            output.newAmmoCount = soldier.ammoRemaining;
+            output.remainingCrateSupplies = crate.health.current;
 
             if (crate.health.dead) {
                 gameState.RemoveActor(crate.uniqueId);
             }            
-            return result;
+            return output;
         }
 
         public struct Input {
             public long soldierId;
+        }
+
+        public struct Output {
+            public long soldierIndex;
+            public int maxAmmoCount;
+            public int newAmmoCount;
+            public int remainingCrateSupplies;
         }
     }
 }

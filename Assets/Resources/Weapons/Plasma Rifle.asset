@@ -23,3 +23,5 @@ MonoBehaviour:
   blast: 0
   type: 0
   cost: 100
+  description: fires concentrated blasts of searing hot plasma, capable of melting
+    through the toughest armour

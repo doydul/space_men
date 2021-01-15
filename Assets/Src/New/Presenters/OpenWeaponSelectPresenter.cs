@@ -43,7 +43,8 @@ public class OpenWeaponSelectPresenter : Presenter, IPresenter<OpenWeaponSelectO
                "shots when stationary: " + weaponStats.shotsWhenStill + "\n" +
                (weaponStats.blast > 0 ? "blast: " + weaponStats.blast : "") +
                "ammo capacity: " + weaponStats.ammo + "\n" +
-               "value: " + weaponStats.cost;
+               "value: " + weaponStats.cost + "\n" +
+               weaponStats.description;
     }
 }
 
