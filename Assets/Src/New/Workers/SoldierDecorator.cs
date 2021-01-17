@@ -32,6 +32,8 @@ namespace Workers
         public int minDamage => weaponStats.minDamage;
         public int maxDamage => weaponStats.maxDamage;
         public int blast => (int)weaponStats.blast;
+        public bool flames => weaponStats.flames;
+        public int flameDamage => weaponStats.flameDamage;
         public bool hasBlastWeapon => blast > 0;
         public int exp => metaSoldier.exp;
         public int totalShots { get {

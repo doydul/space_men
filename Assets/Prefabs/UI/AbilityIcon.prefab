@@ -197,6 +197,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f74db4f0a0740ea87934b1d0f766b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iconDefinitions:
+  - abilityName: FireAtGround
+    sprite: {fileID: 21300000, guid: dc42a4b6ac7113347bcf32122ed5f035, type: 3}
+  - abilityName: Grenade
+    sprite: {fileID: 21300000, guid: 80ea80d5b60bca74797c393d77100cf5, type: 3}
+  - abilityName: CollectAmmo
+    sprite: {fileID: 21300000, guid: 0d2fe07a5928f3a43b87ff2e6ac87631, type: 3}
+  - abilityName: StunShot
+    sprite: {fileID: 21300000, guid: 604cb4fdec5cfb344ae65c5f206e2116, type: 3}
   image: {fileID: 1387060887095673774}
   fireAtGroundSprite: {fileID: 21300000, guid: dc42a4b6ac7113347bcf32122ed5f035, type: 3}
   grenadeSprite: {fileID: 21300000, guid: 80ea80d5b60bca74797c393d77100cf5, type: 3}

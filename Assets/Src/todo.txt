@@ -7,18 +7,24 @@
 - Level content:
 
 ## Next
-- implement new special ability that stuns an alien
-
-- refactor special ability stuff
-  - use reflection in execute special ability presenter
-  - in ability icon, allow adding new icons in inspecto[r
-  - remove need for special ability type
-  - refactor any other cases that use switch statements
-  - find way to avoid specifying abilities individually in SpecialActions
-
-- create generic word marker to and use it to implement stun shot marker
+- in standard animatons, need to remove existing fire if one exists on tile
 
 - persistent flames
+  - soldiershootinteractor
+    X create flame actors on blast squares if flames is true (set their health to 2)
+    X (destroys any ammo crates that might be there)
+    X return flame actors somehow in output
+  - soldier move interactor
+    - damage soldier when they move through flame tile
+  - progressgamephaseinteractor
+    - damage soldiers and aliens if they are in flames at beginning of movement phase?
+    - damage aliens when they move through flame tiles
+    - during movement phase start, reduce flameactors health by 1
+    - remove them when their health reaches 0
+  - soldiershootpresenter
+    - create flame sprites where applicable
+  - progressgamephasepresenter
+    - remove flames when they die
 
 - make sure critical hit marker shows even when attack is fatal
 - create a new medium enemy which moves 2 squares but does high damage and high armour pen

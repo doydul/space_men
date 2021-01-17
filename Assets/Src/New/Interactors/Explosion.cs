@@ -14,6 +14,7 @@ namespace Workers {
 
         public Position[] coveredTiles { get; private set; }
         public DamageInstance[] damageInstances { get; private set; }
+        public Fire[] fires { get; private set; }
 
         public void CalculateFromSoldier(long soldierId, Position target) {
             var soldier = factory.MakeObject<SoldierDecorator>(gameState.GetActor(soldierId) as SoldierActor);
@@ -24,7 +25,9 @@ namespace Workers {
                 blastSize = soldier.blast,
                 minDamage = soldier.minDamage,
                 maxDamage = soldier.maxDamage,
-                armourPen = soldier.armourPen
+                armourPen = soldier.armourPen,
+                fire = soldier.flames,
+                fireDamage = soldier.flameDamage
             };
             Calculate(config);
         }
@@ -33,8 +36,26 @@ namespace Workers {
             var explosionTiles = CalculateCoverage(config.target, config.accuracy, config.blastSize);
             var soldier = factory.MakeObject<SoldierDecorator>(gameState.GetActor(config.soldierId) as SoldierActor);
             var damageInstances = new List<DamageInstance>();
+            var fires = new List<Fire>();
             foreach (var tilePosition in explosionTiles) {
                 var cell = gameState.map.GetCell(tilePosition);
+
+                if (soldier.weaponStats.flames) {
+                    var flameActor = new FlameActor {
+                        position = tilePosition,
+                        health = new Health(2)
+                    };
+                    if (cell.backgroundActor.exists) {
+                        gameState.RemoveActor(cell.backgroundActor.uniqueId);
+                    }
+                    var index = gameState.AddActor(flameActor, true);
+                    fires.Add(new Fire {
+                        index = index,
+                        position = tilePosition,
+                        weaponName = soldier.weaponName
+                    });
+                }
+
                 int armour;
                 Health health;
                 if (cell.actor.isAlien) {
@@ -75,6 +96,7 @@ namespace Workers {
             }
             this.damageInstances = damageInstances.ToArray();
             coveredTiles = explosionTiles.ToArray();
+            this.fires = fires.ToArray();
         }
 
         Position[] CalculateCoverage(Position targetPosition, int accuracy, int blastSize) {
@@ -120,6 +142,8 @@ namespace Workers {
             public int minDamage;
             public int maxDamage;
             public int armourPen;
+            public bool fire;
+            public int fireDamage;
         }
     }
 }

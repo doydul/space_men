@@ -22,7 +22,7 @@ public class FireAtGroundPresenter : SpecialAbilityPresenter<FireAtGround.Output
         var soldierUI = soldier.GetComponent<SoldierUIController>();
         soldierUI.SetAmmoCount(input.shotsLeft);
         soldier.ammo = input.ammoLeft;
-        yield return animations.DoExplosiveShootAnimation(input.soldierIndex, input.explosion.squaresCovered, input.explosion.damageInstances);
+        yield return animations.DoExplosiveShootAnimation(input.soldierIndex, input.explosion);
     }
 }
 

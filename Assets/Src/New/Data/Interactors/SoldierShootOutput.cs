@@ -8,7 +8,7 @@ namespace Data {
         public int maxAmmo;
         public string weaponName;
         public DamageInstance[] damageInstances;
-        public Position[] blastCoverage;
+        public ExplosionData? explosion;
     }
 
     public struct DamageInstance {

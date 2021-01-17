@@ -6,7 +6,7 @@ public class DebugSaveGenerator {
         var soldiers = new List<MetaSoldierSave>();
         var items = new List<MetaItemSave>();
         var dict = new IDDictionary<object>();
-        GenerateSoldier(dict, soldiers, items, "Basic", "Pulse Laser");
+        GenerateSoldier(dict, soldiers, items, "Basic", "Flamer");
         GenerateSoldier(dict, soldiers, items, "Basic", "Assault Rifle II");
         GenerateSoldier(dict, soldiers, items, "Medium", "Slugger");
         GenerateSoldier(dict, soldiers, items, "Heavy", "Needler");

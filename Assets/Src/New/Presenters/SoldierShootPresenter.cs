@@ -23,12 +23,13 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
         soldierUI.SetAmmoCount(input.shotsLeft);
         soldier.ammo = input.ammoLeft;
         controllers.DisableAll();
-        if (input.blastCoverage == null) {
+        if (!input.explosion.HasValue) {
             animations.NormalShootAnimation(input.soldierIndex, input.damageInstances, () => {
                 Cleanup(input);
             });
         } else {
-            animations.ExplosiveShootAnimation(input.soldierIndex, input.blastCoverage, input.damageInstances, () => {
+            var explosion = input.explosion.Value;
+            animations.ExplosiveShootAnimation(input.soldierIndex, explosion, () => {
                 Cleanup(input);
             });
         }

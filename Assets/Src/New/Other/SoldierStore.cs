@@ -32,6 +32,8 @@ public class SoldierStore : ISoldierStore {
             shotsWhenStill = data.shotsWhenStill,
             ammo = data.ammo,
             blast = data.blast,
+            flames = data.flames,
+            flameDamage = data.flameDamage,
             description = data.description
         };
     }

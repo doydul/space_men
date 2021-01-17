@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 using Data;
 using Workers;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Reflection;
 
 public class ExecuteSpecialAbilityPresenter : Presenter, IPresenter<ExecuteSpecialAbilityOutput> {
   
@@ -25,17 +29,16 @@ public class ExecuteSpecialAbilityPresenter : Presenter, IPresenter<ExecuteSpeci
 
     IEnumerator DoPresent(ExecuteSpecialAbilityOutput input) {
         var output = input.output;
-        Debug.Log("Executing special ability: " + output.GetType());
         controllers.DisableAll();
-        if (output is FireAtGround.Output) {
-            yield return FireAtGroundPresenter.instance.Present((FireAtGround.Output)output);
-        } else if (output is CollectAmmo.Output) {
-            yield return CollectAmmoPresenter.instance.Present((CollectAmmo.Output)output);
-        } else if (output is Grenade.Output) {
-            yield return GrenadePresenter.instance.Present((Grenade.Output)output);
-        } else if (output is StunShot.Output) {
-            yield return StunShotPresenter.instance.Present((StunShot.Output)output);
-        }
+
+        var regex = new Regex(@"\.(\w+)\+");
+        var className = regex.Match(output.GetType().FullName).Groups[1].Captures[0].Value;
+        var type = AppDomain.CurrentDomain.GetAssemblies()
+                       .SelectMany(t => t.GetTypes())
+                       .First(c => c.Name.Contains(className + "Presenter"));
+        var instance = type.GetProperty("instance", BindingFlags.Public | BindingFlags.Static)
+            .GetValue(null);//
+        yield return instance.GetType().GetMethod("Present").Invoke(instance, new object[] { output });
         Cleanup(input.soldierId);
     }
 

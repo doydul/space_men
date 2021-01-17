@@ -13,6 +13,7 @@ public class StandardAnimations : MonoBehaviour {
     public Transform gunflarePrefab;
     public Transform hitPrefab;
     public Transform explosionCloudPrefab;
+    public Transform firePrefab;
     public Transform healthBarPrefab;
     public Transform missMarkerPrefab;
     public Transform deflectMarkerPrefab;
@@ -21,8 +22,8 @@ public class StandardAnimations : MonoBehaviour {
         StartCoroutine(DoNormalShootAnimation(soldierIndex, damageInstances, callback));
     }
 
-    public void ExplosiveShootAnimation(long soldierIndex, Position[] blastCoverage, DamageInstance[] damageInstances, Action callback) {
-        StartCoroutine(DoExplosiveShootAnimation(soldierIndex, blastCoverage, damageInstances, callback));
+    public void ExplosiveShootAnimation(long soldierIndex, ExplosionData explosion, Action callback = null) {
+        StartCoroutine(DoExplosiveShootAnimation(soldierIndex, explosion, callback));
     }
 
     public IEnumerator DoNormalShootAnimation(long soldierIndex, DamageInstance[] damageInstances, Action callback = null) {
@@ -52,7 +53,9 @@ public class StandardAnimations : MonoBehaviour {
         if (callback != null) callback();
     }
 
-    public IEnumerator DoExplosiveShootAnimation(long soldierIndex, Position[] blastCoverage, DamageInstance[] damageInstances, Action callback = null) {
+    public IEnumerator DoExplosiveShootAnimation(long soldierIndex, ExplosionData explosion, Action callback = null) {
+        var blastCoverage = explosion.squaresCovered;
+        var damageInstances = explosion.damageInstances;
         var soldier = map.GetActorByIndex(soldierIndex) as Soldier;
         var soldierUI = soldier.GetComponent<SoldierUIController>();
         var muzzleFlash = sfxLayer.SpawnPrefab(gunflarePrefab, soldier.muzzleFlashLocation.position, soldier.muzzleFlashLocation.rotation);
@@ -62,6 +65,11 @@ public class StandardAnimations : MonoBehaviour {
         foreach (var cloudPosition in blastCoverage) {
             var realPosition = map.GetTileAt(new Vector2(cloudPosition.x, cloudPosition.y)).transform.position;
             clouds.Add(sfxLayer.SpawnPrefab(explosionCloudPrefab, realPosition, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360))));
+        }
+        if (explosion.fires != null) {
+            foreach (var fire in explosion.fires) {
+                InstantiateFire(fire.position);
+            }
         }
         yield return new WaitForSeconds(1);
         foreach (var cloudObject in clouds) {
@@ -98,5 +106,14 @@ public class StandardAnimations : MonoBehaviour {
         var marker =  sfxLayer.SpawnPrefab(prefab, actor.realLocation);
         yield return new WaitForSeconds(1);
         Destroy(marker);
+    }
+
+    void InstantiateFire(Position position) {
+        var trans = Instantiate(firePrefab) as Transform;
+        var tile = map.GetTileAt(new Vector2(position.x, position.y));
+        if (tile.backgroundActor != null) {
+            Destroy(tile.backgroundActor.gameObject);
+        }
+        tile.SetActor(trans, true);
     }
 }

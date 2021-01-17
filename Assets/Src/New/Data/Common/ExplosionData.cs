@@ -4,5 +4,6 @@ namespace Data {
 
         public Position[] squaresCovered;
         public DamageInstance[] damageInstances;
+        public Fire[] fires;
     }
 }

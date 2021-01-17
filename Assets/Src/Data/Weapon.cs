@@ -19,6 +19,9 @@ public class Weapon : ScriptableObject {
     public int shotsWhenStill;
     public int ammo;
     public float blast;
+    public bool flames;
+    public int flameDamage;
+    public Color flameColor;
     public Type type;
     public int cost;
     [TextArea] public string description;

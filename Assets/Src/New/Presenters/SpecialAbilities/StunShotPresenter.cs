@@ -9,7 +9,7 @@ public class StunShotPresenter : SpecialAbilityPresenter<StunShot.Output> {
   
     public static StunShotPresenter instance { get; private set; }
 
-    public Transform stunnedPrefab;
+    public Transform genericMarkerPrefab;
     public SFXLayer sfxLayer;
     public Map map;
     public StandardAnimations animations;
@@ -24,8 +24,9 @@ public class StunShotPresenter : SpecialAbilityPresenter<StunShot.Output> {
         var alien = map.GetActorByIndex(input.targetIndex) as Alien;
 
         yield return animations.DoNormalShootAnimation(input.soldierIndex, new DamageInstance[0]);
-        var hitSFX = sfxLayer.SpawnPrefab(stunnedPrefab, alien.realLocation);
-        yield return new WaitForSeconds(0.5f);
+        var hitSFX = sfxLayer.SpawnPrefab(genericMarkerPrefab, alien.realLocation);
+        hitSFX.GetComponent<GenericMarker>().SetText("Stunned");
+        yield return new WaitForSeconds(1f);
         Destroy(hitSFX);
     }
 }

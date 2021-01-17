@@ -844,7 +844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79ec5c4b75a8fa48b1d08eefe6b8185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stunnedPrefab: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
+  genericMarkerPrefab: {fileID: 7732399006863854842, guid: b6d03e50041b8184e9d9d983eb30448e,
     type: 3}
   sfxLayer: {fileID: 8640662348792897040}
   map: {fileID: 8640662348927887907}
@@ -4107,6 +4107,8 @@ MonoBehaviour:
     type: 3}
   hitPrefab: {fileID: 4401495735841910, guid: 98474bf1a28c0498581586e429256c88, type: 3}
   explosionCloudPrefab: {fileID: 4738354376133644, guid: e4aa511a518774666a1053b9e939d403,
+    type: 3}
+  firePrefab: {fileID: 4015890280453238215, guid: d05cf05a385573c4194823fd6ebd6e69,
     type: 3}
   healthBarPrefab: {fileID: 8186827862387455872, guid: 712a8c82912054809a023fb368235edd,
     type: 3}

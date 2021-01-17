@@ -145,6 +145,7 @@
      <Compile Include="Assets\Src\New\Components\Debug\PressSpaceTrigger.cs" />
      <Compile Include="Assets\Src\New\Components\EnergyDisplayPip.cs" />
      <Compile Include="Assets\Src\New\Components\GameHUD.cs" />
+     <Compile Include="Assets\Src\New\Components\GenericMarker.cs" />
      <Compile Include="Assets\Src\New\Components\Header.cs" />
      <Compile Include="Assets\Src\New\Components\HealthBar.cs" />
      <Compile Include="Assets\Src\New\Components\Icon.cs" />
@@ -197,6 +198,9 @@
      <Compile Include="Assets\Src\New\Controllers\UIController.cs" />
      <Compile Include="Assets\Src\New\Controllers\WorkshopController.cs" />
      <Compile Include="Assets\Src\New\CurrentSelectionState.cs" />
+     <Compile Include="Assets\Src\New\Data\ActorData\GrenadeAmmo.cs" />
+     <Compile Include="Assets\Src\New\Data\ActorData\StunShotAmmo.cs" />
+     <Compile Include="Assets\Src\New\Data\ActorData\StunStatus.cs" />
      <Compile Include="Assets\Src\New\Data\Alien.cs" />
      <Compile Include="Assets\Src\New\Data\Campaign.cs" />
      <Compile Include="Assets\Src\New\Data\Cell.cs" />
@@ -208,6 +212,7 @@
      <Compile Include="Assets\Src\New\Data\Enums\MovementType.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\SpecialAbilityType.cs" />
      <Compile Include="Assets\Src\New\Data\Enums\UnlockableType.cs" />
+     <Compile Include="Assets\Src\New\Data\Fire.cs" />
      <Compile Include="Assets\Src\New\Data\Fog.cs" />
      <Compile Include="Assets\Src\New\Data\GamePhase.cs" />
      <Compile Include="Assets\Src\New\Data\Interactors\ActorActionsInput.cs" />
@@ -286,6 +291,7 @@
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\CellType.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\CrateActor.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\CreditReward.cs" />
+     <Compile Include="Assets\Src\New\Data\ReferenceTypes\FlameActor.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\Health.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaArmour.cs" />
      <Compile Include="Assets\Src\New\Data\ReferenceTypes\MetaItem.cs" />
@@ -417,6 +423,7 @@
      <Compile Include="Assets\Src\New\Presenters\SpecialAbilities\FireAtGroundPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\SpecialAbilities\GrenadePresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\SpecialAbilities\SpecialAbilityPresenter.cs" />
+     <Compile Include="Assets\Src\New\Presenters\SpecialAbilities\StunShotPresenter.cs" />
      <Compile Include="Assets\Src\New\Presenters\Testi.cs" />
      <Compile Include="Assets\Src\New\Presenters\TurnSoldierPresenter.cs" />
      <Compile Include="Assets\Src\New\ShootAction.cs" />
@@ -454,6 +461,7 @@
      <Compile Include="Assets\Src\New\Workers\SpecialAbilities\FireAtGround.cs" />
      <Compile Include="Assets\Src\New\Workers\SpecialAbilities\Grenade.cs" />
      <Compile Include="Assets\Src\New\Workers\SpecialAbilities\SpecialAbility.cs" />
+     <Compile Include="Assets\Src\New\Workers\SpecialAbilities\StunShot.cs" />
      <Compile Include="Assets\Src\New\Workers\SpecialActions.cs" />
      <Compile Include="Assets\Src\New\Workers\Unlockable.cs" />
      <Compile Include="Assets\Src\New\Workers\UnlockableGraph.cs" />

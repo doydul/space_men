@@ -21,6 +21,9 @@ MonoBehaviour:
   shotsWhenStill: 2
   ammo: 14
   blast: 7
+  flames: 1
+  flameDamage: 1
+  flameColor: {r: 1, g: 1, b: 1, a: 0}
   type: 0
   cost: 100
   description: designed for clearing large groups of smaller enemies

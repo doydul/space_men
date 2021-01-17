@@ -27,6 +27,8 @@ namespace Data {
         public int shotsWhenStill;
         public int ammo;
         public float blast;
+        public bool flames;
+        public int flameDamage;
         public string description;
 
         public bool isNull => cost == -1;

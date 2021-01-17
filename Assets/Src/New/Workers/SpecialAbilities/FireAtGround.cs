@@ -44,7 +44,8 @@ namespace Workers {
             output.maxAmmo = soldier.maxAmmo;
             output.explosion = new ExplosionData {
                 squaresCovered = explosion.coveredTiles,
-                damageInstances = explosion.damageInstances
+                damageInstances = explosion.damageInstances,
+                fires = explosion.fires
             };
             return output;
         }

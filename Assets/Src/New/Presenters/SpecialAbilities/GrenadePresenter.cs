@@ -19,7 +19,7 @@ public class GrenadePresenter : SpecialAbilityPresenter<Grenade.Output> {
     
     public override IEnumerator Present(Grenade.Output input) {
         var soldier = map.GetActorByIndex(input.soldierIndex) as Soldier;
-        yield return animations.DoExplosiveShootAnimation(input.soldierIndex, input.explosion.squaresCovered, input.explosion.damageInstances);
+        yield return animations.DoExplosiveShootAnimation(input.soldierIndex, input.explosion);
     }
 }
 

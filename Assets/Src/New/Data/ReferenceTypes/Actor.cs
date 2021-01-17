@@ -15,6 +15,7 @@ namespace Data {
         public virtual bool isSoldier => false;
         public virtual bool isAlien => false;
         public virtual bool isCrate => false;
+        public virtual bool isFlame => false;
 
         List<object> arbitraryData;
 
