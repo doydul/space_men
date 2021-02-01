@@ -15,6 +15,7 @@ namespace Data {
 
         public int damageInflicted;
         public AttackResult attackResult;
+        public bool critical;
         public long perpetratorIndex;
         public long victimIndex;
         public int victimHealthAfterDamage;

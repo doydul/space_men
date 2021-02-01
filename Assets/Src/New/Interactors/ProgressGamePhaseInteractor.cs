@@ -323,13 +323,14 @@ namespace Interactors {
 
             int damage = 0;
             AttackResult attackResult = AttackResult.Deflected;
+            bool critical = false;
             if (Random.Range(0, 100) >= armourStats.armourValue - alienStats.armourPen) {
+                attackResult = AttackResult.Hit;
                 if (Random.Range(0, 100) <= CRITICAL_HIT_CHANCE) {
                     damage = Mathf.CeilToInt(alienStats.damage * 2.5f);
-                    attackResult = AttackResult.CriticalHit;
+                    critical = true;
                 } else {
                     damage = alienStats.damage;
-                    attackResult = AttackResult.Hit;
                 }
                 soldier.health.Damage(damage);
                 if (soldier.health.dead) attackResult = AttackResult.Killed;
@@ -345,6 +346,7 @@ namespace Interactors {
                     victimIndex = soldier.uniqueId,
                     damageInflicted = damage,
                     attackResult = attackResult,
+                    critical = critical,
                     victimHealthAfterDamage = soldier.health.current
                 }
             };

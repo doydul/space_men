@@ -4368,6 +4368,8 @@ MonoBehaviour:
     type: 3}
   deflectMarkerPrefab: {fileID: 7732399006863854842, guid: f4c6addbf0fad46a880f95d2944a7d39,
     type: 3}
+  genericMarkerPrefab: {fileID: 7732399006863854842, guid: b6d03e50041b8184e9d9d983eb30448e,
+    type: 3}
 --- !u!114 &8640662349757446150
 MonoBehaviour:
   m_ObjectHideFlags: 0

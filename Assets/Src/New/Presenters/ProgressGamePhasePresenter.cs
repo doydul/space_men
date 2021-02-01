@@ -26,6 +26,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     public Transform alienAttackPrefab;
     public Transform healthBarPrefab;
     public Transform deflectMarkerPrefab;
+    public Transform genericMarkerPrefab;
 
     public static ProgressGamePhasePresenter instance { get; private set; }
     
@@ -105,10 +106,10 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
                 var target = tile.GetActor<Soldier>();
                 target.health = action.damageInstance.victimHealthAfterDamage;
                 yield return AlienAttackAnimation(alien, target);
-                if (action.damageInstance.attackResult == AttackResult.Hit || action.damageInstance.attackResult == AttackResult.CriticalHit) {
-                    if (action.damageInstance.attackResult == AttackResult.CriticalHit) {
-                        StartCoroutine(MarkerAnimationFor(action.damageInstance));
-                    }
+                if (action.damageInstance.critical) {
+                    StartCoroutine(MarkerAnimationFor(action.damageInstance));
+                }
+                if (action.damageInstance.attackResult == AttackResult.Hit) {
                     var healthBarGO = sfxLayer.SpawnPrefab(healthBarPrefab, target.transform.position);
                     var healthBar = healthBarGO.GetComponent<HealthBar>();
                     healthBar.SetPercentage(target.healthPercentage);
@@ -212,10 +213,16 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     }
 
     IEnumerator MarkerAnimationFor(DamageInstance damageInstance) {
-        if (damageInstance.attackResult != AttackResult.Deflected && damageInstance.attackResult != AttackResult.CriticalHit) yield break;
-        // TODO add marker for critical hit
+        if (damageInstance.attackResult != AttackResult.Deflected && !damageInstance.critical) yield break;
+        GameObject marker = null;
         var actor = map.GetActorByIndex(damageInstance.victimIndex);
-        var marker =  sfxLayer.SpawnPrefab(deflectMarkerPrefab, actor.realLocation);
+        if (damageInstance.critical) {
+            marker =  sfxLayer.SpawnPrefab(genericMarkerPrefab, actor.realLocation);
+            var script = marker.GetComponent<GenericMarker>();
+            script.SetText("Critical");
+        } else if (damageInstance.attackResult == AttackResult.Deflected) {
+            marker =  sfxLayer.SpawnPrefab(deflectMarkerPrefab, actor.realLocation);
+        }
         yield return new WaitForSeconds(1);
         Destroy(marker);
     }

@@ -41,7 +41,6 @@ namespace Data {
 
     public enum AttackResult {
         Hit,
-        CriticalHit,
         Missed,
         Deflected,
         Killed
