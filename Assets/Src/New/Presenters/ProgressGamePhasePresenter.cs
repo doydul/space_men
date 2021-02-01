@@ -34,6 +34,10 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     }
     
     public void Present(ProgressGamePhaseOutput input) {
+        StartCoroutine(DoPresent(input));
+    }
+
+    IEnumerator DoPresent(ProgressGamePhaseOutput input) {
         mapInput.Disable();
         uiInput.Disable();
 
@@ -66,10 +70,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         }
 
         if (input.alienActions != null) {
-            StartCoroutine(AlienActionAnimation(input));
-        } else {
-            mapInput.Enable();
-            uiInput.Enable();
+            yield return AlienActionAnimation(input);
         }
 
         if (input.shipEnergyEvent.HasValue) {
@@ -77,6 +78,20 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
                 shipEnergyDisplay.FillNextPip();
             }
         }
+
+        if (input.damageInstances != null) {
+            foreach (var damageInstance in input.damageInstances) {
+                yield return DamageInstancePresenter.instance.Present(damageInstance);
+            }
+        }
+
+        if (input.deadActorIndexes != null) {
+            foreach (var index in input.deadActorIndexes) {
+                map.GetActorByIndex(index).Die();
+            }
+        }
+        mapInput.Enable();
+        uiInput.Enable();
     }
 
     IEnumerator AlienActionAnimation(ProgressGamePhaseOutput input) {
@@ -109,9 +124,6 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
                 }
             }
         }
-        
-        mapInput.Enable();
-        uiInput.Enable();
     }
 
     void UpdateUI(Data.GamePhase gamePhase) {

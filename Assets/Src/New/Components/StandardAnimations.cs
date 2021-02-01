@@ -34,21 +34,7 @@ public class StandardAnimations : MonoBehaviour {
         Destroy(muzzleFlash);
         if (damageInstances.Length > 0) {
             var damageInstance = damageInstances[0];
-            var alien = map.GetActorByIndex(damageInstance.victimIndex) as Alien;
-            if (damageInstance.attackResult == AttackResult.Hit || damageInstance.attackResult == AttackResult.Killed) {
-                bloodSplats.MakeSplat(alien);
-                var hitSFX = sfxLayer.SpawnPrefab(hitPrefab, alien.transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
-                yield return new WaitForSeconds(0.5f);
-                Destroy(hitSFX);
-            }
-            if (damageInstance.attackResult == AttackResult.Hit) {
-                alien.health = damageInstance.victimHealthAfterDamage;
-                yield return HealthBarAnimation(alien.transform.position, alien.healthPercentage);
-            } else if (damageInstance.attackResult == AttackResult.Killed) {
-                alien.Die();
-            } else {
-                yield return MarkerAnimationFor(damageInstance);
-            }
+            yield return DamageInstancePresenter.instance.Present(damageInstance);
         }
         if (callback != null) callback();
     }
@@ -68,7 +54,7 @@ public class StandardAnimations : MonoBehaviour {
         }
         if (explosion.fires != null) {
             foreach (var fire in explosion.fires) {
-                InstantiateFire(fire.position);
+                InstantiateFire(fire.position, fire.index);
             }
         }
         yield return new WaitForSeconds(1);
@@ -108,9 +94,11 @@ public class StandardAnimations : MonoBehaviour {
         Destroy(marker);
     }
 
-    void InstantiateFire(Position position) {
+    void InstantiateFire(Position position, long index) {
         var trans = Instantiate(firePrefab) as Transform;
         var tile = map.GetTileAt(new Vector2(position.x, position.y));
+        var script = trans.GetComponent<FireComponent>();
+        script.index = index;
         if (tile.backgroundActor != null) {
             Destroy(tile.backgroundActor.gameObject);
         }

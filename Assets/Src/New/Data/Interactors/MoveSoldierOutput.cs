@@ -8,5 +8,6 @@ namespace Data {
         public Direction newFacing;
         public MovementType movementType;
         public Fog[] newFogs;
+        public DamageInstance[] damageInstances;
     }
 }

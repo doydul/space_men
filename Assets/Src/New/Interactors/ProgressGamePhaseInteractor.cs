@@ -125,11 +125,45 @@ namespace Interactors {
                 }
             }
 
-            IncreaseShipEnergy(ref result);            
+            IncreaseShipEnergy(ref result);
+
+            FireDamage(ref result);
         }
 
         void IncreaseShipEnergy(ref ProgressGamePhaseOutput result) {
             if (gameState.shipEnergy.Increase()) result.shipEnergyEvent = new ShipEnergyEvent { netChange = 1 };
+        }
+
+        void FireDamage(ref ProgressGamePhaseOutput result) {
+            var damageInstances = new List<DamageInstance>();
+            var deadActorIndexes = new List<long>();
+            foreach (var fire in gameState.GetActors().Where(actor => actor is FlameActor).Cast<FlameActor>()) {
+                var cell = gameState.map.GetCell(fire.position);
+                if (cell.actor.exists) {
+                    cell.actor.health.Damage(fire.damage);
+                    damageInstances.Add(new DamageInstance {
+                        damageInflicted = fire.damage,
+                        attackResult = cell.actor.health.dead ? AttackResult.Killed : AttackResult.Hit,
+                        perpetratorIndex = -1,
+                        victimIndex = cell.actor.uniqueId,
+                        victimHealthAfterDamage = cell.actor.health.current
+                    });
+                    if (cell.actor.health.dead) {
+                        gameState.RemoveActor(cell.actor.uniqueId);
+                        if (cell.actor.isSoldier) {
+                            var soldier = cell.actor as SoldierActor;
+                            metaGameState.metaSoldiers.Remove(soldier.metaSoldierId);
+                        }
+                    }
+                }
+                fire.health.Damage(1);
+                if (fire.health.dead) {
+                    gameState.RemoveActor(fire.uniqueId);
+                    deadActorIndexes.Add(fire.uniqueId);
+                }
+            }
+            result.damageInstances = damageInstances.ToArray();
+            result.deadActorIndexes = deadActorIndexes.ToArray();
         }
 
         bool NoActionsToTake() {
@@ -185,6 +219,7 @@ namespace Interactors {
 
         void MoveAliens(ref ProgressGamePhaseOutput result) {
             var resultList = new List<AlienAction>();
+            var damageInstances = new List<DamageInstance>();
             var pathingGrid = AlienPathingGrid.instance;
             var map = gameState.map;
             var aliensStillToMove = Aliens.Iterate(gameState)
@@ -196,6 +231,7 @@ namespace Interactors {
                 foreach (var alien in aliensCopy) {
                     var iterator = new CellIterator(alien.position, cell => !cell.isWall && !cell.actor.isSoldier && (alien.position - cell.position).distance <= alien.movement);
                     AlienPathingGrid.GridSquare bestSquare = null;
+                    var bestNode = new CellIterator.Node();
                     foreach (var node in iterator.Iterate(map)) {
                         var currentSquare = pathingGrid.GetSquare(node.cell.position);
                         var currentCell = map.GetCell(currentSquare.position);
@@ -210,6 +246,7 @@ namespace Interactors {
                             )
                         ) {
                             bestSquare = currentSquare;
+                            bestNode = node;
                         }
                     }
                     if (bestSquare == null) {
@@ -223,7 +260,26 @@ namespace Interactors {
                             position = bestSquare.position,
                             facing = bestSquare.facing
                         });
-                        resultList.AddRange(PerformAttackActions(alien));
+                        foreach (var node in bestNode.GetPath()) {
+                            if (node.distanceFromStart > 0) {
+                                if (node.cell.backgroundActor.isFlame) {
+                                    var flame = node.cell.backgroundActor as FlameActor;
+                                    alien.health.Damage(flame.damage);
+                                    damageInstances.Add(new DamageInstance {
+                                        damageInflicted = flame.damage,
+                                        attackResult = alien.health.dead ? AttackResult.Killed : AttackResult.Hit,
+                                        perpetratorIndex = -1,
+                                        victimIndex = alien.uniqueId,
+                                        victimHealthAfterDamage = alien.health.current
+                                    });
+                                    if (alien.health.dead) {
+                                        gameState.RemoveActor(alien.uniqueId);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        if (!alien.health.dead) resultList.AddRange(PerformAttackActions(alien));
                     } else if (map.GetCell(bestSquare.position).actor == alien) {
                         aliensStillToMove.Remove(alien);
                         resultList.AddRange(PerformAttackActions(alien));
@@ -235,6 +291,11 @@ namespace Interactors {
                 result.alienActions = resultList.ToArray();
             } else {
                 result.alienActions = result.alienActions.Concat(resultList).ToArray();
+            }
+            if (result.damageInstances == null) {
+                result.damageInstances = damageInstances.ToArray();
+            } else {
+                result.damageInstances = result.damageInstances.Concat(damageInstances).ToArray();
             }
         }
         

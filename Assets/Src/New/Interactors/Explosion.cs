@@ -43,7 +43,8 @@ namespace Workers {
                 if (soldier.weaponStats.flames) {
                     var flameActor = new FlameActor {
                         position = tilePosition,
-                        health = new Health(2)
+                        health = new Health(3),
+                        damage = soldier.flameDamage
                     };
                     if (cell.backgroundActor.exists) {
                         gameState.RemoveActor(cell.backgroundActor.uniqueId);

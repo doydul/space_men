@@ -11,6 +11,8 @@ namespace Data {
         public Position[] radarBlips;
         public ShootingStats[] shootingStats;
         public ShipEnergyEvent? shipEnergyEvent;
+        public long[] deadActorIndexes;
+        public DamageInstance[] damageInstances;
     }
 
     public struct AlienAction {

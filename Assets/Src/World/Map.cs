@@ -42,6 +42,8 @@ public class Map : MonoBehaviour {
         foreach (Tile tile in EnumerateTiles()) {
             T actor = tile.GetActor<T>();
             if (actor != null) result.Add(actor);
+            T backgroundActor = tile.GetBackgroundActor<T>();
+            if (backgroundActor != null) result.Add(backgroundActor);
         }
         return result;
     }

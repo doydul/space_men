@@ -29,7 +29,7 @@ public class Tile : MonoBehaviour {
     }
 
     public void SetActor(Transform actor, bool background = false) {
-        if (this.actor != null) Debug.Log("Omg what are you doing!");
+        if (!background && this.actor != null) Debug.Log("Omg what are you doing!");
         if (background) {
             backgroundActor = actor;
             actor.parent = midground;
@@ -51,7 +51,7 @@ public class Tile : MonoBehaviour {
     }
 
     public void RemoveActorByIndex(long index) {
-        if (actor.GetComponent<Actor>().index == index) {
+        if (occupied && actor.GetComponent<Actor>().index == index) {
             RemoveActor();
         } else {
             RemoveBackgroundActor();
@@ -61,6 +61,11 @@ public class Tile : MonoBehaviour {
     public T GetActor<T>() {
         if (actor == null) return default(T);
         return actor.GetComponent<T>();
+    }
+
+    public T GetBackgroundActor<T>() {
+        if (backgroundActor == null) return default(T);
+        return backgroundActor.GetComponent<T>();
     }
 
     public void Highlight(Color color) {

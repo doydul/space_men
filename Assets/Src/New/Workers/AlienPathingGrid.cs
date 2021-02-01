@@ -41,8 +41,8 @@ namespace Workers {
                         var position = node.cell.position;
                         GridSquare nextSquare = null;
                         var facing = Direction.Up;
-                        if (node.previousCell != null) {
-                            var nextPosition = node.previousCell.position;
+                        if (node.previousNode.cell != null) {
+                            var nextPosition = node.previousNode.cell.position;
                             nextSquare = gridSquares[nextPosition.x, nextPosition.y];
                             facing = GetFacing(position, nextPosition);
                         }

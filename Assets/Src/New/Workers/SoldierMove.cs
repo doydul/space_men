@@ -12,13 +12,14 @@ namespace Workers {
         Position targetPosition;
 
         public Position[] traversedCells { get; private set; }
+        public DamageInstance[] damageInstances { get; private set; }
 
         public SoldierMove(long soldierIndex, Position targetPosition) {
             this.soldierIndex = soldierIndex;
             this.targetPosition = targetPosition;
         }
 
-        public void Execute(GameState gameState) {
+        public void Execute(GameState gameState, MetaGameState metaGameState) {
             var map = gameState.map;
             var targetCell = map.GetCell(targetPosition);
             if (targetCell.actor.exists) throw new Exception("Soldier Move: Target location is already occupied");
@@ -28,6 +29,30 @@ namespace Workers {
             var path = GetPath(map, currentCell.position, targetCell.position);
             
             traversedCells = path.Nodes().Select(node => node.position).Where(pos => pos != soldier.position).ToArray();
+            var damageInstancesList = new List<DamageInstance>();
+            foreach (var position in traversedCells) {
+                var cell = map.GetCell(position);
+                if (cell.backgroundActor.isFlame) {
+                    var flame = cell.backgroundActor as FlameActor;
+                    soldier.health.Damage(flame.damage);
+                    if (soldier.health.dead) {
+                        damageInstancesList.Add(new DamageInstance {
+                            attackResult = AttackResult.Killed
+                        });
+                        gameState.RemoveActor(soldier.uniqueId);
+                        metaGameState.metaSoldiers.Remove(soldier.metaSoldierId);
+                        break;
+                    }
+                    damageInstancesList.Add(new DamageInstance {
+                        damageInflicted = flame.damage,
+                        attackResult = AttackResult.Hit,
+                        perpetratorIndex = -1,
+                        victimIndex = soldierIndex,
+                        victimHealthAfterDamage = soldier.health.current
+                    });
+                }
+            }
+            damageInstances = damageInstancesList.ToArray();
             soldier.moved += path.length;
             soldier.facing = path.facing;
             soldier.position = targetPosition;

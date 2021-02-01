@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using Data;
+using System.Collections;
 
 public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
   
@@ -9,6 +10,7 @@ public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
     public UIData uiData;
     public MapController mapController;
     public Scripting scripting;
+    public AllControllers controllers;
     
     void Awake() {
         instance = this;
@@ -30,9 +32,20 @@ public class MoveSoldierPresenter : Presenter, IPresenter<MoveSoldierOutput> {
         soldier.TurnTo(ConvertDirection(input.newFacing));
         uiData.selectedTile = tile;
         SetFog(input.newFogs);
-        mapController.DisplayActions(input.soldierIndex);
         TriggerTraversedTileEvents(input);
         scripting.Trigger(Scripting.Event.OnMoveSoldier);
+        StartCoroutine(AnimatedStuff(input));
+    }
+
+    IEnumerator AnimatedStuff(MoveSoldierOutput input) {
+        controllers.DisableAll();
+        bool dead = false;
+        foreach (var damageInstance in input.damageInstances) {
+            yield return DamageInstancePresenter.instance.Present(damageInstance);
+            if (damageInstance.attackResult == AttackResult.Killed) dead = true;
+        }
+        controllers.EnableAll();
+        if (!dead) mapController.DisplayActions(input.soldierIndex);
     }
 
     void TriggerTraversedTileEvents(MoveSoldierOutput input) {

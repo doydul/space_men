@@ -17,36 +17,48 @@ namespace Workers {
         
         public IEnumerable<Node> Iterate(Workers.MapState map) {
             var iterator = new AdjacentCells(map);
-            var leafCells = new List<CellType> { map.GetCell(start) };
+            var leafNodes = new List<Node> { new Node { cell = map.GetCell(start) } };
             var checkedPositions = new List<Position> { start };
             yield return new Node { cell = map.GetCell(start) };
             
             int distance = 1;
-            while (leafCells.Count > 0) {
-                var newLeafCells = new List<CellType>();
-                foreach (var leafCell in leafCells) {
-                    foreach (var cell in iterator.Iterate(leafCell.position)) {
+            while (leafNodes.Count > 0) {
+                var newLeafNodes = new List<Node>();
+                foreach (var leafNode in leafNodes) {
+                    foreach (var cell in iterator.Iterate(leafNode.cell.position)) {
                         if (!checkedPositions.Contains(cell.position) && filterCondition(cell)) {
-                            yield return new Node {
+                            var newNode = new Node {
                                 cell = cell,
-                                previousCell = leafCell,
+                                previousNode = leafNode,
                                 distanceFromStart = distance
                             };
-                            newLeafCells.Add(cell);
+                            yield return newNode;
+                            newLeafNodes.Add(newNode);
                             checkedPositions.Add(cell.position);
                         }
                     }
                 }
-                leafCells = newLeafCells;
+                leafNodes = newLeafNodes;
                 distance++;
             }
         }
         
-        public struct Node {
+        public class Node {
             
             public CellType cell;
-            public CellType previousCell;
+            public Node previousNode;
             public int distanceFromStart;
+
+            public Node[] GetPath() {
+                var result = new List<Node>() { this };
+                var current = previousNode;
+                while (current != null) {
+                    result.Add(current);
+                    current = current.previousNode;
+                }
+                result.Reverse();
+                return result.ToArray();
+            }
         }
     }
 }
