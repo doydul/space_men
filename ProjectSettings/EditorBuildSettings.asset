@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Campaigns/Default/First Mission.unity
-    guid: 7585f0d6278914f9093bbd402dbe8bcf
-  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 2496fc6cc35344a4b9fbfd74b0a1ba41
+  - enabled: 1
+    path: Assets/Scenes/Campaigns/Default/First Mission.unity
+    guid: 7585f0d6278914f9093bbd402dbe8bcf
   - enabled: 1
     path: Assets/Scenes/MissionOverview.unity
     guid: 00880ec89ce2c4709ba7c99e798792a4

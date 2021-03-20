@@ -14,7 +14,7 @@ public class LoadGamePresenter : Presenter, IPresenter<LoadGameOutput> {
     public void Present(LoadGameOutput input) {
         if (input.success) {
             blackFade.BeginFade(() => {
-                SceneManager.LoadScene("MissionOverview");
+                SceneManager.LoadScene(input.missionName);
             });
         }
     }

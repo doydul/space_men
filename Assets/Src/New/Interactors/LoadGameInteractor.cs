@@ -17,6 +17,8 @@ namespace Interactors {
                 MetaGameState.Load(input.slotId, GenerateDefaultSave());
             }
             output.success = true;
+            output.campaignName = metaGameState.currentCampaign;
+            output.missionName = metaGameState.currentMission;
             
             presenter.Present(output);
         }

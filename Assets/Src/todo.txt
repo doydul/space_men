@@ -9,7 +9,6 @@
 ## Next
 - create worker for inflicting damage, removing the actor from the game state and then returning a damage instance
 
-- make sure critical hit marker shows even when attack is fatal
 - create a new medium enemy which moves 2 squares but does high damage and high armour pen
 - create a new fast enemy which does high damage but does no armour pen
 - improve ui 
