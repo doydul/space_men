@@ -8,8 +8,6 @@ public class MapHighlighter : MonoBehaviour {
     public static MapHighlighter instance { get; private set; }
 
     public Map map;
-    public GamePhase gamePhase;
-    public MapController mapController;
 
     List<Tile> highlightedTiles;
 
@@ -18,7 +16,6 @@ public class MapHighlighter : MonoBehaviour {
     Soldier selectedUnit;
     Vector2 selectedUnitGridLocation;
     bool movementPhaseActive;
-    bool animating;
 
     int updateCounter;
 

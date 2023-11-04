@@ -14,6 +14,7 @@ public class Actor : MonoBehaviour {
     public Transform image;
     public Sprite[] bloodSplatSprites;
 
+    public string id { get; set; }
     public long index { get; set; }
     public Direction direction { get; private set; }
     public bool dead { get; private set; }

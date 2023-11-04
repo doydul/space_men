@@ -5,7 +5,6 @@ public class MapInputController : MonoBehaviour {
 
     public Camera cam;
     public Map map;
-    public UIInputHandler inputHandler;
 
     bool dragging;
     bool dragged;
@@ -57,7 +56,7 @@ public class MapInputController : MonoBehaviour {
         if (hit.collider != null) {
             var tile = hit.collider.gameObject.GetComponent<Tile>();
             if (tile != null) {
-                PlayerActionHandler.instance.InteractWithTile(tile);
+                // TODO interact with tile when clicked
             }
         }
     }
