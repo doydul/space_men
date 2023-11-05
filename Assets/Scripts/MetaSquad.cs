@@ -25,7 +25,15 @@ public class MetaSquad {
         var result = new MetaSquad();
         for (int i = 0; i < 4; i++) {
             result.AddMetaSoldier(new MetaSoldier() {
-                name = "John Doe"
+                name = "John Doe",
+                armour = new MetaArmour() {
+                    id = Guid.NewGuid().ToString(),
+                    name = "Basic"
+                },
+                weapon = new MetaWeapon() {
+                    id = Guid.NewGuid().ToString(),
+                    name = "Assault Rifle"
+                }
             });
         }
         return result;

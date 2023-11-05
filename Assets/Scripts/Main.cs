@@ -38,8 +38,10 @@ public class Main : MonoBehaviour {
         var soldier = trans.GetComponent<Soldier>();
         soldier.id = metaSoldier.id;
 
-        // soldier.armour = Armour.Get(soldierData.armourName.ToString());
-        // soldier.weapon = Weapon.Get(soldierData.weaponName.ToString());
+        soldier.armour = Armour.Get(metaSoldier.armour.name);
+        soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
+        Debug.Log(soldier.armour.movement);
+
         // soldier.maxAmmo = soldierData.maxAmmo;
         // soldier.exp = soldierData.exp;
         // soldier.maxHealth = soldierData.maxHealth;

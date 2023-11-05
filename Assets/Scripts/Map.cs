@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
-public class Map : MonoBehaviour {
+public partial class Map : MonoBehaviour {
     
     public static Map instance { get; private set; }
     
@@ -59,6 +59,13 @@ public class Map : MonoBehaviour {
         return tiles[x, y];
     }
 
+    public Actor GetActorByID(string id) {
+        foreach (var actor in GetActors<Actor>()) {
+            if (actor.id == id) return actor;
+        }
+        throw new System.Exception("Actor could not be found");
+    }
+
     public Actor GetActorByIndex(long index) {
         foreach (var actor in GetActors<Actor>()) {
             if (actor.index == index) return actor;
@@ -74,7 +81,7 @@ public class Map : MonoBehaviour {
         }
     }
 
-    public IEnumerable AdjacentTiles(Tile tile) {
+    public IEnumerable<Tile> AdjacentTiles(Tile tile) {
         var adjTile = GetTileAt(new Vector2(tile.gridLocation.x - 1, tile.gridLocation.y));
         if (adjTile != null) yield return adjTile;
         adjTile = GetTileAt(new Vector2(tile.gridLocation.x + 1, tile.gridLocation.y));
@@ -83,5 +90,9 @@ public class Map : MonoBehaviour {
         if (adjTile != null) yield return adjTile;
         adjTile = GetTileAt(new Vector2(tile.gridLocation.x, tile.gridLocation.y + 1));
         if (adjTile != null) yield return adjTile;
+    }
+
+    public IEnumerable<Tile> AdjacentTiles(Vector2 gridLocation) {
+        return AdjacentTiles(GetTileAt(gridLocation));
     }
 }

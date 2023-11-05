@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class Actor : MonoBehaviour {
+public abstract class Actor : MonoBehaviour {
 
     public enum Direction {
         Up,
@@ -15,7 +15,7 @@ public class Actor : MonoBehaviour {
     public Sprite[] bloodSplatSprites;
 
     public string id { get; set; }
-    public long index { get; set; }
+    public long index { get; set; } // remove me
     public Direction direction { get; private set; }
     public bool dead { get; private set; }
 
@@ -64,4 +64,8 @@ public class Actor : MonoBehaviour {
     public void Face(Vector2 targetGridLocation) {
         TurnTo(targetGridLocation - gridLocation);
     }
+
+    public virtual void Interact(Tile tile) {}
+
+    public virtual void Select() {}
 }

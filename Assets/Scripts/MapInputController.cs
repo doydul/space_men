@@ -56,7 +56,14 @@ public class MapInputController : MonoBehaviour {
         if (hit.collider != null) {
             var tile = hit.collider.gameObject.GetComponent<Tile>();
             if (tile != null) {
-                // TODO interact with tile when clicked
+                if (UIState.instance.IsActorSelected()) {
+                    UIState.instance.GetSelectedActor().Interact(tile);
+                } else {
+                    var actor = tile.GetActor<Actor>();
+                    if (actor != null) {
+                        actor.Select();
+                    }
+                }
             }
         }
     }

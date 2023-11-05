@@ -113,4 +113,28 @@ public class Soldier : Actor {
     public void ShowDeflectIndicator() {
 
     }
+
+    public override void Interact(Tile tile) {
+        if (tile.GetActor<Actor>() == null) {
+            Debug.Log(Map.instance.ShortestPath(new SoldierImpassableTerrain(Map.instance), gridLocation, tile.gridLocation).length);
+        }
+    }
+
+    public override void Select() {
+        UIState.instance.SetSelectedActor(this);
+    }
+}
+
+public class SoldierImpassableTerrain : IMask {
+
+    Map map;
+
+    public SoldierImpassableTerrain(Map map) {
+        this.map = map;
+    }
+
+    public bool Contains(Point point) {
+        var tile = map.GetTileAt(new Vector2(point.x, point.y));
+        return !tile.open || tile.GetActor<Alien>() != null;
+    }
 }
