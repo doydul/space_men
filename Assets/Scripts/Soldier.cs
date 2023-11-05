@@ -45,31 +45,8 @@ public class Soldier : Actor {
         StartMovementPhase();
     }
 
-    public SoldierData ToData() {
-        var data = new SoldierData();
-        if (armour != null) data.armour = armourName;
-        if (weapon != null) data.weapon = weaponName;
-        data.exp = exp;
-        data.level = level;
-        return data;
-    }
-
-    public void FromData(SoldierData soldierData, int index = 0) {
-        this.index = index;
-        armour = Armour.Get(soldierData.armour);
-        weapon = Weapon.Get(soldierData.weapon);
-        exp = soldierData.exp;
-        level = soldierData.level;
-    }
-
     public void GetExp(int amount) {
         exp += amount;
-    }
-
-    public override void MoveTo(Tile newTile) {
-        int distance = (int)(Mathf.Abs(tile.gridLocation.x - newTile.gridLocation.x) + Mathf.Abs(tile.gridLocation.y - newTile.gridLocation.y));
-        tilesMoved += distance;
-        base.MoveTo(newTile);
     }
 
     public void StartMovementPhase() {
@@ -106,35 +83,40 @@ public class Soldier : Actor {
         Destroy(gameObject);
     }
 
-    public void ShowHitIndicator() {
-
-    }
-
-    public void ShowDeflectIndicator() {
-
-    }
-
     public override void Interact(Tile tile) {
+        if (!tile.open) {
+            UIState.instance.DeselectActor();
+            MapHighlighter.instance.ClearHighlights();
+            return;
+        }
         if (tile.GetActor<Actor>() == null) {
-            Debug.Log(Map.instance.ShortestPath(new SoldierImpassableTerrain(Map.instance), gridLocation, tile.gridLocation).length);
+            var path = Map.instance.ShortestPath(new SoldierImpassableTerrain(), gridLocation, tile.gridLocation);
+            if (path.length <= remainingMovement) {
+                MoveTo(tile);
+                tilesMoved += path.length;
+                HighlightActions();
+            } else {
+                UIState.instance.DeselectActor();
+                MapHighlighter.instance.ClearHighlights();
+            }
+        }
+    }
+
+    public void HighlightActions() {
+        MapHighlighter.instance.ClearHighlights();
+        foreach (var tile in Map.instance.iterator.Exclude(new SoldierImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement)) {
+            MapHighlighter.instance.HighlightTile(tile, Color.green);
         }
     }
 
     public override void Select() {
         UIState.instance.SetSelectedActor(this);
+        HighlightActions();
     }
 }
 
 public class SoldierImpassableTerrain : IMask {
-
-    Map map;
-
-    public SoldierImpassableTerrain(Map map) {
-        this.map = map;
-    }
-
-    public bool Contains(Point point) {
-        var tile = map.GetTileAt(new Vector2(point.x, point.y));
+    public bool Contains(Tile tile) {
         return !tile.open || tile.GetActor<Alien>() != null;
     }
 }

@@ -19,7 +19,7 @@ public class ActorActionsPresenter : Presenter, IPresenter<ActorActionsOutput> {
     
     public void Present(ActorActionsOutput input) {
         uiData.actorActions = input.actions;
-        mapHighlighter.HighlightPossibleActions(input.actions);
+        // mapHighlighter.HighlightPossibleActions(input.actions);
         if (input.actions.Any(action => action.type == ActorActionType.Turn)) {
             turnButtons.Show();
         } else {

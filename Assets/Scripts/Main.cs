@@ -40,7 +40,6 @@ public class Main : MonoBehaviour {
 
         soldier.armour = Armour.Get(metaSoldier.armour.name);
         soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
-        Debug.Log(soldier.armour.movement);
 
         // soldier.maxAmmo = soldierData.maxAmmo;
         // soldier.exp = soldierData.exp;

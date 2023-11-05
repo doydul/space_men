@@ -43,19 +43,4 @@ public class MapHighlighter : MonoBehaviour {
         tile.Highlight(color);
         highlightedTiles.Add(tile);
     }
-
-    public void HighlightPossibleActions(ActorAction[] actorActions) {
-        ClearHighlights();
-        if (actorActions == null) return;
-        foreach (var action in actorActions) {
-            if (action.type == ActorActionType.Move) {
-                var color = action.sprint ? Color.yellow : Color.green;
-                HighlightTile(map.GetTileAt(new Vector2(action.target.x, action.target.y)), color);
-            } else if (action.type == ActorActionType.Shoot) {
-                HighlightTile(map.GetTileAt(new Vector2(action.target.x, action.target.y)), Color.red);
-            } else if (action.type == ActorActionType.PossibleMove) {
-                HighlightTile(map.GetTileAt(new Vector2(action.target.x, action.target.y)), Color.red);
-            }
-        }
-    }
  }

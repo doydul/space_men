@@ -1,4 +1,6 @@
+using UnityEngine;
+
 public interface IMask {
 
-    public bool Contains(Point point);
+    public bool Contains(Tile tile);
 }

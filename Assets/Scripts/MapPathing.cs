@@ -23,7 +23,7 @@ public partial class Map {
             alreadyTraversed.Add(currentNode.gridLocation);
             foreach (var adjacentTile in AdjacentTiles(currentNode.gridLocation)) {
                 if (alreadyTraversed.Contains(adjacentTile.gridLocation)) continue;
-                if (impassableTiles.Contains(new Point((int)adjacentTile.gridLocation.x, (int)adjacentTile.gridLocation.y))) continue;
+                if (impassableTiles.Contains(adjacentTile)) continue;
                 int shortestDistance = 99999;
                 foreach (var targetPoint in targetPoints) {
                     var dist = ManhattanDistance(adjacentTile.gridLocation, targetPoint);
@@ -56,7 +56,7 @@ public partial class Map {
 
         public Node[] nodes { get; private set; }
         public bool exists => nodes != null && nodes.Length > 0;
-        public int length => nodes.Length;
+        public int length => nodes.Length - 1;
         
         public static Path FromNode(Node node) {
             var nodes = new List<Node>();
