@@ -20,11 +20,11 @@ public class Armour : ScriptableObject {
     public int movement { get {
         switch(type) {
             case Type.Light:
-                return 4;
+                return 3;
             case Type.Medium:
-                return 3;
+                return 2;
             case Type.Heavy:
-                return 3;
+                return 2;
         }
         return 3;
     } }
@@ -32,9 +32,9 @@ public class Armour : ScriptableObject {
     public int sprint { get {
         switch(type) {
             case Type.Light:
-                return 4;
-            case Type.Medium:
                 return 3;
+            case Type.Medium:
+                return 2;
             case Type.Heavy:
                 return 0;
         }

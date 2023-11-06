@@ -42,6 +42,33 @@ public partial class Map {
         return new Path();
     }
 
+    public bool RayOverlapsTile(Vector2 rayStart, Vector2 rayEnd, Vector2 tilePos) {
+        var rayDelta = rayEnd - rayStart;
+        var tileDelta = tilePos - rayStart;
+        if (rayDelta.x == 0) return tileDelta.x == 0;
+        if (rayDelta.y == 0) return tileDelta.y == 0;
+        float c1 = (rayDelta.y / rayDelta.x) * (tileDelta.x - 0.5f);
+        float c2 = (rayDelta.y / rayDelta.x) * (tileDelta.x + 0.5f);
+        float c3 = (rayDelta.x / rayDelta.y) * (tileDelta.y - 0.5f);
+        float c4 = (rayDelta.x / rayDelta.y) * (tileDelta.y + 0.5f);
+        float b1 = (rayDelta.y / rayDelta.x) * (tileDelta.x);
+        float b2 = (rayDelta.x / rayDelta.y) * (tileDelta.y);
+        return Mathf.Abs(c1 - tileDelta.y) < 0.49f || Mathf.Abs(c2 - tileDelta.y) < 0.49f || Mathf.Abs(c3 - tileDelta.x) < 0.49f || Mathf.Abs(c4 - tileDelta.x) < 0.49f || (Mathf.Abs(b1 - tileDelta.y) < 0.01f && Mathf.Abs(b2 - tileDelta.x) < 0.01f);
+    }
+
+    public bool CanBeSeenFrom(IMask opaque, Vector2 pointA, Vector2 pointB) {
+        var bottomCorner = new Vector2(pointA.x < pointB.x ? pointA.x : pointB.x, pointA.y < pointB.y ? pointA.y : pointB.y);
+        var topCorner = new Vector2(pointA.x > pointB.x ? pointA.x : pointB.x, pointA.y > pointB.y ? pointA.y : pointB.y);
+        var delta = topCorner - bottomCorner;
+        for (int x = 0; x <= delta.x; x++) {
+            for (int y = 0; y <= delta.y; y++) {
+                var tilePos = bottomCorner + new Vector2(x, y);
+                if (RayOverlapsTile(pointA, pointB, tilePos) && opaque.Contains(GetTileAt(tilePos))) return false;
+            }
+        }
+        return true;
+    }
+
     public class Node {
 
         public Node previous;

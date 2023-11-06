@@ -79,6 +79,8 @@ public class Soldier : Actor {
       }
     }
 
+    public bool CanSee(Vector2 gridLocation) => Map.instance.CanBeSeenFrom(new SoldierLosMask(), gridLocation, this.gridLocation);
+
     public void Hurt(int damage) {
         health -= damage;
         if (health <= 0) {
@@ -125,5 +127,11 @@ public class Soldier : Actor {
 public class SoldierImpassableTerrain : IMask {
     public bool Contains(Tile tile) {
         return !tile.open || tile.GetActor<Alien>() != null;
+    }
+}
+
+public class SoldierLosMask : IMask {
+    public bool Contains(Tile tile) {
+        return !tile.open;
     }
 }
