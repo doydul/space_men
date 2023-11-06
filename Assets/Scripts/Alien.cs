@@ -12,6 +12,8 @@ public class Alien : Actor {
     public float threat { get; set; }
     public int expReward { get; set; }
 
+    public bool hasActed;
+
     public GameObject hitIndicator;
     public GameObject deflectIndicator;
     public SpriteRenderer healthIndicator;
@@ -21,6 +23,12 @@ public class Alien : Actor {
     private float healthSpriteSize;
 
     public bool dead { get { return health <= 0; } }
+    public void ShowAttack() => attackIndicator.enabled = true;
+    public void HideAttack() => attackIndicator.enabled = false;
+    public void ShowHealth() => healthIndicator.enabled = true;
+    public void HideHealth() => healthIndicator.enabled = false;
+    public void ShowHit() => hitIndicator.SetActive(true);
+    public void HideHit() => hitIndicator.SetActive(false);
 
     void Awake() {
         health = maxHealth;
@@ -29,6 +37,16 @@ public class Alien : Actor {
         deflectIndicator.SetActive(false);
         healthIndicator.enabled = false;
         attackIndicator.enabled = false;
+
+        GameEvents.On(this, "alien_turn_start", Reset);
+    }
+
+    void OnDestroy() {
+        GameEvents.RemoveListener(this, "alien_turn_start");
+    }
+
+    public void Reset() {
+        hasActed = false;
     }
 
     public void FromData(AlienData data) {
@@ -67,5 +85,11 @@ public class Alien : Actor {
         hitIndicator.SetActive(false);
         deflectIndicator.SetActive(false);
         healthIndicator.enabled = false;
+    }
+}
+
+public class AlienImpassableTerrain : IMask {
+    public bool Contains(Tile tile) {
+        return !tile.open || tile.GetActor<Soldier>() != null;
     }
 }

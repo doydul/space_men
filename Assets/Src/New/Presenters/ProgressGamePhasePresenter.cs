@@ -133,7 +133,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         mapHighlighter.ClearHighlights();
         foreach (var soldier in map.GetActors<Soldier>()) {
             if (gamePhase == Data.GamePhase.Movement) {
-                soldier.StartMovementPhase();
+                // soldier.StartMovementPhase();
             } else {
                 soldier.StartShootingPhase();
             }

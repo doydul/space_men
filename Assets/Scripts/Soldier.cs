@@ -7,6 +7,7 @@ public class Soldier : Actor {
     public Transform muzzleFlashLocation;
     
     public int tilesMoved { get; set; }
+    public int actionsSpent { get; set; }
     public int shotsFiredThisRound { get; set; }
     public int ammo { get; set; }
     public int maxAmmo { get; set; }
@@ -42,19 +43,25 @@ public class Soldier : Actor {
     public string weaponName { get { return weapon.name; } }
 
     void Start() {
-        StartMovementPhase();
+        health = maxHealth;
+        GameEvents.On(this, "player_turn_start", Reset);
+    }
+
+    void OnDestroy() {
+        GameEvents.RemoveListener(this, "player_turn_start");
     }
 
     public void GetExp(int amount) {
         exp += amount;
     }
 
-    public void StartMovementPhase() {
-        // tilesMoved = 0;
-        // shotsFiredThisRound = 0;
-        // if (GameLogicComponent.instance != null) GameLogicComponent.userInterface.ShowMovementIndicators(this);
+    public void Reset() {
+        tilesMoved = 0;
+        shotsFiredThisRound = 0;
+        actionsSpent = 0;
     }
 
+    //
     public void StartShootingPhase() {
         GameLogicComponent.userInterface.ShowAmmoIndicators(this);
     }

@@ -6,9 +6,11 @@ public class UIState : MonoBehaviour {
 
     void Awake() {
         instance = this;
+        playerTurn = true;
     }
     
     Actor selectedActor;
+    bool playerTurn;
 
     public void SetSelectedActor(Actor actor) {
         selectedActor = actor;
@@ -24,5 +26,21 @@ public class UIState : MonoBehaviour {
 
     public void DeselectActor() {
         selectedActor = null;
+    }
+
+    public void EndPlayerTurn() {
+        playerTurn = false;
+    }
+
+    public void StartPlayerTurn() {
+        playerTurn = true;
+    }
+
+    public bool IsPlayerTurn() {
+        return playerTurn;
+    }
+
+    public bool IsAlienTurn() {
+        return !playerTurn;
     }
 }

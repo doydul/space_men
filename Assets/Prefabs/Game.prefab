@@ -506,6 +506,7 @@ GameObject:
   - component: {fileID: 8640662348927887906}
   - component: {fileID: 8640662348927887907}
   - component: {fileID: 8640662348927887918}
+  - component: {fileID: 5027669590311896694}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -569,6 +570,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 8640662348927887907}
+--- !u!114 &5027669590311896694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8640662348927887908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dc42b468f3dcd41af1329de4eeb7ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8640662348933302572
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8640662349426691727}
+  - component: {fileID: 3235338478202592855}
   m_Layer: 0
   m_Name: Blood
   m_TagString: Untagged
@@ -650,6 +664,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8640662348927887906}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3235338478202592855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8640662349426691712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0230e002c8fda40728be944edc7ada5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 8640662348927887907}
+  bloodSplatContainer: {fileID: 8640662349426691727}
 --- !u!1 &8640662349498499139
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,6 +689,7 @@ GameObject:
   - component: {fileID: 8640662349498499151}
   - component: {fileID: 8640662349498499136}
   - component: {fileID: 7034725671409652283}
+  - component: {fileID: 3203199996806762867}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -709,6 +738,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8abae3821f22c6d498aa2ea533cf5402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3203199996806762867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8640662349498499139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65772901aaeb0040b53375987cf0e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8640662349710960368
@@ -949,9 +990,9 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ProgressGamePhase
+      - m_Target: {fileID: 3203199996806762867}
+        m_TargetAssemblyTypeName: InterfaceController, Assembly-CSharp
+        m_MethodName: EndTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1184,7 +1225,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: continue
+  m_text: end turn
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2168daeae12c445959cf2f894c4e7862, type: 2}
   m_sharedMaterial: {fileID: 4269705104388367133, guid: 2168daeae12c445959cf2f894c4e7862,
@@ -1256,8 +1297,8 @@ MonoBehaviour:
     textComponent: {fileID: 8641655846351529954}
     characterCount: 8
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -1289,7 +1330,6 @@ GameObject:
   - component: {fileID: 8426339512536388769}
   - component: {fileID: 8538641566219569275}
   - component: {fileID: 8538403193441495949}
-  - component: {fileID: 284961223436183362}
   m_Layer: 0
   m_Name: GameHUD
   m_TagString: Untagged
@@ -1381,18 +1421,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &284961223436183362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8641829484849203231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be932528a60b145ceb4cde710f55f027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8642146202362164555
 GameObject:
   m_ObjectHideFlags: 0

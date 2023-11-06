@@ -40,6 +40,7 @@ public class Main : MonoBehaviour {
 
         soldier.armour = Armour.Get(metaSoldier.armour.name);
         soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
+        soldier.maxHealth = 10;
 
         // soldier.maxAmmo = soldierData.maxAmmo;
         // soldier.exp = soldierData.exp;
@@ -64,6 +65,10 @@ public class Main : MonoBehaviour {
         spriteTransform.localPosition = Vector3.zero;
         alien.image = spriteTransform;
         alien.type = type;
+        alien.damage = 3;
+        alien.movement = 7;
+        alien.expReward = 1;
+        alien.maxHealth = 10;
 
         Map.instance.GetTileAt(gridLocation).SetActor(trans);
         return alien;
