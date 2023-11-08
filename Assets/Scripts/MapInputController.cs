@@ -35,7 +35,7 @@ public class MapInputController : MonoBehaviour {
             }
         }
         if (Input.GetMouseButtonUp(0)) {
-            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && !uiClicked && !dragged) {
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && !uiClicked && !dragged && !AnimationManager.instance.animationInProgress) {
                 Click(Input.mousePosition);
             }
             dragging = false;

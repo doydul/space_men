@@ -33,7 +33,7 @@ public abstract class Actor : MonoBehaviour {
     } }
 
     public virtual void MoveTo(Tile newTile) {
-        tile.RemoveActor();
+        tile.RemoveActor(); 
         newTile.SetActor(transform);
     }
 
@@ -43,14 +43,27 @@ public abstract class Actor : MonoBehaviour {
     }
 
     public void TurnTo(Vector2 direction) {
-        if (direction.y > 0) {
-            TurnTo(Direction.Up);
-        } else if (direction.y < 0) {
-            TurnTo(Direction.Down);
-        } else if (direction.x > 0) {
-            TurnTo(Direction.Right);
-        } else if (direction.x < 0) {
-            TurnTo(Direction.Left);
+        if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x)) {
+            if (direction.y > 0) {
+                TurnTo(Direction.Up);
+            } else if (direction.y < 0) {
+                TurnTo(Direction.Down);
+            }
+        } else {
+            if (direction.x > 0) {
+                TurnTo(Direction.Right);
+            } else if (direction.x < 0) {
+                TurnTo(Direction.Left);
+            }
+        }
+    }
+
+    public void Hurt(int damage) {
+        health -= damage;
+        if (health <= 0) {
+            dead = true;
+            tile.RemoveActor();
+            Destroy(gameObject, 1);
         }
     }
 

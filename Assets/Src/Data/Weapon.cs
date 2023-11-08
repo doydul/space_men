@@ -15,8 +15,7 @@ public class Weapon : ScriptableObject {
     public int armourPen;
     public int minDamage;
     public int maxDamage;
-    public int shotsWhenMoving;
-    public int shotsWhenStill;
+    public int shots;
     public int ammo;
     public float blast;
     public bool flames;
@@ -32,4 +31,8 @@ public class Weapon : ScriptableObject {
     public static Weapon Get(string name) {
         return Resources.Load<Weapon>("Weapons/" + name);
     }
+
+    // deprecated
+    public int shotsWhenMoving;
+    public int shotsWhenStill;
 }

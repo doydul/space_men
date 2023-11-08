@@ -13,14 +13,18 @@ MonoBehaviour:
   m_Name: Assault Rifle
   m_EditorClassIdentifier: 
   icon: {fileID: 5026745411207313143, guid: e40f3473f69924114bb79a48f410c9e7, type: 3}
-  accuracy: 70
+  accuracy: 60
   armourPen: 0
-  minDamage: 3
-  maxDamage: 5
-  shotsWhenMoving: 2
-  shotsWhenStill: 4
+  minDamage: 1
+  maxDamage: 8
+  shots: 3
   ammo: 24
   blast: 0
+  flames: 0
+  flameDamage: 0
+  flameColor: {r: 0, g: 0, b: 0, a: 0}
   type: 0
   cost: 20
   description: basic assault weapon. effective against basic enemies
+  shotsWhenMoving: 2
+  shotsWhenStill: 4

@@ -11,8 +11,10 @@ public class Alien : Actor {
     public int movement { get; set; }
     public float threat { get; set; }
     public int expReward { get; set; }
+    public int sensoryRange { get; set; }
 
     public bool hasActed;
+    public bool awake;
 
     public GameObject hitIndicator;
     public GameObject deflectIndicator;
@@ -23,6 +25,8 @@ public class Alien : Actor {
     private float healthSpriteSize;
 
     public bool dead { get { return health <= 0; } }
+    public bool canAct => !hasActed && awake;
+    public void Awaken() => awake = true;
     public void ShowAttack() => attackIndicator.enabled = true;
     public void HideAttack() => attackIndicator.enabled = false;
     public void ShowHealth() => healthIndicator.enabled = true;
@@ -61,13 +65,13 @@ public class Alien : Actor {
         expReward = data.expReward;
     }
 
-    public void Hurt(int damage) {
-        health -= damage;
-        SetHealthIndicatorSize();
-        if (dead) {
-            Die(0.2f);
-        }
-    }
+    // public void Hurt(int damage) {
+    //     health -= damage;
+    //     SetHealthIndicatorSize();
+    //     if (dead) {
+    //         Die(0.2f);
+    //     }
+    // }
 
     private void SetHealthIndicatorSize() {
         var currentSize = healthIndicator.size;

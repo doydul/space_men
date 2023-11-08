@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Soldier : Actor {
 
@@ -23,6 +24,7 @@ public class Soldier : Actor {
             return weapon.shotsWhenStill;
         }
     } }
+    public bool canAct => actionsSpent <= 0;
     public int shotsRemaining { get { return totalShots - shotsFiredThisRound; } }
     public bool hasAmmo { get { return shotsRemaining > 0; } }
     public int baseMovement { get { return armour.movement; } }
@@ -34,16 +36,28 @@ public class Soldier : Actor {
     public int armourPen { get { return weapon.armourPen; } }
     public int minDamage { get { return weapon.minDamage; } }
     public int maxDamage { get { return weapon.maxDamage; } }
+    public int shots { get { return weapon.shots; } }
     public float blast { get { return weapon.blast; } }
     public bool firesOrdnance { get { return weapon.ordnance; } }
     public Weapon.Type weaponType { get { return weapon.type; } }
     public Vector2 muzzlePosition { get { return muzzleFlashLocation.position; } }
+
+    public void Shoot(Alien target) => AnimationManager.instance.StartAnimation(GameplayOperations.PerformSoldierShoot(this, target));
     
     public string armourName { get { return armour.name; } }
     public string weaponName { get { return weapon.name; } }
 
+    public void ShowMuzzleFlash() {
+        muzzleFlashLocation.gameObject.SetActive(true);
+        var tmp = muzzleFlashLocation.localScale;
+        tmp.y = -tmp.y;
+        muzzleFlashLocation.localScale = tmp;
+    }
+    public void HideMuzzleFlash() => muzzleFlashLocation.gameObject.SetActive(false);
+
     void Start() {
         health = maxHealth;
+        HideMuzzleFlash();
         GameEvents.On(this, "player_turn_start", Reset);
     }
 
@@ -57,7 +71,6 @@ public class Soldier : Actor {
 
     public void Reset() {
         tilesMoved = 0;
-        shotsFiredThisRound = 0;
         actionsSpent = 0;
     }
 
@@ -81,13 +94,6 @@ public class Soldier : Actor {
 
     public bool CanSee(Vector2 gridLocation) => Map.instance.CanBeSeenFrom(new SoldierLosMask(), gridLocation, this.gridLocation);
 
-    public void Hurt(int damage) {
-        health -= damage;
-        if (health <= 0) {
-            Destroy(gameObject, 1);
-        }
-    }
-    
     public void Destroy() {
         Destroy(gameObject);
     }
@@ -101,12 +107,19 @@ public class Soldier : Actor {
         if (tile.GetActor<Actor>() == null) {
             var path = Map.instance.ShortestPath(new SoldierImpassableTerrain(), gridLocation, tile.gridLocation);
             if (path.length <= remainingMovement) {
-                MoveTo(tile);
+                AnimationManager.instance.StartAnimation(GameplayOperations.PerformActorMove(this, tile.gridLocation));
                 tilesMoved += path.length;
                 HighlightActions();
             } else {
                 UIState.instance.DeselectActor();
                 MapHighlighter.instance.ClearHighlights();
+            }
+        } else {
+            var alien = tile.GetActor<Alien>();
+            if (alien != null && CanSee(alien.gridLocation) && canAct) {
+                MapHighlighter.instance.ClearHighlights();
+                Shoot(alien);
+                actionsSpent += 1;
             }
         }
     }
@@ -115,6 +128,13 @@ public class Soldier : Actor {
         MapHighlighter.instance.ClearHighlights();
         foreach (var tile in Map.instance.iterator.Exclude(new SoldierImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement)) {
             MapHighlighter.instance.HighlightTile(tile, Color.green);
+        }
+        if (canAct) {
+            foreach (var alien in Map.instance.GetActors<Alien>()) {
+                if (CanSee(alien.gridLocation)) {
+                    MapHighlighter.instance.HighlightTile(alien.tile, Color.red);
+                }
+            }
         }
     }
 

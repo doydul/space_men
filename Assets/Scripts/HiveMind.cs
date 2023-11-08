@@ -17,12 +17,12 @@ public class HiveMind : MonoBehaviour {
                 GameEvents.Trigger("player_turn_start");
                 return;
             }
-            StartCoroutine(PerformAlienMove());
+            if (!AnimationManager.instance.animationInProgress) AnimationManager.instance.StartAnimation(PerformAlienMove());
         }
     }
 
     bool ChooseActiveAlien() {
-        var list = Map.instance.GetActors<Alien>().Where(alien => !alien.hasActed).ToArray();
+        var list = Map.instance.GetActors<Alien>().Where(alien => alien.canAct).ToArray();
         if (list.Count() <= 0) return false;
         activeAlien = list[Random.Range(0, list.Count())];
         return true;

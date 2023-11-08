@@ -68,7 +68,9 @@ public class Main : MonoBehaviour {
         alien.damage = 3;
         alien.movement = 7;
         alien.expReward = 1;
-        alien.maxHealth = 10;
+        alien.maxHealth = 7;
+        alien.health = 7;
+        alien.sensoryRange = 7;
 
         Map.instance.GetTileAt(gridLocation).SetActor(trans);
         return alien;

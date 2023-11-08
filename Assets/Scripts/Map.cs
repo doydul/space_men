@@ -81,7 +81,7 @@ public partial class Map : MonoBehaviour {
         }
     }
 
-    public IEnumerable<Tile> AdjacentTiles(Tile tile) {
+    public IEnumerable<Tile> AdjacentTiles(Tile tile, bool includeDiagonal = false) {
         var adjTile = GetTileAt(new Vector2(tile.gridLocation.x - 1, tile.gridLocation.y));
         if (adjTile != null) yield return adjTile;
         adjTile = GetTileAt(new Vector2(tile.gridLocation.x + 1, tile.gridLocation.y));
@@ -90,9 +90,19 @@ public partial class Map : MonoBehaviour {
         if (adjTile != null) yield return adjTile;
         adjTile = GetTileAt(new Vector2(tile.gridLocation.x, tile.gridLocation.y + 1));
         if (adjTile != null) yield return adjTile;
+        if (includeDiagonal) {
+            adjTile = GetTileAt(new Vector2(tile.gridLocation.x + 1, tile.gridLocation.y + 1));
+            if (adjTile != null) yield return adjTile;
+            adjTile = GetTileAt(new Vector2(tile.gridLocation.x + 1, tile.gridLocation.y - 1));
+            if (adjTile != null) yield return adjTile;
+            adjTile = GetTileAt(new Vector2(tile.gridLocation.x - 1, tile.gridLocation.y + 1));
+            if (adjTile != null) yield return adjTile;
+            adjTile = GetTileAt(new Vector2(tile.gridLocation.x - 1, tile.gridLocation.y - 1));
+            if (adjTile != null) yield return adjTile;
+        }
     }
 
-    public IEnumerable<Tile> AdjacentTiles(Vector2 gridLocation) {
-        return AdjacentTiles(GetTileAt(gridLocation));
+    public IEnumerable<Tile> AdjacentTiles(Vector2 gridLocation, bool includeDiagonal = false) {
+        return AdjacentTiles(GetTileAt(gridLocation), includeDiagonal);
     }
 }
