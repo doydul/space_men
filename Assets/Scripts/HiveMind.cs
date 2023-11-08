@@ -33,13 +33,15 @@ public class HiveMind : MonoBehaviour {
         Tile bestTile = null;
         Map.Path bestPath = null;
         foreach (var tile in Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(activeAlien.gridLocation, activeAlien.movement)) {
-            if (tile.occupied) continue;
+            if (tile.occupied && tile.GetActor<Alien>() != activeAlien) continue;
             var path = Map.instance.ShortestPath(new AlienImpassableTerrain(), tile.gridLocation, soldierPositions, true);
             if (!path.exists) {
                 activeAlien.hasActed = true;
                 yield break;
             }
-            if (bestPath == null || path.length < bestPath.length) {
+            if (bestPath == null || path.length < bestPath.length ||
+                    path.length == bestPath.length &&
+                    Map.instance.ManhattanDistance(activeAlien.gridLocation, tile.gridLocation) < Map.instance.ManhattanDistance(activeAlien.gridLocation, bestTile.gridLocation)) {
                 bestPath = path;
                 bestTile = tile;
             }

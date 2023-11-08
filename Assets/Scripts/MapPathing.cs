@@ -14,9 +14,12 @@ public partial class Map {
 
     public Path ShortestPath(IMask impassableTiles, Vector2 pointA, Vector2[] targetPoints, bool stopWhenAdjacent = false) {
         var root = new Node() { tile = GetTileAt(pointA) };
+        var targetDistance = stopWhenAdjacent ? 1 : 0;
+        foreach (var targetPoint in targetPoints) {
+            if (ManhattanDistance(pointA, targetPoint) <= targetDistance) return Path.FromNode(root);
+        }
         var leafNodes = new PriorityQueue<Node, float>();
         var alreadyTraversed = new HashSet<Vector2>();
-        var targetDistance = stopWhenAdjacent ? 1 : 0;
         leafNodes.Enqueue(root, 0);
         while(leafNodes.Count > 0) {
             var currentNode = leafNodes.Dequeue();
