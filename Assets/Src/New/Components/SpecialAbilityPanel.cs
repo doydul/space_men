@@ -33,7 +33,7 @@ public class SpecialAbilityPanel : MonoBehaviour {
         var button = Instantiate(abilityIconPrefab) as Transform;
         button.SetParent(buttonLayout, false);
         var script = button.GetComponent<AbilityIcon>();
-        script.DisplaySpriteFor(specialAction.specialAction);
+        // script.DisplaySpriteFor(specialAction.specialAction);
         script.OnClick = () => {
             controller.DisplaySpecialAbilityTargets(specialAction.specialAction);
         };

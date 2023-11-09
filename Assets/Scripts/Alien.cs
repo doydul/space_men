@@ -41,7 +41,7 @@ public class Alien : Actor {
         deflectIndicator.SetActive(false);
         healthIndicator.enabled = false;
         attackIndicator.enabled = false;
-
+        awake = true;
         GameEvents.On(this, "alien_turn_start", Reset);
     }
 
@@ -94,6 +94,6 @@ public class Alien : Actor {
 
 public class AlienImpassableTerrain : IMask {
     public bool Contains(Tile tile) {
-        return !tile.open || tile.GetActor<Soldier>() != null;
+        return !tile.open || tile.GetActor<Soldier>() != null || tile.GetBackgroundActor<Door>() != null;
     }
 }

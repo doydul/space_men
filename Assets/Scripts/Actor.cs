@@ -58,12 +58,20 @@ public abstract class Actor : MonoBehaviour {
         }
     }
 
+    public void Remove() {
+        if (tile.GetActor<Actor>() == this) {
+            tile.RemoveActor();
+        } else {
+            tile.RemoveBackgroundActor();
+        }
+        Destroy(gameObject);
+    }
+
     public void Hurt(int damage) {
         health -= damage;
         if (health <= 0) {
             dead = true;
-            tile.RemoveActor();
-            Destroy(gameObject, 1);
+            Remove();
         }
     }
 

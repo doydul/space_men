@@ -36,8 +36,7 @@ public class HiveMind : MonoBehaviour {
             if (tile.occupied && tile.GetActor<Alien>() != activeAlien) continue;
             var path = Map.instance.ShortestPath(new AlienImpassableTerrain(), tile.gridLocation, soldierPositions, true);
             if (!path.exists) {
-                activeAlien.hasActed = true;
-                yield break;
+                break;
             }
             if (bestPath == null || path.length < bestPath.length ||
                     path.length == bestPath.length &&
@@ -46,17 +45,21 @@ public class HiveMind : MonoBehaviour {
                 bestTile = tile;
             }
         }
-        yield return new WaitForSeconds(0.75f);
-        var actualPath = Map.instance.ShortestPath(new AlienImpassableTerrain(), activeAlien.gridLocation, bestTile.gridLocation);
-        activeAlien.MoveTo(bestTile);
-        activeAlien.TurnTo(bestTile.gridLocation - actualPath.nodes[actualPath.nodes.Length - 2].gridLocation);
+        if (bestTile != null) {
+            yield return new WaitForSeconds(0.75f);
+            var actualPath = Map.instance.ShortestPath(new AlienImpassableTerrain(), activeAlien.gridLocation, bestTile.gridLocation);
+            activeAlien.MoveTo(bestTile);
+            activeAlien.TurnTo(bestTile.gridLocation - actualPath.nodes[actualPath.nodes.Length - 2].gridLocation);
 
-        foreach (var tile in Map.instance.AdjacentTiles(activeAlien.gridLocation)) {
-            var soldier = tile.GetActor<Soldier>();
-            if (soldier != null) {
-                yield return PerformAlienAttack(soldier);
-                break;
+            foreach (var tile in Map.instance.AdjacentTiles(activeAlien.gridLocation)) {
+                var soldier = tile.GetActor<Soldier>();
+                if (soldier != null) {
+                    yield return PerformAlienAttack(soldier);
+                    break;
+                }
             }
+        } else {
+            yield return null;
         }
 
         activeAlien.hasActed = true;

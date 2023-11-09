@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Soldier : Actor {
 
@@ -9,6 +10,7 @@ public class Soldier : Actor {
     
     public int tilesMoved { get; set; }
     public int actionsSpent { get; set; }
+    public int shotsSpent { get; set; }
     public int shotsFiredThisRound { get; set; }
     public int ammo { get; set; }
     public int maxAmmo { get; set; }
@@ -25,7 +27,8 @@ public class Soldier : Actor {
         }
     } }
     public bool canAct => actionsSpent <= 0;
-    public int shotsRemaining { get { return totalShots - shotsFiredThisRound; } }
+    public bool canShoot => canAct && shotsSpent < ammo;
+    public int shotsRemaining { get { return ammo - shotsSpent; } }
     public bool hasAmmo { get { return shotsRemaining > 0; } }
     public int baseMovement { get { return armour.movement; } }
     public int totalMovement { get { return baseMovement + armour.sprint; } }
@@ -42,10 +45,14 @@ public class Soldier : Actor {
     public Weapon.Type weaponType { get { return weapon.type; } }
     public Vector2 muzzlePosition { get { return muzzleFlashLocation.position; } }
 
+    public bool CanSee(Vector2 gridLocation) => Map.instance.CanBeSeenFrom(new SoldierLosMask(), gridLocation, this.gridLocation);
     public void Shoot(Alien target) => AnimationManager.instance.StartAnimation(GameplayOperations.PerformSoldierShoot(this, target));
+    public IEnumerator PerformShoot(Alien target) => GameplayOperations.PerformSoldierShoot(this, target);
     
     public string armourName { get { return armour.name; } }
     public string weaponName { get { return weapon.name; } }
+
+    public List<Ability> abilities = new();
 
     public void ShowMuzzleFlash() {
         muzzleFlashLocation.gameObject.SetActive(true);
@@ -92,8 +99,6 @@ public class Soldier : Actor {
       }
     }
 
-    public bool CanSee(Vector2 gridLocation) => Map.instance.CanBeSeenFrom(new SoldierLosMask(), gridLocation, this.gridLocation);
-
     public void Destroy() {
         Destroy(gameObject);
     }
@@ -102,24 +107,30 @@ public class Soldier : Actor {
         if (!tile.open) {
             UIState.instance.DeselectActor();
             MapHighlighter.instance.ClearHighlights();
+            InterfaceController.instance.ClearAbilities();
             return;
         }
-        if (tile.GetActor<Actor>() == null) {
+        if (tile.GetBackgroundActor<Door>() != null) {
+            tile.GetBackgroundActor<Door>().Remove();
+        } else if (tile.GetActor<Actor>() == null) {
             var path = Map.instance.ShortestPath(new SoldierImpassableTerrain(), gridLocation, tile.gridLocation);
             if (path.length <= remainingMovement) {
                 AnimationManager.instance.StartAnimation(GameplayOperations.PerformActorMove(this, tile.gridLocation));
                 tilesMoved += path.length;
-                HighlightActions();
             } else {
                 UIState.instance.DeselectActor();
                 MapHighlighter.instance.ClearHighlights();
+                InterfaceController.instance.ClearAbilities();
             }
         } else {
             var alien = tile.GetActor<Alien>();
-            if (alien != null && CanSee(alien.gridLocation) && canAct) {
+            if (alien != null && CanSee(alien.gridLocation) && canShoot) {
                 MapHighlighter.instance.ClearHighlights();
                 Shoot(alien);
                 actionsSpent += 1;
+                shotsSpent += 1;
+            } else if (tile.GetActor<Soldier>() != null) {
+                tile.GetActor<Soldier>().Select();
             }
         }
     }
@@ -136,22 +147,26 @@ public class Soldier : Actor {
                 }
             }
         }
+        foreach (var tile in Map.instance.AdjacentTiles(tile)) {
+            if (tile.GetBackgroundActor<Door>() != null) MapHighlighter.instance.HighlightTile(tile, Color.yellow);
+        }
     }
 
     public override void Select() {
         UIState.instance.SetSelectedActor(this);
         HighlightActions();
+        InterfaceController.instance.DisplayAbilities(abilities.ToArray());
     }
 }
 
 public class SoldierImpassableTerrain : IMask {
     public bool Contains(Tile tile) {
-        return !tile.open || tile.GetActor<Alien>() != null;
+        return !tile.open || tile.GetActor<Alien>() != null || tile.GetBackgroundActor<Door>() != null;
     }
 }
 
 public class SoldierLosMask : IMask {
     public bool Contains(Tile tile) {
-        return !tile.open;
+        return !tile.open || tile.GetBackgroundActor<Door>() != null;
     }
 }

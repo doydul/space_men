@@ -10,7 +10,7 @@ public static class GameplayOperations {
         for (int i = 0; i < soldier.shots; i++) {
             soldier.ShowMuzzleFlash();
             yield return new WaitForSeconds(0.2f);
-            if (Random.value * 100 <= soldier.accuracy) {
+            if (!target.dead && Random.value * 100 <= soldier.accuracy) {
                 // HIT
                 target.ShowHit();
                 var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
@@ -47,6 +47,9 @@ public static class GameplayOperations {
                     alien.Awaken();
                 }
             }
+        }
+        if (actor is Soldier) {
+            (actor as Soldier).HighlightActions();
         }
     }
 }
