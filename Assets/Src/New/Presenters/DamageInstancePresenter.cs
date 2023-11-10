@@ -38,7 +38,6 @@ public class DamageInstancePresenter : Presenter {
             victim.health = damageInstance.victimHealthAfterDamage;
             yield return HealthBarAnimation(victim.transform.position, victim.healthPercentage);
         } else if (damageInstance.attackResult == AttackResult.Killed) {
-            victim.Die();
         } else {
             yield return MarkerAnimationFor(damageInstance);
         }

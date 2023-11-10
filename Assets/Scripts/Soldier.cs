@@ -63,7 +63,6 @@ public class Soldier : Actor {
     public void HideMuzzleFlash() => muzzleFlashLocation.gameObject.SetActive(false);
 
     void Start() {
-        health = maxHealth;
         HideMuzzleFlash();
         GameEvents.On(this, "player_turn_start", Reset);
     }

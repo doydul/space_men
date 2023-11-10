@@ -65,7 +65,7 @@ public class StandardAnimations : MonoBehaviour {
             var actor = map.GetActorByIndex(damageInstance.victimIndex);
             if (damageInstance.attackResult == AttackResult.Killed) {
                 bloodSplats.MakeSplat(actor);
-                actor.Die();
+                // actor.Die();
             } else if (damageInstance.attackResult == AttackResult.Hit) {
                 bloodSplats.MakeSplat(actor);
                 actor.health = damageInstance.victimHealthAfterDamage;

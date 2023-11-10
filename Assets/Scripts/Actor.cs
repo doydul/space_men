@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 public abstract class Actor : MonoBehaviour {
 
@@ -13,6 +14,9 @@ public abstract class Actor : MonoBehaviour {
     public Tile tile;
     public Transform image;
     public Sprite[] bloodSplatSprites;
+    public GameObject hitIndicator;
+    public GameObject deflectIndicator;
+    public SpriteRenderer healthIndicator;
 
     public string id { get; set; }
     public long index { get; set; } // remove me
@@ -31,6 +35,46 @@ public abstract class Actor : MonoBehaviour {
             (float)Mathf.Cos(rotation * Mathf.PI / 180)
         );
     } }
+
+    Coroutine healthCoroutine;
+    public void ShowHealth() {
+        if (healthCoroutine != null) StopCoroutine(healthCoroutine);
+        StartCoroutine(PerformShowHealth());
+    }
+    public IEnumerator PerformShowHealth() {
+        SetHealthIndicatorSize();
+        if (healthIndicator.size.x > 0) healthIndicator.enabled = true;
+        yield return new WaitForSeconds(1f);
+        healthIndicator.enabled = false;
+    }
+
+    Coroutine hitCoroutine;
+    public void ShowHit() {
+        if (hitCoroutine != null) StopCoroutine(hitCoroutine);
+        StartCoroutine(PerformShowHit());
+    }
+    public IEnumerator PerformShowHit() {
+        hitIndicator.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        hitIndicator.SetActive(false);
+    }
+    
+    private float healthSpriteSize;
+
+    void Awake() {
+        health = maxHealth;
+        if (healthIndicator != null) {
+            healthSpriteSize = healthIndicator.size.x;
+            healthIndicator.enabled = false;
+        }
+        if (hitIndicator != null) hitIndicator.SetActive(false);
+    }
+
+    private void SetHealthIndicatorSize() {
+        var currentSize = healthIndicator.size;
+        currentSize.x = health * healthSpriteSize / maxHealth;
+        healthIndicator.size = currentSize;
+    }
 
     public virtual void MoveTo(Tile newTile) {
         tile.RemoveActor(); 
@@ -64,7 +108,7 @@ public abstract class Actor : MonoBehaviour {
         } else {
             tile.RemoveBackgroundActor();
         }
-        Destroy(gameObject);
+        Destroy(gameObject, 0.5f);
     }
 
     public void Hurt(int damage) {
@@ -73,13 +117,7 @@ public abstract class Actor : MonoBehaviour {
             dead = true;
             Remove();
         }
-    }
-
-    public void Die(float timer = 0) {
-        dead = true;
-        tile.RemoveActorByIndex(index);
-        Scripting.instance.Trigger(Scripting.Event.OnActorKilled);
-        Destroy(this.gameObject, timer);
+        ShowHealth();
     }
 
     public void Face(Vector2 targetGridLocation) {

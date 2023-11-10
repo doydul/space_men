@@ -25,7 +25,7 @@ public class CollectAmmoPresenter : SpecialAbilityPresenter<CollectAmmo.Output> 
             var tile = map.GetTileAt(soldier.gridLocation);
             var crate = tile.backgroundActor.GetComponent<Actor>();
             tile.RemoveBackgroundActor();
-            crate.Die();
+            // crate.Die();
         }
         scripting.Trigger(Scripting.Event.OnCollectAmmo);
         mapInput.DisplayActions(input.soldierIndex);

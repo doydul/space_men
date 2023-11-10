@@ -88,7 +88,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
 
         if (input.deadActorIndexes != null) {
             foreach (var index in input.deadActorIndexes) {
-                map.GetActorByIndex(index).Die();
+                // map.GetActorByIndex(index).Die();
             }
         }
         mapInput.Enable();

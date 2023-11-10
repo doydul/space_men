@@ -42,6 +42,7 @@ public class Main : MonoBehaviour {
         soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
         soldier.ammo = 5;
         soldier.maxHealth = 10;
+        soldier.health = 10;
 
         Resources.Load<Ability>("Abilities/Reload").Attach(soldier);
         Resources.Load<Ability>("Abilities/FullAuto").Attach(soldier);

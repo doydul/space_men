@@ -25,13 +25,13 @@ public static class GameplayOperations {
                     if (actor != null) {
                         var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
                         actor.Hurt(damage);
+                        actor.ShowHit();
                         BloodSplatController.instance.MakeSplat(actor);
                         break;
                     }
                 }
             }
             soldier.HideMuzzleFlash();
-            target.HideHit();
             yield return new WaitForSeconds(0.2f);
         }
         soldier.HighlightActions();
