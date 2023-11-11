@@ -14,10 +14,7 @@ public class ItemDescriptionGenerator {
             return String.Join(Environment.NewLine, new string[] {
                 "Name: " + weapon.name,
                 "Accuracy: " + weapon.accuracy,
-                "ArmourPen: " + weapon.armourPen,
                 "MinDamage: " + weapon.minDamage,
-                "Shots when moving: " + weapon.shotsWhenMoving,
-                "Shots when still: " + weapon.shotsWhenStill,
                 "Ammo Capacity: " + weapon.ammo
             });
         } else if (armour != null) {

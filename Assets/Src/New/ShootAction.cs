@@ -24,9 +24,6 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
         ShootingAnimationType type = ShootingAnimationType.Missed;
         if (Random.value * 100 < shooter.accuracy + target.accModifier) {
             type = ShootingAnimationType.Deflected;
-            if (Random.value * 100 > target.armour - shooter.armourPen) {
-                type = ShootingAnimationType.Hit;
-            }
         }
         if (target.dead) shooter.GetExp(target.expReward);
         animationReel.PlayStandardShootAnimation(
@@ -52,7 +49,6 @@ public class ShootAction : ActionImpl, GameActions.ISoldierShootAction {
             blastRadius = shooter.blast,
             minDamage = shooter.minDamage,
             maxDamage = shooter.maxDamage,
-            armourPen = shooter.armourPen
         });
         foreach (var actor in explosion.combatInstances.Select(instance => instance.target)) {
             var alien = (Alien)actor;

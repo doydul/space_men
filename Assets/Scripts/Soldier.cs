@@ -12,21 +12,12 @@ public class Soldier : Actor {
     public int actionsSpent { get; set; }
     public int shotsSpent { get; set; }
     public int shotsFiredThisRound { get; set; }
-    public int ammo { get; set; }
     public int maxAmmo { get; set; }
     public int exp { get; set; }
     public int level { get; set; }
     public int sightRange { get; set; }
 
-    public int totalShots { get {
-        if (sprinted) {
-            return 0;
-        } else if (moved) {
-            return weapon.shotsWhenMoving;
-        } else {
-            return weapon.shotsWhenStill;
-        }
-    } }
+    public int ammo => weapon.ammo;
     public bool canAct => actionsSpent <= 0;
     public bool canShoot => canAct && shotsSpent < ammo;
     public int shotsRemaining { get { return ammo - shotsSpent; } }
@@ -37,7 +28,6 @@ public class Soldier : Actor {
     public bool sprinted { get { return tilesMoved > baseMovement; } }
     public bool moved { get { return tilesMoved > 0; } }
     public int accuracy { get { return weapon.accuracy; } }
-    public int armourPen { get { return weapon.armourPen; } }
     public int minDamage { get { return weapon.minDamage; } }
     public int maxDamage { get { return weapon.maxDamage; } }
     public int shots { get { return weapon.shots; } }
@@ -115,7 +105,7 @@ public class Soldier : Actor {
         } else if (tile.GetActor<Actor>() == null) {
             var path = Map.instance.ShortestPath(new SoldierImpassableTerrain(), gridLocation, tile.gridLocation);
             if (path != null && path.length <= remainingMovement) {
-                AnimationManager.instance.StartAnimation(GameplayOperations.PerformActorMove(this, tile.gridLocation));
+                AnimationManager.instance.StartAnimation(GameplayOperations.PerformActorMove(this, path));
                 tilesMoved += path.length;
             } else {
                 UIState.instance.DeselectActor();

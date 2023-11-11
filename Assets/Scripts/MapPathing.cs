@@ -4,6 +4,37 @@ using System.Collections.Generic;
 
 public partial class Map {
 
+    public class Node {
+
+        public Node previous;
+        public float cumulativeWeight;
+        public float heuristicWeight;
+        public float totalWeight => cumulativeWeight + heuristicWeight;
+        public Tile tile;
+        public Vector2 gridLocation => tile.gridLocation;
+    }
+
+    public class Path {
+
+        public Node[] nodes { get; private set; }
+        public bool exists => nodes != null && nodes.Length > 0;
+        public int length => nodes.Length - 1;
+        public Node last => nodes[nodes.Length - 1];
+        
+        public static Path FromNode(Node node) {
+            var nodes = new List<Node>();
+            var currentNode = node;
+            while (currentNode != null) {
+                nodes.Add(currentNode);
+                currentNode = currentNode.previous;
+            }
+            nodes.Reverse();
+            var result = new Path();
+            result.nodes = nodes.ToArray();
+            return result;
+        }
+    }
+
     public int ManhattanDistance(Vector2 start, Vector2 end) {
         return (int)Mathf.Abs(start.x - end.x) + (int)Mathf.Abs(start.y - end.y);
     }
@@ -80,35 +111,5 @@ public partial class Map {
             }
         }
         return true;
-    }
-
-    public class Node {
-
-        public Node previous;
-        public float cumulativeWeight;
-        public float heuristicWeight;
-        public float totalWeight => cumulativeWeight + heuristicWeight;
-        public Tile tile;
-        public Vector2 gridLocation => tile.gridLocation;
-    }
-
-    public class Path {
-
-        public Node[] nodes { get; private set; }
-        public bool exists => nodes != null && nodes.Length > 0;
-        public int length => nodes.Length - 1;
-        
-        public static Path FromNode(Node node) {
-            var nodes = new List<Node>();
-            var currentNode = node;
-            while (currentNode != null) {
-                nodes.Add(currentNode);
-                currentNode = currentNode.previous;
-            }
-            nodes.Reverse();
-            var result = new Path();
-            result.nodes = nodes.ToArray();
-            return result;
-        }
     }
 }

@@ -19,6 +19,9 @@ public class Tile : MonoBehaviour {
 
     public Vector2 gridLocation;
 
+    public Fire fire { get; private set; }
+    public bool onFire => fire != null;
+
     public bool foggy { get; private set; }
     public bool occupied { get { return actor != null; } }
     public Vector2 realLocation { get { return transform.position; } }
@@ -26,6 +29,13 @@ public class Tile : MonoBehaviour {
     void Awake() {
         fogSprite.color = new Color(1, 1, 1, 0.7f);
         if (SoldierEnter == null) SoldierEnter = new UnityEvent();
+    }
+
+    public void SetFire(Fire fire) {
+        this.fire = fire;
+        fire.tile = this;
+        fire.transform.parent = midground;
+        fire.transform.localPosition = Vector2.zero;
     }
 
     public void SetActor(Transform actor, bool background = false) {

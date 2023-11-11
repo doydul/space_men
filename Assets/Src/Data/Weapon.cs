@@ -12,14 +12,13 @@ public class Weapon : ScriptableObject {
     public Transform icon;
 
     public int accuracy;
-    public int armourPen;
     public int minDamage;
     public int maxDamage;
     public int shots;
     public int ammo;
     public float blast;
     public bool flames;
-    public int flameDamage;
+    public int flameDuration;
     public Color flameColor;
     public Type type;
     public int cost;
@@ -31,8 +30,4 @@ public class Weapon : ScriptableObject {
     public static Weapon Get(string name) {
         return Resources.Load<Weapon>("Weapons/" + name);
     }
-
-    // deprecated
-    public int shotsWhenMoving;
-    public int shotsWhenStill;
 }

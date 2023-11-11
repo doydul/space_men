@@ -54,7 +54,7 @@ public class StandardAnimations : MonoBehaviour {
         }
         if (explosion.fires != null) {
             foreach (var fire in explosion.fires) {
-                InstantiateFire(fire.position, fire.index);
+                // InstantiateFire(fire.position, fire.index);
             }
         }
         yield return new WaitForSeconds(1);

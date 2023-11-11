@@ -48,8 +48,7 @@ public class HiveMind : MonoBehaviour {
         if (bestTile != null) {
             yield return new WaitForSeconds(0.75f);
             var actualPath = Map.instance.ShortestPath(new AlienImpassableTerrain(), activeAlien.gridLocation, bestTile.gridLocation);
-            activeAlien.MoveTo(bestTile);
-            if (actualPath.nodes.Length >= 2) activeAlien.TurnTo(bestTile.gridLocation - actualPath.nodes[actualPath.nodes.Length - 2].gridLocation);
+            yield return GameplayOperations.PerformActorMove(activeAlien, actualPath);
 
             foreach (var tile in Map.instance.AdjacentTiles(activeAlien.gridLocation)) {
                 var soldier = tile.GetActor<Soldier>();

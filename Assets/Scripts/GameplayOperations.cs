@@ -38,10 +38,22 @@ public static class GameplayOperations {
         soldier.HighlightActions();
     }
 
-    public static IEnumerator PerformActorMove(Actor actor, Vector2 gridLocation) {
+    public static IEnumerator PerformActorMove(Actor actor, Map.Path path) {
         // this will be a proper animation at some point
         yield return null;
-        actor.MoveTo(Map.instance.GetTileAt(gridLocation));
+        for (int i = 1; i < path.nodes.Length; i++) {
+            var tile = path.nodes[i].tile;
+            if (tile.onFire) {
+                actor.MoveTo(tile);
+                var damage = Random.Range(tile.fire.minDamage, tile.fire.maxDamage + 1);
+                actor.Hurt(damage);
+                yield return new WaitForSeconds(0.5f);
+                if (actor.dead) break;
+            }
+        }
+        if (!actor.dead) actor.MoveTo(path.last.tile);
+        
+        // Alert aliens
         if (actor is Soldier) {
             foreach (var alien in Map.instance.GetActors<Alien>()) {
                 if (Map.instance.ManhattanDistance(actor.gridLocation, alien.gridLocation) <= alien.sensoryRange) {
@@ -82,6 +94,24 @@ public static class GameplayOperations {
                     var damage = Random.Range(weapon.minDamage, weapon.maxDamage + 1);
                     actor.Hurt(damage);
                     BloodSplatController.instance.MakeSplat(actor);
+                }
+                if (weapon.flames) {
+                    if (randTile.onFire) {
+                        if (weapon.minDamage + weapon.maxDamage > randTile.fire.minDamage + randTile.fire.maxDamage) {
+                            randTile.fire.minDamage = weapon.minDamage;
+                            randTile.fire.maxDamage = weapon.maxDamage;
+                            randTile.fire.timer = weapon.flameDuration - iLayer;
+                        } else {
+                            randTile.fire.timer += 1;
+                        }
+                    } else {
+                        var flameGO = Tile.Instantiate(Resources.Load<GameObject>("Prefabs/Flame")) as GameObject;
+                        var flame = flameGO.GetComponent<Fire>();
+                        flame.minDamage = weapon.minDamage;
+                        flame.maxDamage = weapon.maxDamage;
+                        flame.timer = weapon.flameDuration - iLayer;
+                        randTile.SetFire(flame);
+                    }
                 }
             }
         }

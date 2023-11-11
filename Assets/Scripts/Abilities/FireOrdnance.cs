@@ -8,7 +8,7 @@ public class FireOrdnance : Ability {
     public int scatterDistanceInterval = 5;
 
     public override bool CanUse() {
-        return owner.shotsRemaining > 0 && owner.canAct;
+        return owner.hasAmmo && owner.canAct;
     }
 
     public override void Use() {
@@ -26,7 +26,7 @@ public class FireOrdnance : Ability {
             var maxScatterDist = (dist / scatterDistanceInterval) + 1;
             var scatterDist = Random.Range(1, maxScatterDist + 1);
             int currentLayer = 0;
-            foreach (var layer in Map.instance.iterator.EnumerateLayersFrom(hitTile.gridLocation)) {
+            foreach (var layer in Map.instance.iterator.Exclude(new ExplosionImpassableTerrain()).EnumerateLayersFrom(hitTile.gridLocation)) {
                 if (currentLayer == scatterDist) {
                     hitTile = layer[Random.Range(0, layer.Count())];
                     break;
