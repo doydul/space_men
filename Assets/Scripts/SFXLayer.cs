@@ -4,6 +4,10 @@ public class SFXLayer : MonoBehaviour {
     
     public static SFXLayer instance;
 
+    public Transform explosionPrefab;
+
+    public GameObject SpawnExplosion(Vector2 location) => SpawnPrefab(explosionPrefab, location);
+
     void Awake() {
         instance = this;
     }

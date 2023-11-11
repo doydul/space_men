@@ -24,9 +24,7 @@ public class Alien : Actor {
     public void HideAttack() => attackIndicator.enabled = false;
 
     void Start() {
-        
         attackIndicator.enabled = false;
-        awake = true;
         GameEvents.On(this, "alien_turn_start", Reset);
     }
 

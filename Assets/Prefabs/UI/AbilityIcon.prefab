@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconDefinitions:
-  - abilityName: FireAtGround
+  - abilityName: FireOrdnance
     sprite: {fileID: 21300000, guid: dc42a4b6ac7113347bcf32122ed5f035, type: 3}
   - abilityName: Reload
     sprite: {fileID: 21300000, guid: 84eb541c05609c64d87e43bad54e441d, type: 3}

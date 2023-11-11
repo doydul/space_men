@@ -29,6 +29,7 @@ public class Main : MonoBehaviour {
                 InstantiateAlien(openTiles[randex].gridLocation);
             }
         }
+        FogManager.instance.UpdateFog(true);
     }
 
     // TODO move me somewhere else!
@@ -39,13 +40,16 @@ public class Main : MonoBehaviour {
         soldier.id = metaSoldier.id;
 
         soldier.armour = Armour.Get(metaSoldier.armour.name);
-        soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
+        soldier.weapon = Weapon.Get("Grenade Launcher");
+        // soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
         soldier.ammo = 5;
         soldier.maxHealth = 10;
         soldier.health = 10;
+        soldier.sightRange = 15;
 
+        // Resources.Load<Ability>("Abilities/FullAuto").Attach(soldier);
         Resources.Load<Ability>("Abilities/Reload").Attach(soldier);
-        Resources.Load<Ability>("Abilities/FullAuto").Attach(soldier);
+        Resources.Load<Ability>("Abilities/FireOrdnance").Attach(soldier);
 
         // soldier.maxAmmo = soldierData.maxAmmo;
         // soldier.exp = soldierData.exp;
@@ -76,6 +80,7 @@ public class Main : MonoBehaviour {
         alien.maxHealth = 7;
         alien.health = 7;
         alien.sensoryRange = 7;
+        alien.Awaken();
 
         Map.instance.GetTileAt(gridLocation).SetActor(trans);
         return alien;

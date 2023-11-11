@@ -21,7 +21,17 @@ public partial class Map {
         var leafNodes = new PriorityQueue<Node, float>();
         var alreadyTraversed = new HashSet<Vector2>();
         leafNodes.Enqueue(root, 0);
+        int i = 0;
         while(leafNodes.Count > 0) {
+            i++;
+            if (i > 10000) {
+                Debug.LogError("Infinite loop detected during path finding!");
+                Debug.Log(impassableTiles);
+                Debug.Log(pointA);
+                Debug.Log(targetPoints.Length);
+                Debug.Log(stopWhenAdjacent);
+                break;
+            }
             var currentNode = leafNodes.Dequeue();
             alreadyTraversed.Add(currentNode.gridLocation);
             foreach (var adjacentTile in AdjacentTiles(currentNode.gridLocation)) {
