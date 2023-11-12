@@ -20,6 +20,7 @@ public partial class Map {
         public bool exists => nodes != null && nodes.Length > 0;
         public int length => nodes.Length - 1;
         public Node last => nodes[nodes.Length - 1];
+        public Node penultimate => nodes[nodes.Length - 2];
         
         public static Path FromNode(Node node) {
             var nodes = new List<Node>();

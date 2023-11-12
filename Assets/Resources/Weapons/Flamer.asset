@@ -18,12 +18,11 @@ MonoBehaviour:
   maxDamage: 4
   shots: 1
   ammo: 2
+  range: 8
   blast: 8
   flames: 1
-  flameDuration: 3
+  flameDuration: 5
   flameColor: {r: 1, g: 1, b: 1, a: 0}
   type: 0
   cost: 100
   description: designed for clearing large groups of smaller enemies
-  shotsWhenMoving: 1
-  shotsWhenStill: 2

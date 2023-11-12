@@ -11,7 +11,9 @@ public static class GameplayOperations {
         for (int i = 0; i < soldier.shots; i++) {
             soldier.ShowMuzzleFlash();
             yield return new WaitForSeconds(0.2f);
-            if (!target.dead && Random.value * 100 <= soldier.accuracy) {
+            var accuracy = soldier.accuracy;
+            if (!soldier.InHalfRange(target.gridLocation)) accuracy -= 15;
+            if (!target.dead && Random.value * 100 <= accuracy) {
                 // HIT
                 target.ShowHit();
                 var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
@@ -39,19 +41,21 @@ public static class GameplayOperations {
     }
 
     public static IEnumerator PerformActorMove(Actor actor, Map.Path path) {
-        // this will be a proper animation at some point
-        yield return null;
         for (int i = 1; i < path.nodes.Length; i++) {
             var tile = path.nodes[i].tile;
             if (tile.onFire) {
                 actor.MoveTo(tile);
+                actor.TurnTo(tile.gridLocation - path.nodes[i - 1].tile.gridLocation);
                 var damage = Random.Range(tile.fire.minDamage, tile.fire.maxDamage + 1);
                 actor.Hurt(damage);
                 yield return new WaitForSeconds(0.5f);
                 if (actor.dead) break;
             }
         }
-        if (!actor.dead) actor.MoveTo(path.last.tile);
+        if (!actor.dead) {
+            actor.MoveTo(path.last.tile);
+            if (path.length >= 1) actor.TurnTo(path.last.tile.gridLocation - path.penultimate.tile.gridLocation);
+        }
         
         // Alert aliens
         if (actor is Soldier) {

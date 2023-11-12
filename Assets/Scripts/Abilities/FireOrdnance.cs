@@ -18,9 +18,12 @@ public class FireOrdnance : Ability {
     private IEnumerator PerformUse() {
         owner.actionsSpent += 1;
         owner.shotsSpent += 1;
-        yield return MapInputController.instance.SelectTileFrom(Color.red, Map.instance.iterator.Exclude(new SoldierLosMask()).RadiallyFrom(owner.gridLocation, 100).Where(tile => owner.CanSee(tile.gridLocation)).ToArray());
+        yield return MapInputController.instance.SelectTileFrom(Color.red, Map.instance.iterator.Exclude(new SoldierLosMask()).RadiallyFrom(owner.gridLocation, 100)
+          .Where(tile => owner.CanSee(tile.gridLocation) && owner.InRange(tile.gridLocation)).ToArray());
         var hitTile = MapInputController.instance.selectedTile;
-        if (Random.value * 100 > owner.weapon.accuracy) {
+        var accuracy = owner.accuracy;
+        if (!owner.InHalfRange(hitTile.gridLocation)) accuracy -= 15;
+        if (Random.value * 100 > accuracy) {
             // Miss
             var dist = Map.instance.ManhattanDistance(owner.gridLocation, MapInputController.instance.selectedTile.gridLocation);
             var maxScatterDist = (dist / scatterDistanceInterval) + 1;

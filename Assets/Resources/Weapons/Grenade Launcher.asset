@@ -14,19 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
   accuracy: 50
-  armourPen: 25
   minDamage: 1
   maxDamage: 10
   shots: 1
   ammo: 2
+  range: 10
   blast: 10
   flames: 0
-  flameDamage: 0
+  flameDuration: 0
   flameColor: {r: 0, g: 0, b: 0, a: 0}
   type: 0
   cost: 100
   description: the grenade launcher is a versatile weapon, able to deal with groups
     of enemies while also dealing significant damage to single targets. it suffers
     however from a low fire rate and high damage variance
-  shotsWhenMoving: 1
-  shotsWhenStill: 1

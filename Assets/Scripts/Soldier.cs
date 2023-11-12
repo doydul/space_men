@@ -28,6 +28,8 @@ public class Soldier : Actor {
     public bool sprinted { get { return tilesMoved > baseMovement; } }
     public bool moved { get { return tilesMoved > 0; } }
     public int accuracy { get { return weapon.accuracy; } }
+    public int range { get { return weapon.range; } }
+    public int halfRange { get { return weapon.range / 2; } }
     public int minDamage { get { return weapon.minDamage; } }
     public int maxDamage { get { return weapon.maxDamage; } }
     public int shots { get { return weapon.shots; } }
@@ -37,6 +39,8 @@ public class Soldier : Actor {
     public Vector2 muzzlePosition { get { return muzzleFlashLocation.position; } }
 
     public bool CanSee(Vector2 gridLocation) => Map.instance.CanBeSeenFrom(new SoldierLosMask(), gridLocation, this.gridLocation);
+    public bool InRange(Vector2 gridLocation) => Map.instance.ManhattanDistance(this.gridLocation, gridLocation) <= range;
+    public bool InHalfRange(Vector2 gridLocation) => Map.instance.ManhattanDistance(this.gridLocation, gridLocation) <= halfRange;
     public void Shoot(Alien target) => AnimationManager.instance.StartAnimation(GameplayOperations.PerformSoldierShoot(this, target));
     public IEnumerator PerformShoot(Alien target) => GameplayOperations.PerformSoldierShoot(this, target);
     
@@ -105,8 +109,8 @@ public class Soldier : Actor {
         } else if (tile.GetActor<Actor>() == null) {
             var path = Map.instance.ShortestPath(new SoldierImpassableTerrain(), gridLocation, tile.gridLocation);
             if (path != null && path.length <= remainingMovement) {
-                AnimationManager.instance.StartAnimation(GameplayOperations.PerformActorMove(this, path));
                 tilesMoved += path.length;
+                AnimationManager.instance.StartAnimation(GameplayOperations.PerformActorMove(this, path));
             } else {
                 UIState.instance.DeselectActor();
                 MapHighlighter.instance.ClearHighlights();
@@ -114,11 +118,12 @@ public class Soldier : Actor {
             }
         } else {
             var alien = tile.GetActor<Alien>();
-            if (!firesOrdnance && alien != null && CanSee(alien.gridLocation) && canShoot) {
+            if (!firesOrdnance && alien != null && InRange(alien.gridLocation) && CanSee(alien.gridLocation) && canShoot) {
                 MapHighlighter.instance.ClearHighlights();
-                Shoot(alien);
                 actionsSpent += 1;
                 shotsSpent += 1;
+                if (weapon.isHeavy) tilesMoved += 100;
+                Shoot(alien);
             } else if (tile.GetActor<Soldier>() != null) {
                 tile.GetActor<Soldier>().Select();
             }
@@ -132,7 +137,7 @@ public class Soldier : Actor {
         }
         if (canAct && !firesOrdnance) {
             foreach (var alien in Map.instance.GetActors<Alien>()) {
-                if (CanSee(alien.gridLocation)) {
+                if (CanSee(alien.gridLocation) && InRange(alien.gridLocation)) {
                     MapHighlighter.instance.HighlightTile(alien.tile, Color.red);
                 }
             }

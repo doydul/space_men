@@ -16,6 +16,7 @@ public class Weapon : ScriptableObject {
     public int maxDamage;
     public int shots;
     public int ammo;
+    public int range;
     public float blast;
     public bool flames;
     public int flameDuration;
