@@ -208,6 +208,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 84eb541c05609c64d87e43bad54e441d, type: 3}
   - abilityName: FullAuto
     sprite: {fileID: 21300000, guid: 63766ff3d945dfc44baeba940bd9b27d, type: 3}
+  - abilityName: Overwatch
+    sprite: {fileID: 21300000, guid: adeca7b8be77da047a6787332e546b03, type: 3}
   image: {fileID: 1387060887095673774}
 --- !u!114 &2032454241940995338
 MonoBehaviour:

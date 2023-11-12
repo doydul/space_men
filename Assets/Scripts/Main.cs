@@ -48,6 +48,7 @@ public class Main : MonoBehaviour {
 
         Resources.Load<Ability>("Abilities/FullAuto").Attach(soldier);
         Resources.Load<Ability>("Abilities/Reload").Attach(soldier);
+        Resources.Load<Ability>("Abilities/Overwatch").Attach(soldier);
         // Resources.Load<Ability>("Abilities/FireOrdnance").Attach(soldier);
 
         // soldier.maxAmmo = soldierData.maxAmmo;

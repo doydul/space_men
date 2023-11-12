@@ -41,8 +41,11 @@ public static class GameplayOperations {
     }
 
     public static IEnumerator PerformActorMove(Actor actor, Map.Path path) {
+        var soldiers = Map.instance.GetActors<Soldier>();
         for (int i = 1; i < path.nodes.Length; i++) {
             var tile = path.nodes[i].tile;
+
+            // fire damage
             if (tile.onFire) {
                 actor.MoveTo(tile);
                 actor.TurnTo(tile.gridLocation - path.nodes[i - 1].tile.gridLocation);
@@ -51,6 +54,17 @@ public static class GameplayOperations {
                 yield return new WaitForSeconds(0.5f);
                 if (actor.dead) break;
             }
+
+            // trigger reactions
+            foreach (var soldier in soldiers.Where(sol => sol.reaction != null)) {
+                if (soldier.reaction.TriggersReaction(tile, actor)) {
+                    actor.MoveTo(tile);
+                    actor.TurnTo(tile.gridLocation - path.nodes[i - 1].tile.gridLocation);
+                    yield return soldier.reaction.PerformReaction(tile);
+                    if (actor.dead) break;
+                }
+            }
+            if (actor.dead) break;
         }
         if (!actor.dead) {
             actor.MoveTo(path.last.tile);

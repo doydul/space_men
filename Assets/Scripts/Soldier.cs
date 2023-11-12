@@ -17,6 +17,8 @@ public class Soldier : Actor {
     public int level { get; set; }
     public int sightRange { get; set; }
 
+    public ReactionAbility reaction { get; set; }
+
     public int ammo => weapon.ammo;
     public bool canAct => actionsSpent <= 0;
     public bool canShoot => canAct && shotsSpent < ammo;
@@ -73,6 +75,7 @@ public class Soldier : Actor {
     public void Reset() {
         tilesMoved = 0;
         actionsSpent = 0;
+        reaction = null;
     }
 
     //

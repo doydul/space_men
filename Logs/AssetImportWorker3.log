@@ -1,0 +1,2077 @@
+Using pre-set license
+Built from '2023.1/staging' branch; Version is '2023.1.12f1 (38370f5b2257) revision 3684111'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'en' Physical Memory: 15774 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2023.1.12f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker3
+-projectPath
+C:/Users/lewis/code/space_men
+-logFile
+Logs/AssetImportWorker3.log
+-srvPort
+50496
+Successfully changed project path to: C:/Users/lewis/code/space_men
+C:/Users/lewis/code/space_men
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [31676] Host "[IP] 192.168.1.119 [Port] 0 [Flags] 2 [Guid] 2565679807 [EditorId] 2565679807 [Version] 1048832 [Id] WindowsEditor(7,BATMAN) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [31676] Host "[IP] 192.168.1.119 [Port] 0 [Flags] 2 [Guid] 2565679807 [EditorId] 2565679807 [Version] 1048832 [Id] WindowsEditor(7,BATMAN) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 15 workers.
+Library Redirect Path: Library/Refreshing native plugins compatible for Editor in 22.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2023.1.12f1 (38370f5b2257)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/lewis/code/space_men/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3070 Laptop GPU (ID=0x249d)
+    Vendor:   NVIDIA
+    VRAM:     8033 MB
+    Driver:   31.0.15.3667
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56372
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.009170 seconds.
+- Loaded All Assemblies, in  0.702 seconds
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 526 ms
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Finished resetting the current domain, in  1.211 seconds
+Domain Reload Profiling: 1909ms
+	BeginReloadAssembly (232ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (62ms)
+	RebuildNativeTypeToScriptingClass (20ms)
+	initialDomainReloadingComplete (98ms)
+	LoadAllAssembliesAndSetupDomain (285ms)
+		LoadAssemblies (227ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (275ms)
+			TypeCache.Refresh (273ms)
+				TypeCache.ScanAssembly (254ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (1212ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1124ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (746ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (12ms)
+			ProcessInitializeOnLoadAttributes (258ms)
+			ProcessInitializeOnLoadMethodAttributes (103ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.682 seconds
+Refreshing native plugins compatible for Editor in 13.71 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.180 seconds
+Domain Reload Profiling: 2853ms
+	BeginReloadAssembly (532ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (14ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (49ms)
+	RebuildCommonClasses (72ms)
+	RebuildNativeTypeToScriptingClass (27ms)
+	initialDomainReloadingComplete (74ms)
+	LoadAllAssembliesAndSetupDomain (967ms)
+		LoadAssemblies (646ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (501ms)
+			TypeCache.Refresh (466ms)
+				TypeCache.ScanAssembly (439ms)
+			ScanForSourceGeneratedMonoScriptInfo (26ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (1181ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (770ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (45ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (147ms)
+			ProcessInitializeOnLoadAttributes (500ms)
+			ProcessInitializeOnLoadMethodAttributes (58ms)
+			AfterProcessingInitializeOnLoad (15ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (9ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Refreshing native plugins compatible for Editor in 19.80 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3005 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 60 unused Assets / (64.8 KB). Loaded Objects now: 3527.
+Memory consumption went from 123.0 MB to 122.9 MB.
+Total: 10.150000 ms (FindLiveObjects: 0.556900 ms CreateObjectMapping: 0.244400 ms MarkObjects: 9.149300 ms  DeleteObjects: 0.197600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1172597.551951 seconds.
+  path: Assets/Resources/Weapons/Flamer.asset
+  artifactKey: Guid(d8013397fec6a40038080a81d68eb082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Weapons/Flamer.asset using Guid(d8013397fec6a40038080a81d68eb082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'caae84830b24672648af46392295e795') in 0.058306 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.459 seconds
+Refreshing native plugins compatible for Editor in 17.70 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.508 seconds
+Domain Reload Profiling: 2958ms
+	BeginReloadAssembly (350ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (14ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (80ms)
+	RebuildCommonClasses (79ms)
+	RebuildNativeTypeToScriptingClass (31ms)
+	initialDomainReloadingComplete (65ms)
+	LoadAllAssembliesAndSetupDomain (923ms)
+		LoadAssemblies (680ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (430ms)
+			TypeCache.Refresh (414ms)
+				TypeCache.ScanAssembly (389ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (1509ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (727ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (48ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (183ms)
+			ProcessInitializeOnLoadAttributes (422ms)
+			ProcessInitializeOnLoadMethodAttributes (51ms)
+			AfterProcessingInitializeOnLoad (14ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (12ms)
+Refreshing native plugins compatible for Editor in 20.03 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2986 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.3 KB). Loaded Objects now: 3529.
+Memory consumption went from 118.7 MB to 118.7 MB.
+Total: 12.437500 ms (FindLiveObjects: 0.520400 ms CreateObjectMapping: 0.357700 ms MarkObjects: 11.386500 ms  DeleteObjects: 0.170200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.700 seconds
+Refreshing native plugins compatible for Editor in 6.75 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.764 seconds
+Domain Reload Profiling: 1460ms
+	BeginReloadAssembly (152ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (40ms)
+	RebuildCommonClasses (27ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (25ms)
+	LoadAllAssembliesAndSetupDomain (482ms)
+		LoadAssemblies (298ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (256ms)
+			TypeCache.Refresh (248ms)
+				TypeCache.ScanAssembly (232ms)
+			ScanForSourceGeneratedMonoScriptInfo (3ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (764ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (363ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (21ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (76ms)
+			ProcessInitializeOnLoadAttributes (230ms)
+			ProcessInitializeOnLoadMethodAttributes (26ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 9.87 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.4 KB). Loaded Objects now: 3530.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 6.448600 ms (FindLiveObjects: 0.252600 ms CreateObjectMapping: 0.226600 ms MarkObjects: 5.887500 ms  DeleteObjects: 0.080900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.630 seconds
+Refreshing native plugins compatible for Editor in 7.75 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.820 seconds
+Domain Reload Profiling: 1446ms
+	BeginReloadAssembly (167ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (50ms)
+	RebuildCommonClasses (34ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (22ms)
+	LoadAllAssembliesAndSetupDomain (392ms)
+		LoadAssemblies (266ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (202ms)
+			TypeCache.Refresh (197ms)
+				TypeCache.ScanAssembly (178ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (821ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (396ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (27ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (84ms)
+			ProcessInitializeOnLoadAttributes (246ms)
+			ProcessInitializeOnLoadMethodAttributes (29ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 11.02 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.5 KB). Loaded Objects now: 3531.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 7.717400 ms (FindLiveObjects: 0.410500 ms CreateObjectMapping: 0.317800 ms MarkObjects: 6.885800 ms  DeleteObjects: 0.102200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.715 seconds
+Refreshing native plugins compatible for Editor in 7.02 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.683 seconds
+Domain Reload Profiling: 1394ms
+	BeginReloadAssembly (191ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (57ms)
+	RebuildCommonClasses (35ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (27ms)
+	LoadAllAssembliesAndSetupDomain (448ms)
+		LoadAssemblies (300ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (239ms)
+			TypeCache.Refresh (232ms)
+				TypeCache.ScanAssembly (218ms)
+			ScanForSourceGeneratedMonoScriptInfo (2ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (684ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (324ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (19ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (67ms)
+			ProcessInitializeOnLoadAttributes (208ms)
+			ProcessInitializeOnLoadMethodAttributes (23ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Refreshing native plugins compatible for Editor in 8.95 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.3 KB). Loaded Objects now: 3532.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 4.121000 ms (FindLiveObjects: 0.296500 ms CreateObjectMapping: 0.091900 ms MarkObjects: 3.645300 ms  DeleteObjects: 0.086500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.622 seconds
+Refreshing native plugins compatible for Editor in 6.66 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.777 seconds
+Domain Reload Profiling: 1395ms
+	BeginReloadAssembly (163ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (43ms)
+	RebuildCommonClasses (32ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (391ms)
+		LoadAssemblies (274ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (195ms)
+			TypeCache.Refresh (190ms)
+				TypeCache.ScanAssembly (175ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (777ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (420ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (25ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (88ms)
+			ProcessInitializeOnLoadAttributes (268ms)
+			ProcessInitializeOnLoadMethodAttributes (29ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 12.48 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.6 KB). Loaded Objects now: 3533.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 7.853200 ms (FindLiveObjects: 0.382000 ms CreateObjectMapping: 0.274300 ms MarkObjects: 7.096300 ms  DeleteObjects: 0.098800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.715 seconds
+Refreshing native plugins compatible for Editor in 6.87 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.677 seconds
+Domain Reload Profiling: 1387ms
+	BeginReloadAssembly (165ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (43ms)
+	RebuildCommonClasses (30ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (26ms)
+	LoadAllAssembliesAndSetupDomain (480ms)
+		LoadAssemblies (329ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (229ms)
+			TypeCache.Refresh (222ms)
+				TypeCache.ScanAssembly (209ms)
+			ScanForSourceGeneratedMonoScriptInfo (2ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (677ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (327ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (20ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (67ms)
+			ProcessInitializeOnLoadAttributes (209ms)
+			ProcessInitializeOnLoadMethodAttributes (23ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Refreshing native plugins compatible for Editor in 12.06 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.5 KB). Loaded Objects now: 3534.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 4.477700 ms (FindLiveObjects: 0.237500 ms CreateObjectMapping: 0.174900 ms MarkObjects: 3.978300 ms  DeleteObjects: 0.086000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.651 seconds
+Refreshing native plugins compatible for Editor in 7.13 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.842 seconds
+Domain Reload Profiling: 1489ms
+	BeginReloadAssembly (170ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (44ms)
+	RebuildCommonClasses (33ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (25ms)
+	LoadAllAssembliesAndSetupDomain (409ms)
+		LoadAssemblies (281ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (210ms)
+			TypeCache.Refresh (205ms)
+				TypeCache.ScanAssembly (190ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (842ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (449ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (21ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (86ms)
+			ProcessInitializeOnLoadAttributes (294ms)
+			ProcessInitializeOnLoadMethodAttributes (39ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Refreshing native plugins compatible for Editor in 12.04 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.4 KB). Loaded Objects now: 3535.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 7.970000 ms (FindLiveObjects: 0.384600 ms CreateObjectMapping: 0.133600 ms MarkObjects: 7.344500 ms  DeleteObjects: 0.106200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.671 seconds
+Refreshing native plugins compatible for Editor in 5.91 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.633 seconds
+Domain Reload Profiling: 1300ms
+	BeginReloadAssembly (177ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (49ms)
+	RebuildCommonClasses (27ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (22ms)
+	LoadAllAssembliesAndSetupDomain (430ms)
+		LoadAssemblies (297ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (218ms)
+			TypeCache.Refresh (212ms)
+				TypeCache.ScanAssembly (195ms)
+			ScanForSourceGeneratedMonoScriptInfo (2ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (634ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (323ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (19ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (67ms)
+			ProcessInitializeOnLoadAttributes (205ms)
+			ProcessInitializeOnLoadMethodAttributes (25ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Refreshing native plugins compatible for Editor in 11.44 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.4 KB). Loaded Objects now: 3536.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 3.591100 ms (FindLiveObjects: 0.240600 ms CreateObjectMapping: 0.091200 ms MarkObjects: 3.195000 ms  DeleteObjects: 0.063800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.628 seconds
+Refreshing native plugins compatible for Editor in 6.09 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.780 seconds
+Domain Reload Profiling: 1404ms
+	BeginReloadAssembly (170ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (49ms)
+	RebuildCommonClasses (30ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (24ms)
+	LoadAllAssembliesAndSetupDomain (391ms)
+		LoadAssemblies (269ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (200ms)
+			TypeCache.Refresh (195ms)
+				TypeCache.ScanAssembly (180ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (781ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (406ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (26ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (93ms)
+			ProcessInitializeOnLoadAttributes (250ms)
+			ProcessInitializeOnLoadMethodAttributes (28ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Refreshing native plugins compatible for Editor in 9.82 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.4 KB). Loaded Objects now: 3537.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 6.502100 ms (FindLiveObjects: 0.300100 ms CreateObjectMapping: 0.205000 ms MarkObjects: 5.912900 ms  DeleteObjects: 0.083200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.674 seconds
+Refreshing native plugins compatible for Editor in 8.45 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.727 seconds
+Domain Reload Profiling: 1398ms
+	BeginReloadAssembly (167ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (45ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (444ms)
+		LoadAssemblies (297ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (225ms)
+			TypeCache.Refresh (212ms)
+				TypeCache.ScanAssembly (196ms)
+			ScanForSourceGeneratedMonoScriptInfo (6ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (728ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (370ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (19ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (74ms)
+			ProcessInitializeOnLoadAttributes (241ms)
+			ProcessInitializeOnLoadMethodAttributes (28ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 12.12 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.5 KB). Loaded Objects now: 3538.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 6.597800 ms (FindLiveObjects: 0.327100 ms CreateObjectMapping: 0.394100 ms MarkObjects: 5.781400 ms  DeleteObjects: 0.093900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.609 seconds
+Refreshing native plugins compatible for Editor in 6.06 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.724 seconds
+Domain Reload Profiling: 1329ms
+	BeginReloadAssembly (164ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (46ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (382ms)
+		LoadAssemblies (267ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (190ms)
+			TypeCache.Refresh (186ms)
+				TypeCache.ScanAssembly (175ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (724ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (363ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (19ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (68ms)
+			ProcessInitializeOnLoadAttributes (240ms)
+			ProcessInitializeOnLoadMethodAttributes (28ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 11.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.4 KB). Loaded Objects now: 3539.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 6.983000 ms (FindLiveObjects: 0.586500 ms CreateObjectMapping: 0.332800 ms MarkObjects: 5.976000 ms  DeleteObjects: 0.086300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.673 seconds
+Refreshing native plugins compatible for Editor in 6.44 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.718 seconds
+Domain Reload Profiling: 1387ms
+	BeginReloadAssembly (176ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (53ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (432ms)
+		LoadAssemblies (286ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (226ms)
+			TypeCache.Refresh (219ms)
+				TypeCache.ScanAssembly (203ms)
+			ScanForSourceGeneratedMonoScriptInfo (3ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (718ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (370ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (21ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (77ms)
+			ProcessInitializeOnLoadAttributes (237ms)
+			ProcessInitializeOnLoadMethodAttributes (26ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 9.25 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.5 KB). Loaded Objects now: 3540.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 5.156200 ms (FindLiveObjects: 0.286700 ms CreateObjectMapping: 0.256700 ms MarkObjects: 4.469800 ms  DeleteObjects: 0.142000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.600 seconds
+Refreshing native plugins compatible for Editor in 6.12 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.687 seconds
+Domain Reload Profiling: 1283ms
+	BeginReloadAssembly (168ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (48ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (367ms)
+		LoadAssemblies (260ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (183ms)
+			TypeCache.Refresh (179ms)
+				TypeCache.ScanAssembly (168ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (688ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (340ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (20ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (65ms)
+			ProcessInitializeOnLoadAttributes (218ms)
+			ProcessInitializeOnLoadMethodAttributes (29ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 10.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.4 KB). Loaded Objects now: 3541.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 7.880600 ms (FindLiveObjects: 0.773300 ms CreateObjectMapping: 0.311400 ms MarkObjects: 6.706900 ms  DeleteObjects: 0.087700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.605 seconds
+Refreshing native plugins compatible for Editor in 6.21 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.719 seconds
+Domain Reload Profiling: 1320ms
+	BeginReloadAssembly (159ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (41ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (381ms)
+		LoadAssemblies (268ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (189ms)
+			TypeCache.Refresh (184ms)
+				TypeCache.ScanAssembly (172ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (720ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (369ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (20ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (70ms)
+			ProcessInitializeOnLoadAttributes (239ms)
+			ProcessInitializeOnLoadMethodAttributes (31ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 10.41 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2987 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.4 KB). Loaded Objects now: 3542.
+Memory consumption went from 119.0 MB to 118.9 MB.
+Total: 7.579700 ms (FindLiveObjects: 0.420100 ms CreateObjectMapping: 0.237300 ms MarkObjects: 6.814900 ms  DeleteObjects: 0.105000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 9296.737043 seconds.
+  path: Assets/Resources/Abilities/FullAuto.asset
+  artifactKey: Guid(fb609ff1fba9132469508bd0e83cc954) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Abilities/FullAuto.asset using Guid(fb609ff1fba9132469508bd0e83cc954) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a69b3040e0ec798b65022591c208462') in 0.018320 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.847 seconds
+Refreshing native plugins compatible for Editor in 8.50 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.807 seconds
+Domain Reload Profiling: 5650ms
+	BeginReloadAssembly (225ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (74ms)
+	RebuildCommonClasses (34ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (29ms)
+	LoadAllAssembliesAndSetupDomain (545ms)
+		LoadAssemblies (370ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (281ms)
+			TypeCache.Refresh (271ms)
+				TypeCache.ScanAssembly (248ms)
+			ScanForSourceGeneratedMonoScriptInfo (4ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (4808ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (298ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (19ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (64ms)
+			ProcessInitializeOnLoadAttributes (184ms)
+			ProcessInitializeOnLoadMethodAttributes (22ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Refreshing native plugins compatible for Editor in 6.42 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2988 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.4 KB). Loaded Objects now: 3545.
+Memory consumption went from 118.8 MB to 118.7 MB.
+Total: 3.954800 ms (FindLiveObjects: 0.214900 ms CreateObjectMapping: 0.082700 ms MarkObjects: 3.572800 ms  DeleteObjects: 0.083600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Assembly 'Library/ScriptAssemblies/Unity.Services.Analytics.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Configuration.Editor.dll' will not be loaded due to errors:
+Unable to resolve reference 'System.Security.Permissions'. Is the assembly missing or incompatible with the current platform?
+Reference validation can be disabled in the Plugin Inspector.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Configuration.Editor'.
+Assembly 'Library/ScriptAssemblies/Unity.Services.Core.Environments.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEditor.Purchasing.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Assembly 'Library/ScriptAssemblies/UnityEngine.Advertisements.DevX.Editor.dll' will not be loaded due to errors:
+Reference has errors 'Unity.Services.Core.Editor'.
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.586 seconds
+Refreshing native plugins compatible for Editor in 5.71 ms, found 2 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.581 seconds
+Domain Reload Profiling: 1162ms
+	BeginReloadAssembly (159ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (42ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (24ms)
+	LoadAllAssembliesAndSetupDomain (363ms)
+		LoadAssemblies (263ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (176ms)
+			TypeCache.Refresh (172ms)
+				TypeCache.ScanAssembly (161ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (581ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (278ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (17ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (60ms)
+			ProcessInitializeOnLoadAttributes (172ms)
+			ProcessInitializeOnLoadMethodAttributes (21ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
+Refreshing native plugins compatible for Editor in 8.95 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2989 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (42.4 KB). Loaded Objects now: 3546.
+Memory consumption went from 119.0 MB to 119.0 MB.
+Total: 3.845200 ms (FindLiveObjects: 0.256300 ms CreateObjectMapping: 0.085400 ms MarkObjects: 3.430200 ms  DeleteObjects: 0.072400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 3053.500919 seconds.
+  path: Assets/Prefabs/UI/ShipAbilityButton.prefab
+  artifactKey: Guid(8836a073abe24408ab40cbbf68972402) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/UI/ShipAbilityButton.prefab using Guid(8836a073abe24408ab40cbbf68972402) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b2f8dbc66bf589d925d67405fa1e3df') in 0.058008 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 19.688695 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_18.PNG
+  artifactKey: Guid(caefcdddd63d1384bbdea43ed619fe91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_18.PNG using Guid(caefcdddd63d1384bbdea43ed619fe91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24e85ff2de1a2952747c29be5c9065b8') in 0.056565 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_21.PNG
+  artifactKey: Guid(fd10356f420d5e4439bccda01ee5f209) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_21.PNG using Guid(fd10356f420d5e4439bccda01ee5f209) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0706a552348073a5dbf3fb2f78ecb5c1') in 0.018089 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005857 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_25.PNG
+  artifactKey: Guid(26e775e3b75c7a14bbd59bf58f0e0255) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_25.PNG using Guid(26e775e3b75c7a14bbd59bf58f0e0255) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3e636108175c69728dc2ae2024f749c') in 0.017848 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_28.PNG
+  artifactKey: Guid(24cf81394b21caf43a14f43b22f84d1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_28.PNG using Guid(24cf81394b21caf43a14f43b22f84d1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'caa81668894462a20afd0270c61861f8') in 0.018933 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_31.PNG
+  artifactKey: Guid(5604e207daf59d04baeaddd43d491e38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_31.PNG using Guid(5604e207daf59d04baeaddd43d491e38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '735add0df8b30cfab8e882d283a7db5b') in 0.019963 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_33.PNG
+  artifactKey: Guid(a234435f746fb7449a9f196520e59415) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_33.PNG using Guid(a234435f746fb7449a9f196520e59415) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c37f1f6ad7aa8170f62ff279ebd2321') in 0.017141 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_23.PNG
+  artifactKey: Guid(faf4c65fc98ff1e4d87395fb7baebbd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_23.PNG using Guid(faf4c65fc98ff1e4d87395fb7baebbd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6610fbf71cce996bf5097b44c2f94c52') in 0.018653 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_40.PNG
+  artifactKey: Guid(3a9c31acdaa80644d9044307a01389f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_40.PNG using Guid(3a9c31acdaa80644d9044307a01389f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8128180ca7f540e380f81ae1ad8e7ff9') in 0.015955 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_41.PNG
+  artifactKey: Guid(ca65e2f263129434fb97878ca4ff6de9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_41.PNG using Guid(ca65e2f263129434fb97878ca4ff6de9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb1b6f18013b300ab8486afa711511fe') in 0.016075 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_45.PNG
+  artifactKey: Guid(fb6e93163cc427545910fcf3f3482e8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_45.PNG using Guid(fb6e93163cc427545910fcf3f3482e8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e37badcedf584ab054a42cb60666119') in 0.016205 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_49.PNG
+  artifactKey: Guid(529653385c7c15349b0cb879782ee8cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_49.PNG using Guid(529653385c7c15349b0cb879782ee8cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1a4dfbc54cda41b32925ab358b80030') in 0.016285 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_52.PNG
+  artifactKey: Guid(1d20f89856735664cbd4c3dd20858ad2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_52.PNG using Guid(1d20f89856735664cbd4c3dd20858ad2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb784d092ab17ba21156766021559c5c') in 0.018177 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_44.PNG
+  artifactKey: Guid(63766ff3d945dfc44baeba940bd9b27d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_44.PNG using Guid(63766ff3d945dfc44baeba940bd9b27d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ced32955042f62d719805b7dd4459480') in 0.015835 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_58.PNG
+  artifactKey: Guid(027f8962ef5be2c478199578b4b6f165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_58.PNG using Guid(027f8962ef5be2c478199578b4b6f165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '215f32708f91edca2b8c4000d60aedb0') in 0.018211 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_62.PNG
+  artifactKey: Guid(88d1fd704231ea74da3a6fb386dc52ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_62.PNG using Guid(88d1fd704231ea74da3a6fb386dc52ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a97cce201bca56f20ef653f4549b64b5') in 0.017206 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_66.PNG
+  artifactKey: Guid(a21e75b879e65ec4882885a0dfa8fa84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_66.PNG using Guid(a21e75b879e65ec4882885a0dfa8fa84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40409a617f477eff58d980f8b983c3ed') in 0.015614 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_70.PNG
+  artifactKey: Guid(42022c6b20f43e049a6705af00463ac8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_70.PNG using Guid(42022c6b20f43e049a6705af00463ac8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b243b3d653b4b77cf4422392ec9179f3') in 0.015718 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_71.PNG
+  artifactKey: Guid(f4a86981c76055b438d9977133384005) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_71.PNG using Guid(f4a86981c76055b438d9977133384005) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80d6001481eb1018304e51433d6f1b5c') in 0.014775 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_48.PNG
+  artifactKey: Guid(689e4e654554f7b4aba70559e1637e83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_48.PNG using Guid(689e4e654554f7b4aba70559e1637e83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dd8422bfbe12037b90578b8291143c7') in 0.014986 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_77.PNG
+  artifactKey: Guid(76248e5cce76936458b03a928873e9aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_77.PNG using Guid(76248e5cce76936458b03a928873e9aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0699699aee298345100e7c470e1ab0f') in 0.019632 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_65.PNG
+  artifactKey: Guid(580d0aa8cf7d4df47a31929b9151be1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_65.PNG using Guid(580d0aa8cf7d4df47a31929b9151be1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2dd177e550ab7b32c2d76313ae06f888') in 0.021110 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_68.PNG
+  artifactKey: Guid(f27eb2895b29e8e4097076fb95c6212f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_68.PNG using Guid(f27eb2895b29e8e4097076fb95c6212f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c83ab3f704b8e5c2a03096417a20cdea') in 0.022063 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_55.PNG
+  artifactKey: Guid(ad8cfd155d6fade43a64db94549c7a1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_55.PNG using Guid(ad8cfd155d6fade43a64db94549c7a1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4546b8f07d15b3efe0f3056739629031') in 0.028020 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_69.PNG
+  artifactKey: Guid(88d20af9ec0538b4e9c83ccd58d6bf6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_69.PNG using Guid(88d20af9ec0538b4e9c83ccd58d6bf6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '023d6c77da3c0f01e9a5f7d6d0150ece') in 0.023325 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_74.PNG
+  artifactKey: Guid(86880148c46a42849982f35fc17a7f0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_74.PNG using Guid(86880148c46a42849982f35fc17a7f0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd29304928414649355ae58123aefaa5c') in 0.023435 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_32.PNG
+  artifactKey: Guid(a97db16c6768e26469593c1f127eeeb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_32.PNG using Guid(a97db16c6768e26469593c1f127eeeb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '496c46bf581a46c99db67e6e3844ac6b') in 0.020388 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_46.PNG
+  artifactKey: Guid(13c9ca286bb8356469a59a76cbb07d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_46.PNG using Guid(13c9ca286bb8356469a59a76cbb07d67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f991b765b96f03972e0843ce0287c989') in 0.021179 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_51.PNG
+  artifactKey: Guid(800ad92e3c52773418df3815f5c0cffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_51.PNG using Guid(800ad92e3c52773418df3815f5c0cffe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f57a910c0e55ff6d28a6999aba7f619c') in 0.019562 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_35.PNG
+  artifactKey: Guid(77ec22448b0764249b61ca242d0e3628) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_35.PNG using Guid(77ec22448b0764249b61ca242d0e3628) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c460cb61bcd2b5d3eb06f1ace2dae731') in 0.019496 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_63.PNG
+  artifactKey: Guid(c9b98e62261421a4a88957fe0d90e25d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_63.PNG using Guid(c9b98e62261421a4a88957fe0d90e25d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd0aaa53af834481003ba0182300f803') in 0.022963 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_54.PNG
+  artifactKey: Guid(ac56cb40b1fffe24399d92e527030c58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_54.PNG using Guid(ac56cb40b1fffe24399d92e527030c58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '476930d727e7fd5079a50758d5fb76d3') in 0.027995 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_78.PNG
+  artifactKey: Guid(eb6d5b6d5b815ae43acb2a000525b4a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_78.PNG using Guid(eb6d5b6d5b815ae43acb2a000525b4a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e22f00464a269e6febcf43ccaf2fd3f') in 0.024874 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.106023 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_02.PNG
+  artifactKey: Guid(8b4954be59fc57a4a9866e2c8987bbdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_02.PNG using Guid(8b4954be59fc57a4a9866e2c8987bbdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0895500813f925b11b0dbcdbcf6861a6') in 0.017229 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_03.PNG
+  artifactKey: Guid(bb79c41185144694393a4c44373b5094) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_03.PNG using Guid(bb79c41185144694393a4c44373b5094) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abf9cd345c43ba14a837f86605fd4611') in 0.013761 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_07.PNG
+  artifactKey: Guid(b85d4a918d253d1429dbf5924669574f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_07.PNG using Guid(b85d4a918d253d1429dbf5924669574f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae3ab97cb12e475140dad68137821a7b') in 0.016301 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_09.PNG
+  artifactKey: Guid(30a8e492a6e04ab42b42eb6e9e675b4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_09.PNG using Guid(30a8e492a6e04ab42b42eb6e9e675b4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf606197e35f6e4ac170d315f54434a2') in 0.014452 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_06.PNG
+  artifactKey: Guid(5c3c814db3ad0df4ba88a591087f0671) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_06.PNG using Guid(5c3c814db3ad0df4ba88a591087f0671) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59e0667f3120a001dbd3ad5640081d3c') in 0.013999 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_15.PNG
+  artifactKey: Guid(834ba739992459d4487151eee5145573) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_15.PNG using Guid(834ba739992459d4487151eee5145573) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3534c6302857e8f1390c51da9c4f52c7') in 0.017751 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_16.PNG
+  artifactKey: Guid(acee28cf6c62a1a4d85d4db2dfa0b76b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_16.PNG using Guid(acee28cf6c62a1a4d85d4db2dfa0b76b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55db9045515a551f7bc4a27447e282b1') in 0.018069 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_10.PNG
+  artifactKey: Guid(e6843047a0ac3fa4f983f3a3b7116c25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_10.PNG using Guid(e6843047a0ac3fa4f983f3a3b7116c25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e19af0312b2a07ae0fddb22889399ec') in 0.019082 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 2.165671 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_82.PNG
+  artifactKey: Guid(28e84b470632e404cbe976b17377a8c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_82.PNG using Guid(28e84b470632e404cbe976b17377a8c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '342792bb3f336be75dc594b230b4a9dc') in 0.014827 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_84.PNG
+  artifactKey: Guid(07315f8c2dd97c44395bbf480c9d8b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_84.PNG using Guid(07315f8c2dd97c44395bbf480c9d8b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd10c016467e0a118dcb621378705b344') in 0.015249 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_87.PNG
+  artifactKey: Guid(227518e187319e34c8d8420c7e0064c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_87.PNG using Guid(227518e187319e34c8d8420c7e0064c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b7c4606138b197d391854fb38d9a40e') in 0.015641 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_85.PNG
+  artifactKey: Guid(ccea91f540feaa241a9b371d0b0dc591) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_85.PNG using Guid(ccea91f540feaa241a9b371d0b0dc591) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99d2a3558b0528612d400ca85a57457f') in 0.014993 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_91.PNG
+  artifactKey: Guid(ed126ebbdb6c5894495a96cd82eef7c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_91.PNG using Guid(ed126ebbdb6c5894495a96cd82eef7c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11fc46e556e7b4fbb90c446543884e4e') in 0.019653 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_90.PNG
+  artifactKey: Guid(71ec254050024cb4eabd67c2b967ff6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_90.PNG using Guid(71ec254050024cb4eabd67c2b967ff6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1fe961a4b7e11286d0c95285db69d384') in 0.020868 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_93.PNG
+  artifactKey: Guid(17ba8e39ea9467a47a98095f7ccc0f5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_93.PNG using Guid(17ba8e39ea9467a47a98095f7ccc0f5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3aedeb6c7b345acbd3babbb5ad8e8fcf') in 0.022358 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_94.PNG
+  artifactKey: Guid(afb5b8d68bb3bcf478526bc351320db9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_94.PNG using Guid(afb5b8d68bb3bcf478526bc351320db9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1eae4806f0a9455fd552961213d68ab6') in 0.019301 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.102808 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_99.PNG
+  artifactKey: Guid(1b2f2887c1830b744a3242fb990923f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_99.PNG using Guid(1b2f2887c1830b744a3242fb990923f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca6d11aba516390a21c288c6d933f60b') in 0.013765 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.002877 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_102.PNG
+  artifactKey: Guid(fd973a4fd06757c4580d75e8cfa086b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_102.PNG using Guid(fd973a4fd06757c4580d75e8cfa086b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd32144cbacb8647a000bb8e5673a5b3') in 0.016601 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000108 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_105.PNG
+  artifactKey: Guid(1a50e80148612194da3b655efe71b6a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_105.PNG using Guid(1a50e80148612194da3b655efe71b6a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0788ce82351b875c9668b9aafa09485') in 0.016848 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_108.PNG
+  artifactKey: Guid(0783979887b02434c9a25f246f427698) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_108.PNG using Guid(0783979887b02434c9a25f246f427698) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79dcf463f326d972d23ea7536a86763b') in 0.015778 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/SciFiFlatSkills/Skills/Tex_skill_110.PNG
+  artifactKey: Guid(28c8d8959cd60c248bb4f0df3298e6a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SciFiFlatSkills/Skills/Tex_skill_110.PNG using Guid(28c8d8959cd60c248bb4f0df3298e6a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74487e6e0e18f508ef40ce00dee473f6') in 0.027708 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
