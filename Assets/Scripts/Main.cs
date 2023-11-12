@@ -40,15 +40,16 @@ public class Main : MonoBehaviour {
         soldier.id = metaSoldier.id;
 
         soldier.armour = Armour.Get(metaSoldier.armour.name);
-        soldier.weapon = Weapon.Get("Assault Rifle");
+        soldier.weapon = Weapon.Get("Chain Gun");
         // soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
         soldier.maxHealth = 10;
         soldier.health = 10;
         soldier.sightRange = 15;
 
-        Resources.Load<Ability>("Abilities/FullAuto").Attach(soldier);
         Resources.Load<Ability>("Abilities/Reload").Attach(soldier);
-        Resources.Load<Ability>("Abilities/Overwatch").Attach(soldier);
+        Resources.Load<Ability>("Abilities/LayDownFire").Attach(soldier);
+        // Resources.Load<Ability>("Abilities/Overwatch").Attach(soldier);
+        // Resources.Load<Ability>("Abilities/FullAuto").Attach(soldier);
         // Resources.Load<Ability>("Abilities/FireOrdnance").Attach(soldier);
 
         // soldier.maxAmmo = soldierData.maxAmmo;

@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Rocket Launcher
   m_EditorClassIdentifier: 
   icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
-  accuracy: 50
-  armourPen: 20
-  minDamage: 2
-  maxDamage: 4
-  shotsWhenMoving: 0
-  shotsWhenStill: 1
-  ammo: 6
-  blast: 6
+  accuracy: 40
+  minDamage: 11
+  maxDamage: 40
+  shots: 1
+  ammo: 1
+  range: 20
+  blast: 3
+  flames: 0
+  flameDuration: 0
+  flameColor: {r: 0, g: 0, b: 0, a: 0}
   type: 1
   cost: 100
+  description: 

@@ -14,12 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   accuracy: 70
-  armourPen: 20
   minDamage: 3
   maxDamage: 3
-  shotsWhenMoving: 2
-  shotsWhenStill: 4
+  shots: 0
   ammo: 20
+  range: 0
   blast: 0
-  type: 0
+  flames: 0
+  flameDuration: 0
+  flameColor: {r: 0, g: 0, b: 0, a: 0}
+  type: 1
   cost: 100
+  description: 

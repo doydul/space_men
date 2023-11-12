@@ -9,35 +9,39 @@ public static class GameplayOperations {
         soldier.Face(target.gridLocation);
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < soldier.shots; i++) {
-            soldier.ShowMuzzleFlash();
-            yield return new WaitForSeconds(0.2f);
-            var accuracy = soldier.accuracy;
-            if (!soldier.InHalfRange(target.gridLocation)) accuracy -= 15;
-            if (!target.dead && Random.value * 100 <= accuracy) {
-                // HIT
-                target.ShowHit();
-                var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
-                target.Hurt(damage);
-                BloodSplatController.instance.MakeSplat(target);
-            } else {
-                // MISS
-                var adjacentTiles = Map.instance.AdjacentTiles(target.tile, true).Where(tile => tile.open).ToArray();
-                for (int j = 0; j < 2; j++) {
-                    var randTile = adjacentTiles[Random.Range(0, adjacentTiles.Length)];
-                    var actor = randTile.GetActor<Actor>();
-                    if (actor != null && actor != soldier) {
-                        var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
-                        actor.Hurt(damage);
-                        actor.ShowHit();
-                        BloodSplatController.instance.MakeSplat(actor);
-                        break;
-                    }
-                }
-            }
-            soldier.HideMuzzleFlash();
-            yield return new WaitForSeconds(0.2f);
+            yield return PerformSoldierSingleShot(soldier, target);
         }
         soldier.HighlightActions();
+    }
+
+    public static IEnumerator PerformSoldierSingleShot(Soldier soldier, Alien target) {
+        soldier.ShowMuzzleFlash();
+        yield return new WaitForSeconds(0.2f);
+        var accuracy = soldier.accuracy;
+        if (!soldier.InHalfRange(target.gridLocation)) accuracy -= 15;
+        if (!target.dead && Random.value * 100 <= accuracy) {
+            // HIT
+            target.ShowHit();
+            var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
+            target.Hurt(damage);
+            BloodSplatController.instance.MakeSplat(target);
+        } else {
+            // MISS
+            var adjacentTiles = Map.instance.AdjacentTiles(target.tile, true).ToArray();
+            for (int j = 0; j < 2; j++) {
+                var randTile = adjacentTiles[Random.Range(0, adjacentTiles.Length)];
+                var actor = randTile.GetActor<Actor>();
+                if (actor != null && actor != soldier) {
+                    var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
+                    actor.Hurt(damage);
+                    actor.ShowHit();
+                    BloodSplatController.instance.MakeSplat(actor);
+                    break;
+                }
+            }
+        }
+        soldier.HideMuzzleFlash();
+        yield return new WaitForSeconds(0.2f);
     }
 
     public static IEnumerator PerformActorMove(Actor actor, Map.Path path) {

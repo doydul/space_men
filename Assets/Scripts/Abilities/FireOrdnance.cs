@@ -18,6 +18,7 @@ public class FireOrdnance : Ability {
     private IEnumerator PerformUse() {
         owner.actionsSpent += 1;
         owner.shotsSpent += 1;
+        if (owner.weapon.isHeavy) owner.tilesMoved += 100;
         yield return MapInputController.instance.SelectTileFrom(Color.red, Map.instance.iterator.Exclude(new SoldierLosMask()).RadiallyFrom(owner.gridLocation, 100)
           .Where(tile => owner.CanSee(tile.gridLocation) && owner.InRange(tile.gridLocation)).ToArray());
         var hitTile = MapInputController.instance.selectedTile;
