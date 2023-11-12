@@ -6,7 +6,7 @@ public abstract class Ability : ScriptableObject {
 
     protected Soldier owner;
 
-    public void Attach(Soldier owner) {
+    public virtual void Attach(Soldier owner) {
         var clone = Instantiate(this);
         clone.name = name;
         owner.abilities.Add(clone);

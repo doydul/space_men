@@ -26,3 +26,5 @@ MonoBehaviour:
   type: 0
   cost: 100
   description: designed for clearing large groups of smaller enemies
+  abilities:
+  - {fileID: 11400000, guid: ff8c339011d9f0d4f8b0fd5f7ef123ab, type: 2}

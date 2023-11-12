@@ -24,6 +24,7 @@ public class Weapon : ScriptableObject {
     public Type type;
     public int cost;
     [TextArea] public string description;
+    public Ability[] abilities;
 
     public bool ordnance { get { return blast > 0; } }
     public bool isHeavy { get { return type == Type.Heavy; } }

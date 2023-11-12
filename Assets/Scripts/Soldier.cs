@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -45,6 +46,7 @@ public class Soldier : Actor {
     public bool InHalfRange(Vector2 gridLocation) => Map.instance.ManhattanDistance(this.gridLocation, gridLocation) <= halfRange;
     public void Shoot(Alien target) => AnimationManager.instance.StartAnimation(GameplayOperations.PerformSoldierShoot(this, target));
     public IEnumerator PerformShoot(Alien target) => GameplayOperations.PerformSoldierShoot(this, target);
+    public bool HasAbility<T>() => abilities.Any(ability => ability is T);
     
     public string armourName { get { return armour.name; } }
     public string weaponName { get { return weapon.name; } }
@@ -121,7 +123,7 @@ public class Soldier : Actor {
             }
         } else {
             var alien = tile.GetActor<Alien>();
-            if (!firesOrdnance && alien != null && InRange(alien.gridLocation) && CanSee(alien.gridLocation) && canShoot) {
+            if (HasAbility<StandardShoot>() && alien != null && InRange(alien.gridLocation) && CanSee(alien.gridLocation) && canShoot) {
                 MapHighlighter.instance.ClearHighlights();
                 actionsSpent += 1;
                 shotsSpent += 1;
@@ -138,7 +140,7 @@ public class Soldier : Actor {
         foreach (var tile in Map.instance.iterator.Exclude(new SoldierImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement)) {
             MapHighlighter.instance.HighlightTile(tile, Color.green);
         }
-        if (canAct && !firesOrdnance) {
+        if (canAct && HasAbility<StandardShoot>()) {
             foreach (var alien in Map.instance.GetActors<Alien>()) {
                 if (CanSee(alien.gridLocation) && InRange(alien.gridLocation)) {
                     MapHighlighter.instance.HighlightTile(alien.tile, Color.red);

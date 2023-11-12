@@ -19,6 +19,7 @@ public class InterfaceController : MonoBehaviour {
     public void DisplayAbilities(Ability[] abilities) {
         ClearAbilities();
         foreach (var ability in abilities) {
+            if (ability is StandardShoot) continue;
             var newIcon = Instantiate(abilityButtonPrototype, abilityButtonPrototype.transform.parent) as GameObject;
             newIcon.SetActive(true);
             var abilityIcon = newIcon.GetComponent<AbilityIcon>();

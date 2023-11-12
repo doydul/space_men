@@ -26,3 +26,5 @@ MonoBehaviour:
   type: 1
   cost: 100
   description: 
+  abilities:
+  - {fileID: 11400000, guid: d6ec2b1b70fea9f48bc35356d4660161, type: 2}

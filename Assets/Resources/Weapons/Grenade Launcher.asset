@@ -28,3 +28,5 @@ MonoBehaviour:
   description: the grenade launcher is a versatile weapon, able to deal with groups
     of enemies while also dealing significant damage to single targets. it suffers
     however from a low fire rate and high damage variance
+  abilities:
+  - {fileID: 11400000, guid: ff8c339011d9f0d4f8b0fd5f7ef123ab, type: 2}
