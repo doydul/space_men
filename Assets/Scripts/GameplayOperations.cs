@@ -11,7 +11,7 @@ public static class GameplayOperations {
         for (int i = 0; i < soldier.shots; i++) {
             yield return PerformSoldierSingleShot(soldier, target);
         }
-        soldier.HighlightActions();
+        soldier.RefreshUI();
     }
 
     public static IEnumerator PerformSoldierSingleShot(Soldier soldier, Alien target) {

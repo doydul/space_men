@@ -17,7 +17,7 @@ MonoBehaviour:
   minDamage: 1
   maxDamage: 10
   shots: 1
-  ammo: 2
+  ammo: 3
   range: 10
   blast: 10
   flames: 0

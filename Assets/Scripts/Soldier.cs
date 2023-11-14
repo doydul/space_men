@@ -104,9 +104,7 @@ public class Soldier : Actor {
 
     public override void Interact(Tile tile) {
         if (!tile.open) {
-            UIState.instance.DeselectActor();
-            MapHighlighter.instance.ClearHighlights();
-            InterfaceController.instance.ClearAbilities();
+            Deselect();
             return;
         }
         if (tile.GetBackgroundActor<Door>() != null) {
@@ -117,9 +115,7 @@ public class Soldier : Actor {
                 tilesMoved += path.length;
                 AnimationManager.instance.StartAnimation(GameplayOperations.PerformActorMove(this, path));
             } else {
-                UIState.instance.DeselectActor();
-                MapHighlighter.instance.ClearHighlights();
-                InterfaceController.instance.ClearAbilities();
+                Deselect();
             }
         } else {
             var alien = tile.GetActor<Alien>();
@@ -154,8 +150,22 @@ public class Soldier : Actor {
 
     public override void Select() {
         UIState.instance.SetSelectedActor(this);
+        RefreshUI();
+    }
+
+    public void RefreshUI() {
         HighlightActions();
         InterfaceController.instance.DisplayAbilities(abilities.ToArray());
+        AmmoGauge.instance.DisplayAmmo(ammo, shotsRemaining);
+        InfoPanel.instance.SetText($"Health:   {health}/{maxHealth}\nActions: {1 - actionsSpent}/1\nWeapon: {weapon.name}\n    Accuracy: {accuracy}\n    Shots: {shots}\n    Damage: {minDamage}-{maxDamage}");
+    }
+
+    public void Deselect() {
+        UIState.instance.DeselectActor();
+        MapHighlighter.instance.ClearHighlights();
+        InterfaceController.instance.ClearAbilities();
+        AmmoGauge.instance.ClearAmmo();
+        InfoPanel.instance.ClearText();
     }
 }
 

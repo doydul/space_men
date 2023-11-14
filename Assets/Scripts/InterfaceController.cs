@@ -4,6 +4,7 @@ public class InterfaceController : MonoBehaviour {
 
     public static InterfaceController instance;
 
+    public GameObject endTurnButton;
     public GameObject abilityButtonPrototype;
 
     void Awake() {
@@ -11,9 +12,22 @@ public class InterfaceController : MonoBehaviour {
         abilityButtonPrototype.SetActive(false);
     }
 
+    void Start() {
+        GameEvents.On(this, "player_turn_start", PlayerTurnStart);
+    }
+
+    void OnDestroy() {
+        GameEvents.RemoveListener(this, "player_turn_start");
+    }
+
+    void PlayerTurnStart() {
+        endTurnButton.SetActive(true);
+    }
+
     public void EndTurn() {
         UIState.instance.EndPlayerTurn();
         GameEvents.Trigger("alien_turn_start");
+        endTurnButton.SetActive(false);
     }
 
     public void DisplayAbilities(Ability[] abilities) {

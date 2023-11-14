@@ -10,5 +10,6 @@ public class Reload : Ability {
     public override void Use() {
         owner.actionsSpent += 1;
         owner.shotsSpent = 0;
+        owner.RefreshUI();
     }
 }

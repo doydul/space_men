@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   accuracy: 70
-  minDamage: 3
-  maxDamage: 3
-  shots: 0
+  minDamage: 10
+  maxDamage: 15
+  shots: 1
   ammo: 20
-  range: 0
+  range: 50
   blast: 0
   flames: 0
   flameDuration: 0
