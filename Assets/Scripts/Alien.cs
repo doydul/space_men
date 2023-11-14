@@ -29,24 +29,40 @@ public class Alien : Actor {
         GameEvents.On(this, "alien_turn_start", Reset);
     }
 
-    void OnDestroy() {
-        GameEvents.RemoveListener(this, "alien_turn_start");
+    void OnDestroy() => GameEvents.RemoveListener(this, "alien_turn_start");
+
+    public void Reset() => hasActed = false;
+
+    public override void Select() {
+        UIState.instance.SetSelectedActor(this);
+        InfoPanel.instance.SetText($"Type: {type}\nHealth: {health}/{maxHealth}\nDamage: {damage}\nMovement: {movement}");
+        HighlightActions();
     }
 
-    public void Reset() {
-        hasActed = false;
+    public override void Interact(Tile tile) {
+        var actor = tile.GetActor<Actor>();
+        Deselect();
+        if (actor != null) {
+            actor.Select();
+        }
     }
 
-    public void FromData(AlienData data) {
-        maxHealth = data.maxHealth;
-        health = data.maxHealth;
-        armour = data.armour;
-        accModifier = data.accModifier;
-        damage = data.damage;
-        armourPen = data.armourPen;
-        movement = data.movement;
-        threat = data.threat;
-        expReward = data.expReward;
+    public void Deselect() {
+        UIState.instance.DeselectActor();
+        MapHighlighter.instance.ClearHighlights();
+        InfoPanel.instance.ClearText();
+    }
+
+    public void HighlightActions() {
+        MapHighlighter.instance.ClearHighlights();
+        foreach (var tile in Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(gridLocation, movement)) {
+            MapHighlighter.instance.HighlightTile(tile, Color.red);
+            foreach (var adjTile in Map.instance.AdjacentTiles(tile)) {
+                if (adjTile.GetActor<Soldier>() != null) {
+                    MapHighlighter.instance.HighlightTile(adjTile, Color.red);
+                }
+            }
+        }
     }
 }
 

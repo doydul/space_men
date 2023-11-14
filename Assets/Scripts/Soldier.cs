@@ -107,7 +107,7 @@ public class Soldier : Actor {
             Deselect();
             return;
         }
-        if (tile.GetBackgroundActor<Door>() != null) {
+        if (Map.instance.ManhattanDistance(gridLocation, tile.gridLocation) == 1 &&  tile.GetBackgroundActor<Door>() != null) {
             AnimationManager.instance.StartAnimation(GameplayOperations.PerformOpenDoor(this, tile));
         } else if (tile.GetActor<Actor>() == null) {
             var path = Map.instance.ShortestPath(new SoldierImpassableTerrain(), gridLocation, tile.gridLocation);
@@ -119,12 +119,17 @@ public class Soldier : Actor {
             }
         } else {
             var alien = tile.GetActor<Alien>();
-            if (HasAbility<StandardShoot>() && alien != null && InRange(alien.gridLocation) && CanSee(alien.gridLocation) && canShoot) {
-                MapHighlighter.instance.ClearHighlights();
-                actionsSpent += 1;
-                shotsSpent += 1;
-                if (weapon.isHeavy) tilesMoved += 100;
-                Shoot(alien);
+            if (alien != null) {
+                if (HasAbility<StandardShoot>() && InRange(alien.gridLocation) && CanSee(alien.gridLocation) && canShoot) {
+                    MapHighlighter.instance.ClearHighlights();
+                    actionsSpent += 1;
+                    shotsSpent += 1;
+                    if (weapon.isHeavy) tilesMoved += 100;
+                    Shoot(alien);
+                } else {
+                    Deselect();
+                    if (!tile.foggy) alien.Select();
+                }
             } else if (tile.GetActor<Soldier>() != null) {
                 tile.GetActor<Soldier>().Select();
             }
@@ -153,19 +158,19 @@ public class Soldier : Actor {
         RefreshUI();
     }
 
-    public void RefreshUI() {
-        HighlightActions();
-        InterfaceController.instance.DisplayAbilities(abilities.ToArray());
-        AmmoGauge.instance.DisplayAmmo(ammo, shotsRemaining);
-        InfoPanel.instance.SetText($"Health:   {health}/{maxHealth}\nActions: {1 - actionsSpent}/1\nWeapon: {weapon.name}\n    Accuracy: {accuracy}\n    Shots: {shots}\n    Damage: {minDamage}-{maxDamage}");
-    }
-
     public void Deselect() {
         UIState.instance.DeselectActor();
         MapHighlighter.instance.ClearHighlights();
         InterfaceController.instance.ClearAbilities();
         AmmoGauge.instance.ClearAmmo();
         InfoPanel.instance.ClearText();
+    }
+
+    public void RefreshUI() {
+        HighlightActions();
+        InterfaceController.instance.DisplayAbilities(abilities.ToArray());
+        AmmoGauge.instance.DisplayAmmo(ammo, shotsRemaining);
+        InfoPanel.instance.SetText($"Health:   {health}/{maxHealth}\nActions: {1 - actionsSpent}/1\nWeapon: {weapon.name}\n    Accuracy: {accuracy}\n    Shots: {shots}\n    Damage: {minDamage}-{maxDamage}");
     }
 }
 
