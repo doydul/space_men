@@ -61,7 +61,7 @@ public abstract class Actor : MonoBehaviour {
     
     private float healthSpriteSize;
 
-    void Awake() {
+    protected virtual void Awake() {
         health = maxHealth;
         if (healthIndicator != null) {
             healthSpriteSize = healthIndicator.size.x;

@@ -23,7 +23,8 @@ public class Alien : Actor {
     public void ShowAttack() => attackIndicator.enabled = true;
     public void HideAttack() => attackIndicator.enabled = false;
 
-    void Start() {
+    protected override void Awake() {
+        base.Awake();
         attackIndicator.enabled = false;
         GameEvents.On(this, "alien_turn_start", Reset);
     }

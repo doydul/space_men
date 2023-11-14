@@ -17,16 +17,16 @@ public class FogManager : MonoBehaviour {
     }
 
     public void UpdateFog(bool reset = false) {
-        // var soldiers = Map.instance.GetActors<Soldier>();
-        // foreach (var tile in Map.instance.EnumerateTiles()) {
-        //     if (!tile.open) continue;
-        //     if (reset) tile.SetFoggy();
-        //     foreach (var soldier in soldiers) {
-        //         if (Map.instance.ManhattanDistance(tile.gridLocation, soldier.gridLocation) < soldier.sightRange && soldier.CanSee(tile.gridLocation)) {
-        //             tile.RemoveFoggy();
-        //             break;
-        //         }
-        //     }
-        // }
+        var soldiers = Map.instance.GetActors<Soldier>();
+        foreach (var tile in Map.instance.EnumerateTiles()) {
+            if (!tile.open) continue;
+            if (reset) tile.SetFoggy();
+            foreach (var soldier in soldiers) {
+                if (Map.instance.ManhattanDistance(tile.gridLocation, soldier.gridLocation) < soldier.sightRange && soldier.CanSee(tile.gridLocation)) {
+                    tile.RemoveFoggy();
+                    break;
+                }
+            }
+        }
     }
 }
