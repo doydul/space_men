@@ -163,14 +163,14 @@ public class Soldier : Actor {
         MapHighlighter.instance.ClearHighlights();
         InterfaceController.instance.ClearAbilities();
         AmmoGauge.instance.ClearAmmo();
-        InfoPanel.instance.ClearText();
+        InformationPanel.instance.ClearText();
     }
 
     public void RefreshUI() {
         HighlightActions();
         InterfaceController.instance.DisplayAbilities(abilities.ToArray());
         AmmoGauge.instance.DisplayAmmo(ammo, shotsRemaining);
-        InfoPanel.instance.SetText($"Health:   {health}/{maxHealth}\nActions: {1 - actionsSpent}/1\nWeapon: {weapon.name}\n    Accuracy: {accuracy}\n    Shots: {shots}\n    Damage: {minDamage}-{maxDamage}");
+        InformationPanel.instance.SetText($"Health:   {health}/{maxHealth}\nActions: {1 - actionsSpent}/1\nWeapon: {weapon.name}\n    Accuracy: {accuracy}\n    Shots: {shots}\n    Damage: {minDamage}-{maxDamage}");
     }
 }
 

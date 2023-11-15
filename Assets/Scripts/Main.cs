@@ -23,7 +23,7 @@ public class Main : MonoBehaviour {
         }
 
         var openTiles = Map.instance.EnumerateTiles().Where(tile => tile.open).ToArray();
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 30; j++) {
             int randex = (int)(Random.value * openTiles.Length);
             if (openTiles[randex].GetActor<Actor>() == null) {
                 InstantiateAlien(openTiles[randex].gridLocation);
@@ -40,7 +40,7 @@ public class Main : MonoBehaviour {
         soldier.id = metaSoldier.id;
 
         soldier.armour = Armour.Get(metaSoldier.armour.name);
-        soldier.weapon = Weapon.Get("Assault Rifle");
+        soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
         // soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
         soldier.maxHealth = 10;
         soldier.health = 10;

@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 7064346511390363277}
   - component: {fileID: 4753378594505932113}
   - component: {fileID: 2166863324965297887}
+  - component: {fileID: 8888991500403923203}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -241,6 +242,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2613044371142042841}
   m_Enabled: 1
+--- !u!114 &8888991500403923203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2613044371142042841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cabca13a7294bb5a5b9f0fdd313d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2931708008368753311
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +301,7 @@ GameObject:
   - component: {fileID: 3405835685860803121}
   - component: {fileID: 4297731920928212571}
   - component: {fileID: 6239597532294419596}
-  - component: {fileID: 6832982984033144828}
+  - component: {fileID: 3641976719582671548}
   m_Layer: 5
   m_Name: InfoText
   m_TagString: Untagged
@@ -437,7 +450,7 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6832982984033144828
+--- !u!114 &3641976719582671548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -446,7 +459,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5617011660961508602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73bb3557394f2e94dab80a1d1514f264, type: 3}
+  m_Script: {fileID: 11500000, guid: a6395bce08a0d4d4480a442e13afd70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textField: {fileID: 6239597532294419596}

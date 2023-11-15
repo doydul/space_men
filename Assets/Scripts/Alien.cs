@@ -35,7 +35,7 @@ public class Alien : Actor {
 
     public override void Select() {
         UIState.instance.SetSelectedActor(this);
-        InfoPanel.instance.SetText($"Type: {type}\nHealth: {health}/{maxHealth}\nDamage: {damage}\nMovement: {movement}");
+        InformationPanel.instance.SetText($"Type: {type}\nHealth: {health}/{maxHealth}\nDamage: {damage}\nMovement: {movement}");
         HighlightActions();
     }
 
@@ -50,7 +50,7 @@ public class Alien : Actor {
     public void Deselect() {
         UIState.instance.DeselectActor();
         MapHighlighter.instance.ClearHighlights();
-        InfoPanel.instance.ClearText();
+        InformationPanel.instance.ClearText();
     }
 
     public void HighlightActions() {

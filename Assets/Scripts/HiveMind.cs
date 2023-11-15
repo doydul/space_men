@@ -46,13 +46,21 @@ public class HiveMind : MonoBehaviour {
             }
         }
         if (bestTile != null) {
-            yield return new WaitForSeconds(0.75f);
+            if (!activeAlien.tile.foggy) {
+                CameraController.CentreCameraOn(activeAlien.tile);
+                yield return new WaitForSeconds(0.5f);
+            }
             var actualPath = Map.instance.ShortestPath(new AlienImpassableTerrain(), activeAlien.gridLocation, bestTile.gridLocation);
             yield return GameplayOperations.PerformActorMove(activeAlien, actualPath);
+            if (!bestTile.foggy) {
+                CameraController.CentreCameraOn(bestTile);
+                yield return new WaitForSeconds(0.5f);
+            }
 
             foreach (var tile in Map.instance.AdjacentTiles(activeAlien.gridLocation)) {
                 var soldier = tile.GetActor<Soldier>();
                 if (soldier != null) {
+                    CameraController.CentreCameraOn(tile);
                     yield return PerformAlienAttack(soldier);
                     break;
                 }

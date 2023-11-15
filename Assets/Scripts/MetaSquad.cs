@@ -23,6 +23,12 @@ public class MetaSquad {
 
     public static MetaSquad GenerateDefault() {
         var result = new MetaSquad();
+        var weapons = new string[] {
+            "Assault Rifle",
+            "Assault Rifle",
+            "Grenade Launcher",
+            "Chain Gun"
+        };
         for (int i = 0; i < 4; i++) {
             result.AddMetaSoldier(new MetaSoldier() {
                 name = "John Doe",
@@ -32,7 +38,7 @@ public class MetaSquad {
                 },
                 weapon = new MetaWeapon() {
                     id = Guid.NewGuid().ToString(),
-                    name = "Assault Rifle"
+                    name = weapons[i]
                 }
             });
         }

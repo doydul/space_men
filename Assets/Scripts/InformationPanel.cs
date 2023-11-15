@@ -1,8 +1,8 @@
 using UnityEngine;
 using TMPro;
 
-public class InfoPanel : MonoBehaviour {
-    public static InfoPanel instance;
+public class InformationPanel : MonoBehaviour {
+    public static InformationPanel instance;
     public TMP_Text textField;
 
     void Awake() => instance = this;

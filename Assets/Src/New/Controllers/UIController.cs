@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class UIController : Controller {
     
-    public InfoPanel infoPanel; // TODO refactor these to use pure presenters
+    // public InfoPanel infoPanel; // TODO refactor these to use pure presenters
     public UIData uiData;
     public BlackFade blackFade;
 

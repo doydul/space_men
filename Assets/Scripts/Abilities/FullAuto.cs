@@ -26,7 +26,7 @@ public class FullAuto : Ability {
         yield return MapInputController.instance.SelectTileFrom(Color.red,
             Map.instance.GetActors<Alien>().Where(alien => owner.CanSee(alien.gridLocation) && owner.InRange(alien.gridLocation)).Select(alien => alien.tile).ToArray()
         );
-        yield return owner.PerformShoot(MapInputController.instance.selectedTile.GetActor<Alien>());
         owner.Hurt(damage);
+        yield return owner.PerformShoot(MapInputController.instance.selectedTile.GetActor<Alien>());
     }
 }
