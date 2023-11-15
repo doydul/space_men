@@ -67,9 +67,8 @@ public class Main : MonoBehaviour {
         alien.id = System.Guid.NewGuid().ToString();
 
         var spriteTransform = Instantiate(Resources.Load<Transform>("Prefabs/AlienSprites/" + type + "AlienSprite")) as Transform;
-        spriteTransform.parent = trans;
+        spriteTransform.parent = alien.image;
         spriteTransform.localPosition = Vector3.zero;
-        alien.image = spriteTransform;
         alien.type = type;
         alien.damage = 3;
         alien.movement = 7;
