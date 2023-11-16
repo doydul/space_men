@@ -120,7 +120,7 @@ public class Soldier : Actor {
         } else {
             var alien = tile.GetActor<Alien>();
             if (alien != null) {
-                if (HasAbility<StandardShoot>() && InRange(alien.gridLocation) && CanSee(alien.gridLocation) && canShoot) {
+                if (!tile.foggy && HasAbility<StandardShoot>() && InRange(alien.gridLocation) && CanSee(alien.gridLocation) && canShoot) {
                     MapHighlighter.instance.ClearHighlights();
                     actionsSpent += 1;
                     shotsSpent += 1;
@@ -143,7 +143,7 @@ public class Soldier : Actor {
         }
         if (canAct && HasAbility<StandardShoot>()) {
             foreach (var alien in Map.instance.GetActors<Alien>()) {
-                if (CanSee(alien.gridLocation) && InRange(alien.gridLocation)) {
+                if (!alien.tile.foggy && CanSee(alien.gridLocation) && InRange(alien.gridLocation)) {
                     MapHighlighter.instance.HighlightTile(alien.tile, Color.red);
                 }
             }

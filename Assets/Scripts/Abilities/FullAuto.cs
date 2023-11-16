@@ -19,7 +19,7 @@ public class FullAuto : Ability {
     private IEnumerator PerformUse() {
         AbilityInfoPanel.instance.ShowDescription("Full Auto\nChoose Target");
         yield return MapInputController.instance.SelectTileFrom(Color.red,
-            Map.instance.GetActors<Alien>().Where(alien => owner.CanSee(alien.gridLocation) && owner.InRange(alien.gridLocation)).Select(alien => alien.tile).ToArray()
+            Map.instance.GetActors<Alien>().Where(alien => !alien.tile.foggy && owner.CanSee(alien.gridLocation) && owner.InRange(alien.gridLocation)).Select(alien => alien.tile).ToArray()
         );
         if (MapInputController.instance.selectedTile == null) yield break;
         AbilityInfoPanel.instance.Hide();
