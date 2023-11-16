@@ -31,7 +31,7 @@ public class LayDownFire : ReactionAbility {
     }
 
     public override bool TriggersReaction(Tile tile, Actor actor) {
-        return shotsRemaining > 0 && owner.InRange(tile.gridLocation) && owner.WithinSightArc(tile.gridLocation) && owner.CanSee(tile.gridLocation) && actor is Alien;
+        return shotsRemaining > 0 && !tile.foggy && owner.InRange(tile.gridLocation) && owner.WithinSightArc(tile.gridLocation) && owner.CanSee(tile.gridLocation) && actor is Alien;
     }
 
     public override IEnumerator PerformReaction(Tile tile) {
@@ -39,7 +39,7 @@ public class LayDownFire : ReactionAbility {
     }
 
     private IEnumerator PerformShots() {
-        var aliensInSight = Map.instance.GetActors<Alien>().Where(alien => owner.CanSee(alien.gridLocation) && owner.InRange(alien.gridLocation) && owner.WithinSightArc(alien.gridLocation)).ToList();
+        var aliensInSight = Map.instance.GetActors<Alien>().Where(alien => !alien.tile.foggy && owner.CanSee(alien.gridLocation) && owner.InRange(alien.gridLocation) && owner.WithinSightArc(alien.gridLocation)).ToList();
         while (shotsRemaining > 0 && aliensInSight.Count > 0) {
             if (shotsRemaining >= owner.shots) owner.shotsSpent += 1;
             var randAlien = aliensInSight[Random.Range(0, aliensInSight.Count())];

@@ -44,13 +44,17 @@ public class Alien : Actor {
     }
 
     public override void Hurt(int damage) {
-        base.Hurt(damage);
+        if (damage <= armour) {
+            base.Hurt(damage / 2);
+        } else {
+            base.Hurt(damage);
+        }
         Awaken();
     }
 
     public override void Select() {
         UIState.instance.SetSelectedActor(this);
-        InformationPanel.instance.SetText($"Type: {type}\nHealth: {health}/{maxHealth}\nDamage: {damage}\nMovement: {movement}");
+        InformationPanel.instance.SetText($"Type: {type}\nHealth: {health}/{maxHealth}\nArmour: {armour}\nAccuracy Modifier: {accModifier}\nDamage: {damage}\nMovement: {movement}");
         HighlightActions();
     }
 

@@ -19,7 +19,7 @@ public static class GameplayOperations {
         yield return new WaitForSeconds(0.2f);
         var accuracy = soldier.accuracy;
         if (!soldier.InHalfRange(target.gridLocation)) accuracy -= 15;
-        if (!target.dead && Random.value * 100 <= accuracy) {
+        if (!target.dead && Random.value * 100 <= accuracy + target.accModifier) {
             // HIT
             target.ShowHit();
             var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);

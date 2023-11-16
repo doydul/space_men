@@ -12,13 +12,13 @@ public class RadarBlipController {
     AlienDeployer alienDeployer;
 
     public void ShowRadarBlips() {
-        GameLogicComponent.world.ClearRadarBlips();
-        foreach (var virtualAlien in alienDeployer.hiddenAliens) {
-            var alienType = Resources.Load<AlienData>("Aliens/" + virtualAlien.alienType);
-            if (virtualAlien.radarPresence < alienType.chanceOfCreatingRadarBlip) {
-                GameLogicComponent.world.CreateRadarBlip(virtualAlien.gridLocation);
-            }
-        }
+        // GameLogicComponent.world.ClearRadarBlips();
+        // foreach (var virtualAlien in alienDeployer.hiddenAliens) {
+        //     var alienType = Resources.Load<AlienData>("Aliens/" + virtualAlien.alienType);
+        //     if (virtualAlien.radarPresence < alienType.chanceOfCreatingRadarBlip) {
+        //         GameLogicComponent.world.CreateRadarBlip(virtualAlien.gridLocation);
+        //     }
+        // }
     }
 
     public void ClearRadarBlips() {

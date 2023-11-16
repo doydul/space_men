@@ -26,7 +26,7 @@ public class Main : MonoBehaviour {
         for (int j = 0; j < 30; j++) {
             int randex = (int)(Random.value * openTiles.Length);
             if (openTiles[randex].GetActor<Actor>() == null) {
-                InstantiateAlien(openTiles[randex].gridLocation);
+                InstantiateAlien(openTiles[randex].gridLocation, "Alien");
             }
         }
         FogManager.instance.UpdateFog(true);
@@ -59,23 +59,17 @@ public class Main : MonoBehaviour {
     }
 
     // TODO move me somewhere else!
-    Alien InstantiateAlien(Vector2 gridLocation) {
+    Alien InstantiateAlien(Vector2 gridLocation, string alienType) {
         var trans = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/Alien")) as Transform;
-        var type = "Alien";
 
+        var alienData = Resources.Load<AlienData>($"Aliens/{alienType}");
         var alien = trans.GetComponent<Alien>() as Alien;
+        alienData.Dump(alien);
         alien.id = System.Guid.NewGuid().ToString();
 
-        var spriteTransform = Instantiate(Resources.Load<Transform>("Prefabs/AlienSprites/" + type + "AlienSprite")) as Transform;
+        var spriteTransform = Instantiate(Resources.Load<Transform>("Prefabs/AlienSprites/" + alienType + "AlienSprite")) as Transform;
         spriteTransform.parent = alien.image;
         spriteTransform.localPosition = Vector3.zero;
-        alien.type = type;
-        alien.damage = 3;
-        alien.movement = 6;
-        alien.expReward = 1;
-        alien.maxHealth = 7;
-        alien.health = 7;
-        alien.sensoryRange = 10;
 
         Map.instance.GetTileAt(gridLocation).SetActor(trans);
         return alien;

@@ -27,7 +27,7 @@ public class Overwatch : ReactionAbility {
     }
 
     public override bool TriggersReaction(Tile tile, Actor actor) {
-        return owner.InRange(tile.gridLocation) && owner.WithinSightArc(tile.gridLocation) && owner.CanSee(tile.gridLocation) && actor is Alien;
+        return !tile.foggy && owner.InRange(tile.gridLocation) && owner.WithinSightArc(tile.gridLocation) && owner.CanSee(tile.gridLocation) && actor is Alien;
     }
 
     public override IEnumerator PerformReaction(Tile tile) {
