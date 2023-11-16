@@ -51,7 +51,7 @@ public abstract class Actor : MonoBehaviour {
     Coroutine hitCoroutine;
     public void ShowHit() {
         if (hitCoroutine != null) StopCoroutine(hitCoroutine);
-        StartCoroutine(PerformShowHit());
+        if (gameObject.activeInHierarchy) StartCoroutine(PerformShowHit());
     }
     public IEnumerator PerformShowHit() {
         hitIndicator.SetActive(true);
@@ -111,7 +111,7 @@ public abstract class Actor : MonoBehaviour {
         Destroy(gameObject, 0.5f);
     }
 
-    public void Hurt(int damage) {
+    public virtual void Hurt(int damage) {
         health -= damage;
         if (health <= 0) {
             dead = true;

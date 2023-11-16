@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rail Gun
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  accuracy: 70
+  accuracy: 75
   minDamage: 10
   maxDamage: 15
   shots: 1

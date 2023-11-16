@@ -64,6 +64,7 @@ public static class GameplayOperations {
                 if (soldier.reaction.TriggersReaction(tile, actor)) {
                     actor.MoveTo(tile);
                     actor.TurnTo(tile.gridLocation - path.nodes[i - 1].tile.gridLocation);
+                    CameraController.CentreCameraOn(tile);
                     yield return soldier.reaction.PerformReaction(tile);
                     if (actor.dead) break;
                 }

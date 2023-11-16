@@ -17,15 +17,14 @@ public class FullAuto : Ability {
     }
 
     private IEnumerator PerformUse() {
-        owner.shotsSpent += ammoCost;
-        foreach (var alien in Map.instance.GetActors<Alien>()) {
-            if (owner.CanSee(alien.gridLocation)) {
-                MapHighlighter.instance.HighlightTile(alien.tile, Color.red);
-            }
-        }
+        AbilityInfoPanel.instance.ShowDescription("Full Auto\nChoose Target");
         yield return MapInputController.instance.SelectTileFrom(Color.red,
             Map.instance.GetActors<Alien>().Where(alien => owner.CanSee(alien.gridLocation) && owner.InRange(alien.gridLocation)).Select(alien => alien.tile).ToArray()
         );
+        if (MapInputController.instance.selectedTile == null) yield break;
+        AbilityInfoPanel.instance.Hide();
+
+        owner.shotsSpent += ammoCost;
         owner.Hurt(damage);
         yield return owner.PerformShoot(MapInputController.instance.selectedTile.GetActor<Alien>());
     }

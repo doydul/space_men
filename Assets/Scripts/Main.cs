@@ -44,7 +44,7 @@ public class Main : MonoBehaviour {
         // soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
         soldier.maxHealth = 10;
         soldier.health = 10;
-        soldier.sightRange = 15;
+        soldier.sightRange = 10;
 
         foreach (var ability in soldier.weapon.abilities) ability.Attach(soldier);
 
@@ -71,12 +71,11 @@ public class Main : MonoBehaviour {
         spriteTransform.localPosition = Vector3.zero;
         alien.type = type;
         alien.damage = 3;
-        alien.movement = 7;
+        alien.movement = 6;
         alien.expReward = 1;
         alien.maxHealth = 7;
         alien.health = 7;
-        alien.sensoryRange = 7;
-        alien.Awaken();
+        alien.sensoryRange = 10;
 
         Map.instance.GetTileAt(gridLocation).SetActor(trans);
         return alien;

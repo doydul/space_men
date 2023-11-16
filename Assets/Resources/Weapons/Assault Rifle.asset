@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Assault Rifle
   m_EditorClassIdentifier: 
   icon: {fileID: 5026745411207313143, guid: e40f3473f69924114bb79a48f410c9e7, type: 3}
-  accuracy: 60
+  accuracy: 70
   minDamage: 1
   maxDamage: 8
   shots: 3

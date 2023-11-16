@@ -3,18 +3,10 @@ using UnityEngine;
 public class FogManager : MonoBehaviour {
     
     public static FogManager instance;
+    void Awake() => instance = this;
 
-    void Awake() {
-        instance = this;
-    }
-
-    void Start() {
-        GameEvents.On(this, "player_turn_start", () => UpdateFog(true));
-    }
-
-    void OnDestroy() {
-        GameEvents.RemoveListener(this, "player_turn_start");
-    }
+    void Start() => GameEvents.On(this, "player_turn_start", () => UpdateFog(true));
+    void OnDestroy() => GameEvents.RemoveListener(this, "player_turn_start");
 
     public void UpdateFog(bool reset = false) {
         var soldiers = Map.instance.GetActors<Soldier>();

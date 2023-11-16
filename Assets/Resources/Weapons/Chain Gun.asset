@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Chain Gun
   m_EditorClassIdentifier: 
   icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
-  accuracy: 50
+  accuracy: 60
   minDamage: 1
   maxDamage: 8
-  shots: 10
+  shots: 12
   ammo: 1
-  range: 14
+  range: 18
   blast: 0
   flames: 0
   flameDuration: 0

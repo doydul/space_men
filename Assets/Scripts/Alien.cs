@@ -19,7 +19,6 @@ public class Alien : Actor {
     public SpriteRenderer attackIndicator;
 
     public bool canAct => !hasActed && awake;
-    public void Awaken() => awake = true;
     public void ShowAttack() => attackIndicator.enabled = true;
     public void HideAttack() => attackIndicator.enabled = false;
 
@@ -32,6 +31,22 @@ public class Alien : Actor {
     void OnDestroy() => GameEvents.RemoveListener(this, "alien_turn_start");
 
     public void Reset() => hasActed = false;
+
+    public void Awaken() {
+        if (!awake) {
+            awake = true;
+            foreach (var alien in Map.instance.GetActors<Alien>()) {
+                if (Map.instance.ManhattanDistance(gridLocation, alien.gridLocation) <= alien.sensoryRange / 2) {
+                    alien.Awaken();
+                }
+            }
+        }
+    }
+
+    public override void Hurt(int damage) {
+        base.Hurt(damage);
+        Awaken();
+    }
 
     public override void Select() {
         UIState.instance.SetSelectedActor(this);

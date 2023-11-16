@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
   accuracy: 50
-  minDamage: 1
-  maxDamage: 10
+  minDamage: 3
+  maxDamage: 12
   shots: 1
   ammo: 3
   range: 10
