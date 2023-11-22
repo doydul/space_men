@@ -25,7 +25,7 @@ public class Main : MonoBehaviour {
         var openTiles = Map.instance.EnumerateTiles().Where(tile => tile.open).ToArray();
         int totalThreat = 200;
         while (totalThreat > 0) {
-            var profile = EnemyProfile.WeightedSelect(1);
+            var profile = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == 1).WeightedSelect();
             int randex = (int)(Random.value * openTiles.Length);
             SpawnPod(profile.typeName, profile.count, openTiles[randex].gridLocation);
             totalThreat -= profile.threat;

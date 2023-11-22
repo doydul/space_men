@@ -17,3 +17,4 @@ MonoBehaviour:
   difficultyLevel: 1
   threat: 15
   weight: 20
+  spawnable: 1
