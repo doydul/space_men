@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c82adb107c94f71a0fd866728d0893, type: 3}
   m_Name: Sprinter
   m_EditorClassIdentifier: 
-  maxHealth: 2
+  maxHealth: 4
   armour: 0
-  accModifier: -10
-  damage: 4
-  armourPen: 0
-  movement: 4
-  threat: 10
-  expReward: 7
-  chanceOfCreatingRadarBlip: 80
+  accModifier: -15
+  damage: 5
+  movement: 8

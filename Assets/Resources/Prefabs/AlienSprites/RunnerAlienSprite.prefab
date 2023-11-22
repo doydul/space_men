@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4610981755090760}
   m_Layer: 0
-  m_Name: AlienAlienSprite
+  m_Name: RunnerAlienSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

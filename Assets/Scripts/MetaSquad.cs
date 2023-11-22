@@ -27,7 +27,7 @@ public class MetaSquad {
             "Assault Rifle",
             "Assault Rifle",
             "Grenade Launcher",
-            "Chain Gun"
+            "Laser"
         };
         for (int i = 0; i < 4; i++) {
             result.AddMetaSoldier(new MetaSoldier() {

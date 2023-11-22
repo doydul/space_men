@@ -23,13 +23,27 @@ public class Main : MonoBehaviour {
         }
 
         var openTiles = Map.instance.EnumerateTiles().Where(tile => tile.open).ToArray();
-        for (int j = 0; j < 30; j++) {
+        int totalThreat = 200;
+        while (totalThreat > 0) {
+            var profile = EnemyProfile.WeightedSelect(1);
             int randex = (int)(Random.value * openTiles.Length);
-            if (openTiles[randex].GetActor<Actor>() == null) {
-                InstantiateAlien(openTiles[randex].gridLocation, "Alien");
-            }
+            SpawnPod(profile.typeName, profile.count, openTiles[randex].gridLocation);
+            totalThreat -= profile.threat;
         }
         FogManager.instance.UpdateFog(true);
+    }
+
+    void SpawnPod(string type, int number, Vector2 gridLocation) {
+        int counter = 0;
+        var pod = new Alien.Pod();
+        foreach (var node in Map.instance.iterator.Exclude(new AlienImpassableTerrain()).EnumerateFrom(gridLocation)) {
+            if (node.tile.occupied) continue;
+            var alien = InstantiateAlien(node.tile.gridLocation, type);
+            pod.members.Add(alien);
+            alien.pod = pod;
+            counter++;
+            if (counter >= number) break;
+        }
     }
 
     // TODO move me somewhere else!
@@ -47,6 +61,7 @@ public class Main : MonoBehaviour {
         soldier.sightRange = 10;
 
         foreach (var ability in soldier.weapon.abilities) ability.Attach(soldier);
+        foreach (var ability in soldier.armour.abilities) ability.Attach(soldier);
 
         // soldier.maxAmmo = soldierData.maxAmmo;
         // soldier.exp = soldierData.exp;

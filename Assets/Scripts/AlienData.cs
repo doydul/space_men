@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Alien", menuName = "Scriptable Objects/Alien", order = 1)]
+[CreateAssetMenu(fileName = "Alien", menuName = "Alien", order = 1)]
 public class AlienData : ScriptableObject {
 
     public int maxHealth;

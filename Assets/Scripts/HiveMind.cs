@@ -5,7 +5,7 @@ using System.Collections;
 public class HiveMind : MonoBehaviour {
 
     Alien activeAlien;
-    
+
     void Update() {
         if (UIState.instance.IsAlienTurn()) ContemplateMoves();
     }
@@ -57,12 +57,14 @@ public class HiveMind : MonoBehaviour {
                 yield return new WaitForSeconds(0.5f);
             }
 
-            foreach (var tile in Map.instance.AdjacentTiles(activeAlien.gridLocation)) {
-                var soldier = tile.GetActor<Soldier>();
-                if (soldier != null) {
-                    CameraController.CentreCameraOn(tile);
-                    yield return PerformAlienAttack(soldier);
-                    break;
+            if (!activeAlien.dead) {
+                foreach (var tile in Map.instance.AdjacentTiles(activeAlien.gridLocation)) {
+                    var soldier = tile.GetActor<Soldier>();
+                    if (soldier != null) {
+                        CameraController.CentreCameraOn(tile);
+                        yield return PerformAlienAttack(soldier);
+                        break;
+                    }
                 }
             }
         } else {

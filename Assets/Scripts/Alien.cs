@@ -1,7 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Alien : Actor {
+
+    public class Pod {
+        public List<Alien> members = new();
+    }
 
     public string type { get; set; }
     public int armour { get; set; }
@@ -12,6 +17,7 @@ public class Alien : Actor {
     public float threat { get; set; }
     public int expReward { get; set; }
     public int sensoryRange { get; set; }
+    public Pod pod { get; set; }
 
     public bool hasActed;
     public bool awake;
@@ -35,10 +41,8 @@ public class Alien : Actor {
     public void Awaken() {
         if (!awake) {
             awake = true;
-            foreach (var alien in Map.instance.GetActors<Alien>()) {
-                if (Map.instance.ManhattanDistance(gridLocation, alien.gridLocation) <= alien.sensoryRange / 2) {
-                    alien.Awaken();
-                }
+            if (pod != null) {
+                foreach (var alien in pod.members) alien.awake = true;
             }
         }
     }

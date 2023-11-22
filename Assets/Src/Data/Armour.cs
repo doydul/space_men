@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "New Armour", menuName = "Scriptable Objects/Armour", order = 1)]
+[CreateAssetMenu(fileName = "New Armour", menuName = "Equipment/Armour", order = 1)]
 public class Armour : ScriptableObject {
 
     public enum Type {
@@ -16,6 +16,7 @@ public class Armour : ScriptableObject {
     public Type type;
     public int value;
     public int maxHealth;
+    public Ability[] abilities;
 
     public int movement { get {
         switch(type) {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "New Weapon", menuName = "Scriptable Objects/Weapon", order = 2)]
+[CreateAssetMenu(fileName = "Weapon", menuName = "Equipment/Weapon", order = 2)]
 public class Weapon : ScriptableObject {
 
     public enum Type {
