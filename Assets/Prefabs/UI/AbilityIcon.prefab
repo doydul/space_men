@@ -212,6 +212,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: adeca7b8be77da047a6787332e546b03, type: 3}
   - abilityName: LayDownFire
     sprite: {fileID: 21300000, guid: 63766ff3d945dfc44baeba940bd9b27d, type: 3}
+  - abilityName: Sprint
+    sprite: {fileID: 21300000, guid: 77ec22448b0764249b61ca242d0e3628, type: 3}
   image: {fileID: 1387060887095673774}
   disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5529412}
 --- !u!114 &2032454241940995338
