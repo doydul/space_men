@@ -12,6 +12,11 @@ public class HiveMind : MonoBehaviour {
         public Tile tile { get; set; }
     }
 
+    class WeightedSpawner : IWeighted {
+        public int Weight { get; set; }
+        public Spawner spawner { get; set; }
+    }
+
     public const float CRIT_CHANCE = 1f/6f;
 
     int threat;
@@ -34,7 +39,6 @@ public class HiveMind : MonoBehaviour {
             var profile = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == 1).WeightedSelect();
             if (profile.threat == 0) continue;
             var wTile = weightedTiles.WeightedSelect();
-            Debug.Log($"Tile pos: {wTile.tile.gridLocation}, weight: {wTile.Weight}");
             InstantiatePod(profile.typeName, profile.count, wTile.tile.gridLocation, false);
             totalThreat -= profile.threat;
         }
@@ -127,12 +131,23 @@ public class HiveMind : MonoBehaviour {
 
     private void Spawn() {
         threat += 5;
-        var spawners = Map.instance.spawners;
+        var weightedSpawners = Map.instance.spawners.Select(spawner => 
+            new WeightedSpawner {
+                spawner = spawner,
+                Weight = Map.instance.GetActors<Soldier>().Select(soldier => Map.instance.ManhattanDistance(soldier.gridLocation, spawner.gridLocation)).Min()
+            }
+        );
+        weightedSpawners = weightedSpawners.OrderBy(wSpawner => wSpawner.Weight).Take(10).ToList();
+        int i = 0;
+        foreach (var ws in weightedSpawners) {
+            ws.Weight = 100 - i * 10;
+            i++;
+        }
         while (threat > 0) {
             var profile = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == 1 && prof.spawnable && prof.threat <= threat).WeightedSelect();
             if (profile.threat <= 0) break;
-            var randex = Random.Range(0, spawners.Length);
-            InstantiatePod(profile.typeName, profile.count, spawners[randex].gridLocation, true);
+            var spawner = weightedSpawners.WeightedSelect().spawner;
+            InstantiatePod(profile.typeName, profile.count, spawner.gridLocation, true);
             threat -= profile.threat;
         }
     }
