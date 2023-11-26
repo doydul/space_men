@@ -1,11 +1,44 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using SimplexNoise;
 
 public class HiveMind : MonoBehaviour {
 
+    class WeightedTile : IWeighted {
+        public int Weight { get; set; }
+        public Tile tile { get; set; }
+    }
+
+    public const float CRIT_CHANCE = 1f/6f;
+
     int threat;
     Alien activeAlien;
+
+    void Start() {
+        Noise.Seed = Random.Range(0, 10000);
+        var weightedTiles = Map.instance.EnumerateTiles().Where(tile => tile.open).Select(tile => {
+            var wTile = new WeightedTile { tile = tile, Weight = (int)Mathf.Ceil(Mathf.Pow(Noise.CalcPixel2D((int)tile.gridLocation.x, (int)tile.gridLocation.y, 0.03f) / 255, 3) * 100) };
+            var minDist = Map.instance.startLocations.Select(st => Map.instance.ManhattanDistance(st.gridLocation, tile.gridLocation)).Min();
+            if (minDist < 10) wTile.Weight = (int)Mathf.Max(wTile.Weight - 100 + minDist * 10, 0);
+            // // Debug
+            // MapHighlighter.instance.HighlightTile(tile, new Color(wTile.Weight / 100f, wTile.Weight / 100f, wTile.Weight / 100f));
+            // //
+            return wTile;
+        });
+
+        int totalThreat = 200;
+        while (totalThreat > 0) {
+            var profile = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == 1).WeightedSelect();
+            if (profile.threat == 0) continue;
+            var wTile = weightedTiles.WeightedSelect();
+            Debug.Log($"Tile pos: {wTile.tile.gridLocation}, weight: {wTile.Weight}");
+            InstantiatePod(profile.typeName, profile.count, wTile.tile.gridLocation, false);
+            totalThreat -= profile.threat;
+        }
+    }
 
     void Update() {
         if (UIState.instance.IsAlienTurn()) ContemplateMoves();
@@ -83,12 +116,17 @@ public class HiveMind : MonoBehaviour {
         yield return new WaitForSeconds(0.25f);
         BloodSplatController.instance.MakeSplat(target);
         yield return new WaitForSeconds(0.25f);
-        target.Hurt(activeAlien.damage);
+        if (Random.value < CRIT_CHANCE) {
+            target.Hurt(activeAlien.damage * 2);
+            Debug.Log("!!!CRITICAL HIT!!!");
+        } else {
+            target.Hurt(activeAlien.damage);
+        }
         activeAlien.HideAttack();
     }
 
     private void Spawn() {
-        threat += 20;
+        threat += 5;
         var spawners = Map.instance.spawners;
         while (threat > 0) {
             var profile = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == 1 && prof.spawnable && prof.threat <= threat).WeightedSelect();

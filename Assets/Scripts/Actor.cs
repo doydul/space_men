@@ -72,7 +72,7 @@ public abstract class Actor : MonoBehaviour {
 
     private void SetHealthIndicatorSize() {
         var currentSize = healthIndicator.size;
-        currentSize.x = health * healthSpriteSize / maxHealth;
+        currentSize.x = Mathf.Max(health * healthSpriteSize / maxHealth, 0);
         healthIndicator.size = currentSize;
     }
 
