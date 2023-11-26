@@ -17,3 +17,5 @@ MonoBehaviour:
   type: 0
   value: 0
   maxHealth: 15
+  abilities:
+  - {fileID: 11400000, guid: dae4b8a2a02063c488fab0df2f2ed91b, type: 2}

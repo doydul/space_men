@@ -14,13 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 5026745411207313143, guid: e40f3473f69924114bb79a48f410c9e7, type: 3}
   accuracy: 70
-  armourPen: 0
-  minDamage: 3
-  maxDamage: 5
-  shotsWhenMoving: 2
-  shotsWhenStill: 4
-  ammo: 24
+  minDamage: 1
+  maxDamage: 8
+  shots: 3
+  ammo: 5
+  range: 14
   blast: 0
+  flames: 0
+  flameDuration: 0
+  flameColor: {r: 0, g: 0, b: 0, a: 0}
   type: 0
   cost: 20
   description: basic assault weapon. effective against basic enemies
+  abilities:
+  - {fileID: 11400000, guid: 4f8613db8b7396148a2bee97be3a698c, type: 2}
+  - {fileID: 11400000, guid: fb609ff1fba9132469508bd0e83cc954, type: 2}

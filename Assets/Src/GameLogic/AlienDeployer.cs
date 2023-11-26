@@ -84,7 +84,7 @@ public class AlienDeployer {
     Transform InstantiateAlien(VirtualAlien virtualAlien) {
         var alienTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/Alien")) as Transform;
         var alien = alienTransform.GetComponent<Alien>() as Alien;
-        alien.FromData(Resources.Load<AlienData>("Aliens/" + virtualAlien.alienType));
+        // alien.FromData(Resources.Load<AlienData>("Aliens/" + virtualAlien.alienType));
         var spriteTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/AlienSprites/" + virtualAlien.alienType + "AlienSprite")) as Transform;
         spriteTransform.parent = alienTransform;
         spriteTransform.localPosition = Vector3.zero;

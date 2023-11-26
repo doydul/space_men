@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c82adb107c94f71a0fd866728d0893, type: 3}
   m_Name: Medium
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  armour: 30
+  maxHealth: 10
+  armour: 0
   accModifier: 5
-  damage: 5
-  armourPen: 40
-  movement: 2
-  threat: 10
-  expReward: 10
-  chanceOfCreatingRadarBlip: 65
+  damage: 8
+  movement: 5

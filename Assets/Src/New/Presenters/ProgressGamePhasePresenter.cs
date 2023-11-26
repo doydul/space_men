@@ -88,7 +88,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
 
         if (input.deadActorIndexes != null) {
             foreach (var index in input.deadActorIndexes) {
-                map.GetActorByIndex(index).Die();
+                // map.GetActorByIndex(index).Die();
             }
         }
         mapInput.Enable();
@@ -133,7 +133,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
         mapHighlighter.ClearHighlights();
         foreach (var soldier in map.GetActors<Soldier>()) {
             if (gamePhase == Data.GamePhase.Movement) {
-                soldier.StartMovementPhase();
+                // soldier.StartMovementPhase();
             } else {
                 soldier.StartShootingPhase();
             }
@@ -167,7 +167,7 @@ public class ProgressGamePhasePresenter : Presenter, IPresenter<ProgressGamePhas
     Transform InstantiateAlien(Data.Alien newAlien) {
         var alienTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/Alien")) as Transform;
         var alien = alienTransform.GetComponent<Alien>() as Alien;
-        alien.FromData(Resources.Load<AlienData>("Aliens/" + newAlien.alienType));
+        // alien.FromData(Resources.Load<AlienData>("Aliens/" + newAlien.alienType));
         var spriteTransform = MonoBehaviour.Instantiate(Resources.Load<Transform>("Prefabs/AlienSprites/" + newAlien.alienType.ToString() + "AlienSprite")) as Transform;
         spriteTransform.parent = alienTransform;
         spriteTransform.localPosition = Vector3.zero;

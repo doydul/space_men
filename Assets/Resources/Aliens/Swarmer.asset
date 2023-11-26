@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c82adb107c94f71a0fd866728d0893, type: 3}
   m_Name: Swarmer
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 3
   armour: 0
   accModifier: -10
-  damage: 2
-  armourPen: 0
-  movement: 3
-  threat: 1
-  expReward: 1
-  chanceOfCreatingRadarBlip: 40
+  damage: 4
+  movement: 5

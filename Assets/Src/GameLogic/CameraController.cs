@@ -1,17 +1,14 @@
 using UnityEngine;
 
-public class CameraController : ICameraController {
+public class CameraController : MonoBehaviour {
 
-    public CameraController(Camera cam) {
-        this.cam = cam;
-    }
+    public static CameraController instance;
+    void Awake() => instance = this;
 
-    Camera cam;
-
-    public void CentreCameraOn(Tile tile) {
-        var temp = cam.transform.position;
+    public static void CentreCameraOn(Tile tile) {
+        var temp = instance.transform.position;
         temp.x = tile.transform.position.x;
         temp.y = tile.transform.position.y;
-        cam.transform.position = temp;
+        instance.transform.position = temp;
     }
 }

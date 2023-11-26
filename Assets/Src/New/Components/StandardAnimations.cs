@@ -54,7 +54,7 @@ public class StandardAnimations : MonoBehaviour {
         }
         if (explosion.fires != null) {
             foreach (var fire in explosion.fires) {
-                InstantiateFire(fire.position, fire.index);
+                // InstantiateFire(fire.position, fire.index);
             }
         }
         yield return new WaitForSeconds(1);
@@ -65,7 +65,7 @@ public class StandardAnimations : MonoBehaviour {
             var actor = map.GetActorByIndex(damageInstance.victimIndex);
             if (damageInstance.attackResult == AttackResult.Killed) {
                 bloodSplats.MakeSplat(actor);
-                actor.Die();
+                // actor.Die();
             } else if (damageInstance.attackResult == AttackResult.Hit) {
                 bloodSplats.MakeSplat(actor);
                 actor.health = damageInstance.victimHealthAfterDamage;

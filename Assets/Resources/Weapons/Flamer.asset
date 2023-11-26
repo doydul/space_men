@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: Flamer
   m_EditorClassIdentifier: 
   icon: {fileID: 5308807786553862593, guid: e92b9ef9677684923a36c8c580ef9ac6, type: 3}
-  accuracy: 40
-  armourPen: 20
+  accuracy: 60
   minDamage: 1
-  maxDamage: 3
-  shotsWhenMoving: 1
-  shotsWhenStill: 2
-  ammo: 14
-  blast: 7
+  maxDamage: 4
+  shots: 1
+  ammo: 2
+  range: 8
+  blast: 8
   flames: 1
-  flameDamage: 1
+  flameDuration: 5
   flameColor: {r: 1, g: 1, b: 1, a: 0}
   type: 0
   cost: 100
   description: designed for clearing large groups of smaller enemies
+  abilities:
+  - {fileID: 11400000, guid: ff8c339011d9f0d4f8b0fd5f7ef123ab, type: 2}

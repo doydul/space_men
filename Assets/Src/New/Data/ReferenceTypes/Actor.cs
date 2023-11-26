@@ -19,11 +19,6 @@ namespace Data {
 
         List<object> arbitraryData;
 
-        public void SetUniqueId(long id) {
-            if (uniqueId != 0) throw new System.Exception("Unique ID can only be set once");
-            uniqueId = id;
-        }
-
         public void SetData(object datum) {
             if (arbitraryData == null) arbitraryData = new List<object>();
             var currentData = OfType(datum.GetType());

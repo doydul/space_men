@@ -21,7 +21,6 @@ public class SoldierShootPresenter : Presenter, IPresenter<SoldierShootOutput> {
         var soldier = map.GetActorByIndex(input.soldierIndex) as Soldier;
         var soldierUI = soldier.GetComponent<SoldierUIController>();
         soldierUI.SetAmmoCount(input.shotsLeft);
-        soldier.ammo = input.ammoLeft;
         controllers.DisableAll();
         if (!input.explosion.HasValue) {
             animations.NormalShootAnimation(input.soldierIndex, input.damageInstances, () => {

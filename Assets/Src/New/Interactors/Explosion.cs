@@ -50,11 +50,11 @@ namespace Workers {
                         gameState.RemoveActor(cell.backgroundActor.uniqueId);
                     }
                     var index = gameState.AddActor(flameActor, true);
-                    fires.Add(new Fire {
-                        index = index,
-                        position = tilePosition,
-                        weaponName = soldier.weaponName
-                    });
+                    // fires.Add(new Fire {
+                    //     index = index,
+                    //     position = tilePosition,
+                    //     weaponName = soldier.weaponName
+                    // });
                 }
 
                 int armour;

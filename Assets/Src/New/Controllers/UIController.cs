@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class UIController : Controller {
     
-    public InfoPanel infoPanel; // TODO refactor these to use pure presenters
+    // public InfoPanel infoPanel; // TODO refactor these to use pure presenters
     public UIData uiData;
     public BlackFade blackFade;
 
@@ -18,11 +18,11 @@ public class UIController : Controller {
     }
     
     public void ShowSelectedActorInfo() {
-        if (!disabled) infoPanel.Display(uiData.selectedActor);
+        // if (!disabled) infoPanel.Display(uiData.selectedActor);
     }
 
     public void CloseInfoPanel() {
-        if (!disabled) infoPanel.Close();
+        // if (!disabled) infoPanel.Close();
     }
 
     public void ContinueToRewardOverview() {
@@ -34,7 +34,7 @@ public class UIController : Controller {
     }
 
     public void ShowMessagePopup(string message) {
-        infoPanel.Display(message);
+        // infoPanel.Display(message);
     }
 
     public void OpenShipAbilitiesPanel() {

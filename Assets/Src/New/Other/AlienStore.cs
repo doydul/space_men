@@ -13,11 +13,11 @@ public class AlienStore : IAlienStore {
             armour = data.armour,
             accModifier = data.accModifier,
             damage = data.damage,
-            armourPen = data.armourPen,
+            // armourPen = data.armourPen,
             movement = data.movement,
-            radarBlipChance = data.chanceOfCreatingRadarBlip,
+            // radarBlipChance = data.chanceOfCreatingRadarBlip,
             maxHealth = data.maxHealth,
-            expReward = data.expReward,
+            // expReward = data.expReward,
             name = alienType
         };
     }

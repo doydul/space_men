@@ -15,7 +15,7 @@ public class MovementPhase : Phase {
 
     public override void Start() {
         foreach (var soldier in map.GetActors<Soldier>()) {
-            soldier.StartMovementPhase();
+            // soldier.StartMovementPhase();
         }
         radarBlipController.ShowRadarBlips();
     }
