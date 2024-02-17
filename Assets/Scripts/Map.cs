@@ -36,6 +36,7 @@ public partial class Map : MonoBehaviour {
         }
         return _tiles;
     } }
+    public void ClearTiles() => _tiles = null;
 
     public List<T> GetActors<T>() {
         var result = new List<T>();

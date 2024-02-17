@@ -34,7 +34,7 @@ public class HiveMind : MonoBehaviour {
             return wTile;
         });
 
-        int totalThreat = 200;
+        int totalThreat = 300;
         while (totalThreat > 0) {
             var profile = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == 1).WeightedSelect();
             if (profile.threat == 0) continue;
