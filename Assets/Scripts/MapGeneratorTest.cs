@@ -10,7 +10,6 @@ public class MapGeneratorTest : MonoBehaviour {
         for (int i = map.transform.childCount - 1; i >= 0; i--) {
             var child = map.transform.GetChild(i);
             if (child.name.Contains("Column")) {
-                Debug.Log(child.name, child);
                 DestroyImmediate(child.gameObject);
             }
         }
