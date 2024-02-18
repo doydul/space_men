@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MapGenerator {
 
-    enum Facing {
+    public enum Facing {
         North,
         South,
         West,
@@ -51,10 +51,14 @@ public class MapGenerator {
     
     public MapLayout Generate() {
         var corridors = new List<Corridor>();
+        var lastDirection = Facing.North;
         for (int i = 0; i < 5; i++) {
+            var direction = Facings.Sample();
+            while (i != 0 && direction == lastDirection.Opposite()) direction = Facings.Sample();
+            lastDirection = direction;
             var corridor = new Corridor {
-                length = Random.Range(2, 5),
-                direction = Facings.Sample()
+                length = Random.Range(3, 8),
+                direction = direction
             };
             corridors.Add(corridor);
         }
@@ -116,5 +120,15 @@ public class MapLayout {
             walls[point.x + xMod][point.y + yMod] = false;
         }
         return walls;
+    }
+}
+
+public static class MapLayoutExtenstions {
+
+    public static MapGenerator.Facing Opposite(this MapGenerator.Facing facing) {
+        if (facing == MapGenerator.Facing.North) return MapGenerator.Facing.South;
+        else if (facing == MapGenerator.Facing.South) return MapGenerator.Facing.North;
+        else if (facing == MapGenerator.Facing.West) return MapGenerator.Facing.East;
+        else return MapGenerator.Facing.West;
     }
 }
