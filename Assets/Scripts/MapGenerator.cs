@@ -109,6 +109,8 @@ public class MapGenerator {
             Add(element);
         }
 
+        public IEnumerable<Element> GetElements() => elements;
+
         public void Imprint(MapLayout layout) {
             foreach (var element in elements) element.Imprint(layout);
         }
@@ -117,26 +119,53 @@ public class MapGenerator {
     public MapLayout Generate() {
         var walls = new MapLayout();
         var elements = new ElementMap();
-        Element lastEl = null;
+        var firstRoom = new Room {
+            template = Resources.Load<RoomTemplate>("StartingRoom"),
+            facing = Facings.Sample()
+        };
+        elements.Add(firstRoom);
+        Element lastEl = firstRoom;
         for (int i = 0; i < 6; i++) {
+            var port = lastEl.unnocupiedPorts.Sample();
             var corridor = new Corridor {
-                length = Random.Range(3, 8),
-                direction = Facings.Sample()
+                length = Random.Range(5, 10),
+                direction = port.outgoingDirections.Sample()
             };
-            if (lastEl == null) {
-                elements.Add(corridor);
-            } else {
-                var port = lastEl.unnocupiedPorts.Sample();
-                corridor.direction = port.outgoingDirections.Sample();
-                elements.Add(corridor, corridor.ports[0], lastEl, port);
-            }
+            elements.Add(corridor, corridor.ports[0], lastEl, port);
             var room = new Room {
-                template = Resources.Load<RoomTemplate>("Rooms/SquareRoomSmall"),
+                template = RoomTemplate.Random(),
                 facing = Facings.Sample()
             };
-            elements.Add(room, room.ports.Where(port => port.incomingDirections.Contains(corridor.direction)).Sample(), corridor, corridor.ports[1]);
+            var ports = room.ports.Where(port => port.incomingDirections.Contains(corridor.direction));
+            while (!ports.Any()) {
+                room.facing = room.facing.RotateBy(Facing.East);
+                ports = room.ports.Where(port => port.incomingDirections.Contains(corridor.direction));
+            }
+            elements.Add(room, ports.Sample(), corridor, corridor.ports[1]);
             lastEl = room;
         }
+
+        for (int i = 0; i < 5; i++) {
+            var element = elements.GetElements().Where(el => el.unnocupiedPorts.Any()).Sample();
+            var port = element.unnocupiedPorts.Sample();
+            var corridor = new Corridor {
+                length = Random.Range(5, 10),
+                direction = port.outgoingDirections.Sample()
+            };
+            elements.Add(corridor, corridor.ports[0], element, port);
+
+            var room = new Room {
+                template = RoomTemplate.Random(),
+                facing = Facings.Sample()
+            };
+            var ports = room.ports.Where(port => port.incomingDirections.Contains(corridor.direction));
+            while (!ports.Any()) {
+                room.facing = room.facing.RotateBy(Facing.East);
+                ports = room.ports.Where(port => port.incomingDirections.Contains(corridor.direction));
+            }
+            elements.Add(room, ports.Sample(), corridor, corridor.ports[1]);
+        }
+
         elements.Imprint(walls);
         return walls;
     }
