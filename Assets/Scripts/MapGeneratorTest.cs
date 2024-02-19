@@ -6,7 +6,6 @@ public class MapGeneratorTest : MonoBehaviour {
     public Map map;
 
     public void Generate() {
-        map.ClearTiles();
         for (int i = map.transform.childCount - 1; i >= 0; i--) {
             var child = map.transform.GetChild(i);
             if (child.name.Contains("Column")) {
@@ -26,6 +25,9 @@ public class MapGeneratorTest : MonoBehaviour {
                 tiles.Add(tile);
             }
         }
+        map.width = mapLayout.walls.Count;
+        map.height = mapLayout.walls[0].Count;
+        map.ClearTiles();
         foreach (var tile in tiles) {
             SetSprite(tile);
         }

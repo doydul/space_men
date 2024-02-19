@@ -1,76 +1,143 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MapGenerator {
 
+    [System.Serializable]
     public enum Facing {
         North,
+        East,
         South,
-        West,
-        East
+        West
     }
 
     static Facing[] Facings = { Facing.North, Facing.South, Facing.West, Facing.East };
 
-    class Element {
+    public struct Port {
+        public MapPoint relativePosition;
+        public Facing direction;
+        public bool omniDirectional;
+        public int index;
 
+        public Facing[] outgoingDirections { get {
+            var directionTmp = direction;
+            return omniDirectional ? Facings.Where(fac => fac.Opposite() != directionTmp).ToArray() : new Facing[] { directionTmp };
+        } }
+        public Facing[] incomingDirections { get {
+            var directionTmp = direction.Opposite();
+            return omniDirectional ? Facings.Where(fac => fac.Opposite() != directionTmp).ToArray() : new Facing[] { directionTmp };
+        } }
+    }
+
+    class Connection {
+        public bool parent;
+        public int myPortIndex;
+        public int theirPortIndex;
+        public Element element;
+    }
+
+    abstract class Element {
+        public Connection parentConnection => connections.FirstOrDefault(con => con.parent);
+        public MapPoint parentRelativePosition => parentConnection == null ? new MapPoint(0, 0) : parent.ports.First(port => port.index == parentConnection.theirPortIndex).relativePosition;
+        public Element parent => parentConnection?.element;
+        public Element[] children => connections.Where(con => !con.parent).Select(con => con.element).ToArray();
+        public Port[] ports => GetPorts();
+        public Port[] unnocupiedPorts => ports.Where(port => !Occupied(port)).ToArray();
+        public MapPoint centre => parent == null ? new MapPoint(0, 0) : parent.centre + parentRelativePosition - ports.First(ports => ports.index == parentConnection.myPortIndex).relativePosition;
+
+        public bool Occupied(Port port) => connections.Any(con => con.myPortIndex == port.index);
+
+        public List<Connection> connections = new();
+
+        public abstract void Imprint(MapLayout layout);
+        protected abstract Port[] GetPorts();
     }
 
     class Corridor : Element {
         public int length;
         public Facing direction;
-        public Element northWestEnd;
-        public Element SouthEastEnd;
+
+        protected override Port[] GetPorts() {
+            return new Port[] {
+                new Port() {
+                    relativePosition = new MapPoint(0, 0),
+                    direction = direction.Opposite(),
+                    omniDirectional = true,
+                    index = 0
+                },
+                new Port() {
+                    relativePosition = direction.ToVector() * length,
+                    direction = direction,
+                    omniDirectional = true,
+                    index = 1
+                }
+            };
+        }
+
+        public override void Imprint(MapLayout layout) {
+            for (int i = 0; i < length; i++) {
+                layout.AddOpenTile(centre + direction.ToVector() * i);
+            }
+        }
     }
 
     class Room : Element {
-        
+        public RoomTemplate template;
+        public Facing facing;
+
+        protected override Port[] GetPorts() => template.GetPorts(facing, false);
+        public override void Imprint(MapLayout layout) => template.Imprint(layout, centre, facing, false);
     }
 
-    class Cursor {
-        public int x;
-        public int y;
+    class ElementMap {
+        List<Element> elements = new();
 
-        public Cursor(int x, int y) {
-            this.x = x;
-            this.y = y;
+        public void Add(Element element) => elements.Add(element);
+        public void Add(Element element, Port port, Element parent, Port parentPort) {
+            parent.connections.Add(new Connection {
+                myPortIndex = parentPort.index,
+                theirPortIndex = port.index,
+                element = element
+            });
+            element.connections.Add(new Connection {
+                parent = true,
+                myPortIndex = port.index,
+                theirPortIndex = parentPort.index,
+                element = parent
+            });
+            Add(element);
         }
 
-        public void Move(Facing direction) {
-            if (direction == Facing.North) {
-                y += 1;
-            } else if (direction == Facing.South) {
-                y -= 1;
-            } else if (direction == Facing.East) {
-                x += 1;
-            } else if (direction == Facing.West) {
-                x -= 1;
-            }
+        public void Imprint(MapLayout layout) {
+            foreach (var element in elements) element.Imprint(layout);
         }
     }
     
     public MapLayout Generate() {
-        var corridors = new List<Corridor>();
-        var lastDirection = Facing.North;
-        for (int i = 0; i < 5; i++) {
-            var direction = Facings.Sample();
-            while (i != 0 && direction == lastDirection.Opposite()) direction = Facings.Sample();
-            lastDirection = direction;
+        var walls = new MapLayout();
+        var elements = new ElementMap();
+        Element lastEl = null;
+        for (int i = 0; i < 6; i++) {
             var corridor = new Corridor {
                 length = Random.Range(3, 8),
-                direction = direction
+                direction = Facings.Sample()
             };
-            corridors.Add(corridor);
-        }
-        var walls = new MapLayout();
-        var cursor = new Cursor(0, 0);
-        walls.AddOpenTile(cursor.x, cursor.y);
-        foreach (var corridor in corridors) {
-            for (int i = 0; i < corridor.length; i++) {
-                cursor.Move(corridor.direction);
-                walls.AddOpenTile(cursor.x, cursor.y);
+            if (lastEl == null) {
+                elements.Add(corridor);
+            } else {
+                var port = lastEl.unnocupiedPorts.Sample();
+                corridor.direction = port.outgoingDirections.Sample();
+                elements.Add(corridor, corridor.ports[0], lastEl, port);
             }
+            var room = new Room {
+                template = Resources.Load<RoomTemplate>("Rooms/SquareRoomSmall"),
+                facing = Facings.Sample()
+            };
+            elements.Add(room, room.ports.Where(port => port.incomingDirections.Contains(corridor.direction)).Sample(), corridor, corridor.ports[1]);
+            lastEl = room;
         }
+        elements.Imprint(walls);
         return walls;
     }
 }
@@ -83,6 +150,19 @@ public struct MapPoint {
         this.x = x;
         this.y = y;
     }
+
+    public static MapPoint operator *(MapPoint a, int num) => new MapPoint(a.x * num, a.y * num);
+    public static MapPoint operator +(MapPoint a, MapPoint b) => new MapPoint(a.x + b.x, a.y + b.y);
+    public static MapPoint operator -(MapPoint a, MapPoint b) => new MapPoint(a.x - b.x, a.y - b.y);
+    public static MapPoint operator *(MapPoint a, MapGenerator.Facing facing) {
+        if (facing == MapGenerator.Facing.South) return new MapPoint(-a.x, -a.y);
+        else if (facing == MapGenerator.Facing.East) return new MapPoint(a.y, -a.x);
+        else if (facing == MapGenerator.Facing.West) return new MapPoint(-a.y, a.x);
+        else return a;
+    }
+    public override string ToString() => $"Point({x}, {y})";
+
+    public MapPoint Mirror(bool mirror = true) => mirror ? new MapPoint(-x, y) : this;
 }
 
 public class MapLayout {
@@ -90,9 +170,8 @@ public class MapLayout {
 
     List<MapPoint> openTiles = new();
 
-    public void AddOpenTile(int x, int y) {
-        openTiles.Add(new MapPoint(x, y));
-    }
+    public void AddOpenTile(int x, int y)  => AddOpenTile(new MapPoint(x, y));
+    public void AddOpenTile(MapPoint point)  => openTiles.Add(point);
 
     private List<List<bool>> CalculateWalls() {
         var minX = int.MaxValue;
@@ -130,5 +209,19 @@ public static class MapLayoutExtenstions {
         else if (facing == MapGenerator.Facing.South) return MapGenerator.Facing.North;
         else if (facing == MapGenerator.Facing.West) return MapGenerator.Facing.East;
         else return MapGenerator.Facing.West;
+    }
+
+    public static MapPoint ToVector(this MapGenerator.Facing facing) {
+        if (facing == MapGenerator.Facing.North) return new MapPoint(0, 1);
+        else if (facing == MapGenerator.Facing.South) return new MapPoint(0, -1);
+        else if (facing == MapGenerator.Facing.West) return new MapPoint(-1, 0);
+        else return new MapPoint(1, 0);
+    }
+
+    public static MapGenerator.Facing RotateBy(this MapGenerator.Facing a, MapGenerator.Facing facing) {
+        if (facing == MapGenerator.Facing.South) return a.Opposite();
+        else if (facing == MapGenerator.Facing.East) return (MapGenerator.Facing)((((int)a)+1) % 4);
+        else if (facing == MapGenerator.Facing.West) return (MapGenerator.Facing)((((int)a)+3) % 4);
+        else return a;
     }
 }
