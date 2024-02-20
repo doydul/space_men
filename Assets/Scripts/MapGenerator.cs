@@ -77,7 +77,7 @@ public class MapGenerator {
 
         public override void Imprint(MapLayout layout) {
             for (int i = 0; i < length; i++) {
-                layout.AddOpenTile(centre + direction.ToVector() * i);
+                layout.AddOpenTile(centre + direction.ToVector() * i, false, false);
             }
         }
     }
@@ -120,7 +120,7 @@ public class MapGenerator {
         var walls = new MapLayout();
         var elements = new ElementMap();
         var firstRoom = new Room {
-            template = Resources.Load<RoomTemplate>("StartingRoom"),
+            template = Resources.Load<RoomTemplate>("SpecialRooms/StartingRoom"),
             facing = Facings.Sample()
         };
         elements.Add(firstRoom);
@@ -145,6 +145,7 @@ public class MapGenerator {
             lastEl = room;
         }
 
+        // secondary rooms
         for (int i = 0; i < 5; i++) {
             var element = elements.GetElements().Where(el => el.unnocupiedPorts.Any()).Sample();
             var port = element.unnocupiedPorts.Sample();
@@ -164,6 +165,20 @@ public class MapGenerator {
                 ports = room.ports.Where(port => port.incomingDirections.Contains(corridor.direction));
             }
             elements.Add(room, ports.Sample(), corridor, corridor.ports[1]);
+        }
+
+        // vents
+        for (int i = 0; i < 5; i++) {
+            var element = elements.GetElements().Where(el => el.unnocupiedPorts.Any()).Sample();
+            var port = element.unnocupiedPorts.Sample();
+            var corridor = new Corridor {
+                length = Random.Range(2, 4),
+                direction = port.outgoingDirections.Sample()
+            };
+            elements.Add(corridor, corridor.ports[0], element, port);
+
+            var room = new Room { template = Resources.Load<RoomTemplate>("SpecialRooms/Vent") };
+            elements.Add(room, room.ports[0], corridor, corridor.ports[1]);
         }
 
         elements.Imprint(walls);
@@ -195,19 +210,26 @@ public struct MapPoint {
 }
 
 public class MapLayout {
-    public List<List<bool>> walls => CalculateWalls();
 
-    List<MapPoint> openTiles = new();
+    public class Tile {
+        public MapPoint point;
+        public bool isWall;
+        public bool isAlienSpawner;
+        public bool isPlayerSpawner;
+    }
 
-    public void AddOpenTile(int x, int y)  => AddOpenTile(new MapPoint(x, y));
-    public void AddOpenTile(MapPoint point)  => openTiles.Add(point);
+    public List<List<Tile>> tiles => CalculateTiles();
 
-    private List<List<bool>> CalculateWalls() {
+    List<Tile> openTiles = new();
+
+    public void AddOpenTile(MapPoint point, bool isAlienSpawner, bool isPlayerSpawner) => openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner });
+
+    private List<List<Tile>> CalculateTiles() {
         var minX = int.MaxValue;
         var minY = int.MaxValue;
         var maxX = int.MinValue;
         var maxY = int.MinValue;
-        foreach (var point in openTiles) {
+        foreach (var point in openTiles.Select(tile => tile.point)) {
             if (point.x < minX) minX = point.x;
             if (point.x > maxX) maxX = point.x;
             if (point.y < minY) minY = point.y;
@@ -217,17 +239,20 @@ public class MapLayout {
         var yMod = -minY + 2;
         var width = maxX - minX + 5;
         var height = maxY - minY + 5;
-        var walls = new List<List<bool>>();
+        var result = new List<List<Tile>>();
         for (int x = 0; x < width; x++) {
-            walls.Add(new List<bool>());
+            result.Add(new List<Tile>());
             for (int y = 0; y < height; y++) {
-                walls[x].Add(true);
+                result[x].Add(new Tile { point = new MapPoint(x, y), isWall = true});
             }
         }
-        foreach (var point in openTiles) {
-            walls[point.x + xMod][point.y + yMod] = false;
+        foreach (var tile in openTiles) {
+            var resultTile = result[tile.point.x + xMod][tile.point.y + yMod];
+            resultTile.isWall = false;
+            resultTile.isAlienSpawner = tile.isAlienSpawner;
+            resultTile.isPlayerSpawner = tile.isPlayerSpawner;
         }
-        return walls;
+        return result;
     }
 }
 

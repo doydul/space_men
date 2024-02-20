@@ -14,19 +14,22 @@ public class MapGeneratorTest : MonoBehaviour {
         }
         var mapLayout = new MapGenerator().Generate();
         var tiles = new List<Tile>();
-        for (int x = 0; x < mapLayout.walls.Count; x++) {
+        for (int x = 0; x < mapLayout.tiles.Count; x++) {
             var columnObject = new GameObject().transform;
             columnObject.transform.parent = map.transform;
             columnObject.name = "Column " + x;
             columnObject.localPosition = Vector3.zero;
-            for (int y = 0; y < mapLayout.walls[0].Count; y++) {
+            for (int y = 0; y < mapLayout.tiles[0].Count; y++) {
                 var tile = MakeTile(new Vector2(x, y), columnObject.transform);
-                tile.open = !mapLayout.walls[x][y];
+                var tileData = mapLayout.tiles[x][y];
+                tile.open = !tileData.isWall;
+                if (tileData.isAlienSpawner) tile.gameObject.AddComponent<Spawner>();
+                if (tileData.isPlayerSpawner) tile.gameObject.AddComponent<StartLocation>();
                 tiles.Add(tile);
             }
         }
-        map.width = mapLayout.walls.Count;
-        map.height = mapLayout.walls[0].Count;
+        map.width = mapLayout.tiles.Count;
+        map.height = mapLayout.tiles[0].Count;
         map.ClearTiles();
         foreach (var tile in tiles) {
             SetSprite(tile);
