@@ -5,7 +5,6 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "EnemyProfile", menuName = "Enemy Profile", order = 3)]
 public class EnemyProfile : ScriptableObject, IWeighted {
 
-
     public string typeName; 
     public int count;
     public int difficultyLevel;
@@ -14,6 +13,7 @@ public class EnemyProfile : ScriptableObject, IWeighted {
     public int Weight => weight;
     public bool spawnable;
 
+    public static EnemyProfile none => Resources.Load<EnemyProfile>("Aliens/Profiles/Special/None");
     public static EnemyProfile[] GetAll() => Resources.LoadAll("Aliens/Profiles", typeof(EnemyProfile)).Select(prof => prof as EnemyProfile).ToArray();
 }
 

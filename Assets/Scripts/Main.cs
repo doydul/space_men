@@ -13,7 +13,10 @@ public class Main : MonoBehaviour {
         instance = this;
     }
 
-    void Start() {
+    void OnEnable() {
+        MapInstantiator.instance.Generate();
+        Map.instance.enemyProfiles = EnemyProfileSet.Generate(1);
+
         var squad = MetaSquad.GenerateDefault();
         int i = 0;
 

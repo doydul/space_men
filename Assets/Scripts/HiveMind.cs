@@ -34,9 +34,9 @@ public class HiveMind : MonoBehaviour {
             return wTile;
         });
 
-        int totalThreat = 300;
+        int totalThreat = 100;
         while (totalThreat > 0) {
-            var profile = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == 1).WeightedSelect();
+            var profile = Map.instance.enemyProfiles.profiles.WeightedSelect();
             if (profile.threat == 0) continue;
             var wTile = weightedTiles.WeightedSelect();
             InstantiatePod(profile.typeName, profile.count, wTile.tile.gridLocation, false);
@@ -144,7 +144,7 @@ public class HiveMind : MonoBehaviour {
             i++;
         }
         while (threat > 0) {
-            var profile = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == 1 && prof.spawnable && prof.threat <= threat).WeightedSelect();
+            var profile = Map.instance.enemyProfiles.profiles.Where(prof => prof.spawnable && prof.threat <= threat).WeightedSelect();
             if (profile.threat <= 0) break;
             var spawner = weightedSpawners.WeightedSelect().spawner;
             InstantiatePod(profile.typeName, profile.count, spawner.gridLocation, true);

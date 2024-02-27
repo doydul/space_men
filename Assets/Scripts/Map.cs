@@ -26,6 +26,8 @@ public partial class Map : MonoBehaviour {
     public int width;
     public int height;
 
+    public EnemyProfileSet enemyProfiles { get; set; }
+
     private Tile[,] _tiles;
     public Tile[,] tiles { get {
         if (_tiles == null) {
