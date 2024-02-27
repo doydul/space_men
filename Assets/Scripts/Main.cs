@@ -51,6 +51,7 @@ public class Main : MonoBehaviour {
         // soldier.TurnTo((Actor.Direction)soldierData.facing);
 
         Map.instance.GetTileAt(gridLocation).SetActor(trans);
+        CameraController.CentreCameraOn(Map.instance.GetTileAt(gridLocation));
         return soldier;
     }
 }
