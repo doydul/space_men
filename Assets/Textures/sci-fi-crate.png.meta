@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sci-fi-crate_0: 1795634455686302568
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
