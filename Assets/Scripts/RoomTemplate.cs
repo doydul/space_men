@@ -26,7 +26,7 @@ public class RoomTemplate : MonoBehaviour {
 
     public void Imprint(MapLayout layout, MapPoint centre, Facing facing, bool mirrored) {
         foreach (var tile in tiles) {
-            layout.AddOpenTile((tile.point * facing).Mirror(mirrored) + centre, tile.isAlienSpawner, tile.isPlayerSpawner);
+            layout.AddOpenTile((tile.point * facing).Mirror(mirrored) + centre, tile.isAlienSpawner, tile.isPlayerSpawner, tile.isLootSpawner);
         }
     }
 

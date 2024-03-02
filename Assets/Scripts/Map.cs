@@ -22,6 +22,7 @@ public partial class Map : MonoBehaviour {
 
     public Spawner[] spawners { get { return GetComponentsInChildren<Spawner>(); } }
     public StartLocation[] startLocations { get { return GetComponentsInChildren<StartLocation>(); } }
+    public LootSpawner[] lootSpawners { get { return GetComponentsInChildren<LootSpawner>(); } }
 
     public int width;
     public int height;

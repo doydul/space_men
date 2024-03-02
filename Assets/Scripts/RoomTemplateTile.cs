@@ -20,7 +20,9 @@ public class RoomTemplateTile : MonoBehaviour {
         } else if (isPlayerSpawner) {
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(transform.position, 0.5f);
+        } else if (isLootSpawner) {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(transform.position, 0.4f);
         }
-        
     }
 }

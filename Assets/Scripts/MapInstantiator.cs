@@ -81,6 +81,7 @@ public class MapInstantiator : MonoBehaviour {
         fogObject.transform.parent = tileObject.transform;
         fogObject.transform.localPosition = new Vector3(0, 0, -3);
         
+        tile.Init();
         return tile;
     }
 

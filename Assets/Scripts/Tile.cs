@@ -26,7 +26,7 @@ public class Tile : MonoBehaviour {
     public bool occupied { get { return actor != null; } }
     public Vector2 realLocation { get { return transform.position; } }
 
-    void Awake() {
+    public void Init() {
         fogSprite.color = new Color(1, 1, 1, 0.7f);
         if (SoldierEnter == null) SoldierEnter = new UnityEvent();
     }

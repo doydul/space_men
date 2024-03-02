@@ -77,7 +77,7 @@ public class MapGenerator {
 
         public override void Imprint(MapLayout layout) {
             for (int i = 0; i < length; i++) {
-                layout.AddOpenTile(centre + direction.ToVector() * i, false, false);
+                layout.AddOpenTile(centre + direction.ToVector() * i, false, false, false);
             }
         }
     }
@@ -223,7 +223,7 @@ public class MapLayout {
 
     List<Tile> openTiles = new();
 
-    public void AddOpenTile(MapPoint point, bool isAlienSpawner, bool isPlayerSpawner) => openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner });
+    public void AddOpenTile(MapPoint point, bool isAlienSpawner, bool isPlayerSpawner, bool isLootSpawner) => openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner, isLootSpawner = isLootSpawner });
 
     private List<List<Tile>> CalculateTiles() {
         var minX = int.MaxValue;

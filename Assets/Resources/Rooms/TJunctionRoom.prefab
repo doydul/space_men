@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 3
 --- !u!212 &8420162791022004496
 SpriteRenderer:
@@ -145,6 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!212 &6129511082772645084
 SpriteRenderer:
@@ -244,6 +250,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!212 &7088376793511258564
 SpriteRenderer:
@@ -343,6 +352,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 1
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 1
 --- !u!212 &2999595628197290928
 SpriteRenderer:
@@ -442,6 +454,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 3
 --- !u!212 &3286913808706868598
 SpriteRenderer:
@@ -541,6 +556,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!212 &1926333244316833618
 SpriteRenderer:
@@ -702,6 +720,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!212 &5459787279486414821
 SpriteRenderer:
@@ -801,6 +822,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 2
 --- !u!212 &3775287863660066044
 SpriteRenderer:
@@ -900,6 +924,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 1
   portDirection: 0
 --- !u!212 &7926052536156658279
 SpriteRenderer:
@@ -999,6 +1026,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!212 &2028016350107153788
 SpriteRenderer:
@@ -1098,6 +1128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!212 &1225651628600396080
 SpriteRenderer:
@@ -1197,6 +1230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 3
 --- !u!212 &1525318844459532749
 SpriteRenderer:
@@ -1296,6 +1332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 1
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 2
 --- !u!212 &7895025075142857053
 SpriteRenderer:
@@ -1395,6 +1434,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 1
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 3
 --- !u!212 &5724310390071859304
 SpriteRenderer:
@@ -1494,6 +1536,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 2
 --- !u!212 &9154889133774925436
 SpriteRenderer:
@@ -1593,6 +1638,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!212 &1360091634780432224
 SpriteRenderer:
@@ -1692,6 +1740,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 3
 --- !u!212 &8386573683657540021
 SpriteRenderer:
@@ -1791,6 +1842,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!212 &6764344770662869278
 SpriteRenderer:
