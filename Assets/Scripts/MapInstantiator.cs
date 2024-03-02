@@ -28,6 +28,7 @@ public class MapInstantiator : MonoBehaviour {
                 tile.open = !tileData.isWall;
                 if (tileData.isAlienSpawner) tile.gameObject.AddComponent<Spawner>();
                 if (tileData.isPlayerSpawner) tile.gameObject.AddComponent<StartLocation>();
+                if (tileData.isLootSpawner) tile.gameObject.AddComponent<LootSpawner>();
                 tiles.Add(tile);
             }
         }

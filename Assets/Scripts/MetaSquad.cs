@@ -7,6 +7,9 @@ public class MetaSquad {
     
     Dictionary<string, MetaSoldier> metaSoldiers = new();
 
+    public int credits { get; set; }
+    public List<InventoryItem> items = new();
+
     public IEnumerable<MetaSoldier> GetMetaSoldiers() {
         return metaSoldiers.Values;
     }

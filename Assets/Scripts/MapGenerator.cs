@@ -216,6 +216,7 @@ public class MapLayout {
         public bool isWall;
         public bool isAlienSpawner;
         public bool isPlayerSpawner;
+        public bool isLootSpawner;
     }
 
     public List<List<Tile>> tiles => CalculateTiles();
@@ -251,6 +252,7 @@ public class MapLayout {
             resultTile.isWall = false;
             resultTile.isAlienSpawner = tile.isAlienSpawner;
             resultTile.isPlayerSpawner = tile.isPlayerSpawner;
+            resultTile.isLootSpawner = tile.isLootSpawner;
         }
         return result;
     }

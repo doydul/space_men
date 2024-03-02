@@ -5,6 +5,7 @@ public class RoomTemplateTile : MonoBehaviour {
     public bool isPort;
     public bool isAlienSpawner;
     public bool isPlayerSpawner;
+    public bool isLootSpawner;
     public Facing portDirection;
 
     public MapPoint point => new MapPoint((int)Mathf.Round(transform.localPosition.x), (int)Mathf.Round(transform.localPosition.y));
