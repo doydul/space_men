@@ -17,7 +17,7 @@ public class Main : MonoBehaviour {
         MapInstantiator.instance.Generate();
         Map.instance.enemyProfiles = EnemyProfileSet.Generate(1);
         var loots = LootGenerator.instance.Generate();
-        var lootSpawners = Map.instance.lootSpawners.Sample(2);
+        var lootSpawners = Map.instance.lootSpawners.Sample(loots.Count);
         for (int i = 0; i < loots.Count; i++) {
             if (lootSpawners.Count > i) InstantiateLootChest(loots[i], lootSpawners[i].gridLocation);
         }
@@ -34,8 +34,10 @@ public class Main : MonoBehaviour {
 
     void InstantiateLootChest(Loot loot, Vector2 gridLocation) {
         var trans = Instantiate(Resources.Load<Transform>("Prefabs/Chest")) as Transform;
+        var chest = trans.GetComponent<Chest>();
+        chest.contents = loot;
         
-        Map.instance.GetTileAt(gridLocation).SetActor(trans);
+        Map.instance.GetTileAt(gridLocation).SetActor(trans, true);
     }
 
     // TODO move me somewhere else!

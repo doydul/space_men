@@ -107,8 +107,10 @@ public class Soldier : Actor {
             Deselect();
             return;
         }
-        if (Map.instance.ManhattanDistance(gridLocation, tile.gridLocation) == 1 &&  tile.GetBackgroundActor<Door>() != null) {
+        if (Map.instance.ManhattanDistance(gridLocation, tile.gridLocation) == 1 && tile.GetBackgroundActor<Door>() != null) {
             AnimationManager.instance.StartAnimation(GameplayOperations.PerformOpenDoor(this, tile));
+        } else if (Map.instance.ManhattanDistance(gridLocation, tile.gridLocation) == 1 && tile.GetBackgroundActor<Chest>() != null) {
+            AnimationManager.instance.StartAnimation(GameplayOperations.PerformPickupChest(this, tile));
         } else if (tile.GetActor<Actor>() == null) {
             var path = Map.instance.ShortestPath(new SoldierImpassableTerrain(), gridLocation, tile.gridLocation);
             if (path != null && path.length <= remainingMovement) {
@@ -149,7 +151,7 @@ public class Soldier : Actor {
             }
         }
         foreach (var tile in Map.instance.AdjacentTiles(tile)) {
-            if (tile.GetBackgroundActor<Door>() != null) MapHighlighter.instance.HighlightTile(tile, Color.yellow);
+            if (tile.GetBackgroundActor<Door>() != null || tile.GetBackgroundActor<Chest>() != null) MapHighlighter.instance.HighlightTile(tile, Color.yellow);
         }
     }
 
@@ -176,7 +178,7 @@ public class Soldier : Actor {
 
 public class SoldierImpassableTerrain : IMask {
     public bool Contains(Tile tile) {
-        return !tile.open || tile.GetActor<Alien>() != null || tile.GetBackgroundActor<Door>() != null;
+        return !tile.open || tile.GetActor<Alien>() != null || tile.GetBackgroundActor<Door>() != null || tile.GetBackgroundActor<Chest>() != null;
     }
 }
 

@@ -97,6 +97,13 @@ public static class GameplayOperations {
         soldier.HighlightActions();
     }
 
+    public static IEnumerator PerformPickupChest(Soldier soldier, Tile tile) {
+        tile.GetBackgroundActor<Chest>().Remove();
+        // TODO add some UI to show what has been gained
+        yield return new WaitForSeconds(1f);
+        soldier.HighlightActions();
+    }
+
     public static IEnumerator PerformExplosion(Weapon weapon, Tile tile) {
         yield return new WaitForSeconds(0.5f);
         float remainingBlast = weapon.blast;

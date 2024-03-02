@@ -91,6 +91,6 @@ public class Alien : Actor {
 
 public class AlienImpassableTerrain : IMask {
     public bool Contains(Tile tile) {
-        return !tile.open || tile.GetActor<Soldier>() != null || tile.GetBackgroundActor<Door>() != null;
+        return !tile.open || tile.GetActor<Soldier>() != null || tile.GetBackgroundActor<Door>() != null || tile.GetBackgroundActor<Chest>() != null;
     }
 }
