@@ -30,6 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4609991207423720}
+  - {fileID: 9169448803393156594}
   - {fileID: 4343401897204958}
   m_Father: {fileID: 4725770422581262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -178,6 +179,7 @@ MonoBehaviour:
   armour: {fileID: 0}
   weapon: {fileID: 0}
   muzzleFlashLocation: {fileID: 4343401897204958}
+  gunContainer: {fileID: 9169448803393156594}
   abilities: []
 --- !u!1 &1523187601169902
 GameObject:
@@ -237,13 +239,44 @@ Transform:
   m_GameObject: {fileID: 1651059947647300}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.315, y: 0.471, z: -0.1}
+  m_LocalPosition: {x: 0.278, y: 0.471, z: -0.1}
   m_LocalScale: {x: 0.1414606, y: 0.14146052, z: 0.14146052}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3130808867970366213}
   m_Father: {fileID: 4077316558480662}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!1 &4660421749399689656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9169448803393156594}
+  m_Layer: 0
+  m_Name: GunContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9169448803393156594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660421749399689656}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.317, y: 0.279, z: -0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4077316558480662}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4821872374841278717
 GameObject:
   m_ObjectHideFlags: 0

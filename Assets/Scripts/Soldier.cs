@@ -6,8 +6,14 @@ using System.Collections.Generic;
 public class Soldier : Actor {
 
     public Armour armour;
-    public Weapon weapon;
+    Weapon _weapon;
+    public Weapon weapon { get => _weapon; set {
+        _weapon = value;
+        var weaponPrefab = Instantiate(_weapon.weaponPrefab, gunContainer) as GameObject;
+        weaponPrefab.transform.localPosition = Vector3.zero;
+    } }
     public Transform muzzleFlashLocation;
+    public Transform gunContainer;
     
     public int tilesMoved { get; set; }
     public int actionsSpent { get; set; }
