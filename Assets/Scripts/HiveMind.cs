@@ -34,12 +34,12 @@ public class HiveMind : MonoBehaviour {
             return wTile;
         });
 
-        int totalThreat = 200;
+        int totalThreat = 300;
         while (totalThreat > 0) {
-            var profile = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == 1).WeightedSelect();
+            var profile = Map.instance.enemyProfiles.profiles.WeightedSelect();
             if (profile.threat == 0) continue;
             var wTile = weightedTiles.WeightedSelect();
-            InstantiatePod(profile.typeName, profile.count, wTile.tile.gridLocation, false);
+            // InstantiatePod(profile.typeName, profile.count, wTile.tile.gridLocation, false);
             totalThreat -= profile.threat;
         }
     }
@@ -144,16 +144,17 @@ public class HiveMind : MonoBehaviour {
             i++;
         }
         while (threat > 0) {
-            var profile = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == 1 && prof.spawnable && prof.threat <= threat).WeightedSelect();
+            var profile = Map.instance.enemyProfiles.profiles.Where(prof => prof.threat <= threat).WeightedSelect();
             if (profile.threat <= 0) break;
             var spawner = weightedSpawners.WeightedSelect().spawner;
-            InstantiatePod(profile.typeName, profile.count, spawner.gridLocation, true);
+            // InstantiatePod(profile.typeName, profile.count, spawner.gridLocation, true);
             threat -= profile.threat;
         }
     }
 
     private void InstantiatePod(string type, int number, Vector2 gridLocation, bool awaken) {
         int counter = 0;
+        Debug.Log($"spawning pod [{number} {type}]");
         var pod = new Alien.Pod();
         foreach (var node in Map.instance.iterator.Exclude(new AlienImpassableTerrain()).EnumerateFrom(gridLocation)) {
             if (node.tile.occupied) continue;

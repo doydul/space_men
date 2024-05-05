@@ -4,8 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 
 public static class GameplayOperations {
+
+    public static void MakeNoise(Vector2 gridLocation) {
+        foreach (var alien in Map.instance.GetActors<Alien>()) {
+            if (Map.instance.ManhattanDistance(gridLocation, alien.gridLocation) <= alien.sensoryRange) {
+                alien.Awaken();
+            }
+        }
+    }
     
     public static IEnumerator PerformSoldierShoot(Soldier soldier, Alien target) {
+        MakeNoise(target.gridLocation);
         soldier.Face(target.gridLocation);
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < soldier.shots; i++) {
@@ -78,11 +87,7 @@ public static class GameplayOperations {
         
         // Alert aliens
         if (actor is Soldier) {
-            foreach (var alien in Map.instance.GetActors<Alien>()) {
-                if (Map.instance.ManhattanDistance(actor.gridLocation, alien.gridLocation) <= alien.sensoryRange) {
-                    alien.Awaken();
-                }
-            }
+            MakeNoise(actor.gridLocation);
         }
         if (actor is Soldier) {
             (actor as Soldier).HighlightActions();
@@ -97,7 +102,15 @@ public static class GameplayOperations {
         soldier.HighlightActions();
     }
 
+    public static IEnumerator PerformPickupChest(Soldier soldier, Tile tile) {
+        tile.GetBackgroundActor<Chest>().Remove();
+        // TODO add some UI to show what has been gained
+        yield return new WaitForSeconds(1f);
+        soldier.HighlightActions();
+    }
+
     public static IEnumerator PerformExplosion(Weapon weapon, Tile tile) {
+        MakeNoise(tile.gridLocation);
         yield return new WaitForSeconds(0.5f);
         float remainingBlast = weapon.blast;
         var explosionSFX = new List<GameObject>();

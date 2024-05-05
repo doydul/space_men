@@ -7,6 +7,9 @@ public class MetaSquad {
     
     Dictionary<string, MetaSoldier> metaSoldiers = new();
 
+    public int credits { get; set; }
+    public List<InventoryItem> items = new();
+
     public IEnumerable<MetaSoldier> GetMetaSoldiers() {
         return metaSoldiers.Values;
     }
@@ -27,9 +30,9 @@ public class MetaSquad {
             "Assault Rifle",
             "Assault Rifle",
             "Grenade Launcher",
-            "Laser"
+            "Chain Gun"
         };
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < weapons.Length; i++) {
             result.AddMetaSoldier(new MetaSoldier() {
                 name = "John Doe",
                 armour = new MetaArmour() {

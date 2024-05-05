@@ -13,15 +13,31 @@ public class Main : MonoBehaviour {
         instance = this;
     }
 
-    void Start() {
+    void OnEnable() {
+        MapInstantiator.instance.Generate();
+        Map.instance.enemyProfiles = EnemyProfileSet.Generate(1);
+        var loots = LootGenerator.instance.Generate();
+        var lootSpawners = Map.instance.lootSpawners.Sample(loots.Count);
+        for (int i = 0; i < loots.Count; i++) {
+            if (lootSpawners.Count > i) InstantiateLootChest(loots[i], lootSpawners[i].gridLocation);
+        }
+
         var squad = MetaSquad.GenerateDefault();
-        int i = 0;
+        int j = 0;
 
         foreach (var metaSoldier in squad.GetMetaSoldiers()) {
-            InstantiateSoldier(metaSoldier, Map.instance.startLocations[i].gridLocation);
-            i++;
+            InstantiateSoldier(metaSoldier, Map.instance.startLocations[j].gridLocation);
+            j++;
         }
         FogManager.instance.UpdateFog(true);
+    }
+
+    void InstantiateLootChest(Loot loot, Vector2 gridLocation) {
+        var trans = Instantiate(Resources.Load<Transform>("Prefabs/Chest")) as Transform;
+        var chest = trans.GetComponent<Chest>();
+        chest.contents = loot;
+        
+        Map.instance.GetTileAt(gridLocation).SetActor(trans, true);
     }
 
     // TODO move me somewhere else!
@@ -48,6 +64,7 @@ public class Main : MonoBehaviour {
         // soldier.TurnTo((Actor.Direction)soldierData.facing);
 
         Map.instance.GetTileAt(gridLocation).SetActor(trans);
+        CameraController.CentreCameraOn(Map.instance.GetTileAt(gridLocation));
         return soldier;
     }
 }

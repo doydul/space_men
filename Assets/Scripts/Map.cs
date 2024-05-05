@@ -22,20 +22,27 @@ public partial class Map : MonoBehaviour {
 
     public Spawner[] spawners { get { return GetComponentsInChildren<Spawner>(); } }
     public StartLocation[] startLocations { get { return GetComponentsInChildren<StartLocation>(); } }
+    public LootSpawner[] lootSpawners { get { return GetComponentsInChildren<LootSpawner>(); } }
 
     public int width;
     public int height;
 
+    public EnemyProfileSet enemyProfiles { get; set; }
+
     private Tile[,] _tiles;
     public Tile[,] tiles { get {
         if (_tiles == null) {
-            _tiles = new Tile[width, height];
-            foreach (Tile tile in GetComponentsInChildren<Tile>()) {
+            var unorderedTiles = GetComponentsInChildren<Tile>();
+            var maxX = (int)unorderedTiles.Select(tile => tile.gridLocation.x).Max();
+            var maxY = (int)unorderedTiles.Select(tile => tile.gridLocation.y).Max();
+            _tiles = new Tile[maxX + 1, maxY + 1];
+            foreach (Tile tile in unorderedTiles) {
                 _tiles[(int)tile.gridLocation.x, (int)tile.gridLocation.y] = tile;
             }
         }
         return _tiles;
     } }
+    public void ClearTiles() => _tiles = null;
 
     public List<T> GetActors<T>() {
         var result = new List<T>();

@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Campaigns/Default/Second Mission.unity
     guid: cff800085a7bf4ff8a2af185864abf2d
   - enabled: 1
-    path: Assets/Scenes/Campaigns/Default/Third Mission.unity
+    path: Assets/Scenes/Campaigns/Default/Mission.unity
     guid: 1ea7310543555447790654f4fe2268fc
   - enabled: 1
     path: Assets/Scenes/SelectionMenu.unity
@@ -39,3 +39,4 @@ EditorBuildSettings:
     path: Assets/Scenes/WorkshopMenu.unity
     guid: b9498cdab170544788e5b738e345d94e
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
