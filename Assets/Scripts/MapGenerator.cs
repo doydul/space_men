@@ -128,7 +128,7 @@ public class MapGenerator {
         for (int i = 0; i < 6; i++) {
             var port = lastEl.unnocupiedPorts.Sample();
             var corridor = new Corridor {
-                length = Random.Range(5, 10),
+                length = Random.Range(4, 6),
                 direction = port.outgoingDirections.Sample()
             };
             elements.Add(corridor, corridor.ports[0], lastEl, port);
