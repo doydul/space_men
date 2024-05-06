@@ -21,6 +21,7 @@ public static class Extensions {
     }
 
     public static T WeightedSelect<T>(this IEnumerable<T> profiles) where T : IWeighted {
+        if (profiles.Count() <= 0)return default(T);
         int sum = profiles.Select(prof => prof.Weight).Sum();
         var rand = Random.Range(0, sum) + 1;
         foreach (var prof in profiles) {

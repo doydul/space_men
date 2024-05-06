@@ -35,13 +35,13 @@ public class HiveMind : MonoBehaviour {
         });
 
         int totalThreat = 300;
-        while (totalThreat > 0) {
-            var profile = Map.instance.enemyProfiles.profiles.WeightedSelect();
-            if (profile.threat == 0) continue;
-            var wTile = weightedTiles.WeightedSelect();
-            // InstantiatePod(profile.typeName, profile.count, wTile.tile.gridLocation, false);
-            totalThreat -= profile.threat;
-        }
+        // while (totalThreat > 0) {
+        //     var profile = Map.instance.enemyProfiles.profiles.WeightedSelect();
+        //     if (profile.threat == 0) continue;
+        //     var wTile = weightedTiles.WeightedSelect();
+        //     InstantiatePod(profile.typeName, profile.count, wTile.tile.gridLocation, false);
+        //     totalThreat -= profile.threat;
+        // }
     }
 
     void Update() {

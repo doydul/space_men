@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MapGenerator {
 
+    const int MAX_ATTEMPTS = 200;
+
     [System.Serializable]
     public enum Facing {
         North,
@@ -92,9 +94,27 @@ public class MapGenerator {
 
     class ElementMap {
         List<Element> elements = new();
+        public MapLayout mapLayout { get; private set; } = new();
 
-        public void Add(Element element) => elements.Add(element);
-        public void Add(Element element, Port port, Element parent, Port parentPort) {
+        public bool CanAdd(Element element, Port port, Element parent, Port parentPort, int maxOverlaps) {
+            var tmpLayout = new MapLayout();
+            var connection = new Connection {
+                parent = true,
+                myPortIndex = port.index,
+                theirPortIndex = parentPort.index,
+                element = parent
+            };
+            element.connections.Add(connection);
+            element.Imprint(tmpLayout);
+            element.connections.Remove(connection);
+            return !tmpLayout.Overlaps(mapLayout, maxOverlaps);
+        }
+        public void Add(Element element) {
+            elements.Add(element);
+            element.Imprint(mapLayout);
+        }
+        public bool Add(Element element, Port port, Element parent, Port parentPort, int maxOverlaps = 4) {
+            if (!CanAdd(element, port, parent , parentPort, maxOverlaps)) return false;
             parent.connections.Add(new Connection {
                 myPortIndex = parentPort.index,
                 theirPortIndex = port.index,
@@ -107,6 +127,7 @@ public class MapGenerator {
                 element = parent
             });
             Add(element);
+            return true;
         }
 
         public IEnumerable<Element> GetElements() => elements;
@@ -117,7 +138,6 @@ public class MapGenerator {
     }
     
     public MapLayout Generate() {
-        var walls = new MapLayout();
         var elements = new ElementMap();
         var firstRoom = new Room {
             template = Resources.Load<RoomTemplate>("SpecialRooms/StartingRoom"),
@@ -125,13 +145,27 @@ public class MapGenerator {
         };
         elements.Add(firstRoom);
         Element lastEl = firstRoom;
-        for (int i = 0; i < 6; i++) {
+        int totalAttempts = 0;
+        int roomCount = 6;
+        int corridorCount = 12;
+        while (roomCount > 0 && totalAttempts < MAX_ATTEMPTS) {
+            totalAttempts++;
             var port = lastEl.unnocupiedPorts.Sample();
             var corridor = new Corridor {
                 length = Random.Range(4, 6),
                 direction = port.outgoingDirections.Sample()
             };
-            elements.Add(corridor, corridor.ports[0], lastEl, port);
+            if (!elements.Add(corridor, corridor.ports[0], lastEl, port)) continue;
+            if (corridorCount > 0 && Random.value < 0.5f) {
+                var otherCorridor = new Corridor {
+                    length = Random.Range(4, 6),
+                    direction = corridor.ports[1].outgoingDirections.Sample()
+                };
+                if (elements.Add(otherCorridor, otherCorridor.ports[0], corridor, corridor.ports[1])) {
+                    corridorCount--;
+                    corridor = otherCorridor;
+                }
+            }
             var room = new Room {
                 template = RoomTemplate.Random(),
                 facing = Facings.Sample()
@@ -141,48 +175,79 @@ public class MapGenerator {
                 room.facing = room.facing.RotateBy(Facing.East);
                 ports = room.ports.Where(port => port.incomingDirections.Contains(corridor.direction));
             }
-            elements.Add(room, ports.Sample(), corridor, corridor.ports[1]);
+            if (!elements.Add(room, ports.Sample(), corridor, corridor.ports[1])) {
+                corridorCount--;
+                continue;
+            }
             lastEl = room;
+            roomCount--;
         }
 
         // secondary rooms
-        for (int i = 0; i < 5; i++) {
-            var element = elements.GetElements().Where(el => el.unnocupiedPorts.Any()).Sample();
-            var port = element.unnocupiedPorts.Sample();
-            var corridor = new Corridor {
-                length = Random.Range(5, 10),
-                direction = port.outgoingDirections.Sample()
-            };
-            elements.Add(corridor, corridor.ports[0], element, port);
+        roomCount += 5;
+        while ((roomCount > 0 || corridorCount > 0) && totalAttempts < MAX_ATTEMPTS) {
+            totalAttempts++;
+            if (Random.value < 0.5f) {
+                if (roomCount > 0) {
+                    var element = elements.GetElements().Where(el => el.unnocupiedPorts.Any()).Sample();
+                    var port = element.unnocupiedPorts.Sample();
+                    var corridor = new Corridor {
+                        length = Random.Range(5, 10),
+                        direction = port.outgoingDirections.Sample()
+                    };
+                    if (!elements.Add(corridor, corridor.ports[0], element, port)) continue;
 
-            var room = new Room {
-                template = RoomTemplate.Random(),
-                facing = Facings.Sample()
-            };
-            var ports = room.ports.Where(port => port.incomingDirections.Contains(corridor.direction));
-            while (!ports.Any()) {
-                room.facing = room.facing.RotateBy(Facing.East);
-                ports = room.ports.Where(port => port.incomingDirections.Contains(corridor.direction));
+                    var room = new Room {
+                        template = RoomTemplate.Random(),
+                        facing = Facings.Sample()
+                    };
+                    var ports = room.ports.Where(port => port.incomingDirections.Contains(corridor.direction));
+                    while (!ports.Any()) {
+                        room.facing = room.facing.RotateBy(Facing.East);
+                        ports = room.ports.Where(port => port.incomingDirections.Contains(corridor.direction));
+                    }
+                    if (!elements.Add(room, ports.Sample(), corridor, corridor.ports[1])) {
+                        corridorCount--;
+                        continue;
+                    }
+                    roomCount--;
+                }
+            } else {
+                if (corridorCount > 0) {
+                    var element = elements.GetElements().Where(el => el.unnocupiedPorts.Any()).Sample();
+                    var port = element.unnocupiedPorts.Sample();
+                    var corridor = new Corridor {
+                        length = Random.Range(5, 10),
+                        direction = port.outgoingDirections.Sample()
+                    };
+                    if (elements.Add(corridor, corridor.ports[0], element, port)) corridorCount--;
+                }
             }
-            elements.Add(room, ports.Sample(), corridor, corridor.ports[1]);
         }
 
+        // end and objectives
+        // foreach (var element in elements.GetElements().Where(el => el.unnocupiedPorts.Any())) {
+
+        // }
+
         // vents
-        for (int i = 0; i < 5; i++) {
+        corridorCount += 20;
+        while (corridorCount > 0 && totalAttempts < MAX_ATTEMPTS) {
+            totalAttempts++;
             var element = elements.GetElements().Where(el => el.unnocupiedPorts.Any()).Sample();
             var port = element.unnocupiedPorts.Sample();
             var corridor = new Corridor {
                 length = Random.Range(2, 4),
                 direction = port.outgoingDirections.Sample()
             };
-            elements.Add(corridor, corridor.ports[0], element, port);
+            if (!elements.Add(corridor, corridor.ports[0], element, port, 2)) continue;
+            corridorCount--;
 
             var room = new Room { template = Resources.Load<RoomTemplate>("SpecialRooms/Vent") };
             elements.Add(room, room.ports[0], corridor, corridor.ports[1]);
         }
 
-        elements.Imprint(walls);
-        return walls;
+        return elements.mapLayout;
     }
 }
 
@@ -204,7 +269,10 @@ public struct MapPoint {
         else if (facing == MapGenerator.Facing.West) return new MapPoint(-a.y, a.x);
         else return a;
     }
+    public bool Equals(MapPoint other) => x == other.x && y == other.y;
+    public bool Adjacent(MapPoint other) => Mathf.Abs(x - other.x) + Mathf.Abs(y - other.y) <= 1;
     public override string ToString() => $"Point({x}, {y})";
+    public Vector2 ToVec() => new Vector2(x, y);
 
     public MapPoint Mirror(bool mirror = true) => mirror ? new MapPoint(-x, y) : this;
 }
@@ -217,13 +285,40 @@ public class MapLayout {
         public bool isAlienSpawner;
         public bool isPlayerSpawner;
         public bool isLootSpawner;
+        public bool isSpecial => isAlienSpawner || isPlayerSpawner || isLootSpawner;
+
+        public override string ToString() => $"Tile(point: {point}, isAlienSpawner: {isAlienSpawner}, isPlayerSpawner: {isPlayerSpawner}, isLootSpawner: {isLootSpawner}, isSpecial: {isSpecial})";
     }
 
     public List<List<Tile>> tiles => CalculateTiles();
 
     List<Tile> openTiles = new();
 
-    public void AddOpenTile(MapPoint point, bool isAlienSpawner, bool isPlayerSpawner, bool isLootSpawner) => openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner, isLootSpawner = isLootSpawner });
+    public void AddOpenTile(MapPoint point, bool isAlienSpawner, bool isPlayerSpawner, bool isLootSpawner) {
+        if (!openTiles.Any(tile => tile.point.Equals(point))) {
+            openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner, isLootSpawner = isLootSpawner });
+        }
+    }
+
+    public bool Overlaps(MapLayout other, int maxOverlaps = 1) {
+        int overlaps = 0;
+        var alreadyTraversed = new HashSet<Vector2>();
+        foreach (var otherTile in other.openTiles) {
+            foreach (var tile in openTiles) {
+                if (tile.point.Adjacent(otherTile.point)) {
+                    if (tile.point.Equals(otherTile.point) && (tile.isSpecial || otherTile.isSpecial)) {
+                        return true;
+                    }
+                    else if (!alreadyTraversed.Contains(tile.point.ToVec()) && !alreadyTraversed.Contains(otherTile.point.ToVec())) {
+                        overlaps++;
+                        alreadyTraversed.Add(tile.point.ToVec());
+                        alreadyTraversed.Add(otherTile.point.ToVec());
+                    }
+                }
+            }
+        }
+        return overlaps > maxOverlaps;
+    }
 
     private List<List<Tile>> CalculateTiles() {
         var minX = int.MaxValue;
