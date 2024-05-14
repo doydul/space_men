@@ -30,6 +30,14 @@ public class MapInstantiator : MonoBehaviour {
                 if (tileData.isPlayerSpawner) tile.gameObject.AddComponent<StartLocation>();
                 if (tileData.isLootSpawner) tile.gameObject.AddComponent<LootSpawner>();
                 tiles.Add(tile);
+
+                // Add or update room
+                if (tileData.roomId >= 0) {
+                    if (!map.rooms.ContainsKey(tileData.roomId)) {
+                        map.rooms[tileData.roomId] = new Map.Room { id = tileData.roomId };
+                    }
+                    map.rooms[tileData.roomId].tiles.Add(tile);
+                }
             }
         }
         map.width = mapLayout.tiles.Count;

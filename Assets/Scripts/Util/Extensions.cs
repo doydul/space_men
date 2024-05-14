@@ -30,4 +30,17 @@ public static class Extensions {
         }
         return profiles.Last();
     }
+
+    public static T MaxBy<T>(this IEnumerable<T> enumerable, System.Func<T, float> valueFunction) {
+        T result = default(T);
+        float max = -9999999;
+        foreach (T obj in enumerable) {
+            float value = valueFunction(obj);
+            if (value > max) {
+                max = value;
+                result = obj;
+            }
+        }
+        return result;
+    }
 }

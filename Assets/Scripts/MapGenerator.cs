@@ -85,11 +85,29 @@ public class MapGenerator {
     }
 
     class Room : Element {
+        static int currentId;
+        public int id;
         public RoomTemplate template;
         public Facing facing;
 
+        public Room() {
+            currentId++;
+            id = currentId;
+        }
+
         protected override Port[] GetPorts() => template.GetPorts(facing, false);
-        public override void Imprint(MapLayout layout) => template.Imprint(layout, centre, facing, false);
+        public override void Imprint(MapLayout layout) => template.Imprint(layout, centre, facing, false, id);
+    }
+
+    class Vent : Element {
+        RoomTemplate template;
+
+        public Vent() {
+            template = Resources.Load<RoomTemplate>("SpecialRooms/Vent");
+        }
+
+        protected override Port[] GetPorts() => template.GetPorts(Facing.West, false);
+        public override void Imprint(MapLayout layout) => template.Imprint(layout, centre, Facing.West, false, -1);
     }
 
     class ElementMap {
@@ -226,9 +244,7 @@ public class MapGenerator {
         }
 
         // end and objectives
-        // foreach (var element in elements.GetElements().Where(el => el.unnocupiedPorts.Any())) {
-
-        // }
+        
 
         // vents
         corridorCount += 20;
@@ -243,7 +259,7 @@ public class MapGenerator {
             if (!elements.Add(corridor, corridor.ports[0], element, port, 2)) continue;
             corridorCount--;
 
-            var room = new Room { template = Resources.Load<RoomTemplate>("SpecialRooms/Vent") };
+            var room = new Vent();
             elements.Add(room, room.ports[0], corridor, corridor.ports[1]);
         }
 
@@ -281,6 +297,7 @@ public class MapLayout {
 
     public class Tile {
         public MapPoint point;
+        public int roomId;
         public bool isWall;
         public bool isAlienSpawner;
         public bool isPlayerSpawner;
@@ -294,9 +311,9 @@ public class MapLayout {
 
     List<Tile> openTiles = new();
 
-    public void AddOpenTile(MapPoint point, bool isAlienSpawner, bool isPlayerSpawner, bool isLootSpawner) {
+    public void AddOpenTile(MapPoint point, bool isAlienSpawner, bool isPlayerSpawner, bool isLootSpawner, int roomId = -1) {
         if (!openTiles.Any(tile => tile.point.Equals(point))) {
-            openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner, isLootSpawner = isLootSpawner });
+            openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner, isLootSpawner = isLootSpawner, roomId = roomId });
         }
     }
 
@@ -339,7 +356,7 @@ public class MapLayout {
         for (int x = 0; x < width; x++) {
             result.Add(new List<Tile>());
             for (int y = 0; y < height; y++) {
-                result[x].Add(new Tile { point = new MapPoint(x, y), isWall = true});
+                result[x].Add(new Tile { point = new MapPoint(x, y), isWall = true, roomId = -1});
             }
         }
         foreach (var tile in openTiles) {
@@ -348,6 +365,7 @@ public class MapLayout {
             resultTile.isAlienSpawner = tile.isAlienSpawner;
             resultTile.isPlayerSpawner = tile.isPlayerSpawner;
             resultTile.isLootSpawner = tile.isLootSpawner;
+            resultTile.roomId = tile.roomId;
         }
         return result;
     }

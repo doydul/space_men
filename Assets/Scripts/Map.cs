@@ -5,6 +5,17 @@ using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
 public partial class Map : MonoBehaviour {
+
+    public class Room {
+        public int id;
+        public List<Tile> tiles = new();
+        public Vector2 centre { get {
+            var result = tiles.Select(tile => tile.gridLocation).Aggregate(Vector2.zero, (acc, vec) => acc + vec) / tiles.Count();
+            result.x = Mathf.Round(result.x);
+            result.y = Mathf.Round(result.y);
+            return result;
+        } }
+    }
     
     public static Map instance { get; private set; }
     
@@ -28,6 +39,7 @@ public partial class Map : MonoBehaviour {
     public int height;
 
     public EnemyProfileSet enemyProfiles { get; set; }
+    public Objectives objectives { get; set; }
 
     private Tile[,] _tiles;
     public Tile[,] tiles { get {
@@ -43,6 +55,7 @@ public partial class Map : MonoBehaviour {
         return _tiles;
     } }
     public void ClearTiles() => _tiles = null;
+    public Dictionary<int, Room> rooms = new();
 
     public List<T> GetActors<T>() {
         var result = new List<T>();

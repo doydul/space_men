@@ -16,11 +16,7 @@ public class Main : MonoBehaviour {
     void OnEnable() {
         MapInstantiator.instance.Generate();
         Map.instance.enemyProfiles = EnemyProfileSet.Generate(1);
-        var loots = LootGenerator.instance.Generate();
-        var lootSpawners = Map.instance.lootSpawners.Sample(loots.Count);
-        for (int i = 0; i < loots.Count; i++) {
-            if (lootSpawners.Count > i) InstantiateLootChest(loots[i], lootSpawners[i].gridLocation);
-        }
+        Objectives.AddToMap(Map.instance, Map.instance.rooms[1]);
 
         var squad = MetaSquad.GenerateDefault();
         int j = 0;
@@ -30,14 +26,6 @@ public class Main : MonoBehaviour {
             j++;
         }
         FogManager.instance.UpdateFog(true);
-    }
-
-    void InstantiateLootChest(Loot loot, Vector2 gridLocation) {
-        var trans = Instantiate(Resources.Load<Transform>("Prefabs/Chest")) as Transform;
-        var chest = trans.GetComponent<Chest>();
-        chest.contents = loot;
-        
-        Map.instance.GetTileAt(gridLocation).SetActor(trans, true);
     }
 
     // TODO move me somewhere else!

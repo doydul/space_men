@@ -17,7 +17,7 @@ public class LootGenerator : MonoBehaviour {
         return result;
     }
 
-    private Loot MakeLoot() {
+    public Loot MakeLoot() {
         var result = new Loot();
         if (Random.value < 0.5f) {
             result.item = new InventoryItem {
@@ -31,5 +31,13 @@ public class LootGenerator : MonoBehaviour {
             };
         }
         return result;
+    }
+
+    public void InstantiateLootChest(Loot loot, Vector2 gridLocation) {
+        var trans = Instantiate(Resources.Load<Transform>("Prefabs/Chest")) as Transform;
+        var chest = trans.GetComponent<Chest>();
+        chest.contents = loot;
+        
+        Map.instance.GetTileAt(gridLocation).SetActor(trans, true);
     }
 }
