@@ -23,6 +23,7 @@ MonoBehaviour:
   flames: 0
   flameDuration: 0
   flameColor: {r: 0, g: 0, b: 0, a: 0}
+  muzzleFlareColor: {r: 0.9150943, g: 0.88521445, b: 0.555963, a: 1}
   type: 0
   cost: 100
   description: the grenade launcher is a versatile weapon, able to deal with groups
@@ -32,3 +33,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ff8c339011d9f0d4f8b0fd5f7ef123ab, type: 2}
   weaponPrefab: {fileID: 2638842277454447310, guid: 9ab49813811ab674ca710393f368b31d,
     type: 3}
+  tracerPrefab: {fileID: 3804732669120462913, guid: 6fefd2daf8af15449a0ca2f03ac8d018,
+    type: 3}
+  audio: {fileID: 11400000, guid: 12775d11220a42e439a61a3b19b749bc, type: 2}

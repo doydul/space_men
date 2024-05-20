@@ -42,9 +42,7 @@ public struct EnemyProfileTypeInfo {
 
 [System.Serializable]
 public struct EnemyProfileGroupSize {
-    public EnemyProfileType type;
-    [Range(0, 100)]
-    public int typeWeight;
+    public EnemyProfileTypeInfo typeInfo;
     public int groupSize;
 }
 
@@ -81,5 +79,10 @@ public class EnemyProfile : ScriptableObject, IWeighted {
         } else {
             return typeInfo.Any(info => info.Matches(set));
         }
+    }
+
+    public int AvailableGroupSize(EnemyProfileSet set) {
+        var matchingGroupSizes = groupSizeUnlocks.Where(gs => gs.typeInfo.Matches(set));
+        return matchingGroupSizes.Count() > 0 ? matchingGroupSizes.MaxBy(gs => gs.groupSize).groupSize : 1;
     }
 }

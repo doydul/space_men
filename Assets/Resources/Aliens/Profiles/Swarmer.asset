@@ -15,17 +15,19 @@ MonoBehaviour:
   unlocked: 0
   typeName: Swarmer
   difficultyLevel: 1
-  threat: 15
+  threat: 4
   weight: 20
   typeCondition: 0
   typeInfo:
   - type: 1
     typeWeight: 20
   groupSizeUnlocks:
-  - type: 1
-    typeWeight: 0
+  - typeInfo:
+      type: 1
+      typeWeight: 0
     groupSize: 3
-  - type: 1
-    typeWeight: 50
+  - typeInfo:
+      type: 1
+      typeWeight: 50
     groupSize: 5
   spawnPercentage: 20

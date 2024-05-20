@@ -23,10 +23,13 @@ MonoBehaviour:
   flames: 0
   flameDuration: 0
   flameColor: {r: 0, g: 0, b: 0, a: 0}
+  muzzleFlareColor: {r: 0.96757334, g: 0.81509435, b: 1, a: 1}
   type: 0
   cost: 0
   description: 
   abilities:
   - {fileID: 11400000, guid: 4f8613db8b7396148a2bee97be3a698c, type: 2}
   weaponPrefab: {fileID: 7221545485388303077, guid: bafeee5531e616b4b97c1479c42cf370,
+    type: 3}
+  tracerPrefab: {fileID: 7457149134974975834, guid: 2eef684ece156774daedca1f48177fc0,
     type: 3}

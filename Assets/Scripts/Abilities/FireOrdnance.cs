@@ -43,9 +43,10 @@ public class FireOrdnance : Ability {
             }
         }
         owner.Face(MapInputController.instance.selectedTile.gridLocation);
+        owner.PlayAudio(owner.weapon.audio.shoot);
         owner.ShowMuzzleFlash();
-        yield return new WaitForSeconds(0.2f);
+        yield return SFXLayer.instance.PerformTracer(owner.tile.transform.position, hitTile.transform.position, owner.weapon, true);
         owner.HideMuzzleFlash();
-        yield return GameplayOperations.PerformExplosion(owner.weapon, hitTile);
+        yield return GameplayOperations.PerformExplosion(owner, hitTile);
     }
 }

@@ -177,9 +177,9 @@ MonoBehaviour:
   deflectIndicator: {fileID: 0}
   healthIndicator: {fileID: 5747215276604419125}
   armour: {fileID: 0}
-  weapon: {fileID: 0}
   muzzleFlashLocation: {fileID: 4343401897204958}
   gunContainer: {fileID: 9169448803393156594}
+  muzzleSprite: {fileID: 2994688973931539979}
   abilities: []
 --- !u!1 &1523187601169902
 GameObject:
@@ -684,6 +684,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f7f611e2932f4a4795f308cb51e701f, type: 3}
+--- !u!212 &2994688973931539979 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 212757518627599022, guid: 7f7f611e2932f4a4795f308cb51e701f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3133546666752253093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3130808867970366213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4017635719423904, guid: 7f7f611e2932f4a4795f308cb51e701f,

@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 172b0d57730207b41b2388b3159e4fe7
+timeCreated: 1501924202
+licenseType: Store
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97274
+  packageName: Sci-Fi Sounds and Sci-Fi Weapons
+  packageVersion: 1.0
+  assetPath: Assets/Gamemaster Audio - Sci-Fi Sounds and Sci-Fi Weapons/Sci-Fi_Weapons/sci-fi_weapon_reload_10.wav
+  uploadId: 193956

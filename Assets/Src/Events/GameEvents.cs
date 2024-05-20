@@ -32,7 +32,7 @@ public class GameEvents : MonoBehaviour {
     }
 
     void InstanceTrigger(string eventName) {
-        foreach (var listener in listeners) {
+        foreach (var listener in new List<EventListener>(listeners)) {
             if (listener.eventName == eventName) listener.callback();
         }
     }

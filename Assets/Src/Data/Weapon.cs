@@ -21,11 +21,14 @@ public class Weapon : ScriptableObject {
     public bool flames;
     public int flameDuration;
     public Color flameColor;
+    public Color muzzleFlareColor;
     public Type type;
     public int cost;
     [TextArea] public string description;
     public Ability[] abilities;
     public GameObject weaponPrefab;
+    public GameObject tracerPrefab;
+    public WeaponAudioProfile audio;
 
     public bool ordnance { get { return blast > 0; } }
     public bool isHeavy { get { return type == Type.Heavy; } }

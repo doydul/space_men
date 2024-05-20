@@ -22,11 +22,14 @@ MonoBehaviour:
   blast: 8
   flames: 1
   flameDuration: 5
-  flameColor: {r: 1, g: 1, b: 1, a: 0}
+  flameColor: {r: 1, g: 1, b: 1, a: 1}
+  muzzleFlareColor: {r: 0.8301887, g: 0.79744196, b: 0.48871484, a: 1}
   type: 0
   cost: 100
   description: designed for clearing large groups of smaller enemies
   abilities:
   - {fileID: 11400000, guid: ff8c339011d9f0d4f8b0fd5f7ef123ab, type: 2}
   weaponPrefab: {fileID: 8097341364661395760, guid: e0690256b78423a48b28f5d3f55cf6b3,
+    type: 3}
+  tracerPrefab: {fileID: 2193078054948271443, guid: 6e949ba4b7971ef429bfd25919b032b7,
     type: 3}

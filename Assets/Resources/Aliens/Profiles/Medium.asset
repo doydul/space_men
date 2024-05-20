@@ -24,10 +24,12 @@ MonoBehaviour:
   - type: 1
     typeWeight: 60
   groupSizeUnlocks:
-  - type: 1
-    typeWeight: 30
+  - typeInfo:
+      type: 0
+      typeWeight: 30
     groupSize: 2
-  - type: 0
-    typeWeight: 60
+  - typeInfo:
+      type: 1
+      typeWeight: 60
     groupSize: 3
   spawnPercentage: 10

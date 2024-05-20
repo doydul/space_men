@@ -23,6 +23,9 @@ MonoBehaviour:
     typeWeight: 20
   groupSizeUnlocks:
   - type: 2
+    typeInfo:
+      type: 2
+      typeWeight: 40
     typeWeight: 40
     groupSize: 2
   spawnPercentage: 10

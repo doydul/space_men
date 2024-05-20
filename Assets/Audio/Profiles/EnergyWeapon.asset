@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6611f84617e588e4290d26eda9217a65, type: 3}
+  m_Name: EnergyWeapon
+  m_EditorClassIdentifier: 
+  shoot: {fileID: 8300000, guid: cb4895be9ab72e44890c4f1355a8efe2, type: 3}
+  reload: {fileID: 8300000, guid: 172b0d57730207b41b2388b3159e4fe7, type: 3}
+  hit:
+    list:
+    - {fileID: 8300000, guid: 038f784d1d1dadc458068cb1062768da, type: 3}
+    - {fileID: 8300000, guid: 8a681f676f25a674b805e65ffec2ae54, type: 3}
+  miss:
+    list:
+    - {fileID: 8300000, guid: 038f784d1d1dadc458068cb1062768da, type: 3}
+    - {fileID: 8300000, guid: d72dd67302769654b9063f9512ad542a, type: 3}
+    - {fileID: 8300000, guid: 141a8ebc91395034eb0ab20db080cdd0, type: 3}
+    - {fileID: 8300000, guid: 8a681f676f25a674b805e65ffec2ae54, type: 3}
+    - {fileID: 8300000, guid: 5c883a49520cfbf41ae24048b2ed6cb2, type: 3}
+    - {fileID: 8300000, guid: 40b11b5fdaea41f4b8ee6a61fb251271, type: 3}
+  explosion: {fileID: 0}
