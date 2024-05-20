@@ -35,4 +35,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-Assets/Packages/*
+Assets/Packages/Universal Sound FX/*
+Assets/Packages/Gamemaster Audio - Sci-Fi Sounds and Sci-Fi Weapons/*
