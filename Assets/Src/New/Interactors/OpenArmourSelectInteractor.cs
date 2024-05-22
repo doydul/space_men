@@ -25,7 +25,6 @@ namespace Interactors {
                 itemId = metaSoldier.armour.uniqueId,
                 name = metaSoldier.armour.name
             };
-            output.soldierId = metaSoldier.uniqueId;
             
             presenter.Present(output);
         }

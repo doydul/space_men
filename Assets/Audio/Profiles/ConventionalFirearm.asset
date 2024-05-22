@@ -12,18 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6611f84617e588e4290d26eda9217a65, type: 3}
   m_Name: ConventionalFirearm
   m_EditorClassIdentifier: 
-  shoot: {fileID: 8300000, guid: c2f1dff683eceeb418e69a6792b4e520, type: 3}
-  reload: {fileID: 8300000, guid: 01cdeddf7eb278e48bf75151edfaa558, type: 3}
-  hit:
-    list:
-    - {fileID: 8300000, guid: 4b95faf86b2ed6843b1835337c1ccde3, type: 3}
-    - {fileID: 8300000, guid: ca560fb384f27fd4bb54d8f134c1551f, type: 3}
-    - {fileID: 8300000, guid: 4aee5a177c650bf42bc37448a0666972, type: 3}
-    - {fileID: 8300000, guid: df8715fafed69944db8c589acb8ae417, type: 3}
-    - {fileID: 8300000, guid: fc4eb3f435466e3469ba99a50bd3fe89, type: 3}
-    - {fileID: 8300000, guid: d170c7fa0939476408483b27c7b76906, type: 3}
-  miss:
-    list:
-    - {fileID: 8300000, guid: 9d8701d0b74b6f640a580b3aa7912273, type: 3}
-    - {fileID: 8300000, guid: f5de0ec990d085e4db5fe66b780cc509, type: 3}
-  explosion: {fileID: 0}
+  shoot:
+    volume: 0.3
+    clip: {fileID: 8300000, guid: c2f1dff683eceeb418e69a6792b4e520, type: 3}
+  reload:
+    volume: 0.3
+    clip: {fileID: 8300000, guid: 01cdeddf7eb278e48bf75151edfaa558, type: 3}
+  impact: {fileID: 11400000, guid: e2f8f719c54d78141ae207225f56e37a, type: 2}
+  explosion:
+    volume: 0.3
+    clip: {fileID: 0}

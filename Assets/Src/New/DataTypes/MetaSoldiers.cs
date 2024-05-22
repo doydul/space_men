@@ -16,14 +16,7 @@ namespace DataTypes {
         }
 
         public long Add(MetaSoldier metaSoldier) {
-            if (metaSoldier.uniqueId != 0) {
-                metaSoldiers.AddElement(metaSoldier, metaSoldier.uniqueId);
-                return metaSoldier.uniqueId;
-            } else {
-                var id = metaSoldiers.AddElement(metaSoldier);
-                metaSoldier.uniqueId = id;
-                return id;
-            }
+            return 0;
         }
 
         public void UpdateSquadRoster(long soldierId, int squadIndex) {
@@ -67,9 +60,6 @@ namespace DataTypes {
 
         public void Remove(long id) {
             metaSoldiers.RemoveElement(id);
-            for (int i = 0; i < squad.Length; i++) {
-                if (squad[i] != null && squad[i].uniqueId == id) squad[i] = null;
-            }
         }
     }
 }

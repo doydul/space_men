@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[System.Serializable]
-public class AudioCollection {
-    public List<AudioClip> list;
+[CreateAssetMenu(fileName = "AudioCollection", menuName = "Audio/Audio Collection", order = 1)]
+public class AudioCollection : ScriptableObject {
+    public List<AudioClipProfile> list;
 
-    public AudioClip Sample() => list.Sample();
+    public AudioClipProfile Sample() => list.Sample();
 }

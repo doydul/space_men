@@ -46,7 +46,7 @@ public class Soldier : Actor {
     public float blast { get { return weapon.blast; } }
     public bool firesOrdnance { get { return weapon.ordnance; } }
     public Weapon.Type weaponType { get { return weapon.type; } }
-    public Vector2 muzzlePosition { get { return muzzleFlashLocation.position; } }
+    public Vector3 muzzlePosition { get { return new Vector3(muzzleFlashLocation.position.x, muzzleFlashLocation.position.y, tile.transform.position.z); } }
 
     public bool CanSee(Vector2 gridLocation) => Map.instance.CanBeSeenFrom(new SoldierLosMask(), gridLocation, this.gridLocation);
     public bool InRange(Vector2 gridLocation) => Map.instance.ManhattanDistance(this.gridLocation, gridLocation) <= range;

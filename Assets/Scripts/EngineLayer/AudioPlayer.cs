@@ -11,9 +11,10 @@ public class AudioPlayer : MonoBehaviour {
 
     }
 
-    public void PlayAudio(AudioClip clip) {
+    public void PlayAudio(AudioClipProfile clip) {
         if (clip == null) return;
         audioSource.pitch = Random.value * 0.2f + 0.9f;
-        audioSource.PlayOneShot(clip);
+        audioSource.volume = clip.volume;
+        audioSource.PlayOneShot(clip.clip);
     }
 }

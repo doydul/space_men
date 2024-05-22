@@ -40,13 +40,14 @@ public class ShootingAnimation : WorldAnimation {
     }
 
     Vector2 EndPosition() {
-        if (type != ShootingAnimationType.Missed) {
-            return MungedPosition(target.realLocation);
-        } else {
-            Vector2 projectileDirection = (target.realLocation - shooter.muzzlePosition).normalized;
-            Vector2 extrapolatedPosition = target.realLocation + projectileDirection * missDistance;
-            return MungedPosition(extrapolatedPosition);
-        }
+        // if (type != ShootingAnimationType.Missed) {
+        //     return MungedPosition(target.realLocation);
+        // } else {
+        //     Vector2 projectileDirection = (target.realLocation - shooter.muzzlePosition).normalized;
+        //     Vector2 extrapolatedPosition = target.realLocation + projectileDirection * missDistance;
+        //     return MungedPosition(extrapolatedPosition);
+        // }
+        return Vector2.zero;
     }
 
     Vector2 MungedPosition(Vector2 preMungedValue) {

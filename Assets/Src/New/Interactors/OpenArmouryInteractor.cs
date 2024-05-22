@@ -11,7 +11,6 @@ namespace Interactors {
             var output = new OpenArmouryOutput();
             
             var list = metaGameState.metaSoldiers.GetSquad().Select(metaSoldier => metaSoldier == null ? null : new SoldierDisplayInfo {
-                soldierId = metaSoldier.uniqueId,
                 weaponName = metaSoldier.weapon.name,
                 armourName = metaSoldier.armour.name
             });

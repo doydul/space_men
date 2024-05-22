@@ -51,7 +51,7 @@ namespace Workers {
             return SoldierGenerator.Default()
                                    .WithArmour(metaSoldier.armour.name)
                                    .WithWeapon(metaSoldier.weapon.name)
-                                   .WithMetaSoldierId(metaSoldier.uniqueId)
+                                   .WithMetaSoldierId(0)
                                    .Build();
         }
 

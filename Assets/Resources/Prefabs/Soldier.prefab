@@ -176,6 +176,8 @@ MonoBehaviour:
   hitIndicator: {fileID: 5575816499745781192}
   deflectIndicator: {fileID: 0}
   healthIndicator: {fileID: 5747215276604419125}
+  hurtSounds: {fileID: 11400000, guid: c49753f553989794fa477df0fc81f267, type: 2}
+  dieSounds: {fileID: 11400000, guid: 6dfe836edaf62b94c84240113c98c092, type: 2}
   armour: {fileID: 0}
   muzzleFlashLocation: {fileID: 4343401897204958}
   gunContainer: {fileID: 9169448803393156594}

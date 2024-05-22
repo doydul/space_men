@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c838293856a3335408c1a4a057621564, type: 3}
+  m_Name: BulletImpacts
+  m_EditorClassIdentifier: 
+  list:
+  - volume: 0.3
+    clip: {fileID: 8300000, guid: e9b1a4af55a53834f9a1ebd0220762fe, type: 3}
+  - volume: 0.3
+    clip: {fileID: 8300000, guid: 9d8701d0b74b6f640a580b3aa7912273, type: 3}
+  - volume: 0.3
+    clip: {fileID: 8300000, guid: f5de0ec990d085e4db5fe66b780cc509, type: 3}
+  - volume: 0.3
+    clip: {fileID: 8300000, guid: d5cf0bca1f745ec4d9ba288091d1cf57, type: 3}
+  - volume: 0.4
+    clip: {fileID: 8300000, guid: 55ceac0db32575d44ba25f762ca2fd12, type: 3}
+  - volume: 0.3
+    clip: {fileID: 8300000, guid: 145dd300e164a7d4585bf554422921b5, type: 3}

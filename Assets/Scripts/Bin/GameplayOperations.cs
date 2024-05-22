@@ -30,8 +30,7 @@ public static class GameplayOperations {
         if (!soldier.InHalfRange(target.gridLocation)) accuracy -= 15;
         if (!target.dead && Random.value * 100 <= accuracy + target.accModifier) {
             // HIT
-            yield return SFXLayer.instance.PerformTracer(soldier.tile.transform.position, target.tile.transform.position, soldier.weapon, true);
-            soldier.PlayAudio(soldier.weapon.audio.hit.Sample());
+            yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, true);
             target.ShowHit();
             var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
             target.Hurt(damage);
@@ -45,8 +44,7 @@ public static class GameplayOperations {
                 var actor = randTile.GetActor<Actor>();
                 if (actor != null && actor != soldier) {
                     secondaryHit = true;
-                    yield return SFXLayer.instance.PerformTracer(soldier.tile.transform.position, actor.tile.transform.position, soldier.weapon, true);
-                    soldier.PlayAudio(soldier.weapon.audio.hit.Sample());
+                    yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, actor.tile.transform.position, soldier.weapon, true);
                     var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
                     actor.Hurt(damage);
                     actor.ShowHit();
@@ -54,11 +52,9 @@ public static class GameplayOperations {
                     break;
                 }
             }
-            if (!secondaryHit) {
-                yield return SFXLayer.instance.PerformTracer(soldier.tile.transform.position, target.tile.transform.position, soldier.weapon, false);
-                soldier.PlayAudio(soldier.weapon.audio.miss.Sample());
-            }
+            if (!secondaryHit) yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, false);
         }
+        soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
         soldier.HideMuzzleFlash();
         yield return new WaitForSeconds(0.15f);
     }

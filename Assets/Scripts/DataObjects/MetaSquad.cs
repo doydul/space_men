@@ -1,27 +1,26 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public class MetaSquad {
     
-    Dictionary<string, MetaSoldier> metaSoldiers = new();
-
-    public int credits { get; set; }
-    public List<InventoryItem> items = new();
+    [SerializeField] List<MetaSoldier> metaSoldiers = new();
+    public int credits;
 
     public IEnumerable<MetaSoldier> GetMetaSoldiers() {
-        return metaSoldiers.Values;
+        return metaSoldiers;
     }
 
     public MetaSoldier GetMetaSoldier(string id) {
-        return metaSoldiers[id];
+        return metaSoldiers.Find(meta => meta.id == id);
     }
 
     public void AddMetaSoldier(MetaSoldier metaSoldier) {
         var id = Guid.NewGuid().ToString();
         metaSoldier.id = id;
-        metaSoldiers.Add(id, metaSoldier);
+        metaSoldiers.Add(metaSoldier);
     }
 
     public static MetaSquad GenerateDefault() {

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c838293856a3335408c1a4a057621564, type: 3}
+  m_Name: EnergyImpacts
+  m_EditorClassIdentifier: 
+  list:
+  - volume: 0.3
+    clip: {fileID: 8300000, guid: 26f6d21d5ab75c44790fc7fecce64099, type: 3}
+  - volume: 0.3
+    clip: {fileID: 8300000, guid: 06048b5b801c15b4896a340fd3a64f3e, type: 3}
+  - volume: 0.3
+    clip: {fileID: 8300000, guid: a5cb96f4c43c09d469ea1bfcb37d4a91, type: 3}
+  - volume: 0.3
+    clip: {fileID: 8300000, guid: eb9b60919b20ce342b7d2d45b2ab01f3, type: 3}
+  - volume: 0.3
+    clip: {fileID: 8300000, guid: 11189d236f910b14a8cf2998498d4097, type: 3}

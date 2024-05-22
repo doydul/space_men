@@ -19,12 +19,15 @@ public class Main : MonoBehaviour {
         Objectives.AddToMap(Map.instance, Map.instance.rooms[1]);
 
         var squad = MetaSquad.GenerateDefault();
-        int j = 0;
+        var save = new PlayerSave { squad = squad };
+        save.Save(0);
 
+        int j = 0;
         foreach (var metaSoldier in squad.GetMetaSoldiers()) {
             InstantiateSoldier(metaSoldier, Map.instance.startLocations[j].gridLocation);
             j++;
         }
+
         FogManager.instance.UpdateFog(true);
     }
 

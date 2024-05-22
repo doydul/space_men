@@ -33,7 +33,6 @@ namespace Interactors {
 
         SoldierDisplayInfo ConvertMetaSoldier(MetaSoldier metaSoldier) {
             return new SoldierDisplayInfo {
-                soldierId = metaSoldier.uniqueId,
                 name = metaSoldier.name,
                 weaponName = metaSoldier.weapon.name,
                 armourName = metaSoldier.armour.name

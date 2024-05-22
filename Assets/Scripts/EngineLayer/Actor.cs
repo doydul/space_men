@@ -17,6 +17,8 @@ public abstract class Actor : MonoBehaviour {
     public GameObject hitIndicator;
     public GameObject deflectIndicator;
     public SpriteRenderer healthIndicator;
+    public AudioCollection hurtSounds;
+    public AudioCollection dieSounds;
 
     public string id { get; set; }
     public long index { get; set; } // remove me
@@ -37,7 +39,7 @@ public abstract class Actor : MonoBehaviour {
     } }
     public bool On(Tile tile) => this.tile == tile;
     AudioPlayer audioPlayer;
-    public void PlayAudio(AudioClip clip) => audioPlayer.PlayAudio(clip);
+    public void PlayAudio(AudioClipProfile clip) => audioPlayer.PlayAudio(clip);
 
 
     Coroutine healthCoroutine;
@@ -120,7 +122,10 @@ public abstract class Actor : MonoBehaviour {
         health -= damage;
         if (health <= 0) {
             dead = true;
+            PlayAudio(dieSounds.Sample());
             Remove();
+        } else {
+            PlayAudio(hurtSounds.Sample());
         }
         ShowHealth();
     }
