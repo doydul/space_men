@@ -10,23 +10,23 @@ namespace Interactors {
         [Dependency] ISoldierStore soldierStore;
 
         public void Interact(OpenArmourSelectInput input) {
-            var output = new OpenArmourSelectOutput();
+            // var output = new OpenArmourSelectOutput();
             
-            var metaSoldier = metaGameState.metaSoldiers.Get(input.metaSoldierId);
-            output.inventoryArmour = metaGameState.metaItems
-                                          .GetInventoryItems()
-                                          .Where(item => item is MetaArmour)
-                                          .Select(item => new OpenArmourSelectOutput.ArmourInfo {
-                                              itemId = item.uniqueId,
-                                              name = item.name,
-                                              armourStats = soldierStore.GetArmourStats(item.name)
-                                          }).ToArray();
-            output.currentArmour = new OpenArmourSelectOutput.ArmourInfo {
-                itemId = metaSoldier.armour.uniqueId,
-                name = metaSoldier.armour.name
-            };
+            // var metaSoldier = metaGameState.metaSoldiers.Get(input.metaSoldierId);
+            // output.inventoryArmour = metaGameState.metaItems
+            //                               .GetInventoryItems()
+            //                               .Where(item => item is MetaArmour)
+            //                               .Select(item => new OpenArmourSelectOutput.ArmourInfo {
+            //                                   itemId = item.uniqueId,
+            //                                   name = item.name,
+            //                                   armourStats = soldierStore.GetArmourStats(item.name)
+            //                               }).ToArray();
+            // output.currentArmour = new OpenArmourSelectOutput.ArmourInfo {
+            //     itemId = metaSoldier.armour.uniqueId,
+            //     name = metaSoldier.armour.name
+            // };
             
-            presenter.Present(output);
+            // presenter.Present(output);
         }
     }
 }

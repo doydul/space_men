@@ -19,7 +19,7 @@ public class Main : MonoBehaviour {
         Objectives.AddToMap(Map.instance, Map.instance.rooms[1]);
 
         var squad = MetaSquad.GenerateDefault();
-        var save = new PlayerSave { squad = squad };
+        var save = new PlayerSave { squad = squad, inventory = new Inventory() };
         save.Save(0);
 
         int j = 0;

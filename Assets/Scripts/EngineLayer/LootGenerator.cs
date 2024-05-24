@@ -21,12 +21,12 @@ public class LootGenerator : MonoBehaviour {
         var result = new Loot();
         if (Random.value < 0.5f) {
             result.item = new InventoryItem {
-                isWeapon = true,
+                type = InventoryItem.Type.Weapon,
                 name = allWeapons.Sample().name
             };
         } else {
             result.item = new InventoryItem {
-                isWeapon = false,
+                type = InventoryItem.Type.Armour,
                 name = allArmour.Sample().name
             };
         }

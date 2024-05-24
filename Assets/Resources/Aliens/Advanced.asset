@@ -17,3 +17,4 @@ MonoBehaviour:
   accModifier: 0
   damage: 8
   movement: 5
+  audio: {fileID: 11400000, guid: eb32cf0b474ba604cac0cdfdfa8cad7d, type: 2}

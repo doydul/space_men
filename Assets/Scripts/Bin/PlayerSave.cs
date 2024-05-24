@@ -8,7 +8,7 @@ public class PlayerSave {
     
     public static PlayerSave current;
 
-    public List<InventoryItem> items = new();
+    public Inventory inventory;
     public MetaSquad squad;
 
     public void Save(int slot) {

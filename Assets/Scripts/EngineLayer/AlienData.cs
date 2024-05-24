@@ -8,6 +8,7 @@ public class AlienData : ScriptableObject {
     public int accModifier;
     public int damage;
     public int movement;
+    public AlienAudioProfile audio;
 
     public void Dump(Alien target) {
         target.type = name;
@@ -18,5 +19,6 @@ public class AlienData : ScriptableObject {
         target.damage = damage;
         target.movement = movement;
         target.sensoryRange = 7;
+        target.audio = audio;
     }
 }

@@ -10,10 +10,10 @@ public class SpriteSelector {
 
     public Sprite Select() {
         if (item == null) return null;
-        if (item.isWeapon) {
+        // if (item.isWeapon) {
             return Resources.Load<Sprite>("Textures/Weapons/Weapon1");
-        } else {
-            return Resources.Load<Sprite>("Textures/Armour/Armour1");
-        }
+        // } else {
+        //     return Resources.Load<Sprite>("Textures/Armour/Armour1");
+        // }
     }
 }

@@ -22,10 +22,10 @@ MonoBehaviour:
   - type: 0
     typeWeight: 0
   - type: 1
-    typeWeight: 60
+    typeWeight: 30
   groupSizeUnlocks:
   - typeInfo:
-      type: 0
+      type: 1
       typeWeight: 30
     groupSize: 2
   - typeInfo:

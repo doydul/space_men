@@ -34,13 +34,13 @@ public class MetaSquad {
         for (int i = 0; i < weapons.Length; i++) {
             result.AddMetaSoldier(new MetaSoldier() {
                 name = "John Doe",
-                armour = new MetaArmour() {
-                    id = Guid.NewGuid().ToString(),
-                    name = "Basic"
+                armour = new InventoryItem() {
+                    name = "Basic",
+                    type = InventoryItem.Type.Armour
                 },
-                weapon = new MetaWeapon() {
-                    id = Guid.NewGuid().ToString(),
-                    name = weapons[i]
+                weapon = new InventoryItem() {
+                    name = weapons[i],
+                    type = InventoryItem.Type.Weapon
                 }
             });
         }

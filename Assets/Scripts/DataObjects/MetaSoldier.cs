@@ -5,8 +5,8 @@ public class MetaSoldier {
     public string name;
     public int exp;
     public int spentAbilityPoints;
-    public MetaArmour armour;
-    public MetaWeapon weapon;
+    public InventoryItem armour;
+    public InventoryItem weapon;
     public bool dead;
 
 }

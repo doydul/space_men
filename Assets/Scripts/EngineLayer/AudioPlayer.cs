@@ -13,7 +13,7 @@ public class AudioPlayer : MonoBehaviour {
 
     public void PlayAudio(AudioClipProfile clip) {
         if (clip == null) return;
-        audioSource.pitch = Random.value * 0.2f + 0.9f;
+        // audioSource.pitch = Random.value * 0.2f + 0.9f;
         audioSource.volume = clip.volume;
         audioSource.PlayOneShot(clip.clip);
     }

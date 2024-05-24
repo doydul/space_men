@@ -52,9 +52,11 @@ public static class GameplayOperations {
                     break;
                 }
             }
-            if (!secondaryHit) yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, false);
+            if (!secondaryHit) {
+                yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, false);
+                soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
+            }
         }
-        soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
         soldier.HideMuzzleFlash();
         yield return new WaitForSeconds(0.15f);
     }

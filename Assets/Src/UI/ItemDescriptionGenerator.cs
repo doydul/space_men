@@ -31,16 +31,12 @@ public class ItemDescriptionGenerator {
     // Private
 
     private Weapon weapon { get {
-        if (item.isWeapon) {
             return Weapon.Get(item.name);
-        }
         return null;
     } }
 
     private Armour armour { get {
-        if (!item.isWeapon) {
             return Armour.Get(item.name);
-        }
         return null;
     } }
 }

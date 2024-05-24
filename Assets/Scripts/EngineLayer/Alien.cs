@@ -17,6 +17,7 @@ public class Alien : Actor {
     public float threat { get; set; }
     public int expReward { get; set; }
     public int sensoryRange { get; set; }
+    public AlienAudioProfile audio { get; set; }
     public Pod pod { get; set; }
 
     public bool hasActed;
@@ -48,6 +49,7 @@ public class Alien : Actor {
     }
 
     public override void Hurt(int damage) {
+        PlayAudio(audio.hurt.Sample());
         if (damage <= armour) {
             base.Hurt(damage / 2);
         } else {

@@ -32,10 +32,10 @@ public class Workshop {
     // Private
 
     private int ItemValue() {
-        if (item.isWeapon) {
+        // if (item.isWeapon) {
             return 0;
-        } else {
-            return 0;
-        }
+        // } else {
+        //     return 0;
+        // }
     }
 }

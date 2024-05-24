@@ -1,13 +1,18 @@
 [System.Serializable]
 public class InventoryItem {
 
+    public enum Type {
+        Weapon,
+        Armour
+    }
+
     public string name;
-    public bool isWeapon;
+    public Type type;
 
     public InventoryItem Dup() {
         return new InventoryItem() {
             name = name,
-            isWeapon = isWeapon
+            type = type
         };
     }
 }
