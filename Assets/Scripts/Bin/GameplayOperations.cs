@@ -111,8 +111,18 @@ public static class GameplayOperations {
     }
 
     public static IEnumerator PerformPickupChest(Soldier soldier, Tile tile) {
-        tile.GetBackgroundActor<Chest>().Remove();
-        // TODO add some UI to show what has been gained
+        var chest = tile.GetBackgroundActor<Chest>();
+        ModalPopup.instance.ClearContent();
+        if (chest.contents.hasItem) {
+            PlayerSave.current.inventory.AddItem(chest.contents.item);
+            string weaponOrArmour = chest.contents.item.isWeapon ? "a weapon" : "some armour";
+            ModalPopup.instance.DisplayContent(Resources.Load<Transform>("Prefabs/UI/ItemReward")).GetComponent<ItemReward>().SetText($"you found {weaponOrArmour}\n{chest.contents.item.name}");
+        }
+        if (chest.contents.credits > 0) {
+            PlayerSave.current.credits += chest.contents.credits;
+            ModalPopup.instance.DisplayContent(Resources.Load<Transform>("Prefabs/UI/ItemReward")).GetComponent<ItemReward>().SetText($"you found credits\n{chest.contents.credits}");
+        }
+        chest.Remove();
         yield return new WaitForSeconds(1f);
         soldier.HighlightActions();
     }

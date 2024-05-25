@@ -8,8 +8,10 @@ public class PlayerSave {
     
     public static PlayerSave current;
 
-    public Inventory inventory;
+    public int credits;
     public MetaSquad squad;
+    public Inventory inventory = new();
+    public AlienUnlocks alienUnlocks = new();
 
     public void Save(int slot) {
         string json = UnityEngine.JsonUtility.ToJson(this);

@@ -5,6 +5,8 @@ public class Inventory {
     
     public List<InventoryItem> items = new();
 
+    public void AddItem(InventoryItem item) => items.Add(item);
+
     public void Equip(MetaSoldier soldier, InventoryItem item) {
         items.Remove(item);
         if (item.type == InventoryItem.Type.Weapon) {

@@ -22,7 +22,7 @@ public class EnemyProfileSet {
         var potentialPrimaries = EnemyProfile.GetAll().Where(prof => prof.Fits(set)).ToList();
         potentialPrimaries.Sort((prof1, prof2) => prof1.BestScore(set) < prof2.BestScore(set) ? 1 : -1 );
         set.primaries = potentialPrimaries.Take(2).ToList();
-        var potentialSecondaries = EnemyProfile.GetAll().Where(prof => prof.unlocked && !set.primaries.Contains(prof));
+        var potentialSecondaries = EnemyProfile.GetAll().Where(prof => PlayerSave.current.alienUnlocks.Unlocked(prof.name) && !set.primaries.Contains(prof));
         set.secondaries = potentialSecondaries.Sample(2);
         return set;
     }

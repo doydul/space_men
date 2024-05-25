@@ -49,7 +49,6 @@ public struct EnemyProfileGroupSize {
 [CreateAssetMenu(fileName = "EnemyProfile", menuName = "Enemy Profile", order = 3)]
 public class EnemyProfile : ScriptableObject, IWeighted {
 
-    public bool unlocked;
     public string typeName; 
     public int difficultyLevel;
     public int threat;

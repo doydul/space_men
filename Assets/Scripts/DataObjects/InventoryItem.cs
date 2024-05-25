@@ -9,6 +9,9 @@ public class InventoryItem {
     public string name;
     public Type type;
 
+    public bool isWeapon => type == Type.Weapon;
+    public bool isArmour => type == Type.Armour;
+
     public InventoryItem Dup() {
         return new InventoryItem() {
             name = name,

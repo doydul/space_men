@@ -14,12 +14,17 @@ public class Main : MonoBehaviour {
     }
 
     void OnEnable() {
+        var save = new PlayerSave();
+        PlayerSave.current = save;
+        save.alienUnlocks.Unlock("Medium");
+        save.alienUnlocks.Unlock("Runner");
+
         MapInstantiator.instance.Generate();
         Map.instance.enemyProfiles = EnemyProfileSet.Generate(1);
         Objectives.AddToMap(Map.instance, Map.instance.rooms[1]);
 
         var squad = MetaSquad.GenerateDefault();
-        var save = new PlayerSave { squad = squad, inventory = new Inventory() };
+        save.squad = squad;
         save.Save(0);
 
         int j = 0;
