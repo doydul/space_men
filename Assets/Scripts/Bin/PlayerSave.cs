@@ -9,6 +9,7 @@ public class PlayerSave {
     public static PlayerSave current;
 
     public int credits;
+    public float difficulty;
     public MetaSquad squad;
     public Inventory inventory = new();
     public AlienUnlocks alienUnlocks = new();

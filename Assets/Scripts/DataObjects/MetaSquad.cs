@@ -26,10 +26,9 @@ public class MetaSquad {
     public static MetaSquad GenerateDefault() {
         var result = new MetaSquad();
         var weapons = new string[] {
-            "Assault Rifle",
-            "Laser",
-            "Grenade Launcher",
-            "Chain Gun"
+            "SIKR-5",
+            "SIKR-5",
+            "SIKR-5",
         };
         for (int i = 0; i < weapons.Length; i++) {
             result.AddMetaSoldier(new MetaSoldier() {

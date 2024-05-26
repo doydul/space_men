@@ -118,7 +118,7 @@ public abstract class Actor : MonoBehaviour {
         Destroy(gameObject, 0.5f);
     }
 
-    public virtual void Hurt(int damage) {
+    public virtual void Hurt(int damage, DamageType damageType = DamageType.Normal) {
         health -= damage;
         if (health <= 0) {
             dead = true;

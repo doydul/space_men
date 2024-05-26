@@ -33,7 +33,7 @@ public static class GameplayOperations {
             yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, true);
             target.ShowHit();
             var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
-            target.Hurt(damage);
+            target.Hurt(damage, soldier.weapon.damageType);
             BloodSplatController.instance.MakeSplat(target);
         } else {
             // MISS
@@ -46,7 +46,7 @@ public static class GameplayOperations {
                     secondaryHit = true;
                     yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, actor.tile.transform.position, soldier.weapon, true);
                     var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
-                    actor.Hurt(damage);
+                    actor.Hurt(damage, soldier.weapon.damageType);
                     actor.ShowHit();
                     BloodSplatController.instance.MakeSplat(actor);
                     break;

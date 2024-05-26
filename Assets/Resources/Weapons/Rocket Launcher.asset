@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Rocket Launcher
   m_EditorClassIdentifier: 
   icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
-  accuracy: 40
-  minDamage: 11
-  maxDamage: 40
+  techLevel: 1
+  weight: 100
+  accuracy: 65
+  minDamage: 30
+  maxDamage: 100
+  damageType: 0
   shots: 1
   ammo: 1
   range: 20
-  blast: 3
+  blast: 4
   flames: 0
   flameDuration: 0
   flameColor: {r: 0, g: 0, b: 0, a: 0}
@@ -31,5 +34,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ff8c339011d9f0d4f8b0fd5f7ef123ab, type: 2}
   weaponPrefab: {fileID: 2638842277454447310, guid: 9ab49813811ab674ca710393f368b31d,
     type: 3}
-  tracerPrefab: {fileID: 3804732669120462913, guid: 6fefd2daf8af15449a0ca2f03ac8d018,
+  tracerPrefab: {fileID: 2193078054948271443, guid: 6e949ba4b7971ef429bfd25919b032b7,
     type: 3}
+  audio: {fileID: 11400000, guid: 12775d11220a42e439a61a3b19b749bc, type: 2}

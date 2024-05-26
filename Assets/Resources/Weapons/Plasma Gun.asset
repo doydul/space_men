@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Plasma Gun
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
+  techLevel: 1
+  weight: 100
   accuracy: 60
   minDamage: 6
   maxDamage: 16
+  damageType: 1
   shots: 2
   ammo: 3
   range: 10
@@ -25,7 +28,7 @@ MonoBehaviour:
   flameColor: {r: 0, g: 0, b: 0, a: 0}
   muzzleFlareColor: {r: 0.96757334, g: 0.81509435, b: 1, a: 1}
   type: 0
-  cost: 0
+  cost: 100
   description: 
   abilities:
   - {fileID: 11400000, guid: 4f8613db8b7396148a2bee97be3a698c, type: 2}
@@ -33,3 +36,4 @@ MonoBehaviour:
     type: 3}
   tracerPrefab: {fileID: 7457149134974975834, guid: 2eef684ece156774daedca1f48177fc0,
     type: 3}
+  audio: {fileID: 0}

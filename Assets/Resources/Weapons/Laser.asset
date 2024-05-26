@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Laser
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
+  techLevel: 1
+  weight: 100
   accuracy: 90
   minDamage: 8
   maxDamage: 10
+  damageType: 1
   shots: 1
   ammo: 4
   range: 20

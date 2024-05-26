@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Rail Gun
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
+  techLevel: 1
+  weight: 100
   accuracy: 75
   minDamage: 10
   maxDamage: 15
+  damageType: 0
   shots: 1
   ammo: 20
   range: 50
@@ -33,3 +36,4 @@ MonoBehaviour:
     type: 3}
   tracerPrefab: {fileID: 2193078054948271443, guid: 6e949ba4b7971ef429bfd25919b032b7,
     type: 3}
+  audio: {fileID: 0}

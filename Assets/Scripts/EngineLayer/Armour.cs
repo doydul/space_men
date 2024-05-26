@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 
 [CreateAssetMenu(fileName = "New Armour", menuName = "Equipment/Armour", order = 1)]
-public class Armour : ScriptableObject {
+public class Armour : ScriptableObject, IWeighted {
 
     public enum Type {
         Light,
@@ -12,11 +12,16 @@ public class Armour : ScriptableObject {
 
     public Transform icon;
 
+    public int techLevel = 1;
+    public int weight = 100;
+    public int Weight => weight;
+
     public int armourValue;
     public Type type;
     public int value;
     public int maxHealth;
     public Ability[] abilities;
+    public Trait[] traits;
 
     public int movement { get {
         switch(type) {
@@ -25,7 +30,7 @@ public class Armour : ScriptableObject {
             case Type.Medium:
                 return 5;
             case Type.Heavy:
-                return 5;
+                return 4;
         }
         return 3;
     } }
@@ -33,11 +38,11 @@ public class Armour : ScriptableObject {
     public int sprint { get {
         switch(type) {
             case Type.Light:
-                return 0;
+                return 5;
             case Type.Medium:
-                return 0;
+                return 3;
             case Type.Heavy:
-                return 0;
+                return 3;
         }
         return 3;
     } }

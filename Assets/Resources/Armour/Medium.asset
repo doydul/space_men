@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Medium
   m_EditorClassIdentifier: 
   icon: {fileID: 6112543359969127321, guid: a1b4dd143a2ea40d6b7591e0c8f15021, type: 3}
+  techLevel: 1
+  weight: 100
   armourValue: 50
   type: 1
   value: 120
-  maxHealth: 15
+  maxHealth: 22
+  abilities:
+  - {fileID: 11400000, guid: cd6ac93939c4e2d40a30e3627bc167c9, type: 2}

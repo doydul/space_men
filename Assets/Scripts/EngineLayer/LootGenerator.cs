@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 using System.Collections.Generic;
 
 public class LootGenerator : MonoBehaviour {
@@ -9,25 +10,21 @@ public class LootGenerator : MonoBehaviour {
     private Weapon[] allWeapons => Resources.LoadAll<Weapon>("Weapons/");
     private Armour[] allArmour => Resources.LoadAll<Armour>("Armour/");
 
-    public List<Loot> Generate() {
-        var result = new List<Loot>();
-        for (int i = 0; i < 20; i++) { 
-            result.Add(MakeLoot());
-        }
-        return result;
-    }
+    public Loot MakeLoot(float techLevel) {
+        int lootLevel = techLevel < 1 ? 1 : (int)techLevel;
+        float upgradeChance = techLevel - lootLevel;
+        if (Random.value < upgradeChance) lootLevel += 1;
 
-    public Loot MakeLoot() {
         var result = new Loot();
-        if (Random.value < 0.5f) {
+        if (Random.value < 0.66f) {
             result.item = new InventoryItem {
                 type = InventoryItem.Type.Weapon,
-                name = allWeapons.Sample().name
+                name = allWeapons.Where(wep => wep.techLevel == lootLevel).WeightedSelect().name
             };
         } else {
             result.item = new InventoryItem {
                 type = InventoryItem.Type.Armour,
-                name = allArmour.Sample().name
+                name = allArmour.Where(arm => arm.techLevel == lootLevel).WeightedSelect().name
             };
         }
         return result;

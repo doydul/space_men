@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Flamer
   m_EditorClassIdentifier: 
   icon: {fileID: 5308807786553862593, guid: e92b9ef9677684923a36c8c580ef9ac6, type: 3}
+  techLevel: 1
+  weight: 100
   accuracy: 60
   minDamage: 1
   maxDamage: 4
+  damageType: 0
   shots: 1
   ammo: 2
   range: 8
@@ -33,3 +36,4 @@ MonoBehaviour:
     type: 3}
   tracerPrefab: {fileID: 2193078054948271443, guid: 6e949ba4b7971ef429bfd25919b032b7,
     type: 3}
+  audio: {fileID: 0}

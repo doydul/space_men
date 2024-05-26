@@ -139,7 +139,7 @@ public class HiveMind : MonoBehaviour {
         yield return new WaitForSeconds(0.25f);
         BloodSplatController.instance.MakeSplat(target);
         yield return new WaitForSeconds(0.25f);
-        if (Random.value < CRIT_CHANCE) {
+        if (Random.value < CRIT_CHANCE && !target.HasTrait(Trait.CritImmune)) {
             target.Hurt(activeAlien.damage * 2);
             Debug.Log("!!!CRITICAL HIT!!!");
         } else {

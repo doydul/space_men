@@ -30,23 +30,24 @@ public class Soldier : Actor {
     public int ammo => weapon.ammo;
     public bool canAct => actionsSpent <= 0;
     public bool canShoot => canAct && shotsSpent < ammo;
-    public int shotsRemaining { get { return ammo - shotsSpent; } }
-    public bool hasAmmo { get { return shotsRemaining > 0; } }
-    public int baseMovement { get { return armour.movement; } }
-    public int totalMovement { get { return baseMovement + armour.sprint; } }
-    public int remainingMovement { get { return totalMovement - tilesMoved; } }
-    public bool sprinted { get { return tilesMoved > baseMovement; } }
-    public bool moved { get { return tilesMoved > 0; } }
-    public int accuracy { get { return weapon.accuracy; } }
-    public int range { get { return weapon.range; } }
-    public int halfRange { get { return weapon.range / 2; } }
-    public int minDamage { get { return weapon.minDamage; } }
-    public int maxDamage { get { return weapon.maxDamage; } }
-    public int shots { get { return weapon.shots; } }
-    public float blast { get { return weapon.blast; } }
-    public bool firesOrdnance { get { return weapon.ordnance; } }
-    public Weapon.Type weaponType { get { return weapon.type; } }
-    public Vector3 muzzlePosition { get { return new Vector3(muzzleFlashLocation.position.x, muzzleFlashLocation.position.y, tile.transform.position.z); } }
+    public int shotsRemaining => ammo - shotsSpent;
+    public bool hasAmmo => shotsRemaining > 0;
+    public int baseMovement => armour.movement;
+    public int sprintMovement => armour.sprint;
+    public int totalMovement => baseMovement + armour.sprint;
+    public int remainingMovement => baseMovement - tilesMoved;
+    public bool sprinted => tilesMoved > baseMovement;
+    public bool moved => tilesMoved > 0;
+    public int accuracy => weapon.accuracy;
+    public int range => weapon.range;
+    public int halfRange => weapon.range / 2;
+    public int minDamage => weapon.minDamage;
+    public int maxDamage => weapon.maxDamage;
+    public int shots => weapon.shots;
+    public float blast => weapon.blast;
+    public bool firesOrdnance => weapon.ordnance;
+    public Weapon.Type weaponType => weapon.type;
+    public Vector3 muzzlePosition => new Vector3(muzzleFlashLocation.position.x, muzzleFlashLocation.position.y, tile.transform.position.z);
 
     public bool CanSee(Vector2 gridLocation) => Map.instance.CanBeSeenFrom(new SoldierLosMask(), gridLocation, this.gridLocation);
     public bool InRange(Vector2 gridLocation) => Map.instance.ManhattanDistance(this.gridLocation, gridLocation) <= range;
@@ -54,9 +55,10 @@ public class Soldier : Actor {
     public void Shoot(Alien target) => AnimationManager.instance.StartAnimation(GameplayOperations.PerformSoldierShoot(this, target));
     public IEnumerator PerformShoot(Alien target) => GameplayOperations.PerformSoldierShoot(this, target);
     public bool HasAbility<T>() => abilities.Any(ability => ability is T);
+    public bool HasTrait(Trait trait) => weapon.traits.Contains(trait) || armour.traits.Contains(trait);
     
-    public string armourName { get { return armour.name; } }
-    public string weaponName { get { return weapon.name; } }
+    public string armourName => armour.name;
+    public string weaponName => weapon.name;
 
     public List<Ability> abilities = new();
 

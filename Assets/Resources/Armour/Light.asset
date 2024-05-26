@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Light
   m_EditorClassIdentifier: 
   icon: {fileID: 6049137105121139426, guid: 7e0702b01691f4610824edfb221641a6, type: 3}
+  techLevel: 1
+  weight: 100
   armourValue: 30
   type: 0
   value: 350
   maxHealth: 18
+  abilities:
+  - {fileID: 11400000, guid: cd6ac93939c4e2d40a30e3627bc167c9, type: 2}

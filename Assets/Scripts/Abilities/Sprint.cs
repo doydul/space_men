@@ -11,7 +11,7 @@ public class Sprint : Ability {
 
     public override void Use() {
         owner.actionsSpent += 1;
-        owner.tilesMoved -= owner.totalMovement;
+        owner.tilesMoved -= owner.sprintMovement;
         owner.RefreshUI();
     }
 }

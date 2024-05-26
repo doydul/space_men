@@ -48,10 +48,13 @@ public class Alien : Actor {
         }
     }
 
-    public override void Hurt(int damage) {
+    public override void Hurt(int damage, DamageType damageType = DamageType.Normal) {
         PlayAudio(audio.hurt.Sample());
-        if (damage <= armour) {
-            base.Hurt(damage / 2);
+        int effectiveArmour = damageType == DamageType.Energy ? armour / 2 : armour;
+        if (damage <= effectiveArmour / 2) {
+            base.Hurt((int)Mathf.Round(damage / 4f));
+        } else if (damage <= effectiveArmour) {
+            base.Hurt((int)Mathf.Round(damage / 2f));
         } else {
             base.Hurt(damage);
         }
