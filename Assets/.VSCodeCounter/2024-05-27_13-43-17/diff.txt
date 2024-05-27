@@ -1,0 +1,51 @@
+Date : 2024-05-27 13:43:17
+Directory : c:\Users\lewis\code\space_men\Assets\Src
+Total : 23 files,  -857 codes, -13 comments, -211 blanks, all -1081 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C#       |         23 |       -857 |        -13 |       -211 |     -1,081 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                         | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                            |         23 |       -857 |        -13 |       -211 |     -1,081 |
+| Algorithms                                                                                   |         21 |       -780 |        -13 |       -195 |       -988 |
+| Algorithms (Files)                                                                           |         15 |       -617 |        -13 |       -158 |       -788 |
+| Algorithms\Iterators                                                                         |          6 |       -163 |          0 |        -37 |       -200 |
+| Data                                                                                         |          2 |        -77 |          0 |        -16 |        -93 |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                     | language | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\AlienPathFinder.cs                       | C#       |        -50 |          0 |        -11 |        -61 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\AlienPathFinder2.cs                      | C#       |       -109 |         -7 |        -27 |       -143 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\ExplosionCoverage.cs                     | C#       |        -19 |          0 |         -8 |        -27 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\ExplosionGenerator.cs                    | C#       |        -25 |          0 |         -6 |        -31 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\FogGrid.cs                               | C#       |        -17 |          0 |         -5 |        -22 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\Gaussian.cs                              | C#       |        -16 |          0 |         -5 |        -21 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\IAlienGrid.cs                            | C#       |         -5 |          0 |         -3 |         -8 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\IBlocker.cs                              | C#       |         -5 |          0 |         -4 |         -9 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\IPathable.cs                             | C#       |         -4 |          0 |         -3 |         -7 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\ISpawnable.cs                            | C#       |         -5 |          0 |         -3 |         -8 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\Iterators\AdjacentSquaresGridIterator.cs | C#       |        -19 |          0 |         -6 |        -25 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\Iterators\GridIterator.cs                | C#       |        -65 |          0 |        -13 |        -78 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\Iterators\IIterableGrid.cs               | C#       |         -4 |          0 |         -3 |         -7 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\Iterators\LayeredGridIterator.cs         | C#       |        -28 |          0 |         -5 |        -33 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\Iterators\NthLayerGridIterator.cs        | C#       |        -22 |          0 |         -5 |        -27 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\Iterators\RadiusGridIterator.cs          | C#       |        -25 |          0 |         -5 |        -30 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\LineOfSight.cs                           | C#       |        -32 |          0 |         -5 |        -37 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\Path.cs                                  | C#       |        -46 |          0 |        -12 |        -58 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\PathFinder.cs                            | C#       |       -135 |         -2 |        -29 |       -166 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\PathFinder2.cs                           | C#       |        -99 |         -4 |        -27 |       -130 |
+| c:\Users\lewis\code\space_men\Assets\Src\Algorithms\SpawnableLocations.cs                    | C#       |        -50 |          0 |        -10 |        -60 |
+| c:\Users\lewis\code\space_men\Assets\Src\Data\Armour.cs                                      | C#       |        -44 |          0 |         -9 |        -53 |
+| c:\Users\lewis\code\space_men\Assets\Src\Data\Weapon.cs                                      | C#       |        -33 |          0 |         -7 |        -40 |
+| Total                                                                                        |          |       -857 |        -13 |       -211 |     -1,081 |
++----------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

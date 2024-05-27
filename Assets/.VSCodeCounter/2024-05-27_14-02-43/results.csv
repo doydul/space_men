@@ -1,0 +1,141 @@
+"filename", "language", "C#", "HLSL", "Log", "JSON", "ShaderLab", "Markdown", "comment", "blank", "total"
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-12-55\details.md", "Markdown", 0, 0, 0, 0, 0, 544, 0, 6, 550
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-12-55\diff-details.md", "Markdown", 0, 0, 0, 0, 0, 9, 0, 6, 15
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-12-55\diff.md", "Markdown", 0, 0, 0, 0, 0, 12, 0, 7, 19
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-12-55\results.json", "JSON", 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-12-55\results.md", "Markdown", 0, 0, 0, 0, 0, 83, 0, 7, 90
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-38\details.md", "Markdown", 0, 0, 0, 0, 0, 86, 0, 6, 92
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-38\diff-details.md", "Markdown", 0, 0, 0, 0, 0, 467, 0, 6, 473
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-38\diff.md", "Markdown", 0, 0, 0, 0, 0, 75, 0, 7, 82
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-38\results.json", "JSON", 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-38\results.md", "Markdown", 0, 0, 0, 0, 0, 22, 0, 7, 29
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-54\details.md", "Markdown", 0, 0, 0, 0, 0, 440, 0, 6, 446
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-54\diff-details.md", "Markdown", 0, 0, 0, 0, 0, 517, 0, 6, 523
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-54\diff.md", "Markdown", 0, 0, 0, 0, 0, 65, 0, 7, 72
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-54\results.json", "JSON", 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-54\results.md", "Markdown", 0, 0, 0, 0, 0, 55, 0, 7, 62
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_13-43-17\details.md", "Markdown", 0, 0, 0, 0, 0, 417, 0, 6, 423
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_13-43-17\diff-details.md", "Markdown", 0, 0, 0, 0, 0, 32, 0, 6, 38
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_13-43-17\diff.md", "Markdown", 0, 0, 0, 0, 0, 18, 0, 7, 25
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_13-43-17\results.json", "JSON", 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_13-43-17\results.md", "Markdown", 0, 0, 0, 0, 0, 52, 0, 7, 59
+"c:\Users\lewis\code\space_men\Assets\Editor\MapEditor.cs", "C#", 240, 0, 0, 0, 0, 0, 3, 29, 272
+"c:\Users\lewis\code\space_men\Assets\Editor\MapInstantiatorEditor.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 3, 14
+"c:\Users\lewis\code\space_men\Assets\Packages\ComboPack\SciFiSkin\Scripts\ShowSliderValue.cs", "C#", 13, 0, 0, 0, 0, 0, 0, 2, 15
+"c:\Users\lewis\code\space_men\Assets\Packages\ComboPack\SciFiSkin\Scripts\TiltWindow.cs", "C#", 23, 0, 0, 0, 0, 0, 0, 7, 30
+"c:\Users\lewis\code\space_men\Assets\Plugins\Editor\CompileTime.cs", "C#", 34, 0, 0, 0, 0, 0, 0, 5, 39
+"c:\Users\lewis\code\space_men\Assets\Resources\BillingMode.json", "JSON", 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\Users\lewis\code\space_men\Assets\Scripts\Abilities\Ability.cs", "C#", 13, 0, 0, 0, 0, 0, 0, 5, 18
+"c:\Users\lewis\code\space_men\Assets\Scripts\Abilities\AbilityGroup.cs", "C#", 10, 0, 0, 0, 0, 0, 0, 3, 13
+"c:\Users\lewis\code\space_men\Assets\Scripts\Abilities\FireOrdnance.cs", "C#", 45, 0, 0, 0, 0, 0, 1, 6, 52
+"c:\Users\lewis\code\space_men\Assets\Scripts\Abilities\FullAuto.cs", "C#", 25, 0, 0, 0, 0, 0, 0, 6, 31
+"c:\Users\lewis\code\space_men\Assets\Scripts\Abilities\LayDownFire.cs", "C#", 42, 0, 0, 0, 0, 0, 0, 9, 51
+"c:\Users\lewis\code\space_men\Assets\Scripts\Abilities\Overwatch.cs", "C#", 31, 0, 0, 0, 0, 0, 0, 7, 38
+"c:\Users\lewis\code\space_men\Assets\Scripts\Abilities\ReactionAbility.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 2, 8
+"c:\Users\lewis\code\space_men\Assets\Scripts\Abilities\Reload.cs", "C#", 13, 0, 0, 0, 0, 0, 0, 3, 16
+"c:\Users\lewis\code\space_men\Assets\Scripts\Abilities\Sprint.cs", "C#", 14, 0, 0, 0, 0, 0, 0, 3, 17
+"c:\Users\lewis\code\space_men\Assets\Scripts\Abilities\StandardShoot.cs", "C#", 9, 0, 0, 0, 0, 0, 0, 2, 11
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\AlienAudioProfile.cs", "C#", 10, 0, 0, 0, 0, 0, 0, 2, 12
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\AlienUnlocks.cs", "C#", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\AudioClipProfile.cs", "C#", 7, 0, 0, 0, 0, 0, 0, 1, 8
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\AudioCollection.cs", "C#", 7, 0, 0, 0, 0, 0, 0, 2, 9
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\DamageType.cs", "C#", 5, 0, 0, 0, 0, 0, 0, 0, 5
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\GameplayOperations.cs", "C#", 164, 0, 0, 0, 0, 0, 5, 13, 182
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\Inventory.cs", "C#", 16, 0, 0, 0, 0, 0, 0, 4, 20
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\MapGenerator.cs", "C#", 345, 0, 0, 0, 0, 0, 3, 48, 396
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\MapPathing.cs", "C#", 105, 0, 0, 0, 0, 0, 0, 11, 116
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\Noise.cs", "C#", 272, 0, 0, 0, 0, 0, 90, 50, 412
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\PlayerSave.cs", "C#", 22, 0, 0, 0, 0, 0, 0, 5, 27
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\SoldierNameGenerator.cs", "C#", 14, 0, 0, 0, 0, 0, 0, 4, 18
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\Trait.cs", "C#", 4, 0, 0, 0, 0, 0, 0, 0, 4
+"c:\Users\lewis\code\space_men\Assets\Scripts\Bin\WeaponAudioProfile.cs", "C#", 9, 0, 0, 0, 0, 0, 0, 3, 12
+"c:\Users\lewis\code\space_men\Assets\Scripts\DataObjects\EnemyProfileSet.cs", "C#", 27, 0, 0, 0, 0, 0, 0, 2, 29
+"c:\Users\lewis\code\space_men\Assets\Scripts\DataObjects\EnemySpawnTracker.cs", "C#", 4, 0, 0, 0, 0, 0, 0, 1, 5
+"c:\Users\lewis\code\space_men\Assets\Scripts\DataObjects\InventoryItem.cs", "C#", 17, 0, 0, 0, 0, 0, 0, 5, 22
+"c:\Users\lewis\code\space_men\Assets\Scripts\DataObjects\MetaSoldier.cs", "C#", 10, 0, 0, 0, 0, 0, 0, 2, 12
+"c:\Users\lewis\code\space_men\Assets\Scripts\DataObjects\MetaSquad.cs", "C#", 42, 0, 0, 0, 0, 0, 0, 6, 48
+"c:\Users\lewis\code\space_men\Assets\Scripts\DataObjects\Point.cs", "C#", 19, 0, 0, 0, 0, 0, 0, 7, 26
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\AbilityIcon.cs", "C#", 20, 0, 0, 0, 0, 0, 0, 5, 25
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\AbilityInfoPanel.cs", "C#", 18, 0, 0, 0, 0, 0, 0, 6, 24
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Actor.cs", "C#", 121, 0, 0, 0, 0, 0, 0, 20, 141
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Alien.cs", "C#", 85, 0, 0, 0, 0, 0, 0, 16, 101
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\AlienData.cs", "C#", 21, 0, 0, 0, 0, 0, 0, 4, 25
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\AmmoCrate.cs", "C#", 2, 0, 0, 0, 0, 0, 0, 1, 3
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\AmmoGauge.cs", "C#", 28, 0, 0, 0, 0, 0, 0, 6, 34
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\AmmoIcon.cs", "C#", 9, 0, 0, 0, 0, 0, 0, 3, 12
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\AnimationManager.cs", "C#", 21, 0, 0, 0, 0, 0, 0, 6, 27
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Armour.cs", "C#", 49, 0, 0, 0, 0, 0, 0, 10, 59
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\AudioPlayer.cs", "C#", 15, 0, 0, 0, 0, 0, 0, 5, 20
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\BloodSplatController.cs", "C#", 39, 0, 0, 0, 0, 0, 0, 12, 51
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\ButtonHandler.cs", "C#", 38, 0, 0, 0, 0, 0, 0, 10, 48
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Chest.cs", "C#", 3, 0, 0, 0, 0, 0, 0, 0, 3
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Door.cs", "C#", 2, 0, 0, 0, 0, 0, 0, 1, 3
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Fire.cs", "C#", 19, 0, 0, 0, 0, 0, 0, 6, 25
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\FogManager.cs", "C#", 20, 0, 0, 0, 0, 0, 0, 4, 24
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\HiveMind.cs", "C#", 180, 0, 0, 0, 0, 0, 3, 23, 206
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\InformationPanel.cs", "C#", 9, 0, 0, 0, 0, 0, 0, 3, 12
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\InterfaceController.cs", "C#", 44, 0, 0, 0, 0, 0, 0, 10, 54
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\ItemReward.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 3, 9
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Loot.cs", "C#", 5, 0, 0, 0, 0, 0, 0, 1, 6
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\LootGenerator.cs", "C#", 33, 0, 0, 0, 0, 0, 0, 7, 40
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\LootSpawner.cs", "C#", 13, 0, 0, 0, 0, 0, 0, 5, 18
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Map.cs", "C#", 109, 0, 0, 0, 0, 0, 0, 17, 126
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\MapHighlighter.cs", "C#", 32, 0, 0, 0, 0, 0, 0, 11, 43
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\MapInputController.cs", "C#", 87, 0, 0, 0, 0, 0, 1, 11, 99
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\MapInstantiator.cs", "C#", 161, 0, 0, 0, 0, 0, 1, 14, 176
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\MapIteration.cs", "C#", 64, 0, 0, 0, 0, 0, 0, 11, 75
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\MapMarkerController.cs", "C#", 36, 0, 0, 0, 0, 0, 0, 10, 46
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\ModalPopup.cs", "C#", 23, 0, 0, 0, 0, 0, 0, 7, 30
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\RoomTemplate.cs", "C#", 31, 0, 0, 0, 0, 0, 0, 5, 36
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\RoomTemplateTile.cs", "C#", 25, 0, 0, 0, 0, 0, 0, 3, 28
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\SFXLayer.cs", "C#", 45, 0, 0, 0, 0, 0, 0, 9, 54
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Soldier.cs", "C#", 172, 0, 0, 0, 0, 0, 0, 22, 194
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Spawner.cs", "C#", 13, 0, 0, 0, 0, 0, 0, 6, 19
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\StartLocation.cs", "C#", 13, 0, 0, 0, 0, 0, 0, 5, 18
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Tile.cs", "C#", 90, 0, 0, 0, 0, 0, 0, 21, 111
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\TurnCounter.cs", "C#", 22, 0, 0, 0, 0, 0, 0, 8, 30
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\UIState.cs", "C#", 18, 0, 0, 0, 0, 0, 0, 5, 23
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Vent.cs", "C#", 2, 0, 0, 0, 0, 0, 0, 1, 3
+"c:\Users\lewis\code\space_men\Assets\Scripts\EngineLayer\Weapon.cs", "C#", 38, 0, 0, 0, 0, 0, 0, 7, 45
+"c:\Users\lewis\code\space_men\Assets\Scripts\Interfaces\IMask.cs", "C#", 4, 0, 0, 0, 0, 0, 0, 2, 6
+"c:\Users\lewis\code\space_men\Assets\Scripts\Interfaces\IWeighted.cs", "C#", 3, 0, 0, 0, 0, 0, 0, 0, 3
+"c:\Users\lewis\code\space_men\Assets\Scripts\Interfaces\PriorityQueue.cs", "C#", 498, 0, 0, 0, 0, 0, 308, 146, 952
+"c:\Users\lewis\code\space_men\Assets\Scripts\Main.cs", "C#", 43, 0, 0, 0, 0, 0, 7, 16, 66
+"c:\Users\lewis\code\space_men\Assets\Scripts\Objectives\GetToTarget.cs", "C#", 22, 0, 0, 0, 0, 0, 0, 5, 27
+"c:\Users\lewis\code\space_men\Assets\Scripts\Objectives\GrabTheLoot.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 2, 8
+"c:\Users\lewis\code\space_men\Assets\Scripts\Objectives\Objective.cs", "C#", 6, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\Users\lewis\code\space_men\Assets\Scripts\Objectives\Objectives.cs", "C#", 53, 0, 0, 0, 0, 0, 0, 14, 67
+"c:\Users\lewis\code\space_men\Assets\Scripts\Tracer.cs", "C#", 20, 0, 0, 0, 0, 0, 0, 7, 27
+"c:\Users\lewis\code\space_men\Assets\Scripts\Util\Extensions.cs", "C#", 41, 0, 0, 0, 0, 0, 0, 5, 46
+"c:\Users\lewis\code\space_men\Assets\Src\Data\EnemyProfile.cs", "C#", 76, 0, 0, 0, 0, 0, 0, 11, 87
+"c:\Users\lewis\code\space_men\Assets\Src\Events\EventListener.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 4, 15
+"c:\Users\lewis\code\space_men\Assets\Src\Events\GameEvents.cs", "C#", 32, 0, 0, 0, 0, 0, 0, 12, 44
+"c:\Users\lewis\code\space_men\Assets\Src\GameLogic\CameraController.cs", "C#", 11, 0, 0, 0, 0, 0, 0, 4, 15
+"c:\Users\lewis\code\space_men\Assets\Src\GameLogic\ICameraController.cs", "C#", 3, 0, 0, 0, 0, 0, 0, 2, 5
+"c:\Users\lewis\code\space_men\Assets\Src\New\Attributes\Dependency.cs", "C#", 3, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\Users\lewis\code\space_men\Assets\Src\New\Attributes\MakeObject.cs", "C#", 3, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\Users\lewis\code\space_men\Assets\Src\New\DependencyInjector.cs", "C#", 56, 0, 0, 0, 0, 0, 0, 10, 66
+"c:\Users\lewis\code\space_men\Assets\Src\New\Interfaces\IInstantiator.cs", "C#", 5, 0, 0, 0, 0, 0, 0, 2, 7
+"c:\Users\lewis\code\space_men\Assets\Src\UI\UIAnimator.cs", "C#", 100, 0, 0, 0, 0, 0, 0, 20, 120
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader", "ShaderLab", 0, 0, 0, 0, 113, 0, 2, 31, 146
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader", "ShaderLab", 0, 0, 0, 0, 123, 0, 3, 30, 156
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader", "ShaderLab", 0, 0, 0, 0, 113, 0, 2, 31, 146
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader", "ShaderLab", 0, 0, 0, 0, 253, 0, 4, 70, 327
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader", "ShaderLab", 0, 0, 0, 0, 198, 0, 10, 51, 259
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader", "ShaderLab", 0, 0, 0, 0, 193, 0, 8, 52, 253
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader", "ShaderLab", 0, 0, 0, 0, 192, 0, 8, 51, 251
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader", "ShaderLab", 0, 0, 0, 0, 104, 0, 8, 28, 140
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader", "ShaderLab", 0, 0, 0, 0, 123, 0, 4, 33, 160
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader", "ShaderLab", 0, 0, 0, 0, 253, 0, 4, 70, 327
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader", "ShaderLab", 0, 0, 0, 0, 111, 0, 0, 21, 132
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc", "HLSL", 0, 63, 0, 0, 0, 0, 2, 20, 85
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc", "HLSL", 0, 62, 0, 0, 0, 0, 6, 13, 81
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc", "HLSL", 0, 75, 0, 0, 0, 0, 7, 18, 100
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl", "HLSL", 0, 130, 0, 0, 0, 0, 18, 31, 179
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader", "ShaderLab", 0, 0, 0, 0, 253, 0, 4, 65, 322
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader", "ShaderLab", 0, 0, 0, 0, 82, 0, 4, 21, 107
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader", "ShaderLab", 0, 0, 0, 0, 290, 0, 15, 85, 390
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc", "HLSL", 0, 129, 0, 0, 0, 0, 2, 35, 166
+"c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Sprites\EmojiOne.json", "JSON", 0, 0, 0, 155, 0, 0, 0, 2, 157
+"c:\Users\lewis\code\space_men\Assets\Textures\debug.log", "Log", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"Total", "-", 4412, 459, 0, 160, 2401, 2894, 533, 1729, 12588

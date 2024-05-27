@@ -90,11 +90,6 @@ public class Soldier : Actor {
         reaction = null;
     }
 
-    //
-    public void StartShootingPhase() {
-        GameLogicComponent.userInterface.ShowAmmoIndicators(this);
-    }
-
     public bool WithinSightArc(Vector2 targetPosition) {
       var distance = gridLocation - targetPosition;
       if (direction == Direction.Up) {
