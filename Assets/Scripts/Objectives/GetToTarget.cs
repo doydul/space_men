@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class GetToTarget : Objective {
 
     public override bool complete { get {
@@ -19,6 +21,7 @@ public class GetToTarget : Objective {
     Map.Room room;
 
     public override void Init(Map.Room room) {
-        this.room = room;
+        this.room = room; 
+        foreach (var tile in room.tiles) tile.SetTint(new Color(0.2f, 0.9f, 0.2f));
     }
 }

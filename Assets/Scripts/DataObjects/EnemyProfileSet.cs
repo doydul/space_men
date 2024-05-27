@@ -12,7 +12,7 @@ public class EnemyProfileSet {
     public List<EnemyProfile> primaries = new();
     public List<EnemyProfile> secondaries = new();
 
-    public static EnemyProfileSet Generate(int difficulty) {
+    public static EnemyProfileSet Generate(float difficulty) {
         var set = new EnemyProfileSet {
             groupishness = 0,
             armouredness = 0,

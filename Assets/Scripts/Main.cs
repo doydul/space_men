@@ -16,11 +16,10 @@ public class Main : MonoBehaviour {
     void OnEnable() {
         var save = new PlayerSave();
         PlayerSave.current = save;
-        save.alienUnlocks.Unlock("Medium");
-        save.alienUnlocks.Unlock("Runner");
+        save.alienUnlocks.Unlock("Swarmer");
 
         MapInstantiator.instance.Generate();
-        Map.instance.enemyProfiles = EnemyProfileSet.Generate(1);
+        Map.instance.enemyProfiles = EnemyProfileSet.Generate(save.difficulty);
         Objectives.AddToMap(Map.instance, Map.instance.rooms[1]);
 
         var squad = MetaSquad.GenerateDefault();
@@ -46,9 +45,9 @@ public class Main : MonoBehaviour {
         soldier.armour = Armour.Get(metaSoldier.armour.name);
         soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
         // soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
-        soldier.maxHealth = 20;
-        soldier.health = 20;
-        soldier.sightRange = 10;
+        soldier.maxHealth = soldier.armour.maxHealth;
+        soldier.health = soldier.armour.maxHealth;
+        soldier.sightRange = soldier.armour.sightRange;
 
         foreach (var ability in soldier.weapon.abilities) ability.Attach(soldier);
         foreach (var ability in soldier.armour.abilities) ability.Attach(soldier);

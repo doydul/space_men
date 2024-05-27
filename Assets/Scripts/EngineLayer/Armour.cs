@@ -20,6 +20,7 @@ public class Armour : ScriptableObject, IWeighted {
     public Type type;
     public int value;
     public int maxHealth;
+    public int sightRange;
     public Ability[] abilities;
     public Trait[] traits;
 

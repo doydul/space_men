@@ -52,6 +52,8 @@ public class Tile : MonoBehaviour {
         actor.localScale = new Vector3(1, 1, 1);
     }
 
+    public void SetTint(Color color) => backgroundSprite.color = color;
+
     public void RemoveActor() {
         actor = null;
     }
