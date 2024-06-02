@@ -44,7 +44,7 @@ public class HiveMind : MonoBehaviour {
         foreach (var profile in Map.instance.enemyProfiles.secondaries) {
             spawnTrackers.Add(new EnemySpawnTracker {
                 profile = profile,
-                remainingThreat = 50 / Map.instance.enemyProfiles.secondaries.Count,
+                remainingThreat = 33,
             });
         }
 
@@ -162,7 +162,7 @@ public class HiveMind : MonoBehaviour {
             i++;
         }
         foreach (var tracker in spawnTrackers) {
-            int nominalTurnCount = 10;
+            int nominalTurnCount = 12;
             float avgSpawnsPerTurn = ((float)tracker.remainingThreat / tracker.profile.threat) / nominalTurnCount;
             Debug.Log($"Spawn chance: {avgSpawnsPerTurn}");
             while (Random.value < avgSpawnsPerTurn) {

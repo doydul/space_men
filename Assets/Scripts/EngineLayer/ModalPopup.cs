@@ -43,6 +43,7 @@ public class ModalPopup : MonoBehaviour {
         ClearContent();
         DisplayContent(Resources.Load<GameObject>("Prefabs/UI/MissionCompleteNotification"));
         OnOk(() => {
+            Campaign.NextLevel(PlayerSave.current);
             SceneManager.LoadScene("CampaignUI");
         });
     }

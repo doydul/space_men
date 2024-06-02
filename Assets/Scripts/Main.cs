@@ -24,8 +24,9 @@ public class Main : MonoBehaviour {
         }
 
         MapInstantiator.instance.Generate();
-        Map.instance.enemyProfiles = EnemyProfileSet.Generate(PlayerSave.current.difficulty);
+        Map.instance.enemyProfiles = EnemyProfileSet.Generate(PlayerSave.current);
         foreach (var enemyProfile in Map.instance.enemyProfiles.primaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
+        foreach (var enemyProfile in Map.instance.enemyProfiles.secondaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
         Objectives.AddToMap(Map.instance, Map.instance.rooms[1]);
 
         int j = 0;
