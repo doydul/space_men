@@ -16,7 +16,6 @@ public class Objectives {
         var objectives = new Objectives { map = map, startingRoom = startingRoom };
         objectives.AddObjective(new GetToTarget { required = true });
         objectives.AddObjective(new GrabTheLoot());
-        objectives.AddObjective(new GrabTheLoot());
 
         map.objectives = objectives;
 
@@ -32,15 +31,13 @@ public class Objectives {
             .Where(room => !roomDistances.ContainsKey(room.id))
             .MaxBy(room => roomDistances.Keys.ToList().Aggregate(0, (acc, roomId) => acc + roomDistances[roomId][room.id])).id;
         roomDistances.Add(objectiveRoomId, GetDistancesFrom(map.rooms[objectiveRoomId]));
-        Debug.Log($"Adding Objective: {map.rooms[objectiveRoomId].tiles[0].gridLocation}", map.rooms[objectiveRoomId].tiles[0]);
         objective.Init(map.rooms[objectiveRoomId]);
         objectives.Add(objective);
     }
 
     void CheckCompletion() {
-        Debug.Log("Checking objectives...");
         if (allComplete) {
-            Debug.Log("MISSION COMPLETE!");
+            ModalPopup.instance.DisplayEOL();
         }
     }
 

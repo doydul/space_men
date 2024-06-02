@@ -14,20 +14,22 @@ public class Main : MonoBehaviour {
     }
 
     void OnEnable() {
-        var save = new PlayerSave();
-        PlayerSave.current = save;
-        save.alienUnlocks.Unlock("Swarmer");
+        if (PlayerSave.current == null) {
+            var save = new PlayerSave();
+            PlayerSave.current = save;
+
+            var squad = MetaSquad.GenerateDefault();
+            save.squad = squad;
+            save.Save(0);
+        }
 
         MapInstantiator.instance.Generate();
-        Map.instance.enemyProfiles = EnemyProfileSet.Generate(save.difficulty);
+        Map.instance.enemyProfiles = EnemyProfileSet.Generate(PlayerSave.current.difficulty);
+        foreach (var enemyProfile in Map.instance.enemyProfiles.primaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
         Objectives.AddToMap(Map.instance, Map.instance.rooms[1]);
 
-        var squad = MetaSquad.GenerateDefault();
-        save.squad = squad;
-        save.Save(0);
-
         int j = 0;
-        foreach (var metaSoldier in squad.GetMetaSoldiers()) {
+        foreach (var metaSoldier in PlayerSave.current.squad.GetMetaSoldiers()) {
             InstantiateSoldier(metaSoldier, Map.instance.startLocations[j].gridLocation);
             j++;
         }

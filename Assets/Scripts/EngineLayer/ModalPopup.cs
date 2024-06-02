@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System;
 using System.Collections.Generic;
 
 public class ModalPopup : MonoBehaviour {
 
     public Transform container;
+
+    Action onOk;
     
     public static ModalPopup instance;
     void Awake() => instance = this;
@@ -24,7 +28,22 @@ public class ModalPopup : MonoBehaviour {
         return Instantiate(prefab, container).gameObject;
     }
 
+    public void OnOk(Action callback) => onOk = callback;
+
     public void HandleOk() {
-        Hide();
+        if (onOk != null) {
+            onOk();
+            onOk = null;
+        } else {
+            Hide();
+        }
+    }
+
+    public void DisplayEOL() {
+        ClearContent();
+        DisplayContent(Resources.Load<GameObject>("Prefabs/UI/MissionCompleteNotification"));
+        OnOk(() => {
+            SceneManager.LoadScene("CampaignUI");
+        });
     }
 }

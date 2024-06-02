@@ -7,11 +7,8 @@ using UnityEngine;
 public class MetaSquad {
     
     [SerializeField] List<MetaSoldier> metaSoldiers = new();
-    public int credits;
 
-    public IEnumerable<MetaSoldier> GetMetaSoldiers() {
-        return metaSoldiers;
-    }
+    public IEnumerable<MetaSoldier> GetMetaSoldiers() => metaSoldiers;
 
     public MetaSoldier GetMetaSoldier(string id) {
         return metaSoldiers.Find(meta => meta.id == id);
@@ -34,7 +31,7 @@ public class MetaSquad {
             result.AddMetaSoldier(new MetaSoldier() {
                 name = "John Doe",
                 armour = new InventoryItem() {
-                    name = "Basic",
+                    name = "Flak Vest",
                     type = InventoryItem.Type.Armour
                 },
                 weapon = new InventoryItem() {

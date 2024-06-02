@@ -164,8 +164,8 @@ public class MapGenerator {
         elements.Add(firstRoom);
         Element lastEl = firstRoom;
         int totalAttempts = 0;
-        int roomCount = 6;
-        int corridorCount = 12;
+        int roomCount = 4;
+        int corridorCount = 8;
         while (roomCount > 0 && totalAttempts < MAX_ATTEMPTS) {
             totalAttempts++;
             var port = lastEl.unnocupiedPorts.Sample();
@@ -202,7 +202,7 @@ public class MapGenerator {
         }
 
         // secondary rooms
-        roomCount += 5;
+        roomCount += 3;
         while ((roomCount > 0 || corridorCount > 0) && totalAttempts < MAX_ATTEMPTS) {
             totalAttempts++;
             if (Random.value < 0.5f) {
@@ -251,6 +251,8 @@ public class MapGenerator {
         while (corridorCount > 0 && totalAttempts < MAX_ATTEMPTS) {
             totalAttempts++;
             var element = elements.GetElements().Where(el => el.unnocupiedPorts.Any()).Sample();
+            if (element == null) break;
+            
             var port = element.unnocupiedPorts.Sample();
             var corridor = new Corridor {
                 length = Random.Range(2, 4),

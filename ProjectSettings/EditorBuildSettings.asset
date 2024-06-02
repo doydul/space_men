@@ -6,37 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 2496fc6cc35344a4b9fbfd74b0a1ba41
-  - enabled: 1
-    path: Assets/Scenes/Campaigns/Default/First Mission.unity
-    guid: 7585f0d6278914f9093bbd402dbe8bcf
-  - enabled: 1
-    path: Assets/Scenes/MissionOverview.unity
-    guid: 00880ec89ce2c4709ba7c99e798792a4
-  - enabled: 1
-    path: Assets/Scenes/Armoury.unity
-    guid: a190ee0de428c49ca990f746b8ea0b16
-  - enabled: 1
-    path: Assets/Scenes/InventoryView.unity
-    guid: 94aafde64e09c479e95dfc4c1aa58331
-  - enabled: 1
-    path: Assets/Scenes/SquadSelect.unity
-    guid: efc1850791b6145f59b7573f7c3595c2
-  - enabled: 1
-    path: Assets/Scenes/Campaigns/Default/Second Mission.unity
-    guid: cff800085a7bf4ff8a2af185864abf2d
-  - enabled: 1
-    path: Assets/Scenes/Campaigns/Default/Mission.unity
+    path: Assets/Scenes/Mission.unity
     guid: 1ea7310543555447790654f4fe2268fc
   - enabled: 1
-    path: Assets/Scenes/SelectionMenu.unity
-    guid: b0546761b73c44ae4810e6d4a6983f3f
-  - enabled: 1
-    path: Assets/Scenes/MissionCompleteView.unity
-    guid: fdf12507fa97440cd95da92604d6642c
-  - enabled: 1
-    path: Assets/Scenes/WorkshopMenu.unity
-    guid: b9498cdab170544788e5b738e345d94e
+    path: Assets/Scenes/CampaignUI.unity
+    guid: e4686576343dec4409af544a530bc5e4
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

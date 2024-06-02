@@ -5,6 +5,7 @@ using UnityEngine;
 public static class Extensions {
 
     public static T Sample<T>(this IEnumerable<T> list) {
+        if (list.Count() <= 0) return default(T);
         return list.ElementAt(Random.Range(0, list.Count()));
     }
 
@@ -42,5 +43,11 @@ public static class Extensions {
             }
         }
         return result;
+    }
+
+    public static void DestroyChildren(this Transform parent, int startIndex = 0) {
+        for (int i = startIndex; i < parent.childCount; i++) {
+            MonoBehaviour.Destroy(parent.GetChild(i).gameObject);
+        }
     }
 }
