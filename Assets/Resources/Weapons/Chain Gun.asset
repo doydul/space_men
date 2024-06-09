@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
   techLevel: 1
-  weight: 100
+  weight: 66
   accuracy: 60
   minDamage: 1
   maxDamage: 6
@@ -32,6 +32,7 @@ MonoBehaviour:
   description: 
   abilities:
   - {fileID: 11400000, guid: d6ec2b1b70fea9f48bc35356d4660161, type: 2}
+  traits: 
   weaponPrefab: {fileID: 463971122425096425, guid: 779e19cfde32104428f6cb87d997ed73,
     type: 3}
   tracerPrefab: {fileID: 2193078054948271443, guid: 6e949ba4b7971ef429bfd25919b032b7,

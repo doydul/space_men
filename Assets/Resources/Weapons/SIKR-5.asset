@@ -21,7 +21,7 @@ MonoBehaviour:
   damageType: 0
   shots: 3
   ammo: 5
-  range: 12
+  range: 16
   blast: 0
   flames: 0
   flameDuration: 0
@@ -35,6 +35,7 @@ MonoBehaviour:
     the Imperium'
   abilities:
   - {fileID: 11400000, guid: 4f8613db8b7396148a2bee97be3a698c, type: 2}
+  traits: 
   weaponPrefab: {fileID: 7944426211514159566, guid: f5a4bb87d722bf54498044eb1a11cc64,
     type: 3}
   tracerPrefab: {fileID: 2193078054948271443, guid: 6e949ba4b7971ef429bfd25919b032b7,

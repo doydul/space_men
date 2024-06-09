@@ -48,11 +48,13 @@ public class HiveMind : MonoBehaviour {
             });
         }
 
+        int tileCount = weightedTiles.Count();
+
         foreach (var tracker in spawnTrackers) {
             int threatPortion = tracker.remainingThreat * (100 - tracker.profile.spawnPercentage) / 100;
             tracker.remainingThreat -= threatPortion;
             while (threatPortion > 0) {
-                var wTile = weightedTiles.WeightedSelect();
+                var wTile = weightedTiles.SampleWithCount(tileCount);
                 int groupSize = tracker.profile.AvailableGroupSize(Map.instance.enemyProfiles);
                 InstantiatePod(tracker.profile.typeName, groupSize, wTile.tile.gridLocation, false);
                 threatPortion -= tracker.profile.threat * groupSize;

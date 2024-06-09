@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74185e309a64414ab8481f0072091b0, type: 3}
   m_Name: Medium
   m_EditorClassIdentifier: 
-  unlocked: 1
   typeName: Medium
   difficultyLevel: 1
   threat: 10
@@ -32,4 +31,4 @@ MonoBehaviour:
       type: 1
       typeWeight: 60
     groupSize: 3
-  spawnPercentage: 10
+  spawnPercentage: 20

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c82adb107c94f71a0fd866728d0893, type: 3}
   m_Name: Sprinter
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 3
   armour: 0
-  accModifier: -15
+  accModifier: -10
   damage: 10
-  movement: 10
+  movement: 9
   audio: {fileID: 11400000, guid: eb32cf0b474ba604cac0cdfdfa8cad7d, type: 2}

@@ -9,6 +9,11 @@ public static class Extensions {
         return list.ElementAt(Random.Range(0, list.Count()));
     }
 
+    public static T SampleWithCount<T>(this IEnumerable<T> list, int count) {
+        if (count <= 0) return default(T);
+        return list.ElementAt(Random.Range(0, count));
+    }
+
     public static List<T> Sample<T>(this IEnumerable<T> list, int num) {
         if (list.Count() <= 0) return new List<T>();
         var tmpList = new List<T>(list);

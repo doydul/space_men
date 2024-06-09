@@ -23,7 +23,10 @@ public class Main : MonoBehaviour {
             save.Save(0);
         }
 
+        UnityEngine.Profiling.Profiler.BeginSample("Map Generation");
         MapInstantiator.instance.Generate();
+        UnityEngine.Profiling.Profiler.EndSample();
+
         Map.instance.enemyProfiles = EnemyProfileSet.Generate(PlayerSave.current);
         foreach (var enemyProfile in Map.instance.enemyProfiles.primaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
         foreach (var enemyProfile in Map.instance.enemyProfiles.secondaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
