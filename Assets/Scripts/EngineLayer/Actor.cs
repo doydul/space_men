@@ -10,6 +10,24 @@ public abstract class Actor : MonoBehaviour {
         Down,
         Right
     }
+    
+    public static Quaternion DirectionToRotation(Direction direction) => Quaternion.Euler(0, 0, (int)direction * 90);
+    public static Direction FacingToDirection(Vector2 facing) {
+        if (Mathf.Abs(facing.y) > Mathf.Abs(facing.x)) {
+            if (facing.y > 0) {
+                return Direction.Up;
+            } else if (facing.y < 0) {
+                return Direction.Down;
+            }
+        } else {
+            if (facing.x > 0) {
+                return Direction.Right;
+            } else if (facing.x < 0) {
+                return Direction.Left;
+            }
+        }
+        return Direction.Up;
+    }
 
     public Tile tile;
     public Transform image;
@@ -90,23 +108,11 @@ public abstract class Actor : MonoBehaviour {
 
     public void TurnTo(Direction direction) {
         this.direction = direction;
-        image.rotation = Quaternion.Euler(0, 0, rotation);
+        image.rotation = DirectionToRotation(direction);
     }
 
     public void TurnTo(Vector2 direction) {
-        if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x)) {
-            if (direction.y > 0) {
-                TurnTo(Direction.Up);
-            } else if (direction.y < 0) {
-                TurnTo(Direction.Down);
-            }
-        } else {
-            if (direction.x > 0) {
-                TurnTo(Direction.Right);
-            } else if (direction.x < 0) {
-                TurnTo(Direction.Left);
-            }
-        }
+        TurnTo(FacingToDirection(direction));
     }
 
     public void Remove() {

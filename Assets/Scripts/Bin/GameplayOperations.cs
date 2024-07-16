@@ -15,11 +15,14 @@ public static class GameplayOperations {
     
     public static IEnumerator PerformSoldierShoot(Soldier soldier, Alien target) {
         MakeNoise(target.gridLocation);
-        soldier.Face(target.gridLocation);
+        var diff = target.realLocation - soldier.realLocation;
+        var angle = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(diff.y, diff.x) - 90);
+        yield return PerformTurnAnimation(soldier, angle);
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < soldier.shots; i++) {
             yield return PerformSoldierSingleShot(soldier, target);
         }
+        yield return PerformTurnAnimation(soldier, Actor.FacingToDirection(target.gridLocation - soldier.gridLocation), true);
         soldier.RefreshUI();
     }
 
@@ -62,31 +65,37 @@ public static class GameplayOperations {
     }
 
     public static IEnumerator PerformActorMove(Actor actor, Map.Path path) {
+        MapHighlighter.instance.ClearHighlights();
         var soldiers = Map.instance.GetActors<Soldier>();
         for (int i = 1; i < path.nodes.Length; i++) {
             var tile = path.nodes[i].tile;
-
-            // fire damage
-            if (tile.onFire) {
+            
+            var facing = tile.gridLocation - path.nodes[i - 1].tile.gridLocation;
+            yield return PerformTurnAnimation(actor, Actor.FacingToDirection(facing));
+            yield return PerformMoveAnimation(actor, tile);
+            
+            
+            if (!tile.occupied) {
                 actor.MoveTo(tile);
-                actor.TurnTo(tile.gridLocation - path.nodes[i - 1].tile.gridLocation);
-                var damage = Random.Range(tile.fire.minDamage, tile.fire.maxDamage + 1);
-                actor.Hurt(damage);
-                yield return new WaitForSeconds(0.5f);
-                if (actor.dead) break;
-            }
-
-            // trigger reactions
-            foreach (var soldier in soldiers.Where(sol => sol.reaction != null)) {
-                if (soldier.reaction.TriggersReaction(tile, actor)) {
-                    actor.MoveTo(tile);
-                    actor.TurnTo(tile.gridLocation - path.nodes[i - 1].tile.gridLocation);
-                    CameraController.CentreCameraOn(tile);
-                    yield return soldier.reaction.PerformReaction(tile);
+                
+                // fire damage
+                if (tile.onFire) {
+                    var damage = Random.Range(tile.fire.minDamage, tile.fire.maxDamage + 1);
+                    actor.Hurt(damage);
+                    yield return new WaitForSeconds(0.5f);
                     if (actor.dead) break;
                 }
+
+                // trigger reactions
+                foreach (var soldier in soldiers.Where(sol => sol.reaction != null)) {
+                    if (soldier.reaction.TriggersReaction(tile, actor)) {
+                        CameraController.CentreCameraOn(tile);
+                        yield return soldier.reaction.PerformReaction(tile);
+                        if (actor.dead) break;
+                    }
+                }
+                if (actor.dead) break;
             }
-            if (actor.dead) break;
         }
         if (!actor.dead) {
             actor.MoveTo(path.last.tile);
@@ -101,6 +110,38 @@ public static class GameplayOperations {
             (actor as Soldier).HighlightActions();
             FogManager.instance.UpdateFog();
         }
+    }
+    
+    public static IEnumerator PerformMoveAnimation(Actor actor, Tile destinationTile) {
+        if (destinationTile.foggy) yield break;
+        float duration = actor is Soldier ? 2f / ((Soldier)actor).baseMovement : 2f / ((Alien)actor).movement;
+        var delta = destinationTile.foreground.position - actor.transform.position;
+        var startTime = Time.time;
+        var startPosition = actor.transform.localPosition;
+        var targetPosition = startPosition + delta;
+        while (Time.time - startTime < duration) {
+            yield return null;
+            float t = (Time.time - startTime) / duration;
+            actor.transform.localPosition = Vector3.Lerp(startPosition, targetPosition, t);
+            // CameraController.CentreCameraOn(actor);
+        }
+    }
+    
+    public static IEnumerator PerformTurnAnimation(Actor actor, Quaternion desiredRotation) {
+        if (actor.tile.foggy) yield break;
+        float duration = actor is Soldier ? 2f / ((Soldier)actor).baseMovement : 2f / ((Alien)actor).movement;
+        var startTime = Time.time;
+        var startRotation = actor.image.transform.rotation;   
+        while (Time.time - startTime < duration) {
+            float t = (Time.time - startTime) / duration;
+            actor.image.rotation = Quaternion.Slerp(startRotation, desiredRotation, t);
+            yield return null;
+        }
+    }
+    public static IEnumerator PerformTurnAnimation(Actor actor, Actor.Direction desiredFacing, bool force = false) {
+        if (!force && actor.direction == desiredFacing) yield break;
+        yield return PerformTurnAnimation(actor, Actor.DirectionToRotation(desiredFacing));
+        actor.TurnTo(desiredFacing);
     }
 
     public static IEnumerator PerformOpenDoor(Soldier soldier, Tile tile) {

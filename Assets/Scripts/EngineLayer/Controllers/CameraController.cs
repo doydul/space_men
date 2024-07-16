@@ -11,4 +11,11 @@ public class CameraController : MonoBehaviour {
         temp.y = tile.transform.position.y;
         instance.transform.position = temp;
     }
+    
+    public static void CentreCameraOn(Actor actor) {
+        var temp = instance.transform.position;
+        temp.x = actor.transform.position.x;
+        temp.y = actor.transform.position.y;
+        instance.transform.position = temp;
+    }
 }

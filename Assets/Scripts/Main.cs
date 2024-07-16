@@ -9,7 +9,7 @@ public class Main : MonoBehaviour {
     DependencyInjector factory = new();
 
     void Awake() {
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 35;
         instance = this;
     }
 
@@ -23,9 +23,7 @@ public class Main : MonoBehaviour {
             save.Save(0);
         }
 
-        UnityEngine.Profiling.Profiler.BeginSample("Map Generation");
         MapInstantiator.instance.Generate();
-        UnityEngine.Profiling.Profiler.EndSample();
 
         Map.instance.enemyProfiles = EnemyProfileSet.Generate(PlayerSave.current);
         foreach (var enemyProfile in Map.instance.enemyProfiles.primaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
