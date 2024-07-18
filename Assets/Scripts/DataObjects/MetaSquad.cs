@@ -9,6 +9,7 @@ public class MetaSquad {
     [SerializeField] List<MetaSoldier> metaSoldiers = new();
 
     public IEnumerable<MetaSoldier> GetMetaSoldiers() => metaSoldiers;
+    public int Count => metaSoldiers.Count;
 
     public MetaSoldier GetMetaSoldier(string id) {
         return metaSoldiers.Find(meta => meta.id == id);
@@ -18,6 +19,16 @@ public class MetaSquad {
         var id = Guid.NewGuid().ToString();
         metaSoldier.id = id;
         metaSoldiers.Add(metaSoldier);
+    }
+    
+    public MetaSoldier RemoveMetaSoldier(MetaSoldier metaSoldier) {
+        metaSoldiers.Remove(metaSoldier);
+        return metaSoldier;
+    }
+    public MetaSoldier RemoveMetaSoldier(int index) {
+        var metaSoldier = metaSoldiers[index];
+        metaSoldiers.RemoveAt(index);
+        return metaSoldier;
     }
 
     public static MetaSquad GenerateDefault() {

@@ -114,7 +114,7 @@ public static class GameplayOperations {
     
     public static IEnumerator PerformMoveAnimation(Actor actor, Tile destinationTile) {
         if (destinationTile.foggy) yield break;
-        float duration = actor is Soldier ? 2f / ((Soldier)actor).baseMovement : 2f / ((Alien)actor).movement;
+        float duration = actor is Soldier ? 1f / ((Soldier)actor).baseMovement : 1f / ((Alien)actor).movement;
         var delta = destinationTile.foreground.position - actor.transform.position;
         var startTime = Time.time;
         var startPosition = actor.transform.localPosition;
@@ -129,7 +129,7 @@ public static class GameplayOperations {
     
     public static IEnumerator PerformTurnAnimation(Actor actor, Quaternion desiredRotation) {
         if (actor.tile.foggy) yield break;
-        float duration = actor is Soldier ? 2f / ((Soldier)actor).baseMovement : 2f / ((Alien)actor).movement;
+        float duration = actor is Soldier ? 1f / ((Soldier)actor).baseMovement : 1f / ((Alien)actor).movement;
         var startTime = Time.time;
         var startRotation = actor.image.transform.rotation;   
         while (Time.time - startTime < duration) {
@@ -168,8 +168,8 @@ public static class GameplayOperations {
         soldier.HighlightActions();
     }
 
-    public static IEnumerator PerformExplosion(Soldier soldier, Tile tile) {
-        var weapon = soldier.weapon;
+    public static IEnumerator PerformExplosion(Soldier soldier, Tile tile, Weapon weapon = null) {
+        weapon = weapon ?? soldier.weapon;
         soldier.PlayAudio(weapon.audio.explosion);
         MakeNoise(tile.gridLocation);
         float remainingBlast = weapon.blast;

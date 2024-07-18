@@ -39,19 +39,20 @@ public class HiveMind : MonoBehaviour {
                 profile = profile,
                 remainingThreat = 200 / Map.instance.enemyProfiles.primaries.Count,
             });
-            Debug.Log($"Initialising spawn tracker (profile: {profile.name}, threat: {spawnTrackers[spawnTrackers.Count - 1].remainingThreat})");
+            Debug.Log($"Initialising primary spawn tracker (profile: {profile.name}, threat: {spawnTrackers[spawnTrackers.Count - 1].remainingThreat})");
         }
         foreach (var profile in Map.instance.enemyProfiles.secondaries) {
             spawnTrackers.Add(new EnemySpawnTracker {
                 profile = profile,
                 remainingThreat = 33,
             });
+            Debug.Log($"Initialising secondary spawn tracker (profile: {profile.name}, threat: {spawnTrackers[spawnTrackers.Count - 1].remainingThreat})");
         }
 
         int tileCount = weightedTiles.Count();
 
         foreach (var tracker in spawnTrackers) {
-            int threatPortion = tracker.remainingThreat * (100 - tracker.profile.spawnPercentage) / 100;
+            int threatPortion = (int)(tracker.remainingThreat * (100f - tracker.profile.spawnPercentage) / 100f);
             tracker.remainingThreat -= threatPortion;
             while (threatPortion > 0) {
                 var wTile = weightedTiles.SampleWithCount(tileCount);

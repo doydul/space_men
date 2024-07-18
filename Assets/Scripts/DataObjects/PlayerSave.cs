@@ -12,11 +12,12 @@ public class PlayerSave {
     public int credits;
     public float difficulty;
     public MetaSquad squad;
+    public List<MetaSoldier> bench = new();
     public Inventory inventory = new();
     public AlienUnlocks alienUnlocks = new();
 
     public List<float> enemyGenerationValues = new List<float> { 15, 15, 15, 15 };
-    public List<float> enemyGenerationVelocities = new();
+    public List<float> enemyGenerationVelocities = new List<float> { 0, 0, 0, 0 };
 
     public int groupishness => (int)enemyGenerationValues[0];
     public int armouredness => (int)enemyGenerationValues[1];

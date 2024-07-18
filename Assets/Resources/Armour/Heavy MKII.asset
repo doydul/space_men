@@ -18,7 +18,7 @@ MonoBehaviour:
   armourValue: 85
   type: 2
   value: 600
-  maxHealth: 18
+  maxHealth: 32
   sightRange: 8
   abilities:
   - {fileID: 11400000, guid: cd6ac93939c4e2d40a30e3627bc167c9, type: 2}

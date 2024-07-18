@@ -41,4 +41,6 @@ public class Weapon : ScriptableObject, IWeighted {
     public static Weapon Get(string name) {
         return Resources.Load<Weapon>("Weapons/" + name);
     }
+    
+    public bool InRange(Vector2 shooterLocation, Vector2 targetLocation) => Map.instance.ManhattanDistance(shooterLocation, targetLocation) <= range;
 }

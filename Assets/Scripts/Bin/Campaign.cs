@@ -30,5 +30,10 @@ public class Campaign {
                 save.enemyGenerationValues[i] *= reduct;
             }
         }
+        Debug.Log("New map generation values:");
+        Debug.Log($"groupishness: {save.groupishness}");
+        Debug.Log($"armouredness: {save.armouredness}");
+        Debug.Log($"quickness: {save.quickness}");
+        Debug.Log($"bigness: {save.bigness}");
     }
 }

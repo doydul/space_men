@@ -7,21 +7,32 @@ public class CampaignUITester : MonoBehaviour {
             var save = new PlayerSave();
             PlayerSave.current = save;
             save.credits = 1234;
-
-            var squad = MetaSquad.GenerateDefault();
-            save.squad = squad;
-
-            squad.AddMetaSoldier(new MetaSoldier() {
-                name = "John Doe",
+            
+            save.bench.Add(new MetaSoldier() {
+                name = "Bench Man",
                 armour = new InventoryItem() {
                     name = "Heavy",
                     type = InventoryItem.Type.Armour
                 },
                 weapon = new InventoryItem() {
-                    name = "Flamer",
+                    name = "Assault Rifle",
                     type = InventoryItem.Type.Weapon
                 }
             });
+            save.bench.Add(new MetaSoldier() {
+                name = "Bench Man 2",
+                armour = new InventoryItem() {
+                    name = "Medium",
+                    type = InventoryItem.Type.Armour
+                },
+                weapon = new InventoryItem() {
+                    name = "Grenade Launcher",
+                    type = InventoryItem.Type.Weapon
+                }
+            });
+
+            var squad = MetaSquad.GenerateDefault();
+            save.squad = squad;
 
             save.inventory.AddItem(new InventoryItem {
                 name = "Assault Rifle",

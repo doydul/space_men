@@ -48,9 +48,10 @@ public class Soldier : Actor {
     public bool firesOrdnance => weapon.ordnance;
     public Weapon.Type weaponType => weapon.type;
     public Vector3 muzzlePosition => new Vector3(muzzleFlashLocation.position.x, muzzleFlashLocation.position.y, tile.transform.position.z);
+    public Vector3 centrePosition => new Vector3(transform.position.x, transform.position.y, tile.transform.position.z);
 
     public bool CanSee(Vector2 gridLocation) => Map.instance.CanBeSeenFrom(new SoldierLosMask(), gridLocation, this.gridLocation);
-    public bool InRange(Vector2 gridLocation) => Map.instance.ManhattanDistance(this.gridLocation, gridLocation) <= range;
+    public bool InRange(Vector2 gridLocation) => weapon.InRange(this.gridLocation, gridLocation);
     public bool InHalfRange(Vector2 gridLocation) => Map.instance.ManhattanDistance(this.gridLocation, gridLocation) <= halfRange;
     public void Shoot(Alien target) => AnimationManager.instance.StartAnimation(GameplayOperations.PerformSoldierShoot(this, target));
     public IEnumerator PerformShoot(Alien target) => GameplayOperations.PerformSoldierShoot(this, target);

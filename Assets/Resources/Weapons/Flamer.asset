@@ -32,8 +32,9 @@ MonoBehaviour:
   description: designed for clearing large groups of smaller enemies
   abilities:
   - {fileID: 11400000, guid: ff8c339011d9f0d4f8b0fd5f7ef123ab, type: 2}
+  traits: 
   weaponPrefab: {fileID: 8097341364661395760, guid: e0690256b78423a48b28f5d3f55cf6b3,
     type: 3}
   tracerPrefab: {fileID: 2193078054948271443, guid: 6e949ba4b7971ef429bfd25919b032b7,
     type: 3}
-  audio: {fileID: 0}
+  audio: {fileID: 11400000, guid: 12775d11220a42e439a61a3b19b749bc, type: 2}
