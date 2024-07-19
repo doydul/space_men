@@ -34,7 +34,7 @@ public abstract class Actor : MonoBehaviour {
     public Sprite[] bloodSplatSprites;
     public GameObject hitIndicator;
     public GameObject deflectIndicator;
-    public SpriteRenderer healthIndicator;
+    public HealthIndicator healthIndicator;
     public AudioCollection hurtSounds;
     public AudioCollection dieSounds;
 
@@ -59,19 +59,6 @@ public abstract class Actor : MonoBehaviour {
     AudioPlayer audioPlayer;
     public void PlayAudio(AudioClipProfile clip) => audioPlayer.PlayAudio(clip);
 
-
-    Coroutine healthCoroutine;
-    public void ShowHealth() {
-        if (healthCoroutine != null) StopCoroutine(healthCoroutine);
-        StartCoroutine(PerformShowHealth());
-    }
-    public IEnumerator PerformShowHealth() {
-        SetHealthIndicatorSize();
-        if (healthIndicator.size.x > 0) healthIndicator.enabled = true;
-        yield return new WaitForSeconds(1f);
-        healthIndicator.enabled = false;
-    }
-
     Coroutine hitCoroutine;
     public void ShowHit() {
         if (hitCoroutine != null) StopCoroutine(hitCoroutine);
@@ -83,22 +70,15 @@ public abstract class Actor : MonoBehaviour {
         hitIndicator.SetActive(false);
     }
     
-    private float healthSpriteSize;
-
     protected virtual void Awake() {
         audioPlayer = gameObject.AddComponent<AudioPlayer>();
         health = maxHealth;
-        if (healthIndicator != null) {
-            healthSpriteSize = healthIndicator.size.x;
-            healthIndicator.enabled = false;
-        }
         if (hitIndicator != null) hitIndicator.SetActive(false);
     }
 
     private void SetHealthIndicatorSize() {
-        var currentSize = healthIndicator.size;
-        currentSize.x = Mathf.Max(health * healthSpriteSize / maxHealth, 0);
-        healthIndicator.size = currentSize;
+        healthIndicator.Set(maxHealth, health);
+        if (health < maxHealth) healthIndicator.Show();
     }
 
     public virtual void MoveTo(Tile newTile) {
@@ -133,7 +113,7 @@ public abstract class Actor : MonoBehaviour {
         } else {
             PlayAudio(hurtSounds.Sample());
         }
-        ShowHealth();
+        SetHealthIndicatorSize();
     }
 
     public void Face(Vector2 targetGridLocation) {

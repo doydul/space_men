@@ -1,0 +1,1865 @@
+Using pre-set license
+Built from '2023.1/staging' branch; Version is '2023.1.12f1 (38370f5b2257) revision 3684111'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'en' Physical Memory: 15774 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2023.1.12f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker8
+-projectPath
+C:/Users/lewis/code/space_men
+-logFile
+Logs/AssetImportWorker8.log
+-srvPort
+56688
+Successfully changed project path to: C:/Users/lewis/code/space_men
+C:/Users/lewis/code/space_men
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [22456] Host "[IP] 192.168.0.207 [Port] 0 [Flags] 2 [Guid] 3176261283 [EditorId] 3176261283 [Version] 1048832 [Id] WindowsEditor(7,BATMAN) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [22456] Host "[IP] 192.168.0.207 [Port] 0 [Flags] 2 [Guid] 3176261283 [EditorId] 3176261283 [Version] 1048832 [Id] WindowsEditor(7,BATMAN) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 15 workers.
+Library Redirect Path: Library/Refreshing native plugins compatible for Editor in 1.97 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2023.1.12f1 (38370f5b2257)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/lewis/code/space_men/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3070 Laptop GPU (ID=0x249d)
+    Vendor:   NVIDIA
+    VRAM:     8033 MB
+    Driver:   31.0.15.4633
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56052
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2023.1.12f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.006081 seconds.
+- Loaded All Assemblies, in  0.467 seconds
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 306 ms
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Finished resetting the current domain, in  0.718 seconds
+Domain Reload Profiling: 1181ms
+	BeginReloadAssembly (143ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (41ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (70ms)
+	LoadAllAssembliesAndSetupDomain (197ms)
+		LoadAssemblies (141ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (187ms)
+			TypeCache.Refresh (186ms)
+				TypeCache.ScanAssembly (168ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (718ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (664ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (456ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (8ms)
+			ProcessInitializeOnLoadAttributes (136ms)
+			ProcessInitializeOnLoadMethodAttributes (61ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.744 seconds
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.478 seconds
+Domain Reload Profiling: 1219ms
+	BeginReloadAssembly (313ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (37ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (43ms)
+	LoadAllAssembliesAndSetupDomain (332ms)
+		LoadAssemblies (251ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (189ms)
+			TypeCache.Refresh (183ms)
+				TypeCache.ScanAssembly (171ms)
+			ScanForSourceGeneratedMonoScriptInfo (3ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (479ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (257ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (27ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (54ms)
+			ProcessInitializeOnLoadAttributes (144ms)
+			ProcessInitializeOnLoadMethodAttributes (21ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 496 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 8 unused Assets / (181.5 KB). Loaded Objects now: 1043.
+Memory consumption went from 73.7 MB to 73.5 MB.
+Total: 4.150000 ms (FindLiveObjects: 0.066100 ms CreateObjectMapping: 0.015800 ms MarkObjects: 3.919800 ms  DeleteObjects: 0.147600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.618 seconds
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.528 seconds
+Domain Reload Profiling: 1143ms
+	BeginReloadAssembly (202ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (40ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (21ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (321ms)
+		LoadAssemblies (245ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (190ms)
+			TypeCache.Refresh (186ms)
+				TypeCache.ScanAssembly (177ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (528ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (276ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (27ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (65ms)
+			ProcessInitializeOnLoadAttributes (152ms)
+			ProcessInitializeOnLoadMethodAttributes (21ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 478 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (164.6 KB). Loaded Objects now: 1043.
+Memory consumption went from 68.8 MB to 68.7 MB.
+Total: 4.149300 ms (FindLiveObjects: 0.067900 ms CreateObjectMapping: 0.016600 ms MarkObjects: 3.924400 ms  DeleteObjects: 0.139500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.606 seconds
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.505 seconds
+Domain Reload Profiling: 1108ms
+	BeginReloadAssembly (196ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (41ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (32ms)
+	LoadAllAssembliesAndSetupDomain (321ms)
+		LoadAssemblies (257ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (172ms)
+			TypeCache.Refresh (169ms)
+				TypeCache.ScanAssembly (162ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (505ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (259ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (27ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (56ms)
+			ProcessInitializeOnLoadAttributes (144ms)
+			ProcessInitializeOnLoadMethodAttributes (21ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 478 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (171.8 KB). Loaded Objects now: 1043.
+Memory consumption went from 68.9 MB to 68.7 MB.
+Total: 4.049600 ms (FindLiveObjects: 0.105500 ms CreateObjectMapping: 0.027000 ms MarkObjects: 3.763200 ms  DeleteObjects: 0.152600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.576 seconds
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.498 seconds
+Domain Reload Profiling: 1070ms
+	BeginReloadAssembly (195ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (38ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (296ms)
+		LoadAssemblies (240ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (166ms)
+			TypeCache.Refresh (163ms)
+				TypeCache.ScanAssembly (156ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (499ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (255ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (27ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (55ms)
+			ProcessInitializeOnLoadAttributes (141ms)
+			ProcessInitializeOnLoadMethodAttributes (22ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.49 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 478 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (164.5 KB). Loaded Objects now: 1043.
+Memory consumption went from 68.8 MB to 68.7 MB.
+Total: 4.358900 ms (FindLiveObjects: 0.069900 ms CreateObjectMapping: 0.020900 ms MarkObjects: 4.099900 ms  DeleteObjects: 0.167200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.577 seconds
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.492 seconds
+Domain Reload Profiling: 1066ms
+	BeginReloadAssembly (193ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (37ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (29ms)
+	LoadAllAssembliesAndSetupDomain (300ms)
+		LoadAssemblies (235ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (174ms)
+			TypeCache.Refresh (171ms)
+				TypeCache.ScanAssembly (165ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (493ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (257ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (31ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (53ms)
+			ProcessInitializeOnLoadAttributes (140ms)
+			ProcessInitializeOnLoadMethodAttributes (21ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.48 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 478 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (172.0 KB). Loaded Objects now: 1043.
+Memory consumption went from 68.8 MB to 68.7 MB.
+Total: 5.560200 ms (FindLiveObjects: 0.066000 ms CreateObjectMapping: 0.017600 ms MarkObjects: 5.297000 ms  DeleteObjects: 0.178900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.581 seconds
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.494 seconds
+Domain Reload Profiling: 1071ms
+	BeginReloadAssembly (193ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (37ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (303ms)
+		LoadAssemblies (240ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (174ms)
+			TypeCache.Refresh (170ms)
+				TypeCache.ScanAssembly (163ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (494ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (255ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (27ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (55ms)
+			ProcessInitializeOnLoadAttributes (142ms)
+			ProcessInitializeOnLoadMethodAttributes (20ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.48 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 478 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (164.6 KB). Loaded Objects now: 1043.
+Memory consumption went from 68.8 MB to 68.6 MB.
+Total: 4.181300 ms (FindLiveObjects: 0.074200 ms CreateObjectMapping: 0.018900 ms MarkObjects: 3.952600 ms  DeleteObjects: 0.134700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  1.542 seconds
+Refreshing native plugins compatible for Editor in 0.48 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.174 seconds
+Domain Reload Profiling: 2713ms
+	BeginReloadAssembly (299ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (13ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (86ms)
+	RebuildCommonClasses (43ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (39ms)
+	LoadAllAssembliesAndSetupDomain (1144ms)
+		LoadAssemblies (1111ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (183ms)
+			TypeCache.Refresh (178ms)
+				TypeCache.ScanAssembly (166ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (1175ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (260ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (28ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (56ms)
+			ProcessInitializeOnLoadAttributes (143ms)
+			ProcessInitializeOnLoadMethodAttributes (21ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.70 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 479 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (164.4 KB). Loaded Objects now: 1044.
+Memory consumption went from 68.8 MB to 68.7 MB.
+Total: 5.121400 ms (FindLiveObjects: 0.067200 ms CreateObjectMapping: 0.015800 ms MarkObjects: 4.883400 ms  DeleteObjects: 0.153300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 411822.315352 seconds.
+  path: Assets/Resources/Prefabs/SFX/TracerBase.prefab
+  artifactKey: Guid(f2e3be3c5ed7b49e4837af5333d93331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/SFX/TracerBase.prefab using Guid(f2e3be3c5ed7b49e4837af5333d93331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cee1a60575bfa5644216c8680ef3c93') in 0.190195 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 2.934106 seconds.
+  path: Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR1_mono.wav
+  artifactKey: Guid(9c6e19771727aeb47baac8657ad8feb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR1_mono.wav using Guid(9c6e19771727aeb47baac8657ad8feb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2988e7fb5d92b58167223d0bfa4fd4d1') in 0.043164 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.030392 seconds.
+  path: Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR5_mono.wav
+  artifactKey: Guid(d29540d0f742d18488d2286aa18a44ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR5_mono.wav using Guid(d29540d0f742d18488d2286aa18a44ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6778324a88fcec60e4f83ee11c1e67e') in 0.022220 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR6_mono.wav
+  artifactKey: Guid(94d9aeee9911a75408c201bd0d2eddf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR6_mono.wav using Guid(94d9aeee9911a75408c201bd0d2eddf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5416af918aafa6a048e9d883eff03956') in 0.022027 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR7_mono.wav
+  artifactKey: Guid(07100bed2cce8dd47859576d155ea037) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR7_mono.wav using Guid(07100bed2cce8dd47859576d155ea037) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a43995ae276597c84e3a65a211d8b37') in 0.022422 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Punch_01_mono.wav
+  artifactKey: Guid(8044f9c8fe859f7429633198b7d32079) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Punch_01_mono.wav using Guid(8044f9c8fe859f7429633198b7d32079) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd283439bed04a58a6448de117ee679f6') in 0.030072 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Punch_05_mono.wav
+  artifactKey: Guid(ed9d889fd0eb39745998666396e6e2e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Punch_05_mono.wav using Guid(ed9d889fd0eb39745998666396e6e2e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68f30252a8103a7e6b37b9035b1fbb0a') in 0.022131 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Punch_02_mono.wav
+  artifactKey: Guid(851251e703c0bcb4dac3632fa4159e6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Punch_02_mono.wav using Guid(851251e703c0bcb4dac3632fa4159e6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cad8c03283c02b4afbf13813268980f3') in 0.023911 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Punch_04_mono.wav
+  artifactKey: Guid(3f9bb4770e167b64c9c67dc590ff8ae5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Punch_04_mono.wav using Guid(3f9bb4770e167b64c9c67dc590ff8ae5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd2fcdb214d8aa491621bc2bde898d37') in 0.021442 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR10_mono.wav
+  artifactKey: Guid(73257f1a77502bb4cb36e8f215f1df21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR10_mono.wav using Guid(73257f1a77502bb4cb36e8f215f1df21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bcd6ca44807822c66ebc9543871650c') in 0.024853 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR8_mono.wav
+  artifactKey: Guid(30ef745d3a16c50479e811fdd96bbc5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR8_mono.wav using Guid(30ef745d3a16c50479e811fdd96bbc5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdc9c2c366fda1ed328fe373ef8d1c87') in 0.020488 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Punch_03_mono.wav
+  artifactKey: Guid(de375831f4057ef4e96445238c189519) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Punch_03_mono.wav using Guid(de375831f4057ef4e96445238c189519) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd10e7e7c9840ec2c429872ca446eadfd') in 0.023489 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR9_mono.wav
+  artifactKey: Guid(ed798b5c41c8637498fd922535766b16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/WHOOSHES/Martial_Arts/MARTIAL_ARTS_Kick_Punch_RR9_mono.wav using Guid(ed798b5c41c8637498fd922535766b16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34d3270f8498e19c10683142ef20a21b') in 0.028128 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 58.619224 seconds.
+  path: Assets/Resources/Aliens/Sprinter.asset
+  artifactKey: Guid(b086cd4d8088c4a58a70819a1ef116a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Aliens/Sprinter.asset using Guid(b086cd4d8088c4a58a70819a1ef116a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30f2989f56a4ba8377eb88a5084f4e35') in 0.003802 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.001668 seconds.
+  path: Assets/Resources/Aliens/Swarmer.asset
+  artifactKey: Guid(80091460f5d6945eb802a85e248c6185) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Aliens/Swarmer.asset using Guid(80091460f5d6945eb802a85e248c6185) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a187b21e87b3292d360a2c1c9caf055f') in 0.002459 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 4.910066 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Bump_03_mono.wav
+  artifactKey: Guid(d5aea2cc9cd715342bc51cc82c7e3113) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Bump_03_mono.wav using Guid(d5aea2cc9cd715342bc51cc82c7e3113) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fd37c8488a98a6835947e926ba21de5') in 0.019905 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.005394 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Click_01_mono.wav
+  artifactKey: Guid(f1a938ad59956be4db22b56b97d360dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Click_01_mono.wav using Guid(f1a938ad59956be4db22b56b97d360dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88393cd41697366672c3675bd75124c7') in 0.020325 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.005288 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Death_01_mono.wav
+  artifactKey: Guid(b5977c655f658f14ca82a9b1c64057b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Death_01_mono.wav using Guid(b5977c655f658f14ca82a9b1c64057b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '688d6580d0d909eaa9a94b2b1fd564f7') in 0.021226 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Death_02_mono.wav
+  artifactKey: Guid(07f645617cb34f7489bea276bd1ed5c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Death_02_mono.wav using Guid(07f645617cb34f7489bea276bd1ed5c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79440d40041abdad6b1cf7b9e1b97f44') in 0.015088 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Destroy_01_mono.wav
+  artifactKey: Guid(f3ff8cc797d58ae41892d104d05002f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Destroy_01_mono.wav using Guid(f3ff8cc797d58ae41892d104d05002f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3a7b1527e0b42ad66cfdcc9407df487') in 0.014316 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Destroy_02_mono.wav
+  artifactKey: Guid(90c547f7a1c7da646a779bddb166c059) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Destroy_02_mono.wav using Guid(90c547f7a1c7da646a779bddb166c059) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '017a646966d2cc09f9e44a76152b2f14') in 0.013710 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.004614 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Effect_01_mono.wav
+  artifactKey: Guid(9ec19649536000a488e99ab14b99040f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Effect_01_mono.wav using Guid(9ec19649536000a488e99ab14b99040f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26f4c1a7a50f97780e5de0423bd4a408') in 0.024499 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.004983 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_02_mono.wav
+  artifactKey: Guid(3c42641f7c42c3c4a92ba2feb1d76089) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_02_mono.wav using Guid(3c42641f7c42c3c4a92ba2feb1d76089) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd98fb43557a1d68f719753baa8e6415b') in 0.019285 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007887 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_04_mono.wav
+  artifactKey: Guid(d0f3cdb2d2a9d7d4d94a594193b11e2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_04_mono.wav using Guid(d0f3cdb2d2a9d7d4d94a594193b11e2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63f5f4138108e568b0bcc824e78e37e1') in 0.020184 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007031 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_06_mono.wav
+  artifactKey: Guid(73c741e283044944d9912838883a3028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_06_mono.wav using Guid(73c741e283044944d9912838883a3028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96ea2d3dce929ca057efb146b131ae06') in 0.018337 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.009063 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_09_mono.wav
+  artifactKey: Guid(9a5efa43bbfbf8841bcef141856b3d7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_09_mono.wav using Guid(9a5efa43bbfbf8841bcef141856b3d7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa5568587305bc5df5a11af35c9013ed') in 0.025273 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007350 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_11_mono.wav
+  artifactKey: Guid(550fff7c4d4adda49977541ec60ca4eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_11_mono.wav using Guid(550fff7c4d4adda49977541ec60ca4eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51642003a86318e18bd4f0704d4aeb0f') in 0.021297 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007062 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_13_mono.wav
+  artifactKey: Guid(4216dd6c3269c724f9fcf9fa95d34487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Explode_13_mono.wav using Guid(4216dd6c3269c724f9fcf9fa95d34487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7cba1187c4b3178c9d7d8ad5445ecd5d') in 0.019358 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007940 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Impact_01_mono.wav
+  artifactKey: Guid(47393e7fc2dda964598413540c2fa7f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Impact_01_mono.wav using Guid(47393e7fc2dda964598413540c2fa7f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59c5701cb98fc675003d79e3944f2f07') in 0.019161 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006189 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Impact_03_mono.wav
+  artifactKey: Guid(e6992d4ba0384c14a9b93f770b1b6355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Impact_03_mono.wav using Guid(e6992d4ba0384c14a9b93f770b1b6355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba600cf6ea5c5b2384e431713411d5db') in 0.019068 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007024 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Impact_05_mono.wav
+  artifactKey: Guid(8e4c1e69a50f05c478885652e185d6ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Impact_05_mono.wav using Guid(8e4c1e69a50f05c478885652e185d6ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8166b4945af428dc1170357feef322e5') in 0.019138 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.005797 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Loop_Pulse_01_loop_mono.wav
+  artifactKey: Guid(9cf9938be98c6a74ab458f0a27b1608f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Loop_Pulse_01_loop_mono.wav using Guid(9cf9938be98c6a74ab458f0a27b1608f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e51b339c3bc7bd1361fd855b6b0b1830') in 0.018861 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007246 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Loop_Pulse_03_loop_mono.wav
+  artifactKey: Guid(6ae0bc272d822094eb5a6bb3613df909) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Loop_Pulse_03_loop_mono.wav using Guid(6ae0bc272d822094eb5a6bb3613df909) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6d7e1b5a446df028ddd90ab0da6c53a') in 0.019219 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.008700 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Sweep_02_mono.wav
+  artifactKey: Guid(62000ab1e7ec4f54e91810c8c450f715) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Sweep_02_mono.wav using Guid(62000ab1e7ec4f54e91810c8c450f715) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7f5954ed87b55185f20e85e7fac765e') in 0.020005 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 15.837700 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Signal_05_mono.wav
+  artifactKey: Guid(95316082dd6c4204096ac12444388cb7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Signal_05_mono.wav using Guid(95316082dd6c4204096ac12444388cb7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e307f6dbf6542a70288cd30704a17882') in 0.020015 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006499 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Signal_07_mono.wav
+  artifactKey: Guid(ef110cefb72b90b46a511b16c8b14805) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Signal_07_mono.wav using Guid(ef110cefb72b90b46a511b16c8b14805) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b00e17735cdfd5d2c45aabce607d7cef') in 0.019002 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006842 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Sweep_01_mono.wav
+  artifactKey: Guid(7c2737859769da5469ae8c2c2a137c2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Sweep_01_mono.wav using Guid(7c2737859769da5469ae8c2c2a137c2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd85e4f1538cb18c7f286ae49a8d829fd') in 0.019079 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006838 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Tick_02_loop_mono.wav
+  artifactKey: Guid(7612697114128194bbb1959373a17828) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Tick_02_loop_mono.wav using Guid(7612697114128194bbb1959373a17828) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a67acf7067114b456094005c00f74ea') in 0.019700 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007247 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Zap_01_mono.wav
+  artifactKey: Guid(6c77bdd886b75424280c3c4841acb819) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Zap_01_mono.wav using Guid(6c77bdd886b75424280c3c4841acb819) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1753d95a2e3cbc9d867254222f8ebf79') in 0.018814 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006020 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Bump_02_mono.wav
+  artifactKey: Guid(05d051aa0264fa14fa951f3c5d7086a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/RETRO_Bump_02_mono.wav using Guid(05d051aa0264fa14fa951f3c5d7086a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bab2a122336c0c87f4d83b461a73fe9e') in 0.023427 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.429650 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Noise_01_mono.wav
+  artifactKey: Guid(5a965ea33bda092459c618d75781177c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Noise_01_mono.wav using Guid(5a965ea33bda092459c618d75781177c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'feef463837c1eefeda62c82cc6ab52b2') in 0.018915 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006511 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Rattle_01_mono.wav
+  artifactKey: Guid(8a6f10d973a722e49bbdb98814854431) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Rattle_01_mono.wav using Guid(8a6f10d973a722e49bbdb98814854431) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d4361ad5120a792675393af7cf3d11a') in 0.019384 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006929 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Scream_01_mono.wav
+  artifactKey: Guid(2189517950a1f12428dba9c375a92caa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Scream_01_mono.wav using Guid(2189517950a1f12428dba9c375a92caa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '749213987b5c877f0b4e03ad7f3b07b7') in 0.018988 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007962 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Shutter_02_mono.wav
+  artifactKey: Guid(9d7062ac9f48190488630f33e9c3119c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Shutter_02_mono.wav using Guid(9d7062ac9f48190488630f33e9c3119c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbbf54ec9fc51612375aaf594d0691eb') in 0.018764 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006947 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Signal_02_mono.wav
+  artifactKey: Guid(86a3d1d1a8c718a4daa0d38b0fb1e62e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Signal_02_mono.wav using Guid(86a3d1d1a8c718a4daa0d38b0fb1e62e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48eb892cc6615e18fb5884d8c651615a') in 0.018248 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007156 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Signal_04_mono.wav
+  artifactKey: Guid(2365bc8d91ed65d41bf0b8ce3bd3ec27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Signal_04_mono.wav using Guid(2365bc8d91ed65d41bf0b8ce3bd3ec27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58b469a55944a8ab340adf2695ca1d42') in 0.019542 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.400077 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Bang_01_mono.wav
+  artifactKey: Guid(61fc10e407884a84ba64c6484436f733) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Bang_01_mono.wav using Guid(61fc10e407884a84ba64c6484436f733) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b29820f839b8787c133e78a7e4aeac5') in 0.020751 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006138 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Bang_03_mono.wav
+  artifactKey: Guid(7ffddd609603d994294472473e0309c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Bang_03_mono.wav using Guid(7ffddd609603d994294472473e0309c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9f0513abce609db00ddf3e2bf654994') in 0.018402 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.008159 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Bang_05_mono.wav
+  artifactKey: Guid(bfe718d864dd0aa4eb380de50f65ed90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Bang_05_mono.wav using Guid(bfe718d864dd0aa4eb380de50f65ed90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d454b19bee2ab9a9721100eed5c7a82') in 0.018371 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007120 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Beam_02_mono.wav
+  artifactKey: Guid(48b6eecfbe7a96845a18e7d1a3152033) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Beam_02_mono.wav using Guid(48b6eecfbe7a96845a18e7d1a3152033) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94451f29dff2fe7d67ac95ff53b94efd') in 0.017707 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006148 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Beep_02_mono.wav
+  artifactKey: Guid(112f4969ad89c084e9e4184eb8fdf4b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Beep_02_mono.wav using Guid(112f4969ad89c084e9e4184eb8fdf4b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c06cfc1fd99bba029432ce8a60988954') in 0.018200 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.005851 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Bright_01_mono.wav
+  artifactKey: Guid(e7b7379a67a3b844fa750bf209b4fc97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Bright_01_mono.wav using Guid(e7b7379a67a3b844fa750bf209b4fc97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '534b1a6016ed1d8a0ef240e81a1d543d') in 0.018507 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.011625 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Checkout_01_mono.wav
+  artifactKey: Guid(e2e97c24e2fd7b24fa47666c331330d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Checkout_01_mono.wav using Guid(e2e97c24e2fd7b24fa47666c331330d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '520496240846a1d57a436234006cc616') in 0.018571 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.005948 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Computer_Loop_01_loop_mono.wav
+  artifactKey: Guid(c336b0ff206cd87409ff698543507f35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Computer_Loop_01_loop_mono.wav using Guid(c336b0ff206cd87409ff698543507f35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c425e3c984147165147292562f7719b9') in 0.020554 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.008771 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Cows_01_mono.wav
+  artifactKey: Guid(075cba7ad4796ec46af51f2dadde564a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Cows_01_mono.wav using Guid(075cba7ad4796ec46af51f2dadde564a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f7b6297e428da61ba1116dd9e1705ec') in 0.019992 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.005881 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Crow_01_mono.wav
+  artifactKey: Guid(5d021716c8c96754d97a80ba9528d905) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Crow_01_mono.wav using Guid(5d021716c8c96754d97a80ba9528d905) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a9c7a540941db4a6b108e4176c1a48b') in 0.019019 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.008928 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Destroy_02_mono.wav
+  artifactKey: Guid(1120f22685664f944931e580c0fce58d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Destroy_02_mono.wav using Guid(1120f22685664f944931e580c0fce58d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b71d7cf417c923b94a6cd3978ee5582f') in 0.019751 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006941 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_01_mono.wav
+  artifactKey: Guid(345ac3a0a2d36464586b48e5f079df36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_01_mono.wav using Guid(345ac3a0a2d36464586b48e5f079df36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '694049b834d0338c25b8a1e59e7ce940') in 0.019261 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.009534 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_03_mono.wav
+  artifactKey: Guid(0e84bfe0f0bd6f04abfd479430fa17e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_03_mono.wav using Guid(0e84bfe0f0bd6f04abfd479430fa17e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcefdfbe9bd482416e354a32ed4b5a88') in 0.020545 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006514 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_05_mono.wav
+  artifactKey: Guid(d6c1ea80a751e8c4fac01578bd302ec8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_05_mono.wav using Guid(d6c1ea80a751e8c4fac01578bd302ec8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b4c3d0001bb5a9a324d611e30ead660') in 0.020053 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007583 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_07_mono.wav
+  artifactKey: Guid(5124f620672c6964eb0876d3850a071f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_07_mono.wav using Guid(5124f620672c6964eb0876d3850a071f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ba17e55564f95c63893500ee484f89d') in 0.021439 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006325 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_09_mono.wav
+  artifactKey: Guid(bd745a58f98b7af47a8efc6a72c041f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_09_mono.wav using Guid(bd745a58f98b7af47a8efc6a72c041f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0f140d6508685aaa95b5871e33aab24') in 0.020373 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007325 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_11_mono.wav
+  artifactKey: Guid(6f3cdb42d8f5fcc4cba287ed7761f045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_11_mono.wav using Guid(6f3cdb42d8f5fcc4cba287ed7761f045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bc09646cbccf237cf7efbf334b790a5') in 0.019624 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007272 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_13_mono.wav
+  artifactKey: Guid(3af74075f26ddda46ad05dc4653e49a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Explosion_13_mono.wav using Guid(3af74075f26ddda46ad05dc4653e49a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5249fad05d78a671c584a82fb4cda06d') in 0.019416 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.008185 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Glass_02_mono.wav
+  artifactKey: Guid(a1f755728efc0c9419b4b88d06bfb5cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Glass_02_mono.wav using Guid(a1f755728efc0c9419b4b88d06bfb5cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09c159b37a86dbcebeb1748e495812cf') in 0.018730 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006332 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Growl_01_mono.wav
+  artifactKey: Guid(3e20a0073d9239443b771f1d995b4a63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Growl_01_mono.wav using Guid(3e20a0073d9239443b771f1d995b4a63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e54b2f39efa9bba7a59e07b8d2e8bf2') in 0.020302 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.006203 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Growl_03_mono.wav
+  artifactKey: Guid(bfba7ec44455f304c9d31ed5dba37cfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Growl_03_mono.wav using Guid(bfba7ec44455f304c9d31ed5dba37cfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f486c245a4ebaf1719f1e5936af7c0e') in 0.020567 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.005895 seconds.
+  path: Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Horse_01_mono.wav
+  artifactKey: Guid(11227964e122c444e92c30d5b4cecf4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/Universal Sound FX/RETRO_LOFI/LOFI_Horse_01_mono.wav using Guid(11227964e122c444e92c30d5b4cecf4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd43ce49b3e2d2958d58dedefa8b87e56') in 0.019810 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.590 seconds
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.497 seconds
+Domain Reload Profiling: 1084ms
+	BeginReloadAssembly (197ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (42ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (305ms)
+		LoadAssemblies (240ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (174ms)
+			TypeCache.Refresh (170ms)
+				TypeCache.ScanAssembly (163ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (497ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (252ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (27ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (54ms)
+			ProcessInitializeOnLoadAttributes (140ms)
+			ProcessInitializeOnLoadMethodAttributes (21ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 478 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (164.5 KB). Loaded Objects now: 1053.
+Memory consumption went from 68.9 MB to 68.7 MB.
+Total: 3.684700 ms (FindLiveObjects: 0.072000 ms CreateObjectMapping: 0.018700 ms MarkObjects: 3.465300 ms  DeleteObjects: 0.127600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 274.779295 seconds.
+  path: Assets/Audio/PunchSounds.asset
+  artifactKey: Guid(49f712e0138d65e44a3a72527668c9a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Audio/PunchSounds.asset using Guid(49f712e0138d65e44a3a72527668c9a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76ca151df352e952693ad64ffb2f8397') in 0.021127 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 92.559444 seconds.
+  path: Assets/Audio/Profiles/PunchSounds.asset
+  artifactKey: Guid(49f712e0138d65e44a3a72527668c9a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Audio/Profiles/PunchSounds.asset using Guid(49f712e0138d65e44a3a72527668c9a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2dce8d80840d0b6f2b1eea7bd2423331') in 0.004304 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 11.731448 seconds.
+  path: Assets/Audio/Profiles/EnergyWeapon.asset
+  artifactKey: Guid(c01a2cf80bfb67f468e7290a42c9119f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Audio/Profiles/EnergyWeapon.asset using Guid(c01a2cf80bfb67f468e7290a42c9119f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf22b2a67b6db59fff7dd5a11c22bea6') in 0.014588 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 0.450321 seconds.
+  path: Assets/Audio/Profiles/EnergyImpacts.asset
+  artifactKey: Guid(40432b1ef515d2f469ebd1fcdc9e3f2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Audio/Profiles/EnergyImpacts.asset using Guid(40432b1ef515d2f469ebd1fcdc9e3f2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92d5a87e666e9e30d4e28dc81b29bc44') in 0.004931 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 35.072907 seconds.
+  path: Assets/Resources/Abilities/Punch.asset
+  artifactKey: Guid(1e15d0e8811a58949a7bf14ecb2afc8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Abilities/Punch.asset using Guid(1e15d0e8811a58949a7bf14ecb2afc8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8c63dec7f4e3b6647c76c697ea290b8') in 0.001521 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 7.337070 seconds.
+  path: Assets/Resources/Abilities/Punch.asset
+  artifactKey: Guid(1e15d0e8811a58949a7bf14ecb2afc8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Abilities/Punch.asset using Guid(1e15d0e8811a58949a7bf14ecb2afc8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72b96ed1ebf39556c2b1b303e52e24bd') in 0.004431 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 38.929218 seconds.
+  path: Assets/Resources/Abilities/StandardArmourAbilities.asset
+  artifactKey: Guid(cd6ac93939c4e2d40a30e3627bc167c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Abilities/StandardArmourAbilities.asset using Guid(cd6ac93939c4e2d40a30e3627bc167c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab5adf629b8255694c301181f421a2c8') in 0.004998 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.579 seconds
+Refreshing native plugins compatible for Editor in 0.68 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.497 seconds
+Domain Reload Profiling: 1072ms
+	BeginReloadAssembly (192ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (38ms)
+	RebuildCommonClasses (41ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (29ms)
+	LoadAllAssembliesAndSetupDomain (299ms)
+		LoadAssemblies (238ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (170ms)
+			TypeCache.Refresh (167ms)
+				TypeCache.ScanAssembly (160ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (497ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (255ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (28ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (55ms)
+			ProcessInitializeOnLoadAttributes (139ms)
+			ProcessInitializeOnLoadMethodAttributes (22ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 478 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (171.8 KB). Loaded Objects now: 1053.
+Memory consumption went from 68.8 MB to 68.7 MB.
+Total: 3.888200 ms (FindLiveObjects: 0.086000 ms CreateObjectMapping: 0.018900 ms MarkObjects: 3.633700 ms  DeleteObjects: 0.148300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.577 seconds
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.497 seconds
+Domain Reload Profiling: 1071ms
+	BeginReloadAssembly (197ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (38ms)
+	RebuildCommonClasses (39ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (294ms)
+		LoadAssemblies (242ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (167ms)
+			TypeCache.Refresh (163ms)
+				TypeCache.ScanAssembly (157ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (498ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (251ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (26ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (55ms)
+			ProcessInitializeOnLoadAttributes (139ms)
+			ProcessInitializeOnLoadMethodAttributes (21ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.67 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 479 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (171.8 KB). Loaded Objects now: 1053.
+Memory consumption went from 69.1 MB to 68.9 MB.
+Total: 3.737200 ms (FindLiveObjects: 0.069700 ms CreateObjectMapping: 0.018300 ms MarkObjects: 3.516800 ms  DeleteObjects: 0.131500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.579 seconds
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.493 seconds
+Domain Reload Profiling: 1069ms
+	BeginReloadAssembly (192ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (38ms)
+	RebuildCommonClasses (39ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (32ms)
+	LoadAllAssembliesAndSetupDomain (299ms)
+		LoadAssemblies (236ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (172ms)
+			TypeCache.Refresh (167ms)
+				TypeCache.ScanAssembly (161ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (493ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (253ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (26ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (55ms)
+			ProcessInitializeOnLoadAttributes (141ms)
+			ProcessInitializeOnLoadMethodAttributes (20ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.49 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 479 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (164.6 KB). Loaded Objects now: 1053.
+Memory consumption went from 69.1 MB to 68.9 MB.
+Total: 3.824100 ms (FindLiveObjects: 0.068100 ms CreateObjectMapping: 0.015400 ms MarkObjects: 3.604000 ms  DeleteObjects: 0.135900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 134.303268 seconds.
+  path: Assets/Audio/Profiles/AlienDieSounds.asset
+  artifactKey: Guid(813e2e4e40d49d441919409f088fe460) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Audio/Profiles/AlienDieSounds.asset using Guid(813e2e4e40d49d441919409f088fe460) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f967fb71782badfbbf65087b07343a4') in 0.024276 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Audio/Profiles/PunchSounds.asset
+  artifactKey: Guid(49f712e0138d65e44a3a72527668c9a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Audio/Profiles/PunchSounds.asset using Guid(49f712e0138d65e44a3a72527668c9a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77b56004553b32de0bd0c595ca97b27a') in 0.003907 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 15.485940 seconds.
+  path: Assets/Audio/Profiles/PunchSounds.asset
+  artifactKey: Guid(49f712e0138d65e44a3a72527668c9a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Audio/Profiles/PunchSounds.asset using Guid(49f712e0138d65e44a3a72527668c9a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7ea2491a3aad36933e9be304a484caa') in 0.003959 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.577 seconds
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.490 seconds
+Domain Reload Profiling: 1064ms
+	BeginReloadAssembly (192ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (37ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (301ms)
+		LoadAssemblies (238ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (173ms)
+			TypeCache.Refresh (169ms)
+				TypeCache.ScanAssembly (162ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (491ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (251ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (26ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (53ms)
+			ProcessInitializeOnLoadAttributes (140ms)
+			ProcessInitializeOnLoadMethodAttributes (21ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 478 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (171.8 KB). Loaded Objects now: 1053.
+Memory consumption went from 68.8 MB to 68.7 MB.
+Total: 3.803400 ms (FindLiveObjects: 0.068300 ms CreateObjectMapping: 0.015200 ms MarkObjects: 3.572400 ms  DeleteObjects: 0.146700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 259.327159 seconds.
+  path: Assets/Resources/Prefabs/Soldier.prefab
+  artifactKey: Guid(9307656f476dc45e3abf855867cd6886) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Soldier.prefab using Guid(9307656f476dc45e3abf855867cd6886) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac0d11876aca90718bde74f5ddf99e99') in 0.134329 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 102
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.620 seconds
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.576 seconds
+Domain Reload Profiling: 1193ms
+	BeginReloadAssembly (195ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (40ms)
+	RebuildCommonClasses (39ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (333ms)
+		LoadAssemblies (264ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (178ms)
+			TypeCache.Refresh (173ms)
+				TypeCache.ScanAssembly (166ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (577ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (279ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (26ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (55ms)
+			ProcessInitializeOnLoadAttributes (145ms)
+			ProcessInitializeOnLoadMethodAttributes (35ms)
+			AfterProcessingInitializeOnLoad (14ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 479 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (171.9 KB). Loaded Objects now: 1054.
+Memory consumption went from 68.9 MB to 68.8 MB.
+Total: 4.177500 ms (FindLiveObjects: 0.076300 ms CreateObjectMapping: 0.018500 ms MarkObjects: 3.907200 ms  DeleteObjects: 0.174200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+C:\build\output\Unity-Technologies\mono\mono\metadata\icall.c:1842:
+- Loaded All Assemblies, in  0.631 seconds
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.528 seconds
+Domain Reload Profiling: 1156ms
+	BeginReloadAssembly (204ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (10ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (38ms)
+	RebuildCommonClasses (39ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (342ms)
+		LoadAssemblies (244ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (215ms)
+			TypeCache.Refresh (210ms)
+				TypeCache.ScanAssembly (202ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (528ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (270ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (28ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (56ms)
+			ProcessInitializeOnLoadAttributes (153ms)
+			ProcessInitializeOnLoadMethodAttributes (22ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 480 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 unused Assets / (171.8 KB). Loaded Objects now: 1054.
+Memory consumption went from 69.2 MB to 69.0 MB.
+Total: 4.216600 ms (FindLiveObjects: 0.066200 ms CreateObjectMapping: 0.022900 ms MarkObjects: 3.991100 ms  DeleteObjects: 0.135700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 756ad292c208cfabdd7b50bc23989ffe -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2408.892939 seconds.
+  path: Assets/Packages/ComboPack/SciFiSkin/Textures/ButtonGreen.psd
+  artifactKey: Guid(f468347b8200b4ce9a0f6717678281f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/ComboPack/SciFiSkin/Textures/ButtonGreen.psd using Guid(f468347b8200b4ce9a0f6717678281f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fa8ffe4531a9966f0b5307616bb3703') in 0.099745 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Packages/ComboPack/SciFiSkin/Textures/PanelFrame2.psd
+  artifactKey: Guid(9ad718dcbea6a47d99997091eade2332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/ComboPack/SciFiSkin/Textures/PanelFrame2.psd using Guid(9ad718dcbea6a47d99997091eade2332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8f2b1ab5de4f082f3809d460793605c') in 0.018432 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.004558 seconds.
+  path: Assets/Packages/ComboPack/SciFiSkin/Textures/PanelFrame3.psd
+  artifactKey: Guid(32daaed7f1b1a49a6a0ab975d990d86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/ComboPack/SciFiSkin/Textures/PanelFrame3.psd using Guid(32daaed7f1b1a49a6a0ab975d990d86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '589ab5985bc192066352d2e162bbe613') in 0.025110 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Packages/ComboPack/SciFiSkin/Textures/VirtualButton1Bottom.psd
+  artifactKey: Guid(bb0b48d0bac644bcb8d48c6c01c5383d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/ComboPack/SciFiSkin/Textures/VirtualButton1Bottom.psd using Guid(bb0b48d0bac644bcb8d48c6c01c5383d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bddf393a9358e449019187dd1d3d37e8') in 0.022950 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Packages/ComboPack/SciFiSkin/Textures/VirtualButtonDPad2.psd
+  artifactKey: Guid(9d153a11509f441ddb601186988b5614) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/ComboPack/SciFiSkin/Textures/VirtualButtonDPad2.psd using Guid(9d153a11509f441ddb601186988b5614) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6817fb7fcdc3ee4604bb98b6958be2f8') in 0.021665 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Packages/ComboPack/SciFiSkin/Textures/VirtualButton2Bottom.psd
+  artifactKey: Guid(5e9b9654d69854f548a529b800199c28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/ComboPack/SciFiSkin/Textures/VirtualButton2Bottom.psd using Guid(5e9b9654d69854f548a529b800199c28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0acc329148299b8498ec04c0998ba43') in 0.029856 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Packages/ComboPack/SciFiSkin/Textures/VirtualButtonDPad2Bottom.psd
+  artifactKey: Guid(5e42a88ee753c4abeb5a3ddb620ee908) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/ComboPack/SciFiSkin/Textures/VirtualButtonDPad2Bottom.psd using Guid(5e42a88ee753c4abeb5a3ddb620ee908) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e25c7e9237a367cd81c955238be34da') in 0.021481 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Packages/ComboPack/SciFiSkin/Textures/X.psd
+  artifactKey: Guid(75beadbca96624794936e74f899b7fe1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/ComboPack/SciFiSkin/Textures/X.psd using Guid(75beadbca96624794936e74f899b7fe1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a4f2a65f24eb6cc5b895b78b138c3ba') in 0.020388 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
