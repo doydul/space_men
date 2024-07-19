@@ -166,8 +166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficultyLevel: 1
   groupishness: 0
-  armouredness: 0
-  quickness: 30
+  armouredness: 70
+  quickness: 0
   bigness: 0
   weapons:
   - Plasma Gun

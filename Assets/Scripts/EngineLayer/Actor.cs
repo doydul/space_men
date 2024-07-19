@@ -104,7 +104,7 @@ public abstract class Actor : MonoBehaviour {
         Destroy(gameObject, 0.5f);
     }
 
-    public virtual void Hurt(int damage, DamageType damageType = DamageType.Normal) {
+    public virtual bool Hurt(int damage, DamageType damageType = DamageType.Normal) {
         health -= damage;
         if (health <= 0) {
             dead = true;
@@ -114,6 +114,7 @@ public abstract class Actor : MonoBehaviour {
             PlayAudio(hurtSounds.Sample());
         }
         SetHealthIndicatorSize();
+        return true;
     }
 
     public void Face(Vector2 targetGridLocation) {

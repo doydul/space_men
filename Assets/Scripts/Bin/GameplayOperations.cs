@@ -34,9 +34,10 @@ public static class GameplayOperations {
         if (!target.dead && Random.value * 100 <= accuracy + target.accModifier) {
             // HIT
             yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, true);
-            target.ShowHit();
             var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
-            target.Hurt(damage, soldier.weapon.damageType);
+            bool hurt = target.Hurt(damage, soldier.weapon.damageType);
+            if (hurt) target.ShowHit();
+            else soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
             BloodSplatController.instance.MakeSplat(target);
         } else {
             // MISS
@@ -49,8 +50,9 @@ public static class GameplayOperations {
                     secondaryHit = true;
                     yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, actor.tile.transform.position, soldier.weapon, true);
                     var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
-                    actor.Hurt(damage, soldier.weapon.damageType);
-                    actor.ShowHit();
+                    bool hurt = actor.Hurt(damage, soldier.weapon.damageType);
+                    if (hurt) actor.ShowHit();
+                    else soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
                     BloodSplatController.instance.MakeSplat(actor);
                     break;
                 }
