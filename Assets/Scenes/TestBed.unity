@@ -165,13 +165,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficultyLevel: 1
-  groupishness: 10
-  armouredness: 70
-  quickness: 10
-  bigness: 10
+  groupishness: 0
+  armouredness: 0
+  quickness: 30
+  bigness: 0
   weapons:
-  - Assault Rifle
-  - Assault Rifle
+  - Plasma Gun
+  - Chain Gun
   - Assault Rifle
   - Assault Rifle
   armour:
@@ -180,8 +180,8 @@ MonoBehaviour:
   - Light
   - Light
   unlockedAliens:
-  - Medium
-  - Runner
+  - Advanced
+  - Swarmer
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

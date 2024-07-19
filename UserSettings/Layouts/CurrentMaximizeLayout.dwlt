@@ -244,7 +244,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 203edfff4c3edfff3a4fe6ff864de7ff1880e8ff708de8ff7096e8ff7696e8ff7c96e8ff8096e8ff8496e8ff8696e8ff2098e8ff187ef3ff6aa4f3ff72a4f3ffdaaaf3ff20fbffff2efbffff30fbffff62b71f00
+      m_ExpandedIDs: 98bfd2fffeb3dcff26b4dcff583bdeff863bdeff903bdeffc43bdeffec3bdeff203edfff4c3edfff3a4fe6ff864de7ff1880e8ff708de8ff7096e8ff7696e8ff7c96e8ff8096e8ff8496e8ff8696e8ff2098e8ff187ef3ff6aa4f3ff72a4f3ffdaaaf3ff20fbffff2efbffff30fbffff62b71f00
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -946,7 +946,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 6.5999756}
     m_SelectedIDs: 028e0100
     m_LastClickedID: 101890
-    m_ExpandedIDs: 00000000768a0100788a01007a8a01007c8a01007e8a0100808a0100828a0100848a0100868a0100888a01008a8a01008c8a01008e8a0100908a0100928a0100948a0100968a0100988a01009a8a01009c8a01009e8a0100a08a0100a28a0100a48a0100a68a0100a88a0100aa8a0100ac8a010000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000768a0100788a01007a8a01007c8a01007e8a0100808a0100828a0100848a01008a8a01008c8a01008e8a0100908a0100928a0100948a0100968a0100988a01009a8a01009c8a01009e8a0100a08a0100a28a0100a48a0100a68a0100a88a0100aa8a0100ac8a0100166e190000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -974,7 +974,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000768a0100788a01007a8a01007c8a01007e8a0100808a0100828a0100848a0100868a0100888a01008a8a01008c8a01008e8a0100908a0100928a0100948a0100968a0100988a01009a8a01009c8a01009e8a0100a08a0100a28a0100a48a0100a68a0100a88a0100aa8a0100ac8a010000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000768a0100788a01007a8a01007c8a01007e8a0100808a0100828a0100848a01008a8a01008c8a01008e8a0100908a0100928a0100948a0100968a0100988a01009a8a01009c8a01009e8a0100a08a0100a28a0100a48a0100a68a0100a88a0100aa8a0100ac8a0100166e190000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1073,7 +1073,7 @@ MonoBehaviour:
     m_CachedPref: 151
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: -1683726
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -1099,14 +1099,14 @@ MonoBehaviour:
     y: 520.8
     width: 1336
     height: 452.40002
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 13}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
   - {fileID: 13}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1155,7 +1155,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Prefabs/AlienSprites
+    - Assets/Resources/Weapons
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1163,18 +1163,18 @@ MonoBehaviour:
     m_ImportLogFlags: 0
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
-  m_StartGridSize: 16
+  m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Resources/Prefabs/AlienSprites
-  m_LastFoldersGridSize: 16
+  - Assets/Prefabs/UI
+  m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\lewis\code\space_men
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 255}
-    m_SelectedIDs: 32dc2300
-    m_LastClickedID: 2350130
-    m_ExpandedIDs: 00000000768a0100788a01007a8a01007c8a01007e8a0100808a0100828a0100848a0100868a0100888a01008a8a01008c8a01008e8a0100908a0100928a0100948a0100968a0100988a01009a8a01009c8a01009e8a0100a08a0100a28a0100a48a0100a68a0100a88a0100aa8a0100ac8a0100166e190000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 03ca9a3b
+    m_LastClickedID: 1000000003
+    m_ExpandedIDs: 00000000768a0100788a01007a8a01007c8a01007e8a0100808a0100828a0100848a01008a8a01008c8a01008e8a0100908a0100928a0100948a0100968a0100988a01009a8a01009c8a01009e8a0100a08a0100a28a0100a48a0100a68a0100a88a0100aa8a0100ac8a0100166e190000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1202,7 +1202,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000768a0100788a01007a8a01007c8a01007e8a0100808a0100828a0100848a0100868a0100888a01008a8a01008c8a01008e8a0100908a0100928a0100948a0100968a0100988a01009a8a01009c8a01009e8a0100a08a0100a28a0100a48a0100a68a0100a88a0100aa8a0100ac8a010000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000768a0100788a01007a8a01007c8a01007e8a0100808a0100828a0100848a01008a8a01008c8a01008e8a0100908a0100928a0100948a0100968a0100988a01009a8a01009c8a01009e8a0100a08a0100a28a0100a48a0100a68a0100a88a0100aa8a0100ac8a0100166e190000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1229,22 +1229,22 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300006a8900004ac00300ba7c0c00de7c0c00c8c7000008c8000030a20100b8301200a67d0000548c01003a4a0000f6f32000d2a210009e8d010014920100f2d402009c8c01003a8c010076f10200a6b71f00f8a12c00
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c62300006a8900004ac00300ba7c0c00de7c0c00c8c7000008c8000030a20100b8301200a67d0000548c01003a4a0000f6f32000d2a210009e8d010014920100f2d402009c8c01003a8c010076f10200a6b71f00f8a12c006889010066890100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: ArmourBastardAlienSprite
-      m_OriginalName: ArmourBastardAlienSprite
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 3007176
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
@@ -1255,7 +1255,7 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
-    m_GridSize: 16
+    m_GridSize: 96
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
 --- !u!114 &13

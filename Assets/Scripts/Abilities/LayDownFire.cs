@@ -14,6 +14,7 @@ public class LayDownFire : ReactionAbility {
 
     public override void Use() {
         AnimationManager.instance.StartAnimation(PerformUse());
+        owner.ShowAbilityIcon("LayDownFire");
     }
 
     public IEnumerator PerformUse() {
@@ -47,5 +48,6 @@ public class LayDownFire : ReactionAbility {
             yield return GameplayOperations.PerformSoldierSingleShot(owner, randAlien);
             if (randAlien.dead) aliensInSight.Remove(randAlien);
         }
+        if (shotsRemaining <= 0) owner.HideAbilityIcon();
     }
 }

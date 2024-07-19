@@ -15,6 +15,7 @@ public class Soldier : Actor {
     public Transform muzzleFlashLocation;
     public Transform gunContainer;
     public SpriteRenderer muzzleSprite;
+    public AbilityIcon abilityIcon;
     
     public int tilesMoved { get; set; }
     public int actionsSpent { get; set; }
@@ -71,9 +72,15 @@ public class Soldier : Actor {
         muzzleSprite.color = weapon.muzzleFlareColor;
     }
     public void HideMuzzleFlash() => muzzleFlashLocation.gameObject.SetActive(false);
+    public void ShowAbilityIcon(string abilityName) {
+        abilityIcon.spriteRenderer.gameObject.SetActive(true);
+        abilityIcon.DisplaySpriteFor(abilityName);
+    }
+    public void HideAbilityIcon() => abilityIcon.spriteRenderer.gameObject.SetActive(false);
 
     void Start() {
         HideMuzzleFlash();
+        HideAbilityIcon();
         GameEvents.On(this, "player_turn_start", Reset);
     }
 
@@ -89,6 +96,7 @@ public class Soldier : Actor {
         tilesMoved = 0;
         actionsSpent = 0;
         reaction = null;
+        HideAbilityIcon();
     }
 
     public bool WithinSightArc(Vector2 targetPosition) {
