@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class TestBed : MonoBehaviour {
     
+    public bool useTestMap;
     public float difficultyLevel;
     
     public int groupishness;
@@ -26,7 +27,12 @@ public class TestBed : MonoBehaviour {
         foreach (var alienName in unlockedAliens) PlayerSave.current.alienUnlocks.Unlock(alienName);
         
         Debug.Log("Loading Mission scene...");
-        SceneManager.LoadScene("Mission");
+        if (useTestMap) {
+            MapInstantiator.skipGenerate = true;
+            SceneManager.LoadScene("MapTest");
+        } else {
+            SceneManager.LoadScene("Mission");
+        }
     }
     
     MetaSquad GenerateSquad() {

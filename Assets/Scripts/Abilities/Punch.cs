@@ -34,7 +34,9 @@ public class Punch : Ability {
         yield return new WaitForSeconds(0.2f);
         
         var damage = Random.Range(minDamage, maxDamage + 1);
-        hitTile.GetActor<Alien>().Hurt(damage);
+        var alien = hitTile.GetActor<Alien>();
+        alien.Hurt(damage);
+        if (alien.dead) owner.actionsSpent -= 1;
         
         yield return new WaitForSeconds(0.5f);
     }

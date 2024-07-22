@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CampaignUI.unity
     guid: e4686576343dec4409af544a530bc5e4
+  - enabled: 1
+    path: Assets/Scenes/MapTest.unity
+    guid: 7d30377e7d947b541b7ca57be8a931e6
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

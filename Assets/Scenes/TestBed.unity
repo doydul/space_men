@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648fd2f90c342bc45b54cf633e5a909d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useTestMap: 0
   difficultyLevel: 1
   groupishness: 0
   armouredness: 70

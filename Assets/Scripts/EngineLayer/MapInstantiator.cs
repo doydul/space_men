@@ -3,12 +3,16 @@ using System.Collections.Generic;
 
 public class MapInstantiator : MonoBehaviour {
 
+    public static bool skipGenerate;
+    
     public static MapInstantiator instance;
     void Awake() => instance = this;
 
     public Map map;
 
     public void Generate() {
+        if (skipGenerate) return;
+        
         for (int i = map.transform.childCount - 1; i >= 0; i--) {
             var child = map.transform.GetChild(i);
             if (child.name.Contains("Column")) {
