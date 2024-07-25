@@ -39,8 +39,9 @@ public class Main : MonoBehaviour {
         foreach (var enemyProfile in Map.instance.enemyProfiles.primaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
         foreach (var enemyProfile in Map.instance.enemyProfiles.secondaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
         Objectives.AddToMap(Map.instance, Map.instance.rooms.FirstOrDefault(roomKV => roomKV.Value.start).Value);
-        Debug.Log("travel distance:::::");
-        Debug.Log(Map.instance.objectives.EstimateTravelDistance());
+        int turnsToCompletion = Map.instance.objectives.EstimateTravelDistance() / (5 - (int)PlayerSave.current.difficulty);
+        int turnsToThreatIncrease = turnsToCompletion / 2;
+        TurnCounter.instance.SetTurnLimit(turnsToThreatIncrease);
 
         int j = 0;
         foreach (var metaSoldier in PlayerSave.current.squad.GetMetaSoldiers()) {

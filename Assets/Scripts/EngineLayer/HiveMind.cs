@@ -21,6 +21,7 @@ public class HiveMind : MonoBehaviour {
 
     List<EnemySpawnTracker> spawnTrackers = new();
     Alien activeAlien;
+    bool threatIncreased;
 
     void Start() {
         Noise.Seed = Random.Range(0, 10000);
@@ -38,6 +39,7 @@ public class HiveMind : MonoBehaviour {
             spawnTrackers.Add(new EnemySpawnTracker {
                 profile = profile,
                 remainingThreat = 200 / Map.instance.enemyProfiles.primaries.Count,
+                startingThreat = 200 / Map.instance.enemyProfiles.primaries.Count
             });
             Debug.Log($"Initialising primary spawn tracker (profile: {profile.name}, threat: {spawnTrackers[spawnTrackers.Count - 1].remainingThreat})");
         }
@@ -45,6 +47,7 @@ public class HiveMind : MonoBehaviour {
             spawnTrackers.Add(new EnemySpawnTracker {
                 profile = profile,
                 remainingThreat = 33,
+                startingThreat = 33
             });
             Debug.Log($"Initialising secondary spawn tracker (profile: {profile.name}, threat: {spawnTrackers[spawnTrackers.Count - 1].remainingThreat})");
         }
@@ -62,13 +65,26 @@ public class HiveMind : MonoBehaviour {
             }
         }
 
-        GameEvents.On(this, "alien_turn_start", Spawn);
+        GameEvents.On(this, "alien_turn_start", AlienTurnStart);
+        GameEvents.On(this, "threat_increased", IncreaseThreat);
     }
 
-    void OnDestroy() => GameEvents.RemoveListener(this, "alien_turn_start");
+    void OnDestroy() {
+        GameEvents.RemoveListener(this, "alien_turn_start");
+        GameEvents.RemoveListener(this, "threat_increased");
+    }
 
     void Update() {
         if (UIState.instance.IsAlienTurn()) ContemplateMoves();
+    }
+    
+    private void IncreaseThreat() {
+        Debug.Log("Increasing threat...");
+        threatIncreased = true;
+        foreach (var tracker in spawnTrackers) {
+            tracker.remainingThreat += tracker.startingThreat / 6;
+            Debug.Log($"{tracker.profile.name}, new threat: {tracker.remainingThreat}");
+        }
     }
 
     private void ContemplateMoves() {
@@ -150,6 +166,17 @@ public class HiveMind : MonoBehaviour {
         }
         activeAlien.HideAttack();
     }
+    
+    private void AlienTurnStart() {
+        if (threatIncreased) {
+            threatIncreased = false;
+            for (int i = 0; i < 3; i++) {
+                Spawn();
+            }
+        } else {
+            Spawn();
+        }
+    }
 
     private void Spawn() {
         var weightedSpawners = Map.instance.spawners.Where(spawner => !Map.instance.GetActors<Soldier>().Any(sol => sol.On(spawner.tile))).Select(spawner => 
@@ -167,9 +194,9 @@ public class HiveMind : MonoBehaviour {
         foreach (var tracker in spawnTrackers) {
             int nominalTurnCount = 12;
             float avgSpawnsPerTurn = ((float)tracker.remainingThreat / tracker.profile.threat) / nominalTurnCount;
-            Debug.Log($"Spawn chance: {avgSpawnsPerTurn}");
-            while (Random.value < avgSpawnsPerTurn) {
-                avgSpawnsPerTurn -= 1;
+            int spawns = (int)Mathf.Round(GaussianNumber.Generate(avgSpawnsPerTurn, Mathf.Max(avgSpawnsPerTurn * 0.45f, 0.5f)));
+            Debug.Log($"{tracker.profile.name} avg spawns: {avgSpawnsPerTurn}, spawns: {spawns}");
+            for (int j = 0; j < spawns; j++) {
                 var spawner = weightedSpawners.WeightedSelect().spawner;
                 InstantiatePod(tracker.profile.typeName, 1, spawner.gridLocation, true);
             }
