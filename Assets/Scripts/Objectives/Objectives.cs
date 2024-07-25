@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 public class Objectives {
-
+    
     public bool allComplete => objectives.Where(objective => objective.required).All(objective => objective.complete);
 
     public Map map;
@@ -33,6 +33,24 @@ public class Objectives {
         roomDistances.Add(objectiveRoomId, GetDistancesFrom(map.rooms[objectiveRoomId]));
         objective.Init(map.rooms[objectiveRoomId]);
         objectives.Add(objective);
+    }
+    
+    public int EstimateTravelDistance() {
+        var objectiveRoomIds = roomDistances.Keys.ToList();
+        objectiveRoomIds.Remove(startingRoom.id);
+        return EstimateTravelDistanceRecursive(startingRoom.id, objectiveRoomIds);
+    }
+    int EstimateTravelDistanceRecursive(int previousRoomId, List<int> remainingRoomIds) {
+        if (remainingRoomIds.Count == 1) {
+            return roomDistances[previousRoomId][remainingRoomIds[0]];
+        }
+        var results = new List<int>();
+        foreach (var roomId in remainingRoomIds) {
+            var newList = new List<int>(remainingRoomIds);
+            newList.Remove(roomId);
+            results.Add(roomDistances[previousRoomId][roomId] + EstimateTravelDistanceRecursive(roomId, newList));
+        }
+        return results.Min();
     }
 
     void CheckCompletion() {

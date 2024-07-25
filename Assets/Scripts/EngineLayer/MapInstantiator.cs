@@ -1,7 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class MapInstantiator : MonoBehaviour {
+    
+    [System.Serializable]
+    public class Blueprint {
+        public int vents;
+        public int loots;
+        public int corridors;
+        public int secondaryCorridors;
+        public int rooms;
+    }
 
     public static bool skipGenerate;
     
@@ -10,7 +20,7 @@ public class MapInstantiator : MonoBehaviour {
 
     public Map map;
 
-    public void Generate() {
+    public void Generate(Blueprint blueprint) {
         if (skipGenerate) return;
         
         for (int i = map.transform.childCount - 1; i >= 0; i--) {
@@ -19,39 +29,76 @@ public class MapInstantiator : MonoBehaviour {
                 DestroyImmediate(child.gameObject);
             }
         }
-        var mapLayout = new MapGenerator().Generate();
+        var mapLayout = new MapGenerator(new MapGenerator.Blueprint {
+            corridors = blueprint.corridors,
+            secondaryCorridors = blueprint.secondaryCorridors,
+            rooms = blueprint.rooms
+        }).Generate();
         var tiles = new List<Tile>();
-        for (int x = 0; x < mapLayout.tiles.Count; x++) {
+        var ventTiles = new List<Tile>();
+        var mapLayoutCache = mapLayout.tiles;
+        int startRoomId = mapLayoutCache.SelectMany(x => x).Where(tile => tile.roomId > 0).Select(tile => tile.roomId).Min();
+        for (int x = 0; x < mapLayoutCache.Count; x++) {
             var columnObject = new GameObject().transform;
             columnObject.transform.parent = map.transform;
             columnObject.name = "Column " + x;
             columnObject.localPosition = Vector3.zero;
-            for (int y = 0; y < mapLayout.tiles[0].Count; y++) {
-                var tileData = mapLayout.tiles[x][y];
-                var tile = MakeTile(new Vector2(x, y), columnObject.transform, !tileData.isWall);
-                if (tileData.isAlienSpawner) {
-                    tile.gameObject.AddComponent<Spawner>();
-                    var vent = Instantiate(Resources.Load<Transform>("Prefabs/Vent"));
-                    tile.SetActor(vent, true);
+            for (int y = 0; y < mapLayoutCache[0].Count; y++) {
+                var tileData = mapLayoutCache[x][y];
+                
+                if (!tileData.isWall) { // add vents to any 'end' tiles
+                    int neighbours = 0;
+                    if (!mapLayoutCache[x - 1][y].isWall) neighbours++;
+                    if (!mapLayoutCache[x + 1][y].isWall) neighbours++;
+                    if (!mapLayoutCache[x][y - 1].isWall) neighbours++;
+                    if (!mapLayoutCache[x][y + 1].isWall) neighbours++;
+                    if (neighbours == 1) tileData.isAlienSpawner = true;
                 }
-                if (tileData.isPlayerSpawner) tile.gameObject.AddComponent<StartLocation>();
-                if (tileData.isLootSpawner) tile.gameObject.AddComponent<LootSpawner>();
+                
+                var tile = MakeTile(new Vector2(x, y), columnObject.transform, !tileData.isWall);
+                
+                if (tileData.isAlienSpawner) {
+                    if (tileData.roomId == startRoomId) tile.gameObject.AddComponent<StartLocation>();
+                    else ventTiles.Add(tile);
+                }
                 tiles.Add(tile);
 
                 // Add or update room
                 if (tileData.roomId >= 0) {
                     if (!map.rooms.ContainsKey(tileData.roomId)) {
-                        map.rooms[tileData.roomId] = new Map.Room { id = tileData.roomId };
+                        map.rooms[tileData.roomId] = new Map.Room { id = tileData.roomId, start = tileData.roomId == startRoomId };
                     }
                     map.rooms[tileData.roomId].tiles.Add(tile);
                 }
             }
         }
-        map.width = mapLayout.tiles.Count;
-        map.height = mapLayout.tiles[0].Count;
+        map.width = mapLayoutCache.Count;
+        map.height = mapLayoutCache[0].Count;
         map.ClearTiles();
         foreach (var tile in tiles) {
             SetSprite(tile);
+        }
+        
+        // add vents
+        int remainingVents = blueprint.vents;
+        while (ventTiles.Any() && remainingVents > 0) {
+            var ventTile = ventTiles.Sample();
+            ventTiles.Remove(ventTile);
+            ventTile.gameObject.AddComponent<Spawner>();
+            var vent = Instantiate(Resources.Load<Transform>("Prefabs/Vent"));
+            ventTile.SetActor(vent, true);
+            remainingVents--;
+        }
+        
+        // add common loot
+        int remainingLoot = blueprint.loots;
+        while (ventTiles.Any() && remainingLoot > 0) {
+            var ventTile = ventTiles.Sample();
+            ventTiles.Remove(ventTile);
+            
+            var loot = LootGenerator.instance.MakeCommonLoot(PlayerSave.current.difficulty);
+            LootGenerator.instance.InstantiateLootChest(loot, ventTile.gridLocation, true);
+            remainingLoot--;
         }
     }
 

@@ -4,7 +4,9 @@ using System.Linq;
 using static MapGenerator;
 
 public class RoomTemplate : MonoBehaviour {
-
+    
+    public bool isCorridor;
+    
     private RoomTemplateTile[] tiles => transform.GetComponentsInChildren<RoomTemplateTile>();
 
     public Port[] GetPorts(Facing facing, bool mirrored) {
@@ -32,5 +34,13 @@ public class RoomTemplate : MonoBehaviour {
 
     public static RoomTemplate Random() {
         return Resources.LoadAll<RoomTemplate>("Rooms").Sample();
+    }
+    
+    public static RoomTemplate RandomCorridor() {
+        return Resources.LoadAll<RoomTemplate>("Rooms").Where(room => room.isCorridor).Sample();
+    }
+    
+    public static RoomTemplate RandomRoom() {
+        return Resources.LoadAll<RoomTemplate>("Rooms").Where(room => !room.isCorridor).Sample();
     }
 }

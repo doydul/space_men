@@ -23,12 +23,24 @@ public class Main : MonoBehaviour {
             save.Save(0);
         }
 
-        MapInstantiator.instance.Generate();
+        if (PlayerSave.current.mapBlueprint == null) {
+            MapInstantiator.instance.Generate(new MapInstantiator.Blueprint {
+                vents = 5,
+                loots = 3,
+                corridors = 6,
+                secondaryCorridors = 4,
+                rooms = 5
+            });
+        } else {
+            MapInstantiator.instance.Generate(PlayerSave.current.mapBlueprint);
+        }
 
         Map.instance.enemyProfiles = EnemyProfileSet.Generate(PlayerSave.current);
         foreach (var enemyProfile in Map.instance.enemyProfiles.primaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
         foreach (var enemyProfile in Map.instance.enemyProfiles.secondaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
-        if (Map.instance.rooms.ContainsKey(1)) Objectives.AddToMap(Map.instance, Map.instance.rooms[1]);
+        Objectives.AddToMap(Map.instance, Map.instance.rooms.FirstOrDefault(roomKV => roomKV.Value.start).Value);
+        Debug.Log("travel distance:::::");
+        Debug.Log(Map.instance.objectives.EstimateTravelDistance());
 
         int j = 0;
         foreach (var metaSoldier in PlayerSave.current.squad.GetMetaSoldiers()) {

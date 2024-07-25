@@ -130,6 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 1
   portDirection: 0
 --- !u!1 &1157558648605713307
 GameObject:
@@ -261,6 +264,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 1
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!1 &1556178155967169021
 GameObject:
@@ -308,6 +314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 1
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 2
 --- !u!1 &2048964196514051047
 GameObject:
@@ -607,6 +616,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 1
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 1
 --- !u!1 &4385489248334162600
 GameObject:
@@ -661,6 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4e8429df748be48a62299e2b6098b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCorridor: 0
 --- !u!1 &4552037795412056058
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +804,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 1
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!1 &5751551260023217583
 GameObject:
@@ -838,6 +854,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 1
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!1 &5779177653626323194
 GameObject:
@@ -1053,6 +1072,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 1
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!1 &8687860858718008209
 GameObject:
@@ -1100,6 +1122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
+  isAlienSpawner: 1
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 0
 --- !u!1 &8931723433457843761
 GameObject:
@@ -1231,4 +1256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 1
+  isAlienSpawner: 0
+  isPlayerSpawner: 0
+  isLootSpawner: 0
   portDirection: 3

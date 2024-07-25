@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   minDamage: 1
-  maxDamage: 3
+  maxDamage: 4
   audio: {fileID: 11400000, guid: 49f712e0138d65e44a3a72527668c9a6, type: 2}

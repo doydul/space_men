@@ -165,24 +165,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  difficultyLevel: 1
+  difficultyLevel: 0
   groupishness: 0
-  armouredness: 70
+  armouredness: 0
   quickness: 0
   bigness: 0
+  mapBlueprint:
+    vents: 4
+    loots: 4
+    corridors: 6
+    secondaryCorridors: 4
+    rooms: 5
   weapons:
-  - Plasma Gun
-  - Chain Gun
-  - Assault Rifle
-  - Assault Rifle
+  - SIKR-5
+  - SIKR-5
+  - SIKR-5
   armour:
-  - Medium
-  - Medium
-  - Light
-  - Light
-  unlockedAliens:
-  - Advanced
-  - Swarmer
+  - Flak Vest
+  - Flak Vest
+  - Flak Vest
+  unlockedAliens: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

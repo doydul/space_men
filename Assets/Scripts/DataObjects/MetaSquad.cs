@@ -30,6 +30,8 @@ public class MetaSquad {
         metaSoldiers.RemoveAt(index);
         return metaSoldier;
     }
+    
+    public void RemoveMetaSoldierById(string id) => RemoveMetaSoldier(GetMetaSoldier(id));
 
     public static MetaSquad GenerateDefault() {
         var result = new MetaSquad();

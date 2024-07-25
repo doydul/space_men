@@ -115,6 +115,11 @@ public class Soldier : Actor {
     public void Destroy() {
         Destroy(gameObject);
     }
+    
+    public override void Remove() {
+        base.Remove();
+        PlayerSave.current.squad.RemoveMetaSoldierById(id);
+    }
 
     public override void Interact(Tile tile) {
         if (!tile.open) {

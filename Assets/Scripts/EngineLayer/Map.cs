@@ -7,6 +7,7 @@ using UnityEngine;
 public partial class Map : MonoBehaviour {
 
     public class Room {
+        public bool start;
         public int id;
         public List<Tile> tiles = new();
         public Vector2 centre { get {

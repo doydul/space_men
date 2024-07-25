@@ -9,6 +9,12 @@ public class MapInstantiatorEditor : Editor {
     
     public override void OnInspectorGUI() {
         base.OnInspectorGUI();
-        if (GUILayout.Button(" Generate ")) mapGen.Generate();
+        if (GUILayout.Button(" Generate ")) mapGen.Generate(new MapInstantiator.Blueprint {
+            vents = 5,
+            loots = 3,
+            corridors = 6,
+            secondaryCorridors = 4,
+            rooms = 5
+        });
     }
 }

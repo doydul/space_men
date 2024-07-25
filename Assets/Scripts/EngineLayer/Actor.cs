@@ -95,7 +95,7 @@ public abstract class Actor : MonoBehaviour {
         TurnTo(FacingToDirection(direction));
     }
 
-    public void Remove() {
+    public virtual void Remove() {
         if (tile.GetActor<Actor>() == this) {
             tile.RemoveActor();
         } else {

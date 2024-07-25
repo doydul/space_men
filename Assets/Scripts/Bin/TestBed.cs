@@ -11,6 +11,8 @@ public class TestBed : MonoBehaviour {
     public int quickness;
     public int bigness;
     
+    public MapInstantiator.Blueprint mapBlueprint;
+    
     public string[] weapons;
     public string[] armour;
     
@@ -20,6 +22,7 @@ public class TestBed : MonoBehaviour {
         var save = new PlayerSave();
         PlayerSave.current = save;
         save.difficulty = difficultyLevel;
+        save.mapBlueprint = mapBlueprint;
 
         save.squad = GenerateSquad();
         SetEnemyProfileValues();

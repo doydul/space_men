@@ -13,6 +13,11 @@ public static class Extensions {
         if (count <= 0) return default(T);
         return list.ElementAt(Random.Range(0, count));
     }
+    
+    public static T Sample<T>(this List<T> list) {
+        if (list.Count <= 0) return default(T);
+        return list[Random.Range(0, list.Count)];
+    }
 
     public static List<T> Sample<T>(this IEnumerable<T> list, int num) {
         if (list.Count() <= 0) return new List<T>();

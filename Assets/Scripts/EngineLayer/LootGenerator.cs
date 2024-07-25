@@ -29,12 +29,18 @@ public class LootGenerator : MonoBehaviour {
         }
         return result;
     }
+    
+    public Loot MakeCommonLoot(float techLevel) {
+        return new Loot { credits = 50 };
+    }
 
-    public void InstantiateLootChest(Loot loot, Vector2 gridLocation) {
+    public void InstantiateLootChest(Loot loot, Vector2 gridLocation, bool hidden = false) {
         var trans = Instantiate(Resources.Load<Transform>("Prefabs/Chest")) as Transform;
         var chest = trans.GetComponent<Chest>();
         chest.contents = loot;
         
-        Map.instance.GetTileAt(gridLocation).SetActor(trans, true);
+        var tile = Map.instance.GetTileAt(gridLocation);
+        tile.SetActor(trans, true);
+        if (hidden) tile.HideBackground();
     }
 }

@@ -76,6 +76,8 @@ public class Tile : MonoBehaviour {
     }
     
     public bool HasActor<T>() => GetActor<T>() != null;
+    
+    public void HideBackground() => midground.gameObject.SetActive(false);
 
     public T GetBackgroundActor<T>() {
         if (backgroundActor == null) return default(T);
@@ -101,6 +103,7 @@ public class Tile : MonoBehaviour {
         foggy = false;
         fogSprite.enabled = false;
         foreground.gameObject.SetActive(true);
+        midground.gameObject.SetActive(true);
     }
 
     void OnDrawGizmos() {
