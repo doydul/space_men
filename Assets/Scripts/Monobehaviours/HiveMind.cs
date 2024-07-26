@@ -52,6 +52,7 @@ public class HiveMind : MonoBehaviour {
             Debug.Log($"Initialising secondary spawn tracker (profile: {profile.name}, threat: {spawnTrackers[spawnTrackers.Count - 1].remainingThreat})");
         }
 
+        weightedTiles = weightedTiles.Where(wTile => Map.instance.startLocations.Select(st => Map.instance.ManhattanDistance(st.gridLocation, wTile.tile.gridLocation)).Min() > 3).ToList();
         int tileCount = weightedTiles.Count();
 
         foreach (var tracker in spawnTrackers) {
@@ -170,9 +171,7 @@ public class HiveMind : MonoBehaviour {
     private void AlienTurnStart() {
         if (threatIncreased) {
             threatIncreased = false;
-            for (int i = 0; i < 3; i++) {
-                Spawn();
-            }
+            for (int i = 0; i < 3; i++) Spawn();
         } else {
             Spawn();
         }

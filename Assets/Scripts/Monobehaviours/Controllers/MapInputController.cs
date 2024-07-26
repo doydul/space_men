@@ -53,12 +53,6 @@ public class MapInputController : MonoBehaviour {
         translation.z = 0;
         map.transform.position -= translation;
         map.transform.localScale *= scaleFactor;
-        
-        // Cheats
-        if (Input.GetKeyDown(KeyCode.S)) { // Skip Level
-            Campaign.NextLevel(PlayerSave.current);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("CampaignUI");
-        }
     }
 
     public void Click(Vector2 mousePosition) {

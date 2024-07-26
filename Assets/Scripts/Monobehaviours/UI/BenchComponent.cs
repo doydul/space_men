@@ -11,7 +11,7 @@ public class BenchComponent : MonoBehaviour {
     
     void Start() {
         soldierPrototype.gameObject.SetActive(false);
-        Open();
+        Close();
     }
     
     public void Open() {
