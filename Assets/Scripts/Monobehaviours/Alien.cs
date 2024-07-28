@@ -49,7 +49,16 @@ public class Alien : Actor {
     }
 
     public override bool Hurt(int damage, DamageType damageType = DamageType.Normal) {
-        int effectiveArmour = damageType == DamageType.Energy ? (int)Mathf.Round(armour / 4f) : armour;
+        int effectiveArmour = armour;
+        switch(damageType) {
+            case DamageType.Energy:
+                effectiveArmour = (int)Mathf.Round(armour / 4f);
+                break;
+            case DamageType.IgnoreArmour:
+                effectiveArmour = 0;
+                break;
+        }
+        
         if (damage <= effectiveArmour / 2) {
             base.Hurt((int)Mathf.Round(damage / 4f));
         } else if (damage <= effectiveArmour) {

@@ -165,9 +165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  difficultyLevel: 0
+  difficultyLevel: 1
   groupishness: 0
-  armouredness: 0
+  armouredness: 100
   quickness: 0
   bigness: 0
   mapBlueprint:
@@ -177,9 +177,9 @@ MonoBehaviour:
     secondaryCorridors: 4
     rooms: 5
   weapons:
-  - SIKR-5
-  - SIKR-5
-  - SIKR-5
+  - Plasma Gun
+  - Plasma Gun
+  - Plasma Gun
   armour:
   - Flak Vest
   - Flak Vest

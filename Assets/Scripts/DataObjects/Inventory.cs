@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Inventory {
     
     public List<InventoryItem> items = new();
+    public List<InventoryItem> blueprints = new();
 
     public void AddItem(InventoryItem item) => items.Add(item);
 
