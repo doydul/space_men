@@ -3,6 +3,9 @@ using TMPro;
 
 public class WorkshopComponent : MonoBehaviour {
     
+    public TMP_Text creditsText;
+    public TMP_Text infoText;
+    
     public Transform itemPrototype;
     public Transform blueprintPrototype;
     
@@ -19,44 +22,56 @@ public class WorkshopComponent : MonoBehaviour {
         scrapButton.SetActive(false);
         researchButton.SetActive(false);
         constructButton.SetActive(false);
-        Open();
+        Close();
     }
     
     public void Open() {
         DisplayInventoryItems();
         DisplayBlueprints();
+        gameObject.SetActive(true);
+        infoText.text = "";
     }
     
     public void Close() {
-        
+        gameObject.SetActive(false);
     }
     
     public void SelectItem(InventoryItem item) {
         activeBlueprint = null;
         activeItem = item;
-        scrapButton.SetActive(true);
-        researchButton.SetActive(true);
-        constructButton.SetActive(false);
+        DisplayButtons();
     }
     
     public void SelectBlueprint(InventoryItem blueprint) {
         activeItem = null;
         activeBlueprint = blueprint;
-        scrapButton.SetActive(false);
-        researchButton.SetActive(false);
-        constructButton.SetActive(true);
+        DisplayButtons();
     }
     
-    public void ScrapItem(InventoryItem item) {
-        
+    public void ScrapItem() {
+        PlayerSave.current.inventory.items.Remove(activeItem);
+        PlayerSave.current.credits += (activeItem.isWeapon ? Weapon.Get(activeItem.name).cost : Armour.Get(activeItem.name).cost) / 2;
+        activeItem = null;
+        DisplayInventoryItems();
+        DisplayButtons();
     }
     
-    public void ResearchItem(InventoryItem item) {
-        
+    public void ResearchItem() {
+        int cost = (activeItem.isWeapon ? Weapon.Get(activeItem.name).cost : Armour.Get(activeItem.name).cost) * 2;
+        if (PlayerSave.current.credits >= cost) {
+            PlayerSave.current.credits -= cost;
+            PlayerSave.current.inventory.blueprints.Add(activeItem.Dup());
+            DisplayBlueprints();
+        }
     }
     
-    public void ConstructItem(InventoryItem blueprint) {
-        
+    public void ConstructItem() {
+        int cost = activeBlueprint.isWeapon ? Weapon.Get(activeBlueprint.name).cost : Armour.Get(activeBlueprint.name).cost;
+        if (PlayerSave.current.credits >= cost) {
+            PlayerSave.current.credits -= cost;
+            PlayerSave.current.inventory.items.Add(activeBlueprint.Dup());
+            DisplayInventoryItems();
+        }
     }
     
     void DisplayBlueprints() {
@@ -72,6 +87,7 @@ public class WorkshopComponent : MonoBehaviour {
                 SelectBlueprint(blueprint);
             });
         }
+        DisplayCredits();
     }
     
     void DisplayInventoryItems() {
@@ -87,5 +103,29 @@ public class WorkshopComponent : MonoBehaviour {
                 SelectItem(item);
             });
         }
+        DisplayCredits();
+    }
+    
+    void DisplayButtons() {
+        if (activeItem != null) {
+            scrapButton.SetActive(true);
+            researchButton.SetActive(true);
+            constructButton.SetActive(false);
+            infoText.text = activeItem.name;
+        } else if (activeBlueprint != null) {
+            scrapButton.SetActive(false);
+            researchButton.SetActive(false);
+            constructButton.SetActive(true);
+            infoText.text = activeBlueprint.name;
+        } else {
+            scrapButton.SetActive(false);
+            researchButton.SetActive(false);
+            constructButton.SetActive(false);
+        }
+        DisplayCredits();
+    }
+    
+    void DisplayCredits() {
+        creditsText.text = $"credits {PlayerSave.current.credits}";
     }
 }

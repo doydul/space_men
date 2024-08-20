@@ -28,7 +28,7 @@ MonoBehaviour:
   flameColor: {r: 0, g: 0, b: 0, a: 0}
   muzzleFlareColor: {r: 0.9528302, g: 0.78473914, b: 0.6238341, a: 1}
   type: 1
-  cost: 100
+  cost: 150
   description: 
   abilities:
   - {fileID: 11400000, guid: ff8c339011d9f0d4f8b0fd5f7ef123ab, type: 2}

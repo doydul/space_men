@@ -17,7 +17,7 @@ MonoBehaviour:
   weight: 100
   armourValue: 30
   type: 0
-  value: 350
+  cost: 130
   maxHealth: 18
   sightRange: 10
   abilities:

@@ -28,12 +28,13 @@ MonoBehaviour:
   flameColor: {r: 0, g: 0, b: 0, a: 0}
   muzzleFlareColor: {r: 0.7952059, g: 0.9607843, b: 0.6117647, a: 1}
   type: 0
-  cost: 20
+  cost: 500
   description: 'advanced assault weapon
 
     effective against advanced enemies'
   abilities:
   - {fileID: 11400000, guid: 4f8613db8b7396148a2bee97be3a698c, type: 2}
+  traits: 
   weaponPrefab: {fileID: 7944426211514159566, guid: f5a4bb87d722bf54498044eb1a11cc64,
     type: 3}
   tracerPrefab: {fileID: 2193078054948271443, guid: 6e949ba4b7971ef429bfd25919b032b7,

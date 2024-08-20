@@ -28,7 +28,7 @@ MonoBehaviour:
   flameColor: {r: 0, g: 0, b: 0, a: 0}
   muzzleFlareColor: {r: 0.9622642, g: 0.89271724, b: 0.6118548, a: 1}
   type: 0
-  cost: 20
+  cost: 100
   description: basic assault weapon. effective against basic enemies
   abilities:
   - {fileID: 11400000, guid: 4f8613db8b7396148a2bee97be3a698c, type: 2}
