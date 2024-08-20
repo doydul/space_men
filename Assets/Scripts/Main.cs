@@ -21,6 +21,8 @@ public class Main : MonoBehaviour {
             var squad = MetaSquad.GenerateDefault();
             save.squad = squad;
             save.Save(0);
+            
+            Mission.Generate();
         }
 
         if (PlayerSave.current.mapBlueprint == null) {
@@ -35,9 +37,7 @@ public class Main : MonoBehaviour {
             MapInstantiator.instance.Generate(PlayerSave.current.mapBlueprint);
         }
 
-        Map.instance.enemyProfiles = EnemyProfileSet.Generate(PlayerSave.current);
-        foreach (var enemyProfile in Map.instance.enemyProfiles.primaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
-        foreach (var enemyProfile in Map.instance.enemyProfiles.secondaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
+        Map.instance.enemyProfiles = Mission.current.enemyProfiles;
         Objectives.AddToMap(Map.instance, Map.instance.rooms.FirstOrDefault(roomKV => roomKV.Value.start).Value);
         int turnsToCompletion = Map.instance.objectives.EstimateTravelDistance() / (5 - (int)PlayerSave.current.difficulty);
         int turnsToThreatIncrease = turnsToCompletion / 2;

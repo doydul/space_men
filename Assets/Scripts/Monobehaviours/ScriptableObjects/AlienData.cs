@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Alien", menuName = "Alien", order = 1)]
 public class AlienData : ScriptableObject {
 
+    public Sprite sprite;
     public int maxHealth;
     public int armour;
     public int accModifier;
@@ -20,5 +21,9 @@ public class AlienData : ScriptableObject {
         target.movement = movement;
         target.sensoryRange = 7;
         target.audio = audio;
+    }
+    
+    public static AlienData Get(string name) {
+        return Resources.Load<AlienData>("Aliens/" + name);
     }
 }

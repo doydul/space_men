@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c82adb107c94f71a0fd866728d0893, type: 3}
   m_Name: Sprinter
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: e5044c5cfdcc44fcfa7f1b8df1ea6106, type: 3}
   maxHealth: 3
   armour: 0
   accModifier: -10

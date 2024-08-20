@@ -61,6 +61,8 @@ public class CampaignUITester : MonoBehaviour {
             //         if (prof != null) Debug.Log(prof.name);
             //     }
             // }
+            
+            Mission.Generate();
 
             UnityEngine.SceneManagement.SceneManager.LoadScene("CampaignUI");
         }
