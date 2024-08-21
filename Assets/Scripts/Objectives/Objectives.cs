@@ -55,7 +55,7 @@ public class Objectives {
 
     void CheckCompletion() {
         if (allComplete) {
-            ModalPopup.instance.DisplayEOL();
+            Mission.current.End();
         }
     }
 

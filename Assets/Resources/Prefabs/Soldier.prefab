@@ -178,6 +178,7 @@ MonoBehaviour:
   hitIndicator: {fileID: 5575816499745781192}
   deflectIndicator: {fileID: 0}
   healthIndicator: {fileID: 4154636579335064727}
+  walkSounds: {fileID: 11400000, guid: 34e6dc9098801674596cf506cdbafe41, type: 2}
   hurtSounds: {fileID: 11400000, guid: c49753f553989794fa477df0fc81f267, type: 2}
   dieSounds: {fileID: 11400000, guid: 6dfe836edaf62b94c84240113c98c092, type: 2}
   armour: {fileID: 0}

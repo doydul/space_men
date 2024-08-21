@@ -116,6 +116,7 @@ public static class GameplayOperations {
     
     public static IEnumerator PerformMoveAnimation(Actor actor, Tile destinationTile) {
         if (destinationTile.foggy) yield break;
+        actor.PlayAudio(actor.walkSounds.Sample());
         float duration = actor is Soldier ? 1f / ((Soldier)actor).baseMovement : 1f / ((Alien)actor).movement;
         var delta = destinationTile.foreground.position - actor.transform.position;
         var startTime = Time.time;

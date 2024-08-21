@@ -13,5 +13,12 @@ public class Mission {
         return result;
     }
     
+    public bool finished { get; private set; }
+    
     public EnemyProfileSet enemyProfiles;
+    
+    public void End() {
+        finished = true;
+        ModalPopup.instance.DisplayEOL();
+    }
 }

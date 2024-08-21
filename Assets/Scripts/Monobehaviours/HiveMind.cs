@@ -76,7 +76,7 @@ public class HiveMind : MonoBehaviour {
     }
 
     void Update() {
-        if (UIState.instance.IsAlienTurn()) ContemplateMoves();
+        if (UIState.instance.IsAlienTurn() && !Mission.current.finished) ContemplateMoves();
     }
     
     private void IncreaseThreat() {

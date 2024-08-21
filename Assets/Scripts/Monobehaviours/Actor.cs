@@ -35,6 +35,7 @@ public abstract class Actor : MonoBehaviour {
     public GameObject hitIndicator;
     public GameObject deflectIndicator;
     public HealthIndicator healthIndicator;
+    public AudioCollection walkSounds;
     public AudioCollection hurtSounds;
     public AudioCollection dieSounds;
 
