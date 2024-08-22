@@ -18,6 +18,7 @@ public class Alien : Actor {
     public int expReward { get; set; }
     public int sensoryRange { get; set; }
     public AlienAudioProfile audio { get; set; }
+    public int remainingMovement => (broken ? movement / 2 : movement) - actualTilesMoved;
     public Pod pod { get; set; }
 
     public bool hasActed;
@@ -32,12 +33,18 @@ public class Alien : Actor {
     protected override void Awake() {
         base.Awake();
         attackIndicator.enabled = false;
-        GameEvents.On(this, "alien_turn_start", Reset);
+        GameEvents.On(this, "player_turn_start", Reset);
     }
 
-    void OnDestroy() => GameEvents.RemoveListener(this, "alien_turn_start");
+    void OnDestroy() {
+        GameEvents.RemoveListener(this, "player_turn_start");
+    }
 
-    public void Reset() => hasActed = false;
+    public void Reset() {
+        hasActed = false;
+        broken = false;
+        actualTilesMoved = 0;
+    }
 
     public void Awaken() {
         if (!awake) {
@@ -93,7 +100,7 @@ public class Alien : Actor {
 
     public void HighlightActions() {
         MapHighlighter.instance.ClearHighlights();
-        foreach (var tile in Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(gridLocation, movement)) {
+        foreach (var tile in Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement)) {
             MapHighlighter.instance.HighlightTile(tile, Color.red);
             foreach (var adjTile in Map.instance.AdjacentTiles(tile)) {
                 if (adjTile.GetActor<Soldier>() != null) {

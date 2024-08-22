@@ -43,10 +43,12 @@ public abstract class Actor : MonoBehaviour {
     public long index { get; set; } // remove me
     public Direction direction { get; private set; }
     public bool dead { get; private set; }
+    public bool broken { get; set; }
 
     public int maxHealth { get; set; }
     public int health { get; set; }
     public int healthPercentage => health * 100 / maxHealth;
+    public int actualTilesMoved { get; set; }
     public Vector2 gridLocation => tile.gridLocation;
     public Vector2 realLocation => transform.position;
     public int rotation => (int)direction * 90;

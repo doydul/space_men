@@ -14,6 +14,7 @@ public static class GameplayOperations {
     }
     
     public static IEnumerator PerformSoldierShoot(Soldier soldier, Alien target) {
+        var targetTile = target.tile;
         MakeNoise(target.gridLocation);
         var diff = target.realLocation - soldier.realLocation;
         var angle = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(diff.y, diff.x) - 90);
@@ -21,6 +22,19 @@ public static class GameplayOperations {
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < soldier.shots; i++) {
             yield return PerformSoldierSingleShot(soldier, target);
+            if (target.dead) {
+                // choose new target from adjacent enemies
+                var possibleNewTargets = new List<Alien>();
+                foreach (var tile in Map.instance.AdjacentTiles(targetTile, true)) {
+                    if (tile.HasActor<Alien>()) {
+                        possibleNewTargets.Add(tile.GetActor<Alien>());
+                    }
+                }
+                if (possibleNewTargets.Count > 0) {
+                    target = possibleNewTargets.Sample();
+                    Debug.Log(target, target);
+                }
+            }
         }
         yield return PerformTurnAnimation(soldier, Actor.FacingToDirection(target.gridLocation - soldier.gridLocation), true);
         soldier.RefreshUI();
@@ -36,7 +50,10 @@ public static class GameplayOperations {
             yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, true);
             var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
             bool hurt = target.Hurt(damage, soldier.weapon.damageType);
-            if (hurt) target.ShowHit();
+            if (hurt) {
+                target.ShowHit();
+                target.broken = true;
+            }
             else soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
             BloodSplatController.instance.MakeSplat(target);
         } else {
@@ -51,7 +68,10 @@ public static class GameplayOperations {
                     yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, actor.tile.transform.position, soldier.weapon, true);
                     var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
                     bool hurt = actor.Hurt(damage, soldier.weapon.damageType);
-                    if (hurt) actor.ShowHit();
+                    if (hurt) {
+                        actor.ShowHit();
+                        actor.broken = true;
+                    }
                     else soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
                     BloodSplatController.instance.MakeSplat(actor);
                     break;
@@ -69,7 +89,9 @@ public static class GameplayOperations {
     public static IEnumerator PerformActorMove(Actor actor, Map.Path path) {
         MapHighlighter.instance.ClearHighlights();
         var soldiers = Map.instance.GetActors<Soldier>();
+        bool stoppedEarly = false;
         for (int i = 1; i < path.nodes.Length; i++) {
+            actor.actualTilesMoved++;
             var tile = path.nodes[i].tile;
             
             var facing = tile.gridLocation - path.nodes[i - 1].tile.gridLocation;
@@ -97,9 +119,16 @@ public static class GameplayOperations {
                     }
                 }
                 if (actor.dead) break;
+                if (actor is Alien) {
+                    var alien = actor as Alien;
+                    if (alien.broken && alien.remainingMovement <= 0) {
+                        stoppedEarly = true;
+                        break;
+                    }
+                }
             }
         }
-        if (!actor.dead) {
+        if (!actor.dead && !stoppedEarly) {
             actor.MoveTo(path.last.tile);
             if (path.length >= 1) actor.TurnTo(path.last.tile.gridLocation - path.penultimate.tile.gridLocation);
         }
