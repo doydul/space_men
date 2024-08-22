@@ -20,22 +20,19 @@ public class Main : MonoBehaviour {
 
             var squad = MetaSquad.GenerateDefault();
             save.squad = squad;
-            save.Save(0);
-            
-            Mission.Generate();
-        }
-
-        if (PlayerSave.current.mapBlueprint == null) {
-            MapInstantiator.instance.Generate(new MapInstantiator.Blueprint {
+            save.mapBlueprint = new MapInstantiator.Blueprint {
                 vents = 5,
                 loots = 3,
                 corridors = 6,
                 secondaryCorridors = 4,
                 rooms = 5
-            });
-        } else {
-            MapInstantiator.instance.Generate(PlayerSave.current.mapBlueprint);
+            };
+            save.Save(0);
+            
+            Mission.Generate();
         }
+
+        MapInstantiator.instance.Generate(PlayerSave.current.mapBlueprint);
 
         Map.instance.enemyProfiles = Mission.current.enemyProfiles;
         Objectives.AddToMap(Map.instance, Map.instance.rooms.FirstOrDefault(roomKV => roomKV.Value.start).Value);

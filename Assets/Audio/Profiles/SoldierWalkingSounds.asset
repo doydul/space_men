@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SoldierWalkingSounds
   m_EditorClassIdentifier: 
   list:
-  - volume: 0.5
+  - volume: 0.1
     clip: {fileID: 8300000, guid: d6026b2990b9a064cb279c2b1044e647, type: 3}

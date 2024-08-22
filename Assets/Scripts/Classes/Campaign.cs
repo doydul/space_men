@@ -8,7 +8,9 @@ public class Campaign {
         save.levelNumber++;
         save.difficulty += 1f / 8f;
         MungeMapGenerationValues(save);
+        Debug.Log($"difficulty: {save.difficulty}");
         Mission.Generate();
+        PlayerSave.current.Save(0);
     }
     
     public static void MungeMapGenerationValues(PlayerSave save) {

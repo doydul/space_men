@@ -16,6 +16,7 @@ public class PlayerSave {
     public Inventory inventory = new();
     public AlienUnlocks alienUnlocks = new();
     public MapInstantiator.Blueprint mapBlueprint;
+    public Mission mission;
 
     public List<float> enemyGenerationValues = new List<float> { 15, 15, 15, 15 };
     public List<float> enemyGenerationVelocities = new List<float> { 0, 0, 0, 0 };

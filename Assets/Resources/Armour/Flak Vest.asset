@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Flak Vest
   m_EditorClassIdentifier: 
   icon: {fileID: 6049137105121139426, guid: 7e0702b01691f4610824edfb221641a6, type: 3}
-  techLevel: 1
+  techLevel: 0
   weight: 100
   armourValue: 15
   type: 1

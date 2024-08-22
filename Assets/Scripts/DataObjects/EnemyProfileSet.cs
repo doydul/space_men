@@ -1,9 +1,10 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine;
 
 [Serializable]
-public class EnemyProfileSet {
+public class EnemyProfileSet : ISerializationCallbackReceiver {
     public int groupishness;
     public int armouredness;
     public int quickness;
@@ -11,6 +12,22 @@ public class EnemyProfileSet {
     public int difficulty = 1;
     public List<EnemyProfile> primaries = new();
     public List<EnemyProfile> secondaries = new();
+    public List<string> primaryNames;
+    public List<string> secondaryNames;
+    
+    public void OnBeforeSerialize() {
+        primaryNames = new();
+        secondaryNames = new();
+        foreach (var profile in primaries) primaryNames.Add(profile.name);
+        foreach (var profile in secondaries) secondaryNames.Add(profile.name);
+    }
+    
+    public void OnAfterDeserialize() {
+        primaries = new();
+        secondaries = new();
+        foreach (var name in primaryNames) primaries.Add(EnemyProfile.GetAll().First(prof => prof.name == name));
+        foreach (var name in secondaryNames) secondaries.Add(EnemyProfile.GetAll().First(prof => prof.name == name));
+    }
 
     public static EnemyProfileSet Generate(PlayerSave save) {
         float difficulty = save.difficulty;
