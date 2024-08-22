@@ -20,19 +20,12 @@ public class Main : MonoBehaviour {
 
             var squad = MetaSquad.GenerateDefault();
             save.squad = squad;
-            save.mapBlueprint = new MapInstantiator.Blueprint {
-                vents = 5,
-                loots = 3,
-                corridors = 6,
-                secondaryCorridors = 4,
-                rooms = 5
-            };
             save.Save(0);
             
             Mission.Generate();
         }
 
-        MapInstantiator.instance.Generate(PlayerSave.current.mapBlueprint);
+        MapInstantiator.instance.Generate(PlayerSave.current.difficulty);
 
         Map.instance.enemyProfiles = Mission.current.enemyProfiles;
         Objectives.AddToMap(Map.instance, Map.instance.rooms.FirstOrDefault(roomKV => roomKV.Value.start).Value);

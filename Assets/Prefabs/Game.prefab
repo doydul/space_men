@@ -120,7 +120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5298407040536822671}
   m_HandleRect: {fileID: 8388943342370857877}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1777,6 +1777,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d50dad45622f4546b2ac812a84e3c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blueprints:
+  - {fileID: 11400000, guid: f8ec24e0172bd544a9322de6dec8a091, type: 2}
+  - {fileID: 11400000, guid: 1b49604e268ef204d80793ff06dd018f, type: 2}
+  - {fileID: 11400000, guid: 65bf55fbe8a489b40a96c8e27785862a, type: 2}
+  - {fileID: 11400000, guid: 97d40705fe0b59744b0f66033950fade, type: 2}
+  - {fileID: 11400000, guid: 454f95169c4d5f94db6b506e6247d1b0, type: 2}
+  - {fileID: 11400000, guid: 850083529efd9544488f8b39c33754ca, type: 2}
   map: {fileID: 8640662348927887907}
 --- !u!1 &8640662349426691712
 GameObject:

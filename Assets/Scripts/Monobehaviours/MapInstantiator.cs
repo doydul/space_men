@@ -5,6 +5,11 @@ using System.Linq;
 public class MapInstantiator : MonoBehaviour {
     
     [System.Serializable]
+    public class BlueprintCollection {
+        public List<Blueprint> blueprints;
+    }
+    
+    [System.Serializable]
     public class Blueprint {
         public int vents;
         public int loots;
@@ -18,9 +23,10 @@ public class MapInstantiator : MonoBehaviour {
     public static MapInstantiator instance;
     void Awake() => instance = this;
 
+    public List<MapBlueprint> blueprints;
     public Map map;
 
-    public void Generate(Blueprint blueprint) {
+    public void Generate(float difficulty) {
         if (skipGenerate) return;
         
         for (int i = map.transform.childCount - 1; i >= 0; i--) {
@@ -29,6 +35,7 @@ public class MapInstantiator : MonoBehaviour {
                 DestroyImmediate(child.gameObject);
             }
         }
+        var blueprint = blueprints[(int)(difficulty * 2)];
         var mapLayout = new MapGenerator(new MapGenerator.Blueprint {
             corridors = blueprint.corridors,
             secondaryCorridors = blueprint.secondaryCorridors,
