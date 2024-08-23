@@ -50,14 +50,14 @@ public class WorkshopComponent : MonoBehaviour {
     
     public void ScrapItem() {
         PlayerSave.current.inventory.items.Remove(activeItem);
-        PlayerSave.current.credits += (activeItem.isWeapon ? Weapon.Get(activeItem.name).cost : Armour.Get(activeItem.name).cost) / 2;
+        PlayerSave.current.credits += GetCost(activeItem) / 2;
         activeItem = null;
         DisplayInventoryItems();
         DisplayButtons();
     }
     
     public void ResearchItem() {
-        int cost = (activeItem.isWeapon ? Weapon.Get(activeItem.name).cost : Armour.Get(activeItem.name).cost) * 2;
+        int cost = GetCost(activeItem) * 2;
         if (PlayerSave.current.credits >= cost) {
             PlayerSave.current.credits -= cost;
             PlayerSave.current.inventory.blueprints.Add(activeItem.Dup());
@@ -66,7 +66,7 @@ public class WorkshopComponent : MonoBehaviour {
     }
     
     public void ConstructItem() {
-        int cost = activeBlueprint.isWeapon ? Weapon.Get(activeBlueprint.name).cost : Armour.Get(activeBlueprint.name).cost;
+        int cost = GetCost(activeBlueprint);
         if (PlayerSave.current.credits >= cost) {
             PlayerSave.current.credits -= cost;
             PlayerSave.current.inventory.items.Add(activeBlueprint.Dup());
@@ -111,12 +111,12 @@ public class WorkshopComponent : MonoBehaviour {
             scrapButton.SetActive(true);
             researchButton.SetActive(true);
             constructButton.SetActive(false);
-            infoText.text = activeItem.name;
+            infoText.text = activeItem.isWeapon ? Weapon.Get(activeItem.name).GetFullDescription() : Armour.Get(activeItem.name).GetFullDescription();
         } else if (activeBlueprint != null) {
             scrapButton.SetActive(false);
             researchButton.SetActive(false);
             constructButton.SetActive(true);
-            infoText.text = activeBlueprint.name;
+            infoText.text = activeBlueprint.isWeapon ? Weapon.Get(activeBlueprint.name).GetFullDescription() : Armour.Get(activeBlueprint.name).GetFullDescription();
         } else {
             scrapButton.SetActive(false);
             researchButton.SetActive(false);
@@ -127,5 +127,15 @@ public class WorkshopComponent : MonoBehaviour {
     
     void DisplayCredits() {
         creditsText.text = $"credits {PlayerSave.current.credits}";
+        if (activeItem != null) {
+            scrapButton.GetComponentInChildren<TMP_Text>().text = $"scrap {GetCost(activeItem) / 2}";
+            researchButton.GetComponentInChildren<TMP_Text>().text = $"research {GetCost(activeItem) * 2}";
+        } else if (activeBlueprint != null) {
+            constructButton.GetComponentInChildren<TMP_Text>().text = $"research {GetCost(activeBlueprint)}";
+        }
+     }
+    
+    int GetCost(InventoryItem item) {
+        return item.isWeapon ? Weapon.Get(item.name).cost : Armour.Get(item.name).cost;
     }
 }

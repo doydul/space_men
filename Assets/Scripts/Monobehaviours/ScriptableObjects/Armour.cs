@@ -55,4 +55,9 @@ public class Armour : ScriptableObject, IWeighted {
     public static Armour Get(string name) {
         return Resources.Load<Armour>("Armour/" + name);
     }
+    
+    public string GetFullDescription() {
+        string result = $"{name}\ntype: {type}\nhealth points: {maxHealth}\nmovement: {movement}\nsprint: {sprint}\nsight range: {sightRange}\nvalue: {cost}";
+        return result;
+    }
 }

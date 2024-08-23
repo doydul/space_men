@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c82adb107c94f71a0fd866728d0893, type: 3}
   m_Name: Runner
   m_EditorClassIdentifier: 
+  description: quick, but goes down easily. overwatch is key
   sprite: {fileID: 21300000, guid: 1e9c46fea469d4adfa1a234fab9e9ffd, type: 3}
   maxHealth: 6
   armour: 0

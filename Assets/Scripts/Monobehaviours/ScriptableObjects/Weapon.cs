@@ -43,4 +43,15 @@ public class Weapon : ScriptableObject, IWeighted {
     }
     
     public bool InRange(Vector2 shooterLocation, Vector2 targetLocation) => Map.instance.ManhattanDistance(shooterLocation, targetLocation) <= range;
+    
+    public string GetFullDescription() {
+        string result = $"{name}\naccuracy: {accuracy}";
+        if (blast == 0) result += $"\nshots: {shots}";
+        else result += $"\nblast: {blast}";
+        result += $"\ndamage: {minDamage}-{maxDamage}\nclip size: {ammo}";
+        if (damageType == DamageType.Energy) result += $"\ntrait: energy";
+        if (type == Type.Heavy) result += $"\ntrait: heavy";
+        result += $"\nvalue: {cost}";
+        return result;
+    }
 }

@@ -48,23 +48,7 @@ public class SoldierComponent : MonoBehaviour {
     }
 
     string DescriptionFor(InventoryItem item) {
-        if (item.isWeapon) {
-            var weapon = Weapon.Get(item.name);
-            string result = $"accuracy: {weapon.accuracy}\nshots: {weapon.shots}\ndamage: {weapon.minDamage} - {weapon.maxDamage}\nrange: {weapon.range}";
-            if (weapon.blast > 0) {
-                result += $"\nblast radius: {weapon.blast}";
-            }
-            if (weapon.damageType == DamageType.Energy || weapon.type == Weapon.Type.Heavy) {
-                result += $"special:";
-                if (weapon.damageType == DamageType.Energy) result += " energy";
-                if (weapon.type == Weapon.Type.Heavy) result += " heavy";
-            }
-            return result;
-        } else {
-            var armour = Armour.Get(item.name);
-            return $"hp: {armour.maxHealth}\nsight range: {armour.sightRange}\nmovement: {armour.movement}\nsprint: {armour.sprint}";
-        }
-
+        return item.isWeapon ? Weapon.Get(item.name).GetFullDescription() : Armour.Get(item.name).GetFullDescription();
     }
 
     public void EquipSelectedItem() {

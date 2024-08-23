@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c82adb107c94f71a0fd866728d0893, type: 3}
   m_Name: Advanced
   m_EditorClassIdentifier: 
-  description: a basic enemy with high armour
+  description: protected from small arms fire by a layer of chitinous plating
   sprite: {fileID: 21300000, guid: 4d31d508ccefc45d889f5389f1631b2b, type: 3}
   maxHealth: 8
   armour: 6
