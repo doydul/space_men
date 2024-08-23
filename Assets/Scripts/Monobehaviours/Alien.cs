@@ -8,6 +8,7 @@ public class Alien : Actor {
         public List<Alien> members = new();
     }
 
+    public string description { get; set; }
     public string type { get; set; }
     public int armour { get; set; }
     public int accModifier { get; set; }
@@ -81,6 +82,7 @@ public class Alien : Actor {
     public override void Select() {
         UIState.instance.SetSelectedActor(this);
         InformationPanel.instance.SetText($"Type: {type}\nHealth: {health}/{maxHealth}\nArmour: {armour}\nAccuracy Modifier: {accModifier}\nDamage: {damage}\nMovement: {movement}");
+        SideModal.instance.Show($"{type}\n{description}\n\nhealth: {health}/{maxHealth}\narmour: {armour}\naccuracy modifier: {accModifier}\ndamage: {damage}\nmovement: {movement}");
         HighlightActions();
     }
 
@@ -96,6 +98,7 @@ public class Alien : Actor {
         UIState.instance.DeselectActor();
         MapHighlighter.instance.ClearHighlights();
         InformationPanel.instance.ClearText();
+        SideModal.instance.Hide();
     }
 
     public void HighlightActions() {

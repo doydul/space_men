@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2987f325bffd5e041847af355e48ee6b, type: 3}
   m_Name: FireOrdnance
   m_EditorClassIdentifier: 
-  description: 
+  description: fire the currently equipped blast weapon at a chosen tile
+  scatterDistanceInterval: 5

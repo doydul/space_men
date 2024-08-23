@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a1d875deea5c643952cda4120b3157, type: 3}
   m_Name: LayDownFire
   m_EditorClassIdentifier: 
-  description: 
+  description: choose a direction to fire at any enemies in a 90 degree arc. shots
+    will continue until they've all been used up, or all visible enemies are dead.
+    if new enemies enter the area during the enemy turn, they will also be shot at.
+    unit can't move for the rest of the turn

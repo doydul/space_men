@@ -21,7 +21,7 @@ MonoBehaviour:
   damageType: 0
   shots: 3
   ammo: 5
-  range: 14
+  range: 20
   blast: 0
   flames: 0
   flameDuration: 0

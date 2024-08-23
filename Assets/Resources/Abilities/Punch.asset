@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9cff9c75e72320489f5461c0df0b216, type: 3}
   m_Name: Punch
   m_EditorClassIdentifier: 
-  description: 
+  description: deal 1-4 damage to an adjacent enemy. the action is free if the enemy
+    dies
   minDamage: 1
   maxDamage: 4
   audio: {fileID: 11400000, guid: 49f712e0138d65e44a3a72527668c9a6, type: 2}

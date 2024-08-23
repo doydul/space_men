@@ -138,8 +138,8 @@ public static class GameplayOperations {
             MakeNoise(actor.gridLocation);
         }
         if (actor is Soldier) {
-            (actor as Soldier).HighlightActions();
             FogManager.instance.UpdateFog();
+            (actor as Soldier).RefreshUI();
         }
     }
     

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13b709c4fdb21148bd5c769962080ab, type: 3}
   m_Name: ThrowGrenade
   m_EditorClassIdentifier: 
-  description: 
+  description: deals 3-12 damage to targets in an area. free action, 1 use per deployment
   scatterDistanceInterval: 5
   uses: 1
   weapon: {fileID: 11400000, guid: 4709090933cda264fa83dc12fd99dfb1, type: 2}
