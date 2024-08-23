@@ -19,7 +19,9 @@ public class LayDownFire : ReactionAbility {
 
     public IEnumerator PerformUse() {
         AbilityInfoPanel.instance.ShowDescription("Lay Down Fire\nChoose Facing");
+        SideModal.instance.Show(description);
         yield return MapInputController.instance.SelectTileFrom(Color.red, Map.instance.AdjacentTiles(owner.tile).Where(tile => tile.open).ToArray());
+        SideModal.instance.Hide();
         if (MapInputController.instance.selectedTile == null) yield break;
         AbilityInfoPanel.instance.Hide();
 

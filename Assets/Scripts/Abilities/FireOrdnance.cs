@@ -17,9 +17,11 @@ public class FireOrdnance : Ability {
 
     private IEnumerator PerformUse() {
         AbilityInfoPanel.instance.ShowDescription("Fire Ordnance\nChoose Target");
+        SideModal.instance.Show(description);
         yield return MapInputController.instance.SelectTileFrom(Color.red, Map.instance.iterator.Exclude(new SoldierLosMask()).RadiallyFrom(owner.gridLocation, 100)
           .Where(tile => owner.CanSee(tile.gridLocation) && owner.InRange(tile.gridLocation)).ToArray());
         var hitTile = MapInputController.instance.selectedTile;
+        SideModal.instance.Hide();
         if (hitTile == null) yield break;
         AbilityInfoPanel.instance.Hide();
         

@@ -20,6 +20,7 @@ public class ThrowGrenade : Ability {
 
     private IEnumerator PerformUse() {
         AbilityInfoPanel.instance.ShowDescription("Throw Grenade\nChoose Target");
+        SideModal.instance.Show(description);
         yield return MapInputController.instance.SelectTileFrom(
             Color.red,
             Map.instance.iterator.Exclude(new SoldierLosMask())
@@ -27,6 +28,7 @@ public class ThrowGrenade : Ability {
                 .Where(tile => owner.CanSee(tile.gridLocation) && weapon.InRange(owner.gridLocation, tile.gridLocation))
                 .ToArray()
         );
+        SideModal.instance.Hide();
         var hitTile = MapInputController.instance.selectedTile;
         if (hitTile == null) yield break;
         AbilityInfoPanel.instance.Hide();

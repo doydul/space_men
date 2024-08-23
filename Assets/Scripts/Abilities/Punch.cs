@@ -22,7 +22,9 @@ public class Punch : Ability {
 
     private IEnumerator PerformUse() {
         AbilityInfoPanel.instance.ShowDescription("Punch\nChoose Target");
+        SideModal.instance.Show(description);
         yield return MapInputController.instance.SelectTileFrom(Color.red, possibleTargets);
+        SideModal.instance.Hide();
         var hitTile = MapInputController.instance.selectedTile;
         if (hitTile == null) yield break;
         AbilityInfoPanel.instance.Hide();
