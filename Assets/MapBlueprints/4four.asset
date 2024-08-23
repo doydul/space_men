@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vents: 9
   loots: 5
+  equipments: 2
   corridors: 8
   secondaryCorridors: 6
   rooms: 8

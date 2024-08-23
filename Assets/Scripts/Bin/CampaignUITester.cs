@@ -9,7 +9,7 @@ public class CampaignUITester : MonoBehaviour {
             
         //     var save = new PlayerSave();
         //     PlayerSave.current = save;
-        //     save.credits = 1234;
+            // save.credits = 1234;
             
         //     save.bench.Add(new MetaSoldier() {
         //         name = "Bench Man",

@@ -15,9 +15,9 @@ MonoBehaviour:
   icon: {fileID: 0}
   techLevel: 1
   weight: 66
-  accuracy: 75
-  minDamage: 10
-  maxDamage: 15
+  accuracy: 70
+  minDamage: 8
+  maxDamage: 24
   damageType: 0
   shots: 1
   ammo: 20

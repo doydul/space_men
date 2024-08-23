@@ -6,6 +6,7 @@ public class BenchComponent : MonoBehaviour {
     
     public SoldierProfileIcon[] soldierProfileIcons;
     public Transform soldierPrototype;
+    public TMP_Text hireButtonText;
     
     MetaSoldier activeBenchSoldier;
     
@@ -17,10 +18,32 @@ public class BenchComponent : MonoBehaviour {
     public void Open() {
         DisplaySquadSoldiers();
         DisplayBenchSoldiers();
+        DisplayHireButtonText();
+        gameObject.SetActive(true);
     }
     
     public void Close() {
         gameObject.SetActive(false);
+    }
+    
+    public void HireSoldier() {
+        Debug.Log(PlayerSave.current.credits);
+        if (PlayerSave.current.credits >= 100) {
+            PlayerSave.current.credits -= 100;
+            PlayerSave.current.bench.Add(new MetaSoldier() {
+                name = "John Doe",
+                armour = new InventoryItem() {
+                    name = "Flak Vest",
+                    type = InventoryItem.Type.Armour
+                },
+                weapon = new InventoryItem() {
+                    name = "SIKR-5",
+                    type = InventoryItem.Type.Weapon
+                }
+            });
+            DisplayBenchSoldiers();
+            DisplayHireButtonText();
+        }
     }
     
     public void ClickSquadSoldier(int index) {
@@ -73,5 +96,9 @@ public class BenchComponent : MonoBehaviour {
             });
             index++;
         }
+    }
+    
+    void DisplayHireButtonText() {
+        hireButtonText.text = $"hire soldier 100/{PlayerSave.current.credits}";
     }
 }

@@ -5,6 +5,7 @@ using System;
 public class MapBlueprint : ScriptableObject {
     public int vents;
     public int loots;
+    public int equipments;
     public int corridors;
     public int secondaryCorridors;
     public int rooms;

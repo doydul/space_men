@@ -107,6 +107,8 @@ public class MapInstantiator : MonoBehaviour {
             LootGenerator.instance.InstantiateLootChest(loot, ventTile.gridLocation, true);
             remainingLoot--;
         }
+        
+        Objectives.AddToMap(map, map.rooms.FirstOrDefault(roomKV => roomKV.Value.start).Value, blueprint.equipments);
     }
 
     private Tile MakeTile(Vector2 position, Transform parent, bool open) {

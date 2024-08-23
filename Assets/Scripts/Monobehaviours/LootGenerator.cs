@@ -16,7 +16,7 @@ public class LootGenerator : MonoBehaviour {
         if (Random.value < upgradeChance) lootLevel += 1;
 
         var result = new Loot();
-        if (Random.value < 0.66f) {
+        if (Random.value < 0.6f) {
             result.item = new InventoryItem {
                 type = InventoryItem.Type.Weapon,
                 name = allWeapons.Where(wep => wep.techLevel == lootLevel).WeightedSelect().name

@@ -12,10 +12,12 @@ public class Objectives {
 
     Dictionary<int, Dictionary<int, int>> roomDistances = new();
     
-    public static void AddToMap(Map map, Map.Room startingRoom) {
+    public static void AddToMap(Map map, Map.Room startingRoom, int equipments) {
         var objectives = new Objectives { map = map, startingRoom = startingRoom };
         objectives.AddObjective(new GetToTarget { required = true });
-        objectives.AddObjective(new GrabTheLoot());
+        for (int i = 0; i < equipments; i++) {
+            objectives.AddObjective(new GrabTheLoot());
+        }
 
         map.objectives = objectives;
 
