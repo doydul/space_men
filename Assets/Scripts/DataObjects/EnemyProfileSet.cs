@@ -81,7 +81,7 @@ public class EnemyProfileSet : ISerializationCallbackReceiver {
     static void Pattern2(int baseLevel, EnemyProfileSet set) {
         set.primaries = PrimariesFor(baseLevel, set).Take(2).ToList();
         set.secondaries = SecondariesFor(baseLevel, set).Sample(1);
-        set.secondaries.Add(SecondariesFor(baseLevel + 1, set).Sample());
+        set.secondaries.AddRange(SecondariesFor(baseLevel + 1, set).Sample(1));
     }
 
     // both of the secondaries are upgraded to the next difficulty level
@@ -102,7 +102,7 @@ public class EnemyProfileSet : ISerializationCallbackReceiver {
         set.primaries = PrimariesFor(baseLevel, set).Take(1).ToList();
         set.primaries.Add(PrimariesFor(baseLevel + 1, set).First());
         set.secondaries = SecondariesFor(baseLevel, set).Sample(1);
-        set.secondaries.Add(SecondariesFor(baseLevel + 1, set).Sample());
+        set.secondaries.AddRange(SecondariesFor(baseLevel + 1, set).Sample(1));
     }
 
     // 1 primary and both secondaries are upgraded to the next difficulty level
@@ -122,6 +122,6 @@ public class EnemyProfileSet : ISerializationCallbackReceiver {
     static void Pattern8(int baseLevel, EnemyProfileSet set) {
         set.primaries = PrimariesFor(baseLevel + 1, set).Take(2).ToList();
         set.secondaries = SecondariesFor(baseLevel, set).Sample(1);
-        set.secondaries.Add(SecondariesFor(baseLevel + 1, set).Sample());
+        set.secondaries.AddRange(SecondariesFor(baseLevel + 1, set).Sample(1));
     }
 }

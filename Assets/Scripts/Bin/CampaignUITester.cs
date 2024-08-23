@@ -5,7 +5,6 @@ public class CampaignUITester : MonoBehaviour {
     void Start() {
         if (PlayerSave.current == null) {
             PlayerSave.current = PlayerSave.Load(0);
-            Mission.current = PlayerSave.current.mission;
             
         //     var save = new PlayerSave();
         //     PlayerSave.current = save;

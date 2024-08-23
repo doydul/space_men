@@ -1,11 +1,10 @@
 [System.Serializable]
 public class Mission {
     
-    public static Mission current;
+    public static Mission current => PlayerSave.current.mission;
     
     public static Mission Generate() {
         var result = new Mission();
-        current = result;
         
         result.enemyProfiles = EnemyProfileSet.Generate(PlayerSave.current);
         foreach (var enemyProfile in result.enemyProfiles.primaries) PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);

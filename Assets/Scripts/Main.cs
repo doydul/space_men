@@ -22,7 +22,7 @@ public class Main : MonoBehaviour {
             save.squad = squad;
             save.Save(0);
             
-            Mission.Generate();
+            save.mission = Mission.Generate();
         }
 
         MapInstantiator.instance.Generate(PlayerSave.current.difficulty);

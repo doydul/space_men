@@ -9,12 +9,12 @@ public class Campaign {
         save.difficulty += 1f / 5f;
         MungeMapGenerationValues(save);
         Debug.Log($"difficulty: {save.difficulty}");
-        Mission.Generate();
+        PlayerSave.current.mission = Mission.Generate();
         PlayerSave.current.Save(0);
     }
     
     public static void MungeMapGenerationValues(PlayerSave save) {
-        if (save.levelNumber % 4 == 0 || save.enemyGenerationValues.Sum() <= 0) {
+        if (save.levelNumber % 3 == 0 || save.enemyGenerationVelocities.Sum() <= 0) {
             // randomize enemy generation values
             var randList = new List<List<float>> {
                 new List<float> { 0, 0, 10, 20 },

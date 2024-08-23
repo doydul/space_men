@@ -17,7 +17,7 @@ public class PlayerSave {
     public AlienUnlocks alienUnlocks = new();
     public Mission mission;
 
-    public List<float> enemyGenerationValues = new List<float> { 15, 15, 15, 15 };
+    public List<float> enemyGenerationValues = new List<float> { 0, 0, 0, 0 };
     public List<float> enemyGenerationVelocities = new List<float> { 0, 0, 0, 0 };
 
     public int groupishness => (int)enemyGenerationValues[0];
