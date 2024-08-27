@@ -36,7 +36,17 @@ public class MapInputController : MonoBehaviour {
         if (dragging && (Input.mousePosition - dragStartPosition).magnitude > 10) {
             dragged = true;
             Vector3 delta = Input.mousePosition - dragStartPosition;
-            map.transform.position = mapStartPosition + (delta * 0.03f);
+            var newPos = mapStartPosition + (delta * 0.03f);
+            var diff = cam.transform.position - newPos;
+            if (diff.x < 0) newPos.x += diff.x;
+            if (diff.x > map.tiles.GetLength(0)) newPos.x += diff.x - map.tiles.GetLength(0);
+            if (diff.y < 0) newPos.y += diff.y;
+            if (diff.y > map.tiles.GetLength(1)) newPos.y += diff.y - map.tiles.GetLength(1);
+            map.transform.position = newPos;
+            Debug.Log("---------");
+            Debug.Log(delta);
+            Debug.Log(diff);
+            Debug.Log(newPos);
         }
         if (Input.GetMouseButtonDown(0)) {
             if (IsPointerOverGameObject()) {
