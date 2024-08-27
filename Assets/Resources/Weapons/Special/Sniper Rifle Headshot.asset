@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 330a01776318840bd88dc655a2bd4ab8, type: 3}
-  m_Name: Sniper Rifle
+  m_Name: Sniper Rifle Headshot
   m_EditorClassIdentifier: 
   icon: {fileID: 5026745411207313143, guid: e40f3473f69924114bb79a48f410c9e7, type: 3}
-  techLevel: 1
+  techLevel: -1
   weight: 100
-  accuracy: 90
-  minDamage: 1
-  maxDamage: 10
+  accuracy: 40
+  minDamage: 26
+  maxDamage: 40
   damageType: 0
   shots: 1
   ammo: 5
@@ -31,8 +31,7 @@ MonoBehaviour:
   cost: 100
   description: basic assault weapon. effective against basic enemies
   abilities:
-  - {fileID: 11400000, guid: b08dd34701722a648abbd165671a1eae, type: 2}
-  - {fileID: 11400000, guid: becd439f7cc7af84b99e251dd3597273, type: 2}
+  - {fileID: 11400000, guid: 4f8613db8b7396148a2bee97be3a698c, type: 2}
   traits: 
   weaponPrefab: {fileID: 7944426211514159566, guid: f5a4bb87d722bf54498044eb1a11cc64,
     type: 3}

@@ -11,8 +11,11 @@ public abstract class Ability : ScriptableObject {
         clone.name = name;
         owner.abilities.Add(clone);
         clone.owner = owner;
+        clone.Setup();
     }
     
+    public virtual void Setup() {}
+    public virtual void Teardown() {}
     public virtual bool CanUse() => true;
     public virtual void Use() {}
 }

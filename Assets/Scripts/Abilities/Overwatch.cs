@@ -11,20 +11,6 @@ public class Overwatch : ReactionAbility {
     }
 
     public override void Use() {
-        // AnimationManager.instance.StartAnimation(PerformUse());
-        owner.actionsSpent += 100;
-        owner.tilesMoved += 100;
-        owner.reaction = this;
-        owner.ShowAbilityIcon("Overwatch");
-    }
-
-    public IEnumerator PerformUse() {
-        AbilityInfoPanel.instance.ShowDescription("Overwatch\nChoose Facing");
-        yield return MapInputController.instance.SelectTileFrom(Color.red, Map.instance.AdjacentTiles(owner.tile).Where(tile => tile.open).ToArray());
-        if (MapInputController.instance.selectedTile == null) yield break;
-        AbilityInfoPanel.instance.Hide();
-
-        owner.Face(MapInputController.instance.selectedTile.gridLocation);
         owner.actionsSpent += 100;
         owner.tilesMoved += 100;
         owner.reaction = this;

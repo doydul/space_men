@@ -86,6 +86,7 @@ public class Soldier : Actor {
 
     void OnDestroy() {
         GameEvents.RemoveListener(this, "player_turn_start");
+        foreach (var ability in abilities) ability.Teardown();
     }
 
     public void GetExp(int amount) {

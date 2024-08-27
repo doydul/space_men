@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07332d0ff0c1e444986835f92f6fa176, type: 3}
+  m_Name: HeadShot
+  m_EditorClassIdentifier: 
+  description: fire a shot dealing 26-40 damage but with only 40 accuracy. 3 turn
+    cooldown
+  cooldown: 3
+  weaponProfile: {fileID: 11400000, guid: 6ab03a8ec67ea4844bc73b91bd6563e0, type: 2}
