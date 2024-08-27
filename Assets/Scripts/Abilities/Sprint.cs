@@ -10,6 +10,13 @@ public class Sprint : Ability {
     }
 
     public override void Use() {
+        AnimationManager.instance.StartAnimation(PerformUse());
+    }
+    
+    public IEnumerator PerformUse() {
+        yield return ConfirmationPopup.instance.AskForConfirmation("sprint\n" + description);
+        if (!ConfirmationPopup.instance.confirmed) yield break;
+        
         owner.actionsSpent += 1;
         owner.tilesMoved -= owner.sprintMovement;
         owner.RefreshUI();

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeName: Runner
   difficultyLevel: 1
-  threat: 20
-  weight: 40
+  threat: 15
+  weight: 20
   typeCondition: 0
   typeInfo:
   - type: 4

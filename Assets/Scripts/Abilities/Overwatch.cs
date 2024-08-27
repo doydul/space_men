@@ -9,8 +9,15 @@ public class Overwatch : ReactionAbility {
     public override bool CanUse() {
         return owner.hasAmmo && owner.canAct;
     }
-
+    
     public override void Use() {
+        AnimationManager.instance.StartAnimation(PerformUse());
+    }
+    
+    public IEnumerator PerformUse() {
+        yield return ConfirmationPopup.instance.AskForConfirmation("overwatch\n" + description);
+        if (!ConfirmationPopup.instance.confirmed) yield break;
+        
         owner.actionsSpent += 100;
         owner.tilesMoved += 100;
         owner.reaction = this;

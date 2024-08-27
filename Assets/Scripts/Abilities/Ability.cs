@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Ability : ScriptableObject {
 
-    public string description;
+    [TextArea] public string description;
 
     protected Soldier owner;
 
