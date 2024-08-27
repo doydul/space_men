@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c82adb107c94f71a0fd866728d0893, type: 3}
+  m_Name: Larva
+  m_EditorClassIdentifier: 
+  description: a pathetic alien grub
+  sprite: {fileID: 2635508784106496354, guid: 626d31a50eee4fc47a6c2656a54c43af, type: 3}
+  maxHealth: 1
+  armour: 0
+  accModifier: -15
+  damage: 3
+  movement: 4
+  audio: {fileID: 11400000, guid: eb32cf0b474ba604cac0cdfdfa8cad7d, type: 2}

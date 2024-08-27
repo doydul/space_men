@@ -10,21 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c74185e309a64414ab8481f0072091b0, type: 3}
-  m_Name: Starter
+  m_Name: Larva
   m_EditorClassIdentifier: 
-  typeName: Swarmer
+  typeName: Larva
   difficultyLevel: 0
-  threat: 15
+  threat: 10
   weight: 20
   typeCondition: 0
   typeInfo:
-  - type: 1
-    typeWeight: 15
-  - type: 2
-    typeWeight: 15
-  - type: 3
-    typeWeight: 15
-  - type: 4
-    typeWeight: 15
+  - type: 0
+    typeWeight: 0
   groupSizeUnlocks: []
   spawnPercentage: 20

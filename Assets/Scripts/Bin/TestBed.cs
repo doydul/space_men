@@ -19,7 +19,7 @@ public class TestBed : MonoBehaviour {
     void Start() {
         var save = new PlayerSave();
         PlayerSave.current = save;
-        save.difficulty = difficultyLevel;
+        save.IncreaseDifficulty(difficultyLevel + 0.2f);
 
         save.squad = GenerateSquad();
         SetEnemyProfileValues();

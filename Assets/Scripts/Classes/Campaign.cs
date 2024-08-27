@@ -6,7 +6,7 @@ public class Campaign {
 
     public static void NextLevel(PlayerSave save) {
         save.levelNumber++;
-        save.difficulty += 1f / 5f;
+        save.IncreaseDifficulty(1f / 5f);
         MungeMapGenerationValues(save);
         Debug.Log($"difficulty: {save.difficulty}");
         PlayerSave.current.mission = Mission.Generate();

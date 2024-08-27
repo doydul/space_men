@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e90a6a2092a8ae4d85b69a975a775cc, type: 3}
   m_Name: DirectionalOverwatch
   m_EditorClassIdentifier: 
-  description: shoot at the first enemy to enter the designated area
+  description: 

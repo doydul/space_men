@@ -9,6 +9,8 @@ public class Punch : Ability {
     public int maxDamage = 3;
     
     public AudioCollection audio;
+    
+    protected bool freeActionGiven;
 
     public override bool CanUse() {
         return owner.canAct && possibleTargets.Length > 0;
@@ -38,8 +40,21 @@ public class Punch : Ability {
         var damage = Random.Range(minDamage, maxDamage + 1);
         var alien = hitTile.GetActor<Alien>();
         alien.Hurt(damage, DamageType.IgnoreArmour);
-        if (alien.dead) owner.actionsSpent -= 1;
+        if (alien.dead && !freeActionGiven) {
+            owner.actionsSpent -= 1;
+            freeActionGiven = true;
+        }
         
         yield return new WaitForSeconds(0.5f);
+    }
+    
+    public override void Setup() {
+        GameEvents.On(this, "player_turn_start", () => {
+            freeActionGiven = false;
+        });
+    }
+    
+    public override void Teardown() {
+        GameEvents.RemoveListener(this, "player_turn_start");
     }
 }

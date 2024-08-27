@@ -11,11 +11,9 @@ public class Main : MonoBehaviour {
     void Awake() {
         Application.targetFrameRate = 35;
         instance = this;
-        Debug.Log("main awake");
     }
 
     void Start() {
-        Debug.Log("main onenable");
         if (PlayerSave.current == null) {
             var save = new PlayerSave();
             PlayerSave.current = save;

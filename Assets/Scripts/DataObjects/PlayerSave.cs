@@ -10,7 +10,9 @@ public class PlayerSave {
 
     public int levelNumber;
     public int credits;
-    public float difficulty;
+    public float _difficulty = -0.2f;
+    public float difficulty => Mathf.Max(_difficulty, 0);
+    public void IncreaseDifficulty(float amount) => _difficulty += amount;
     public MetaSquad squad;
     public List<MetaSoldier> bench = new();
     public Inventory inventory = new();
