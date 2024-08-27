@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74185e309a64414ab8481f0072091b0, type: 3}
   m_Name: Runner
   m_EditorClassIdentifier: 
-  unlocked: 1
   typeName: Runner
   difficultyLevel: 1
-  threat: 10
+  threat: 20
   weight: 40
   typeCondition: 0
   typeInfo:
   - type: 4
-    typeWeight: 20
+    typeWeight: 25
   groupSizeUnlocks: []
   spawnPercentage: 50

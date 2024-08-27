@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74185e309a64414ab8481f0072091b0, type: 3}
   m_Name: Fatty
   m_EditorClassIdentifier: 
-  unlocked: 0
   typeName: Fatty
   difficultyLevel: 1
-  threat: 30
+  threat: 60
   weight: 10
   typeCondition: 0
   typeInfo:

@@ -21,6 +21,16 @@ public class MapInputController : MonoBehaviour {
     void Awake() {
         instance = this;
     }
+    
+    bool IsPointerOverGameObject() {
+        if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return true;
+        
+        if(Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began){
+            if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(Input.touches[0].fingerId)) return true;
+        }
+        
+        return false;
+    }
 
     void Update() {
         if (dragging && (Input.mousePosition - dragStartPosition).magnitude > 10) {
@@ -29,7 +39,7 @@ public class MapInputController : MonoBehaviour {
             map.transform.position = mapStartPosition + (delta * 0.03f);
         }
         if (Input.GetMouseButtonDown(0)) {
-            if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) {
+            if (IsPointerOverGameObject()) {
                 uiClicked = true;
             } else {
                 dragStartPosition = Input.mousePosition;
@@ -38,7 +48,7 @@ public class MapInputController : MonoBehaviour {
             }
         }
         if (Input.GetMouseButtonUp(0)) {
-            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && !uiClicked && !dragged) {
+            if (!IsPointerOverGameObject() && !uiClicked && !dragged) {
                 Click(Input.mousePosition);
             }
             dragging = false;

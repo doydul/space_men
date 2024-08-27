@@ -6,6 +6,8 @@ using System.Linq;
 using SimplexNoise;
 
 public class HiveMind : MonoBehaviour {
+    
+    public static HiveMind instance;
 
     class WeightedTile : IWeighted {
         public int Weight { get; set; }
@@ -22,8 +24,10 @@ public class HiveMind : MonoBehaviour {
     List<EnemySpawnTracker> spawnTrackers = new();
     Alien activeAlien;
     bool threatIncreased;
+    
+    void Awake() => instance = this;
 
-    void Start() {
+    public void Init() {
         Noise.Seed = Random.Range(0, 10000);
         var weightedTiles = Map.instance.EnumerateTiles().Where(tile => tile.open).Select(tile => {
             var wTile = new WeightedTile { tile = tile, Weight = (int)Mathf.Ceil(Mathf.Pow(Noise.CalcPixel2D((int)tile.gridLocation.x, (int)tile.gridLocation.y, 0.03f) / 255, 3) * 100) };

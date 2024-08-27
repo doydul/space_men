@@ -27,6 +27,7 @@ public class MapInstantiator : MonoBehaviour {
     public Map map;
 
     public void Generate(float difficulty) {
+        Debug.Log("Generate");
         if (skipGenerate) return;
         
         for (int i = map.transform.childCount - 1; i >= 0; i--) {

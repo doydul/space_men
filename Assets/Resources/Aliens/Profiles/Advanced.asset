@@ -12,20 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74185e309a64414ab8481f0072091b0, type: 3}
   m_Name: Advanced
   m_EditorClassIdentifier: 
-  unlocked: 0
   typeName: Advanced
   difficultyLevel: 1
-  threat: 15
+  threat: 30
   weight: 10
   typeCondition: 0
   typeInfo:
   - type: 2
-    typeWeight: 20
+    typeWeight: 25
   groupSizeUnlocks:
-  - type: 2
-    typeInfo:
+  - typeInfo:
       type: 2
       typeWeight: 40
-    typeWeight: 40
     groupSize: 2
   spawnPercentage: 10

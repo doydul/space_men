@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeName: ArmourBastard
   difficultyLevel: 1
-  threat: 20
+  threat: 40
   weight: 10
   typeCondition: 0
   typeInfo:

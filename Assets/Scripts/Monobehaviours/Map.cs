@@ -19,7 +19,10 @@ public partial class Map : MonoBehaviour {
     }
     
     public static Map instance { get; private set; }
-    void Awake() => instance = this;
+    void Awake() {
+        Debug.Log("map awake");
+        instance = this;
+    }
 
     public Sprite wallSprite;
     public Sprite innerCornerSprite;
