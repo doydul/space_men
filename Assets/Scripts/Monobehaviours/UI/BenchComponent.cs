@@ -24,6 +24,7 @@ public class BenchComponent : MonoBehaviour {
     
     public void Close() {
         gameObject.SetActive(false);
+        CampaignUI.instance.DisplaySquad();
     }
     
     public void HireSoldier() {

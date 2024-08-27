@@ -38,7 +38,7 @@ public class MetaSquad {
         var weapons = new string[] {
             "SIKR-5",
             "SIKR-5",
-            "Sniper Rifle",
+            "SIKR-5",
         };
         for (int i = 0; i < weapons.Length; i++) {
             result.AddMetaSoldier(new MetaSoldier() {

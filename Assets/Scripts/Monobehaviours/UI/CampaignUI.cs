@@ -2,10 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CampaignUI : MonoBehaviour {
+    
+    public static CampaignUI instance;
 
     public Transform squadSoldierPrototype;
 
     SoldierComponent soldierComponent;
+    
+    void Awake() => instance = this;
 
     void Start() {
         squadSoldierPrototype.gameObject.SetActive(false);
@@ -14,7 +18,7 @@ public class CampaignUI : MonoBehaviour {
         DisplaySquad();
     }
 
-    void DisplaySquad() {
+    public void DisplaySquad() {
         squadSoldierPrototype.parent.DestroyChildren(startIndex: 1);
         foreach (var soldier in PlayerSave.current.squad.GetMetaSoldiers()) {
             var squadSoldierTrans = Instantiate(squadSoldierPrototype, squadSoldierPrototype.parent);
