@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0012dcb86bc1e2a4e9fc7a3110ba1f85, type: 3}
   m_Name: Reload
   m_EditorClassIdentifier: 
-  description: 
+  description: spend an action point to reload the current weapon

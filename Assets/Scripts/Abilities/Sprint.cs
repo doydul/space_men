@@ -14,8 +14,10 @@ public class Sprint : Ability {
     }
     
     public IEnumerator PerformUse() {
-        yield return ConfirmationPopup.instance.AskForConfirmation("sprint\n" + description);
-        if (!ConfirmationPopup.instance.confirmed) yield break;
+        if (Settings.confirmAbilities) {
+            yield return ConfirmationPopup.instance.AskForConfirmation("sprint\n" + description);
+            if (!ConfirmationPopup.instance.confirmed) yield break;
+        }
         
         owner.actionsSpent += 1;
         owner.tilesMoved -= owner.sprintMovement;

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ecf7b6bb45025545926d31ecba0b1d9, type: 3}
   m_Name: Sprint
   m_EditorClassIdentifier: 
-  description: 
+  description: spend an action point to increase movement for the turn

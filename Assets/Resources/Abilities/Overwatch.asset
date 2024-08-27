@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1269817b82300974588541e42d0896b2, type: 3}
   m_Name: Overwatch
   m_EditorClassIdentifier: 
-  description: 
+  description: fire at any enemies that move into range. cannot move or act after
+    activating overwatch

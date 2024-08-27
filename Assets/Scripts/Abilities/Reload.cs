@@ -13,8 +13,10 @@ public class Reload : Ability {
     }
     
     public IEnumerator PerformUse() {
-        yield return ConfirmationPopup.instance.AskForConfirmation("reload\n" + description);
-        if (!ConfirmationPopup.instance.confirmed) yield break;
+        if (Settings.confirmAbilities) {
+            yield return ConfirmationPopup.instance.AskForConfirmation("reload\n" + description);
+            if (!ConfirmationPopup.instance.confirmed) yield break;
+        }
         
         owner.actionsSpent += 1;
         owner.shotsSpent = 0;

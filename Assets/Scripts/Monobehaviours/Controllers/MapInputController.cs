@@ -43,10 +43,6 @@ public class MapInputController : MonoBehaviour {
             if (diff.y < 0) newPos.y += diff.y;
             if (diff.y > map.tiles.GetLength(1)) newPos.y += diff.y - map.tiles.GetLength(1);
             map.transform.position = newPos;
-            Debug.Log("---------");
-            Debug.Log(delta);
-            Debug.Log(diff);
-            Debug.Log(newPos);
         }
         if (Input.GetMouseButtonDown(0)) {
             if (IsPointerOverGameObject()) {
