@@ -10,6 +10,8 @@ public class BenchComponent : MonoBehaviour {
     
     MetaSoldier activeBenchSoldier;
     
+    const int hireCost = 300;
+    
     void Start() {
         soldierPrototype.gameObject.SetActive(false);
         Close();
@@ -29,8 +31,8 @@ public class BenchComponent : MonoBehaviour {
     
     public void HireSoldier() {
         Debug.Log(PlayerSave.current.credits);
-        if (PlayerSave.current.credits >= 100) {
-            PlayerSave.current.credits -= 100;
+        if (PlayerSave.current.credits >= hireCost) {
+            PlayerSave.current.credits -= hireCost;
             PlayerSave.current.bench.Add(new MetaSoldier() {
                 name = "John Doe",
                 armour = new InventoryItem() {
@@ -100,6 +102,6 @@ public class BenchComponent : MonoBehaviour {
     }
     
     void DisplayHireButtonText() {
-        hireButtonText.text = $"hire soldier 100/{PlayerSave.current.credits}";
+        hireButtonText.text = $"hire soldier {hireCost}/{PlayerSave.current.credits}";
     }
 }

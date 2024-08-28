@@ -27,7 +27,7 @@ public class Armour : ScriptableObject, IWeighted {
     public int movement { get {
         switch(type) {
             case Type.Light:
-                return 5;
+                return 6;
             case Type.Medium:
                 return 5;
             case Type.Heavy:

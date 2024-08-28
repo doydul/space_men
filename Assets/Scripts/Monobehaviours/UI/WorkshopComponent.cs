@@ -131,7 +131,7 @@ public class WorkshopComponent : MonoBehaviour {
             scrapButton.GetComponentInChildren<TMP_Text>().text = $"scrap {GetCost(activeItem) / 2}";
             researchButton.GetComponentInChildren<TMP_Text>().text = $"research {GetCost(activeItem) * 2}";
         } else if (activeBlueprint != null) {
-            constructButton.GetComponentInChildren<TMP_Text>().text = $"research {GetCost(activeBlueprint)}";
+            constructButton.GetComponentInChildren<TMP_Text>().text = $"fabricate {GetCost(activeBlueprint)}";
         }
      }
     

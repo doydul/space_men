@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef455b28a05f5804184f3f3b413f2fe6, type: 3}
   m_Name: Tutorials
   m_EditorClassIdentifier: 
+  tutorials:
+  - key: select_soldier
+    value: the green highlights show tiles your soldier can move to. tap a tile to
+      make your soldier move there
