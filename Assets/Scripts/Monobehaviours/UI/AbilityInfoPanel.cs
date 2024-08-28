@@ -9,8 +9,14 @@ public class AbilityInfoPanel : MonoBehaviour {
 
     public TMP_Text textElement;
 
-    public void Show() => gameObject.SetActive(true);
-    public void Hide() => gameObject.SetActive(false);
+    public void Show() {
+        gameObject.SetActive(true);
+        SoldierIconHeader.instance.Hide();
+    }
+    public void Hide() {
+        gameObject.SetActive(false);
+        SoldierIconHeader.instance.Show();
+    }
     
     public void ShowDescription(string text) {
         textElement.text = text;

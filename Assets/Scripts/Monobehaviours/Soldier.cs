@@ -120,6 +120,7 @@ public class Soldier : Actor {
     public override void Remove() {
         base.Remove();
         PlayerSave.current.squad.RemoveMetaSoldierById(id);
+        SoldierIconHeader.instance.DisplaySoldiers();
     }
 
     public override void Interact(Tile tile) {
@@ -173,14 +174,16 @@ public class Soldier : Actor {
         foreach (var tile in Map.instance.AdjacentTiles(tile)) {
             if (tile.GetBackgroundActor<Door>() != null || tile.GetBackgroundActor<Chest>() != null) MapHighlighter.instance.HighlightTile(tile, Color.yellow);
         }
+        MapHighlighter.instance.HighlightTile(this.tile, new Color(0.75f, 1f, 0.75f));
     }
 
     public override void Select() {
         UIState.instance.SetSelectedActor(this);
         RefreshUI();
+        Tutorial.Show(transform, "select_soldier");
     }
 
-    public void Deselect() {
+    public override void Deselect() {
         UIState.instance.DeselectActor();
         MapHighlighter.instance.ClearHighlights();
         InterfaceController.instance.ClearAbilities();

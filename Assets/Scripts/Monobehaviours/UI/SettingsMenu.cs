@@ -24,7 +24,7 @@ public class SettingsMenu : MonoBehaviour {
     }
     
     public void ResetTutorials() {
-        
+        Tutorial.ResetAll();
     }
     
     public void Exit() {

@@ -94,7 +94,7 @@ public class Alien : Actor {
         }
     }
 
-    public void Deselect() {
+    public override void Deselect() {
         UIState.instance.DeselectActor();
         MapHighlighter.instance.ClearHighlights();
         InformationPanel.instance.ClearText();

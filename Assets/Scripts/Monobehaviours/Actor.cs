@@ -127,4 +127,5 @@ public abstract class Actor : MonoBehaviour {
     public virtual void Interact(Tile tile) {}
 
     public virtual void Select() {}
+    public virtual void Deselect() {}
 }

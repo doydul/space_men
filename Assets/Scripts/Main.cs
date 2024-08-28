@@ -39,6 +39,7 @@ public class Main : MonoBehaviour {
         }
 
         FogManager.instance.UpdateFog(true);
+        SoldierIconHeader.instance.DisplaySoldiers();
         HiveMind.instance.Init();
     }
 
