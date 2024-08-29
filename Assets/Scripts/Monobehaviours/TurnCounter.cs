@@ -29,6 +29,7 @@ public class TurnCounter : MonoBehaviour {
     void Increment() {
         currentTurn++;
         if (turnsRemaining <= 0) {
+            turnLimit = System.Math.Max(turnLimit - 1, 1);
             currentTurn = 0;
             GameEvents.Trigger("threat_increased");
         }

@@ -28,9 +28,8 @@ public class Main : MonoBehaviour {
         MapInstantiator.instance.Generate(PlayerSave.current.difficulty);
 
         Map.instance.enemyProfiles = Mission.current.enemyProfiles;
-        int turnsToCompletion = Map.instance.objectives.EstimateTravelDistance() / (5 - (int)PlayerSave.current.difficulty);
-        int turnsToThreatIncrease = turnsToCompletion / 2;
-        TurnCounter.instance.SetTurnLimit(turnsToThreatIncrease);
+        int turnsToCompletion = Map.instance.objectives.EstimateTravelDistance() / 6;
+        TurnCounter.instance.SetTurnLimit(turnsToCompletion);
 
         int j = 0;
         foreach (var metaSoldier in PlayerSave.current.squad.GetMetaSoldiers()) {

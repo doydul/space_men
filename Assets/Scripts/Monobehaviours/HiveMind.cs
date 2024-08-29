@@ -87,7 +87,7 @@ public class HiveMind : MonoBehaviour {
         Debug.Log("Increasing threat...");
         threatIncreased = true;
         foreach (var tracker in spawnTrackers) {
-            tracker.remainingThreat += tracker.startingThreat / 6;
+            tracker.remainingThreat += tracker.startingThreat / 5;
             Debug.Log($"{tracker.profile.name}, new threat: {tracker.remainingThreat}");
         }
     }
@@ -172,16 +172,10 @@ public class HiveMind : MonoBehaviour {
         activeAlien.HideAttack();
     }
     
-    private void AlienTurnStart() {
-        if (threatIncreased) {
-            threatIncreased = false;
-            for (int i = 0; i < 3; i++) Spawn();
-        } else {
-            Spawn();
-        }
-    }
+    private void AlienTurnStart() => Spawn();
 
     private void Spawn() {
+        
         var weightedSpawners = Map.instance.spawners.Where(spawner => !Map.instance.GetActors<Soldier>().Any(sol => sol.On(spawner.tile))).Select(spawner => 
             new WeightedSpawner {
                 spawner = spawner,
@@ -197,6 +191,7 @@ public class HiveMind : MonoBehaviour {
         foreach (var tracker in spawnTrackers) {
             int nominalTurnCount = 12;
             float avgSpawnsPerTurn = ((float)tracker.remainingThreat / tracker.profile.threat) / nominalTurnCount;
+            if (threatIncreased) avgSpawnsPerTurn = (tracker.startingThreat / 4) / tracker.profile.threat;
             int spawns = (int)Mathf.Round(GaussianNumber.Generate(avgSpawnsPerTurn, Mathf.Max(avgSpawnsPerTurn * 0.45f, 0.5f)));
             Debug.Log($"{tracker.profile.name} avg spawns: {avgSpawnsPerTurn}, spawns: {spawns}");
             for (int j = 0; j < spawns; j++) {
@@ -204,6 +199,7 @@ public class HiveMind : MonoBehaviour {
                 InstantiatePod(tracker.profile.typeName, 1, spawner.gridLocation, true);
             }
         }
+        threatIncreased = false;
     }
 
     private void InstantiatePod(string type, int number, Vector2 gridLocation, bool awaken) {
