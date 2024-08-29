@@ -8,5 +8,6 @@ public class MapBlueprint : ScriptableObject {
     public int equipments;
     public int corridors;
     public int secondaryCorridors;
+    public int loops;
     public int rooms;
 }

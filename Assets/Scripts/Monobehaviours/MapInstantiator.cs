@@ -27,7 +27,6 @@ public class MapInstantiator : MonoBehaviour {
     public Map map;
 
     public void Generate(float difficulty) {
-        Debug.Log("Generate");
         if (skipGenerate) return;
         
         for (int i = map.transform.childCount - 1; i >= 0; i--) {
@@ -40,6 +39,7 @@ public class MapInstantiator : MonoBehaviour {
         var mapLayout = new MapGenerator(new MapGenerator.Blueprint {
             corridors = blueprint.corridors,
             secondaryCorridors = blueprint.secondaryCorridors,
+            loops = blueprint.loops,
             rooms = blueprint.rooms
         }).Generate();
         var tiles = new List<Tile>();

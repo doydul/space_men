@@ -8,6 +8,7 @@ public class MapGenerator {
     public class Blueprint {
         public int corridors;
         public int secondaryCorridors;
+        public int loops;
         public int rooms;
     }
     
@@ -104,6 +105,16 @@ public class MapGenerator {
                 graphNodesSet.Add(nextNode);
             }
             connections.Add(currentNode, nextNode);
+        }
+        
+        var possibleLoops = new List<MapPoint[]>();
+        foreach (var node in graphNodes) {
+            var loopableNodes = AdjacentNodes(node).Where(n => graphNodesSet.Contains(n) && !connections.Connected(node, n) && node.manhattanDistance > n.manhattanDistance).Select(n => new MapPoint[] { node, n }).ToList();
+            possibleLoops.AddRange(loopableNodes);
+        }
+        
+        foreach (var pair in possibleLoops.Sample(blueprint.loops)) {
+            connections.Add(pair[0], pair[1]);
         }
         
         var layout = new MapLayout();

@@ -17,4 +17,5 @@ MonoBehaviour:
   equipments: 2
   corridors: 7
   secondaryCorridors: 5
+  loops: 1
   rooms: 6
