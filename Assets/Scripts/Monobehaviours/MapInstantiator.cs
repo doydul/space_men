@@ -46,6 +46,7 @@ public class MapInstantiator : MonoBehaviour {
         var ventTiles = new List<Tile>();
         var mapLayoutCache = mapLayout.tiles;
         int startRoomId = mapLayoutCache.SelectMany(x => x).Where(tile => tile.roomId > 0).Select(tile => tile.roomId).Min();
+        int remainingVents = blueprint.vents;
         for (int x = 0; x < mapLayoutCache.Count; x++) {
             var columnObject = new GameObject().transform;
             columnObject.transform.parent = map.transform;
@@ -53,6 +54,7 @@ public class MapInstantiator : MonoBehaviour {
             columnObject.localPosition = Vector3.zero;
             for (int y = 0; y < mapLayoutCache[0].Count; y++) {
                 var tileData = mapLayoutCache[x][y];
+                var tile = MakeTile(new Vector2(x, y), columnObject.transform, !tileData.isWall);
                 
                 if (!tileData.isWall) { // add vents to any 'end' tiles
                     int neighbours = 0;
@@ -60,10 +62,13 @@ public class MapInstantiator : MonoBehaviour {
                     if (!mapLayoutCache[x + 1][y].isWall) neighbours++;
                     if (!mapLayoutCache[x][y - 1].isWall) neighbours++;
                     if (!mapLayoutCache[x][y + 1].isWall) neighbours++;
-                    if (neighbours == 1) tileData.isAlienSpawner = true;
+                    if (neighbours == 1) {
+                        remainingVents--;
+                        tile.gameObject.AddComponent<Spawner>();
+                        var vent = Instantiate(Resources.Load<Transform>("Prefabs/Vent"));
+                        tile.SetActor(vent, true);
+                    }
                 }
-                
-                var tile = MakeTile(new Vector2(x, y), columnObject.transform, !tileData.isWall);
                 
                 if (tileData.isAlienSpawner) {
                     if (tileData.roomId == startRoomId) tile.gameObject.AddComponent<StartLocation>();
@@ -88,7 +93,6 @@ public class MapInstantiator : MonoBehaviour {
         }
         
         // add vents
-        int remainingVents = blueprint.vents;
         while (ventTiles.Any() && remainingVents > 0) {
             var ventTile = ventTiles.Sample();
             ventTiles.Remove(ventTile);

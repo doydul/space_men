@@ -98,21 +98,19 @@ public class MapGenerator {
         for (int i = 0; i < blueprint.corridors; i++) {
             var currentNode = graphNodes.Sample();
             
-            var nextNode = AdjacentNodes(currentNode).Where(node => !connections.Connected(currentNode, node)).Sample();
+            var nextNode = AdjacentNodes(currentNode).Where(node => !graphNodesSet.Contains(node) && !connections.Connected(currentNode, node)).Sample();
             
-            if (!graphNodesSet.Contains(nextNode)) {
-                graphNodes.Add(nextNode);
-                graphNodesSet.Add(nextNode);
-            }
+            graphNodes.Add(nextNode);
+            graphNodesSet.Add(nextNode);
             connections.Add(currentNode, nextNode);
         }
         
+        // add loops
         var possibleLoops = new List<MapPoint[]>();
         foreach (var node in graphNodes) {
             var loopableNodes = AdjacentNodes(node).Where(n => graphNodesSet.Contains(n) && !connections.Connected(node, n) && node.manhattanDistance > n.manhattanDistance).Select(n => new MapPoint[] { node, n }).ToList();
             possibleLoops.AddRange(loopableNodes);
         }
-        
         foreach (var pair in possibleLoops.Sample(blueprint.loops)) {
             connections.Add(pair[0], pair[1]);
         }
