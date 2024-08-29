@@ -121,6 +121,7 @@ public class Soldier : Actor {
         base.Remove();
         PlayerSave.current.squad.RemoveMetaSoldierById(id);
         SoldierIconHeader.instance.DisplaySoldiers();
+        Mission.CheckGameOver();
     }
 
     public override void Interact(Tile tile) {

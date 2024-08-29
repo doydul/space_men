@@ -1,3 +1,6 @@
+using UnityEngine.SceneManagement;
+using System.Linq;
+
 [System.Serializable]
 public class Mission {
     
@@ -31,5 +34,11 @@ public class Mission {
     public void End() {
         finished = true;
         ModalPopup.instance.DisplayEOL();
+    }
+    
+    public static void CheckGameOver() {
+        if (PlayerSave.current.squad.GetMetaSoldiers().Count() <= 0) {
+            NotificationPopup.Show("mission failed", "", new BtnData("exit", () => SceneManager.LoadScene("MainMenu")));
+        }
     }
 }

@@ -3,7 +3,9 @@ using UnityEngine;
 public class GetToTarget : Objective {
 
     public override bool complete { get {
-        foreach (var soldier in Map.instance.GetActors<Soldier>()) {
+        var soldiers = Map.instance.GetActors<Soldier>();
+        if (soldiers.Count <= 0) return false;
+        foreach (var soldier in soldiers) {
             bool found = false;
             foreach (var tile in room.tiles) {
                 if (tile.GetActor<Soldier>() == soldier) {
