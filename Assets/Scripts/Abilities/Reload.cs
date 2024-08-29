@@ -14,8 +14,9 @@ public class Reload : Ability {
     
     public IEnumerator PerformUse() {
         if (Settings.confirmAbilities) {
-            yield return ConfirmationPopup.instance.AskForConfirmation("reload\n" + description);
-            if (!ConfirmationPopup.instance.confirmed) yield break;
+            bool confirmed = false;
+            yield return NotificationPopup.PerformShow("reload", description, new BtnData("cancel", () => {}), new BtnData("ok", () => confirmed = true));
+            if (!confirmed) yield break;
         }
         
         owner.actionsSpent += 1;

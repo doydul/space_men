@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 
@@ -17,12 +18,13 @@ public class NotificationPopup : MonoBehaviour {
     public TMP_Text contentText;
     public Transform buttonPrototype;
     
-    public static void Show(string title, string content, params BtnData[] btns) {
+    public static IEnumerator PerformShow(string title, string content, params BtnData[] btns) {
         instance.gameObject.SetActive(true);
         instance.titleText.text = title;
         instance.contentText.text = content;
         
         instance.buttonPrototype.parent.DestroyChildren(1);
+        bool pressed = false;
         foreach (var btn in btns) {
             var btnTrans = NotificationPopup.Instantiate(instance.buttonPrototype, instance.buttonPrototype.parent);
             btnTrans.gameObject.SetActive(true);
@@ -30,9 +32,13 @@ public class NotificationPopup : MonoBehaviour {
             textComponent.text = btn.label;
             var buttonComponent = btnTrans.GetComponentInChildren<ButtonHandler>();
             buttonComponent.action.AddListener(() => {
+                pressed = true;
                 Close();
                 btn.callback();
             });
+        }
+        while (!pressed) {
+            yield return null;
         }
     }
     

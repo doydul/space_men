@@ -33,8 +33,9 @@ public class SettingsMenu : MonoBehaviour {
     
     public IEnumerator PerformExit() {
         Close();
-        yield return ConfirmationPopup.instance.AskForConfirmation("the game cannot be saved during a mission, are you sure you want to exit?");
-        if (ConfirmationPopup.instance.confirmed) SceneManager.LoadScene("MainMenu");
+        bool confirmed = false;
+        yield return NotificationPopup.PerformShow("are you sure?", "the game cannot be saved during a mission, are you sure you want to exit?", new BtnData("cancel", () => {}), new BtnData("ok", () => confirmed = true));
+        if (confirmed) SceneManager.LoadScene("MainMenu");
         else Open();
     }
 }

@@ -16,8 +16,9 @@ public class Overwatch : ReactionAbility {
     
     public IEnumerator PerformUse() {
         if (Settings.confirmAbilities) {
-            yield return ConfirmationPopup.instance.AskForConfirmation("overwatch\n" + description);
-            if (!ConfirmationPopup.instance.confirmed) yield break;
+            bool confirmed = false;
+            yield return NotificationPopup.PerformShow("overwatch", description, new BtnData("cancel", () => {}), new BtnData("ok", () => confirmed = true));
+            if (!confirmed) yield break;
         }
         
         owner.actionsSpent += 100;
