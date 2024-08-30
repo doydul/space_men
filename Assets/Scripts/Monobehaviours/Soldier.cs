@@ -129,10 +129,8 @@ public class Soldier : Actor {
             Deselect();
             return;
         }
-        if (Map.instance.ManhattanDistance(gridLocation, tile.gridLocation) == 1 && tile.GetBackgroundActor<Door>() != null) {
-            AnimationManager.instance.StartAnimation(GameplayOperations.PerformOpenDoor(this, tile));
-        } else if (Map.instance.ManhattanDistance(gridLocation, tile.gridLocation) == 1 && tile.GetBackgroundActor<Chest>() != null) {
-            AnimationManager.instance.StartAnimation(GameplayOperations.PerformPickupChest(this, tile));
+        if (Map.instance.ManhattanDistance(gridLocation, tile.gridLocation) == 1 && tile.GetBackgroundActor<Actor>() != null && tile.GetBackgroundActor<Actor>().interactable) {
+            AnimationManager.instance.StartAnimation(tile.GetBackgroundActor<Actor>().PerformUse(this));
         } else if (tile.GetActor<Actor>() == null) {
             var path = Map.instance.ShortestPath(new SoldierImpassableTerrain(), gridLocation, tile.gridLocation);
             if (path != null && path.length <= remainingMovement) {

@@ -44,6 +44,7 @@ public abstract class Actor : MonoBehaviour {
     public Direction direction { get; private set; }
     public bool dead { get; private set; }
     public bool broken { get; set; }
+    public virtual bool interactable => false;
 
     public int maxHealth { get; set; }
     public int health { get; set; }
@@ -125,6 +126,7 @@ public abstract class Actor : MonoBehaviour {
     }
 
     public virtual void Interact(Tile tile) {}
+    public virtual IEnumerator PerformUse(Soldier user) { yield return null; }
 
     public virtual void Select() {}
     public virtual void Deselect() {}
