@@ -1,6 +1,10 @@
 using UnityEngine;
 
 public class GetToTarget : Objective {
+    
+    public override string description => "reach extraction point";
+    public override Vector2 targetLocation => location;
+    Vector2 location;
 
     public override bool complete { get {
         var soldiers = Map.instance.GetActors<Soldier>();
@@ -25,5 +29,6 @@ public class GetToTarget : Objective {
     public override void Init(Map.Room room) {
         this.room = room; 
         foreach (var tile in room.tiles) tile.SetTint(new Color(0.2f, 0.9f, 0.2f));
+        location = room.centre;
     }
 }

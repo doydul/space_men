@@ -11,11 +11,11 @@ public class AbilityInfoPanel : MonoBehaviour {
 
     public void Show() {
         gameObject.SetActive(true);
-        SoldierIconHeader.instance.Hide();
+        UIManager.HideNormalGameHud();
     }
     public void Hide() {
         gameObject.SetActive(false);
-        SoldierIconHeader.instance.Show();
+        UIManager.ShowNormalGameHud();
     }
     
     public void ShowDescription(string text) {

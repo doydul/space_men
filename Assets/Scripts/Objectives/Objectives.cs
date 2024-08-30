@@ -20,6 +20,9 @@ public class Objectives {
         }
 
         map.objectives = objectives;
+        
+        ObjectivesPanel.instance.DisplayPrimaryObjectives(objectives.objectives.Where(obj => obj.required).ToList());
+        ObjectivesPanel.instance.DisplaySecondaryObjectives(objectives.objectives.Where(obj => !obj.required).ToList());
 
         GameEvents.On(objectives, "alien_turn_start", objectives.CheckCompletion);
     }
