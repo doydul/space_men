@@ -26,9 +26,10 @@ public class GetToTarget : Objective {
 
     Map.Room room;
 
-    public override void Init(Map.Room room) {
-        this.room = room; 
+    public override void Init(Objectives objectives) {
+        room = objectives.GetNextBestRoom();
         foreach (var tile in room.tiles) tile.SetTint(new Color(0.2f, 0.9f, 0.2f));
         location = room.centre;
+        objectives.AddObjective(room, this);
     }
 }

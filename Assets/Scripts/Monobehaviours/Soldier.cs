@@ -171,7 +171,7 @@ public class Soldier : Actor {
             }
         }
         foreach (var tile in Map.instance.AdjacentTiles(tile)) {
-            if (tile.GetBackgroundActor<Door>() != null || tile.GetBackgroundActor<Chest>() != null) MapHighlighter.instance.HighlightTile(tile, Color.yellow);
+            if (tile.GetBackgroundActor<Actor>() != null && tile.GetBackgroundActor<Actor>().interactable) MapHighlighter.instance.HighlightTile(tile, Color.yellow);
         }
         MapHighlighter.instance.HighlightTile(this.tile, new Color(0.75f, 1f, 0.75f));
     }

@@ -14,9 +14,9 @@ public class Objectives {
     
     public static void AddToMap(Map map, Map.Room startingRoom, int equipments) {
         var objectives = new Objectives { map = map, startingRoom = startingRoom };
-        objectives.AddObjective(new GetToTarget { required = true });
+        new GetToTarget { required = true }.Init(objectives);
         for (int i = 0; i < equipments; i++) {
-            objectives.AddObjective(new GrabTheLoot());
+            new GrabTheLoot().Init(objectives);
         }
 
         map.objectives = objectives;
@@ -28,16 +28,25 @@ public class Objectives {
     }
 
     void OnDestroy() => GameEvents.RemoveListener(this, "alien_turn_start");
-
-    public void AddObjective(Objective objective) {
+    
+    public void AddObjective(Map.Room room, Objective objective) {
         if (!roomDistances.ContainsKey(startingRoom.id)) roomDistances.Add(startingRoom.id, GetDistancesFrom(startingRoom));
 
-        int objectiveRoomId = map.rooms.Values
-            .Where(room => !roomDistances.ContainsKey(room.id))
-            .MaxBy(room => roomDistances.Keys.ToList().Aggregate(0, (acc, roomId) => acc + roomDistances[roomId][room.id])).id;
-        roomDistances.Add(objectiveRoomId, GetDistancesFrom(map.rooms[objectiveRoomId]));
-        objective.Init(map.rooms[objectiveRoomId]);
+        roomDistances.Add(room.id, GetDistancesFrom(room));
         objectives.Add(objective);
+    }
+    
+    public Map.Room GetNextBestRoom() {
+        if (!roomDistances.ContainsKey(startingRoom.id)) roomDistances.Add(startingRoom.id, GetDistancesFrom(startingRoom));
+        
+        return map.rooms.Values
+            .Where(room => !roomDistances.ContainsKey(room.id))
+            .MaxBy(room => roomDistances.Keys.ToList().Aggregate(0, (acc, roomId) => acc + roomDistances[roomId][room.id]));
+    }
+    
+    public Map.Room GetRandomUnoccupiedRoom() {
+        return map.rooms.Values
+            .Where(room => !roomDistances.ContainsKey(room.id)).Sample();
     }
     
     public int EstimateTravelDistance() {
