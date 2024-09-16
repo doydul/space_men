@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class Objective {
     public bool required;
+    public ObjectiveComponent ui;
     public abstract void Init(Objectives objectives);
     public abstract bool complete { get; }
     public abstract string description { get; }

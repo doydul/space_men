@@ -17,7 +17,7 @@ public class ObjectiveComponent : MonoBehaviour {
         GameEvents.RemoveListener(this, "alien_turn_start");
     }
     
-    void SetCheckboxState() {
+    public void SetCheckboxState() {
         if (objective != null) checkbox.SetState(objective.complete);
         else checkbox.SetState(false);
     }
@@ -25,6 +25,7 @@ public class ObjectiveComponent : MonoBehaviour {
     public void SetObjective(Objective objective) {
         this.objective = objective;
         label.text = objective.description;
+        objective.ui = this;
     }
     
     public void Zoom() {
