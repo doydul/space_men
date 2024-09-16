@@ -55,6 +55,19 @@ public static class Extensions {
         }
         return result;
     }
+    
+    public static T MinBy<T>(this IEnumerable<T> enumerable, System.Func<T, float> valueFunction) {
+        T result = default(T);
+        float min = 9999999;
+        foreach (T obj in enumerable) {
+            float value = valueFunction(obj);
+            if (value < min) {
+                min = value;
+                result = obj;
+            }
+        }
+        return result;
+    }
 
     public static void DestroyChildren(this Transform parent, int startIndex = 0) {
         for (int i = startIndex; i < parent.childCount; i++) {

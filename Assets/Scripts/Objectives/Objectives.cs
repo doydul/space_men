@@ -15,6 +15,7 @@ public class Objectives {
     public static void AddToMap(Map map, Map.Room startingRoom, int equipments) {
         var objectives = new Objectives { map = map, startingRoom = startingRoom };
         new GetToTarget { required = true }.Init(objectives);
+        new ActivateTerminal { required = true }.Init(objectives);
         for (int i = 0; i < equipments; i++) {
             new GrabTheLoot().Init(objectives);
         }
@@ -44,9 +45,17 @@ public class Objectives {
             .MaxBy(room => roomDistances.Keys.ToList().Aggregate(0, (acc, roomId) => acc + roomDistances[roomId][room.id]));
     }
     
-    public Map.Room GetRandomUnoccupiedRoom() {
+    public Map.Room GetUnoccupiedRoomWithIdealDistance(Map.Room otherRoom, int idealDistance) {
+        if (!roomDistances.ContainsKey(startingRoom.id)) roomDistances.Add(startingRoom.id, GetDistancesFrom(startingRoom));
+        
         return map.rooms.Values
-            .Where(room => !roomDistances.ContainsKey(room.id)).Sample();
+            .Where(room => !roomDistances.ContainsKey(room.id))
+            .MinBy(room => Mathf.Abs(roomDistances[otherRoom.id][room.id] - idealDistance));
+    }
+    
+    public List<Map.Room> GetUnoccupiedRooms() {
+        return map.rooms.Values
+            .Where(room => !roomDistances.ContainsKey(room.id)).ToList();
     }
     
     public int EstimateTravelDistance() {
