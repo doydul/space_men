@@ -85,6 +85,29 @@ public static class GameplayOperations {
         soldier.HideMuzzleFlash();
         yield return new WaitForSeconds(0.15f);
     }
+    
+    public static IEnumerator PerformAlienShoot(Alien alien, Weapon weapon, Soldier target) {
+        var targetTile = target.tile;
+        var diff = target.realLocation - alien.realLocation;
+        var angle = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(diff.y, diff.x) - 90);
+        yield return PerformTurnAnimation(alien, angle);
+        yield return new WaitForSeconds(0.2f);
+        for (int i = 0; i < weapon.shots; i++) {
+            yield return PerformAlienSingleShot(alien, weapon, target);
+            if (target.dead) break;
+        }
+        yield return PerformTurnAnimation(alien, Actor.FacingToDirection(target.gridLocation - alien.gridLocation), true);
+    }
+    
+    public static IEnumerator PerformAlienSingleShot(Alien alien, Weapon weapon, Soldier target) {
+        alien.PlayAudio(weapon.audio.shoot);
+        yield return SFXLayer.instance.PerformTracer(alien.muzzlePosition, target.tile.transform.position, weapon, true);
+        var damage = Random.Range(weapon.minDamage, weapon.maxDamage + 1);
+        target.Hurt(damage, weapon.damageType);
+        target.ShowHit();
+        BloodSplatController.instance.MakeSplat(target);
+        yield return new WaitForSeconds(0.15f);
+    }
 
     public static IEnumerator PerformActorMove(Actor actor, Map.Path path) {
         MapHighlighter.instance.ClearHighlights();

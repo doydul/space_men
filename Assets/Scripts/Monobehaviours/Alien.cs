@@ -21,15 +21,20 @@ public class Alien : Actor {
     public AlienAudioProfile audio { get; set; }
     public int remainingMovement => (broken ? movement / 2 : movement) - actualTilesMoved;
     public Pod pod { get; set; }
+    public AlienBehaviour behaviour { get; set; }
 
     public bool hasActed;
     public bool awake;
 
     public SpriteRenderer attackIndicator;
+    public Transform muzzleFlashLocation;
 
     public bool canAct => !hasActed && awake;
     public void ShowAttack() => attackIndicator.enabled = true;
     public void HideAttack() => attackIndicator.enabled = false;
+    public bool CanSee(Vector2 gridLocation) => Map.instance.CanBeSeenFrom(new AlienLosMask(), gridLocation, this.gridLocation);
+    public bool CanSeeFrom(Vector2 gridLocation, Vector2 from) => Map.instance.CanBeSeenFrom(new AlienLosMask(), gridLocation, from);
+    public Vector3 muzzlePosition => new Vector3(muzzleFlashLocation.position.x, muzzleFlashLocation.position.y, tile.transform.position.z);
 
     protected override void Awake() {
         base.Awake();
@@ -117,5 +122,11 @@ public class Alien : Actor {
 public class AlienImpassableTerrain : IMask {
     public bool Contains(Tile tile) {
         return !tile.open || tile.GetActor<Soldier>() != null || tile.GetBackgroundActor<Door>() != null || tile.GetBackgroundActor<Chest>() != null;
+    }
+}
+
+public class AlienLosMask : IMask {
+    public bool Contains(Tile tile) {
+        return !tile.open || tile.GetBackgroundActor<Door>() != null;
     }
 }

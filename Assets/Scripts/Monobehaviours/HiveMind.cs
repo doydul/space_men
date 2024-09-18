@@ -19,8 +19,6 @@ public class HiveMind : MonoBehaviour {
         public Spawner spawner { get; set; }
     }
 
-    public const float CRIT_CHANCE = 1f/6f;
-
     List<EnemySpawnTracker> spawnTrackers = new();
     Alien activeAlien;
     bool threatIncreased;
@@ -111,67 +109,11 @@ public class HiveMind : MonoBehaviour {
     }
 
     private IEnumerator PerformAlienMove() {
-        var soldierPositions = Map.instance.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToArray();
-        Tile bestTile = null;
-        Map.Path bestPath = null;
-        foreach (var tile in Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(activeAlien.gridLocation, activeAlien.remainingMovement)) {
-            if (tile.occupied && tile.GetActor<Alien>() != activeAlien) continue;
-            var path = Map.instance.ShortestPath(new AlienImpassableTerrain(), tile.gridLocation, soldierPositions, true);
-            if (!path.exists) {
-                break;
-            }
-            if (bestPath == null || path.length < bestPath.length ||
-                    path.length == bestPath.length &&
-                    Map.instance.ManhattanDistance(activeAlien.gridLocation, tile.gridLocation) < Map.instance.ManhattanDistance(activeAlien.gridLocation, bestTile.gridLocation)) {
-                bestPath = path;
-                bestTile = tile;
-            }
-        }
-        if (bestTile != null) {
-            if (!activeAlien.tile.foggy) {
-                CameraController.CentreCameraOn(activeAlien.tile);
-                yield return new WaitForSeconds(0.5f);
-            }
-            var actualPath = Map.instance.ShortestPath(new AlienImpassableTerrain(), activeAlien.gridLocation, bestTile.gridLocation);
-            yield return GameplayOperations.PerformActorMove(activeAlien, actualPath);
-            if (!bestTile.foggy) {
-                CameraController.CentreCameraOn(bestTile);
-                yield return new WaitForSeconds(0.5f);
-            }
-
-            if (!activeAlien.dead) {
-                foreach (var tile in Map.instance.AdjacentTiles(activeAlien.gridLocation)) {
-                    var soldier = tile.GetActor<Soldier>();
-                    if (soldier != null) {
-                        CameraController.CentreCameraOn(tile);
-                        yield return PerformAlienAttack(soldier);
-                        break;
-                    }
-                }
-            }
-        } else {
-            yield return null;
-        }
-
+        yield return activeAlien.behaviour.PerformTurn();
         activeAlien.hasActed = true;
         activeAlien = null;
     }
 
-    private IEnumerator PerformAlienAttack(Soldier target) {
-        activeAlien.ShowAttack();
-        activeAlien.Face(target.gridLocation);
-        yield return new WaitForSeconds(0.25f);
-        BloodSplatController.instance.MakeSplat(target);
-        yield return new WaitForSeconds(0.25f);
-        if (Random.value < CRIT_CHANCE && !target.HasTrait(Trait.CritImmune)) {
-            target.Hurt(activeAlien.damage * 2);
-            Debug.Log("!!!CRITICAL HIT!!!");
-        } else {
-            target.Hurt(activeAlien.damage);
-        }
-        activeAlien.HideAttack();
-    }
-    
     private void AlienTurnStart() => Spawn();
 
     private void Spawn() {

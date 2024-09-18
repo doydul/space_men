@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cddc69150da800e41bb19c86021d44fb, type: 3}
+  m_Name: RangedBehaviour
+  m_EditorClassIdentifier: 
+  critChance: 0.16666667
+  minDistance: 4
+  maxDistance: 6
+  weaponProfile: {fileID: 11400000, guid: 8b7b92ed83032c542931e7e8b7158f95, type: 2}
