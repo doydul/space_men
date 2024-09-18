@@ -20,7 +20,7 @@ public class MapLayout {
 
     List<Tile> openTiles = new();
 
-    public void AddOpenTile(MapPoint point, bool isAlienSpawner, bool isPlayerSpawner, bool isLootSpawner, int roomId = -1) {
+    public void AddOpenTile(MapPoint point, bool isAlienSpawner = false, bool isPlayerSpawner = false, bool isLootSpawner = false, int roomId = -1) {
         if (!openTiles.Any(tile => tile.point.Equals(point))) {
             openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner, isLootSpawner = isLootSpawner, roomId = roomId });
         }

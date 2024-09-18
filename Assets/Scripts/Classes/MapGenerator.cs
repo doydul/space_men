@@ -61,22 +61,27 @@ public class MapGenerator {
 
         public void Imprint(MapLayout layout) {
             for (int i = 0; i < length; i++) {
-                layout.AddOpenTile(start + direction.ToVector() * i, false, false, false);
+                layout.AddOpenTile(start + direction.ToVector() * i);
             }
         }
     }
     
+    class Connection {
+        public bool doubleWidth;
+    }
+    
     class Connections {
         
-        HashSet<string> connections = new();
+        Dictionary<string, Connection> connections = new();
         
         string ConnectionString(MapPoint point1, MapPoint point2) {
             if (point1.manhattanDistance < point2.manhattanDistance) return point1.ToString() + point2.ToString();
             else return point2.ToString() + point1.ToString();
         }
         
-        public void Add(MapPoint point1, MapPoint point2) => connections.Add(ConnectionString(point1, point2));
-        public bool Connected(MapPoint point1, MapPoint point2) => connections.Contains(ConnectionString(point1, point2));
+        public void Add(MapPoint point1, MapPoint point2, Connection connection = null) => connections.Add(ConnectionString(point1, point2), connection ?? new Connection());
+        public bool Connected(MapPoint point1, MapPoint point2) => connections.ContainsKey(ConnectionString(point1, point2));
+        public Connection Get(MapPoint point1, MapPoint point2) => connections[ConnectionString(point1, point2)];
     }
     
     Blueprint blueprint;
@@ -95,6 +100,7 @@ public class MapGenerator {
         graphNodesSet.Add(startPoint);
         var ports = new List<Port>();
         
+        // create graph
         for (int i = 0; i < blueprint.corridors; i++) {
             var currentNode = graphNodes.Sample();
             
@@ -102,7 +108,7 @@ public class MapGenerator {
             
             graphNodes.Add(nextNode);
             graphNodesSet.Add(nextNode);
-            connections.Add(currentNode, nextNode);
+            connections.Add(currentNode, nextNode, new Connection { doubleWidth = Random.value < 0.2f });
         }
         
         // add loops
@@ -115,35 +121,51 @@ public class MapGenerator {
             connections.Add(pair[0], pair[1]);
         }
         
+        // render graph
         var layout = new MapLayout();
         foreach (var node in graphNodes) {
             var realNode = node * 7;
-            layout.AddOpenTile(realNode, false, false, false);
+            layout.AddOpenTile(realNode);
             foreach (var adjNode in AdjacentNodes(node)) {
                 if (connections.Connected(node, adjNode)) {
+                    var connection = connections.Get(node, adjNode);
                     var realAdjNode = adjNode * 7;
                     if (node.x == adjNode.x) {
                         var start = System.Math.Min(realNode.y, realAdjNode.y);
                         var end = System.Math.Max(realNode.y, realAdjNode.y);
                         for (int i = start; i < end; i++) {
-                            layout.AddOpenTile(new MapPoint(realNode.x, i), false, false, false);
+                            layout.AddOpenTile(new MapPoint(realNode.x, i));
+                            if (connection.doubleWidth) layout.AddOpenTile(new MapPoint(realNode.x + 1, i));
                             if (Random.value < 0.33f) {
                                 ports.Add(new Port {
                                     relativePosition = new MapPoint(realNode.x, i),
                                     direction = Random.value < 0.5f ? Facing.West : Facing.East
                                 });
+                                if (connection.doubleWidth) {
+                                    ports.Add(new Port {
+                                        relativePosition = new MapPoint(realNode.x + 1, i),
+                                        direction = Facing.East
+                                    });
+                                }
                             }
                         }
                     } else {
                         var start = System.Math.Min(realNode.x, realAdjNode.x);
                         var end = System.Math.Max(realNode.x, realAdjNode.x);
                         for (int i = start; i < end; i++) {
-                            layout.AddOpenTile(new MapPoint(i, realNode.y), false, false, false);
+                            layout.AddOpenTile(new MapPoint(i, realNode.y));
+                            if (connection.doubleWidth) layout.AddOpenTile(new MapPoint(i, realNode.y + 1));
                             if (Random.value < 0.33f) {
                                 ports.Add(new Port {
                                     relativePosition = new MapPoint(i, realNode.y),
                                     direction = Random.value < 0.5f ? Facing.North : Facing.South
                                 });
+                                if (connection.doubleWidth) {
+                                    ports.Add(new Port {
+                                        relativePosition = new MapPoint(i, realNode.y + 1),
+                                        direction = Facing.North
+                                    });
+                                }
                             }
                         }
                     }
@@ -151,6 +173,7 @@ public class MapGenerator {
             }
         }
         
+        // add rooms
         int remainingAttempts = 100;
         for (int i = 0; i < blueprint.rooms && remainingAttempts > 0; i++) {
             remainingAttempts--;
@@ -175,11 +198,12 @@ public class MapGenerator {
                 i--;
             } else {
                 room.Imprint(layout);
-                layout.AddOpenTile(port.relativePosition + port.direction.ToVector(), false, false, false);
+                layout.AddOpenTile(port.relativePosition + port.direction.ToVector());
                 ports.Remove(port);
             }
         }
         
+        // add random corridors
         remainingAttempts = 50;
         for (int i = 0; i < blueprint.secondaryCorridors && remainingAttempts > 0; i++) {
             remainingAttempts--;
@@ -198,7 +222,7 @@ public class MapGenerator {
                 i--;
             } else {
                 corridor.Imprint(layout);
-                layout.AddOpenTile(port.relativePosition + port.direction.ToVector(), false, false, false);
+                layout.AddOpenTile(port.relativePosition + port.direction.ToVector());
                 ports.Remove(port);
             }
         }
