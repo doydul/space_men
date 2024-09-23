@@ -36,11 +36,13 @@ public class MapInstantiator : MonoBehaviour {
             }
         }
         var blueprint = blueprints[(int)(difficulty * 2)];
+        var objectives = Objectives.GenerateObjectiveList(PlayerSave.current);
         var mapLayout = new MapGenerator(new MapGenerator.Blueprint {
             corridors = blueprint.corridors,
             secondaryCorridors = blueprint.secondaryCorridors,
             loops = blueprint.loops,
-            rooms = blueprint.rooms
+            rooms = blueprint.rooms,
+            objectives = objectives
         }).Generate();
         var tiles = new List<Tile>();
         var ventTiles = new List<Tile>();
@@ -113,7 +115,7 @@ public class MapInstantiator : MonoBehaviour {
             remainingLoot--;
         }
         
-        Objectives.AddToMap(map, map.rooms.FirstOrDefault(roomKV => roomKV.Value.start).Value, blueprint.equipments);
+        Objectives.AddToMap(map, objectives, map.rooms.FirstOrDefault(roomKV => roomKV.Value.start).Value);
     }
 
     private Tile MakeTile(Vector2 position, Transform parent, bool open) {

@@ -12,14 +12,19 @@ public class Objectives {
 
     Dictionary<int, Dictionary<int, int>> roomDistances = new();
     
-    public static void AddToMap(Map map, Map.Room startingRoom, int equipments) {
+    public static List<Objective> GenerateObjectiveList(PlayerSave currentSave) {
+        return new List<Objective> {
+            new GetToTarget { required = true },
+            new GrabTheLoot(),
+            new GrabTheLoot()
+        };
+    }
+    
+    public static void AddToMap(Map map, List<Objective> objectiveList, Map.Room startingRoom) {
         var objectives = new Objectives { map = map, startingRoom = startingRoom };
-        new GetToTarget { required = true }.Init(objectives);
-        new ActivateTerminal { required = true }.Init(objectives);
-        for (int i = 0; i < equipments; i++) {
-            new GrabTheLoot().Init(objectives);
+        foreach (var objective in objectiveList) {
+            objective.Init(objectives);
         }
-
         map.objectives = objectives;
         
         ObjectivesPanel.instance.DisplayPrimaryObjectives(objectives.objectives.Where(obj => obj.required).ToList());

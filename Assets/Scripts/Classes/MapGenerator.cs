@@ -10,6 +10,7 @@ public class MapGenerator {
         public int secondaryCorridors;
         public int loops;
         public int rooms;
+        public List<Objective> objectives;
     }
     
     [System.Serializable]
