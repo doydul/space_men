@@ -49,6 +49,6 @@ public class FireOrdnance : Ability {
         owner.ShowMuzzleFlash();
         yield return SFXLayer.instance.PerformTracer(owner.muzzlePosition, hitTile.transform.position, owner.weapon, true);
         owner.HideMuzzleFlash();
-        yield return GameplayOperations.PerformExplosion(owner, hitTile);
+        yield return GameplayOperations.PerformExplosion(owner, hitTile, owner.weapon);
     }
 }

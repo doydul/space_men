@@ -20,4 +20,4 @@ MonoBehaviour:
   damage: 10
   movement: 4
   audio: {fileID: 11400000, guid: eb32cf0b474ba604cac0cdfdfa8cad7d, type: 2}
-  behaviour: {fileID: 11400000, guid: e4f13a9629e3d80479f0e8483c5cae7f, type: 2}
+  behaviour: {fileID: 11400000, guid: 8067ef89736ade348a010b0a014f72c9, type: 2}

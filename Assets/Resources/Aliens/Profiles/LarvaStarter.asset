@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LarvaStarter
   m_EditorClassIdentifier: 
   typeName: Larva
-  difficultyLevel: 0
+  difficultyLevel: -1
   threat: 15
   weight: 20
   typeCondition: 0

@@ -108,6 +108,16 @@ public static class GameplayOperations {
         BloodSplatController.instance.MakeSplat(target);
         yield return new WaitForSeconds(0.15f);
     }
+    
+    public static IEnumerator PerformAlienOrdnance(Alien alien, Weapon weapon, Tile targetTile) {
+        var diff = targetTile.realLocation - alien.realLocation;
+        var angle = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(diff.y, diff.x) - 90);
+        yield return PerformTurnAnimation(alien, angle);
+        alien.PlayAudio(weapon.audio.shoot);
+        yield return SFXLayer.instance.PerformTracer(alien.muzzlePosition, targetTile.transform.position, weapon, true);
+        yield return PerformExplosion(alien, targetTile, weapon);
+        yield return PerformTurnAnimation(alien, Actor.FacingToDirection(targetTile.gridLocation - alien.gridLocation), true);
+    }
 
     public static IEnumerator PerformActorMove(Actor actor, Map.Path path) {
         MapHighlighter.instance.ClearHighlights();
@@ -223,9 +233,8 @@ public static class GameplayOperations {
         soldier.HighlightActions();
     }
 
-    public static IEnumerator PerformExplosion(Soldier soldier, Tile tile, Weapon weapon = null) {
-        weapon = weapon ?? soldier.weapon;
-        soldier.PlayAudio(weapon.audio.explosion);
+    public static IEnumerator PerformExplosion(Actor player, Tile tile, Weapon weapon) {
+        player.PlayAudio(weapon.audio.explosion);
         MakeNoise(tile.gridLocation);
         float remainingBlast = weapon.blast;
         var explosionSFX = new List<GameObject>();

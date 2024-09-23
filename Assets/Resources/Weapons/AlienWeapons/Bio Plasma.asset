@@ -10,29 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 330a01776318840bd88dc655a2bd4ab8, type: 3}
-  m_Name: Bile Cannon
+  m_Name: Bio Plasma
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
   techLevel: -1
-  weight: -1
-  accuracy: -1
-  minDamage: 4
-  maxDamage: 4
+  weight: 100
+  accuracy: 50
+  minDamage: 3
+  maxDamage: 5
   damageType: 0
   shots: 1
   ammo: -1
   range: -1
-  blast: 0
+  blast: 10
   flames: 0
   flameDuration: 0
   flameColor: {r: 0, g: 0, b: 0, a: 0}
-  muzzleFlareColor: {r: 0.96757334, g: 0.81509435, b: 1, a: 1}
+  muzzleFlareColor: {r: 0.9150943, g: 0.88521445, b: 0.555963, a: 1}
   type: 0
-  cost: -1
-  description: 
+  cost: 1
+  description: '
+
+'
   abilities: []
   traits: 
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 2638842277454447310, guid: 9ab49813811ab674ca710393f368b31d,
+    type: 3}
   tracerPrefab: {fileID: 7457149134974975834, guid: 2eef684ece156774daedca1f48177fc0,
     type: 3}
-  audio: {fileID: 11400000, guid: c01a2cf80bfb67f468e7290a42c9119f, type: 2}
+  audio: {fileID: 11400000, guid: 12775d11220a42e439a61a3b19b749bc, type: 2}
