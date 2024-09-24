@@ -128,14 +128,14 @@ public class MapGenerator {
             var realNode = node * 7;
             layout.AddOpenTile(realNode);
             foreach (var adjNode in AdjacentNodes(node)) {
-                if (connections.Connected(node, adjNode)) {
+                if (connections.Connected(node, adjNode) && node.manhattanDistance > adjNode.manhattanDistance) {
                     var connection = connections.Get(node, adjNode);
                     var realAdjNode = adjNode * 7;
                     if (node.x == adjNode.x) {
                         var start = System.Math.Min(realNode.y, realAdjNode.y);
                         var end = System.Math.Max(realNode.y, realAdjNode.y);
-                        for (int i = start; i < end; i++) {
-                            layout.AddOpenTile(new MapPoint(realNode.x, i));
+                        for (int i = start + 1; i < end; i++) {
+                            var doorFacing = Door.Facing.None;
                             if (connection.doubleWidth) layout.AddOpenTile(new MapPoint(realNode.x + 1, i));
                             if (Random.value < 0.33f) {
                                 ports.Add(new Port {
@@ -148,13 +148,16 @@ public class MapGenerator {
                                         direction = Facing.East
                                     });
                                 }
+                            } else if (i > start + 1 && i < end - 1 && !connection.doubleWidth && Random.value < 0.1f) {
+                                doorFacing = Door.Facing.NorthSouth;
                             }
+                            layout.AddOpenTile(new MapPoint(realNode.x, i), false, false, false, -1, doorFacing);
                         }
                     } else {
                         var start = System.Math.Min(realNode.x, realAdjNode.x);
                         var end = System.Math.Max(realNode.x, realAdjNode.x);
-                        for (int i = start; i < end; i++) {
-                            layout.AddOpenTile(new MapPoint(i, realNode.y));
+                        for (int i = start + 1; i < end; i++) {
+                            var doorFacing = Door.Facing.None;
                             if (connection.doubleWidth) layout.AddOpenTile(new MapPoint(i, realNode.y + 1));
                             if (Random.value < 0.33f) {
                                 ports.Add(new Port {
@@ -167,14 +170,17 @@ public class MapGenerator {
                                         direction = Facing.North
                                     });
                                 }
+                            } else if (i > start + 1 && i < end - 1 && !connection.doubleWidth && Random.value < 0.1f) {
+                                doorFacing = Door.Facing.EastWest;
                             }
+                            layout.AddOpenTile(new MapPoint(i, realNode.y), false, false, false, -1, doorFacing);
                         }
                     }
                 }
             }
         }
         
-        // add rooms
+        // add special rooms
         foreach (var objective in blueprint.objectives) {
             foreach (var roomTemplate in objective.specialRooms) {
                 for (int i = 0 ; i < 50; i++) {
@@ -188,6 +194,7 @@ public class MapGenerator {
             }
         }
         
+        // add normal rooms
         int remainingAttempts = 100;
         for (int i = 0; i < blueprint.rooms && remainingAttempts > 0; i++) {
             remainingAttempts--;
@@ -241,7 +248,12 @@ public class MapGenerator {
             return -1;
         } else {
             room.Imprint(layout);
-            layout.AddOpenTile(port.relativePosition + port.direction.ToVector());
+            var doorFacing = Door.Facing.None;
+            if (Random.value < 0.4f) {
+                if (port.direction == Facing.North || port.direction == Facing.South) doorFacing = Door.Facing.NorthSouth;
+                else doorFacing = Door.Facing.EastWest;
+            }
+            layout.AddOpenTile(port.relativePosition + port.direction.ToVector(), false, false, false, -1, doorFacing);
             ports.Remove(port);
         }
         return room.id;

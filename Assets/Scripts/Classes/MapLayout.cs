@@ -12,6 +12,7 @@ public class MapLayout {
         public bool isPlayerSpawner;
         public bool isLootSpawner;
         public bool isSpecial => isAlienSpawner || isPlayerSpawner || isLootSpawner;
+        public Door.Facing doorFacing;
 
         public override string ToString() => $"Tile(point: {point}, isAlienSpawner: {isAlienSpawner}, isPlayerSpawner: {isPlayerSpawner}, isLootSpawner: {isLootSpawner}, isSpecial: {isSpecial})";
     }
@@ -20,9 +21,9 @@ public class MapLayout {
 
     List<Tile> openTiles = new();
 
-    public void AddOpenTile(MapPoint point, bool isAlienSpawner = false, bool isPlayerSpawner = false, bool isLootSpawner = false, int roomId = -1) {
+    public void AddOpenTile(MapPoint point, bool isAlienSpawner = false, bool isPlayerSpawner = false, bool isLootSpawner = false, int roomId = -1, Door.Facing doorFacing = Door.Facing.None) {
         if (!openTiles.Any(tile => tile.point.Equals(point))) {
-            openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner, isLootSpawner = isLootSpawner, roomId = roomId });
+            openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner, isLootSpawner = isLootSpawner, roomId = roomId, doorFacing = doorFacing });
         }
     }
 
@@ -71,6 +72,7 @@ public class MapLayout {
             resultTile.isPlayerSpawner = tile.isPlayerSpawner;
             resultTile.isLootSpawner = tile.isLootSpawner;
             resultTile.roomId = tile.roomId;
+            resultTile.doorFacing = tile.doorFacing;
         }
         return result;
     }

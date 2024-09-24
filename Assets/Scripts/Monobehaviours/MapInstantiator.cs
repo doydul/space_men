@@ -76,6 +76,9 @@ public class MapInstantiator : MonoBehaviour {
                     if (tileData.roomId == startRoomId) tile.gameObject.AddComponent<StartLocation>();
                     else ventTiles.Add(tile);
                 }
+                
+                if (tileData.doorFacing != Door.Facing.None) MakeDoor(tile, tileData.doorFacing);
+                
                 tiles.Add(tile);
 
                 // Add or update room
@@ -163,6 +166,14 @@ public class MapInstantiator : MonoBehaviour {
         
         tile.Init();
         return tile;
+    }
+    
+    private Door MakeDoor(Tile tile, Door.Facing facing) {
+        var doorTrans = Instantiate(Resources.Load<Transform>("Prefabs/Door"));
+        var door = doorTrans.GetComponent<Door>();
+        door.SetFacing(facing);
+        tile.SetActor(doorTrans, true);
+        return door;
     }
 
     private void SetSprite(Tile tile) {
