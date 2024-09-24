@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: fire a shot dealing 26-40 damage but with only 40 accuracy. 3 turn
     cooldown
+  sprite: {fileID: 21300000, guid: a911b148485da5b47aa1fe8eaa9ae4ff, type: 3}
   cooldown: 3
   weaponProfile: {fileID: 11400000, guid: 6ab03a8ec67ea4844bc73b91bd6563e0, type: 2}

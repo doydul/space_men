@@ -24,7 +24,7 @@ public class DirectionalOverwatch : ReactionAbility {
         owner.actionsSpent += 100;
         owner.tilesMoved += 100;
         owner.reaction = this;
-        owner.ShowAbilityIcon("Overwatch");
+        owner.ShowAbilityIcon(this);
     }
 
     public override bool TriggersReaction(Tile tile, Actor actor) {

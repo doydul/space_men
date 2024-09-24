@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: FireOrdnance
   m_EditorClassIdentifier: 
   description: fire the currently equipped blast weapon at a chosen tile
+  sprite: {fileID: 21300000, guid: dc42a4b6ac7113347bcf32122ed5f035, type: 3}
   scatterDistanceInterval: 5

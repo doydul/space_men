@@ -72,9 +72,9 @@ public class Soldier : Actor {
         muzzleSprite.color = weapon.muzzleFlareColor;
     }
     public void HideMuzzleFlash() => muzzleFlashLocation.gameObject.SetActive(false);
-    public void ShowAbilityIcon(string abilityName) {
+    public void ShowAbilityIcon(Ability ability) {
         abilityIcon.spriteRenderer.gameObject.SetActive(true);
-        abilityIcon.DisplaySpriteFor(abilityName);
+        abilityIcon.DisplaySpriteFor(ability);
     }
     public void HideAbilityIcon() => abilityIcon.spriteRenderer.gameObject.SetActive(false);
 

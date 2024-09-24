@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Reload
   m_EditorClassIdentifier: 
   description: spend an action point to reload the current weapon
+  sprite: {fileID: 21300000, guid: 84eb541c05609c64d87e43bad54e441d, type: 3}

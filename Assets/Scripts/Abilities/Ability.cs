@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class Ability : ScriptableObject {
 
     [TextArea] public string description;
+    public Sprite sprite;
 
     protected Soldier owner;
 

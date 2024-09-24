@@ -40,7 +40,7 @@ public class InterfaceController : MonoBehaviour {
             abilityIcon.OnClick = () => {
                 if (ability.CanUse()) ability.Use();
             };
-            abilityIcon.DisplaySpriteFor(ability.name);
+            abilityIcon.DisplaySpriteFor(ability);
             if (!ability.CanUse()) abilityIcon.Disable();
         }
     }

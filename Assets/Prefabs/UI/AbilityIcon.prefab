@@ -216,12 +216,12 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 77ec22448b0764249b61ca242d0e3628, type: 3}
   - abilityName: ThrowGrenade
     sprite: {fileID: 21300000, guid: 80ea80d5b60bca74797c393d77100cf5, type: 3}
+  - abilityName: DirectionalOverwatch
+    sprite: {fileID: 21300000, guid: adeca7b8be77da047a6787332e546b03, type: 3}
   - abilityName: Punch
     sprite: {fileID: 21300000, guid: acee28cf6c62a1a4d85d4db2dfa0b76b, type: 3}
   - abilityName: HeadShot
     sprite: {fileID: 21300000, guid: a911b148485da5b47aa1fe8eaa9ae4ff, type: 3}
-  - abilityName: DirectionalOverwatch
-    sprite: {fileID: 21300000, guid: adeca7b8be77da047a6787332e546b03, type: 3}
   image: {fileID: 1387060887095673774}
   spriteRenderer: {fileID: 0}
   disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5529412}

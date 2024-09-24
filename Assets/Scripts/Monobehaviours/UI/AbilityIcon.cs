@@ -5,20 +5,13 @@ using UnityEngine.UI;
 
 public class AbilityIcon : MonoBehaviour {
 
-    [System.Serializable]
-    public struct IconDefinition {
-        public string abilityName;
-        public Sprite sprite;
-    }
-
-    public IconDefinition[] iconDefinitions;
     public Image image;
     public SpriteRenderer spriteRenderer;
     public Color disabledColor;
     public Action OnClick;
 
-    public void DisplaySpriteFor(string abilityType) {
-        var sprite = iconDefinitions.First(def => def.abilityName == abilityType).sprite;
+    public void DisplaySpriteFor(Ability ability) {
+        var sprite = ability.sprite;
         if (image != null) image.sprite = sprite;
         if (spriteRenderer != null) spriteRenderer.sprite = sprite;
     }

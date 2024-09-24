@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DirectionalOverwatch
   m_EditorClassIdentifier: 
   description: 
+  sprite: {fileID: 21300000, guid: adeca7b8be77da047a6787332e546b03, type: 3}

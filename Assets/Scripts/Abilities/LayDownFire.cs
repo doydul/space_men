@@ -29,7 +29,7 @@ public class LayDownFire : ReactionAbility {
         owner.tilesMoved += 100;
         owner.Face(MapInputController.instance.selectedTile.gridLocation);
         owner.reaction = this;
-        owner.ShowAbilityIcon("LayDownFire");
+        owner.ShowAbilityIcon(this);
         yield return PerformShots();
     }
 

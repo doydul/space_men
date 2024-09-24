@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ThrowGrenade
   m_EditorClassIdentifier: 
   description: deals 3-12 damage to targets in an area. free action, 1 use per deployment
+  sprite: {fileID: 21300000, guid: 80ea80d5b60bca74797c393d77100cf5, type: 3}
   scatterDistanceInterval: 5
   uses: 1
   weapon: {fileID: 11400000, guid: 4709090933cda264fa83dc12fd99dfb1, type: 2}
