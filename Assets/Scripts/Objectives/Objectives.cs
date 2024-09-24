@@ -9,6 +9,7 @@ public class Objectives {
     public Map map;
     public Map.Room startingRoom;
     public List<Objective> objectives = new();
+    public List<Objective> objectivesTmp;
 
     Dictionary<int, Dictionary<int, int>> roomDistances = new();
     
@@ -22,7 +23,7 @@ public class Objectives {
     }
     
     public static void AddToMap(Map map, List<Objective> objectiveList, Map.Room startingRoom) {
-        var objectives = new Objectives { map = map, startingRoom = startingRoom };
+        var objectives = new Objectives { map = map, startingRoom = startingRoom, objectivesTmp = objectiveList };
         foreach (var objective in objectiveList) {
             objective.Init(objectives);
         }
@@ -47,7 +48,7 @@ public class Objectives {
         if (!roomDistances.ContainsKey(startingRoom.id)) roomDistances.Add(startingRoom.id, GetDistancesFrom(startingRoom));
         
         return map.rooms.Values
-            .Where(room => !roomDistances.ContainsKey(room.id))
+            .Where(room => !roomDistances.ContainsKey(room.id) && !objectivesTmp.Any(obj => obj.roomId == room.id))
             .MaxBy(room => roomDistances.Keys.ToList().Aggregate(0, (acc, roomId) => acc + roomDistances[roomId][room.id]));
     }
     
@@ -55,13 +56,14 @@ public class Objectives {
         if (!roomDistances.ContainsKey(startingRoom.id)) roomDistances.Add(startingRoom.id, GetDistancesFrom(startingRoom));
         
         return map.rooms.Values
-            .Where(room => !roomDistances.ContainsKey(room.id))
+            .Where(room => !roomDistances.ContainsKey(room.id) && !objectivesTmp.Any(obj => obj.roomId == room.id))
             .MinBy(room => Mathf.Abs(roomDistances[otherRoom.id][room.id] - idealDistance));
     }
     
     public List<Map.Room> GetUnoccupiedRooms() {
         return map.rooms.Values
-            .Where(room => !roomDistances.ContainsKey(room.id)).ToList();
+            .Where(room => !roomDistances.ContainsKey(room.id) && !objectivesTmp.Any(obj => obj.roomId == room.id))
+            .ToList();
     }
     
     public int EstimateTravelDistance() {

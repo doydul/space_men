@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Slug
   m_EditorClassIdentifier: 
   typeName: Slug
-  difficultyLevel: 0
+  difficultyLevel: 1
   threat: 40
   weight: 10
   typeCondition: 0
   typeInfo:
   - type: 2
-    typeWeight: 0
+    typeWeight: 50
   groupSizeUnlocks: []
   spawnPercentage: 0

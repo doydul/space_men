@@ -8,6 +8,11 @@ using SimplexNoise;
 public class HiveMind : MonoBehaviour {
     
     public static HiveMind instance;
+    
+    public class Spawning {
+        public string type;
+        public int number;
+    }
 
     class WeightedTile : IWeighted {
         public int Weight { get; set; }
@@ -19,7 +24,7 @@ public class HiveMind : MonoBehaviour {
         public Spawner spawner { get; set; }
     }
 
-    List<EnemySpawnTracker> spawnTrackers = new();
+    public List<EnemySpawnTracker> spawnTrackers = new();
     Alien activeAlien;
     bool threatIncreased;
     
@@ -115,9 +120,8 @@ public class HiveMind : MonoBehaviour {
     }
 
     private void AlienTurnStart() => Spawn();
-
-    private void Spawn() {
-        
+    
+    public void Spawn(IEnumerable<Spawning> spawnings) {
         var weightedSpawners = Map.instance.spawners.Where(spawner => !Map.instance.GetActors<Soldier>().Any(sol => sol.On(spawner.tile))).Select(spawner => 
             new WeightedSpawner {
                 spawner = spawner,
@@ -130,6 +134,14 @@ public class HiveMind : MonoBehaviour {
             ws.Weight = 100 - i * 10;
             i++;
         }
+        foreach (var spawning in spawnings) {
+            var spawner = weightedSpawners.WeightedSelect().spawner;
+            InstantiatePod(spawning.type, spawning.number, spawner.gridLocation, true);
+        }
+    }
+
+    private void Spawn() {
+        var spawnings = new List<Spawning>();
         foreach (var tracker in spawnTrackers) {
             int nominalTurnCount = 12;
             float avgSpawnsPerTurn = ((float)tracker.remainingThreat / tracker.profile.threat) / nominalTurnCount;
@@ -137,10 +149,10 @@ public class HiveMind : MonoBehaviour {
             int spawns = (int)Mathf.Round(GaussianNumber.Generate(avgSpawnsPerTurn, Mathf.Max(avgSpawnsPerTurn * 0.45f, 0.5f)));
             Debug.Log($"{tracker.profile.name} avg spawns: {avgSpawnsPerTurn}, spawns: {spawns}");
             for (int j = 0; j < spawns; j++) {
-                var spawner = weightedSpawners.WeightedSelect().spawner;
-                InstantiatePod(tracker.profile.typeName, 1, spawner.gridLocation, true);
+                spawnings.Add(new Spawning { type = tracker.profile.typeName, number = 1 });
             }
         }
+        Spawn(spawnings);
         threatIncreased = false;
     }
 

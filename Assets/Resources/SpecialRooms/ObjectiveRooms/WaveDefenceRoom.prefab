@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
-  isAlienSpawner: 0
+  isAlienSpawner: 1
   isPlayerSpawner: 0
   isLootSpawner: 0
   portDirection: 0
@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
-  isAlienSpawner: 0
+  isAlienSpawner: 1
   isPlayerSpawner: 0
   isLootSpawner: 0
   portDirection: 0
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
-  isAlienSpawner: 0
+  isAlienSpawner: 1
   isPlayerSpawner: 0
   isLootSpawner: 0
   portDirection: 2
@@ -866,7 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
-  isAlienSpawner: 0
+  isAlienSpawner: 1
   isPlayerSpawner: 0
   isLootSpawner: 0
   portDirection: 0
@@ -1438,7 +1438,7 @@ MonoBehaviour:
   isPort: 0
   isAlienSpawner: 0
   isPlayerSpawner: 0
-  isLootSpawner: 1
+  isLootSpawner: 0
   portDirection: 1
 --- !u!1 &4132910200913745986
 GameObject:
@@ -2023,7 +2023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
-  isAlienSpawner: 0
+  isAlienSpawner: 1
   isPlayerSpawner: 0
   isLootSpawner: 0
   portDirection: 0
@@ -2157,7 +2157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
-  isAlienSpawner: 0
+  isAlienSpawner: 1
   isPlayerSpawner: 0
   isLootSpawner: 0
   portDirection: 0
@@ -2375,7 +2375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
-  isAlienSpawner: 0
+  isAlienSpawner: 1
   isPlayerSpawner: 0
   isLootSpawner: 0
   portDirection: 0
@@ -2793,7 +2793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPort: 0
-  isAlienSpawner: 0
+  isAlienSpawner: 1
   isPlayerSpawner: 0
   isLootSpawner: 0
   portDirection: 0

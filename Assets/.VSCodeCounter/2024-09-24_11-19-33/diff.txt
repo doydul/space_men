@@ -1,0 +1,101 @@
+Date : 2024-09-24 11:19:33
+Directory : c:\Users\lewis\code\space_men\Assets
+Total : 52 files,  6899 codes, 114 comments, 935 blanks, all 7948 lines
+
+Languages
++-----------+------------+------------+------------+------------+------------+
+| language  | files      | code       | comment    | blank      | total      |
++-----------+------------+------------+------------+------------+------------+
+| Markdown  |         20 |      3,557 |          0 |        130 |      3,687 |
+| ShaderLab |         14 |      2,401 |         76 |        639 |      3,116 |
+| HLSL      |          5 |        459 |         35 |        117 |        611 |
+| C#        |          5 |        321 |          3 |         46 |        370 |
+| JSON      |          7 |        161 |          0 |          2 |        163 |
+| Log       |          1 |          0 |          0 |          1 |          1 |
++-----------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                               | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                  |         52 |      6,899 |        114 |        935 |      7,948 |
+| .VSCodeCounter                                                                                     |         25 |      3,562 |          0 |        130 |      3,692 |
+| .VSCodeCounter\2024-05-25_14-13-38                                                                 |          5 |        651 |          0 |         26 |        677 |
+| .VSCodeCounter\2024-05-25_14-13-54                                                                 |          5 |      1,078 |          0 |         26 |      1,104 |
+| .VSCodeCounter\2024-05-27_13-43-17                                                                 |          5 |        520 |          0 |         26 |        546 |
+| .VSCodeCounter\2024-05-27_14-02-43                                                                 |          5 |        825 |          0 |         26 |        851 |
+| .VSCodeCounter\2024-09-24_11-18-08                                                                 |          5 |        488 |          0 |         26 |        514 |
+| Editor                                                                                             |          2 |        251 |          3 |         32 |        286 |
+| Packages                                                                                           |          2 |         36 |          0 |          9 |         45 |
+| Packages\ComboPack                                                                                 |          2 |         36 |          0 |          9 |         45 |
+| Packages\ComboPack\SciFiSkin                                                                       |          2 |         36 |          0 |          9 |         45 |
+| Packages\ComboPack\SciFiSkin\Scripts                                                               |          2 |         36 |          0 |          9 |         45 |
+| Plugins                                                                                            |          1 |         34 |          0 |          5 |         39 |
+| Plugins\Editor                                                                                     |          1 |         34 |          0 |          5 |         39 |
+| Resources                                                                                          |          1 |          1 |          0 |          0 |          1 |
+| TextMesh Pro                                                                                       |         20 |      3,015 |        111 |        758 |      3,884 |
+| TextMesh Pro\Resources                                                                             |         14 |      1,976 |         68 |        519 |      2,563 |
+| TextMesh Pro\Resources\Shaders                                                                     |         14 |      1,976 |         68 |        519 |      2,563 |
+| TextMesh Pro\Shaders                                                                               |          5 |        884 |         43 |        237 |      1,164 |
+| TextMesh Pro\Sprites                                                                               |          1 |        155 |          0 |          2 |        157 |
+| Textures                                                                                           |          1 |          0 |          0 |          1 |          1 |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------+-----------+------------+------------+------------+------------+
+| filename                                                                                           | language  | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+-----------+------------+------------+------------+------------+
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-38\details.md                 | Markdown  |         86 |          0 |          6 |         92 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-38\diff-details.md            | Markdown  |        467 |          0 |          6 |        473 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-38\diff.md                    | Markdown  |         75 |          0 |          7 |         82 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-38\results.json               | JSON      |          1 |          0 |          0 |          1 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-38\results.md                 | Markdown  |         22 |          0 |          7 |         29 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-54\details.md                 | Markdown  |        440 |          0 |          6 |        446 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-54\diff-details.md            | Markdown  |        517 |          0 |          6 |        523 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-54\diff.md                    | Markdown  |         65 |          0 |          7 |         72 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-54\results.json               | JSON      |          1 |          0 |          0 |          1 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-25_14-13-54\results.md                 | Markdown  |         55 |          0 |          7 |         62 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_13-43-17\details.md                 | Markdown  |        417 |          0 |          6 |        423 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_13-43-17\diff-details.md            | Markdown  |         32 |          0 |          6 |         38 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_13-43-17\diff.md                    | Markdown  |         18 |          0 |          7 |         25 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_13-43-17\results.json               | JSON      |          1 |          0 |          0 |          1 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_13-43-17\results.md                 | Markdown  |         52 |          0 |          7 |         59 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_14-02-43\details.md                 | Markdown  |        148 |          0 |          6 |        154 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_14-02-43\diff-details.md            | Markdown  |        536 |          0 |          6 |        542 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_14-02-43\diff.md                    | Markdown  |         84 |          0 |          7 |         91 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_14-02-43\results.json               | JSON      |          1 |          0 |          0 |          1 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-05-27_14-02-43\results.md                 | Markdown  |         56 |          0 |          7 |         63 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-09-24_11-18-08\details.md                 | Markdown  |        147 |          0 |          6 |        153 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-09-24_11-18-08\diff-details.md            | Markdown  |        249 |          0 |          6 |        255 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-09-24_11-18-08\diff.md                    | Markdown  |         63 |          0 |          7 |         70 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-09-24_11-18-08\results.json               | JSON      |          1 |          0 |          0 |          1 |
+| c:\Users\lewis\code\space_men\Assets\.VSCodeCounter\2024-09-24_11-18-08\results.md                 | Markdown  |         28 |          0 |          7 |         35 |
+| c:\Users\lewis\code\space_men\Assets\Editor\MapEditor.cs                                           | C#        |        240 |          3 |         29 |        272 |
+| c:\Users\lewis\code\space_men\Assets\Editor\MapInstantiatorEditor.cs                               | C#        |         11 |          0 |          3 |         14 |
+| c:\Users\lewis\code\space_men\Assets\Packages\ComboPack\SciFiSkin\Scripts\ShowSliderValue.cs       | C#        |         13 |          0 |          2 |         15 |
+| c:\Users\lewis\code\space_men\Assets\Packages\ComboPack\SciFiSkin\Scripts\TiltWindow.cs            | C#        |         23 |          0 |          7 |         30 |
+| c:\Users\lewis\code\space_men\Assets\Plugins\Editor\CompileTime.cs                                 | C#        |         34 |          0 |          5 |         39 |
+| c:\Users\lewis\code\space_men\Assets\Resources\BillingMode.json                                    | JSON      |          1 |          0 |          0 |          1 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader | ShaderLab |        113 |          2 |         31 |        146 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader       | ShaderLab |        123 |          3 |         30 |        156 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader              | ShaderLab |        113 |          2 |         31 |        146 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader         | ShaderLab |        253 |          4 |         70 |        327 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader  | ShaderLab |        198 |         10 |         51 |        259 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader  | ShaderLab |        193 |          8 |         52 |        253 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader          | ShaderLab |        192 |          8 |         51 |        251 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader  | ShaderLab |        104 |          8 |         28 |        140 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader         | ShaderLab |        123 |          4 |         33 |        160 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader                 | ShaderLab |        253 |          4 |         70 |        327 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader              | ShaderLab |        111 |          0 |         21 |        132 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc                    | HLSL      |         63 |          2 |         20 |         85 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc         | HLSL      |         62 |          6 |         13 |         81 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc            | HLSL      |         75 |          7 |         18 |        100 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl                        | HLSL      |        130 |         18 |         31 |        179 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader                       | ShaderLab |        253 |          4 |         65 |        322 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader                | ShaderLab |         82 |          4 |         21 |        107 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader             | ShaderLab |        290 |         15 |         85 |        390 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc                       | HLSL      |        129 |          2 |         35 |        166 |
+| c:\Users\lewis\code\space_men\Assets\TextMesh Pro\Sprites\EmojiOne.json                            | JSON      |        155 |          0 |          2 |        157 |
+| c:\Users\lewis\code\space_men\Assets\Textures\debug.log                                            | Log       |          0 |          0 |          1 |          1 |
+| Total                                                                                              |           |      6,899 |        114 |        935 |      7,948 |
++----------------------------------------------------------------------------------------------------+-----------+------------+------------+------------+------------+
