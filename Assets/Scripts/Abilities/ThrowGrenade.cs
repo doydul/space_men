@@ -34,6 +34,7 @@ public class ThrowGrenade : Ability {
         AbilityInfoPanel.instance.Hide();
         
         uses -= 1;
+        if (uses <= 0) owner.abilities.Remove(this);
         var accuracy = weapon.accuracy;
         if (Random.value * 100 > accuracy) {
             // Miss
