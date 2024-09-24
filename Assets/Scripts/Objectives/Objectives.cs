@@ -15,6 +15,7 @@ public class Objectives {
     public static List<Objective> GenerateObjectiveList(PlayerSave currentSave) {
         return new List<Objective> {
             new GetToTarget { required = true },
+            new WaveDefence { required = true },
             new GrabTheLoot(),
             new GrabTheLoot()
         };

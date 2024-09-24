@@ -47,7 +47,7 @@ public class MapInstantiator : MonoBehaviour {
         var tiles = new List<Tile>();
         var ventTiles = new List<Tile>();
         var mapLayoutCache = mapLayout.tiles;
-        int startRoomId = mapLayoutCache.SelectMany(x => x).Where(tile => tile.roomId > 0).Select(tile => tile.roomId).Min();
+        int startRoomId = mapLayoutCache.SelectMany(x => x).Where(tile => tile.roomId > 0 && !objectives.Any(obj => obj.roomId == tile.roomId)).Select(tile => tile.roomId).Min();
         int remainingVents = blueprint.vents;
         for (int x = 0; x < mapLayoutCache.Count; x++) {
             var columnObject = new GameObject().transform;

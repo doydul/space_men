@@ -175,33 +175,23 @@ public class MapGenerator {
         }
         
         // add rooms
+        foreach (var objective in blueprint.objectives) {
+            foreach (var roomTemplate in objective.specialRooms) {
+                for (int i = 0 ; i < 50; i++) {
+                    var roomId = AddRoom(ports, layout, roomTemplate);
+                    if (roomId != -1) {
+                        objective.roomId = roomId;
+                        blueprint.rooms--;
+                        break;
+                    }
+                }
+            }
+        }
+        
         int remainingAttempts = 100;
         for (int i = 0; i < blueprint.rooms && remainingAttempts > 0; i++) {
             remainingAttempts--;
-            
-            var port = ports.Sample();
-            if (Random.value < 0.5f) port.direction = port.direction.Opposite();
-            var room = new Room {
-                template = RoomTemplate.RandomRoom(),
-                facing = Facings.Sample()
-            };
-            var availablePorts = room.GetPorts().Where(p => p.direction == port.direction.Opposite());
-            if (!availablePorts.Any()) {
-                i--;
-                continue;
-            }
-            var roomPort = availablePorts.Sample();
-            room.centre = port.relativePosition + port.direction.ToVector() * 2 - roomPort.relativePosition;
-            
-            var newLayout = new MapLayout();
-            room.Imprint(newLayout);
-            if (layout.Overlaps(newLayout)) {
-                i--;
-            } else {
-                room.Imprint(layout);
-                layout.AddOpenTile(port.relativePosition + port.direction.ToVector());
-                ports.Remove(port);
-            }
+            if (AddRoom(ports, layout, RoomTemplate.RandomRoom()) == -1) i--;
         }
         
         // add random corridors
@@ -229,6 +219,32 @@ public class MapGenerator {
         }
         
         return layout;
+    }
+    
+    int AddRoom(List<Port> ports, MapLayout layout, RoomTemplate template) {
+        var port = ports.Sample();
+        if (Random.value < 0.5f) port.direction = port.direction.Opposite();
+        var room = new Room {
+            template = template,
+            facing = Facings.Sample()
+        };
+        var availablePorts = room.GetPorts().Where(p => p.direction == port.direction.Opposite());
+        if (!availablePorts.Any()) {
+            return -1;
+        }
+        var roomPort = availablePorts.Sample();
+        room.centre = port.relativePosition + port.direction.ToVector() * 2 - roomPort.relativePosition;
+        
+        var newLayout = new MapLayout();
+        room.Imprint(newLayout);
+        if (layout.Overlaps(newLayout)) {
+            return -1;
+        } else {
+            room.Imprint(layout);
+            layout.AddOpenTile(port.relativePosition + port.direction.ToVector());
+            ports.Remove(port);
+        }
+        return room.id;
     }
     
     IEnumerable<MapPoint> AdjacentNodes(MapPoint point) {

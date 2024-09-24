@@ -7,4 +7,6 @@ public abstract class Objective {
     public abstract bool complete { get; }
     public abstract string description { get; }
     public abstract Vector2 targetLocation { get; }
+    public virtual RoomTemplate[] specialRooms => new RoomTemplate[0];
+    public int roomId { get; set; }
 }
