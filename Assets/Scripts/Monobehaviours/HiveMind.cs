@@ -156,7 +156,7 @@ public class HiveMind : MonoBehaviour {
         threatIncreased = false;
     }
 
-    private void InstantiatePod(string type, int number, Vector2 gridLocation, bool awaken) {
+    public Alien.Pod InstantiatePod(string type, int number, Vector2 gridLocation, bool awaken) {
         int counter = 0;
         Debug.Log($"spawning pod [{number} {type}]");
         var pod = new Alien.Pod();
@@ -169,6 +169,7 @@ public class HiveMind : MonoBehaviour {
             counter++;
             if (counter >= number) break;
         }
+        return pod;
     }
 
     private Alien InstantiateAlien(Vector2 gridLocation, string alienType) {

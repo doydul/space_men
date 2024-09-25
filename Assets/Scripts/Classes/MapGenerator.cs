@@ -80,7 +80,7 @@ public class MapGenerator {
             else return point2.ToString() + point1.ToString();
         }
         
-        public void Add(MapPoint point1, MapPoint point2, Connection connection = null) => connections.Add(ConnectionString(point1, point2), connection ?? new Connection());
+        public void Add(MapPoint point1, MapPoint point2, Connection connection = null) => connections[ConnectionString(point1, point2)] = connection ?? new Connection();
         public bool Connected(MapPoint point1, MapPoint point2) => connections.ContainsKey(ConnectionString(point1, point2));
         public Connection Get(MapPoint point1, MapPoint point2) => connections[ConnectionString(point1, point2)];
     }

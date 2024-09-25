@@ -2,14 +2,16 @@ using UnityEngine;
 using System.Linq;
 using System.Collections;
 
-[CreateAssetMenu(fileName = "RangedBehaviour", menuName = "Behaviours/Ranged", order = 1)]
-public class RangedAlienBehaviour : AlienBehaviour {
+[CreateAssetMenu(fileName = "SpawnerBehaviour", menuName = "Behaviours/Spawner", order = 1)]
+public class SpawnerAlienBehaviour : AlienBehaviour {
     
-    [Range(0, 1f)]
-    public float critChance = 1f/6f;
     public int minDistance;
     public int maxDistance;
-    public Weapon weaponProfile;
+    public AlienData hatchling;
+    public int hatchlingCount;
+    public int hatchCooldown;
+    
+    int hatchTimer;
     
     public override IEnumerator PerformTurn() {
         var soldierPositions = Map.instance.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToArray();
@@ -19,7 +21,7 @@ public class RangedAlienBehaviour : AlienBehaviour {
         
         var currentDistance = Map.instance.ShortestPath(new AlienImpassableTerrain(), body.gridLocation, soldierPositions, true);
         if (!currentDistance.exists) yield break;
-        bool tooClose = currentDistance.length < minDistance;
+        bool tooFar = currentDistance.length > maxDistance;
         
         foreach (var tile in Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(body.gridLocation, body.remainingMovement)) {
             if (tile.occupied && tile.GetActor<Alien>() != body) continue;
@@ -29,13 +31,13 @@ public class RangedAlienBehaviour : AlienBehaviour {
             bool canSeeEnemies = soldierPositions.Any(pos => body.CanSeeFrom(pos, tile.gridLocation));
             bool justRight = path.length >= minDistance && path.length <= maxDistance;
             
-            if (justRight && canSeeEnemies) {
+            if (justRight && !canSeeEnemies) {
                 bestTile = tile;
                 break;
             }
             if (bestTileJustRight) continue;
             
-            bool distanceCondition = bestPath == null || (tooClose ? path.length > bestPath.length : path.length < bestPath.length);
+            bool distanceCondition = bestPath == null || (tooFar ? path.length < bestPath.length : path.length > bestPath.length);
             
             if (bestPath == null || distanceCondition) {
                 bestPath = path;
@@ -58,13 +60,13 @@ public class RangedAlienBehaviour : AlienBehaviour {
             yield break;
         }
         
-        // attack
-        if (!body.dead) {
-            var soldiersInLOS = soldierPositions.Where(pos => body.CanSee(pos));
-            if (soldiersInLOS.Count() <= 0) yield break;
-            var targetPos = soldiersInLOS.MinBy(pos => Map.instance.ManhattanDistance(pos, body.gridLocation));
-            var target = Map.instance.GetTileAt(targetPos).GetActor<Soldier>();
-            yield return GameplayOperations.PerformAlienShoot(body, weaponProfile, target);
+        // spawn
+        if (!body.dead && hatchTimer <= 0) {
+            var pod = HiveMind.instance.InstantiatePod(hatchling.name, hatchlingCount, body.gridLocation, true);
+            foreach (var alien in pod.members) alien.hasActed = true;
+            hatchTimer = hatchCooldown;
+        } else {
+            hatchTimer--;
         }
     }
 }

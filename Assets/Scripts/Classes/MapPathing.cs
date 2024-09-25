@@ -18,7 +18,7 @@ public partial class Map {
 
         public Node[] nodes { get; private set; }
         public bool exists => nodes != null && nodes.Length > 0;
-        public int length => nodes.Length - 1;
+        public int length => nodes == null ? 0 : nodes.Length - 1;
         public Node last => nodes[nodes.Length - 1];
         public Node penultimate => nodes[nodes.Length - 2];
         
