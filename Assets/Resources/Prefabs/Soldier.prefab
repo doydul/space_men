@@ -185,6 +185,7 @@ MonoBehaviour:
   muzzleFlashLocation: {fileID: 4343401897204958}
   gunContainer: {fileID: 9169448803393156594}
   muzzleSprite: {fileID: 2994688973931539979}
+  bodySprite: {fileID: 212152162321476934}
   abilityIcon: {fileID: 594908368735448727}
   abilities: []
 --- !u!1 &1523187601169902

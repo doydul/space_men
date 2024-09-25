@@ -33,17 +33,7 @@ public class BenchComponent : MonoBehaviour {
         Debug.Log(PlayerSave.current.credits);
         if (PlayerSave.current.credits >= hireCost) {
             PlayerSave.current.credits -= hireCost;
-            PlayerSave.current.bench.Add(new MetaSoldier() {
-                name = "John Doe",
-                armour = new InventoryItem() {
-                    name = "Flak Vest",
-                    type = InventoryItem.Type.Armour
-                },
-                weapon = new InventoryItem() {
-                    name = "SIKR-5",
-                    type = InventoryItem.Type.Weapon
-                }
-            });
+            PlayerSave.current.bench.Add(MetaSquad.GenerateDefaultSoldier());
             DisplayBenchSoldiers();
             DisplayHireButtonText();
         }

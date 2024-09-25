@@ -47,23 +47,7 @@ public class Main : MonoBehaviour {
         var trans = Instantiate(Resources.Load<Transform>("Prefabs/Soldier")) as Transform;
 
         var soldier = trans.GetComponent<Soldier>();
-        soldier.id = metaSoldier.id;
-
-        soldier.armour = Armour.Get(metaSoldier.armour.name);
-        soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
-        // soldier.weapon = Weapon.Get(metaSoldier.weapon.name);
-        soldier.maxHealth = soldier.armour.maxHealth;
-        soldier.health = soldier.armour.maxHealth;
-        soldier.sightRange = soldier.armour.sightRange;
-
-        foreach (var ability in soldier.weapon.abilities) ability.Attach(soldier);
-        foreach (var ability in soldier.armour.abilities) ability.Attach(soldier);
-
-        // soldier.maxAmmo = soldierData.maxAmmo;
-        // soldier.exp = soldierData.exp;
-        // soldier.maxHealth = soldierData.maxHealth;
-        // soldier.health = soldierData.health;
-        // soldier.TurnTo((Actor.Direction)soldierData.facing);
+        metaSoldier.Dump(soldier);
 
         Map.instance.GetTileAt(gridLocation).SetActor(trans);
         CameraController.CentreCameraOn(Map.instance.GetTileAt(gridLocation));

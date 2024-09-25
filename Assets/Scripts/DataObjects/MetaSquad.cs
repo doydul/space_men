@@ -1,9 +1,8 @@
-using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public class MetaSquad {
     
     [SerializeField] List<MetaSoldier> metaSoldiers = new();
@@ -16,7 +15,7 @@ public class MetaSquad {
     }
 
     public void AddMetaSoldier(MetaSoldier metaSoldier) {
-        var id = Guid.NewGuid().ToString();
+        var id = System.Guid.NewGuid().ToString();
         metaSoldier.id = id;
         metaSoldiers.Add(metaSoldier);
     }
@@ -32,26 +31,26 @@ public class MetaSquad {
     }
     
     public void RemoveMetaSoldierById(string id) => RemoveMetaSoldier(GetMetaSoldier(id));
+    
+    public static MetaSoldier GenerateDefaultSoldier() {
+        return new MetaSoldier() {
+            name = "John Doe",
+            armour = new InventoryItem() {
+                name = "Flak Vest",
+                type = InventoryItem.Type.Armour
+            },
+            weapon = new InventoryItem() {
+                name = "SIKR-5",
+                type = InventoryItem.Type.Weapon
+            },
+            tint = new Color(Random.value * 0.5f + 0.5f, Random.value * 0.5f + 0.5f, Random.value * 0.5f + 0.5f)
+        };
+    }
 
     public static MetaSquad GenerateDefault() {
         var result = new MetaSquad();
-        var weapons = new string[] {
-            "SIKR-5",
-            "SIKR-5",
-            "SIKR-5",
-        };
-        for (int i = 0; i < weapons.Length; i++) {
-            result.AddMetaSoldier(new MetaSoldier() {
-                name = "John Doe",
-                armour = new InventoryItem() {
-                    name = "Flak Vest",
-                    type = InventoryItem.Type.Armour
-                },
-                weapon = new InventoryItem() {
-                    name = weapons[i],
-                    type = InventoryItem.Type.Weapon
-                }
-            });
+        for (int i = 0; i < 3; i++) {
+            result.AddMetaSoldier(GenerateDefaultSoldier());
         }
         return result;
     }
