@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 595fa0755eae9af4d992164a8bd80dee, type: 3}
-  m_Name: SpawnerBehaviour
+  m_Name: PrincessBehaviour
   m_EditorClassIdentifier: 
-  minDistance: 6
-  maxDistance: 10
+  minDistance: 8
+  maxDistance: 12
   hatchling: {fileID: 11400000, guid: 80091460f5d6945eb802a85e248c6185, type: 2}
-  hatchlingCount: 3
-  hatchCooldown: 3
+  hatchlingCount: 1
+  hatchCooldown: 2
