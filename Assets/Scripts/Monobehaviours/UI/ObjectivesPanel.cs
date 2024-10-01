@@ -15,7 +15,6 @@ public class ObjectivesPanel : MonoBehaviour {
     void Start() {
         primaryObjectivePrototype.gameObject.SetActive(false);
         secondaryObjectivePrototype.gameObject.SetActive(false);
-        Hide();
     }
     
     void DisplayObjectives(Transform prototype, List<Objective> objectives) {
@@ -35,6 +34,7 @@ public class ObjectivesPanel : MonoBehaviour {
     }
     
     public void Hide() {
+        Debug.Log("HIDING!!!");
         showObjectiesButton.SetActive(true);
         gameObject.SetActive(false);
     }

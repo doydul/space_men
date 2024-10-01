@@ -134,6 +134,7 @@ public static class GameplayOperations {
             
             if (!tile.occupied) {
                 actor.MoveTo(tile);
+                if (actor is Soldier) FogManager.instance.UpdateFog();
                 
                 // fire damage
                 if (tile.onFire) {
