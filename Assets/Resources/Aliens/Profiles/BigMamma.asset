@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c74185e309a64414ab8481f0072091b0, type: 3}
-  m_Name: Princess
+  m_Name: BigMamma
   m_EditorClassIdentifier: 
-  typeName: Princess
+  typeName: Queen
   difficultyLevel: 1
-  threat: 20
+  threat: 40
   weight: 10
   typeCondition: 0
   typeInfo:
-  - type: 4
-    typeWeight: 40
+  - type: 1
+    typeWeight: 50
   groupSizeUnlocks: []
   spawnPercentage: 0

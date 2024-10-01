@@ -5,14 +5,13 @@ using System.Collections;
 [CreateAssetMenu(fileName = "RangedBehaviour", menuName = "Behaviours/Ranged", order = 1)]
 public class RangedAlienBehaviour : AlienBehaviour {
     
-    [Range(0, 1f)]
-    public float critChance = 1f/6f;
     public int minDistance;
     public int maxDistance;
     public Weapon weaponProfile;
     
     public override IEnumerator PerformTurn() {
         var soldierPositions = Map.instance.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToArray();
+        var visibleSoldierPositions = soldierPositions.Where(pos => body.CanSee(pos)).ToList();
         Tile bestTile = null;
         Map.Path bestPath = null;
         bool bestTileJustRight = false;
@@ -60,7 +59,8 @@ public class RangedAlienBehaviour : AlienBehaviour {
         
         // attack
         if (!body.dead) {
-            var soldiersInLOS = soldierPositions.Where(pos => body.CanSee(pos));
+            // only attack if target was visible at start of turn
+            var soldiersInLOS = visibleSoldierPositions.Where(pos => body.CanSee(pos));
             if (soldiersInLOS.Count() <= 0) yield break;
             var targetPos = soldiersInLOS.MinBy(pos => Map.instance.ManhattanDistance(pos, body.gridLocation));
             var target = Map.instance.GetTileAt(targetPos).GetActor<Soldier>();

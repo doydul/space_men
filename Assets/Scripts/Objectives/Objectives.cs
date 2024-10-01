@@ -14,12 +14,14 @@ public class Objectives {
     Dictionary<int, Dictionary<int, int>> roomDistances = new();
     
     public static List<Objective> GenerateObjectiveList(PlayerSave currentSave) {
-        return new List<Objective> {
-            new GetToTarget { required = true },
-            new WaveDefence { required = true },
-            new GrabTheLoot(),
-            new GrabTheLoot()
-        };
+        var result = new List<Objective> { new GetToTarget { required = true } };
+        if (currentSave.levelNumber > 0 && currentSave.levelNumber % 2 == 0) {
+            if (Random.value < 0.5f) result.Add(new WaveDefence { required = true });
+            else result.Add(new ActivateTerminal { required = true });
+        }
+        result.Add(new GrabTheLoot());
+        result.Add(new GrabTheLoot());
+        return result;
     }
     
     public static void AddToMap(Map map, List<Objective> objectiveList, Map.Room startingRoom) {

@@ -9,16 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c74185e309a64414ab8481f0072091b0, type: 3}
-  m_Name: Princess
+  m_Script: {fileID: 11500000, guid: cddc69150da800e41bb19c86021d44fb, type: 3}
+  m_Name: WarriorBehaviour
   m_EditorClassIdentifier: 
-  typeName: Princess
-  difficultyLevel: 1
-  threat: 20
-  weight: 10
-  typeCondition: 0
-  typeInfo:
-  - type: 4
-    typeWeight: 40
-  groupSizeUnlocks: []
-  spawnPercentage: 0
+  critChance: 0.16666667
+  minDistance: 4
+  maxDistance: 6
+  weaponProfile: {fileID: 11400000, guid: 8b7b92ed83032c542931e7e8b7158f95, type: 2}

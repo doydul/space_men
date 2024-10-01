@@ -17,7 +17,7 @@ MonoBehaviour:
   weight: -1
   accuracy: -1
   minDamage: 4
-  maxDamage: 4
+  maxDamage: 8
   damageType: 0
   shots: 1
   ammo: -1
