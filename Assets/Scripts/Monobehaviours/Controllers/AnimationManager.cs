@@ -21,7 +21,9 @@ public class AnimationManager : MonoBehaviour {
 
     private IEnumerator AnimationRoutineWrapper(IEnumerator animation) {
         animationInProgress = true;
+        MapHighlighter.instance.ClearHighlights();
         yield return StartCoroutine(animation);
+        if (UIState.instance.IsActorSelected()) UIState.instance.GetSelectedActor().Select();
         animationInProgress = false;
     }
 }

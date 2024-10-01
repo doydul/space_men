@@ -37,7 +37,6 @@ public static class GameplayOperations {
             }
         }
         yield return PerformTurnAnimation(soldier, Actor.FacingToDirection(target.gridLocation - soldier.gridLocation), true);
-        soldier.RefreshUI();
     }
 
     public static IEnumerator PerformSoldierSingleShot(Soldier soldier, Alien target) {
@@ -167,13 +166,9 @@ public static class GameplayOperations {
             if (path.length >= 1) actor.TurnTo(path.last.tile.gridLocation - path.penultimate.tile.gridLocation);
         }
         
-        // Alert aliens
         if (actor is Soldier) {
             MakeNoise(actor.gridLocation);
-        }
-        if (actor is Soldier) {
             FogManager.instance.UpdateFog();
-            (actor as Soldier).RefreshUI();
         }
     }
     
@@ -214,7 +209,6 @@ public static class GameplayOperations {
         tile.GetBackgroundActor<Door>().Remove();
         yield return new WaitForSeconds(1f);
         FogManager.instance.UpdateFog();
-        soldier.HighlightActions();
     }
 
     public static IEnumerator PerformPickupChest(Soldier soldier, Tile tile) {
@@ -231,7 +225,6 @@ public static class GameplayOperations {
         }
         chest.Remove();
         yield return new WaitForSeconds(1f);
-        soldier.HighlightActions();
     }
 
     public static IEnumerator PerformExplosion(Actor player, Tile tile, Weapon weapon) {
