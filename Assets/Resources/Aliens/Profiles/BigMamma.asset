@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74185e309a64414ab8481f0072091b0, type: 3}
   m_Name: BigMamma
   m_EditorClassIdentifier: 
-  typeName: Queen
+  typeName: BigMamma
   difficultyLevel: 1
-  threat: 40
+  threat: 25
   weight: 10
   typeCondition: 0
   typeInfo:
-  - type: 1
-    typeWeight: 50
+  - type: 3
+    typeWeight: 30
   groupSizeUnlocks: []
   spawnPercentage: 0

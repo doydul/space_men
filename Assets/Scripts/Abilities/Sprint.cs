@@ -22,6 +22,5 @@ public class Sprint : Ability {
         
         owner.actionsSpent += 1;
         owner.tilesMoved -= owner.sprintMovement;
-        owner.RefreshUI();
     }
 }

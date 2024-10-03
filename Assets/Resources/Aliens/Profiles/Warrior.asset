@@ -21,4 +21,4 @@ MonoBehaviour:
   - type: 3
     typeWeight: 40
   groupSizeUnlocks: []
-  spawnPercentage: 0
+  spawnPercentage: 20
