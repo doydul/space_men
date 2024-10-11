@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      radial_gradient_inverse_0: 1807560019537560697
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Medium
   m_EditorClassIdentifier: 
   typeName: Medium
-  difficultyLevel: 1
+  difficultyLevel: 0
   threat: 15
   weight: 10
   typeCondition: 0

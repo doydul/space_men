@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class WaveDefence : Objective {
     
     public override string description => "prepare defence";
-    public override bool complete => terminalActivated;
+    public override bool complete => waveCounter <= 0;
     public override Vector2 targetLocation => location;
     public override RoomTemplate[] specialRooms => new RoomTemplate[] { Resources.Load<RoomTemplate>("SpecialRooms/ObjectiveRooms/WaveDefenceRoom") };
     Vector2 location;

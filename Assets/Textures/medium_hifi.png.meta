@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0c00bd0e1754d7a47b9b60c5e0a90465
+guid: 6baefd5dc254a73479425b71b2faa6cd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1800695968190008817
-    second: linear_gradient_0
+      213: 3919792018354490494
+    second: medium_hifi_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: linear_gradient_0
+      name: medium_hifi_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 500
-        height: 499
+        x: 503
+        y: 40
+        width: 881
+        height: 1830
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f027e83be84a207e0800000000000000
-      internalID: -1800695968190008817
+      spriteID: e7c4e6f9216e56630800000000000000
+      internalID: 3919792018354490494
       vertices: []
       indices: 
       edges: []
@@ -140,8 +140,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      linear_gradient_0: -1800695968190008817
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

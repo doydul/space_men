@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sino_gradient_0: 8585766247678510324
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

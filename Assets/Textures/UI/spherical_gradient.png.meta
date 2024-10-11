@@ -164,7 +164,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spherical_gradient_0: -5374166795688563440
+      spherical_gradient_1: -4839686312260718695
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
