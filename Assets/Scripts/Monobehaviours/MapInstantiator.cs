@@ -143,7 +143,7 @@ public class MapInstantiator : MonoBehaviour {
         tileObject.transform.localPosition = position;
         tile.backgroundSprite = backgroundSpriteRenderer;
         backgroundSpriteRenderer.sprite = map.wallTopSprite;
-        backgroundObject.transform.localScale = SpriteScale(map.wallTopSprite);
+        // backgroundObject.transform.localScale = SpriteScale(map.wallTopSprite);
         tile.highlightSprite = highlightSpriteRenderer;
         highlightSpriteRenderer.sprite = map.highlightSprite;
         highlightObject.transform.localScale = SpriteScale(map.highlightSprite);

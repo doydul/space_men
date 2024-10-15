@@ -1190,7 +1190,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5298407040536822671}
   m_HandleRect: {fileID: 8388943342370857877}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1599,7 +1599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 13.4452}
+  m_AnchoredPosition: {x: 0, y: 13.44519}
   m_SizeDelta: {x: -700, y: -326.8904}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9074349312090694260
@@ -1877,7 +1877,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5909,7 +5909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000014543533}
+  m_AnchoredPosition: {x: 0, y: 0.000016212463}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6666821015918837591
@@ -6277,10 +6277,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b391550e2f54f84879178133d4dbfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallSprite: {fileID: 21300000, guid: 0aea5888502634969a6d8dd71b96a2aa, type: 3}
+  wallSprite: {fileID: 21300000, guid: 1b6c2642a1fcee9479b4b674acfc7510, type: 3}
   innerCornerSprite: {fileID: 21300000, guid: cf9b90294c5884ab0860549e16b94c3f, type: 3}
   outerCornerSprite: {fileID: 21300000, guid: 6697af77d616040e7b0f2910a3bad419, type: 3}
-  corridorSprite: {fileID: 21300000, guid: 4566118a8657c478e8422a23de98836e, type: 3}
+  corridorSprite: {fileID: 21300000, guid: b0101538717601c4bbd3d0ef3a4c907b, type: 3}
   wallTopSprite: {fileID: 21300000, guid: d582a4f6d32dd40e09099209a1abe0de, type: 3}
   highlightSprite: {fileID: 21300000, guid: 32daaed7f1b1a49a6a0ab975d990d86b, type: 3}
   fogSprite: {fileID: 21300000, guid: 80404637635e94149806254b15066c71, type: 3}
@@ -6523,7 +6523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8640662349710960380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7649,7 +7649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 149.85822, y: -49.92096}
+  m_AnchoredPosition: {x: 149.85815, y: -49.9209}
   m_SizeDelta: {x: 299.71643, y: 99.84192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8218098628968347296
