@@ -15,9 +15,10 @@ public class MapInputController : MonoBehaviour {
     bool uiClicked;
     Vector3 dragStartPosition;
     Vector3 mapStartPosition;
+    float touchSeperation;
     Tile[] tilesToSelect;
     public Tile selectedTile { get; private set; }
-
+    
     void Awake() {
         instance = this;
     }
@@ -33,6 +34,29 @@ public class MapInputController : MonoBehaviour {
     }
 
     void Update() {
+        // Mouse Zoom
+        float scaleFactor = 1 + Input.mouseScrollDelta.y / 40;
+        
+        // Pinch Zoom
+        if (Input.touchCount == 2) {
+            dragging = false;
+            var currentDist = (Input.GetTouch(0).position - Input.GetTouch(1).position).magnitude;
+            if (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(1).phase == TouchPhase.Began) touchSeperation = currentDist;
+            scaleFactor = touchSeperation / currentDist;
+            touchSeperation = currentDist;
+        } else {
+            HandleDrag();
+        }
+        if (map.transform.localScale.x * scaleFactor > 2) scaleFactor = 2 / map.transform.localScale.x;
+        if (map.transform.localScale.x * scaleFactor < 0.5f) scaleFactor = 0.5f / map.transform.localScale.x;
+        var cameraDiff = cam.transform.position - map.transform.position;
+        var translation = cameraDiff * scaleFactor - cameraDiff;
+        translation.z = 0;
+        map.transform.position -= translation;
+        map.transform.localScale *= scaleFactor;
+    }
+    
+    void HandleDrag() {
         if (dragging && (Input.mousePosition - dragStartPosition).magnitude > 10) {
             dragged = true;
             Vector3 delta = Input.mousePosition - dragStartPosition;
@@ -63,14 +87,6 @@ public class MapInputController : MonoBehaviour {
             dragged = false;
             uiClicked = false;
         }
-        
-        // Mouse Zoom
-        float scaleFactor = 1 + Input.mouseScrollDelta.y / 40;
-        var cameraDiff = cam.transform.position - map.transform.position;
-        var translation = cameraDiff * scaleFactor - cameraDiff;
-        translation.z = 0;
-        map.transform.position -= translation;
-        map.transform.localScale *= scaleFactor;
     }
 
     public void Click(Vector2 mousePosition) {
