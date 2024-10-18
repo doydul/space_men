@@ -219,7 +219,7 @@ public class MapInstantiator : MonoBehaviour {
             sprite = map.innerCornerSprite;
             background.eulerAngles = new Vector3(0, 0, -270);
         } else {
-            sprite = map.wallTopSprite;
+            tile.backgroundSprite.gameObject.SetActive(false);
         }
         tile.backgroundSprite.sprite = sprite;
     }
