@@ -176,14 +176,12 @@ public static class GameplayOperations {
         if (destinationTile.foggy) yield break;
         actor.PlayAudio(actor.walkSounds.Sample());
         float duration = actor is Soldier ? 1f / ((Soldier)actor).baseMovement : 1f / ((Alien)actor).movement;
-        var delta = destinationTile.foreground.position - actor.transform.position;
         var startTime = Time.time;
-        var startPosition = actor.transform.localPosition;
-        var targetPosition = startPosition + delta;
+        var startLocalPosition = actor.transform.localPosition;
         while (Time.time - startTime < duration) {
             yield return null;
             float t = (Time.time - startTime) / duration;
-            actor.transform.localPosition = Vector3.Lerp(startPosition, targetPosition, t);
+            actor.transform.position = Vector3.Lerp(actor.transform.parent.TransformPoint(startLocalPosition), destinationTile.foreground.position, t);
             // CameraController.CentreCameraOn(actor);
         }
     }
