@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      skitter_0: -5104722673499484327
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

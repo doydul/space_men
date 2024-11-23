@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      soldier_body_0: -8255204100541365152
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

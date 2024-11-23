@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      medium_hifi_0: 3919792018354490494
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

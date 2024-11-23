@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      big mamma_0: 7081220380983943493
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
