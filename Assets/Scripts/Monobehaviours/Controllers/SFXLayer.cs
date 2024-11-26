@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.VFX;
 
 public class SFXLayer : MonoBehaviour {
     
@@ -18,11 +19,7 @@ public class SFXLayer : MonoBehaviour {
         position3D.z = -4;
         return position3D;
     }
-    Vector3 Position3D(Vector3 position2D) {
-        Vector3 position3D = position2D;
-        position3D.z = -4;
-        return position3D;
-    }
+    Vector3 Position3D(Vector3 position3D) => Position3D((Vector2) position3D);
 
     public GameObject SpawnPrefab(Transform prefab, Vector2 location, Quaternion rotation = default(Quaternion)) {
         var transform = Instantiate(prefab) as Transform;
@@ -49,12 +46,21 @@ public class SFXLayer : MonoBehaviour {
             var ray = new Ray(origin, targetPos - origin);
             bool didHit = Physics.Raycast(
                 ray,
-                out raycastHit, 10, (1 << LayerMask.NameToLayer("Walls"))
+                out raycastHit, 100, (1 << LayerMask.NameToLayer("Walls"))
             );
+            var hitPoint = didHit ? raycastHit.point : ray.GetPoint(100);
             yield return tracer.PerformAnimation(
                 origin,
-                didHit ? raycastHit.point : ray.GetPoint(10)
+                hitPoint
             );
+            SpawnBurst(hitPoint, didHit ? raycastHit.normal : targetPos - origin, weapon.missEffect);
         }
+    }
+    
+    public void SpawnBurst(Vector3 position, Vector3 normal, VisualEffectAsset visualEffect) {
+        var burst = Instantiate(Resources.Load<ParticleBurst>("Prefabs/SFX/Burst"), transform);
+        burst.position = Position3D(position);
+        burst.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(normal.y, normal.x) * Mathf.Rad2Deg - 90));
+        burst.SetEffect(visualEffect);
     }
 }

@@ -40,3 +40,7 @@ MonoBehaviour:
   tracerPrefab: {fileID: 1646889780221744, guid: 2dfac1135958ec84cac2d2cb6fdc3f4b,
     type: 3}
   audio: {fileID: 11400000, guid: 12775d11220a42e439a61a3b19b749bc, type: 2}
+  missEffect: {fileID: 8926484042661614526, guid: 941ddc8d7d5ca6e4ea67670f96a87d77,
+    type: 3}
+  hitEffect: {fileID: 8926484042661614526, guid: 941ddc8d7d5ca6e4ea67670f96a87d77,
+    type: 3}
