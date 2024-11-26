@@ -35,6 +35,6 @@ MonoBehaviour:
   traits: 
   weaponPrefab: {fileID: 463971122425096425, guid: 779e19cfde32104428f6cb87d997ed73,
     type: 3}
-  tracerPrefab: {fileID: 2193078054948271443, guid: 6e949ba4b7971ef429bfd25919b032b7,
+  tracerPrefab: {fileID: 1646889780221744, guid: 2dfac1135958ec84cac2d2cb6fdc3f4b,
     type: 3}
   audio: {fileID: 11400000, guid: ac62427209487304a8381cbe6228e48d, type: 2}

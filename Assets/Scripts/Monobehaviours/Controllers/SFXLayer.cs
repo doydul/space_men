@@ -18,6 +18,11 @@ public class SFXLayer : MonoBehaviour {
         position3D.z = -4;
         return position3D;
     }
+    Vector3 Position3D(Vector3 position2D) {
+        Vector3 position3D = position2D;
+        position3D.z = -4;
+        return position3D;
+    }
 
     public GameObject SpawnPrefab(Transform prefab, Vector2 location, Quaternion rotation = default(Quaternion)) {
         var transform = Instantiate(prefab) as Transform;
@@ -34,7 +39,8 @@ public class SFXLayer : MonoBehaviour {
         float randomness = hit ? 0.1f : 0.5f;
         var randomVec = new Vector2(Random.value * randomness * 2 - randomness, Random.value * randomness * 2 - randomness);
         Vector3 targetPos = target + (Vector3)randomVec;
-        var tracerObj = SpawnPrefab(weapon.tracerPrefab.transform, origin, Quaternion.FromToRotation(Vector3.up, targetPos - origin));
+        var tracerObj = SpawnPrefab(weapon.tracerPrefab.transform, origin);
+        
         var tracer = tracerObj.GetComponent<Tracer>();
         if (hit) {
             yield return tracer.PerformAnimation(origin, targetPos);
