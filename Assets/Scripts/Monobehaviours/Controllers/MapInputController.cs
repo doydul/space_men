@@ -14,7 +14,7 @@ public class MapInputController : MonoBehaviour {
     bool dragged;
     bool uiClicked;
     Vector3 dragStartPosition;
-    Vector3 mapStartPosition;
+    Vector3 cameraStartPosition;
     float touchSeperation;
     Tile[] tilesToSelect;
     public Tile selectedTile { get; private set; }
@@ -47,35 +47,29 @@ public class MapInputController : MonoBehaviour {
         } else {
             HandleDrag();
         }
-        if (map.transform.localScale.x * scaleFactor > 2) scaleFactor = 2 / map.transform.localScale.x;
-        if (map.transform.localScale.x * scaleFactor < 0.5f) scaleFactor = 0.5f / map.transform.localScale.x;
-        var cameraDiff = cam.transform.position - map.transform.position;
-        var translation = cameraDiff * scaleFactor - cameraDiff;
-        translation.z = 0;
-        map.transform.position -= translation;
-        map.transform.localScale *= scaleFactor;
+        CameraController.size *= scaleFactor;
     }
     
     void HandleDrag() {
         if (dragging && (Input.mousePosition - dragStartPosition).magnitude > 10) {
             dragged = true;
             Vector3 delta = Input.mousePosition - dragStartPosition;
-            var newPos = mapStartPosition + (delta * 0.03f);
-            var diff = cam.transform.position - newPos;
+            var newPos = cameraStartPosition - (delta * 0.03f);
+            var diff = map.transform.position - newPos;
             var mapWidth = map.tiles.GetLength(0) * map.transform.localScale.x;
             var mapHeight = map.tiles.GetLength(1) * map.transform.localScale.x;
-            if (diff.x < 0) newPos.x += diff.x;
-            if (diff.x > mapWidth) newPos.x += diff.x - mapWidth;
-            if (diff.y < 0) newPos.y += diff.y;
-            if (diff.y > mapHeight) newPos.y += diff.y - mapHeight;
-            map.transform.position = newPos;
+            if (diff.x > 0) newPos.x += diff.x;
+            if (diff.x < -mapWidth) newPos.x += diff.x + mapWidth;
+            if (diff.y > 0) newPos.y += diff.y;
+            if (diff.y < -mapHeight) newPos.y += diff.y + mapHeight;
+            CameraController.position = newPos;
         }
         if (Input.GetMouseButtonDown(0)) {
             if (IsPointerOverGameObject()) {
                 uiClicked = true;
             } else {
                 dragStartPosition = Input.mousePosition;
-                mapStartPosition = map.transform.position;
+                cameraStartPosition = CameraController.position;
                 dragging = true;
             }
         }
