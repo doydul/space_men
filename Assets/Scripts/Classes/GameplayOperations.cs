@@ -52,7 +52,7 @@ public static class GameplayOperations {
                 target.broken = true;
                 effect = target.hitEffect;
             }
-            yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, true, effect);
+            yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, true, new ParticleBurst[] { effect, soldier.weapon.impactEffect });
             target.Hurt(damage, soldier.weapon.damageType);
             if (!target.DamageExceedsArmour(damage, soldier.weapon.damageType)) soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
             BloodSplatController.instance.MakeSplat(target);
@@ -72,7 +72,7 @@ public static class GameplayOperations {
                         actor.broken = true;
                         effect = actor.hitEffect;
                     }
-                    yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, actor.tile.transform.position, soldier.weapon, true, effect);
+                    yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, actor.tile.transform.position, soldier.weapon, true, new ParticleBurst[] { effect, soldier.weapon.impactEffect });
                     actor.Hurt(damage, soldier.weapon.damageType);
                     if (!actor.DamageExceedsArmour(damage, soldier.weapon.damageType)) soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
                     BloodSplatController.instance.MakeSplat(actor);
@@ -81,7 +81,7 @@ public static class GameplayOperations {
             }
             if (!secondaryHit) {
                 // TOTAL MISS
-                yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, false, soldier.weapon.missEffect);
+                yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, false, new ParticleBurst[] { soldier.weapon.missEffect, soldier.weapon.impactEffect });
                 soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
             }
         }
@@ -104,7 +104,7 @@ public static class GameplayOperations {
     
     public static IEnumerator PerformAlienSingleShot(Alien alien, Weapon weapon, Soldier target) {
         alien.PlayAudio(weapon.audio.shoot);
-        yield return SFXLayer.instance.PerformTracer(alien.muzzlePosition, target.tile.transform.position, weapon, true, target.hitEffect);
+        yield return SFXLayer.instance.PerformTracer(alien.muzzlePosition, target.tile.transform.position, weapon, true, new ParticleBurst[] { target.hitEffect, weapon.impactEffect });
         var damage = Random.Range(weapon.minDamage, weapon.maxDamage + 1);
         target.Hurt(damage, weapon.damageType);
         BloodSplatController.instance.MakeSplat(target);

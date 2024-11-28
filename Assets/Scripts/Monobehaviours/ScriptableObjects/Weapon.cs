@@ -33,6 +33,7 @@ public class Weapon : ScriptableObject, IWeighted {
     public GameObject weaponPrefab;
     public GameObject tracerPrefab;
     public WeaponAudioProfile audio;
+    public ParticleBurst impactEffect;
     public ParticleBurst missEffect;
 
     public bool ordnance { get { return blast > 0; } }

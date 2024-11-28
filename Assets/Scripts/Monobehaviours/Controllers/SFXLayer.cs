@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SFXLayer : MonoBehaviour {
     
@@ -29,9 +30,9 @@ public class SFXLayer : MonoBehaviour {
         return transform.gameObject;
     }
 
-    public void Tracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit, ParticleBurst effect = null) => StartCoroutine(PerformTracer(origin, target, weapon, hit, effect));
+    public void Tracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit, IEnumerable<ParticleBurst> effects = null) => StartCoroutine(PerformTracer(origin, target, weapon, hit, effects));
 
-    public IEnumerator PerformTracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit, ParticleBurst effect = null) {
+    public IEnumerator PerformTracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit, IEnumerable<ParticleBurst> effects = null) {
         float randomness = hit ? 0.1f : 0.5f;
         var randomVec = new Vector2(Random.value * randomness * 2 - randomness, Random.value * randomness * 2 - randomness);
         Vector3 targetPos = target + (Vector3)randomVec;
@@ -40,20 +41,22 @@ public class SFXLayer : MonoBehaviour {
         var tracer = tracerObj.GetComponent<Tracer>();
         if (hit) {
             yield return tracer.PerformAnimation(origin, targetPos);
-            SpawnBurst(targetPos, origin - targetPos, effect);
+            SpawnBurst(targetPos, origin - targetPos, effects);
         } else {
             RaycastHit raycastHit;
             var ray = new Ray(origin, targetPos - origin);
             bool didHit = Physics.Raycast(
                 ray,
-                out raycastHit, 100, (1 << LayerMask.NameToLayer("Walls"))
+                out raycastHit,
+                100,
+                1 << LayerMask.NameToLayer("Walls")
             );
             var hitPoint = didHit ? raycastHit.point : ray.GetPoint(100);
             yield return tracer.PerformAnimation(
                 origin,
                 hitPoint
             );
-            SpawnBurst(hitPoint, didHit ? raycastHit.normal : origin - targetPos, effect);
+            SpawnBurst(hitPoint, didHit ? raycastHit.normal : origin - targetPos, effects);
         }
     }
     
@@ -62,5 +65,9 @@ public class SFXLayer : MonoBehaviour {
         var burst = Instantiate(burstPrefab, transform);
         burst.position = Position3D(position);
         burst.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(normal.y, normal.x) * Mathf.Rad2Deg - 90));
+    }
+    public void SpawnBurst(Vector3 position, Vector3 normal, IEnumerable<ParticleBurst> burstPrefabs) {
+        if (burstPrefabs == null) return;
+        foreach (var burstPrefab in burstPrefabs) SpawnBurst(position, normal, burstPrefab);
     }
 }
