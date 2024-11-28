@@ -565,7 +565,7 @@ MonoBehaviour:
   walkSounds: {fileID: 11400000, guid: f42191112e19ed5459c727111ccf4d9b, type: 2}
   hurtSounds: {fileID: 11400000, guid: a56fe9238a55a3a43979186a045905c1, type: 2}
   dieSounds: {fileID: 11400000, guid: 813e2e4e40d49d441919409f088fe460, type: 2}
-  hitEffect: {fileID: 8926484042661614526, guid: 410e62a5d4daa7045a991867bc1cba84,
+  hitEffect: {fileID: 8893649087654275822, guid: 108e86cfe281a3341895a26a476ecb73,
     type: 3}
   hasActed: 0
   awake: 0

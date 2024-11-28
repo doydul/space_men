@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.VFX;
 
 public class SFXLayer : MonoBehaviour {
     
@@ -30,9 +29,9 @@ public class SFXLayer : MonoBehaviour {
         return transform.gameObject;
     }
 
-    public void Tracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit, VisualEffectAsset effect = null) => StartCoroutine(PerformTracer(origin, target, weapon, hit, effect));
+    public void Tracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit, ParticleBurst effect = null) => StartCoroutine(PerformTracer(origin, target, weapon, hit, effect));
 
-    public IEnumerator PerformTracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit, VisualEffectAsset effect = null) {
+    public IEnumerator PerformTracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit, ParticleBurst effect = null) {
         float randomness = hit ? 0.1f : 0.5f;
         var randomVec = new Vector2(Random.value * randomness * 2 - randomness, Random.value * randomness * 2 - randomness);
         Vector3 targetPos = target + (Vector3)randomVec;
@@ -58,11 +57,10 @@ public class SFXLayer : MonoBehaviour {
         }
     }
     
-    public void SpawnBurst(Vector3 position, Vector3 normal, VisualEffectAsset visualEffect) {
-        if (visualEffect == null) return;
-        var burst = Instantiate(Resources.Load<ParticleBurst>("Prefabs/SFX/Burst"), transform);
+    public void SpawnBurst(Vector3 position, Vector3 normal, ParticleBurst burstPrefab) {
+        if (burstPrefab == null) return;
+        var burst = Instantiate(burstPrefab, transform);
         burst.position = Position3D(position);
         burst.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(normal.y, normal.x) * Mathf.Rad2Deg - 90));
-        burst.SetEffect(visualEffect);
     }
 }

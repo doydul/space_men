@@ -16,10 +16,6 @@ public class ParticleBurst : MonoBehaviour {
         set => transform.rotation = value;
     }
     
-    public void SetEffect(VisualEffectAsset asset) {
-        effect.visualEffectAsset = asset;
-    }
-    
     void Awake() {
         effect = GetComponent<VisualEffect>();
         Destroy(gameObject, 5);

@@ -1,6 +1,4 @@
 using UnityEngine;
-using System;
-using UnityEngine.VFX;
 
 [CreateAssetMenu(fileName = "Weapon", menuName = "Equipment/Weapon", order = 2)]
 public class Weapon : ScriptableObject, IWeighted {
@@ -35,8 +33,7 @@ public class Weapon : ScriptableObject, IWeighted {
     public GameObject weaponPrefab;
     public GameObject tracerPrefab;
     public WeaponAudioProfile audio;
-    public VisualEffectAsset missEffect;
-    public VisualEffectAsset hitEffect;
+    public ParticleBurst missEffect;
 
     public bool ordnance { get { return blast > 0; } }
     public bool isHeavy { get { return type == Type.Heavy; } }

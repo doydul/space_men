@@ -1,7 +1,5 @@
 using UnityEngine;
-using System;
 using System.Collections;
-using UnityEngine.VFX;
 
 public abstract class Actor : MonoBehaviour {
 
@@ -39,7 +37,7 @@ public abstract class Actor : MonoBehaviour {
     public AudioCollection walkSounds;
     public AudioCollection hurtSounds;
     public AudioCollection dieSounds;
-    public VisualEffectAsset hitEffect;
+    public ParticleBurst hitEffect;
 
     public string id { get; set; }
     public long index { get; set; } // remove me
