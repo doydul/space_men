@@ -14,7 +14,6 @@ public class Soldier : Actor {
     } }
     public Transform muzzleFlashLocation;
     public Transform gunContainer;
-    public SpriteRenderer muzzleSprite;
     public SpriteRenderer bodySprite;
     public AbilityIcon abilityIcon;
     
@@ -71,7 +70,6 @@ public class Soldier : Actor {
         var tmp = muzzleFlashLocation.localScale;
         tmp.y = -tmp.y;
         muzzleFlashLocation.localScale = tmp;
-        muzzleSprite.color = weapon.muzzleFlareColor;
     }
     public void HideMuzzleFlash() => muzzleFlashLocation.gameObject.SetActive(false);
     public void ShowAbilityIcon(Ability ability) {

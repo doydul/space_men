@@ -30,9 +30,9 @@ public class SFXLayer : MonoBehaviour {
         return transform.gameObject;
     }
 
-    public void Tracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit) => StartCoroutine(PerformTracer(origin, target, weapon, hit));
+    public void Tracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit, VisualEffectAsset effect = null) => StartCoroutine(PerformTracer(origin, target, weapon, hit, effect));
 
-    public IEnumerator PerformTracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit) {
+    public IEnumerator PerformTracer(Vector3 origin, Vector3 target, Weapon weapon, bool hit, VisualEffectAsset effect = null) {
         float randomness = hit ? 0.1f : 0.5f;
         var randomVec = new Vector2(Random.value * randomness * 2 - randomness, Random.value * randomness * 2 - randomness);
         Vector3 targetPos = target + (Vector3)randomVec;
@@ -41,6 +41,7 @@ public class SFXLayer : MonoBehaviour {
         var tracer = tracerObj.GetComponent<Tracer>();
         if (hit) {
             yield return tracer.PerformAnimation(origin, targetPos);
+            SpawnBurst(targetPos, origin - targetPos, effect);
         } else {
             RaycastHit raycastHit;
             var ray = new Ray(origin, targetPos - origin);
@@ -53,11 +54,12 @@ public class SFXLayer : MonoBehaviour {
                 origin,
                 hitPoint
             );
-            SpawnBurst(hitPoint, didHit ? raycastHit.normal : targetPos - origin, weapon.missEffect);
+            SpawnBurst(hitPoint, didHit ? raycastHit.normal : origin - targetPos, effect);
         }
     }
     
     public void SpawnBurst(Vector3 position, Vector3 normal, VisualEffectAsset visualEffect) {
+        if (visualEffect == null) return;
         var burst = Instantiate(Resources.Load<ParticleBurst>("Prefabs/SFX/Burst"), transform);
         burst.position = Position3D(position);
         burst.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(normal.y, normal.x) * Mathf.Rad2Deg - 90));

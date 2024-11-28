@@ -46,14 +46,15 @@ public static class GameplayOperations {
         if (!soldier.InHalfRange(target.gridLocation)) accuracy -= 15;
         if (!target.dead && Random.value * 100 <= accuracy + target.accModifier) {
             // HIT
-            yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, true);
             var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
-            bool hurt = target.Hurt(damage, soldier.weapon.damageType);
-            if (hurt) {
-                target.ShowHit();
+            var effect = soldier.weapon.missEffect;
+            if (target.DamageExceedsArmour(damage, soldier.weapon.damageType)) {
                 target.broken = true;
+                effect = target.hitEffect;
             }
-            else soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
+            yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, true, effect);
+            target.Hurt(damage, soldier.weapon.damageType);
+            if (!target.DamageExceedsArmour(damage, soldier.weapon.damageType)) soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
             BloodSplatController.instance.MakeSplat(target);
         } else {
             // MISS
@@ -63,21 +64,24 @@ public static class GameplayOperations {
                 var randTile = adjacentTiles[Random.Range(0, adjacentTiles.Length)];
                 var actor = randTile.GetActor<Actor>();
                 if (actor != null && actor != soldier) {
+                    // SECONDARY HIT
                     secondaryHit = true;
-                    yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, actor.tile.transform.position, soldier.weapon, true);
                     var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
-                    bool hurt = actor.Hurt(damage, soldier.weapon.damageType);
-                    if (hurt) {
-                        actor.ShowHit();
+                    var effect = soldier.weapon.missEffect;
+                    if (target.DamageExceedsArmour(damage, soldier.weapon.damageType)) {
                         actor.broken = true;
+                        effect = actor.hitEffect;
                     }
-                    else soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
+                    yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, actor.tile.transform.position, soldier.weapon, true, effect);
+                    actor.Hurt(damage, soldier.weapon.damageType);
+                    if (!actor.DamageExceedsArmour(damage, soldier.weapon.damageType)) soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
                     BloodSplatController.instance.MakeSplat(actor);
                     break;
                 }
             }
             if (!secondaryHit) {
-                yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, false);
+                // TOTAL MISS
+                yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, false, soldier.weapon.missEffect);
                 soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
             }
         }
@@ -100,10 +104,9 @@ public static class GameplayOperations {
     
     public static IEnumerator PerformAlienSingleShot(Alien alien, Weapon weapon, Soldier target) {
         alien.PlayAudio(weapon.audio.shoot);
-        yield return SFXLayer.instance.PerformTracer(alien.muzzlePosition, target.tile.transform.position, weapon, true);
+        yield return SFXLayer.instance.PerformTracer(alien.muzzlePosition, target.tile.transform.position, weapon, true, target.hitEffect);
         var damage = Random.Range(weapon.minDamage, weapon.maxDamage + 1);
         target.Hurt(damage, weapon.damageType);
-        target.ShowHit();
         BloodSplatController.instance.MakeSplat(target);
         yield return new WaitForSeconds(0.15f);
     }

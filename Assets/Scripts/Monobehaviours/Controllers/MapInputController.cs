@@ -47,7 +47,7 @@ public class MapInputController : MonoBehaviour {
         } else {
             HandleDrag();
         }
-        CameraController.size *= scaleFactor;
+        CameraController.size /= scaleFactor;
     }
     
     void HandleDrag() {

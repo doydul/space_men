@@ -14,6 +14,7 @@ public class BloodSplatController : MonoBehaviour {
     }
 
     public void MakeSplat(Actor actor) {
+        return;
         var bloodObject = new GameObject();
         var bloodSpriteRenderer = bloodObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
         var sprite = actor.bloodSplatSprites[Random.Range(0, actor.bloodSplatSprites.Length)];

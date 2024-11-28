@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.VFX;
 
 public abstract class Actor : MonoBehaviour {
 
@@ -38,6 +39,7 @@ public abstract class Actor : MonoBehaviour {
     public AudioCollection walkSounds;
     public AudioCollection hurtSounds;
     public AudioCollection dieSounds;
+    public VisualEffectAsset hitEffect;
 
     public string id { get; set; }
     public long index { get; set; } // remove me
@@ -63,17 +65,6 @@ public abstract class Actor : MonoBehaviour {
     AudioPlayer audioPlayer;
     public void PlayAudio(AudioClipProfile clip) => audioPlayer.PlayAudio(clip);
 
-    Coroutine hitCoroutine;
-    public void ShowHit() {
-        if (hitCoroutine != null) StopCoroutine(hitCoroutine);
-        if (gameObject.activeInHierarchy) StartCoroutine(PerformShowHit());
-    }
-    public IEnumerator PerformShowHit() {
-        hitIndicator.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
-        hitIndicator.SetActive(false);
-    }
-    
     protected virtual void Awake() {
         audioPlayer = gameObject.AddComponent<AudioPlayer>();
         health = maxHealth;
@@ -120,6 +111,8 @@ public abstract class Actor : MonoBehaviour {
         SetHealthIndicatorSize();
         return true;
     }
+    
+    public virtual bool DamageExceedsArmour(int damage, DamageType damageType) => false;
 
     public void Face(Vector2 targetGridLocation) {
         TurnTo(targetGridLocation - gridLocation);

@@ -84,6 +84,19 @@ public class Alien : Actor {
         return damage > effectiveArmour;
     }
 
+    public override bool DamageExceedsArmour(int damage, DamageType damageType = DamageType.Normal) {
+        int effectiveArmour = armour;
+        switch(damageType) {
+            case DamageType.Energy:
+                effectiveArmour = (int)Mathf.Round(armour / 4f);
+                break;
+            case DamageType.IgnoreArmour:
+                effectiveArmour = 0;
+                break;
+        }
+        return damage > effectiveArmour;
+    }
+
     public override void Select() {
         UIState.instance.SetSelectedActor(this);
         InformationPanel.instance.SetText($"Type: {type}\nHealth: {health}/{maxHealth}\nArmour: {armour}\nAccuracy Modifier: {accModifier}\nDamage: {damage}\nMovement: {movement}");
