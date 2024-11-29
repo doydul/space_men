@@ -232,7 +232,6 @@ public static class GameplayOperations {
         player.PlayAudio(weapon.audio.explosion);
         MakeNoise(tile.gridLocation);
         float remainingBlast = weapon.blast;
-        var explosionSFX = new List<GameObject>();
         int iLayer = 0;
         foreach (var layer in Map.instance.iterator.Exclude(new ExplosionImpassableTerrain()).EnumerateLayersFrom(tile.gridLocation)) {
             remainingBlast -= iLayer * 2;
@@ -243,7 +242,7 @@ public static class GameplayOperations {
                 var randTile = layer[randex];
                 layer.RemoveAt(randex);
 
-                explosionSFX.Add(SFXLayer.instance.SpawnExplosion(randTile.realLocation));
+                SFXLayer.instance.SpawnBurst(randTile.realLocation, Vector3.up, Resources.Load<ParticleBurst>("Prefabs/SFX/ParticleBursts/Explosion"));
                 var actor = randTile.GetActor<Actor>();
                 if (actor != null) {
                     var damage = Random.Range(weapon.minDamage, weapon.maxDamage + 1);
@@ -271,7 +270,6 @@ public static class GameplayOperations {
             }
         }
         yield return new WaitForSeconds(0.5f);
-        foreach (var sfx in explosionSFX) Tile.Destroy(sfx);
     }
 }
 
