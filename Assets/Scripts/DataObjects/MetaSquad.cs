@@ -40,7 +40,7 @@ public class MetaSquad {
                 type = InventoryItem.Type.Armour
             },
             weapon = new InventoryItem() {
-                name = "Flamer", 
+                name = "Laser", 
                 type = InventoryItem.Type.Weapon
             },
             tint = new Color(Random.value * 0.5f + 0.5f, Random.value * 0.5f + 0.5f, Random.value * 0.5f + 0.5f)

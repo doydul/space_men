@@ -31,7 +31,6 @@ public abstract class Actor : MonoBehaviour {
     public Tile tile;
     public Transform image;
     public Sprite[] bloodSplatSprites;
-    public GameObject hitIndicator;
     public GameObject deflectIndicator;
     public HealthIndicator healthIndicator;
     public AudioCollection walkSounds;
@@ -66,7 +65,6 @@ public abstract class Actor : MonoBehaviour {
     protected virtual void Awake() {
         audioPlayer = gameObject.AddComponent<AudioPlayer>();
         health = maxHealth;
-        if (hitIndicator != null) hitIndicator.SetActive(false);
     }
 
     private void SetHealthIndicatorSize() {

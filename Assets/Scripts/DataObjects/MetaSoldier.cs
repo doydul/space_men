@@ -17,7 +17,6 @@ public class MetaSoldier {
         soldier.maxHealth = soldier.armour.maxHealth;
         soldier.health = soldier.armour.maxHealth;
         soldier.sightRange = soldier.armour.sightRange;
-        soldier.SetTint(tint);
 
         foreach (var ability in soldier.weapon.abilities) ability.Attach(soldier);
         foreach (var ability in soldier.armour.abilities) ability.Attach(soldier);

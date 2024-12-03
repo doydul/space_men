@@ -7,9 +7,6 @@
             "m_Id": "84509945043d44f1acd1b7ea09aab30e"
         },
         {
-            "m_Id": "12da2b773e8f44b9bbe23b7ec300db84"
-        },
-        {
             "m_Id": "b8461e5c327d4e1abde7cca79dc66d7d"
         },
         {
@@ -417,34 +414,6 @@
     },
     "m_Property": {
         "m_Id": "b8461e5c327d4e1abde7cca79dc66d7d"
-    }
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector4ShaderProperty",
-    "m_ObjectId": "12da2b773e8f44b9bbe23b7ec300db84",
-    "m_Guid": {
-        "m_GuidSerialized": "8a523de3-3d35-43da-871b-8328d4378034"
-    },
-    "m_Name": "derp",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "derp",
-    "m_DefaultReferenceName": "_derp",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
     }
 }
 
@@ -1931,9 +1900,6 @@
     "m_ChildObjectList": [
         {
             "m_Id": "84509945043d44f1acd1b7ea09aab30e"
-        },
-        {
-            "m_Id": "12da2b773e8f44b9bbe23b7ec300db84"
         },
         {
             "m_Id": "b8461e5c327d4e1abde7cca79dc66d7d"
