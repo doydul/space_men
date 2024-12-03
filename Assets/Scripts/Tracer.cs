@@ -5,17 +5,21 @@ using System.Collections;
 public class Tracer : MonoBehaviour {
 
     public float speed;
-    public SpriteRenderer sprite;
+    public bool beam;
 
     public Vector2 realLocation => transform.position;
-
-    public void SetColor(Color color) => sprite.color = color;
 
     public void Animate(Vector2 from, Vector2 to) => StartCoroutine(PerformAnimation(from, to));
     
     TracerEffect effect;
 
     public IEnumerator PerformAnimation(Vector2 from, Vector2 to) {
+        if (beam) yield return PerformBeam(from, to);
+        else yield return PerformTrace(from, to);
+        Destroy(gameObject);
+    }
+    
+    IEnumerator PerformTrace(Vector2 from, Vector2 to) {
         float iterations = (to - from).magnitude / speed;
         Vector3 direction = (to - from) / iterations;
         for (int i = 0; i < iterations; i++) {
@@ -29,7 +33,12 @@ public class Tracer : MonoBehaviour {
             }
             yield return null;
         }
-        Destroy(gameObject);
+    }
+    
+    IEnumerator PerformBeam(Vector2 from, Vector2 to) {
+        float z = transform.position.z;
+        effect.SetPoints(new Vector3(from.x, from.y, z), new Vector3(to.x, to.y, z));
+        yield return new WaitForSeconds(1 / speed);
     }
     
     void Awake() {

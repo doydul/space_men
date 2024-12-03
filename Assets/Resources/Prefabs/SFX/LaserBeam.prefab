@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c5fa637a6204da9b934d3b8df68b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3
+  beam: 1
 --- !u!2083052967 &3255446455106459473
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -56,7 +57,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646889780221744}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 5b4d4353edfb3db43b75bb2b00d32d1e, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 34a57810e9efe554f86d60860d8f050b, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -75,7 +76,7 @@ VisualEffect:
       m_Array:
       - m_Value: {x: 1, y: 1, z: 0}
         m_Name: EndPoint
-        m_Overridden: 1
+        m_Overridden: 0
     m_Vector4f:
       m_Array:
       - m_Value: {x: 3.9644089, y: 1.9877322, z: 0, w: 1}
