@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.PlayerLoop;
 
 public abstract class Actor : MonoBehaviour {
 
@@ -59,11 +60,13 @@ public abstract class Actor : MonoBehaviour {
         );
     } }
     public bool On(Tile tile) => this.tile == tile;
+    protected Animator animator;
     AudioPlayer audioPlayer;
     public void PlayAudio(AudioClipProfile clip) => audioPlayer.PlayAudio(clip);
 
     protected virtual void Awake() {
         audioPlayer = gameObject.AddComponent<AudioPlayer>();
+        animator = GetComponent<Animator>();
         health = maxHealth;
     }
 

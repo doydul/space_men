@@ -9,4 +9,8 @@ public class TracerEffect : MonoBehaviour {
         transform.position = start;
         effect.SetVector3("EndPoint", end - start);
     }
+    
+    public void SetT(float t) {
+        effect.SetFloat("T", t);
+    }
 }

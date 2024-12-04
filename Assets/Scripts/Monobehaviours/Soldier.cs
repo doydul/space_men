@@ -59,6 +59,10 @@ public class Soldier : Actor {
     public bool HasAbility<T>() => abilities.Any(ability => ability is T);
     public bool HasTrait(Trait trait) => weapon.traits != null && weapon.traits.Contains(trait) || armour.traits != null && armour.traits.Contains(trait);
     
+    // Animations
+    public void AimAnimation() => animator.SetBool("Aiming", true);
+    public void IdleAnimation() => animator.SetBool("Aiming", false);
+    
     public string armourName => armour.name;
     public string weaponName => weapon.name;
 

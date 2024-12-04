@@ -16,7 +16,6 @@ public class Tracer : MonoBehaviour {
     public IEnumerator PerformAnimation(Vector2 from, Vector2 to) {
         if (beam) yield return PerformBeam(from, to);
         else yield return PerformTrace(from, to);
-        Destroy(gameObject);
     }
     
     IEnumerator PerformTrace(Vector2 from, Vector2 to) {
@@ -31,14 +30,24 @@ public class Tracer : MonoBehaviour {
             } else {
                 effect.SetPoints(newPos, newPos + direction);
             }
+            effect.SetT(i / iterations);
             yield return null;
         }
+        effect.SetPoints(new Vector3(to.x, to.y, transform.position.z), new Vector3(to.x, to.y, transform.position.z));
+        Destroy(gameObject, 1f);
     }
     
     IEnumerator PerformBeam(Vector2 from, Vector2 to) {
         float z = transform.position.z;
+        float duration = 1 / speed;
+        float startTime = Time.time;
         effect.SetPoints(new Vector3(from.x, from.y, z), new Vector3(to.x, to.y, z));
-        yield return new WaitForSeconds(1 / speed);
+        while (Time.time - startTime < duration) {
+            effect.SetT((Time.time - startTime) / duration);
+            yield return null;
+        }
+        effect.SetT((Time.time - startTime) / duration);
+        Destroy(gameObject);
     }
     
     void Awake() {

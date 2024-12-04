@@ -34,7 +34,6 @@ public class ObjectivesPanel : MonoBehaviour {
     }
     
     public void Hide() {
-        Debug.Log("HIDING!!!");
         showObjectiesButton.SetActive(true);
         gameObject.SetActive(false);
     }

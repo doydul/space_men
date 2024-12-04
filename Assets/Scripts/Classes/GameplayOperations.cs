@@ -18,6 +18,7 @@ public static class GameplayOperations {
         MakeNoise(target.gridLocation);
         var diff = target.realLocation - soldier.realLocation;
         var angle = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(diff.y, diff.x) - 90);
+        soldier.AimAnimation();
         yield return PerformTurnAnimation(soldier, angle);
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < soldier.shots; i++) {
@@ -36,6 +37,7 @@ public static class GameplayOperations {
                 }
             }
         }
+        soldier.IdleAnimation();
         yield return PerformTurnAnimation(soldier, Actor.FacingToDirection(target.gridLocation - soldier.gridLocation), true);
     }
 
