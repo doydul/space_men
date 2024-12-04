@@ -24,6 +24,8 @@ public class TestBed : MonoBehaviour {
         save.squad = GenerateSquad();
         SetEnemyProfileValues();
         
+        save.mission = Mission.Generate();
+        
         foreach (var alienName in unlockedAliens) PlayerSave.current.alienUnlocks.Unlock(alienName);
         
         Debug.Log("Loading Mission scene...");

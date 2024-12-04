@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -165,21 +164,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  difficultyLevel: 1
+  difficultyLevel: 0
   groupishness: 0
-  armouredness: 100
+  armouredness: 0
   quickness: 0
   bigness: 0
-  mapBlueprint:
-    vents: 4
-    loots: 4
-    corridors: 6
-    secondaryCorridors: 4
-    rooms: 5
   weapons:
-  - Plasma Gun
-  - Plasma Gun
-  - Plasma Gun
+  - SIKR-5
+  - Flamer
+  - Grenade Launcher
   armour:
   - Flak Vest
   - Flak Vest

@@ -244,7 +244,7 @@ public static class GameplayOperations {
                 var randTile = layer[randex];
                 layer.RemoveAt(randex);
 
-                SFXLayer.instance.SpawnBurst(randTile.realLocation, Vector3.up, Resources.Load<ParticleBurst>("Prefabs/SFX/ParticleBursts/Explosion"));
+                SFXLayer.instance.SpawnBurst(randTile.realLocation, Vector3.up, weapon.explosionPrefab);
                 var actor = randTile.GetActor<Actor>();
                 if (actor != null) {
                     var damage = Random.Range(weapon.minDamage, weapon.maxDamage + 1);
@@ -261,12 +261,11 @@ public static class GameplayOperations {
                             randTile.fire.timer += 1;
                         }
                     } else {
-                        var flameGO = Tile.Instantiate(Resources.Load<GameObject>("Prefabs/Flame")) as GameObject;
-                        var flame = flameGO.GetComponent<Fire>();
-                        flame.minDamage = weapon.minDamage;
-                        flame.maxDamage = weapon.maxDamage;
-                        flame.timer = weapon.flameDuration - iLayer;
-                        randTile.SetFire(flame);
+                        var fire = Tile.Instantiate(weapon.firePrefab);
+                        fire.minDamage = weapon.minDamage;
+                        fire.maxDamage = weapon.maxDamage;
+                        fire.timer = weapon.flameDuration - iLayer;
+                        randTile.SetFire(fire);
                     }
                 }
             }

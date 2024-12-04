@@ -21,10 +21,7 @@ public class Weapon : ScriptableObject, IWeighted {
     public int ammo;
     public int range;
     public float blast;
-    public bool flames;
     public int flameDuration;
-    public Color flameColor;
-    public Color muzzleFlareColor = Color.white;
     public Type type;
     public int cost;
     [TextArea] public string description;
@@ -32,12 +29,15 @@ public class Weapon : ScriptableObject, IWeighted {
     public Trait[] traits;
     public GameObject weaponPrefab;
     public GameObject tracerPrefab;
+    public ParticleBurst explosionPrefab;
+    public Fire firePrefab;
     public WeaponAudioProfile audio;
     public ParticleBurst impactEffect;
     public ParticleBurst missEffect;
 
-    public bool ordnance { get { return blast > 0; } }
-    public bool isHeavy { get { return type == Type.Heavy; } }
+    public bool ordnance => blast > 0;
+    public bool isHeavy => type == Type.Heavy;
+    public bool flames => flameDuration > 0;
 
     public static Weapon Get(string name) {
         return Resources.Load<Weapon>("Weapons/" + name);
