@@ -249,6 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4666517967230810}
   - component: {fileID: 114586334740335060}
+  - component: {fileID: 7027420091316676920}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Untagged
@@ -306,6 +307,28 @@ MonoBehaviour:
   awake: 0
   attackIndicator: {fileID: 212705650612322786}
   muzzleFlashLocation: {fileID: 2699472699305107755}
+--- !u!95 &7027420091316676920
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654062399581398}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1710850984009863974
 GameObject:
   m_ObjectHideFlags: 0

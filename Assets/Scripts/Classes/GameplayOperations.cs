@@ -180,6 +180,7 @@ public static class GameplayOperations {
     public static IEnumerator PerformMoveAnimation(Actor actor, Tile destinationTile) {
         if (destinationTile.foggy) yield break;
         actor.PlayAudio(actor.walkSounds.Sample());
+        actor.MoveAnimation();
         float duration = actor is Soldier ? 1f / ((Soldier)actor).baseMovement : 1f / ((Alien)actor).movement;
         var startTime = Time.time;
         var startLocalPosition = actor.transform.localPosition;
@@ -189,10 +190,12 @@ public static class GameplayOperations {
             actor.transform.position = Vector3.Lerp(actor.transform.parent.TransformPoint(startLocalPosition), destinationTile.foreground.position, t);
             // CameraController.CentreCameraOn(actor);
         }
+        actor.StationaryAnimation();
     }
     
     public static IEnumerator PerformTurnAnimation(Actor actor, Quaternion desiredRotation) {
         if (actor.tile.foggy) yield break;
+        actor.MoveAnimation();
         float duration = actor is Soldier ? 1f / ((Soldier)actor).baseMovement : 1f / ((Alien)actor).movement;
         var startTime = Time.time;
         var startRotation = actor.image.transform.rotation;   
@@ -201,6 +204,7 @@ public static class GameplayOperations {
             actor.image.rotation = Quaternion.Slerp(startRotation, desiredRotation, t);
             yield return null;
         }
+        actor.StationaryAnimation();
     }
     public static IEnumerator PerformTurnAnimation(Actor actor, Actor.Direction desiredFacing, bool force = false) {
         if (!force && actor.direction == desiredFacing) yield break;
