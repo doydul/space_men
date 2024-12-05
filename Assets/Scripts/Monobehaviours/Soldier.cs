@@ -9,10 +9,12 @@ public class Soldier : Actor {
     Weapon _weapon;
     public Weapon weapon { get => _weapon; set {
         _weapon = value;
-        var weaponPrefab = Instantiate(_weapon.weaponPrefab, gunContainer) as GameObject;
+        gunContainer.DestroyChildren();
+        var weaponPrefab = Instantiate(_weapon.spritePrefab, gunContainer);
         weaponPrefab.transform.localPosition = Vector3.zero;
+        muzzleFlashLocation = weaponPrefab.muzzle;
     } }
-    public Transform muzzleFlashLocation;
+    Transform muzzleFlashLocation;
     public Transform gunContainer;
     public SpriteRenderer bodySprite;
     public AbilityIcon abilityIcon;
@@ -74,7 +76,6 @@ public class Soldier : Actor {
         tmp.y = -tmp.y;
         muzzleFlashLocation.localScale = tmp;
     }
-    public void HideMuzzleFlash() => muzzleFlashLocation.gameObject.SetActive(false);
     public void ShowAbilityIcon(Ability ability) {
         abilityIcon.spriteRenderer.gameObject.SetActive(true);
         abilityIcon.DisplaySpriteFor(ability);
@@ -82,7 +83,6 @@ public class Soldier : Actor {
     public void HideAbilityIcon() => abilityIcon.spriteRenderer.gameObject.SetActive(false);
 
     void Start() {
-        HideMuzzleFlash();
         HideAbilityIcon();
         GameEvents.On(this, "player_turn_start", Reset);
     }

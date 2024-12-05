@@ -23,10 +23,7 @@ MonoBehaviour:
   ammo: 5
   range: 16
   blast: 0
-  flames: 0
   flameDuration: 0
-  flameColor: {r: 0, g: 0, b: 0, a: 0}
-  muzzleFlareColor: {r: 0.8679245, g: 0.78898555, b: 0.37992162, a: 1}
   type: 0
   cost: 10
   description: 'Standard Issue Kinetic Rifle MK5
@@ -40,8 +37,12 @@ MonoBehaviour:
     type: 3}
   tracerPrefab: {fileID: 1646889780221744, guid: 2dfac1135958ec84cac2d2cb6fdc3f4b,
     type: 3}
+  explosionPrefab: {fileID: 0}
+  firePrefab: {fileID: 0}
   audio: {fileID: 11400000, guid: ac62427209487304a8381cbe6228e48d, type: 2}
   impactEffect: {fileID: 8893649087654275822, guid: 67b64be253f660e4cadc693066054120,
     type: 3}
   missEffect: {fileID: 8893649087654275822, guid: 0a13c0ab899349d4b9a3820dd47329ec,
+    type: 3}
+  spritePrefab: {fileID: 876625575503601482, guid: b733c92828cd07c448a30bccf6d4282e,
     type: 3}

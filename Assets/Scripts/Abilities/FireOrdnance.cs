@@ -28,27 +28,7 @@ public class FireOrdnance : Ability {
         owner.actionsSpent += 1;
         owner.shotsSpent += 1;
         if (owner.weapon.isHeavy) owner.tilesMoved += 100;
-        var accuracy = owner.accuracy;
-        if (!owner.InHalfRange(hitTile.gridLocation)) accuracy -= 15;
-        if (Random.value * 100 > accuracy) {
-            // Miss
-            var dist = Map.instance.ManhattanDistance(owner.gridLocation, MapInputController.instance.selectedTile.gridLocation);
-            var maxScatterDist = (dist / scatterDistanceInterval) + 1;
-            var scatterDist = Random.Range(1, maxScatterDist + 1);
-            int currentLayer = 0;
-            foreach (var layer in Map.instance.iterator.Exclude(new ExplosionImpassableTerrain()).EnumerateLayersFrom(hitTile.gridLocation)) {
-                if (currentLayer == scatterDist) {
-                    hitTile = layer[Random.Range(0, layer.Count())];
-                    break;
-                }
-                currentLayer++;
-            }
-        }
-        owner.Face(MapInputController.instance.selectedTile.gridLocation);
-        owner.PlayAudio(owner.weapon.audio.shoot);
-        owner.ShowMuzzleFlash();
-        yield return SFXLayer.instance.PerformTracer(owner.muzzlePosition, hitTile.transform.position, owner.weapon, true);
-        owner.HideMuzzleFlash();
-        yield return GameplayOperations.PerformExplosion(owner, hitTile, owner.weapon);
+        
+        yield return GameplayOperations.PerformSoldierFireOrdnance(owner, hitTile);
     }
 }

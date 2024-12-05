@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 public static class GameplayOperations {
+    
+    public const int SCATTER_DISTANCE_INTERVAL = 5;
 
     public static void MakeNoise(Vector2 gridLocation) {
         foreach (var alien in Map.instance.GetActors<Alien>()) {
@@ -37,8 +39,8 @@ public static class GameplayOperations {
                 }
             }
         }
-        soldier.IdleAnimation();
         yield return PerformTurnAnimation(soldier, Actor.FacingToDirection(target.gridLocation - soldier.gridLocation), true);
+        soldier.IdleAnimation();
     }
 
     public static IEnumerator PerformSoldierSingleShot(Soldier soldier, Alien target) {
@@ -87,8 +89,40 @@ public static class GameplayOperations {
                 soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
             }
         }
-        soldier.HideMuzzleFlash();
         yield return new WaitForSeconds(0.15f);
+    }
+    
+    public static IEnumerator PerformSoldierFireOrdnance(Soldier soldier, Tile targetTile) {
+        var diff = targetTile.realLocation - soldier.realLocation;
+        var angle = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(diff.y, diff.x) - 90);
+        soldier.AimAnimation();
+        yield return PerformTurnAnimation(soldier, angle);
+        yield return new WaitForSeconds(0.2f);
+        
+        var hitTile = targetTile;
+        var accuracy = soldier.accuracy;
+        if (!soldier.InHalfRange(targetTile.gridLocation)) accuracy -= 15;
+        if (Random.value * 100 > accuracy) {
+            // Miss
+            var dist = Map.instance.ManhattanDistance(soldier.gridLocation, MapInputController.instance.selectedTile.gridLocation);
+            var maxScatterDist = (dist / SCATTER_DISTANCE_INTERVAL) + 1;
+            var scatterDist = Random.Range(1, maxScatterDist + 1);
+            int currentLayer = 0;
+            foreach (var layer in Map.instance.iterator.Exclude(new ExplosionImpassableTerrain()).EnumerateLayersFrom(targetTile.gridLocation)) {
+                if (currentLayer == scatterDist) {
+                    hitTile = layer[Random.Range(0, layer.Count())];
+                    break;
+                }
+                currentLayer++;
+            }
+        }
+        soldier.PlayAudio(soldier.weapon.audio.shoot);
+        soldier.ShowMuzzleFlash();
+        yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, hitTile.transform.position, soldier.weapon, true);
+        yield return PerformExplosion(soldier, hitTile, soldier.weapon);
+        
+        yield return PerformTurnAnimation(soldier, Actor.FacingToDirection(targetTile.gridLocation - soldier.gridLocation), true);
+        soldier.IdleAnimation();
     }
     
     public static IEnumerator PerformAlienShoot(Alien alien, Weapon weapon, Soldier target) {
@@ -213,12 +247,15 @@ public static class GameplayOperations {
     }
 
     public static IEnumerator PerformOpenDoor(Soldier soldier, Tile tile) {
+        yield return PerformTurnAnimation(soldier, Actor.FacingToDirection(tile.gridLocation - soldier.gridLocation));
         tile.GetBackgroundActor<Door>().Remove();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         FogManager.instance.UpdateFog();
     }
 
     public static IEnumerator PerformPickupChest(Soldier soldier, Tile tile) {
+        yield return PerformTurnAnimation(soldier, Actor.FacingToDirection(tile.gridLocation - soldier.gridLocation));
+        yield return new WaitForSeconds(0.2f);
         var chest = tile.GetBackgroundActor<Chest>();
         ModalPopup.instance.ClearContent();
         if (chest.contents.hasItem) {
@@ -231,7 +268,6 @@ public static class GameplayOperations {
             ModalPopup.instance.DisplayContent(Resources.Load<Transform>("Prefabs/UI/ItemReward")).GetComponent<ItemReward>().SetText($"you found credits\n{chest.contents.credits}");
         }
         chest.Remove();
-        yield return new WaitForSeconds(1f);
     }
 
     public static IEnumerator PerformExplosion(Actor player, Tile tile, Weapon weapon) {

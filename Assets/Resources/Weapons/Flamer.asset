@@ -43,3 +43,5 @@ MonoBehaviour:
     type: 3}
   missEffect: {fileID: 8893649087654275822, guid: 0a13c0ab899349d4b9a3820dd47329ec,
     type: 3}
+  spritePrefab: {fileID: 876625575503601482, guid: b733c92828cd07c448a30bccf6d4282e,
+    type: 3}

@@ -34,7 +34,7 @@ MonoBehaviour:
   traits: 
   weaponPrefab: {fileID: 2638842277454447310, guid: 9ab49813811ab674ca710393f368b31d,
     type: 3}
-  tracerPrefab: {fileID: 1646889780221744, guid: 58d3d89c80b634c4c92f973e7ef716c4,
+  tracerPrefab: {fileID: 1646889780221744, guid: 8e73321ec9f50db47a5a448613e3ca2d,
     type: 3}
   explosionPrefab: {fileID: 8893649087654275822, guid: feaa2eff137ffc1448f2149fa8756285,
     type: 3}
@@ -43,4 +43,6 @@ MonoBehaviour:
   impactEffect: {fileID: 8893649087654275822, guid: 67b64be253f660e4cadc693066054120,
     type: 3}
   missEffect: {fileID: 8893649087654275822, guid: 0a13c0ab899349d4b9a3820dd47329ec,
+    type: 3}
+  spritePrefab: {fileID: 876625575503601482, guid: b733c92828cd07c448a30bccf6d4282e,
     type: 3}

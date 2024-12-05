@@ -34,6 +34,7 @@ public class Weapon : ScriptableObject, IWeighted {
     public WeaponAudioProfile audio;
     public ParticleBurst impactEffect;
     public ParticleBurst missEffect;
+    public WeaponSprite spritePrefab;
 
     public bool ordnance => blast > 0;
     public bool isHeavy => type == Type.Heavy;

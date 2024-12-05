@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HDRSpriteMat
+  m_Name: HDRSpriteLowIntensity
   m_Shader: {fileID: -6465566751694194690, guid: e06b11f03ef40444fb5b46fe74d2500a,
     type: 3}
   m_Parent: {fileID: 0}

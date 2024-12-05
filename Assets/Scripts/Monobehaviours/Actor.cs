@@ -65,8 +65,8 @@ public abstract class Actor : MonoBehaviour {
     public void PlayAudio(AudioClipProfile clip) => audioPlayer.PlayAudio(clip);
     
     // Animations
-    public void MoveAnimation() => animator.SetBool("Moving", true);
-    public void StationaryAnimation() => animator.SetBool("Moving", false);
+    public void MoveAnimation() => animator?.SetBool("Moving", true);
+    public void StationaryAnimation() => animator?.SetBool("Moving", false);
 
     protected virtual void Awake() {
         audioPlayer = gameObject.AddComponent<AudioPlayer>();
