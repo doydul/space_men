@@ -32,7 +32,7 @@ public class Punch : Ability {
         AbilityInfoPanel.instance.Hide();
         
         owner.actionsSpent += 1;
-        owner.Face(hitTile.gridLocation);
+        yield return GameplayOperations.PerformTurnAnimation(owner, Actor.FacingToDirection(hitTile.gridLocation - owner.gridLocation));
         yield return new WaitForSeconds(0.2f);
         owner.PlayAudio(audio.Sample());
         yield return new WaitForSeconds(0.2f);

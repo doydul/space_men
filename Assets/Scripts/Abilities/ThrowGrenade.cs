@@ -50,9 +50,15 @@ public class ThrowGrenade : Ability {
                 currentLayer++;
             }
         }
-        owner.Face(MapInputController.instance.selectedTile.gridLocation);
+        
+        var diff = hitTile.realLocation - owner.realLocation;
+        var angle = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(diff.y, diff.x) - 90);
+        yield return GameplayOperations.PerformTurnAnimation(owner, angle);
+        
         owner.PlayAudio(weapon.audio.shoot);
         yield return SFXLayer.instance.PerformTracer(owner.centrePosition, hitTile.transform.position, weapon, true);
         yield return GameplayOperations.PerformExplosion(owner, hitTile, weapon);
+        
+        yield return GameplayOperations.PerformTurnAnimation(owner, Actor.FacingToDirection(hitTile.gridLocation - owner.gridLocation), true);
     }
 }
