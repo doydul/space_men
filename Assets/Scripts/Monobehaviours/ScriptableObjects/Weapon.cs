@@ -27,7 +27,6 @@ public class Weapon : ScriptableObject, IWeighted {
     [TextArea] public string description;
     public Ability[] abilities;
     public Trait[] traits;
-    public GameObject weaponPrefab;
     public GameObject tracerPrefab;
     public ParticleBurst explosionPrefab;
     public Fire firePrefab;

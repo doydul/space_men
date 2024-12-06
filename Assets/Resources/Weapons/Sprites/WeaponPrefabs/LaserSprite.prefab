@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzle: {fileID: 7421566605781466759}
+  animatorController: {fileID: 9100000, guid: e8f5be5cfd20ec74caf816381cd487ed, type: 2}
 --- !u!1 &7093240184494064426
 GameObject:
   m_ObjectHideFlags: 0

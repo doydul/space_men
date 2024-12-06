@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1114320609531659157}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.131, y: 0.426, z: 0}
+  m_LocalPosition: {x: 0.092, y: 0.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6338946775260153971}
   - component: {fileID: 876625575503601482}
   m_Layer: 0
-  m_Name: BasicWeaponSprite
+  m_Name: HeavyWeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzle: {fileID: 2184216141905504718}
-  animatorController: {fileID: 9100000, guid: e8f5be5cfd20ec74caf816381cd487ed, type: 2}
+  animatorController: {fileID: 9100000, guid: c7edf2edc0bb2b946b10453313eebd8b, type: 2}
 --- !u!1 &4485572904593988310
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +104,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4485572904593988310}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.60205024, w: 0.79845816}
+  m_LocalPosition: {x: 0.032, y: 0.127, z: 0}
   m_LocalScale: {x: 0.049923193, y: 0.049923193, z: 0.998464}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6338946775260153971}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.234}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -74.034}
 --- !u!212 &1525073618044995247
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -155,7 +155,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b35cb2b7b64ae064db9f3efdb9a2d8b2, type: 3}
+  m_Sprite: {fileID: -713011722676215096, guid: 49fc3358be5851b4c949d5e203ada7c6,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

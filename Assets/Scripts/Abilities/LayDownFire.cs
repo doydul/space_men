@@ -27,7 +27,7 @@ public class LayDownFire : ReactionAbility {
         shotsRemaining = owner.shots;
         owner.actionsSpent += 100;
         owner.tilesMoved += 100;
-        owner.Face(MapInputController.instance.selectedTile.gridLocation);
+        yield return GameplayOperations.PerformTurnAnimation(owner, Actor.FacingToDirection(MapInputController.instance.selectedTile.gridLocation - owner.gridLocation));
         owner.reaction = this;
         owner.ShowAbilityIcon(this);
         yield return PerformShots();
@@ -43,6 +43,10 @@ public class LayDownFire : ReactionAbility {
 
     private IEnumerator PerformShots() {
         var aliensInSight = Map.instance.GetActors<Alien>().Where(alien => !alien.tile.foggy && owner.CanSee(alien.gridLocation) && owner.InRange(alien.gridLocation) && owner.WithinSightArc(alien.gridLocation)).ToList();
+        if (shotsRemaining > 0 && aliensInSight.Count > 0) {
+            owner.AimAnimation();
+            yield return new WaitForSeconds(0.5f);
+        }
         while (shotsRemaining > 0 && aliensInSight.Count > 0) {
             if (shotsRemaining >= owner.shots) owner.shotsSpent += 1;
             var randAlien = aliensInSight[Random.Range(0, aliensInSight.Count())];
@@ -51,5 +55,6 @@ public class LayDownFire : ReactionAbility {
             if (randAlien.dead) aliensInSight.Remove(randAlien);
         }
         if (shotsRemaining <= 0) owner.HideAbilityIcon();
+        owner.IdleAnimation();
     }
 }
