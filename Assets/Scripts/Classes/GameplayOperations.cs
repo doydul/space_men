@@ -221,7 +221,7 @@ public static class GameplayOperations {
         while (Time.time - startTime < duration) {
             yield return null;
             float t = (Time.time - startTime) / duration;
-            actor.transform.position = Vector3.Lerp(actor.transform.parent.TransformPoint(startLocalPosition), destinationTile.foreground.position, t);
+            actor.transform.position = Vector3.Lerp(actor.transform.parent.TransformPoint(startLocalPosition), destinationTile.foreground.position, MathUtil.EaseCubic(t));
             // CameraController.CentreCameraOn(actor);
         }
         actor.StationaryAnimation();
@@ -235,7 +235,7 @@ public static class GameplayOperations {
         var startRotation = actor.image.transform.rotation;   
         while (Time.time - startTime < duration) {
             float t = (Time.time - startTime) / duration;
-            actor.image.rotation = Quaternion.Slerp(startRotation, desiredRotation, t);
+            actor.image.rotation = Quaternion.Slerp(startRotation, desiredRotation, MathUtil.EaseCubic(t));
             yield return null;
         }
         actor.StationaryAnimation();

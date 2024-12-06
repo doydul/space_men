@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.Collections;
 
 public static class MathUtil {
     
@@ -16,5 +17,10 @@ public static class MathUtil {
         }
         result.Add(sum - values[values.Count - 1]);
         return result;
+    }
+    
+    public static float EaseCubic(float t) {
+        t = Mathf.Clamp01(t);
+        return t < 0.5 ? 4 * t * t * t : 1 - Mathf.Pow(-2 * t + 2, 3) / 2;
     }
 }
