@@ -51,7 +51,7 @@ public class StandardAlienBehaviour : AlienBehaviour {
     }
     
     private IEnumerator PerformAttack(Soldier target) {
-        body.ShowAttack();
+        SFXLayer.instance.SpawnBurst(target.realLocation, new Vector3(0, 1, 0), Resources.Load<ParticleBurst>("Prefabs/SFX/ParticleBursts/Slash"));
         body.Face(target.gridLocation);
         yield return new WaitForSeconds(0.25f);
         BloodSplatController.instance.MakeSplat(target);
@@ -62,6 +62,5 @@ public class StandardAlienBehaviour : AlienBehaviour {
         } else {
             target.Hurt(body.damage);
         }
-        body.HideAttack();
     }
 }

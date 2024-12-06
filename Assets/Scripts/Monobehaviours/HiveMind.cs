@@ -181,8 +181,7 @@ public class HiveMind : MonoBehaviour {
         alien.id = System.Guid.NewGuid().ToString();
 
         var spriteTransform = Instantiate(Resources.Load<Transform>("Prefabs/AlienSprites/" + alienType + "AlienSprite")) as Transform;
-        spriteTransform.parent = alien.image;
-        spriteTransform.localPosition = Vector3.zero;
+        alien.SetSpriteTransform(spriteTransform);
 
         Map.instance.GetTileAt(gridLocation).SetActor(trans);
         return alien;

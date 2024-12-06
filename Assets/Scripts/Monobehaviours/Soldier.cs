@@ -85,6 +85,7 @@ public class Soldier : Actor {
     void Start() {
         HideAbilityIcon();
         GameEvents.On(this, "player_turn_start", Reset);
+        SetupSpriteMaterials();
     }
 
     void OnDestroy() {

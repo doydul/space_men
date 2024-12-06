@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.PlayerLoop;
 
 public abstract class Actor : MonoBehaviour {
 
@@ -61,6 +60,7 @@ public abstract class Actor : MonoBehaviour {
     } }
     public bool On(Tile tile) => this.tile == tile;
     protected Animator animator;
+    protected Material spriteSharedMat;
     AudioPlayer audioPlayer;
     public void PlayAudio(AudioClipProfile clip) => audioPlayer.PlayAudio(clip);
     
@@ -112,6 +112,7 @@ public abstract class Actor : MonoBehaviour {
             PlayAudio(hurtSounds.Sample());
         }
         SetHealthIndicatorSize();
+        HurtAnimation();
         return true;
     }
     
@@ -120,6 +121,41 @@ public abstract class Actor : MonoBehaviour {
     public void Face(Vector2 targetGridLocation) {
         TurnTo(targetGridLocation - gridLocation);
     }
+    
+    public virtual void SetSpriteTransform(Transform spriteTransform) {
+        spriteTransform.parent = image;
+        spriteTransform.localPosition = Vector3.zero;
+        SetupSpriteMaterials();
+    }
+    
+    public void SetupSpriteMaterials() {
+        var masterMat = Resources.Load<Material>("Materials/DamageableSprite");
+        spriteSharedMat = new Material(masterMat);
+        foreach (var renderer in image.GetComponentsInChildren<SpriteRenderer>()) {
+            if (renderer.gameObject.tag != "HDR") renderer.sharedMaterial = spriteSharedMat;
+        }
+        SetHurtOverlayIntensity(0);
+    }
+    
+    Coroutine hurtAnimCoroutine;
+    public void HurtAnimation() {
+        if (hurtAnimCoroutine != null) AnimationManager.instance.StopCoroutine(hurtAnimCoroutine);
+        hurtAnimCoroutine = AnimationManager.instance.StartCoroutine(PerformHurtAnimation());
+    }
+    
+    public IEnumerator PerformHurtAnimation() {
+        float duration = 0.75f;
+        float t = 0;
+        float startIntensity = 0.75f;
+        while (t < 1) {
+            SetHurtOverlayIntensity(startIntensity * (1 - t));
+            t += Time.deltaTime / duration;
+            yield return null;
+        }
+        SetHurtOverlayIntensity(0);
+    }
+    
+    public void SetHurtOverlayIntensity(float intensity) => spriteSharedMat.SetFloat("_HurtIntensity", intensity);
 
     public virtual void Interact(Tile tile) {}
     public virtual IEnumerator PerformUse(Soldier user) { yield return null; }
