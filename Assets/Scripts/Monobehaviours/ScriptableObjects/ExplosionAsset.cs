@@ -6,4 +6,8 @@ public class ExplosionAsset : ScriptableObject {
     public ParticleBurst explosionVFX;
     public Fire fireVFX;
     public Decal[] blastDecals;
+    
+    public bool hasDecals => blastDecals.Length > 0;
+    
+    public Decal GetDecal() => blastDecals.Sample();
 }

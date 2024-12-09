@@ -308,6 +308,7 @@ public static class GameplayOperations {
                         randTile.SetFire(fire);
                     }
                 }
+                if (weapon.explosion.hasDecals) DecalController.instance.SpawnDecal(randTile, weapon.explosion.GetDecal());
             }
         }
         yield return new WaitForSeconds(0.5f);
