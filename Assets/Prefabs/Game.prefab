@@ -1199,7 +1199,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8388943342370857877}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1841,7 +1841,7 @@ GameObject:
   - component: {fileID: 2166863324965297887}
   - component: {fileID: 6193010117977745601}
   - component: {fileID: 4046888539152981492}
-  - component: {fileID: 5628867989226295328}
+  - component: {fileID: 5321900917436667781}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2137,7 +2137,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5628867989226295328
+--- !u!114 &5321900917436667781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3206,7 +3206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -160}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5101919652770137751
@@ -4092,7 +4092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -80}
+  m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2444621376733829818
@@ -5986,7 +5986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000016212463}
+  m_AnchoredPosition: {x: 0, y: -0.000038146973}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6666821015918837591
@@ -6356,8 +6356,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallSprite: {fileID: 21300000, guid: 1b6c2642a1fcee9479b4b674acfc7510, type: 3}
-  innerCornerSprite: {fileID: 21300000, guid: cf9b90294c5884ab0860549e16b94c3f, type: 3}
-  outerCornerSprite: {fileID: 21300000, guid: 6697af77d616040e7b0f2910a3bad419, type: 3}
+  innerCornerSprite: {fileID: 21300000, guid: 6b5c34e9b5fad894e8047cc221193fde, type: 3}
+  outerCornerSprite: {fileID: 21300000, guid: 700b6d77a562172488dfa08713e5886c, type: 3}
   corridorSprite: {fileID: 21300000, guid: b0101538717601c4bbd3d0ef3a4c907b, type: 3}
   wallTopSprite: {fileID: 21300000, guid: d582a4f6d32dd40e09099209a1abe0de, type: 3}
   highlightSprite: {fileID: 21300000, guid: 32daaed7f1b1a49a6a0ab975d990d86b, type: 3}
@@ -6454,7 +6454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8640662349426691727}
-  - component: {fileID: 3235338478202592855}
+  - component: {fileID: 866800186014217346}
   m_Layer: 0
   m_Name: Blood
   m_TagString: Untagged
@@ -6477,7 +6477,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8640662348927887906}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3235338478202592855
+--- !u!114 &866800186014217346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6486,7 +6486,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8640662349426691712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0230e002c8fda40728be944edc7ada5c, type: 3}
+  m_Script: {fileID: 11500000, guid: b678c0c469b2fb14c8f3967a1a851e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 8640662348927887907}

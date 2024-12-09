@@ -30,7 +30,7 @@ public abstract class Actor : MonoBehaviour {
 
     public Tile tile;
     public Transform image;
-    public Sprite[] bloodSplatSprites;
+    public Decal[] bloodSplats;
     public GameObject deflectIndicator;
     public HealthIndicator healthIndicator;
     public AudioCollection walkSounds;
@@ -156,6 +156,10 @@ public abstract class Actor : MonoBehaviour {
     }
     
     public void SetHurtOverlayIntensity(float intensity) => spriteSharedMat.SetFloat("_HurtIntensity", intensity);
+    
+    public void SpawnBlood() {
+        DecalController.instance.SpawnDecal(tile, bloodSplats.Sample());
+    }
 
     public virtual void Interact(Tile tile) {}
     public virtual IEnumerator PerformUse(Soldier user) { yield return null; }

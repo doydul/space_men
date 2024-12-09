@@ -5,7 +5,12 @@ using System.Collections.Generic;
 
 public class Soldier : Actor {
 
-    public Armour armour;
+    Armour _armour;
+    public Armour armour { get => _armour; set {
+        _armour = value;
+        bodySprite.sprite = _armour.bodySprite;
+        headSprite.sprite = _armour.headSprite;
+    } }
     Weapon _weapon;
     public Weapon weapon { get => _weapon; set {
         _weapon = value;
@@ -18,6 +23,7 @@ public class Soldier : Actor {
     Transform muzzleFlashLocation;
     public Transform gunContainer;
     public SpriteRenderer bodySprite;
+    public SpriteRenderer headSprite;
     public AbilityIcon abilityIcon;
     
     public int tilesMoved { get; set; }

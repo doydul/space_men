@@ -289,13 +289,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
   image: {fileID: 4753409109142428}
-  bloodSplatSprites:
-  - {fileID: 21300000, guid: 3985f3ec9ab2d244b89b27bd13f56de2, type: 3}
-  - {fileID: 21300000, guid: 8971352d6b7ae874ea418e970f6eeba8, type: 3}
-  - {fileID: 21300000, guid: 3f121f61a6097934385085f61b5c7a3c, type: 3}
-  - {fileID: 21300000, guid: 1005b1d81d334064ba87cf0f4ad117fa, type: 3}
-  - {fileID: 21300000, guid: 21ddf1fa265eb8d40b4aea1e623c972f, type: 3}
-  - {fileID: 21300000, guid: 410b689adc044fe4b9ed6ae7b48c416c, type: 3}
+  bloodSplats:
+  - {fileID: -8709898560276526087, guid: 90ff12a44d3e28449824e4209430af35, type: 3}
+  - {fileID: -8709898560276526087, guid: 19c58ec5de22f4a4a97f4a2bd06a2284, type: 3}
+  - {fileID: -8709898560276526087, guid: 3e33aa2058821a34bbddeea04a9e8c95, type: 3}
+  - {fileID: -8709898560276526087, guid: a747f1ac1a689f04e83d805106252129, type: 3}
+  - {fileID: -8709898560276526087, guid: 714dfed0c5db0404f894c1da30e7f166, type: 3}
   deflectIndicator: {fileID: 1332100486023108}
   healthIndicator: {fileID: 6923176639299183956}
   walkSounds: {fileID: 11400000, guid: f42191112e19ed5459c727111ccf4d9b, type: 2}

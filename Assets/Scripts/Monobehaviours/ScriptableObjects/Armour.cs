@@ -23,6 +23,8 @@ public class Armour : ScriptableObject, IWeighted {
     public int sightRange;
     public Ability[] abilities;
     public Trait[] traits;
+    public Sprite headSprite;
+    public Sprite bodySprite;
 
     public int movement { get {
         switch(type) {

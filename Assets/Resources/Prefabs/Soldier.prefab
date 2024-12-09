@@ -171,13 +171,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
   image: {fileID: 4077316558480662}
-  bloodSplatSprites:
-  - {fileID: 21300000, guid: 3985f3ec9ab2d244b89b27bd13f56de2, type: 3}
-  - {fileID: 21300000, guid: 8971352d6b7ae874ea418e970f6eeba8, type: 3}
-  - {fileID: 21300000, guid: 3f121f61a6097934385085f61b5c7a3c, type: 3}
-  - {fileID: 21300000, guid: 1005b1d81d334064ba87cf0f4ad117fa, type: 3}
-  - {fileID: 21300000, guid: 21ddf1fa265eb8d40b4aea1e623c972f, type: 3}
-  - {fileID: 21300000, guid: 410b689adc044fe4b9ed6ae7b48c416c, type: 3}
+  bloodSplats:
+  - {fileID: -8709898560276526087, guid: f0915d4416238fd48870375491c043db, type: 3}
+  - {fileID: -8709898560276526087, guid: 855a4c595b0a6244083a349aa664b7b0, type: 3}
+  - {fileID: -8709898560276526087, guid: 06964a5ee514a3642bdac98ba5d4c053, type: 3}
+  - {fileID: -8709898560276526087, guid: f7b3ed509e1ff8047aff6d80c2eaf558, type: 3}
+  - {fileID: -8709898560276526087, guid: e6faccf07a4455745b33b329f5f4242e, type: 3}
   deflectIndicator: {fileID: 0}
   healthIndicator: {fileID: 4154636579335064727}
   walkSounds: {fileID: 11400000, guid: 34e6dc9098801674596cf506cdbafe41, type: 2}
@@ -185,9 +184,9 @@ MonoBehaviour:
   dieSounds: {fileID: 11400000, guid: 6dfe836edaf62b94c84240113c98c092, type: 2}
   hitEffect: {fileID: 8893649087654275822, guid: 108e86cfe281a3341895a26a476ecb73,
     type: 3}
-  armour: {fileID: 0}
   gunContainer: {fileID: 6541413872421422125}
   bodySprite: {fileID: 212152162321476934}
+  headSprite: {fileID: 1116072885390639771}
   abilityIcon: {fileID: 594908368735448727}
   abilities: []
 --- !u!95 &1933042276295251440

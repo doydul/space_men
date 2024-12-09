@@ -54,7 +54,7 @@ public class StandardAlienBehaviour : AlienBehaviour {
         SFXLayer.instance.SpawnBurst(target.realLocation, new Vector3(0, 1, 0), Resources.Load<ParticleBurst>("Prefabs/SFX/ParticleBursts/Slash"));
         body.Face(target.gridLocation);
         yield return new WaitForSeconds(0.25f);
-        BloodSplatController.instance.MakeSplat(target);
+        target.SpawnBlood();
         yield return new WaitForSeconds(0.25f);
         if (Random.value < critChance && !target.HasTrait(Trait.CritImmune)) {
             target.Hurt(body.damage * 2);

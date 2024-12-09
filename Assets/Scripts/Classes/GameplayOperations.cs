@@ -59,7 +59,7 @@ public static class GameplayOperations {
             yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, true, new ParticleBurst[] { effect, soldier.weapon.impactEffect });
             target.Hurt(damage, soldier.weapon.damageType);
             if (!target.DamageExceedsArmour(damage, soldier.weapon.damageType)) soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
-            BloodSplatController.instance.MakeSplat(target);
+            target.SpawnBlood();
         } else {
             // MISS
             var adjacentTiles = Map.instance.AdjacentTiles(target.tile, true).ToArray();
@@ -79,7 +79,7 @@ public static class GameplayOperations {
                     yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, actor.tile.transform.position, soldier.weapon, true, new ParticleBurst[] { effect, soldier.weapon.impactEffect });
                     actor.Hurt(damage, soldier.weapon.damageType);
                     if (!actor.DamageExceedsArmour(damage, soldier.weapon.damageType)) soldier.PlayAudio(soldier.weapon.audio.impact.Sample());
-                    BloodSplatController.instance.MakeSplat(actor);
+                    actor.SpawnBlood();
                     break;
                 }
             }
@@ -143,7 +143,7 @@ public static class GameplayOperations {
         yield return SFXLayer.instance.PerformTracer(alien.muzzlePosition, target.tile.transform.position, weapon, true, new ParticleBurst[] { target.hitEffect, weapon.impactEffect });
         var damage = Random.Range(weapon.minDamage, weapon.maxDamage + 1);
         target.Hurt(damage, weapon.damageType);
-        BloodSplatController.instance.MakeSplat(target);
+        target.SpawnBlood();
         yield return new WaitForSeconds(0.15f);
     }
     
@@ -289,7 +289,7 @@ public static class GameplayOperations {
                 if (actor != null) {
                     var damage = Random.Range(weapon.minDamage, weapon.maxDamage + 1);
                     actor.Hurt(damage);
-                    BloodSplatController.instance.MakeSplat(actor);
+                    actor.SpawnBlood();
                 }
                 if (weapon.flames) {
                     if (randTile.onFire) {
