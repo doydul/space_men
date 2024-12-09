@@ -28,12 +28,11 @@ public class Weapon : ScriptableObject, IWeighted {
     public Ability[] abilities;
     public Trait[] traits;
     public GameObject tracerPrefab;
-    public ParticleBurst explosionPrefab;
-    public Fire firePrefab;
     public WeaponAudioProfile audio;
     public ParticleBurst impactEffect;
     public ParticleBurst missEffect;
     public WeaponSprite spritePrefab;
+    public ExplosionAsset explosion;
 
     public bool ordnance => blast > 0;
     public bool isHeavy => type == Type.Heavy;

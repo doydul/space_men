@@ -284,7 +284,7 @@ public static class GameplayOperations {
                 var randTile = layer[randex];
                 layer.RemoveAt(randex);
 
-                SFXLayer.instance.SpawnBurst(randTile.realLocation, Vector3.up, weapon.explosionPrefab);
+                SFXLayer.instance.SpawnBurst(randTile.realLocation, Vector3.up, weapon.explosion.explosionVFX);
                 var actor = randTile.GetActor<Actor>();
                 if (actor != null) {
                     var damage = Random.Range(weapon.minDamage, weapon.maxDamage + 1);
@@ -301,7 +301,7 @@ public static class GameplayOperations {
                             randTile.fire.timer += 1;
                         }
                     } else {
-                        var fire = Tile.Instantiate(weapon.firePrefab);
+                        var fire = Tile.Instantiate(weapon.explosion.fireVFX);
                         fire.minDamage = weapon.minDamage;
                         fire.maxDamage = weapon.maxDamage;
                         fire.timer = weapon.flameDuration - iLayer;
