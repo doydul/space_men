@@ -1,7 +1,10 @@
+using System.Collections;
 using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
+    
+    public float moveSpeed;
     
     Camera cam;
     float startSize;
@@ -31,21 +34,28 @@ public class CameraController : MonoBehaviour {
         }
     }
     
+    Coroutine co;
     public static void CentreCameraOn(Tile tile) {
-        var temp = instance.transform.position;
-        temp.x = tile.transform.position.x;
-        temp.y = tile.transform.position.y;
-        instance.transform.position = temp;
+        if (instance.co != null) instance.StopCoroutine(instance.co);
+        instance.co = instance.StartCoroutine(PerformCentreCameraOn(tile));
     }
+    public static void CentreCameraOn(Vector2 targetLocation) => CentreCameraOn(Map.instance.GetTileAt(targetLocation));
+    public static void CentreCameraOn(Actor actor) => CentreCameraOn(actor.tile);
     
-    public static void CentreCameraOn(Vector2 targetLocation) {
-        CentreCameraOn(Map.instance.GetTileAt(targetLocation));
-    }
-    
-    public static void CentreCameraOn(Actor actor) {
-        var temp = instance.transform.position;
-        temp.x = actor.transform.position.x;
-        temp.y = actor.transform.position.y;
-        instance.transform.position = temp;
+    static IEnumerator PerformCentreCameraOn(Tile tile) {
+        var startTime = Time.time;
+        var startPos = instance.transform.position;
+        var targetPos = startPos;
+        targetPos.x = tile.transform.position.x;
+        targetPos.y = tile.transform.position.y;
+        float duration = (targetPos - startPos).magnitude / instance.moveSpeed;
+        
+        while (Time.time - startTime < duration) {
+            float t = (Time.time - startTime) / duration;
+            instance.transform.position = Vector3.Lerp(startPos, targetPos, MathUtil.EaseCubic(t));
+            yield return null;
+        }
+        
+        instance.transform.position = targetPos;
     }
 }
