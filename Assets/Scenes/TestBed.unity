@@ -164,9 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  difficultyLevel: 0
+  difficultyLevel: 1
   groupishness: 0
-  armouredness: 0
+  armouredness: 30
   quickness: 0
   bigness: 0
   weapons:
@@ -177,7 +177,8 @@ MonoBehaviour:
   - Light
   - Medium
   - Heavy
-  unlockedAliens: []
+  unlockedAliens:
+  - Advanced
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

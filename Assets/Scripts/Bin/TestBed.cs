@@ -24,10 +24,10 @@ public class TestBed : MonoBehaviour {
         save.squad = GenerateSquad();
         SetEnemyProfileValues();
         
-        save.mission = Mission.Generate();
         
         foreach (var alienName in unlockedAliens) PlayerSave.current.alienUnlocks.Unlock(alienName);
         
+        save.mission = Mission.Generate();
         Debug.Log("Loading Mission scene...");
         if (useTestMap) {
             MapInstantiator.skipGenerate = true;

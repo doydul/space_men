@@ -23,10 +23,7 @@ MonoBehaviour:
   ammo: -1
   range: -1
   blast: 10
-  flames: 0
   flameDuration: 0
-  flameColor: {r: 0, g: 0, b: 0, a: 0}
-  muzzleFlareColor: {r: 0.9150943, g: 0.88521445, b: 0.555963, a: 1}
   type: 0
   cost: 1
   description: '
@@ -34,12 +31,12 @@ MonoBehaviour:
 '
   abilities: []
   traits: 
-  weaponPrefab: {fileID: 2638842277454447310, guid: 9ab49813811ab674ca710393f368b31d,
-    type: 3}
-  tracerPrefab: {fileID: 7457149134974975834, guid: 2eef684ece156774daedca1f48177fc0,
+  tracerPrefab: {fileID: 1646889780221744, guid: 2dfac1135958ec84cac2d2cb6fdc3f4b,
     type: 3}
   audio: {fileID: 11400000, guid: 12775d11220a42e439a61a3b19b749bc, type: 2}
   impactEffect: {fileID: 8893649087654275822, guid: 67b64be253f660e4cadc693066054120,
     type: 3}
   missEffect: {fileID: 8893649087654275822, guid: 0a13c0ab899349d4b9a3820dd47329ec,
     type: 3}
+  spritePrefab: {fileID: 0}
+  explosion: {fileID: 11400000, guid: b71291a5288f7284691ee767c7fb059d, type: 2}

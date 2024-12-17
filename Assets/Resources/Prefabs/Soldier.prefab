@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationMinTime: 5
   animationMaxTime: 30
+  idleAnimations: 3
 --- !u!1 &1523187601169902
 GameObject:
   m_ObjectHideFlags: 0
