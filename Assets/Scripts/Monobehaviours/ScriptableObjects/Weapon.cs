@@ -37,6 +37,8 @@ public class Weapon : ScriptableObject, IWeighted {
     public bool ordnance => blast > 0;
     public bool isHeavy => type == Type.Heavy;
     public bool flames => flameDuration > 0;
+    public float avrgDamage => (minDamage + maxDamage) / 2f;
+    public float dpt => shots * avrgDamage * accuracy / 100f;
 
     public static Weapon Get(string name) {
         return Resources.Load<Weapon>("Weapons/" + name);
