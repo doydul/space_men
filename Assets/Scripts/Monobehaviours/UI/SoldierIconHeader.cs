@@ -13,7 +13,7 @@ public class SoldierIconHeader : MonoBehaviour {
     }
     
     public void DisplaySoldiers() {
-        soldierIconPrototype.parent.DestroyChildren(startIndex: 1);
+        soldierIconPrototype.parent.DestroyChildren(startIndex: 2);
         foreach (var soldier in Map.instance.GetActors<Soldier>()) {
             var squadSoldierTrans = Instantiate(soldierIconPrototype, soldierIconPrototype.parent);
             squadSoldierTrans.gameObject.SetActive(true);

@@ -164,21 +164,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  difficultyLevel: 1
+  difficultyLevel: 0
   groupishness: 0
-  armouredness: 30
+  armouredness: 0
   quickness: 0
   bigness: 0
   weapons:
   - SIKR-5
-  - Chain Gun
-  - Grenade Launcher
+  - SIKR-5
+  - SIKR-5
   armour:
-  - Light
-  - Medium
-  - Heavy
-  unlockedAliens:
-  - Advanced
+  - Flak Vest
+  - Flak Vest
+  - Flak Vest
+  unlockedAliens: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
