@@ -28,10 +28,15 @@ public class ModalPopup : MonoBehaviour {
         return Instantiate(prefab, container).gameObject;
     }
     public GameObject DisplayContentInContainer(GameObject prefab) {
+        Show();
         var container = new GameObject().AddComponent<RectTransform>();
         container.parent = this.container;
         container.localScale = Vector3.one;
-        return Instantiate(prefab, container);
+        var res = Instantiate(prefab, container);
+        var sizeDelta = container.sizeDelta;
+        sizeDelta.y = res.GetComponent<RectTransform>().sizeDelta.y;
+        container.sizeDelta = sizeDelta;
+        return res;
     }
 
     public void OnOk(Action callback) => onOk = callback;

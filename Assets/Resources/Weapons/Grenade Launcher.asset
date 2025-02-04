@@ -26,17 +26,14 @@ MonoBehaviour:
   flameDuration: 0
   type: 0
   cost: 120
-  description: the grenade launcher is a versatile weapon, able to deal with groups
-    of enemies while also dealing significant damage to single targets. it suffers
-    however from a low fire rate and high damage variance
+  description: 'blast weapon
+
+    effective against small to medium enemies'
   abilities:
   - {fileID: 11400000, guid: ff8c339011d9f0d4f8b0fd5f7ef123ab, type: 2}
   traits: 
   tracerPrefab: {fileID: 1646889780221744, guid: 8e73321ec9f50db47a5a448613e3ca2d,
     type: 3}
-  explosionPrefab: {fileID: 8893649087654275822, guid: feaa2eff137ffc1448f2149fa8756285,
-    type: 3}
-  firePrefab: {fileID: 0}
   audio: {fileID: 11400000, guid: 12775d11220a42e439a61a3b19b749bc, type: 2}
   impactEffect: {fileID: 8893649087654275822, guid: 67b64be253f660e4cadc693066054120,
     type: 3}

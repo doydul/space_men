@@ -262,7 +262,7 @@ public static class GameplayOperations {
             var item = chest.contents.item;
             PlayerSave.current.inventory.AddItem(chest.contents.item);
             string weaponOrArmour = item.isWeapon ? "a weapon" : "some armour";
-            ModalPopup.instance.DisplayContent(Resources.Load<Transform>("Prefabs/UI/ItemReward")).GetComponent<ItemReward>().SetText($"you found {weaponOrArmour}\n{chest.contents.item.name}");
+            // ModalPopup.instance.DisplayContent(Resources.Load<Transform>("Prefabs/UI/ItemReward")).GetComponent<ItemReward>().SetText($"you found {weaponOrArmour}\n{chest.contents.item.name}");
             var itemInfoBox = ModalPopup.instance.DisplayContentInContainer(Resources.Load<GameObject>("Prefabs/UI/ItemInfoBox")).GetComponent<ItemInfoBox>();
             if (item.isWeapon) itemInfoBox.SetItem(Weapon.Get(item.name));
             else itemInfoBox.SetItem(Armour.Get(item.name));
