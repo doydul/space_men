@@ -32,6 +32,7 @@ public class Punch : Ability {
         AbilityInfoPanel.instance.Hide();
         
         owner.actionsSpent += 1;
+        owner.MoveAnimation();
         yield return GameplayOperations.PerformTurnAnimation(owner, Actor.FacingToDirection(hitTile.gridLocation - owner.gridLocation));
         yield return new WaitForSeconds(0.2f);
         owner.PlayAudio(audio.Sample());
@@ -46,6 +47,7 @@ public class Punch : Ability {
         }
         
         yield return new WaitForSeconds(0.5f);
+        owner.StationaryAnimation();
     }
     
     public override void Setup() {
