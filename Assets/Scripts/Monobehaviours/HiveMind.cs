@@ -93,6 +93,13 @@ public class HiveMind : MonoBehaviour {
             tracker.remainingThreat += tracker.startingThreat / 5;
             Debug.Log($"{tracker.profile.name}, new threat: {tracker.remainingThreat}");
         }
+        Debug.Log("Initiating emergency procedure...");
+        foreach (var door in Map.instance.GetActors<Door>()) {
+            door.Remove();
+        }
+        foreach (var alien in Map.instance.GetActors<Alien>()) {
+            alien.Awaken();
+        }
     }
 
     private void ContemplateMoves() {

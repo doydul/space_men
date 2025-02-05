@@ -64,7 +64,9 @@ public class RangedAlienBehaviour : AlienBehaviour {
             if (soldiersInLOS.Count() <= 0) yield break;
             var targetPos = soldiersInLOS.MinBy(pos => Map.instance.ManhattanDistance(pos, body.gridLocation));
             var target = Map.instance.GetTileAt(targetPos).GetActor<Soldier>();
-            yield return GameplayOperations.PerformAlienShoot(body, weaponProfile, target);
+            if (weaponProfile.InRange(body.gridLocation, targetPos)) {
+                yield return GameplayOperations.PerformAlienShoot(body, weaponProfile, target);
+            }
         }
     }
 }

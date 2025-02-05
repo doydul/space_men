@@ -129,6 +129,7 @@ public static class GameplayOperations {
         var targetTile = target.tile;
         var diff = target.realLocation - alien.realLocation;
         var angle = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(diff.y, diff.x) - 90);
+        CameraController.CentreCameraOn(target.tile);
         yield return PerformTurnAnimation(alien, angle);
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < weapon.shots; i++) {
@@ -150,6 +151,7 @@ public static class GameplayOperations {
     public static IEnumerator PerformAlienOrdnance(Alien alien, Weapon weapon, Tile targetTile) {
         var diff = targetTile.realLocation - alien.realLocation;
         var angle = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(diff.y, diff.x) - 90);
+        CameraController.CentreCameraOn(targetTile);
         yield return PerformTurnAnimation(alien, angle);
         alien.PlayAudio(weapon.audio.shoot);
         yield return SFXLayer.instance.PerformTracer(alien.muzzlePosition, targetTile.transform.position, weapon, true);

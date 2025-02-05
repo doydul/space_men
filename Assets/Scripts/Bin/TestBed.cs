@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class TestBed : MonoBehaviour {
     
     public bool useTestMap;
+    public bool disableFog;
     public float difficultyLevel;
     
     public int groupishness;
@@ -29,6 +30,7 @@ public class TestBed : MonoBehaviour {
         
         save.mission = Mission.Generate();
         Debug.Log("Loading Mission scene...");
+        FogManager.disabled = disableFog;
         if (useTestMap) {
             MapInstantiator.skipGenerate = true;
             SceneManager.LoadScene("MapTest");

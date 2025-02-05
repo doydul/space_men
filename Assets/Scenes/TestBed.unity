@@ -164,17 +164,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  difficultyLevel: 0
+  disableFog: 0
+  difficultyLevel: 1
   groupishness: 0
-  armouredness: 0
+  armouredness: 50
   quickness: 0
   bigness: 0
   weapons:
-  - SIKR-5
-  - SIKR-5
-  - SIKR-5
+  - Plasma Gun
+  - Plasma Gun
+  - Plasma Gun
+  - Grenade Launcher
   armour:
-  - Flak Vest
+  - Medium
+  - Light
   - Flak Vest
   - Flak Vest
   unlockedAliens: []

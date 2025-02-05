@@ -59,9 +59,10 @@ public class BlastAlienBehaviour : AlienBehaviour {
             var targetablePositions = new HashSet<Vector2>();
             foreach (var soldierPos in soldiersInLOS) {
                 foreach (var tile in Map.instance.iterator.RadiallyFrom(soldierPos, multitargetRadius)) {
-                    if (body.CanSee(tile.gridLocation)) targetablePositions.Add(tile.gridLocation);
+                    if (body.CanSee(tile.gridLocation) && weaponProfile.InRange(body.gridLocation, tile.gridLocation)) targetablePositions.Add(tile.gridLocation);
                 }
             }
+            if (targetablePositions.Count() <= 0) yield break;
             
             // find the tile that will hit the most targets (or closest if there's a tie)
             Vector2 bestTargetPos = default(Vector2);

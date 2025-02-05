@@ -5,6 +5,7 @@ using System.Collections;
 public class Tracer : MonoBehaviour {
 
     public float speed;
+    public float length = 1;
     public bool beam;
 
     public Vector2 realLocation => transform.position;
@@ -25,10 +26,10 @@ public class Tracer : MonoBehaviour {
             float t = i / iterations;
             Vector3 newPos = Vector3.Lerp(from, to, t);
             newPos.z = transform.position.z;
-            if (iterations - i < 1) {
+            if (iterations - i < length) {
                 effect.SetPoints(newPos, new Vector3(to.x, to.y, newPos.z));
             } else {
-                effect.SetPoints(newPos, newPos + direction);
+                effect.SetPoints(newPos, newPos + direction * length);
             }
             effect.SetT(i / iterations);
             yield return null;

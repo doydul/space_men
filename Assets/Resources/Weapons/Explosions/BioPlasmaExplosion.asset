@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: accdc28c44fdb284daf256e01b573dce, type: 3}
+  m_Name: BioPlasmaExplosion
+  m_EditorClassIdentifier: 
+  explosionVFX: {fileID: 8893649087654275822, guid: feaa2eff137ffc1448f2149fa8756285,
+    type: 3}
+  fireVFX: {fileID: 0}
+  blastDecals:
+  - {fileID: -8709898560276526087, guid: 78fd544ab67d1674da997303849d410f, type: 3}
+  - {fileID: -8709898560276526087, guid: 7dc5b7a777386934692374724b3acb18, type: 3}

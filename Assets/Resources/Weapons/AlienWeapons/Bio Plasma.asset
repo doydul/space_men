@@ -21,7 +21,7 @@ MonoBehaviour:
   damageType: 0
   shots: 1
   ammo: -1
-  range: -1
+  range: 10
   blast: 10
   flameDuration: 0
   type: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
 '
   abilities: []
   traits: 
-  tracerPrefab: {fileID: 1646889780221744, guid: 2dfac1135958ec84cac2d2cb6fdc3f4b,
+  tracerPrefab: {fileID: 1646889780221744, guid: 697f954549b06f64b851c350f54977e7,
     type: 3}
   audio: {fileID: 11400000, guid: 12775d11220a42e439a61a3b19b749bc, type: 2}
   impactEffect: {fileID: 8893649087654275822, guid: 67b64be253f660e4cadc693066054120,
