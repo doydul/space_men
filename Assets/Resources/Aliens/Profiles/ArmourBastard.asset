@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArmourBastard
   m_EditorClassIdentifier: 
   typeName: ArmourBastard
-  difficultyLevel: 1
+  difficultyLevel: 2
   threat: 25
   weight: 10
   typeCondition: 0

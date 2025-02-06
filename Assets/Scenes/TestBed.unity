@@ -167,19 +167,19 @@ MonoBehaviour:
   disableFog: 0
   difficultyLevel: 1
   groupishness: 0
-  armouredness: 50
+  armouredness: 70
   quickness: 0
   bigness: 0
   weapons:
+  - Assault Rifle
+  - Assault Rifle
   - Plasma Gun
   - Plasma Gun
-  - Plasma Gun
-  - Grenade Launcher
   armour:
   - Medium
-  - Light
-  - Flak Vest
-  - Flak Vest
+  - Medium
+  - Medium
+  - Medium
   unlockedAliens: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

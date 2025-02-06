@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: a relatively tough ranged combatant
   sprite: {fileID: 8116646344494371291, guid: 62d8845e76382f74ca6337f9e622d5c2, type: 3}
-  maxHealth: 20
-  armour: 10
+  maxHealth: 16
+  armour: 8
   accModifier: 15
   damage: 10
   movement: 4

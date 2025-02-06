@@ -59,7 +59,11 @@ public class BlastAlienBehaviour : AlienBehaviour {
             var targetablePositions = new HashSet<Vector2>();
             foreach (var soldierPos in soldiersInLOS) {
                 foreach (var tile in Map.instance.iterator.RadiallyFrom(soldierPos, multitargetRadius)) {
-                    if (body.CanSee(tile.gridLocation) && weaponProfile.InRange(body.gridLocation, tile.gridLocation)) targetablePositions.Add(tile.gridLocation);
+                    if (body.CanSee(tile.gridLocation) && // target must be within LOS
+                      weaponProfile.InRange(body.gridLocation, tile.gridLocation) && // target must be in range
+                      Map.instance.ManhattanDistance(body.gridLocation, tile.gridLocation) > multitargetRadius) { // don't blow yourself up
+                        targetablePositions.Add(tile.gridLocation);
+                    }
                 }
             }
             if (targetablePositions.Count() <= 0) yield break;
