@@ -97,7 +97,7 @@ public class MapInputController : MonoBehaviour {
                         UIState.instance.GetSelectedActor().Interact(tile);
                     } else {
                         var actor = tile.GetActor<Actor>();
-                        if (actor != null) {
+                        if (actor != null && !tile.foggy) {
                             actor.Select();
                         }
                     }

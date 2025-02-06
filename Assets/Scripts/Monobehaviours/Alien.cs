@@ -106,7 +106,7 @@ public class Alien : Actor {
     public override void Interact(Tile tile) {
         var actor = tile.GetActor<Actor>();
         Deselect();
-        if (actor != null) {
+        if (actor != null && !tile.foggy) {
             actor.Select();
         }
     }
