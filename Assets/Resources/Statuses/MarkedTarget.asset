@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1269817b82300974588541e42d0896b2, type: 3}
-  m_Name: Overwatch
+  m_Script: {fileID: 11500000, guid: 2d62ce2d9fd6d5742bd5379d4427528f, type: 3}
+  m_Name: MarkedTarget
   m_EditorClassIdentifier: 
-  description: fire at any enemies that move into range. cannot move or act after
-    activating overwatch
-  sprite: {fileID: 21300000, guid: faf4c65fc98ff1e4d87395fb7baebbd5, type: 3}

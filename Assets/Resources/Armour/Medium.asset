@@ -23,6 +23,7 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: cd6ac93939c4e2d40a30e3627bc167c9, type: 2}
   - {fileID: 11400000, guid: 9f30454173be9ce459a01e49cc54e5e3, type: 2}
+  - {fileID: 11400000, guid: 1193a2dd854cb30449ba4d1b50cb5804, type: 2}
   traits: 
   headSprite: {fileID: 21300000, guid: dd1da066564958d479cf74acd5e26754, type: 3}
   bodySprite: {fileID: 21300000, guid: 78fdc6c697b3a144bb04b55094d522ee, type: 3}

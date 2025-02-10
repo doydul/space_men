@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class Alien : Actor {
 
@@ -34,7 +35,7 @@ public class Alien : Actor {
     public bool CanSee(Vector2 gridLocation) => Map.instance.CanBeSeenFrom(new AlienLosMask(), gridLocation, this.gridLocation);
     public bool CanSeeFrom(Vector2 gridLocation, Vector2 from) => Map.instance.CanBeSeenFrom(new AlienLosMask(), gridLocation, from);
     public Vector3 muzzlePosition => new Vector3(muzzleFlashLocation.position.x, muzzleFlashLocation.position.y, tile.transform.position.z);
-
+    
     protected override void Awake() {
         base.Awake();
         attackIndicator.enabled = false;
@@ -61,10 +62,11 @@ public class Alien : Actor {
     }
 
     public override bool Hurt(int damage, DamageType damageType = DamageType.Normal) {
-        int effectiveArmour = armour;
+        damage = Mathf.RoundToInt(damage * damageMultiplier);
+        int effectiveArmour = Mathf.RoundToInt(armour * armourMultiplier);
         switch(damageType) {
             case DamageType.Energy:
-                effectiveArmour = (int)Mathf.Round(armour / 4f);
+                effectiveArmour = Mathf.RoundToInt(armour / 4f);
                 break;
             case DamageType.IgnoreArmour:
                 effectiveArmour = 0;
@@ -72,9 +74,9 @@ public class Alien : Actor {
         }
         
         if (damage <= effectiveArmour / 2) {
-            base.Hurt((int)Mathf.Round(damage / 4f));
+            base.Hurt(Mathf.RoundToInt(damage / 4f));
         } else if (damage <= effectiveArmour) {
-            base.Hurt((int)Mathf.Round(damage / 2f));
+            base.Hurt(Mathf.RoundToInt(damage / 2f));
         } else {
             PlayAudio(audio.hurt.Sample());
             base.Hurt(damage);
@@ -87,7 +89,7 @@ public class Alien : Actor {
         int effectiveArmour = armour;
         switch(damageType) {
             case DamageType.Energy:
-                effectiveArmour = (int)Mathf.Round(armour / 4f);
+                effectiveArmour = Mathf.RoundToInt(armour / 4f);
                 break;
             case DamageType.IgnoreArmour:
                 effectiveArmour = 0;
@@ -129,6 +131,7 @@ public class Alien : Actor {
             }
         }
     }
+
 }
 
 public class AlienImpassableTerrain : IMask {

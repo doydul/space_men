@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0002a13185dd5d24791a12a5753203e4, type: 3}
+  m_Name: MarkTarget
+  m_EditorClassIdentifier: 
+  description: 
+  sprite: {fileID: 21300000, guid: adeca7b8be77da047a6787332e546b03, type: 3}
+  status: {fileID: 11400000, guid: 6b551130a2bcb5f42b4566bb89510a9d, type: 2}
+  uses: 1
+  damageMultiplier: 1.5

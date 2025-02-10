@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public abstract class Actor : MonoBehaviour {
 
@@ -37,6 +39,10 @@ public abstract class Actor : MonoBehaviour {
     public AudioCollection hurtSounds;
     public AudioCollection dieSounds;
     public ParticleBurst hitEffect;
+    
+    protected List<StatusEffect> statuses = new();
+    public float damageMultiplier { get; set; } = 1f;
+    public float armourMultiplier { get; set; } = 1f;
 
     public string id { get; set; }
     public long index { get; set; } // remove me
@@ -166,4 +172,9 @@ public abstract class Actor : MonoBehaviour {
 
     public virtual void Select() {}
     public virtual void Deselect() {}
+    
+        
+    public void AddStatus(StatusEffect status) => statuses.Add(status);
+    public void RemoveStatus(StatusEffect status) => statuses.Remove(status);
+    public bool HasStatus(StatusEffect status) => statuses.Where(stat => status.GetType() == stat.GetType()).Any();
 }
