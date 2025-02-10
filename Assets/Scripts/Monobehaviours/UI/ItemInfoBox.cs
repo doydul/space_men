@@ -44,6 +44,6 @@ public class ItemInfoBox : MonoBehaviour {
                             $"<align=left>hitpoints {armour.maxHealth}<line-height=0>\n" +
                             $"<align=center>movement {armour.movement + armour.sprint}\n" +
                             $"<align=right>type {type}";
-        descElement.text = "";
+        descElement.text = $"<allcaps>{armour.description}";
     }
 }

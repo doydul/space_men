@@ -19,6 +19,7 @@ public class Armour : ScriptableObject, IWeighted {
     public int armourValue;
     public Type type;
     public int cost;
+    [TextArea] public string description;
     public int maxHealth;
     public int sightRange;
     public Ability[] abilities;
