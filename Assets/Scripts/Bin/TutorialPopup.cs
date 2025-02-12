@@ -13,13 +13,15 @@ public class TutorialPopup : MonoBehaviour {
     
     public TMP_Text tutorialText;
     public Transform panel;
-    public Image hole;
+    public GameObject hole;
+    public GameObject backdrop;
     public float holeOffset;
     
     bool hideHole = true;
     
     void Start() {
         if (hideHole) HideHole();
+        else backdrop.SetActive(false);
     }
     
     public void SetText(string text) {
@@ -39,7 +41,7 @@ public class TutorialPopup : MonoBehaviour {
         }
     }
     
-    public void HideHole() => hole.enabled = false;
+    public void HideHole() => hole.SetActive(false);
     
     public void Ok() {
         Destroy(gameObject);

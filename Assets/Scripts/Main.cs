@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Linq;
 
 public class Main : MonoBehaviour {
 
@@ -40,6 +39,13 @@ public class Main : MonoBehaviour {
         FogManager.instance.UpdateFog(true);
         SoldierIconHeader.instance.DisplaySoldiers();
         HiveMind.instance.Init();
+        
+        StartCoroutine(ShowIntro());
+    }
+    
+    IEnumerator ShowIntro() {
+        yield return new WaitForSeconds(3);
+        Tutorial.Show("intro");
     }
 
     // TODO move me somewhere else!

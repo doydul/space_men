@@ -55,7 +55,21 @@ public class Tutorial {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRectTrans, screenPos, parent.GetComponent<Canvas>().worldCamera, out var movePos);
             var targetPos = parent.TransformPoint(movePos);
             trans.position = targetPos;
-            
+        }
+    }
+    
+    public static void Show(string tutorialName) {
+        if (!Shown(tutorialName)) {
+            Record(tutorialName);
+            var parent = Object.FindObjectsOfType<Canvas>().First(canv => canv.gameObject.name != "Backdrop").transform;
+            var trans = Object.Instantiate(Resources.Load<Transform>(popupResourcePath), parent);
+            var popup = trans.GetComponent<TutorialPopup>();
+            var parentRectTrans = parent as RectTransform;
+            popup.SetText(tutorialText.Get(tutorialName));
+            var screenPos = new Vector2(parentRectTrans.rect.width * parentRectTrans.localScale.x / 2, parentRectTrans.rect.height * parentRectTrans.localScale.y / 2);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRectTrans, screenPos, parent.GetComponent<Canvas>().worldCamera, out var movePos);
+            var targetPos = parent.TransformPoint(movePos);
+            trans.position = targetPos;
         }
     }
 }
