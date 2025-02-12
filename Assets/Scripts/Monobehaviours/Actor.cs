@@ -35,6 +35,7 @@ public abstract class Actor : MonoBehaviour {
     public Decal[] bloodSplats;
     public GameObject deflectIndicator;
     public HealthIndicator healthIndicator;
+    public StatusesBar statusesBar;
     public AudioCollection walkSounds;
     public AudioCollection hurtSounds;
     public AudioCollection dieSounds;
@@ -174,7 +175,18 @@ public abstract class Actor : MonoBehaviour {
     public virtual void Deselect() {}
     
         
-    public void AddStatus(StatusEffect status) => statuses.Add(status);
-    public void RemoveStatus(StatusEffect status) => statuses.Remove(status);
+    public void AddStatus(StatusEffect status) {
+        statuses.Add(status);
+        statusesBar.DisplayStatuses(statuses);
+        healthIndicator.Show();
+    }
+    public void RemoveStatus(StatusEffect status) {
+        statuses.Remove(status);
+        statusesBar.DisplayStatuses(statuses);
+        if (statuses.Count <= 0) {
+            healthIndicator.Hide();
+            SetHealthIndicatorSize();
+        }
+    }
     public bool HasStatus(StatusEffect status) => statuses.Where(stat => status.GetType() == stat.GetType()).Any();
 }

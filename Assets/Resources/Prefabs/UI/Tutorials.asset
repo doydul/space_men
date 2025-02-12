@@ -16,3 +16,16 @@ MonoBehaviour:
   - key: select_soldier
     value: the green highlights show tiles your soldier can move to. tap a tile to
       make your soldier move there
+  - key: first_encounter
+    value: this is an alien! aliens will be alerted if you move too close or if they
+      encounter gunfire. click on them to see more information
+  - key: alien_info
+    value: this panel shows key statistics about the alien. the map tiles highlighted
+      in red show where the alien can move/attack on it's next turn
+  - key: armoured_enemy
+    value: aliens with armour take half damage from any attack whose damage value
+      is less than or equal to the armour value. they're vulnerable to energy weapons
+      or weapons with high damage values
+  - key: basic_attack
+    value: this alien is highlighted because the selected soldier can attack it.
+      tapping it will initiate a basic attack

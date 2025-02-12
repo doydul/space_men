@@ -2,6 +2,9 @@ using UnityEngine;
 
 public abstract class StatusEffect : ScriptableObject {
     
+    public Sprite sprite;
+    public Color tint;
+    
     protected Actor actor;
     
     public void Apply(Actor target) {

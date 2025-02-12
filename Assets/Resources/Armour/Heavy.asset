@@ -18,6 +18,7 @@ MonoBehaviour:
   armourValue: 70
   type: 2
   cost: 150
+  description: immune to critical hits
   maxHealth: 26
   sightRange: 8
   abilities:

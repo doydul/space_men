@@ -179,6 +179,7 @@ MonoBehaviour:
   - {fileID: -8709898560276526087, guid: e6faccf07a4455745b33b329f5f4242e, type: 3}
   deflectIndicator: {fileID: 0}
   healthIndicator: {fileID: 4154636579335064727}
+  statusesBar: {fileID: 9156150223463201380}
   walkSounds: {fileID: 11400000, guid: 34e6dc9098801674596cf506cdbafe41, type: 2}
   hurtSounds: {fileID: 11400000, guid: c49753f553989794fa477df0fc81f267, type: 2}
   dieSounds: {fileID: 11400000, guid: 6dfe836edaf62b94c84240113c98c092, type: 2}
@@ -1429,6 +1430,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80bf7012fedec5442aca9ec9bf10b242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9156150223463201380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6091094782884280999, guid: 712a8c82912054809a023fb368235edd,
+    type: 3}
+  m_PrefabInstance: {fileID: 3140913789154508995}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8678219be8154244b4fa2f3ce99d57c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7482793424685820233

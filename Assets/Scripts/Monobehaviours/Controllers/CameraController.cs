@@ -35,19 +35,27 @@ public class CameraController : MonoBehaviour {
     }
     
     Coroutine co;
-    public static void CentreCameraOn(Tile tile) {
+    public static void CentreCameraOn(Vector2 targetLocation, bool snap = false) => CentreCameraOn(Map.instance.GetTileAt(targetLocation), snap);
+    public static void CentreCameraOn(Actor actor, bool snap = false) => CentreCameraOn(actor.tile, snap);
+    public static void CentreCameraOn(Tile tile, bool snap = false) => CentreCameraOn(tile.transform, snap);
+    public static void CentreCameraOn(Transform trans, bool snap = false) {
         if (instance.co != null) instance.StopCoroutine(instance.co);
-        instance.co = instance.StartCoroutine(PerformCentreCameraOn(tile));
+        if (snap) {
+            var pos = instance.transform.position;
+            pos.x = trans.position.x;
+            pos.y = trans.position.y;
+            instance.transform.position = pos;
+        } else {
+            instance.co = instance.StartCoroutine(PerformCentreCameraOn(trans));
+        }
     }
-    public static void CentreCameraOn(Vector2 targetLocation) => CentreCameraOn(Map.instance.GetTileAt(targetLocation));
-    public static void CentreCameraOn(Actor actor) => CentreCameraOn(actor.tile);
     
-    static IEnumerator PerformCentreCameraOn(Tile tile) {
+    static IEnumerator PerformCentreCameraOn(Transform trans) {
         var startTime = Time.time;
         var startPos = instance.transform.position;
         var targetPos = startPos;
-        targetPos.x = tile.transform.position.x;
-        targetPos.y = tile.transform.position.y;
+        targetPos.x = trans.position.x;
+        targetPos.y = trans.position.y;
         float duration = (targetPos - startPos).magnitude / instance.moveSpeed;
         
         while (Time.time - startTime < duration) {

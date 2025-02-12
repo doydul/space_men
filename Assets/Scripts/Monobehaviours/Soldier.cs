@@ -178,6 +178,7 @@ public class Soldier : Actor {
             foreach (var alien in Map.instance.GetActors<Alien>()) {
                 if (!alien.tile.foggy && CanSee(alien.gridLocation) && InRange(alien.gridLocation)) {
                     MapHighlighter.instance.HighlightTile(alien.tile, Color.red);
+                    Tutorial.Show(alien.transform, "basic_attack");
                 }
             }
         }
