@@ -1,13 +1,13 @@
 using UnityEngine;
-using System.Linq;
 using TMPro;
 
 public class BenchComponent : MonoBehaviour {
     
-    public SoldierProfileIcon[] soldierProfileIcons;
     public Transform soldierPrototype;
     public TMP_Text hireButtonText;
+    public TMP_Text soldierInfoText;
     
+    int squadPositionId;
     MetaSoldier activeBenchSoldier;
     
     const int hireCost = 300;
@@ -17,8 +17,10 @@ public class BenchComponent : MonoBehaviour {
         Close();
     }
     
-    public void Open() {
-        DisplaySquadSoldiers();
+    public void Open(int squadPositionId) {
+        soldierInfoText.text = "";
+        activeBenchSoldier = null;
+        this.squadPositionId = squadPositionId;
         DisplayBenchSoldiers();
         DisplayHireButtonText();
         gameObject.SetActive(true);
@@ -27,6 +29,16 @@ public class BenchComponent : MonoBehaviour {
     public void Close() {
         gameObject.SetActive(false);
         CampaignUI.instance.DisplaySquad();
+    }
+    
+    public void Confirm() {
+        if (activeBenchSoldier != null) {
+            var previousSoldier = PlayerSave.current.squad.RemoveMetaSoldier(squadPositionId);
+            if (previousSoldier != null) PlayerSave.current.bench.Add(previousSoldier);
+            PlayerSave.current.squad.AddMetaSoldier(activeBenchSoldier);
+            PlayerSave.current.bench.Remove(activeBenchSoldier);
+            Close();
+        }
     }
     
     public void HireSoldier() {
@@ -39,38 +51,9 @@ public class BenchComponent : MonoBehaviour {
         }
     }
     
-    public void ClickSquadSoldier(int index) {
-        if (activeBenchSoldier != null) {
-            if (index < PlayerSave.current.squad.Count) {
-                PlayerSave.current.squad.AddMetaSoldier(activeBenchSoldier);
-                PlayerSave.current.bench.Remove(activeBenchSoldier);
-                var metaSoldier = PlayerSave.current.squad.RemoveMetaSoldier(index);
-                PlayerSave.current.bench.Add(metaSoldier);
-            } else {
-                PlayerSave.current.squad.AddMetaSoldier(activeBenchSoldier);
-                PlayerSave.current.bench.Remove(activeBenchSoldier);
-            }
-        } else {
-            if (index < PlayerSave.current.squad.Count) {
-                var metaSoldier = PlayerSave.current.squad.RemoveMetaSoldier(index);
-                PlayerSave.current.bench.Add(metaSoldier);
-            }
-        }
-        activeBenchSoldier = null;
-        Open();
-    }
-    
     public void ClickBenchedSoldier(int index) {
         activeBenchSoldier = PlayerSave.current.bench[index];
-    }
-    
-    void DisplaySquadSoldiers() {
-        foreach (var icon in soldierProfileIcons) icon.DisplayMetaSoldier(null);
-        int index = 0;
-        foreach (var metaSoldier in PlayerSave.current.squad.GetMetaSoldiers()) {
-            soldierProfileIcons[index].DisplayMetaSoldier(metaSoldier);
-            index++;
-        }
+        DisplaySoldierInfo(activeBenchSoldier);
     }
     
     void DisplayBenchSoldiers() {
@@ -91,7 +74,11 @@ public class BenchComponent : MonoBehaviour {
         }
     }
     
+    void DisplaySoldierInfo(MetaSoldier soldier) {
+        soldierInfoText.text = $"{soldier.name}\nmissions: 0\nkills: 0\nequipment:\n{soldier.weapon.name}\n{soldier.armour.name}";
+    }
+    
     void DisplayHireButtonText() {
-        hireButtonText.text = $"hire soldier {hireCost}/{PlayerSave.current.credits}";
+        hireButtonText.text = $"hire soldier {PlayerSave.current.credits}/{hireCost}";
     }
 }

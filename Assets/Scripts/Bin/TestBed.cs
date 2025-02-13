@@ -5,6 +5,7 @@ public class TestBed : MonoBehaviour {
     
     public bool useTestMap;
     public bool disableFog;
+    public int credits;
     public float difficultyLevel;
     
     public int groupishness;
@@ -14,6 +15,9 @@ public class TestBed : MonoBehaviour {
     
     public string[] weapons;
     public string[] armour;
+    
+    public string[] inventoryWeapons;
+    public string[] inventoryArmour;
     
     public string[] unlockedAliens;
     
@@ -25,6 +29,9 @@ public class TestBed : MonoBehaviour {
         save.squad = GenerateSquad();
         SetEnemyProfileValues();
         
+        PlayerSave.current.credits = credits;
+        foreach(var weaponName in inventoryWeapons) PlayerSave.current.inventory.AddItem(new InventoryItem { type = InventoryItem.Type.Weapon, name = weaponName });
+        foreach(var armourName in inventoryArmour) PlayerSave.current.inventory.AddItem(new InventoryItem { type = InventoryItem.Type.Armour, name = armourName });
         
         foreach (var alienName in unlockedAliens) PlayerSave.current.alienUnlocks.Unlock(alienName);
         

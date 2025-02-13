@@ -25,9 +25,14 @@ public class MetaSquad {
         return metaSoldier;
     }
     public MetaSoldier RemoveMetaSoldier(int index) {
+        if (index >= Count) return null;
         var metaSoldier = metaSoldiers[index];
         metaSoldiers.RemoveAt(index);
         return metaSoldier;
+    }
+    
+    public bool SlotOccupied(int slotIndex) {
+        return slotIndex < Count;
     }
     
     public void RemoveMetaSoldierById(string id) => RemoveMetaSoldier(GetMetaSoldier(id));
