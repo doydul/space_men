@@ -1,13 +1,13 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class WorkshopComponent : MonoBehaviour {
     
     public TMP_Text creditsText;
     public TMP_Text infoText;
     
-    public Transform itemPrototype;
-    public Transform blueprintPrototype;
+    public ItemListElement itemPrototype;
     
     public GameObject scrapButton;
     public GameObject researchButton;
@@ -15,25 +15,15 @@ public class WorkshopComponent : MonoBehaviour {
     
     InventoryItem activeItem;
     InventoryItem activeBlueprint;
+    List<ItemListElement> itemElements;
     
     void Start() {
         itemPrototype.gameObject.SetActive(false);
-        blueprintPrototype.gameObject.SetActive(false);
         scrapButton.SetActive(false);
         researchButton.SetActive(false);
         constructButton.SetActive(false);
-        Close();
-    }
-    
-    public void Open() {
         DisplayInventoryItems();
-        DisplayBlueprints();
-        gameObject.SetActive(true);
         infoText.text = "";
-    }
-    
-    public void Close() {
-        gameObject.SetActive(false);
     }
     
     public void SelectItem(InventoryItem item) {
@@ -61,7 +51,7 @@ public class WorkshopComponent : MonoBehaviour {
         if (PlayerSave.current.credits >= cost) {
             PlayerSave.current.credits -= cost;
             PlayerSave.current.inventory.blueprints.Add(activeItem.Dup());
-            DisplayBlueprints();
+            DisplayInventoryItems();
         }
     }
     
@@ -74,34 +64,53 @@ public class WorkshopComponent : MonoBehaviour {
         }
     }
     
-    void DisplayBlueprints() {
-        blueprintPrototype.parent.DestroyChildren(1);
+    // void DisplayBlueprints() {
+    //     blueprintPrototype.parent.DestroyChildren(1);
         
-        foreach (var blueprint in PlayerSave.current.inventory.blueprints) {
-            var blueprintTrans = Instantiate(blueprintPrototype, blueprintPrototype.parent);
-            blueprintTrans.gameObject.SetActive(true);
-            var textComponent = blueprintTrans.GetComponentInChildren<TMP_Text>();
-            textComponent.text = blueprint.name;
-            var buttonComponent = blueprintTrans.GetComponentInChildren<ButtonHandler>();
-            buttonComponent.action.AddListener(() => {
-                SelectBlueprint(blueprint);
-            });
-        }
-        DisplayCredits();
-    }
+    //     foreach (var blueprint in PlayerSave.current.inventory.blueprints) {
+    //         var blueprintTrans = Instantiate(blueprintPrototype, blueprintPrototype.parent);
+    //         blueprintTrans.gameObject.SetActive(true);
+    //         var textComponent = blueprintTrans.GetComponentInChildren<TMP_Text>();
+    //         textComponent.text = blueprint.name;
+    //         var buttonComponent = blueprintTrans.GetComponentInChildren<ButtonHandler>();
+    //         buttonComponent.action.AddListener(() => {
+    //             SelectBlueprint(blueprint);
+    //         });
+    //     }
+    //     DisplayCredits();
+    // }
     
     void DisplayInventoryItems() {
-        itemPrototype.parent.DestroyChildren(1);
+        itemPrototype.transform.parent.DestroyChildren(1);
+        itemElements = new();
         
         foreach (var item in PlayerSave.current.inventory.items) {
-            var itemTrans = Instantiate(itemPrototype, itemPrototype.parent);
-            itemTrans.gameObject.SetActive(true);
-            var textComponent = itemTrans.GetComponentInChildren<TMP_Text>();
+            var itemElement = Instantiate(itemPrototype, itemPrototype.transform.parent);
+            itemElement.gameObject.SetActive(true);
+            var textComponent = itemElement.GetComponentInChildren<TMP_Text>();
             textComponent.text = item.name;
-            var buttonComponent = itemTrans.GetComponentInChildren<ButtonHandler>();
+            var buttonComponent = itemElement.GetComponentInChildren<ButtonHandler>();
             buttonComponent.action.AddListener(() => {
+                foreach (var itemEl in itemElements) itemEl.Deselect();
+                itemElement.Select();
                 SelectItem(item);
             });
+            itemElement.isBlueprint = false;
+            itemElements.Add(itemElement);
+        }
+        foreach (var blueprint in PlayerSave.current.inventory.blueprints) {
+            var itemElement = Instantiate(itemPrototype, itemPrototype.transform.parent);
+            itemElement.gameObject.SetActive(true);
+            var textComponent = itemElement.GetComponentInChildren<TMP_Text>();
+            textComponent.text = blueprint.name;
+            var buttonComponent = itemElement.GetComponentInChildren<ButtonHandler>();
+            buttonComponent.action.AddListener(() => {
+                foreach (var itemEl in itemElements) itemEl.Deselect();
+                itemElement.Select();
+                SelectBlueprint(blueprint);
+            });
+            itemElement.isBlueprint = true;
+            itemElements.Add(itemElement);
         }
         DisplayCredits();
     }
@@ -126,12 +135,12 @@ public class WorkshopComponent : MonoBehaviour {
     }
     
     void DisplayCredits() {
-        creditsText.text = $"credits {PlayerSave.current.credits}";
+        creditsText.text = $"<sup>c</sup> {PlayerSave.current.credits}";
         if (activeItem != null) {
-            scrapButton.GetComponentInChildren<TMP_Text>().text = $"scrap {GetCost(activeItem) / 2}";
-            researchButton.GetComponentInChildren<TMP_Text>().text = $"research {GetCost(activeItem) * 2}";
+            scrapButton.GetComponentInChildren<TMP_Text>().text = $"scrap <sup>c</sup>{GetCost(activeItem) / 2}";
+            researchButton.GetComponentInChildren<TMP_Text>().text = $"research <sup>c</sup>{GetCost(activeItem) * 2}";
         } else if (activeBlueprint != null) {
-            constructButton.GetComponentInChildren<TMP_Text>().text = $"fabricate {GetCost(activeBlueprint)}";
+            constructButton.GetComponentInChildren<TMP_Text>().text = $"fabricate <sup>c</sup>{GetCost(activeBlueprint)}";
         }
      }
     

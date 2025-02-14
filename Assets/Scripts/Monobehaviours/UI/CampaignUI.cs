@@ -1,6 +1,6 @@
-using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CampaignUI : MonoBehaviour {
     
@@ -8,6 +8,9 @@ public class CampaignUI : MonoBehaviour {
 
     public BenchComponent bench;
     public SquadSoldierIcon[] soldierIcons;
+    public TMP_Text soldierInfoText;
+    public GameObject equipWeaponButton;
+    public GameObject equipArmourButton;
 
     void Awake() => instance = this;
 
@@ -34,6 +37,11 @@ public class CampaignUI : MonoBehaviour {
         } else {
             foreach (var icon in soldierIcons) icon.Deselect();
             soldierIcons[squadSlotId].Select();
+        }
+        if (PlayerSave.current.squad.SlotOccupied(squadSlotId)) {
+            soldierInfoText.text = PlayerSave.current.squad.GetMetaSoldier(squadSlotId).GetFullDescription();
+        } else {
+            soldierInfoText.text = "";
         }
     }
 }

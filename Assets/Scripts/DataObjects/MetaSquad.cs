@@ -13,6 +13,9 @@ public class MetaSquad {
     public MetaSoldier GetMetaSoldier(string id) {
         return metaSoldiers.Find(meta => meta.id == id);
     }
+    public MetaSoldier GetMetaSoldier(int slotIndex) {
+        return metaSoldiers[slotIndex];
+    }
 
     public void AddMetaSoldier(MetaSoldier metaSoldier) {
         var id = System.Guid.NewGuid().ToString();

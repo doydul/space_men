@@ -75,7 +75,7 @@ public class BenchComponent : MonoBehaviour {
     }
     
     void DisplaySoldierInfo(MetaSoldier soldier) {
-        soldierInfoText.text = $"{soldier.name}\nmissions: 0\nkills: 0\nequipment:\n{soldier.weapon.name}\n{soldier.armour.name}";
+        soldierInfoText.text = soldier.GetFullDescription();
     }
     
     void DisplayHireButtonText() {

@@ -21,4 +21,8 @@ public class MetaSoldier {
         foreach (var ability in soldier.weapon.abilities) ability.Attach(soldier);
         foreach (var ability in soldier.armour.abilities) ability.Attach(soldier);
     }
+    
+    public string GetFullDescription() {
+        return $"{name}\nmissions: 0\nkills: 0\nequipment:\n{weapon.name}\n{armour.name}";
+    }
 }
