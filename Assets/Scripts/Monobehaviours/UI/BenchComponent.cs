@@ -3,12 +3,13 @@ using TMPro;
 
 public class BenchComponent : MonoBehaviour {
     
+    public CampaignUI campaignUI;
     public Transform soldierPrototype;
     public TMP_Text hireButtonText;
     public TMP_Text soldierInfoText;
     
     int squadPositionId;
-    MetaSoldier activeBenchSoldier;
+    public MetaSoldier activeBenchSoldier { get; private set; }
     
     const int hireCost = 300;
     
@@ -38,6 +39,7 @@ public class BenchComponent : MonoBehaviour {
             PlayerSave.current.squad.AddMetaSoldier(activeBenchSoldier);
             PlayerSave.current.bench.Remove(activeBenchSoldier);
             Close();
+            campaignUI.RefreshSoldier(PlayerSave.current.squad.Count - 1);
         }
     }
     

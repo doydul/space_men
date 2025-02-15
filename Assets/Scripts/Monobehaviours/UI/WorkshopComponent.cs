@@ -13,8 +13,8 @@ public class WorkshopComponent : MonoBehaviour {
     public GameObject researchButton;
     public GameObject constructButton;
     
-    InventoryItem activeItem;
-    InventoryItem activeBlueprint;
+    public InventoryItem activeItem { get; set; }
+    public InventoryItem activeBlueprint { get; private set; }
     List<ItemListElement> itemElements;
     
     void Start() {
@@ -64,23 +64,7 @@ public class WorkshopComponent : MonoBehaviour {
         }
     }
     
-    // void DisplayBlueprints() {
-    //     blueprintPrototype.parent.DestroyChildren(1);
-        
-    //     foreach (var blueprint in PlayerSave.current.inventory.blueprints) {
-    //         var blueprintTrans = Instantiate(blueprintPrototype, blueprintPrototype.parent);
-    //         blueprintTrans.gameObject.SetActive(true);
-    //         var textComponent = blueprintTrans.GetComponentInChildren<TMP_Text>();
-    //         textComponent.text = blueprint.name;
-    //         var buttonComponent = blueprintTrans.GetComponentInChildren<ButtonHandler>();
-    //         buttonComponent.action.AddListener(() => {
-    //             SelectBlueprint(blueprint);
-    //         });
-    //     }
-    //     DisplayCredits();
-    // }
-    
-    void DisplayInventoryItems() {
+    public void DisplayInventoryItems() {
         itemPrototype.transform.parent.DestroyChildren(1);
         itemElements = new();
         
@@ -113,6 +97,20 @@ public class WorkshopComponent : MonoBehaviour {
             itemElements.Add(itemElement);
         }
         DisplayCredits();
+    }
+    
+    public void DisplayNonInventoryItemInfo(InventoryItem item) {
+        if (item == null) {
+            infoText.text = "";
+        } else {
+            infoText.text = item.isWeapon ? Weapon.Get(item.name).GetFullDescription() : Armour.Get(item.name).GetFullDescription();
+        }
+        foreach (var itemEl in itemElements) itemEl.Deselect();
+        scrapButton.SetActive(false);
+        researchButton.SetActive(false);
+        constructButton.SetActive(false);
+        activeItem = null;
+        activeBlueprint = null;
     }
     
     void DisplayButtons() {
