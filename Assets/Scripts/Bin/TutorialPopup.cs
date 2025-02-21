@@ -45,5 +45,6 @@ public class TutorialPopup : MonoBehaviour {
     
     public void Ok() {
         Destroy(gameObject);
+        Tutorial.Finished();
     }
 }
