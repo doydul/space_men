@@ -76,6 +76,8 @@ public class Soldier : Actor {
     public string weaponName => weapon.name;
 
     public List<Ability> abilities = new();
+    
+    public int turnCount;
 
     public void ShowMuzzleFlash() {
         muzzleFlashLocation.gameObject.SetActive(true);
@@ -105,6 +107,7 @@ public class Soldier : Actor {
     }
 
     public void Reset() {
+        turnCount++;
         tilesMoved = 0;
         actionsSpent = 0;
         reaction = null;

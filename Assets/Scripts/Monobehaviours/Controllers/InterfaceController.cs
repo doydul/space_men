@@ -38,9 +38,10 @@ public class InterfaceController : MonoBehaviour {
             newIcon.SetActive(true);
             var abilityIcon = newIcon.GetComponent<AbilityIcon>();
             abilityIcon.OnClick = () => {
+                Tutorial.Show(abilityIcon.transform, "abilities", true, true);
                 if (ability.CanUse()) ability.Use();
             };
-            abilityIcon.DisplaySpriteFor(ability);
+            abilityIcon.DisplaySpriteFor(ability); 
             if (!ability.CanUse()) abilityIcon.Disable();
         }
     }

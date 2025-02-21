@@ -37,3 +37,11 @@ MonoBehaviour:
       aliens. if one of your units is adjacent to a door, it can be opened as a free
       action by tapping on it. but beware, once a door has been opened it can't be
       closed again
+  - key: movement
+    value: the number of tiles a soldier can move in a turn is determined by the
+      armour it has equipped. its movement can be extended by using the sprint ability,
+      but this uses an action (each soldier gets one action per turn)
+  - key: abilities_continued
+    value: these are your soldier's abilities, tap them to see what they do. some
+      abilities, like sprint, are available to all soldiers, while others are dependant
+      on the armour and weapon that the soldier has equipped

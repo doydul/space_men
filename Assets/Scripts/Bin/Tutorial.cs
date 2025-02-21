@@ -37,11 +37,12 @@ public class Tutorial {
         PlayerPrefs.SetString("tutorials", $"{PlayerPrefs.GetString("tutorials")}:{tutorialName}");
     }
     
-    public static void Show(Transform target, string tutorialName, bool offset = true) {
+    public static void Show(Transform target, string tutorialName, bool offset = true, bool ui = false) {
         if (!Shown(tutorialName)) {
             if (tutorialInProgress) {
                 queue.Enqueue(new TutorialQueueItem { target = target, tutorialName = tutorialName, offset = offset });
             } else {
+                Debug.Log(tutorialName);
                 tutorialInProgress = true;
                 Record(tutorialName);
                 var parent = Object.FindObjectsOfType<Canvas>().First(canv => canv.gameObject.name != "Backdrop").transform;
@@ -49,10 +50,15 @@ public class Tutorial {
                 var popup = trans.GetComponent<TutorialPopup>();
                 var parentRectTrans = parent as RectTransform;
                 popup.SetText(tutorialText.Get(tutorialName));
-                var screenPos = Camera.main.WorldToScreenPoint(target.position);
-                if (screenPos.x > parentRectTrans.rect.width * parentRectTrans.localScale.x || screenPos.x < 0 || screenPos.y > parentRectTrans.rect.height * parentRectTrans.localScale.y || screenPos.y < 0) {
-                    CameraController.CentreCameraOn(target, true);
-                    screenPos = Camera.main.WorldToScreenPoint(target.position);
+                Vector2 screenPos;
+                if (ui) {
+                    screenPos = target.position;
+                } else {
+                    screenPos = Camera.main.WorldToScreenPoint(target.position); 
+                    if (screenPos.x > parentRectTrans.rect.width * parentRectTrans.localScale.x || screenPos.x < 0 || screenPos.y > parentRectTrans.rect.height * parentRectTrans.localScale.y || screenPos.y < 0) {
+                        CameraController.CentreCameraOn(target, true);
+                        screenPos = Camera.main.WorldToScreenPoint(target.position);
+                    }
                 }
                 if (offset) {
                     if (screenPos.y < borderWidth * parentRectTrans.localScale.y) popup.ApplyOffset(TutorialPopup.Offset.Above);

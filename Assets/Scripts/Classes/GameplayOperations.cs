@@ -209,8 +209,8 @@ public static class GameplayOperations {
         
         if (actor is Soldier) {
             MakeNoise(actor.gridLocation);
+            Tutorial.Show("movement");
             var adjacentDoorTile = Map.instance.AdjacentTiles(actor.tile).FirstOrDefault(tile => tile.HasActor<Door>());
-            Debug.Log(adjacentDoorTile);
             if (adjacentDoorTile != null) Tutorial.Show(adjacentDoorTile.transform, "doors");
         }
     }
