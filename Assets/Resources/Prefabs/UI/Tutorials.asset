@@ -32,3 +32,8 @@ MonoBehaviour:
   - key: basic_attack
     value: this alien is highlighted because the selected soldier can attack it.
       tapping it will initiate a basic attack
+  - key: doors
+    value: this is a door. doors block movement and line of sight for humans and
+      aliens. if one of your units is adjacent to a door, it can be opened as a free
+      action by tapping on it. but beware, once a door has been opened it can't be
+      closed again

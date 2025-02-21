@@ -75,7 +75,7 @@ public class Tile : MonoBehaviour {
         return actor.GetComponent<T>();
     }
     
-    public bool HasActor<T>() => GetActor<T>() != null;
+    public bool HasActor<T>() => GetActor<T>() != null || GetBackgroundActor<T>() != null;
     
     public void HideBackground() => midground.gameObject.SetActive(false);
 
