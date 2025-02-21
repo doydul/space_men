@@ -9,9 +9,7 @@ public class AlienInfoCampaignComponent : MonoBehaviour {
     
     void Awake() => instance = this;
     
-    void Start() {
-        Close();
-    }
+    void Start() => Close();
     
     public void ShowAlien(AlienData alien) {
         infoText.text = $"{alien.name}\n\n{alien.description}";

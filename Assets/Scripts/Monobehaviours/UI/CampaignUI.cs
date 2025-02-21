@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class CampaignUI : MonoBehaviour {
@@ -52,10 +51,6 @@ public class CampaignUI : MonoBehaviour {
             else soldierIcon.HideSoldier();
             i++;
         }
-    }
-
-    public void NextLevel() {
-        SceneManager.LoadScene("Mission");
     }
     
     public void SelectSoldier(int squadSlotId) {
