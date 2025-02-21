@@ -12,7 +12,7 @@ public class AlienInfoCampaignComponent : MonoBehaviour {
     void Start() => Close();
     
     public void ShowAlien(AlienData alien) {
-        infoText.text = $"{alien.name}\n\n{alien.description}";
+        infoText.text = $"{alien.name}<size=80%>\n\n<align=\"left\">{alien.description}\nhp: {alien.maxHealth}\nmovement: {alien.movement}\ndamage: {alien.damage}\narmour: {alien.armour}";
         Show();
     }
     
