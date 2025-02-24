@@ -24,6 +24,7 @@ public class FogManager : MonoBehaviour {
             foreach (var soldier in soldiers) {
                 if (Map.instance.ManhattanDistance(tile.gridLocation, soldier.gridLocation) < soldier.sightRange && soldier.CanSee(tile.gridLocation)) {
                     tile.RemoveFoggy();
+                    if (tile.HasActor<Chest>()) Tutorial.Show(tile.transform, "crates", true);
                     break;
                 }
             }
