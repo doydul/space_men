@@ -65,15 +65,17 @@ public class Tutorial {
                     else if (screenPos.y > (parentRectTrans.rect.height - borderWidth) * parentRectTrans.localScale.y) popup.ApplyOffset(TutorialPopup.Offset.Below);
                     else if (screenPos.x > parentRectTrans.rect.width * parentRectTrans.localScale.x / 2) popup.ApplyOffset(TutorialPopup.Offset.Left);
                     else popup.ApplyOffset(TutorialPopup.Offset.Right);
-                } else {
-                    if (screenPos.x < borderWidth * parentRectTrans.localScale.x) screenPos.x = borderWidth * parentRectTrans.localScale.x;
-                    if (screenPos.x > (parentRectTrans.rect.width - borderWidth) * parentRectTrans.localScale.x) screenPos.x = (parentRectTrans.rect.width - borderWidth) * parentRectTrans.localScale.x;
-                    if (screenPos.y < borderWidth * parentRectTrans.localScale.y) screenPos.y = borderWidth * parentRectTrans.localScale.y;
-                    if (screenPos.y > (parentRectTrans.rect.height - borderWidth) * parentRectTrans.localScale.y) screenPos.y = (parentRectTrans.rect.height - borderWidth) * parentRectTrans.localScale.y;
                 }
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRectTrans, screenPos, parent.GetComponent<Canvas>().worldCamera, out var movePos);
                 var targetPos = parent.TransformPoint(movePos);
                 trans.position = targetPos;
+                
+                var panelPos = popup.panel.position;
+                if (panelPos.x < borderWidth * parentRectTrans.localScale.x) panelPos.x = borderWidth * parentRectTrans.localScale.x;
+                if (panelPos.x > (parentRectTrans.rect.width - borderWidth) * parentRectTrans.localScale.x) panelPos.x = (parentRectTrans.rect.width - borderWidth) * parentRectTrans.localScale.x;
+                if (panelPos.y < borderWidth * parentRectTrans.localScale.y) panelPos.y = borderWidth * parentRectTrans.localScale.y;
+                if (panelPos.y > (parentRectTrans.rect.height - borderWidth) * parentRectTrans.localScale.y) panelPos.y = (parentRectTrans.rect.height - borderWidth) * parentRectTrans.localScale.y;
+                popup.panel.position = panelPos;
             }
         }
     }
