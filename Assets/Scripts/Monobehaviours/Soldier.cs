@@ -77,7 +77,8 @@ public class Soldier : Actor {
 
     public List<Ability> abilities = new();
     
-    public int turnCount;
+    public int turnCount { get; set; }
+    public bool selectedThisTurn { get; set; }
 
     public void ShowMuzzleFlash() {
         muzzleFlashLocation.gameObject.SetActive(true);
@@ -111,6 +112,7 @@ public class Soldier : Actor {
         tilesMoved = 0;
         actionsSpent = 0;
         reaction = null;
+        selectedThisTurn = false;
         HideAbilityIcon();
     }
 
@@ -195,6 +197,10 @@ public class Soldier : Actor {
         UIState.instance.SetSelectedActor(this);
         RefreshUI();
         Tutorial.Show(transform, "select_soldier");
+        selectedThisTurn = true;
+        if (!Map.instance.GetActors<Soldier>().Where(sol => !sol.selectedThisTurn).Any()) {
+            Tutorial.Show(GameObject.Find("EndTurnButton").transform, "end_turn", true, true);
+        }
     }
 
     public override void Deselect() {
