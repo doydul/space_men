@@ -49,7 +49,6 @@ public abstract class Actor : MonoBehaviour {
     public long index { get; set; } // remove me
     public Direction direction { get; private set; }
     public bool dead { get; private set; }
-    public bool broken { get; set; }
     public virtual bool interactable => false;
 
     public int maxHealth { get; set; }
@@ -65,6 +64,7 @@ public abstract class Actor : MonoBehaviour {
             (float)Mathf.Cos(rotation * Mathf.PI / 180)
         );
     } }
+    public virtual int remainingMovement => 0;
     public bool On(Tile tile) => this.tile == tile;
     protected Animator animator;
     protected Material spriteSharedMat;
@@ -176,6 +176,7 @@ public abstract class Actor : MonoBehaviour {
     
         
     public void AddStatus(StatusEffect status) {
+        if (HasStatus(status)) RemoveStatus(statuses.First(stat => stat.GetType() == status.GetType()));
         statuses.Add(status);
         statusesBar.DisplayStatuses(statuses);
         healthIndicator.Show();
@@ -188,5 +189,13 @@ public abstract class Actor : MonoBehaviour {
             SetHealthIndicatorSize();
         }
     }
-    public bool HasStatus(StatusEffect status) => statuses.Where(stat => status.GetType() == stat.GetType()).Any();
+    public bool HasStatus<T>() => statuses.Where(stat => stat.GetType() == typeof(T)).Any();
+    public bool HasStatus(StatusEffect status) => statuses.Where(stat => stat.GetType() == status.GetType()).Any();
+    
+    public void StartOfTurn() {
+        foreach (var status in new List<StatusEffect>(statuses)) status.StartOfTurn();
+    }
+    public void EndOfTurn() {
+        foreach (var status in new List<StatusEffect>(statuses)) status.EndOfTurn();
+    }
 }

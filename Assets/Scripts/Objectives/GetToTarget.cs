@@ -24,7 +24,7 @@ public class GetToTarget : Objective {
 
     public bool onceAndDone;
 
-    Map.Room room;
+    public Map.Room room;
 
     public override void Init(Objectives objectives) {
         room = objectives.GetNextBestRoom();

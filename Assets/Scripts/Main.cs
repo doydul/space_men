@@ -1,9 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class Main : MonoBehaviour {
 
     public static Main instance;
+    
+    public int turnCounter { get; private set; }
 
     DependencyInjector factory = new();
 
@@ -41,11 +44,34 @@ public class Main : MonoBehaviour {
         HiveMind.instance.Init();
         
         StartCoroutine(ShowIntro());
+        
+        GameEvents.On(this, "player_turn_start", IncrementTurnCounter);
+    }
+    
+    void OnDestroy() {
+        GameEvents.RemoveListener(this, "player_turn_start");
+    }
+    
+    void IncrementTurnCounter() {
+        turnCounter++;
+        if (turnCounter >= 3) {
+            Tutorial.Show(GameObject.Find("TurnText").transform, "threat", true, true);
+        }
     }
     
     IEnumerator ShowIntro() {
         yield return new WaitForSeconds(3);
         Tutorial.Show("intro");
+        var soldiers = Map.instance.GetActors<Soldier>();
+        if (soldiers.Where(sol => sol.weapon.isHeavy).Any()) {
+            Tutorial.Show(soldiers.First(sol => sol.weapon.isHeavy).transform, "heavy_weapon");
+        }
+        if (soldiers.Where(sol => sol.HasAbility<LayDownFire>()).Any()) {
+            Tutorial.Show(soldiers.First(sol => sol.HasAbility<LayDownFire>()).transform, "machine_gun");
+        }
+        if (soldiers.Where(sol => sol.HasAbility<FireOrdnance>()).Any()) {
+            Tutorial.Show(soldiers.First(sol => sol.HasAbility<FireOrdnance>()).transform, "blast_weapon");
+        }
     }
 
     // TODO move me somewhere else!

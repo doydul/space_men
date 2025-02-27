@@ -19,6 +19,28 @@ MonoBehaviour:
   - key: select_soldier
     value: the green highlights show tiles your soldier can move to. tap a tile to
       make your soldier move there
+  - key: camera
+    value: tap and drag on the map to scroll the camera, or pinch with two fingers
+      to zoom
+  - key: objectives1
+    value: your main objective each mission will usually be to get all your soldiers
+      to the exacuation point. it's advisable to complete the secondary objectives
+      as well, as these will award credits and items
+  - key: objectives2
+    value: tapping this button will open up the objectives panel, and tapping on
+      an individual objective within the panel will show where that objectives lies
+      on the map
+  - key: actions
+    value: each soldier gets 1ap(action point) per turn. shooting and sprinting take
+      1 ap, while many other abilities are freeactions  that don't use any ap. some
+      abilities, like overwatch, prevent a soldier from moving or taking any actions
+      afterwards
+  - key: threat
+    value: this counter shows how many turns remain before the alien threat increases.
+      if you aren't close to the exit when this timer runs down, you may be in trouble
+  - key: end_turn
+    value: once you've done everything you can this turn, press the end turn button.
+      then the aliens will have their turn to act...
   - key: first_encounter
     value: this is an alien! aliens will be alerted if you move too close or if they
       encounter gunfire. click on them to see more information
@@ -39,8 +61,7 @@ MonoBehaviour:
       closed again
   - key: movement
     value: the number of tiles a soldier can move in a turn is determined by the
-      armour it has equipped. its movement can be extended by using the sprint ability,
-      but this uses an action (each soldier gets one action per turn)
+      armour it has equipped. its movement can be extended by using the sprint ability
   - key: abilities
     value: these are your soldier's abilities, tap them to see what they do. some
       abilities, like sprint, are available to all soldiers, while others are dependant
@@ -49,3 +70,21 @@ MonoBehaviour:
     value: every mission will contain crates like this one. they can contain credits,
       weapons and armour. picking up a crate is a free action for any soldier standing
       adjacent
+  - key: overwatch
+    value: overwatch is an important ability. once activated, the soldier will fire
+      at the first alien it sees moving during the alien turn. use it to defend yourself
+      against fast moving aliens
+  - key: shocked
+    value: this alien is now shocked, because it was hit by an attack that exceeded
+      it's armour value. shocked enemies have their movement halved until the start
+      of the next soldier turn
+  - key: heavy_weapon
+    value: this soldier has been equipped with a heavy weapon. a soldier that fires
+      a heavy weapon cannot move afterwards
+  - key: machine_gun
+    value: this soldier's weapon doesn't have a normal shoot action. instead, it
+      has the 'lay down fire' ability, which behaves similarly to overwatch, except
+      you have to choose a direction
+  - key: blast_weapon
+    value: this soldier has a blast weapon. these weapons don't have a normal shoot
+      action, you must use the 'fire ordnance' ability instead

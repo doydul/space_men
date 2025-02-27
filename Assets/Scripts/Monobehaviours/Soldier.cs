@@ -45,7 +45,7 @@ public class Soldier : Actor {
     public int baseMovement => armour.movement;
     public int sprintMovement => armour.sprint;
     public int totalMovement => baseMovement + armour.sprint;
-    public int remainingMovement => baseMovement - tilesMoved;
+    public override int remainingMovement => baseMovement - tilesMoved;
     public bool sprinted => tilesMoved > baseMovement;
     public bool moved => tilesMoved > 0;
     public int accuracy => weapon.accuracy;
@@ -77,7 +77,6 @@ public class Soldier : Actor {
 
     public List<Ability> abilities = new();
     
-    public int turnCount { get; set; }
     public bool selectedThisTurn { get; set; }
 
     public void ShowMuzzleFlash() {
@@ -108,7 +107,6 @@ public class Soldier : Actor {
     }
 
     public void Reset() {
-        turnCount++;
         tilesMoved = 0;
         actionsSpent = 0;
         reaction = null;

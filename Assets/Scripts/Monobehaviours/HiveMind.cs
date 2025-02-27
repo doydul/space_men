@@ -116,7 +116,7 @@ public class HiveMind : MonoBehaviour {
     private bool ChooseActiveAlien() {
         var list = Map.instance.GetActors<Alien>().Where(alien => alien.canAct).ToArray();
         if (list.Count() <= 0) return false;
-        activeAlien = list[Random.Range(0, list.Count())];
+        activeAlien = list.MaxBy(alien => alien.movement);
         return true;
     }
 

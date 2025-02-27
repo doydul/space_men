@@ -19,7 +19,7 @@ public class Alien : Actor {
     public int expReward { get; set; }
     public int sensoryRange { get; set; }
     public AlienAudioProfile audio { get; set; }
-    public int remainingMovement => (broken ? movement / 2 : movement) - actualTilesMoved;
+    public override int remainingMovement => (HasStatus<Shocked>() ? movement / 2 : movement) - actualTilesMoved;
     public Pod pod { get; set; }
     public AlienBehaviour behaviour { get; set; }
 
@@ -39,17 +39,19 @@ public class Alien : Actor {
     protected override void Awake() {
         base.Awake();
         attackIndicator.enabled = false;
+        GameEvents.On(this, "alien_turn_start", StartOfTurn);
         GameEvents.On(this, "player_turn_start", Reset);
     }
 
     void OnDestroy() {
+        GameEvents.RemoveListener(this, "alien_turn_start");
         GameEvents.RemoveListener(this, "player_turn_start");
     }
 
     public void Reset() {
         hasActed = false;
-        broken = false;
         actualTilesMoved = 0;
+        EndOfTurn();
     }
 
     public void Awaken() {
@@ -78,6 +80,7 @@ public class Alien : Actor {
         } else if (damage <= effectiveArmour) {
             base.Hurt(Mathf.RoundToInt(damage / 2f));
         } else {
+            Resources.Load<StatusEffect>("Statuses/Shocked").Apply(this);
             PlayAudio(audio.hurt.Sample());
             base.Hurt(damage);
         }

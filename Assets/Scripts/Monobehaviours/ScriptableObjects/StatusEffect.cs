@@ -2,8 +2,15 @@ using UnityEngine;
 
 public abstract class StatusEffect : ScriptableObject {
     
+    public enum TickPoint {
+        None,
+        StartOfTurn,
+        EndOfTurn
+    }
+    
     public Sprite sprite;
     public Color tint;
+    public TickPoint tickPoint;
     
     protected Actor actor;
     
@@ -15,7 +22,12 @@ public abstract class StatusEffect : ScriptableObject {
         clone.OnApply();
     }
     
-    public void Tick() => OnTick();
+    public void StartOfTurn() {
+        if (tickPoint == TickPoint.StartOfTurn) OnTick();
+    }
+    public void EndOfTurn() {
+        if (tickPoint == TickPoint.EndOfTurn) OnTick();
+    }
     public void Remove() {
         actor.RemoveStatus(this);
         OnRemove();

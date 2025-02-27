@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Objectives {
     
+    public static Objectives current;
+    
     public bool allComplete => objectives.Where(objective => objective.required).All(objective => objective.complete);
 
     public Map map;
@@ -35,6 +37,7 @@ public class Objectives {
         ObjectivesPanel.instance.DisplaySecondaryObjectives(objectives.objectives.Where(obj => !obj.required).ToList());
 
         GameEvents.On(objectives, "alien_turn_start", objectives.CheckCompletion);
+        current = objectives;
     }
 
     void OnDestroy() => GameEvents.RemoveListener(this, "alien_turn_start");

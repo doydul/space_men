@@ -53,7 +53,6 @@ public static class GameplayOperations {
             var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
             var effect = soldier.weapon.missEffect;
             if (target.DamageExceedsArmour(damage, soldier.weapon.damageType)) {
-                target.broken = true;
                 effect = target.hitEffect;
             }
             yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, target.tile.transform.position, soldier.weapon, true, new ParticleBurst[] { effect, soldier.weapon.impactEffect });
@@ -73,7 +72,6 @@ public static class GameplayOperations {
                     var damage = Random.Range(soldier.minDamage, soldier.maxDamage + 1);
                     var effect = soldier.weapon.missEffect;
                     if (target.DamageExceedsArmour(damage, soldier.weapon.damageType)) {
-                        actor.broken = true;
                         effect = actor.hitEffect;
                     }
                     yield return SFXLayer.instance.PerformTracer(soldier.muzzlePosition, actor.tile.transform.position, soldier.weapon, true, new ParticleBurst[] { effect, soldier.weapon.impactEffect });
@@ -189,16 +187,15 @@ public static class GameplayOperations {
                     if (soldier.reaction.TriggersReaction(tile, actor)) {
                         CameraController.CentreCameraOn(tile);
                         yield return soldier.reaction.PerformReaction(tile);
-                        if (actor.dead) break;
+                        // experimental; this way, at most one reaction triggered per tile moved
+                        break;
+                        // if (actor.dead) break; 
                     }
                 }
                 if (actor.dead) break;
-                if (actor is Alien) {
-                    var alien = actor as Alien;
-                    if (alien.broken && alien.remainingMovement <= 0) {
-                        stoppedEarly = true;
-                        break;
-                    }
+                if (actor.HasStatus<Shocked>() && actor.remainingMovement <= 0) {
+                    stoppedEarly = true;
+                    break;
                 }
             }
         }
@@ -210,6 +207,8 @@ public static class GameplayOperations {
         if (actor is Soldier) {
             MakeNoise(actor.gridLocation);
             Tutorial.Show("movement");
+            Tutorial.Show(Map.instance.GetTileAt(((GetToTarget)Objectives.current.objectives.Where(objective => objective is GetToTarget).First()).room.centre).transform, "objectives1");
+            Tutorial.Show(GameObject.Find("ShowObjectivesButton").transform, "objectives2", true, true);
             var adjacentDoorTile = Map.instance.AdjacentTiles(actor.tile).FirstOrDefault(tile => tile.HasActor<Door>());
             if (adjacentDoorTile != null) Tutorial.Show(adjacentDoorTile.transform, "doors");
         }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1297bd9b6b1a7f24399132f204e28972, type: 3}
+  m_Name: Shocked
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: e6843047a0ac3fa4f983f3a3b7116c25, type: 3}
+  tint: {r: 1, g: 0.35216126, b: 0, a: 1}
+  tickPoint: 2
+  duration: 1

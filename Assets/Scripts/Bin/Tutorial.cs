@@ -8,6 +8,7 @@ public class Tutorial {
         public Transform target;
         public string tutorialName;
         public bool offset;
+        public bool ui;
     }
     
     const string popupResourcePath = "Prefabs/UI/TutorialPopup";
@@ -40,7 +41,7 @@ public class Tutorial {
     public static void Show(Transform target, string tutorialName, bool offset = true, bool ui = false) {
         if (!Shown(tutorialName)) {
             if (tutorialInProgress) {
-                queue.Enqueue(new TutorialQueueItem { target = target, tutorialName = tutorialName, offset = offset });
+                queue.Enqueue(new TutorialQueueItem { target = target, tutorialName = tutorialName, offset = offset, ui = ui });
             } else {
                 Debug.Log(tutorialName);
                 tutorialInProgress = true;
@@ -104,7 +105,7 @@ public class Tutorial {
         tutorialInProgress = false;
         if (queue.Any()) {
             var next = queue.Dequeue();
-            if (next.target != null) Show(next.target, next.tutorialName, next.offset);
+            if (next.target != null) Show(next.target, next.tutorialName, next.offset, next.ui);
             else Show(next.tutorialName);
         }
     }
