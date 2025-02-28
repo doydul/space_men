@@ -184,10 +184,10 @@ public static class GameplayOperations {
                 }
 
                 // trigger reactions
-                foreach (var soldier in soldiers.Where(sol => sol.reaction != null)) {
-                    if (soldier.reaction.TriggersReaction(tile, actor)) {
+                foreach (var reaction in soldiers.Where(sol => sol.reaction != null).Select(sol => sol.reaction).OrderBy(reac => reac.reactionPriority)) {
+                    if (reaction.TriggersReaction(tile, actor)) {
                         CameraController.CentreCameraOn(tile);
-                        yield return soldier.reaction.PerformReaction(tile);
+                        yield return reaction.PerformReaction(tile);
                         // experimental; this way, at most one reaction triggered per tile moved
                         break;
                         // if (actor.dead) break; 
