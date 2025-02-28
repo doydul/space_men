@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d62ce2d9fd6d5742bd5379d4427528f, type: 3}
   m_Name: MarkedTarget
   m_EditorClassIdentifier: 
+  inGameName: marked
+  description: incoming damage increased 50% and ignores armour
   sprite: {fileID: 21300000, guid: adeca7b8be77da047a6787332e546b03, type: 3}
   tint: {r: 1, g: 0.13333334, b: 0, a: 1}
+  tickPoint: 0
   damageMultiplier: 0.5
   armourMultiplier: 0

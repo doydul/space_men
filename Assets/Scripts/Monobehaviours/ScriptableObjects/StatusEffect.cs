@@ -8,6 +8,8 @@ public abstract class StatusEffect : ScriptableObject {
         EndOfTurn
     }
     
+    public string inGameName;
+    public string description;
     public Sprite sprite;
     public Color tint;
     public TickPoint tickPoint;
