@@ -25,6 +25,7 @@ public class Overwatch : ReactionAbility {
         owner.tilesMoved += 100;
         owner.reaction = this;
         owner.ShowAbilityIcon(this);
+        Tutorial.Show("overwatch");
     }
 
     public override bool TriggersReaction(Tile tile, Actor actor) {
