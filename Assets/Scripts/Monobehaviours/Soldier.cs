@@ -195,6 +195,7 @@ public class Soldier : Actor {
         UIState.instance.SetSelectedActor(this);
         RefreshUI();
         Tutorial.Show(transform, "select_soldier");
+        Tutorial.Show("camera");
         selectedThisTurn = true;
         if (!Map.instance.GetActors<Soldier>().Where(sol => !sol.selectedThisTurn).Any()) {
             Tutorial.Show(GameObject.Find("EndTurnButton").transform, "end_turn", true, true);
