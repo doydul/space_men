@@ -41,6 +41,7 @@ public static class GameplayOperations {
         }
         yield return PerformTurnAnimation(soldier, Actor.FacingToDirection(target.gridLocation - soldier.gridLocation), true);
         soldier.IdleAnimation();
+        Tutorial.Show("actions");
     }
 
     public static IEnumerator PerformSoldierSingleShot(Soldier soldier, Alien target) {

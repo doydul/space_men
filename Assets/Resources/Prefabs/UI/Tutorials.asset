@@ -32,7 +32,7 @@ MonoBehaviour:
       on the map
   - key: actions
     value: each soldier gets 1ap(action point) per turn. shooting and sprinting take
-      1 ap, while many other abilities are freeactions  that don't use any ap. some
+      1 ap, while many other abilities are free actions  that don't use any ap. some
       abilities, like overwatch, prevent a soldier from moving or taking any actions
       afterwards
   - key: threat

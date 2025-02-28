@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 [CreateAssetMenu(fileName = "Overwatch", menuName = "Abilities/Overwatch", order = 1)]
 public class Overwatch : ReactionAbility {
