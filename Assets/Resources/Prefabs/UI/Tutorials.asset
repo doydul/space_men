@@ -88,3 +88,26 @@ MonoBehaviour:
   - key: blast_weapon
     value: this soldier has a blast weapon. these weapons don't have a normal shoot
       action, you must use the 'fire ordnance' ability instead
+  - key: campaign_ui1
+    value: welcome to the campaign screen. this is where you will make amendments
+      to your squad to prepare them for the next mission
+  - key: campaign_ui2
+    value: over here you can see your current squad. tap one of the icons to select
+      a soldier, and tap it again if you want to replace it with a soldier from the
+      reserve
+  - key: campaign_ui3
+    value: over here you can see your inventory. tap an item from the list to select
+      it
+  - key: campaign_ui4
+    value: when you've finished configuring your squad, or if you want to see the
+      enemies you'll be facing in the next mission, tap this button to go to the
+      mission screen
+  - key: inventory_item1
+    value: 'items fall into two categories: weapons and armour. equipping items will
+      make your soldiers more powerful, but be careful; when a soldier dies, the
+      items they''re carrying will be lost'
+  - key: inventory_item2
+    value: scrapping an item will destroy it in return for some credits
+  - key: inventory_item3
+    value: researching an item will generate a blueprint, allowing you to create
+      more items of that type by spending credits

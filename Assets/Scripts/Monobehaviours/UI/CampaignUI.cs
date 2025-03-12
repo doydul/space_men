@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class CampaignUI : MonoBehaviour {
     
@@ -25,6 +26,16 @@ public class CampaignUI : MonoBehaviour {
         soldierInfoText.text = "";
         weaponButton.SetActive(false);
         armourButton.SetActive(false);
+        
+        StartCoroutine(ShowIntro());
+    }
+    
+    IEnumerator ShowIntro() {
+        yield return new WaitForSeconds(3);
+        Tutorial.Show("campaign_ui1");
+        Tutorial.Show(GameObject.Find("SoldiersPanel").transform, "campaign_ui2", true, true);
+        Tutorial.Show(GameObject.Find("ItemList").transform, "campaign_ui3", true, true);
+        Tutorial.Show(GameObject.Find("MissionButton").transform, "campaign_ui4", true, true);
     }
     
     void Update() {

@@ -76,8 +76,8 @@ public class WorkshopComponent : MonoBehaviour {
             var buttonComponent = itemElement.GetComponentInChildren<ButtonHandler>();
             buttonComponent.action.AddListener(() => {
                 foreach (var itemEl in itemElements) itemEl.Deselect();
-                itemElement.Select();
                 SelectItem(item);
+                itemElement.Select();
             });
             itemElement.isBlueprint = false;
             itemElements.Add(itemElement);
@@ -90,8 +90,8 @@ public class WorkshopComponent : MonoBehaviour {
             var buttonComponent = itemElement.GetComponentInChildren<ButtonHandler>();
             buttonComponent.action.AddListener(() => {
                 foreach (var itemEl in itemElements) itemEl.Deselect();
-                itemElement.Select();
                 SelectBlueprint(blueprint);
+                itemElement.Select();
             });
             itemElement.isBlueprint = true;
             itemElements.Add(itemElement);
