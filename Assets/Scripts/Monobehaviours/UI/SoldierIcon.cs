@@ -15,7 +15,6 @@ public class SoldierIcon : MonoBehaviour {
     }
     
     void UpdateInfo() {
-        // if (soldier != null) infoText.text = $"hp: {soldier.health}/{soldier.maxHealth}\nw: {soldier.weapon.name}\na: {soldier.armour.name}";
         if (soldier != null) {
             infoText.text = $"hp: {soldier.health}/{soldier.maxHealth}";
             highlight.SetActive(UIState.instance.GetSelectedActor() == soldier);
@@ -38,9 +37,11 @@ public class SoldierIcon : MonoBehaviour {
             } else {
                 UIState.instance.GetSelectedActor().Deselect();
                 soldier.Select();
+                CameraController.CentreCameraOn(soldier);
             }
         } else {
             soldier.Select();
+            CameraController.CentreCameraOn(soldier);
         }
     }
 }
