@@ -16,8 +16,7 @@ public class TestBedEditor : Editor {
     }
     
     void TestLevelProg() {
-        var save = new PlayerSave();
-        PlayerSave.current = save;
+        var save = PlayerSave.New();
         save.IncreaseDifficulty(0.2f);
         for (int i = 0; i < levelProgIterations; i++) {
             Debug.Log($"------------ LEVEL {i + 2} --------------------------------------------------------------------------");

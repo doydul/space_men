@@ -22,7 +22,7 @@ public class TestBed : MonoBehaviour {
     public string[] unlockedAliens;
     
     void Start() {
-        var save = new PlayerSave();
+        var save = PlayerSave.New();
         PlayerSave.current = save;
         save.IncreaseDifficulty(difficultyLevel + 0.2f);
 
@@ -35,7 +35,7 @@ public class TestBed : MonoBehaviour {
         
         foreach (var alienName in unlockedAliens) PlayerSave.current.alienUnlocks.Unlock(alienName);
         
-        save.mission = Mission.Generate();
+        save.mission = Mission.Generate(save);
         Debug.Log("Loading Mission scene...");
         FogManager.disabled = disableFog;
         if (useTestMap) {

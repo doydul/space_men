@@ -39,19 +39,27 @@ public class WorkshopComponent : MonoBehaviour {
     }
     
     public void ScrapItem() {
-        PlayerSave.current.inventory.items.Remove(activeItem);
-        PlayerSave.current.credits += GetCost(activeItem) / 2;
-        activeItem = null;
-        DisplayInventoryItems();
-        DisplayButtons();
+        if (activeItem.isDefault) {
+            Tutorial.ShowTooltip("starter_item");
+        } else {
+            PlayerSave.current.inventory.items.Remove(activeItem);
+            PlayerSave.current.credits += GetCost(activeItem) / 2;
+            activeItem = null;
+            DisplayInventoryItems();
+            DisplayButtons();
+        }
     }
     
     public void ResearchItem() {
-        int cost = GetCost(activeItem) * 2;
-        if (PlayerSave.current.credits >= cost) {
-            PlayerSave.current.credits -= cost;
-            PlayerSave.current.inventory.blueprints.Add(activeItem.Dup());
-            DisplayInventoryItems();
+        if (activeItem.isDefault) {
+            Tutorial.ShowTooltip("starter_item");
+        } else {
+            int cost = GetCost(activeItem) * 2;
+            if (PlayerSave.current.credits >= cost) {
+                PlayerSave.current.credits -= cost;
+                PlayerSave.current.inventory.blueprints.Add(activeItem.Dup());
+                DisplayInventoryItems();
+            }
         }
     }
     

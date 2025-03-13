@@ -17,14 +17,14 @@ public class Main : MonoBehaviour {
 
     void Start() {
         if (PlayerSave.current == null) {
-            var save = new PlayerSave();
+            var save = PlayerSave.New();
             PlayerSave.current = save;
 
             var squad = MetaSquad.GenerateDefault();
             save.squad = squad;
             save.Save(0);
             
-            save.mission = Mission.Generate();
+            Mission.Generate(save);
         }
 
         MapInstantiator.instance.Generate(PlayerSave.current.difficulty);

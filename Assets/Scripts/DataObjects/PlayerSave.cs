@@ -30,6 +30,8 @@ public class PlayerSave {
     public int armourednessVelocity => (int)enemyGenerationVelocities[1];
     public int quicknessVelocity => (int)enemyGenerationVelocities[2];
     public int bignessVelocity => (int)enemyGenerationVelocities[3];
+    
+    private PlayerSave() {}
 
     public void Save(int slot) {
         string json = UnityEngine.JsonUtility.ToJson(this);
@@ -42,5 +44,12 @@ public class PlayerSave {
         if (!File.Exists(filename)) return null;
         string json = File.ReadAllText(filename);
         return JsonUtility.FromJson<PlayerSave>(json);
+    }
+    
+    public static PlayerSave New() {
+        var save = new PlayerSave();
+        save.inventory.defaultWeapon = new InventoryItem { name = "SIKR-5", type = InventoryItem.Type.Weapon };
+        save.inventory.defaultArmour = new InventoryItem { name = "Flak Vest", type = InventoryItem.Type.Armour };
+        return save;
     }
 }

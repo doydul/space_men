@@ -6,23 +6,23 @@ public class Mission {
     
     public static Mission current => PlayerSave.current.mission;
     
-    public static Mission Generate() {
+    public static Mission Generate(PlayerSave playerSave) {
         var result = new Mission();
         
-        result.enemyProfiles = EnemyProfileSet.Generate(PlayerSave.current);
+        result.enemyProfiles = EnemyProfileSet.Generate(playerSave);
         UnityEngine.Debug.Log("Mission generated:");
         UnityEngine.Debug.Log("Primaries:");
         foreach (var enemyProfile in result.enemyProfiles.primaries) {
-            PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
+            playerSave.alienUnlocks.Unlock(enemyProfile.name);
             UnityEngine.Debug.Log(enemyProfile.name);
         }
         UnityEngine.Debug.Log("Secondaries:");
         foreach (var enemyProfile in result.enemyProfiles.secondaries) {
-            PlayerSave.current.alienUnlocks.Unlock(enemyProfile.name);
+            playerSave.alienUnlocks.Unlock(enemyProfile.name);
             UnityEngine.Debug.Log(enemyProfile.name);
         }
         
-        PlayerSave.current.mission = result;
+        playerSave.mission = result;
         
         return result;
     }

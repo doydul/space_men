@@ -172,19 +172,15 @@ MonoBehaviour:
   quickness: 0
   bigness: 20
   weapons:
-  - SIKR-5
-  - SIKR-5
+  - Assault Rifle
+  - Assault Rifle
   - Grenade Launcher
-  - SIKR-5
   armour:
   - Heavy
   - Light
   - Heavy
-  - Flak Vest
-  inventoryWeapons:
-  - SIKR-5
-  inventoryArmour:
-  - Flak Vest
+  inventoryWeapons: []
+  inventoryArmour: []
   unlockedAliens: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
