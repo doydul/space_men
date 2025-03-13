@@ -8,7 +8,6 @@ public class Campaign {
         save.levelNumber++;
         save.IncreaseDifficulty(1f / 5f);
         MungeMapGenerationValues(save);
-        Debug.Log($"difficulty: {save.difficulty}");
         PlayerSave.current.mission = Mission.Generate();
         PlayerSave.current.Save(0);
     }
@@ -33,10 +32,11 @@ public class Campaign {
                 save.enemyGenerationValues[i] *= reduct;
             }
         }
-        Debug.Log("New map generation values:");
-        Debug.Log($"groupishness: {save.groupishness}");
-        Debug.Log($"armouredness: {save.armouredness}");
-        Debug.Log($"quickness: {save.quickness}");
-        Debug.Log($"bigness: {save.bigness}");
+        Debug.Log("XXX New map generation values:");
+        Debug.Log($"XXX difficulty: {save.difficulty}");
+        Debug.Log($"XXX groupishness: {save.groupishness}");
+        Debug.Log($"XXX armouredness: {save.armouredness}");
+        Debug.Log($"XXX quickness: {save.quickness}");
+        Debug.Log($"XXX bigness: {save.bigness}");
     }
 }

@@ -32,7 +32,7 @@ public class HiveMind : MonoBehaviour {
 
     public void Init() {
         Noise.Seed = Random.Range(0, 10000);
-        var weightedTiles = Map.instance.EnumerateTiles().Where(tile => tile.open).Select(tile => {
+        var weightedTiles = Map.instance.EnumerateTiles().Where(tile => tile.open && !tile.occupied).Select(tile => {
             var wTile = new WeightedTile { tile = tile, Weight = (int)Mathf.Ceil(Mathf.Pow(Noise.CalcPixel2D((int)tile.gridLocation.x, (int)tile.gridLocation.y, 0.03f) / 255, 3) * 100) };
             var minDist = Map.instance.startLocations.Select(st => Map.instance.ManhattanDistance(st.gridLocation, tile.gridLocation)).Min();
             if (minDist < 10) wTile.Weight = (int)Mathf.Max(wTile.Weight - 100 + minDist * 10, 0);

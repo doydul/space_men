@@ -209,7 +209,11 @@ public static class GameplayOperations {
             MakeNoise(actor.gridLocation);
             Tutorial.Show("movement");
             Tutorial.Show(Map.instance.GetTileAt(((GetToTarget)Objectives.current.objectives.Where(objective => objective is GetToTarget).First()).room.centre).transform, "objectives1");
-            Tutorial.Show(GameObject.Find("ShowObjectivesButton").transform, "objectives2", true, true);
+            if (GameObject.Find("ShowObjectivesButton") != null) {
+                Tutorial.Show(GameObject.Find("ShowObjectivesButton").transform, "objectives2", true, true);
+            } else {
+                Tutorial.Record("objectives2");
+            }
             var adjacentDoorTile = Map.instance.AdjacentTiles(actor.tile).FirstOrDefault(tile => tile.HasActor<Door>());
             if (adjacentDoorTile != null) Tutorial.Show(adjacentDoorTile.transform, "doors");
         }

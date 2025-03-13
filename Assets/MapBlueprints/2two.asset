@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39834db0e5961604c8b2fbb41e8ef187, type: 3}
   m_Name: 2two
   m_EditorClassIdentifier: 
-  vents: 6
+  vents: 11
   loots: 4
   equipments: 2
-  corridors: 7
+  corridors: 8
   secondaryCorridors: 5
   loops: 1
-  rooms: 6
+  rooms: 7

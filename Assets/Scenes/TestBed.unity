@@ -165,28 +165,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useTestMap: 0
   disableFog: 0
-  credits: 1000
-  difficultyLevel: 1
-  groupishness: 0
-  armouredness: 70
+  credits: 0
+  difficultyLevel: 0.4
+  groupishness: 40
+  armouredness: 0
   quickness: 0
-  bigness: 0
+  bigness: 20
   weapons:
-  - Chain Gun
-  - Assault Rifle
-  - Plasma Gun
-  - Plasma Gun
-  armour:
-  - Medium
-  - Medium
-  - Medium
-  - Medium
-  inventoryWeapons:
+  - SIKR-5
+  - SIKR-5
   - Grenade Launcher
-  - Flamer
-  inventoryArmour:
+  - SIKR-5
+  armour:
+  - Heavy
   - Light
   - Heavy
+  - Flak Vest
+  inventoryWeapons:
+  - SIKR-5
+  inventoryArmour:
+  - Flak Vest
   unlockedAliens: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
