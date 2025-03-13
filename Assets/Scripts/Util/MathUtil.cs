@@ -23,4 +23,14 @@ public static class MathUtil {
         t = Mathf.Clamp01(t);
         return t < 0.5 ? 4 * t * t * t : 1 - Mathf.Pow(-2 * t + 2, 3) / 2;
     }
+    
+    public static float GuassianFloat(float mean, float stdDev) {
+        float u1 = Random.value;
+        float u2 = Random.value;
+        float randStdNormal = Mathf.Sqrt(-2 * Mathf.Log(u1)) * Mathf.Sin(2 * Mathf.PI * u2);
+        return mean + stdDev * randStdNormal;
+    }
+    public static int GuassianInt(float mean, float stdDev) {
+        return Mathf.RoundToInt(GuassianFloat(mean, stdDev));
+    }
 }

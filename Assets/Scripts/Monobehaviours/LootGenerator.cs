@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Linq;
-using System.Collections.Generic;
 
 public class LootGenerator : MonoBehaviour {
     
@@ -31,7 +30,7 @@ public class LootGenerator : MonoBehaviour {
     }
     
     public Loot MakeCommonLoot(float techLevel) {
-        return new Loot { credits = 50 };
+        return new Loot { credits = Mathf.Max(MathUtil.GuassianInt((techLevel + 1) * 50, 20), 10) };
     }
 
     public Chest InstantiateLootChest(Loot loot, Vector2 gridLocation, bool hidden = false) {
