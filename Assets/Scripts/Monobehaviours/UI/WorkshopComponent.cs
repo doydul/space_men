@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using System;
 
 public class WorkshopComponent : MonoBehaviour {
     
@@ -42,7 +43,7 @@ public class WorkshopComponent : MonoBehaviour {
         if (activeItem.isDefault) {
             Tutorial.ShowTooltip("starter_item");
         } else {
-            PlayerSave.current.inventory.items.Remove(activeItem);
+            PlayerSave.current.inventory.RemoveItem(activeItem);
             PlayerSave.current.credits += GetCost(activeItem) / 2;
             activeItem = null;
             DisplayInventoryItems();
@@ -57,8 +58,9 @@ public class WorkshopComponent : MonoBehaviour {
             int cost = GetCost(activeItem) * 2;
             if (PlayerSave.current.credits >= cost) {
                 PlayerSave.current.credits -= cost;
-                PlayerSave.current.inventory.blueprints.Add(activeItem.Dup());
+                PlayerSave.current.inventory.AddBlueprint(activeItem.Dup());
                 DisplayInventoryItems();
+                DisplayButtons();
             }
         }
     }
@@ -67,7 +69,7 @@ public class WorkshopComponent : MonoBehaviour {
         int cost = GetCost(activeBlueprint);
         if (PlayerSave.current.credits >= cost) {
             PlayerSave.current.credits -= cost;
-            PlayerSave.current.inventory.items.Add(activeBlueprint.Dup());
+            PlayerSave.current.inventory.AddItem(activeBlueprint.Dup());
             DisplayInventoryItems();
         }
     }
@@ -124,7 +126,11 @@ public class WorkshopComponent : MonoBehaviour {
     void DisplayButtons() {
         if (activeItem != null) {
             scrapButton.SetActive(true);
-            researchButton.SetActive(true);
+            if (PlayerSave.current.inventory.ContainsBlueprint(activeItem)) {
+                researchButton.SetActive(false);
+            } else {
+                researchButton.SetActive(true);
+            }
             constructButton.SetActive(false);
             infoText.text = activeItem.isWeapon ? Weapon.Get(activeItem.name).GetFullDescription() : Armour.Get(activeItem.name).GetFullDescription();
         } else if (activeBlueprint != null) {
@@ -140,13 +146,14 @@ public class WorkshopComponent : MonoBehaviour {
         DisplayCredits();
     }
     
-    void DisplayCredits() {
-        creditsText.text = $"<sup>c</sup> {PlayerSave.current.credits}";
+    public void DisplayCredits() {
+        var cantAffordColor = "<color=#CA7E6A>";
+        creditsText.text = StringUtils.RenderMoney(PlayerSave.current.credits);
         if (activeItem != null) {
-            scrapButton.GetComponentInChildren<TMP_Text>().text = $"scrap <sup>c</sup>{GetCost(activeItem) / 2}";
-            researchButton.GetComponentInChildren<TMP_Text>().text = $"research <sup>c</sup>{GetCost(activeItem) * 2}";
+            scrapButton.GetComponentInChildren<TMP_Text>().text = $"scrap {StringUtils.RenderMoney(GetCost(activeItem) / 2)}";
+            researchButton.GetComponentInChildren<TMP_Text>().text = $"research {(GetCost(activeItem) * 2 > PlayerSave.current.credits ? cantAffordColor : "")}{StringUtils.RenderMoney(GetCost(activeItem) * 2)}";
         } else if (activeBlueprint != null) {
-            constructButton.GetComponentInChildren<TMP_Text>().text = $"fabricate <sup>c</sup>{GetCost(activeBlueprint)}";
+            constructButton.GetComponentInChildren<TMP_Text>().text = $"fabricate {(GetCost(activeBlueprint) > PlayerSave.current.credits ? cantAffordColor : "")}{StringUtils.RenderMoney(GetCost(activeBlueprint))}";
         }
      }
     

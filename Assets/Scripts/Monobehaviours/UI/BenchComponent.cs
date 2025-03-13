@@ -4,6 +4,7 @@ using TMPro;
 public class BenchComponent : MonoBehaviour {
     
     public CampaignUI campaignUI;
+    public WorkshopComponent workshop;
     public Transform soldierPrototype;
     public TMP_Text hireButtonText;
     public TMP_Text soldierInfoText;
@@ -44,12 +45,12 @@ public class BenchComponent : MonoBehaviour {
     }
     
     public void HireSoldier() {
-        Debug.Log(PlayerSave.current.credits);
         if (PlayerSave.current.credits >= hireCost) {
             PlayerSave.current.credits -= hireCost;
             PlayerSave.current.bench.Add(MetaSquad.GenerateDefaultSoldier());
             DisplayBenchSoldiers();
             DisplayHireButtonText();
+            workshop.DisplayCredits();
         }
     }
     
@@ -81,6 +82,7 @@ public class BenchComponent : MonoBehaviour {
     }
     
     void DisplayHireButtonText() {
-        hireButtonText.text = $"hire soldier {PlayerSave.current.credits}/{hireCost}";
+        var cantAffordColor = "<color=#CA7E6A>";
+        hireButtonText.text = $"hire soldier {(hireCost > PlayerSave.current.credits ? cantAffordColor : "")}{StringUtils.RenderMoney(hireCost)}";
     }
 }

@@ -2512,6 +2512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   campaignUI: {fileID: 1544577926}
+  workshop: {fileID: 1044586915}
   soldierPrototype: {fileID: 1787529991}
   hireButtonText: {fileID: 1728042527}
   soldierInfoText: {fileID: 1517492177}
@@ -9654,7 +9655,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 21821118}
   m_HandleRect: {fileID: 21821117}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

@@ -111,3 +111,5 @@ MonoBehaviour:
   - key: inventory_item3
     value: researching an item will generate a blueprint, allowing you to create
       more items of that type by spending credits
+  - key: starter_item
+    value: starter items can't be scrapped or researched
