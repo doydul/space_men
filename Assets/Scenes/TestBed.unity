@@ -174,11 +174,9 @@ MonoBehaviour:
   weapons:
   - Assault Rifle
   - Assault Rifle
-  - Grenade Launcher
   armour:
   - Heavy
-  - Light
-  - Heavy
+  - Medium
   inventoryWeapons: []
   inventoryArmour: []
   unlockedAliens: []
