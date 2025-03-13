@@ -74,6 +74,10 @@ public class Soldier : Actor {
     
     public string armourName => armour.name;
     public string weaponName => weapon.name;
+    public string fullDescription { get {
+        var info = $"Health:   {health}/{maxHealth}\nActions: {1 - actionsSpent}/1\nWeapon: {weapon.name}\n    Accuracy: {accuracy}\n    Shots: {shots}\n    Damage: {minDamage}-{maxDamage}";
+        return info;
+    } }
 
     public List<Ability> abilities = new();
     
@@ -208,13 +212,14 @@ public class Soldier : Actor {
         InterfaceController.instance.ClearAbilities();
         AmmoGauge.instance.ClearAmmo();
         InformationPanel.instance.ClearText();
+        SideModal.instance.Hide();
     }
 
     public void RefreshUI() {
         HighlightActions();
         InterfaceController.instance.DisplayAbilities(abilities.ToArray());
         AmmoGauge.instance.DisplayAmmo(ammo, shotsRemaining);
-        InformationPanel.instance.SetText($"Health:   {health}/{maxHealth}\nActions: {1 - actionsSpent}/1\nWeapon: {weapon.name}\n    Accuracy: {accuracy}\n    Shots: {shots}\n    Damage: {minDamage}-{maxDamage}");
+        InformationPanel.instance.SetText(fullDescription);
     }
 }
 

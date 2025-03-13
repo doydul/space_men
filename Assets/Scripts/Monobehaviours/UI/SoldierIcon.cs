@@ -9,7 +9,6 @@ public class SoldierIcon : MonoBehaviour {
     public TMP_Text infoText;
     
     Soldier soldier;
-    int updateCounter;
     
     void Update() {
         UpdateInfo();
@@ -29,7 +28,19 @@ public class SoldierIcon : MonoBehaviour {
     }
     
     public void Select() {
-        if (UIState.instance.IsActorSelected()) UIState.instance.GetSelectedActor().Deselect();
-        soldier.Select();
+        if (UIState.instance.IsActorSelected()) {
+            if (UIState.instance.GetSelectedActor() == soldier) {
+                if (SideModal.instance.isOpen) {
+                    SideModal.instance.Hide();
+                } else {
+                    SideModal.instance.Show(soldier.fullDescription);
+                }
+            } else {
+                UIState.instance.GetSelectedActor().Deselect();
+                soldier.Select();
+            }
+        } else {
+            soldier.Select();
+        }
     }
 }
