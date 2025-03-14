@@ -19,5 +19,7 @@ MonoBehaviour:
   accModifier: 20
   damage: -1
   movement: 4
+  displacementPriority: 4
   audio: {fileID: 11400000, guid: eb32cf0b474ba604cac0cdfdfa8cad7d, type: 2}
   behaviour: {fileID: 11400000, guid: ccb00026ac921074b996f93ba64b15d6, type: 2}
+  traits: 

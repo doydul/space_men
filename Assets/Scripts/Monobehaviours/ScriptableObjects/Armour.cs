@@ -16,7 +16,6 @@ public class Armour : ScriptableObject, IWeighted {
     public int weight = 100;
     public int Weight => weight;
 
-    public int armourValue;
     public Type type;
     public int cost;
     [TextArea] public string description;
