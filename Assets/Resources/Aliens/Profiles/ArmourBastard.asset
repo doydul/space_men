@@ -19,6 +19,6 @@ MonoBehaviour:
   typeCondition: 0
   typeInfo:
   - type: 2
-    typeWeight: 60
+    typeWeight: 100
   groupSizeUnlocks: []
   spawnPercentage: 0

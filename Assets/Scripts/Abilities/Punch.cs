@@ -23,7 +23,7 @@ public class Punch : Ability {
     private Tile[] possibleTargets => Map.instance.AdjacentTiles(owner.tile).Where(tile => tile.HasActor<Alien>()).ToArray();
 
     private IEnumerator PerformUse() {
-        AbilityInfoPanel.instance.ShowDescription("Punch\nChoose Target");
+        AbilityInfoPanel.instance.ShowDescription($"{userFacingName}\nChoose Target");
         SideModal.instance.Show(description);
         yield return MapInputController.instance.SelectTileFrom(Color.red, possibleTargets);
         SideModal.instance.Hide();

@@ -60,13 +60,13 @@ public class SpawnerAlienBehaviour : AlienBehaviour {
             yield break;
         }
         
-        // spawn
+        // spawning
         if (!body.dead && hatchTimer <= 0) {
+            Debug.Log("spawning!!!!");
             var pod = HiveMind.instance.InstantiatePod(hatchling.name, hatchlingCount, body.gridLocation, true);
             foreach (var alien in pod.members) alien.hasActed = true;
             hatchTimer = hatchCooldown;
-        } else {
-            hatchTimer--;
         }
+        hatchTimer--;
     }
 }

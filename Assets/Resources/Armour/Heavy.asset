@@ -18,11 +18,12 @@ MonoBehaviour:
   armourValue: 70
   type: 2
   cost: 150
-  description: immune to critical hits
+  description: immune to critical hits. has heavy punch ability
   maxHealth: 26
   sightRange: 8
   abilities:
-  - {fileID: 11400000, guid: cd6ac93939c4e2d40a30e3627bc167c9, type: 2}
+  - {fileID: 11400000, guid: dae4b8a2a02063c488fab0df2f2ed91b, type: 2}
+  - {fileID: 11400000, guid: 25370ef62d9cf5b4f85a83c755400daf, type: 2}
   traits: 00000000
   headSprite: {fileID: 21300000, guid: 0bb1e4d356022734190a48f348d7ae8c, type: 3}
   bodySprite: {fileID: 21300000, guid: 0d97e993eee72cb42a8ea654d84214ca, type: 3}

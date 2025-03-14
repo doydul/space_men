@@ -18,6 +18,7 @@ public class TestBedEditor : Editor {
     void TestLevelProg() {
         var save = PlayerSave.New();
         save.IncreaseDifficulty(0.2f);
+        Mission.Generate(save);
         for (int i = 0; i < levelProgIterations; i++) {
             Debug.Log($"------------ LEVEL {i + 2} --------------------------------------------------------------------------");
             Campaign.NextLevel(save);

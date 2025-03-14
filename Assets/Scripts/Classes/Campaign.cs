@@ -16,9 +16,9 @@ public class Campaign {
         if (save.levelNumber % 3 == 0 || save.enemyGenerationVelocities.Sum() <= 0) {
             // randomize enemy generation values
             var randList = new List<List<float>> {
-                new List<float> { 0, 0, 10, 20 },
-                new List<float> { 0, 0, 0, 25 },
-                new List<float> { 0, 0, 15, 15 },
+                new List<float> { 0, 0, 10, 25 },
+                new List<float> { 0, 0, 0, 30 },
+                new List<float> { 0, 0, 20, 20 },
             }.Sample().Sample(4);
             save.enemyGenerationVelocities = randList;
         }

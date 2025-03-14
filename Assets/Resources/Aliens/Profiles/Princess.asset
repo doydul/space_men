@@ -16,9 +16,11 @@ MonoBehaviour:
   difficultyLevel: 1
   threat: 20
   weight: 10
-  typeCondition: 0
+  typeCondition: 1
   typeInfo:
   - type: 4
-    typeWeight: 40
+    typeWeight: 30
+  - type: 3
+    typeWeight: 30
   groupSizeUnlocks: []
   spawnPercentage: 0

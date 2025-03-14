@@ -41,21 +41,21 @@ public class EnemyProfileSet : ISerializationCallbackReceiver {
         float nextLevelRatio = difficulty - baseLevel;
 
         if (nextLevelRatio >= 7f / 8f) {
-            Pattern8(baseLevel, set);
+            Pattern8(baseLevel, set, save);
         } else if (nextLevelRatio >= 6f / 8f) {
-            Pattern7(baseLevel, set);
+            Pattern7(baseLevel, set, save);
         } else if (nextLevelRatio >= 5f / 8f) {
-            Pattern6(baseLevel, set);
+            Pattern6(baseLevel, set, save);
         } else if (nextLevelRatio >= 4f / 8f) {
-            Pattern5(baseLevel, set);
+            Pattern5(baseLevel, set, save);
         } else if (nextLevelRatio >= 3f / 8f) {
-            Pattern4(baseLevel, set);
+            Pattern4(baseLevel, set, save);
         } else if (nextLevelRatio >= 2f / 8f) {
-            Pattern3(baseLevel, set);
+            Pattern3(baseLevel, set, save);
         } else if (nextLevelRatio >= 1f / 8f) {
-            Pattern2(baseLevel, set);
+            Pattern2(baseLevel, set, save);
         } else {
-            Pattern1(baseLevel, set);
+            Pattern1(baseLevel, set, save);
         }
         return set;
     }
@@ -66,62 +66,62 @@ public class EnemyProfileSet : ISerializationCallbackReceiver {
         return primaries;
     }
 
-    static IEnumerable<EnemyProfile> SecondariesFor(int difficultyLevel, EnemyProfileSet set) {
-        var secondaries = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == difficultyLevel).Where(prof => (prof.Fits(set) || PlayerSave.current.alienUnlocks.Unlocked(prof.name)) && !set.primaries.Contains(prof));
+    static IEnumerable<EnemyProfile> SecondariesFor(int difficultyLevel, EnemyProfileSet set, PlayerSave playerSave) {
+        var secondaries = EnemyProfile.GetAll().Where(prof => prof.difficultyLevel == difficultyLevel).Where(prof => (prof.Fits(set) || playerSave.alienUnlocks.Unlocked(prof.name)) && !set.primaries.Contains(prof));
         return secondaries;
     }
 
     // contains only enemies of the current difficulty level
-    static void Pattern1(int baseLevel, EnemyProfileSet set) {
+    static void Pattern1(int baseLevel, EnemyProfileSet set, PlayerSave playerSave) {
         set.primaries = PrimariesFor(baseLevel, set).Take(2).ToList();
-        set.secondaries = SecondariesFor(baseLevel, set).Sample(2);
+        set.secondaries = SecondariesFor(baseLevel, set, playerSave).Sample(2);
     }
 
     // 1 of the secondaries is upgraded to the next difficulty level
-    static void Pattern2(int baseLevel, EnemyProfileSet set) {
+    static void Pattern2(int baseLevel, EnemyProfileSet set, PlayerSave playerSave) {
         set.primaries = PrimariesFor(baseLevel, set).Take(2).ToList();
-        set.secondaries = SecondariesFor(baseLevel, set).Sample(1);
-        set.secondaries.AddRange(SecondariesFor(baseLevel + 1, set).Sample(1));
+        set.secondaries = SecondariesFor(baseLevel, set, playerSave).Sample(1);
+        set.secondaries.AddRange(SecondariesFor(baseLevel + 1, set, playerSave).Sample(1));
     }
 
     // both of the secondaries are upgraded to the next difficulty level
-    static void Pattern3(int baseLevel, EnemyProfileSet set) {
+    static void Pattern3(int baseLevel, EnemyProfileSet set, PlayerSave playerSave) {
         set.primaries = PrimariesFor(baseLevel, set).Take(2).ToList();
-        set.secondaries = SecondariesFor(baseLevel + 1, set).Sample(2);
+        set.secondaries = SecondariesFor(baseLevel + 1, set, playerSave).Sample(2);
     }
 
     // 1 of the primaries is upgraded to the next difficulty level
-    static void Pattern4(int baseLevel, EnemyProfileSet set) {
+    static void Pattern4(int baseLevel, EnemyProfileSet set, PlayerSave playerSave) {
         set.primaries = PrimariesFor(baseLevel, set).Take(1).ToList();
         set.primaries.Add(PrimariesFor(baseLevel + 1, set).First());
-        set.secondaries = SecondariesFor(baseLevel, set).Sample(2);
+        set.secondaries = SecondariesFor(baseLevel, set, playerSave).Sample(2);
     }
 
     // 1 primary and 1 secondary are upgraded to the next difficulty level
-    static void Pattern5(int baseLevel, EnemyProfileSet set) {
+    static void Pattern5(int baseLevel, EnemyProfileSet set, PlayerSave playerSave) {
         set.primaries = PrimariesFor(baseLevel, set).Take(1).ToList();
         set.primaries.Add(PrimariesFor(baseLevel + 1, set).First());
-        set.secondaries = SecondariesFor(baseLevel, set).Sample(1);
-        set.secondaries.AddRange(SecondariesFor(baseLevel + 1, set).Sample(1));
+        set.secondaries = SecondariesFor(baseLevel, set, playerSave).Sample(1);
+        set.secondaries.AddRange(SecondariesFor(baseLevel + 1, set, playerSave).Sample(1));
     }
 
     // 1 primary and both secondaries are upgraded to the next difficulty level
-    static void Pattern6(int baseLevel, EnemyProfileSet set) {
+    static void Pattern6(int baseLevel, EnemyProfileSet set, PlayerSave playerSave) {
         set.primaries = PrimariesFor(baseLevel, set).Take(1).ToList();
         set.primaries.Add(PrimariesFor(baseLevel + 1, set).First());
-        set.secondaries = SecondariesFor(baseLevel + 1, set).Sample(2);
+        set.secondaries = SecondariesFor(baseLevel + 1, set, playerSave).Sample(2);
     }
 
     // both primaries are upgraded to the next difficulty level
-    static void Pattern7(int baseLevel, EnemyProfileSet set) {
+    static void Pattern7(int baseLevel, EnemyProfileSet set, PlayerSave playerSave) {
         set.primaries = PrimariesFor(baseLevel + 1, set).Take(2).ToList();
-        set.secondaries = SecondariesFor(baseLevel, set).Sample(2);
+        set.secondaries = SecondariesFor(baseLevel, set, playerSave).Sample(2);
     }
 
     // both primaries and 1 secondary are upgraded to the next difficulty level
-    static void Pattern8(int baseLevel, EnemyProfileSet set) {
+    static void Pattern8(int baseLevel, EnemyProfileSet set, PlayerSave playerSave) {
         set.primaries = PrimariesFor(baseLevel + 1, set).Take(2).ToList();
-        set.secondaries = SecondariesFor(baseLevel, set).Sample(1);
-        set.secondaries.AddRange(SecondariesFor(baseLevel + 1, set).Sample(1));
+        set.secondaries = SecondariesFor(baseLevel, set, playerSave).Sample(1);
+        set.secondaries.AddRange(SecondariesFor(baseLevel + 1, set, playerSave).Sample(1));
     }
 }
