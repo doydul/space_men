@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  disableFog: 1
+  disableFog: 0
   credits: 1000
   difficultyLevel: 0.6
   groupishness: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   armour:
   - Flak Vest
   - Flak Vest
-  - Void Stalker
+  - Photon Vanguard
   inventoryWeapons: []
   inventoryArmour: []
   unlockedAliens: []
