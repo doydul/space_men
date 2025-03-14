@@ -74,6 +74,7 @@ public class Tile : MonoBehaviour {
         if (actor == null) return default(T);
         return actor.GetComponent<T>();
     }
+    public Actor GetActor() => GetActor<Actor>();
     
     public bool HasActor<T>() => GetActor<T>() != null || GetBackgroundActor<T>() != null;
     

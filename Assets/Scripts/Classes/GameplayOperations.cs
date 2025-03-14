@@ -158,7 +158,7 @@ public static class GameplayOperations {
         yield return PerformTurnAnimation(alien, Actor.FacingToDirection(targetTile.gridLocation - alien.gridLocation), true);
     }
 
-    public static IEnumerator PerformActorMove(Actor actor, Map.Path path) {
+    public static IEnumerator PerformActorMove(Actor actor, Map.Path path, bool ignoreReactions = false) {
         MapHighlighter.instance.ClearHighlights();
         var soldiers = Map.instance.GetActors<Soldier>();
         bool stoppedEarly = false;
@@ -184,13 +184,15 @@ public static class GameplayOperations {
                 }
 
                 // trigger reactions
-                foreach (var reaction in soldiers.Where(sol => sol.reaction != null).Select(sol => sol.reaction).OrderBy(reac => reac.reactionPriority)) {
-                    if (reaction.TriggersReaction(tile, actor)) {
-                        CameraController.CentreCameraOn(tile);
-                        yield return reaction.PerformReaction(tile);
-                        // experimental; this way, at most one reaction triggered per tile moved
-                        break;
-                        // if (actor.dead) break; 
+                if (!ignoreReactions) {
+                    foreach (var reaction in soldiers.Where(sol => sol.reaction != null).Select(sol => sol.reaction).OrderBy(reac => reac.reactionPriority)) {
+                        if (reaction.TriggersReaction(tile, actor)) {
+                            CameraController.CentreCameraOn(tile);
+                            yield return reaction.PerformReaction(tile);
+                            // experimental; this way, at most one reaction triggered per tile moved
+                            break;
+                            // if (actor.dead) break; 
+                        }
                     }
                 }
                 if (actor.dead) break;

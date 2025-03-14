@@ -16,6 +16,7 @@ public class Alien : Actor {
     public int damage { get; set; }
     public int armourPen { get; set; }
     public int movement { get; set; }
+    public int displacementPriority { get; set; }
     public float threat { get; set; }
     public int expReward { get; set; }
     public int sensoryRange { get; set; }

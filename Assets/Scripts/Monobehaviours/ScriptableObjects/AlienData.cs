@@ -10,6 +10,7 @@ public class AlienData : ScriptableObject {
     public int accModifier;
     public int damage;
     public int movement;
+    public int displacementPriority;
     public AlienAudioProfile audio;
     public AlienBehaviour behaviour;
     public Trait[] traits;
@@ -23,6 +24,7 @@ public class AlienData : ScriptableObject {
         target.accModifier = accModifier;
         target.damage = damage;
         target.movement = movement;
+        target.displacementPriority = displacementPriority;
         target.sensoryRange = 7;
         target.audio = audio;
         behaviour.Attach(target);

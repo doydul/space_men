@@ -13,7 +13,7 @@ public class StandardAlienBehaviour : AlienBehaviour {
         Tile bestTile = null;
         Map.Path bestPath = null;
         foreach (var tile in Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(body.gridLocation, body.remainingMovement)) {
-            if (tile.occupied && tile.GetActor<Alien>() != body) continue;
+            if (tile.HasActor<Alien>() && tile.GetActor<Alien>() != body && tile.GetActor<Alien>().displacementPriority >= body.displacementPriority) continue;
             var path = Map.instance.ShortestPath(new AlienImpassableTerrain(), tile.gridLocation, soldierPositions, true);
             if (!path.exists) break;
             if (bestPath == null || path.length < bestPath.length ||
@@ -29,7 +29,19 @@ public class StandardAlienBehaviour : AlienBehaviour {
                 yield return new WaitForSeconds(0.5f);
             }
             var actualPath = Map.instance.ShortestPath(new AlienImpassableTerrain(), body.gridLocation, bestTile.gridLocation);
-            yield return GameplayOperations.PerformActorMove(body, actualPath);
+            
+            if (bestTile.HasActor<Alien>() && bestTile.GetActor<Alien>() != body) {
+                // displace smaller alien
+                var alien = bestTile.GetActor<Alien>();
+                var closestTile = Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(alien.gridLocation, 100).First(tile => !tile.occupied || tile == body.tile);
+                yield return AnimationManager.instance.WaitForAll(
+                    GameplayOperations.PerformActorMove(body, actualPath),
+                    GameplayOperations.PerformActorMove(alien, Map.instance.ShortestPath(new AlienImpassableTerrain(), alien.gridLocation, closestTile.gridLocation), ignoreReactions: true)
+                );
+            } else {
+                yield return GameplayOperations.PerformActorMove(body, actualPath);
+            }
+            
             if (!bestTile.foggy) {
                 CameraController.CentreCameraOn(bestTile);
                 yield return new WaitForSeconds(0.5f);

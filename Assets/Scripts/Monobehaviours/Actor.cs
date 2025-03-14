@@ -88,7 +88,7 @@ public abstract class Actor : MonoBehaviour {
     }
 
     public virtual void MoveTo(Tile newTile) {
-        tile.RemoveActor(); 
+        if (tile.GetActor() == this) tile.RemoveActor();
         newTile.SetActor(transform);
     }
 

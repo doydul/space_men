@@ -1,12 +1,19 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class AnimationManager : MonoBehaviour {
+    
+    class CoroutineData {
+        public IEnumerator enumerator;
+        public bool finished;
+    }
     
     public bool animationInProgress { get; private set; }
 
     public static AnimationManager instance;
-
+    
     void Start() {
         instance = this;
     }
@@ -18,6 +25,19 @@ public class AnimationManager : MonoBehaviour {
             StartCoroutine(AnimationRoutineWrapper(animation));
         }
     }
+    
+    public IEnumerator WaitForAll(params IEnumerator[] enumerators) {
+        var coroutines = new List<CoroutineData>();
+        foreach (var enumerator in enumerators) {
+            var data = new CoroutineData() { enumerator = enumerator };
+            coroutines.Add(data);
+            StartCoroutine(PerformCoroutineAsync(data));
+        }
+        while (coroutines.Any()) {
+            yield return null;
+            coroutines.RemoveAll(data => data.finished);
+        }
+    }
 
     private IEnumerator AnimationRoutineWrapper(IEnumerator animation) {
         animationInProgress = true;
@@ -25,5 +45,10 @@ public class AnimationManager : MonoBehaviour {
         yield return StartCoroutine(animation);
         if (UIState.instance.IsActorSelected()) UIState.instance.GetSelectedActor().Select();
         animationInProgress = false;
+    }
+    
+    private IEnumerator PerformCoroutineAsync(CoroutineData data) {
+        yield return data.enumerator;
+        data.finished = true;
     }
 }
