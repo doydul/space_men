@@ -169,8 +169,8 @@ MonoBehaviour:
   difficultyLevel: 0.6
   groupishness: 0
   armouredness: 0
-  quickness: 40
-  bigness: 0
+  quickness: 0
+  bigness: 50
   weapons:
   - SIKR-5
   - SIKR-5

@@ -12,6 +12,7 @@ public class AlienData : ScriptableObject {
     public int movement;
     public AlienAudioProfile audio;
     public AlienBehaviour behaviour;
+    public Trait[] traits;
 
     public void Dump(Alien target) {
         target.type = name;
@@ -25,6 +26,7 @@ public class AlienData : ScriptableObject {
         target.sensoryRange = 7;
         target.audio = audio;
         behaviour.Attach(target);
+        target.traits = traits ?? new Trait[0];
     }
     
     public static AlienData Get(string name) {

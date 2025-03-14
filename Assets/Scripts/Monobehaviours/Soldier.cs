@@ -66,7 +66,7 @@ public class Soldier : Actor {
     public void Shoot(Alien target) => AnimationManager.instance.StartAnimation(GameplayOperations.PerformSoldierShoot(this, target));
     public IEnumerator PerformShoot(Alien target) => GameplayOperations.PerformSoldierShoot(this, target);
     public bool HasAbility<T>() => abilities.Any(ability => ability is T);
-    public bool HasTrait(Trait trait) => weapon.traits != null && weapon.traits.Contains(trait) || armour.traits != null && armour.traits.Contains(trait);
+    public override bool HasTrait(Trait trait) => weapon.traits != null && weapon.traits.Contains(trait) || armour.traits != null && armour.traits.Contains(trait);
     
     // Animations
     public void AimAnimation() => animator.SetBool("Aiming", true);

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class Alien : Actor {
 
@@ -22,6 +23,7 @@ public class Alien : Actor {
     public override int remainingMovement => (HasStatus<Shocked>() ? movement / 2 : movement) - actualTilesMoved;
     public Pod pod { get; set; }
     public AlienBehaviour behaviour { get; set; }
+    public Trait[] traits { get; set; }
 
     public bool hasActed;
     public bool awake;
@@ -35,7 +37,8 @@ public class Alien : Actor {
     public bool CanSee(Vector2 gridLocation) => Map.instance.CanBeSeenFrom(new AlienLosMask(), gridLocation, this.gridLocation);
     public bool CanSeeFrom(Vector2 gridLocation, Vector2 from) => Map.instance.CanBeSeenFrom(new AlienLosMask(), gridLocation, from);
     public Vector3 muzzlePosition => new Vector3(muzzleFlashLocation.position.x, muzzleFlashLocation.position.y, tile.transform.position.z);
-    
+    public override bool HasTrait(Trait trait) => traits.Contains(trait);
+
     protected override void Awake() {
         base.Awake();
         attackIndicator.enabled = false;

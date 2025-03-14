@@ -70,6 +70,7 @@ public abstract class Actor : MonoBehaviour {
     protected Material spriteSharedMat;
     AudioPlayer audioPlayer;
     public void PlayAudio(AudioClipProfile clip) => audioPlayer.PlayAudio(clip);
+    public virtual bool HasTrait(Trait trait) => false;
     
     // Animations
     public void MoveAnimation() => animator?.SetBool("Moving", true);

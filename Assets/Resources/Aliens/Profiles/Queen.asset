@@ -19,8 +19,8 @@ MonoBehaviour:
   typeCondition: 1
   typeInfo:
   - type: 1
-    typeWeight: 25
+    typeWeight: 30
   - type: 3
-    typeWeight: 35
+    typeWeight: 30
   groupSizeUnlocks: []
   spawnPercentage: 0
