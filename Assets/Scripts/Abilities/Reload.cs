@@ -5,7 +5,7 @@ using System.Collections;
 public class Reload : Ability {
     
     public override bool CanUse() {
-        return owner.shotsSpent > 0 && owner.canAct;
+        return owner.shotsSpent > 0 && owner.hasActions;
     }
     
     public override void Use() {

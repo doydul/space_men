@@ -8,7 +8,7 @@ public class FireOrdnance : Ability {
     public int scatterDistanceInterval = 5;
 
     public override bool CanUse() {
-        return owner.hasAmmo && owner.canAct;
+        return owner.hasAmmo && owner.hasActions;
     }
 
     public override void Use() {

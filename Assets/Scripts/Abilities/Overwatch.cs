@@ -5,7 +5,7 @@ using System.Collections;
 public class Overwatch : ReactionAbility {
     
     public override bool CanUse() {
-        return owner.hasAmmo && owner.canAct;
+        return owner.hasAmmo && owner.hasActions;
     }
     
     public override void Use() {

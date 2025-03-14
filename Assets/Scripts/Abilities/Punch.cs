@@ -13,7 +13,7 @@ public class Punch : Ability {
     protected bool freeActionGiven;
 
     public override bool CanUse() {
-        return owner.canAct && possibleTargets.Length > 0;
+        return owner.hasActions && possibleTargets.Length > 0;
     }
 
     public override void Use() {

@@ -38,8 +38,9 @@ public class Soldier : Actor {
     public ReactionAbility reaction { get; set; }
 
     public int ammo => weapon.ammo;
-    public bool canAct => actionsSpent <= 0;
-    public bool canShoot => canAct && shotsSpent < ammo;
+    public bool hasActions => actionsSpent <= 0;
+    public bool canAct => actionsSpent < 10;
+    public bool canShoot => hasActions && shotsSpent < ammo;
     public int shotsRemaining => ammo - shotsSpent;
     public bool hasAmmo => shotsRemaining > 0;
     public int baseMovement => armour.movement;
@@ -181,7 +182,7 @@ public class Soldier : Actor {
         foreach (var tile in Map.instance.iterator.Exclude(new SoldierImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement)) {
             MapHighlighter.instance.HighlightTile(tile, Color.green);
         }
-        if (canAct && HasAbility<StandardShoot>()) {
+        if (hasActions && HasAbility<StandardShoot>()) {
             foreach (var alien in Map.instance.GetActors<Alien>()) {
                 if (!alien.tile.foggy && CanSee(alien.gridLocation) && InRange(alien.gridLocation)) {
                     MapHighlighter.instance.HighlightTile(alien.tile, Color.red);
@@ -211,7 +212,6 @@ public class Soldier : Actor {
         MapHighlighter.instance.ClearHighlights();
         InterfaceController.instance.ClearAbilities();
         AmmoGauge.instance.ClearAmmo();
-        InformationPanel.instance.ClearText();
         SideModal.instance.Hide();
     }
 
@@ -219,7 +219,6 @@ public class Soldier : Actor {
         HighlightActions();
         InterfaceController.instance.DisplayAbilities(abilities.ToArray());
         AmmoGauge.instance.DisplayAmmo(ammo, shotsRemaining);
-        InformationPanel.instance.SetText(fullDescription);
     }
 }
 

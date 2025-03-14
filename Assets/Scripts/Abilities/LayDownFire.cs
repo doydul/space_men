@@ -8,7 +8,7 @@ public class LayDownFire : ReactionAbility {
     private int shotsRemaining;
 
     public override bool CanUse() {
-        return owner.hasAmmo && owner.canAct;
+        return owner.hasAmmo && owner.hasActions;
     }
 
     public override void Use() {

@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
 using System.Linq;
 
-[CreateAssetMenu(fileName = "Sprint", menuName = "Abilities/Sprint", order = 1)]
-public class Sprint : Ability {
+[CreateAssetMenu(fileName = "FreeSprint", menuName = "Abilities/FreeSprint", order = 1)]
+public class FreeSprint : CooldownAbility {
     
     public override bool CanUse() {
-        return owner.hasActions;
+        return base.CanUse() && owner.canAct;
     }
 
     public override void Use() {
@@ -16,11 +16,11 @@ public class Sprint : Ability {
     public IEnumerator PerformUse() {
         if (Settings.confirmAbilities) {
             bool confirmed = false;
-            yield return NotificationPopup.PerformShow("sprint", description, new BtnData("cancel", () => {}), new BtnData("ok", () => confirmed = true));
+            yield return NotificationPopup.PerformShow(userFacingName, description, new BtnData("cancel", () => {}), new BtnData("ok", () => confirmed = true));
             if (!confirmed) yield break;
         }
         
-        owner.actionsSpent += 1;
+        SetCooldown();
         owner.tilesMoved -= owner.sprintMovement;
     }
 }

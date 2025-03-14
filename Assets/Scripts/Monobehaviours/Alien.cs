@@ -107,7 +107,6 @@ public class Alien : Actor {
 
     public override void Select() {
         UIState.instance.SetSelectedActor(this);
-        InformationPanel.instance.SetText($"Type: {type}\nHealth: {health}/{maxHealth}\nArmour: {armour}\nAccuracy Modifier: {accModifier}\nDamage: {damage}\nMovement: {movement}");
         var infoString = $"<align=\"center\">{type}</align>\n\n{description}\n\nhealth: {health}/{maxHealth}\narmour: {armour}\naccuracy modifier: {accModifier}\ndamage: {damage}\nmovement: {movement}";
         foreach (var status in statuses) {
             infoString += $"\n<color=#{ColorUtility.ToHtmlStringRGB(status.tint)}>{status.inGameName}</color>: {status.description}";
@@ -127,7 +126,6 @@ public class Alien : Actor {
     public override void Deselect() {
         UIState.instance.DeselectActor();
         MapHighlighter.instance.ClearHighlights();
-        InformationPanel.instance.ClearText();
         SideModal.instance.Hide();
     }
 
