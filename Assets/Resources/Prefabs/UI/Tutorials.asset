@@ -117,3 +117,6 @@ MonoBehaviour:
   - key: blast_weapon
     value: blast weapons deal damage in an area. they're good for dealing with groups
       of smaller enemies, but cannot overwatch
+  - key: accuracy_modifier
+    value: the accuracy modifier is added to your weapons accuracy before each shot.
+      doesn't effect blast weapons

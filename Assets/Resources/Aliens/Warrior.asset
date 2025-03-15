@@ -17,7 +17,7 @@ MonoBehaviour:
   maxHealth: 20
   armour: 0
   accModifier: 10
-  damage: 10
+  damage: 6
   movement: 5
   displacementPriority: 3
   audio: {fileID: 11400000, guid: eb32cf0b474ba604cac0cdfdfa8cad7d, type: 2}
