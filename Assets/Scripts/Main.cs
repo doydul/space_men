@@ -63,14 +63,8 @@ public class Main : MonoBehaviour {
         yield return new WaitForSeconds(3);
         Tutorial.Show("intro");
         var soldiers = Map.instance.GetActors<Soldier>();
-        if (soldiers.Where(sol => sol.weapon.isHeavy).Any()) {
-            Tutorial.Show(soldiers.First(sol => sol.weapon.isHeavy).transform, "heavy_weapon");
-        }
         if (soldiers.Where(sol => sol.HasAbility<LayDownFire>()).Any()) {
             Tutorial.Show(soldiers.First(sol => sol.HasAbility<LayDownFire>()).transform, "machine_gun");
-        }
-        if (soldiers.Where(sol => sol.HasAbility<FireOrdnance>()).Any()) {
-            Tutorial.Show(soldiers.First(sol => sol.HasAbility<FireOrdnance>()).transform, "blast_weapon");
         }
     }
 

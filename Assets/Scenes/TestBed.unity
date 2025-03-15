@@ -164,13 +164,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  disableFog: 0
+  disableFog: 1
   credits: 1000
   difficultyLevel: 0.6
   groupishness: 0
-  armouredness: 0
+  armouredness: 50
   quickness: 0
-  bigness: 50
+  bigness: 0
   weapons:
   - SIKR-5
   - SIKR-5
@@ -179,7 +179,10 @@ MonoBehaviour:
   - Flak Vest
   - Flak Vest
   - Photon Vanguard
-  inventoryWeapons: []
+  inventoryWeapons:
+  - Grenade Launcher
+  - Rocket Launcher
+  - Plasma Gun
   inventoryArmour: []
   unlockedAliens: []
 --- !u!1660057539 &9223372036854775807

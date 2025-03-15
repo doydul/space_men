@@ -47,7 +47,7 @@ MonoBehaviour:
   - key: alien_info
     value: this panel shows key statistics about the alien. the map tiles highlighted
       in red show where the alien can move/attack on it's next turn
-  - key: armoured_enemy
+  - key: armour
     value: aliens with armour take half damage from any attack whose damage value
       is less than or equal to the armour value. they're vulnerable to energy weapons
       or weapons with high damage values
@@ -78,16 +78,10 @@ MonoBehaviour:
     value: this alien is now shocked, because it was hit by an attack that exceeded
       it's armour value. shocked enemies have their movement halved until the start
       of the next soldier turn
-  - key: heavy_weapon
-    value: this soldier has been equipped with a heavy weapon. a soldier that fires
-      a heavy weapon cannot move afterwards
   - key: machine_gun
     value: this soldier's weapon doesn't have a normal shoot action. instead, it
       has the 'lay down fire' ability, which behaves similarly to overwatch, except
       you have to choose a direction
-  - key: blast_weapon
-    value: this soldier has a blast weapon. these weapons don't have a normal shoot
-      action, you must use the 'fire ordnance' ability instead
   - key: campaign_ui1
     value: welcome to the campaign screen. this is where you will make amendments
       to your squad to prepare them for the next mission
@@ -113,3 +107,13 @@ MonoBehaviour:
       more items of that type by spending credits
   - key: starter_item
     value: starter items can't be scrapped or researched
+  - key: armour_type
+    value: 'armour comes in 3 types: light, medium, and heavy. heavier armour provides
+      more protection but slower movement'
+  - key: heavy_weapon
+    value: heavy weapons prevent the user from moving after firing
+  - key: energy_weapon
+    value: energy weapons ignore 75% of enemy armour
+  - key: blast_weapon
+    value: blast weapons deal damage in an area. they're good for dealing with groups
+      of smaller enemies, but cannot overwatch

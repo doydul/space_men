@@ -362,6 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 484840650823915582}
   - component: {fileID: 122566768578569505}
+  - component: {fileID: 5902949601043856546}
   - component: {fileID: 5515938044403645290}
   m_Layer: 0
   m_Name: Description
@@ -397,6 +398,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114746485815794776}
   m_CullTransparentMesh: 1
+--- !u!114 &5902949601043856546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114746485815794776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8d425eba45f0f4fb2309fc092eb0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5515938044403645290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,16 +671,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: assault rifle/medium
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2168daeae12c445959cf2f894c4e7862, type: 2}
-  m_sharedMaterial: {fileID: 4269705104388367133, guid: 2168daeae12c445959cf2f894c4e7862,
+  m_fontAsset: {fileID: 11400000, guid: 6a4ddaaa870480b47b1e1807f9fd92fe, type: 2}
+  m_sharedMaterial: {fileID: -3494583688166035722, guid: 6a4ddaaa870480b47b1e1807f9fd92fe,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4288993986
+  m_fontColor: {r: 0.76036435, g: 0.85660374, b: 0.64487714, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -684,13 +697,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3.55
+  m_fontSize: 5.45
   m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 2
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -5378,6 +5391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6335240213248223299}
   - component: {fileID: 4320104285899877051}
+  - component: {fileID: 1773930913111099225}
   - component: {fileID: 290975781404396572}
   m_Layer: 5
   m_Name: ContentText
@@ -5413,6 +5427,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8428568726444660776}
   m_CullTransparentMesh: 0
+--- !u!114 &1773930913111099225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8428568726444660776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8d425eba45f0f4fb2309fc092eb0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &290975781404396572
 MonoBehaviour:
   m_ObjectHideFlags: 0

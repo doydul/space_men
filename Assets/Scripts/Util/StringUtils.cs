@@ -7,6 +7,10 @@ public static class StringUtils {
         return $"{value}<voffset=0.1em>¢";
     }
     
+    public static string RenderTooltipLink(string tooltipName, string text) {
+        return $"<u><font=\"ChakraPetch-Bold\"><link=\"{tooltipName}\">{text}</link></font></u>";
+    }
+    
     public static string UserFacingName(string fileName) {
         return string.Join(" ", Regex.Split(fileName, @"(?<!^)(?=[A-Z])"));
     }

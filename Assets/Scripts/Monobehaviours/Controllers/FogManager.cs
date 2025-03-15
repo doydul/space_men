@@ -26,7 +26,6 @@ public class FogManager : MonoBehaviour {
                     tile.RemoveFoggy();
                     
                     // tutorials
-                    if (tile.HasActor<Alien>() && tile.GetActor<Alien>().armour > 0) Tutorial.Show(tile.transform, "armoured_enemy", true);
                     if (tile.HasActor<Chest>()) Tutorial.Show(tile.transform, "crates", true);
                     //
                     
