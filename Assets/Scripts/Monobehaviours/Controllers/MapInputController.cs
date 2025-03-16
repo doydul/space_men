@@ -85,7 +85,7 @@ public class MapInputController : MonoBehaviour {
 
     public void Click(Vector2 mousePosition) {
         RaycastHit hit;
-        Physics.Raycast(cam.ScreenPointToRay(mousePosition), out hit);
+        Physics.Raycast(cam.ScreenPointToRay(mousePosition), out hit, 100, (1 << LayerMask.NameToLayer("Walls")) | (1 << LayerMask.NameToLayer("Default")));
         if (hit.collider != null) {
             var tile = hit.collider.gameObject.GetComponent<Tile>();
             if (tile != null) {

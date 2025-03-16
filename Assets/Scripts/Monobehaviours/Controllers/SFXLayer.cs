@@ -49,7 +49,7 @@ public class SFXLayer : MonoBehaviour {
                 ray,
                 out raycastHit,
                 100,
-                1 << LayerMask.NameToLayer("Walls")
+                (1 << LayerMask.NameToLayer("Walls")) | (1 << LayerMask.NameToLayer("Obstacles"))
             );
             var hitPoint = didHit ? raycastHit.point : ray.GetPoint(100);
             yield return tracer.PerformAnimation(

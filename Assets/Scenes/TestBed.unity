@@ -169,14 +169,14 @@ MonoBehaviour:
   triggerHoldObjective: 0
   credits: 1000
   difficultyLevel: 1
-  groupishness: 25
+  groupishness: 50
   armouredness: 0
   quickness: 0
-  bigness: 50
+  bigness: 0
   weapons:
-  - Grenade Launcher
-  - Grenade Launcher
-  - Grenade Launcher
+  - Assault Rifle
+  - Assault Rifle
+  - Assault Rifle
   armour:
   - Medium
   - Medium

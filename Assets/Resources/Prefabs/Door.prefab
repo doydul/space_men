@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8392912311934876986}
   - component: {fileID: 4604106231337894121}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,6 +49,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -95,7 +98,8 @@ GameObject:
   m_Component:
   - component: {fileID: 580238104354458951}
   - component: {fileID: 2377287446017907814}
-  m_Layer: 0
+  - component: {fileID: 7305945237821081982}
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,4 +136,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
   image: {fileID: 8392912311934876986}
-  bloodSplatSprites: []
+  bloodSplats: []
+  deflectIndicator: {fileID: 0}
+  healthIndicator: {fileID: 0}
+  statusesBar: {fileID: 0}
+  walkSounds: {fileID: 0}
+  hurtSounds: {fileID: 0}
+  dieSounds: {fileID: 0}
+  hitEffect: {fileID: 0}
+--- !u!65 &7305945237821081982
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458170977811208256}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.45, y: 1, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
