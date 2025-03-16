@@ -19,6 +19,8 @@ public class MapInstantiator : MonoBehaviour {
     }
 
     public static bool skipGenerate;
+    public static bool forceTerminalObjective;
+    public static bool forceHoldObjective;
     
     public static MapInstantiator instance;
     void Awake() => instance = this;
@@ -37,6 +39,12 @@ public class MapInstantiator : MonoBehaviour {
         }
         var blueprint = blueprints[(int)(difficulty * 2)];
         var objectives = Objectives.GenerateObjectiveList(PlayerSave.current);
+        
+        // debug
+        if (forceTerminalObjective) objectives.Add(new ActivateTerminal { required = true });
+        if (forceHoldObjective) objectives.Add(new WaveDefence { required = true });
+        //
+        
         var mapLayout = new MapGenerator(new MapGenerator.Blueprint {
             corridors = blueprint.corridors,
             secondaryCorridors = blueprint.secondaryCorridors,

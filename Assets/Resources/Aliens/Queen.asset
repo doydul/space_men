@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c82adb107c94f71a0fd866728d0893, type: 3}
   m_Name: Queen
   m_EditorClassIdentifier: 
-  description: slow and timid. spawns smaller aliens
+  description: slow and timid. spawns several smaller aliens
   sprite: {fileID: 6851498383279292439, guid: 3ccd30fbff994134fa50ef9dfd130b0d, type: 3}
   maxHealth: 30
   armour: 0

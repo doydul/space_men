@@ -5,6 +5,8 @@ public class TestBed : MonoBehaviour {
     
     public bool useTestMap;
     public bool disableFog;
+    public bool triggerTerminalObjective;
+    public bool triggerHoldObjective;
     public int credits;
     public float difficultyLevel;
     
@@ -38,6 +40,8 @@ public class TestBed : MonoBehaviour {
         save.mission = Mission.Generate(save);
         Debug.Log("Loading Mission scene...");
         FogManager.disabled = disableFog;
+        MapInstantiator.forceTerminalObjective = triggerTerminalObjective;
+        MapInstantiator.forceHoldObjective = triggerHoldObjective;
         if (useTestMap) {
             MapInstantiator.skipGenerate = true;
             SceneManager.LoadScene("MapTest");
