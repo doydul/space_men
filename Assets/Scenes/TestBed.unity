@@ -164,27 +164,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  disableFog: 1
-  triggerTerminalObjective: 1
+  disableFog: 0
+  triggerTerminalObjective: 0
   triggerHoldObjective: 0
-  credits: 1000
-  difficultyLevel: 1
-  groupishness: 50
+  credits: 0
+  difficultyLevel: 0
+  groupishness: 0
   armouredness: 0
   quickness: 0
   bigness: 0
   weapons:
-  - Assault Rifle
-  - Assault Rifle
-  - Assault Rifle
+  - SIKR-5
+  - SIKR-5
+  - SIKR-5
   armour:
-  - Medium
-  - Medium
-  - Photon Vanguard
-  inventoryWeapons:
-  - Grenade Launcher
-  - Rocket Launcher
-  - Plasma Gun
+  - Flak Vest
+  - Flak Vest
+  - Flak Vest
+  inventoryWeapons: []
   inventoryArmour: []
   unlockedAliens: []
 --- !u!1660057539 &9223372036854775807

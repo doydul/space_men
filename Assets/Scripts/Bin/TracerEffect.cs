@@ -11,6 +11,6 @@ public class TracerEffect : MonoBehaviour {
     }
     
     public void SetT(float t) {
-        effect.SetFloat("T", t);
+        if (effect.HasFloat("T")) effect.SetFloat("T", t);
     }
 }

@@ -15,7 +15,7 @@ public class DirectionalOverwatch : ReactionAbility {
     }
 
     public IEnumerator PerformUse() {
-        AbilityInfoPanel.instance.ShowDescription("Overwatch\nChoose Facing");
+        AbilityInfoPanel.instance.ShowDescription($"{userFacingName}\nChoose Facing");
         yield return MapInputController.instance.SelectTileFrom(Color.red, Map.instance.AdjacentTiles(owner.tile).Where(tile => tile.open).ToArray());
         if (MapInputController.instance.selectedTile == null) yield break;
         AbilityInfoPanel.instance.Hide();

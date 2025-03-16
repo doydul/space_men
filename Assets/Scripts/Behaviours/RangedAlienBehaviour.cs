@@ -7,6 +7,7 @@ public class RangedAlienBehaviour : AlienBehaviour {
     
     public int minDistance;
     public int maxDistance;
+    public bool duckBack;
     public Weapon weaponProfile;
     
     bool notFirstTurn;

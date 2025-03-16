@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e90a6a2092a8ae4d85b69a975a775cc, type: 3}
   m_Name: DirectionalOverwatch
   m_EditorClassIdentifier: 
-  description: 
-  sprite: {fileID: 21300000, guid: adeca7b8be77da047a6787332e546b03, type: 3}
+  description: fire at any enemies that move into range from a particular direciton.
+    cannot move or act after activating overwatch
+  sprite: {fileID: 21300000, guid: faf4c65fc98ff1e4d87395fb7baebbd5, type: 3}
+  reactionPriority: 0

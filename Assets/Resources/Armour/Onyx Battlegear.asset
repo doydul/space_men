@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f1317cff8372408d87e475886085f69, type: 3}
-  m_Name: Void Stalker
+  m_Name: Onyx Battlegear
   m_EditorClassIdentifier: 
-  icon: {fileID: 6049137105121139426, guid: 7e0702b01691f4610824edfb221641a6, type: 3}
+  icon: {fileID: 6112543359969127321, guid: a1b4dd143a2ea40d6b7591e0c8f15021, type: 3}
   techLevel: 1
   weight: 70
-  type: 0
-  cost: 170
-  description: 
-  maxHealth: 18
+  type: 1
+  cost: 150
+  description: grants mark ability
+  maxHealth: 22
   sightRange: 9
   abilities:
   - {fileID: 11400000, guid: cd6ac93939c4e2d40a30e3627bc167c9, type: 2}
-  - {fileID: 11400000, guid: 9f30454173be9ce459a01e49cc54e5e3, type: 2}
-  - {fileID: 11400000, guid: 7f88425716882664d8f2641f424bd4c3, type: 2}
+  - {fileID: 11400000, guid: 1193a2dd854cb30449ba4d1b50cb5804, type: 2}
   traits: 
   headSprite: {fileID: 21300000, guid: dd1da066564958d479cf74acd5e26754, type: 3}
-  bodySprite: {fileID: 21300000, guid: e4c4878e9ef66e0479b3ab59946b00f4, type: 3}
+  bodySprite: {fileID: 21300000, guid: 78fdc6c697b3a144bb04b55094d522ee, type: 3}
