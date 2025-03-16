@@ -9,6 +9,8 @@ public class RangedAlienBehaviour : AlienBehaviour {
     public int maxDistance;
     public Weapon weaponProfile;
     
+    bool notFirstTurn;
+    
     public override IEnumerator PerformTurn() {
         var soldierPositions = Map.instance.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToArray();
         var visibleSoldierPositions = soldierPositions.Where(pos => body.CanSee(pos)).ToList();
@@ -58,7 +60,7 @@ public class RangedAlienBehaviour : AlienBehaviour {
         }
         
         // attack
-        if (!body.dead) {
+        if (!body.dead && notFirstTurn) {
             // only attack if target was visible at start of turn
             var soldiersInLOS = visibleSoldierPositions.Where(pos => body.CanSee(pos));
             if (soldiersInLOS.Count() <= 0) yield break;
@@ -68,5 +70,6 @@ public class RangedAlienBehaviour : AlienBehaviour {
                 yield return GameplayOperations.PerformAlienShoot(body, weaponProfile, target);
             }
         }
+        notFirstTurn = true;
     }
 }

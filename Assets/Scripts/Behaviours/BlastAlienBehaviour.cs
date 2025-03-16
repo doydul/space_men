@@ -10,6 +10,8 @@ public class BlastAlienBehaviour : AlienBehaviour {
     public int multitargetRadius;
     public Weapon weaponProfile;
     
+    bool notFirstTurn;
+    
     public override IEnumerator PerformTurn() {
         var soldierPositions = Map.instance.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToArray();
         Tile bestTile = null;
@@ -51,7 +53,7 @@ public class BlastAlienBehaviour : AlienBehaviour {
         }
         
         // attack
-        if (!body.dead) {
+        if (!body.dead && notFirstTurn) {
             var soldiersInLOS = soldierPositions.Where(pos => body.CanSee(pos));
             if (soldiersInLOS.Count() <= 0) yield break;
             
@@ -88,5 +90,6 @@ public class BlastAlienBehaviour : AlienBehaviour {
             var targetTile = Map.instance.GetTileAt(bestTargetPos);
             yield return GameplayOperations.PerformAlienOrdnance(body, weaponProfile, targetTile);
         }
+        notFirstTurn = true;
     }
 }
