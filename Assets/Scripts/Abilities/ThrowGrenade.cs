@@ -44,7 +44,8 @@ public class ThrowGrenade : Ability {
             int currentLayer = 0;
             foreach (var layer in Map.instance.iterator.Exclude(new ExplosionImpassableTerrain()).EnumerateLayersFrom(hitTile.gridLocation)) {
                 if (currentLayer == scatterDist) {
-                    hitTile = layer[Random.Range(0, layer.Count())];
+                    var randTile = layer.Where(tile => owner.CanSee(tile.gridLocation)).Sample();
+                    if (randTile != null) hitTile = randTile;
                     break;
                 }
                 currentLayer++;

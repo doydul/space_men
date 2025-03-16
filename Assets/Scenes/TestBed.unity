@@ -174,8 +174,8 @@ MonoBehaviour:
   quickness: 0
   bigness: 50
   weapons:
-  - Assault Rifle
-  - Assault Rifle
+  - Grenade Launcher
+  - Grenade Launcher
   - Grenade Launcher
   armour:
   - Medium
