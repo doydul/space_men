@@ -24,6 +24,8 @@ public class HiveMind : MonoBehaviour {
         public Spawner spawner { get; set; }
     }
 
+    public int threatPerPrimary;
+    public int threatPerSecondary;
     public List<EnemySpawnTracker> spawnTrackers = new();
     Alien activeAlien;
     bool threatIncreased;
@@ -45,16 +47,16 @@ public class HiveMind : MonoBehaviour {
         foreach (var profile in Map.instance.enemyProfiles.primaries) {
             spawnTrackers.Add(new EnemySpawnTracker {
                 profile = profile,
-                remainingThreat = 200 / Map.instance.enemyProfiles.primaries.Count,
-                startingThreat = 200 / Map.instance.enemyProfiles.primaries.Count
+                remainingThreat = threatPerPrimary * 2 / Map.instance.enemyProfiles.primaries.Count,
+                startingThreat = threatPerPrimary * 2 / Map.instance.enemyProfiles.primaries.Count
             });
             Debug.Log($"Initialising primary spawn tracker (profile: {profile.name}, threat: {spawnTrackers[spawnTrackers.Count - 1].remainingThreat})");
         }
         foreach (var profile in Map.instance.enemyProfiles.secondaries) {
             spawnTrackers.Add(new EnemySpawnTracker {
                 profile = profile,
-                remainingThreat = 33,
-                startingThreat = 33
+                remainingThreat = threatPerSecondary,
+                startingThreat = threatPerSecondary
             });
             Debug.Log($"Initialising secondary spawn tracker (profile: {profile.name}, threat: {spawnTrackers[spawnTrackers.Count - 1].remainingThreat})");
         }
@@ -153,8 +155,14 @@ public class HiveMind : MonoBehaviour {
             int nominalTurnCount = 12;
             float avgSpawnsPerTurn = ((float)tracker.remainingThreat / tracker.profile.threat) / nominalTurnCount;
             if (threatIncreased) avgSpawnsPerTurn = (tracker.startingThreat / 4) / tracker.profile.threat;
-            int spawns = (int)Mathf.Round(GaussianNumber.Generate(avgSpawnsPerTurn, Mathf.Max(avgSpawnsPerTurn * 0.45f, 0.5f)));
-            Debug.Log($"{tracker.profile.name} avg spawns: {avgSpawnsPerTurn}, spawns: {spawns}");
+            
+            var stdDev = avgSpawnsPerTurn * 0.4f;
+            if (avgSpawnsPerTurn < 0.5f) {
+                float t = avgSpawnsPerTurn / 0.5f;
+                stdDev = t * stdDev + (1 - t) * avgSpawnsPerTurn * 3;
+            }
+            int spawns = Mathf.Max(0, (int)Mathf.Round(GaussianNumber.Generate(avgSpawnsPerTurn, stdDev)));
+            
             for (int j = 0; j < spawns; j++) {
                 spawnings.Add(new Spawning { type = tracker.profile.typeName, number = 1 });
             }
@@ -191,6 +199,7 @@ public class HiveMind : MonoBehaviour {
         alien.SetSpriteTransform(spriteTransform);
 
         Map.instance.GetTileAt(gridLocation).SetActor(trans);
+        alien.TurnTo(Actor.RandomDirection());
         return alien;
     }
 }

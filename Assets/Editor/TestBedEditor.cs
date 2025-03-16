@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEditor;
- 
+using System.Collections.Generic;
+using System.Linq;
+
 [CustomEditor (typeof(TestBed))]
 public class TestBedEditor : Editor {
 
@@ -23,5 +25,19 @@ public class TestBedEditor : Editor {
             Debug.Log($"------------ LEVEL {i + 2} --------------------------------------------------------------------------");
             Campaign.NextLevel(save);
         }
+    }
+    
+    void TestSpawns(float avrgSpawns) {
+        var results = new List<int>();
+        for (int i = 0; i < 10000; i++) {
+            var stdDev = avrgSpawns * 0.4f;
+            if (avrgSpawns < 0.5f) {
+                float t = avrgSpawns / 0.5f;
+                stdDev = t * stdDev + (1 - t) * avrgSpawns * 3;
+            }
+            int spawns = Mathf.Max(0, (int)Mathf.Round(GaussianNumber.Generate(avrgSpawns, stdDev)));
+            results.Add(spawns);
+        }
+        Debug.Log($"Desired: {avrgSpawns}, Actual: {results.Sum() / 10000f}");
     }
 }

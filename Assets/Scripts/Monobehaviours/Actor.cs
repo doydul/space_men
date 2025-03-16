@@ -29,6 +29,13 @@ public abstract class Actor : MonoBehaviour {
         }
         return Direction.Up;
     }
+    public static Direction RandomDirection() {
+        var rand = Random.value;
+        if (rand < 0.25f) return Direction.Up;
+        else if (rand < 0.5f) return Direction.Down;
+        else if (rand < 0.75f) return Direction.Left;
+        else return Direction.Right;
+    }
 
     public Tile tile;
     public Transform image;

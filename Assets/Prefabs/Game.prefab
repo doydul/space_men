@@ -6043,6 +6043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3dc42b468f3dcd41af1329de4eeb7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  threatPerPrimary: 100
+  threatPerSecondary: 33
 --- !u!114 &2135689705447030174
 MonoBehaviour:
   m_ObjectHideFlags: 0
