@@ -1,10 +1,9 @@
 using System.Collections;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
     
-    public float moveSpeed;
+    public float moveDuration;
     
     Camera cam;
     float startSize;
@@ -56,10 +55,9 @@ public class CameraController : MonoBehaviour {
         var targetPos = startPos;
         targetPos.x = trans.position.x;
         targetPos.y = trans.position.y;
-        float duration = (targetPos - startPos).magnitude / instance.moveSpeed;
         
-        while (Time.time - startTime < duration) {
-            float t = (Time.time - startTime) / duration;
+        while (Time.time - startTime < instance.moveDuration) {
+            float t = (Time.time - startTime) / instance.moveDuration;
             instance.transform.position = Vector3.Lerp(startPos, targetPos, MathUtil.EaseCubic(t));
             yield return null;
         }

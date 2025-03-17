@@ -15,4 +15,4 @@ MonoBehaviour:
   description: fire at any enemies that move into range from a particular direciton.
     cannot move or act after activating overwatch
   sprite: {fileID: 21300000, guid: faf4c65fc98ff1e4d87395fb7baebbd5, type: 3}
-  reactionPriority: 0
+  reactionPriority: 1

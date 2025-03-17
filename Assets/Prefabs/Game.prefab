@@ -1726,7 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41cabca13a7294bb5a5b9f0fdd313d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveDuration: 0.3
 --- !u!20 &7064346511390363277
 Camera:
   m_ObjectHideFlags: 0

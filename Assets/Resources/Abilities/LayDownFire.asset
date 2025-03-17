@@ -17,4 +17,4 @@ MonoBehaviour:
     if new enemies enter the area during the enemy turn, they will also be shot at.
     unit can't move for the rest of the turn
   sprite: {fileID: 21300000, guid: 63766ff3d945dfc44baeba940bd9b27d, type: 3}
-  reactionPriority: 1
+  reactionPriority: 5
