@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cddc69150da800e41bb19c86021d44fb, type: 3}
   m_Name: SkitterBehaviour
   m_EditorClassIdentifier: 
-  minDistance: 6
-  maxDistance: 12
+  minDistance: 3
+  maxDistance: 8
   duckBack: 1
   weaponProfile: {fileID: 11400000, guid: 8b7b92ed83032c542931e7e8b7158f95, type: 2}

@@ -7,6 +7,7 @@ public class TestBed : MonoBehaviour {
     public bool disableFog;
     public bool triggerTerminalObjective;
     public bool triggerHoldObjective;
+    public bool enemiesStartAlerted;
     public int credits;
     public float difficultyLevel;
     
@@ -42,6 +43,7 @@ public class TestBed : MonoBehaviour {
         FogManager.disabled = disableFog;
         MapInstantiator.forceTerminalObjective = triggerTerminalObjective;
         MapInstantiator.forceHoldObjective = triggerHoldObjective;
+        HiveMind.enemiesStartAlerted = enemiesStartAlerted;
         if (useTestMap) {
             MapInstantiator.skipGenerate = true;
             SceneManager.LoadScene("MapTest");

@@ -8,7 +8,7 @@ public class HeadShot : CooldownAbility {
     public Weapon weaponProfile;
     
     public override bool CanUse() {
-        return base.CanUse() && owner.shotsRemaining >= 1;
+        return base.CanUse() && owner.hasActions && owner.shotsRemaining >= 1;
     }
 
     public override void Use() {
@@ -16,7 +16,7 @@ public class HeadShot : CooldownAbility {
     }
 
     private IEnumerator PerformUse() {
-        AbilityInfoPanel.instance.ShowDescription("Head Shot\nChoose Target");
+        AbilityInfoPanel.instance.ShowDescription($"{userFacingName}\nChoose Target");
         SideModal.instance.Show(description);
         var tmp = owner.weapon;
         owner.weapon = weaponProfile;

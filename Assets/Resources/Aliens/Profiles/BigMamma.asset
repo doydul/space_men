@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeName: BigMamma
   difficultyLevel: 1
-  threat: 25
+  threat: 30
   weight: 10
   typeCondition: 0
   typeInfo:

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeName: Swarmer
   difficultyLevel: 1
-  threat: 8
+  threat: 6
   weight: 20
   typeCondition: 0
   typeInfo:

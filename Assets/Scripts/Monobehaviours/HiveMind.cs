@@ -9,6 +9,8 @@ public class HiveMind : MonoBehaviour {
     
     public static HiveMind instance;
     
+    public static bool enemiesStartAlerted;
+    
     public class Spawning {
         public string type;
         public int number;
@@ -194,6 +196,7 @@ public class HiveMind : MonoBehaviour {
         var alien = trans.GetComponent<Alien>() as Alien;
         alienData.Dump(alien);
         alien.id = System.Guid.NewGuid().ToString();
+        if (enemiesStartAlerted) alien.Awaken();
 
         var spriteTransform = Instantiate(Resources.Load<Transform>("Prefabs/AlienSprites/" + alienType + "AlienSprite")) as Transform;
         alien.SetSpriteTransform(spriteTransform);

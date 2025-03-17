@@ -107,7 +107,14 @@ public class Alien : Actor {
 
     public override void Select() {
         UIState.instance.SetSelectedActor(this);
-        var infoString = $"<align=\"center\">{type}</align>\n\n{description}\n\nhealth: {health}/{maxHealth}{(armour > 0 ? "\n" + StringUtils.RenderTooltipLink("armour", "armour") + ": " + armour : "")}\n{StringUtils.RenderTooltipLink("accuracy_modifier", "accuracy modifier")}: {accModifier}\ndamage: {damage}\nmovement: {movement}";
+        var infoString = $"<align=\"center\">{type}</align>\n\n" +
+            $"{description}\n\n" +
+            $"{(awake ? StringUtils.RenderTooltipLink("alert", "alert") : StringUtils.RenderTooltipLink("dormant", "dormant"))}\n" +
+            $"health: {health}/{maxHealth}{(armour > 0 ? "\n" + StringUtils.RenderTooltipLink("armour", "armour") + ": " + armour : "")}" +
+            $"\n{StringUtils.RenderTooltipLink("accuracy_modifier", "accuracy modifier")}: {accModifier}\n" + 
+            $"damage: {damage}\n" +
+            $"movement: {movement}";
+            
         foreach (var status in statuses) {
             infoString += $"\n<color=#{ColorUtility.ToHtmlStringRGB(status.tint)}>{status.inGameName}</color>: {status.description}";
         }

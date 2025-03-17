@@ -167,20 +167,23 @@ MonoBehaviour:
   disableFog: 0
   triggerTerminalObjective: 0
   triggerHoldObjective: 0
+  enemiesStartAlerted: 0
   credits: 0
-  difficultyLevel: 0
+  difficultyLevel: 1
   groupishness: 0
   armouredness: 0
-  quickness: 0
+  quickness: 30
   bigness: 0
   weapons:
-  - SIKR-5
-  - SIKR-5
-  - SIKR-5
+  - Sniper Rifle
+  - Assault Rifle
+  - Assault Rifle
+  - Assault Rifle
   armour:
-  - Flak Vest
-  - Flak Vest
-  - Flak Vest
+  - Light
+  - Medium
+  - Medium
+  - Medium
   inventoryWeapons: []
   inventoryArmour: []
   unlockedAliens: []

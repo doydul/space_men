@@ -10,11 +10,13 @@ public class RangedAlienBehaviour : AlienBehaviour {
     public bool duckBack;
     public Weapon weaponProfile;
     
+    bool hasSeenSoldier;
     bool notFirstTurn;
     
     public override IEnumerator PerformTurn() {
         var soldierPositions = Map.instance.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToArray();
-        var visibleSoldierPositions = soldierPositions.Where(pos => body.CanSee(pos)).ToList();
+        if (!hasSeenSoldier && soldierPositions.Where(pos => body.CanSee(pos)).Any()) hasSeenSoldier = true; // enable shooting if enemy was visible at start of turn
+
         Tile bestTile = null;
         Map.Path bestPath = null;
         bool bestTileJustRight = false;
@@ -45,12 +47,14 @@ public class RangedAlienBehaviour : AlienBehaviour {
                 bestTileJustRight = justRight;
             }
         }
+        int tilesMoved = 0;        
         if (bestTile != null) {
             if (!body.tile.foggy) {
                 CameraController.CentreCameraOn(body.tile);
                 yield return new WaitForSeconds(0.5f);
             }
             var actualPath = Map.instance.ShortestPath(new AlienImpassableTerrain(), body.gridLocation, bestTile.gridLocation);
+            tilesMoved = actualPath.length;
             yield return GameplayOperations.PerformActorMove(body, actualPath);
             if (!bestTile.foggy) {
                 CameraController.CentreCameraOn(bestTile);
@@ -61,14 +65,38 @@ public class RangedAlienBehaviour : AlienBehaviour {
         }
         
         // attack
-        if (!body.dead && notFirstTurn) {
-            // only attack if target was visible at start of turn
-            var soldiersInLOS = visibleSoldierPositions.Where(pos => body.CanSee(pos));
-            if (soldiersInLOS.Count() <= 0) yield break;
-            var targetPos = soldiersInLOS.MinBy(pos => Map.instance.ManhattanDistance(pos, body.gridLocation));
-            var target = Map.instance.GetTileAt(targetPos).GetActor<Soldier>();
-            if (weaponProfile.InRange(body.gridLocation, targetPos)) {
-                yield return GameplayOperations.PerformAlienShoot(body, weaponProfile, target);
+        if (!body.dead) {
+            bool hasShot = false;
+            var soldiersInLOS = soldierPositions.Where(pos => body.CanSee(pos));
+            if (!soldiersInLOS.Any()) yield break;
+            
+            if (notFirstTurn && hasSeenSoldier) {
+                var targetPos = soldiersInLOS.MinBy(pos => Map.instance.ManhattanDistance(pos, body.gridLocation));
+                var target = Map.instance.GetTileAt(targetPos).GetActor<Soldier>();
+                if (weaponProfile.InRange(body.gridLocation, targetPos)) {
+                    yield return GameplayOperations.PerformAlienShoot(body, weaponProfile, target);
+                    hasShot = true;
+                }
+            } else {
+                hasSeenSoldier = true;
+            }
+            
+            // duck back
+            if (duckBack && hasShot && tilesMoved < body.remainingMovement) {
+                bestTile = null;
+                foreach (var tile in Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(body.gridLocation, body.remainingMovement - tilesMoved)) {
+                    if (tile.occupied) continue;
+                    
+                    bool canSeeEnemies = soldierPositions.Any(pos => body.CanSeeFrom(pos, tile.gridLocation));
+                    if (!canSeeEnemies) {
+                        bestTile = tile;
+                        break;
+                    }
+                }
+                if (bestTile != null) {
+                    var actualPath = Map.instance.ShortestPath(new AlienImpassableTerrain(), body.gridLocation, bestTile.gridLocation);
+                    yield return GameplayOperations.PerformActorMove(body, actualPath);
+                }
             }
         }
         notFirstTurn = true;

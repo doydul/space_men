@@ -120,3 +120,9 @@ MonoBehaviour:
   - key: accuracy_modifier
     value: the accuracy modifier is added to your weapons accuracy before each shot.
       doesn't effect blast weapons
+  - key: dormant
+    value: dormant aliens aren't aware of your presence, and won't act during the
+      alien turn
+  - key: alert
+    value: alert aliens are aware of your presence, and will act during the alien
+      turn

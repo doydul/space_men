@@ -10,7 +10,7 @@ public class BlastAlienBehaviour : AlienBehaviour {
     public int multitargetRadius;
     public Weapon weaponProfile;
     
-    bool notFirstTurn;
+    bool hasSeenSoldier;
     
     public override IEnumerator PerformTurn() {
         var soldierPositions = Map.instance.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToArray();
@@ -53,43 +53,46 @@ public class BlastAlienBehaviour : AlienBehaviour {
         }
         
         // attack
-        if (!body.dead && notFirstTurn) {
+        if (!body.dead) {
             var soldiersInLOS = soldierPositions.Where(pos => body.CanSee(pos));
             if (soldiersInLOS.Count() <= 0) yield break;
             
-            // get all tiles within multitargetRadius from a soldier
-            var targetablePositions = new HashSet<Vector2>();
-            foreach (var soldierPos in soldiersInLOS) {
-                foreach (var tile in Map.instance.iterator.RadiallyFrom(soldierPos, multitargetRadius)) {
-                    if (body.CanSee(tile.gridLocation) && // target must be within LOS
-                      weaponProfile.InRange(body.gridLocation, tile.gridLocation) && // target must be in range
-                      Map.instance.ManhattanDistance(body.gridLocation, tile.gridLocation) > multitargetRadius) { // don't blow yourself up
-                        targetablePositions.Add(tile.gridLocation);
+            if (hasSeenSoldier) {
+                // get all tiles within multitargetRadius from a soldier
+                var targetablePositions = new HashSet<Vector2>();
+                foreach (var soldierPos in soldiersInLOS) {
+                    foreach (var tile in Map.instance.iterator.RadiallyFrom(soldierPos, multitargetRadius)) {
+                        if (body.CanSee(tile.gridLocation) && // target must be within LOS
+                        weaponProfile.InRange(body.gridLocation, tile.gridLocation) && // target must be in range
+                        Map.instance.ManhattanDistance(body.gridLocation, tile.gridLocation) > multitargetRadius) { // don't blow yourself up
+                            targetablePositions.Add(tile.gridLocation);
+                        }
                     }
                 }
-            }
-            if (targetablePositions.Count() <= 0) yield break;
-            
-            // find the tile that will hit the most targets (or closest if there's a tie)
-            Vector2 bestTargetPos = default(Vector2);
-            int bestTargetDist = 0;
-            int bestTargetHits = 0;
-            foreach (var tilePos in targetablePositions) {
-                int hits = 0;
-                foreach (var tile in Map.instance.iterator.RadiallyFrom(tilePos, multitargetRadius)) {
-                    if (tile.HasActor<Soldier>()) hits++;
+                if (targetablePositions.Count() <= 0) yield break;
+                
+                // find the tile that will hit the most targets (or closest if there's a tie)
+                Vector2 bestTargetPos = default(Vector2);
+                int bestTargetDist = 0;
+                int bestTargetHits = 0;
+                foreach (var tilePos in targetablePositions) {
+                    int hits = 0;
+                    foreach (var tile in Map.instance.iterator.RadiallyFrom(tilePos, multitargetRadius)) {
+                        if (tile.HasActor<Soldier>()) hits++;
+                    }
+                    int dist = Map.instance.ManhattanDistance(tilePos, body.gridLocation);
+                    if (bestTargetHits < hits || dist < bestTargetDist && hits == bestTargetHits) {
+                        bestTargetPos = tilePos;
+                        bestTargetDist = dist;
+                        bestTargetHits = hits;
+                    }
                 }
-                int dist = Map.instance.ManhattanDistance(tilePos, body.gridLocation);
-                if (bestTargetHits < hits || dist < bestTargetDist && hits == bestTargetHits) {
-                    bestTargetPos = tilePos;
-                    bestTargetDist = dist;
-                    bestTargetHits = hits;
-                }
+                
+                var targetTile = Map.instance.GetTileAt(bestTargetPos);
+                yield return GameplayOperations.PerformAlienOrdnance(body, weaponProfile, targetTile);
+            } else {
+                hasSeenSoldier = true;
             }
-            
-            var targetTile = Map.instance.GetTileAt(bestTargetPos);
-            yield return GameplayOperations.PerformAlienOrdnance(body, weaponProfile, targetTile);
         }
-        notFirstTurn = true;
     }
 }
