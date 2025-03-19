@@ -23,6 +23,7 @@ public class WaveDefence : Objective {
         InstantiateTerminal(location, PerformTerminalInteract);
         objectives.AddObjective(room, this);
         GameEvents.On(this, "alien_turn_start", SpawnAliens);
+        GameEvents.On(this, "player_turn_start", ShowAlerts);
         turnCounter = 4;
     }
     
@@ -50,6 +51,12 @@ public class WaveDefence : Objective {
         }
     }
     
+    void ShowAlerts() {
+        if (terminalActivated && turnCounter > 0 && turnCounter % 2 == 0) {
+            Alert.Show("alien wave incoming!");
+        }
+    }
+    
     IEnumerator PerformTerminalInteract() {
         terminalActivated = true;
         terminal.interactEnabled = false;
@@ -63,6 +70,7 @@ public class WaveDefence : Objective {
         foreach (var tracker in HiveMind.instance.spawnTrackers) threatCounters.Add(0);
         
         yield return NotificationPopup.PerformShow("", "terminal activated", new BtnData("ok", () => {}));
+        ShowAlerts();
     }
     
     Terminal InstantiateTerminal(Vector2 gridLocation, Func<IEnumerator> callback) {
@@ -77,5 +85,8 @@ public class WaveDefence : Objective {
         return terminal;
     }
     
-    ~WaveDefence() => GameEvents.RemoveListener(this, "alien_turn_start");
+    ~WaveDefence() {
+        GameEvents.RemoveListener(this, "alien_turn_start");
+        GameEvents.RemoveListener(this, "player_turn_start");
+    }
 }

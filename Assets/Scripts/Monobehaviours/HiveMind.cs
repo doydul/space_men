@@ -110,6 +110,7 @@ public class HiveMind : MonoBehaviour {
     private void ContemplateMoves() {
         if (activeAlien == null) {
             if (!ChooseActiveAlien()) {
+                GameEvents.Trigger("alien_turn_end");
                 UIState.instance.StartPlayerTurn();
                 GameEvents.Trigger("player_turn_start");
                 return;

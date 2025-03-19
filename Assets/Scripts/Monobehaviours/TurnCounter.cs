@@ -32,6 +32,7 @@ public class TurnCounter : MonoBehaviour {
             turnLimit = System.Math.Max(turnLimit - 1, 1);
             currentTurn = 0;
             GameEvents.Trigger("threat_increased");
+            Alert.Show("alien threat has increased!");
         }
         UpdateUI();
     }
