@@ -1,18 +1,21 @@
 using UnityEngine;
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
 public class WaveDefence : Objective {
     
     public override string description => "prepare defence";
-    public override bool complete => waveCounter <= 0;
+    public override bool complete => turnCounter <= 0;
     public override Vector2 targetLocation => location;
     public override RoomTemplate[] specialRooms => new RoomTemplate[] { Resources.Load<RoomTemplate>("SpecialRooms/ObjectiveRooms/WaveDefenceRoom") };
+    
     Vector2 location;
     Terminal terminal;
     bool terminalActivated;
-    int waveCounter;
+    int turnCounter;
+    List<int> threatCounters;
     
     public override void Init(Objectives objectives) {
         var room = Map.instance.rooms[roomId];
@@ -20,22 +23,30 @@ public class WaveDefence : Objective {
         InstantiateTerminal(location, PerformTerminalInteract);
         objectives.AddObjective(room, this);
         GameEvents.On(this, "alien_turn_start", SpawnAliens);
-        waveCounter = 3;
+        turnCounter = 4;
     }
     
     void SpawnAliens() {
-        if (terminalActivated && waveCounter > 0) {
-            var spawnings = new List<HiveMind.Spawning>();
-            foreach (var tracker in HiveMind.instance.spawnTrackers) {
-                int threat = tracker.startingThreat / 6;
-                int groupSize = tracker.profile.AvailableGroupSize(Map.instance.enemyProfiles);
-                while (threat > 0) {
-                    spawnings.Add(new HiveMind.Spawning { type = tracker.profile.typeName, number = groupSize });
-                    threat -= tracker.profile.threat * groupSize;
+        int totalThreatPerWave = 100;
+        int threatPerTrackerPerWave = totalThreatPerWave / HiveMind.instance.spawnTrackers.Where(tracker => tracker.profile.data.spawnsDuringWaveDefence).Count();
+        
+        if (terminalActivated && turnCounter > 0) {
+            if (turnCounter % 2 == 0) {
+                var spawnings = new List<HiveMind.Spawning>();
+                for (int i = 0; i < threatCounters.Count; i++) {
+                    var tracker = HiveMind.instance.spawnTrackers[i];
+                    if (!tracker.profile.data.spawnsDuringWaveDefence) continue;
+                    threatCounters[i] += threatPerTrackerPerWave;
+                    int groupSize = tracker.profile.AvailableGroupSize(Map.instance.enemyProfiles);
+                    int totalThreatCost = tracker.profile.threat * groupSize;
+                    while (threatCounters[i] >= totalThreatCost) {
+                        spawnings.Add(new HiveMind.Spawning { type = tracker.profile.typeName, number = groupSize });
+                        threatCounters[i] -= totalThreatCost;
+                    }
                 }
+                HiveMind.instance.SpawnInFog(2, 4, spawnings);
             }
-            HiveMind.instance.Spawn(spawnings);
-            waveCounter--;
+            turnCounter--;
         }
     }
     
@@ -43,6 +54,14 @@ public class WaveDefence : Objective {
         terminalActivated = true;
         terminal.interactEnabled = false;
         ui?.SetCheckboxState();
+        
+        foreach (var tile in Map.instance.iterator.RadiallyFrom(terminal.gridLocation, 10)) {
+            if (tile.HasActor<Door>()) tile.GetBackgroundActor<Door>().Remove();
+        }
+        
+        threatCounters = new();
+        foreach (var tracker in HiveMind.instance.spawnTrackers) threatCounters.Add(0);
+        
         yield return NotificationPopup.PerformShow("", "terminal activated", new BtnData("ok", () => {}));
     }
     

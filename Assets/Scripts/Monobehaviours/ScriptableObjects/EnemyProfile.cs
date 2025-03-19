@@ -59,6 +59,8 @@ public class EnemyProfile : ScriptableObject, IWeighted {
     public EnemyProfileGroupSize[] groupSizeUnlocks;
     [Range(0, 100)]
     public int spawnPercentage;
+    
+    public AlienData data => AlienData.Get(typeName);
 
     public static EnemyProfile none => Resources.Load<EnemyProfile>("Aliens/SpecialProfiles/None");
     public static EnemyProfile[] GetAll() => Resources.LoadAll("Aliens/Profiles", typeof(EnemyProfile)).Select(prof => prof as EnemyProfile).ToArray();

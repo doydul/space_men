@@ -7,6 +7,7 @@ public class RoomTemplateTile : MonoBehaviour {
     public bool isPlayerSpawner;
     public bool isLootSpawner;
     public Facing portDirection;
+    public bool ignoreOverlap;
 
     public MapPoint point => new MapPoint((int)Mathf.Round(transform.localPosition.x), (int)Mathf.Round(transform.localPosition.y));
 

@@ -21,15 +21,20 @@ public partial class Map {
         }
 
         public IEnumerable<IterationNode> EnumerateFrom(Vector2 startLocation) {
+            return EnumerateFrom(new Vector2[] { startLocation });
+        }
+        
+        public IEnumerable<IterationNode> EnumerateFrom(IEnumerable<Vector2> startLocations) {
             var alreadyTraversed = new HashSet<Vector2>();
             var leafTiles = new Queue<IterationNode>();
-            leafTiles.Enqueue(new IterationNode { tile = map.GetTileAt(startLocation) });
+            foreach (var startLocation in startLocations) {
+                leafTiles.Enqueue(new IterationNode { tile = map.GetTileAt(startLocation) });
+            }
             int i = 0;
             while (leafTiles.Count > 0) {
                 i++;
                 if (i > 10000) {
                     Debug.LogError("Infinite loop detected while iterating over tiles!");
-                    Debug.Log(startLocation);
                     break;
                 }
                 var currentTile = leafTiles.Dequeue();
@@ -37,7 +42,7 @@ public partial class Map {
                 foreach (var tile in map.AdjacentTiles(currentTile.tile)) {
                     if (alreadyTraversed.Contains(tile.gridLocation)) continue;
                     if (exclusionMask != null && exclusionMask.Contains(tile)) continue;
-                    leafTiles.Enqueue(new IterationNode { tile = tile, distanceFromOrigin = currentTile.distanceFromOrigin + 1 });
+                    leafTiles.Enqueue(new IterationNode { tile = tile, distanceFromOrigin = currentTile.distanceFromOrigin + 1, userData = currentTile.userData });
                     alreadyTraversed.Add(tile.gridLocation);
                 }
             }
@@ -71,5 +76,6 @@ public partial class Map {
 
         public Tile tile;
         public int distanceFromOrigin;
+        public int userData;
     }
 }

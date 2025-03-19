@@ -97,14 +97,14 @@ public class Tile : MonoBehaviour {
     public void SetFoggy() {
         foggy = true;
         fogSprite.enabled = true;
-        foreground.gameObject.SetActive(false);
+        // foreground.gameObject.SetActive(false);
     }
 
     public void RemoveFoggy() {
         foggy = false;
         fogSprite.enabled = false;
-        foreground.gameObject.SetActive(true);
-        midground.gameObject.SetActive(true);
+        // foreground.gameObject.SetActive(true);
+        // midground.gameObject.SetActive(true);
     }
 
     void OnDrawGizmos() {

@@ -12,6 +12,7 @@ public class MapLayout {
         public bool isPlayerSpawner;
         public bool isLootSpawner;
         public bool isSpecial => isAlienSpawner || isPlayerSpawner || isLootSpawner;
+        public bool ignoreOverlap;
         public Door.Facing doorFacing;
 
         public override string ToString() => $"Tile(point: {point}, isAlienSpawner: {isAlienSpawner}, isPlayerSpawner: {isPlayerSpawner}, isLootSpawner: {isLootSpawner}, isSpecial: {isSpecial})";
@@ -21,16 +22,18 @@ public class MapLayout {
 
     List<Tile> openTiles = new();
 
-    public void AddOpenTile(MapPoint point, bool isAlienSpawner = false, bool isPlayerSpawner = false, bool isLootSpawner = false, int roomId = -1, Door.Facing doorFacing = Door.Facing.None) {
+    public void AddOpenTile(MapPoint point, bool isAlienSpawner = false, bool isPlayerSpawner = false, bool isLootSpawner = false, int roomId = -1, Door.Facing doorFacing = Door.Facing.None, bool ignoreOverlap = false) {
         if (!openTiles.Any(tile => tile.point.Equals(point))) {
-            openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner, isLootSpawner = isLootSpawner, roomId = roomId, doorFacing = doorFacing });
+            openTiles.Add(new Tile { point = point, isWall = false, isAlienSpawner = isAlienSpawner, isPlayerSpawner = isPlayerSpawner, isLootSpawner = isLootSpawner, ignoreOverlap = ignoreOverlap, roomId = roomId, doorFacing = doorFacing });
         }
     }
 
     public bool Overlaps(MapLayout other) {
         int overlaps = 0;
         foreach (var otherTile in other.openTiles) {
+            if (otherTile.ignoreOverlap) continue;
             foreach (var tile in openTiles) {
+                if (tile.ignoreOverlap) continue;
                 if (tile.point.Adjacent(otherTile.point)) {
                     return true;
                 }

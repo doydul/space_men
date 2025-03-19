@@ -67,13 +67,14 @@ public class HiveMind : MonoBehaviour {
         int tileCount = weightedTiles.Count();
 
         foreach (var tracker in spawnTrackers) {
-            int threatPortion = (int)(tracker.remainingThreat * (100f - tracker.profile.spawnPercentage) / 100f);
-            tracker.remainingThreat -= threatPortion;
-            while (threatPortion > 0) {
+            int groupSize = tracker.profile.AvailableGroupSize(Map.instance.enemyProfiles);
+            int totalThreatCost = tracker.profile.threat * groupSize;
+            int initialThreatPortion = (int)(tracker.remainingThreat * (100f - tracker.profile.spawnPercentage) / 100f);
+            tracker.remainingThreat -= initialThreatPortion;
+            while (initialThreatPortion > totalThreatCost / 2) {
                 var wTile = weightedTiles.SampleWithCount(tileCount);
-                int groupSize = tracker.profile.AvailableGroupSize(Map.instance.enemyProfiles);
                 InstantiatePod(tracker.profile.typeName, groupSize, wTile.tile.gridLocation, false);
-                threatPortion -= tracker.profile.threat * groupSize;
+                initialThreatPortion -= totalThreatCost;
             }
         }
 
@@ -133,21 +134,38 @@ public class HiveMind : MonoBehaviour {
     private void AlienTurnStart() => Spawn();
     
     public void Spawn(IEnumerable<Spawning> spawnings) {
-        var weightedSpawners = Map.instance.spawners.Where(spawner => !Map.instance.GetActors<Soldier>().Any(sol => sol.On(spawner.tile))).Select(spawner => 
-            new WeightedSpawner {
-                spawner = spawner,
-                Weight = Map.instance.GetActors<Soldier>().Select(soldier => Map.instance.ManhattanDistance(soldier.gridLocation, spawner.gridLocation)).Min()
-            }
-        );
-        weightedSpawners = weightedSpawners.OrderBy(wSpawner => wSpawner.Weight).Take(10).ToList();
-        int i = 0;
-        foreach (var ws in weightedSpawners) {
-            ws.Weight = 100 - i * 10;
-            i++;
-        }
         foreach (var spawning in spawnings) {
+            var weightedSpawners = Map.instance.spawners.Where(spawner => !Map.instance.GetActors<Soldier>().Any(sol => sol.On(spawner.tile)) && Map.instance.GetActors<Soldier>().Select(sol => Map.instance.ManhattanDistance(sol.gridLocation, spawner.gridLocation)).Min() > AlienData.Get(spawning.type).minSpawnDistance).Select(spawner => 
+                new WeightedSpawner {
+                    spawner = spawner,
+                    Weight = Map.instance.GetActors<Soldier>().Select(soldier => Map.instance.ManhattanDistance(soldier.gridLocation, spawner.gridLocation)).Min()
+                }
+            );
+            weightedSpawners = weightedSpawners.OrderBy(wSpawner => wSpawner.Weight).Take(10).ToList();
+            int i = 0;
+            foreach (var ws in weightedSpawners) {
+                ws.Weight = 100 - i * 10;
+                i++;
+            }
+            
             var spawner = weightedSpawners.WeightedSelect().spawner;
             InstantiatePod(spawning.type, spawning.number, spawner.gridLocation, true);
+        }
+    }
+    
+    public void SpawnInFog(int minDist, int maxDist, IEnumerable<Spawning> spawnings) {
+        var possibleSpawnLocations = new List<Vector2>();
+        foreach (var node in Map.instance.iterator.EnumerateFrom(Map.instance.GetActors<Soldier>().Select(sol => sol.gridLocation))) {
+            if (node.tile.foggy) {
+                node.userData++;
+                if (node.userData >= minDist && node.userData <= maxDist) possibleSpawnLocations.Add(node.tile.gridLocation);
+            } else if (node.tile.HasActor<Vent>()) {
+                possibleSpawnLocations.Add(node.tile.gridLocation);
+            }
+        }
+        foreach (var spawning in spawnings) {
+            var spawnLocation = possibleSpawnLocations.Where(pos => Map.instance.GetActors<Soldier>().Select(sol => Map.instance.ManhattanDistance(pos, sol.gridLocation)).Min() >= AlienData.Get(spawning.type).minSpawnDistance).Sample();
+            InstantiatePod(spawning.type, spawning.number, spawnLocation, true);
         }
     }
 

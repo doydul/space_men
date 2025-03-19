@@ -166,24 +166,18 @@ MonoBehaviour:
   useTestMap: 0
   disableFog: 0
   triggerTerminalObjective: 0
-  triggerHoldObjective: 0
+  triggerHoldObjective: 1
   enemiesStartAlerted: 0
   credits: 0
   difficultyLevel: 1
   groupishness: 0
   armouredness: 0
-  quickness: 30
-  bigness: 0
+  quickness: 60
+  bigness: 50
   weapons:
   - Sniper Rifle
-  - Assault Rifle
-  - Assault Rifle
-  - Assault Rifle
   armour:
   - Light
-  - Medium
-  - Medium
-  - Medium
   inventoryWeapons: []
   inventoryArmour: []
   unlockedAliens: []

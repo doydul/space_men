@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeName: Warrior
   difficultyLevel: 1
-  threat: 20
+  threat: 25
   weight: 10
   typeCondition: 0
   typeInfo:

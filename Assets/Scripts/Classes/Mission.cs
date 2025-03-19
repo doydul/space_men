@@ -38,7 +38,7 @@ public class Mission {
     
     public static void CheckGameOver() {
         if (PlayerSave.current.squad.GetMetaSoldiers().Count() <= 0) {
-            AnimationManager.instance.StartAnimation(NotificationPopup.PerformShow("mission failed", "", new BtnData("exit", () => SceneManager.LoadScene("MainMenu"))));
+            AnimationManager.instance.StartCoroutine(NotificationPopup.PerformShow("mission failed", "", new BtnData("exit", () => SceneManager.LoadScene("MainMenu"))));
         }
     }
 }

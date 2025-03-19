@@ -20,6 +20,8 @@ MonoBehaviour:
   damage: 6
   movement: 7
   displacementPriority: 3
+  minSpawnDistance: 10
+  spawnsDuringWaveDefence: 0
   audio: {fileID: 11400000, guid: eb32cf0b474ba604cac0cdfdfa8cad7d, type: 2}
   behaviour: {fileID: 11400000, guid: fec54bdb497d0ee4da331287d181d9af, type: 2}
   traits: 

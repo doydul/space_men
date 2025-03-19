@@ -11,6 +11,8 @@ public class AlienData : ScriptableObject {
     public int damage;
     public int movement;
     public int displacementPriority;
+    public int minSpawnDistance;
+    public bool spawnsDuringWaveDefence;
     public AlienAudioProfile audio;
     public AlienBehaviour behaviour;
     public Trait[] traits;
