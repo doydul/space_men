@@ -10,6 +10,7 @@ public class WaveDefence : Objective {
     public override bool complete => turnCounter <= 0;
     public override Vector2 targetLocation => location;
     public override RoomTemplate[] specialRooms => new RoomTemplate[] { Resources.Load<RoomTemplate>("SpecialRooms/ObjectiveRooms/WaveDefenceRoom") };
+    public override int extraTurns => 5;
     
     Vector2 location;
     Terminal terminal;

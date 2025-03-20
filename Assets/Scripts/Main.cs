@@ -30,7 +30,7 @@ public class Main : MonoBehaviour {
         MapInstantiator.instance.Generate(PlayerSave.current.difficulty);
 
         Map.instance.enemyProfiles = Mission.current.enemyProfiles;
-        int turnsToCompletion = Map.instance.objectives.EstimateTravelDistance() / 6;
+        int turnsToCompletion = Map.instance.objectives.objectives.Select(objc => objc.extraTurns).Sum() + Map.instance.objectives.EstimateTravelDistance() / 6;
         TurnCounter.instance.SetTurnLimit(turnsToCompletion);
 
         int j = 0;

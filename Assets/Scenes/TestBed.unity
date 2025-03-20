@@ -172,12 +172,18 @@ MonoBehaviour:
   difficultyLevel: 1
   groupishness: 0
   armouredness: 0
-  quickness: 60
+  quickness: 0
   bigness: 50
   weapons:
   - Sniper Rifle
+  - Sniper Rifle
+  - Chain Gun
+  - Chain Gun
   armour:
   - Light
+  - Light
+  - Medium
+  - Medium
   inventoryWeapons: []
   inventoryArmour: []
   unlockedAliens: []
