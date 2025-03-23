@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
@@ -34,27 +35,32 @@ public class CameraController : MonoBehaviour {
     }
     
     Coroutine co;
-    public static void CentreCameraOn(Vector2 targetLocation, bool snap = false) => CentreCameraOn(Map.instance.GetTileAt(targetLocation), snap);
-    public static void CentreCameraOn(Actor actor, bool snap = false) => CentreCameraOn(actor.tile, snap);
-    public static void CentreCameraOn(Tile tile, bool snap = false) => CentreCameraOn(tile.transform, snap);
-    public static void CentreCameraOn(Transform trans, bool snap = false) {
+    public static void CentreCameraOn(Actor actor, bool snap = false) => CentreCameraOn(actor.realLocation, snap);
+    public static void CentreCameraOn(Tile tile, bool snap = false) => CentreCameraOn(tile.realLocation, snap);
+    public static void CentreCameraOn(Transform trans, bool snap = false) => CentreCameraOn(trans.position, snap);
+    public static void CentreCameraOn(Vector2 targetLocation, bool snap = false) {
         if (instance.co != null) instance.StopCoroutine(instance.co);
         if (snap) {
             var pos = instance.transform.position;
-            pos.x = trans.position.x;
-            pos.y = trans.position.y;
+            pos.x = targetLocation.x;
+            pos.y = targetLocation.y;
             instance.transform.position = pos;
         } else {
-            instance.co = instance.StartCoroutine(PerformCentreCameraOn(trans));
+            instance.co = instance.StartCoroutine(PerformCentreCameraOn(targetLocation));
         }
     }
+    public static void CentreCameraOn(bool snap, params Transform[] transforms) {
+        Vector2 avrgPos = transforms.Select(trans => trans.position).Aggregate(Vector3.zero, (agg, next) => agg + next) / transforms.Length;
+        Debug.Log(avrgPos);
+        CentreCameraOn(avrgPos, snap);
+    }
     
-    static IEnumerator PerformCentreCameraOn(Transform trans) {
+    static IEnumerator PerformCentreCameraOn(Vector2 targetLocation) {
         var startTime = Time.time;
         var startPos = instance.transform.position;
         var targetPos = startPos;
-        targetPos.x = trans.position.x;
-        targetPos.y = trans.position.y;
+        targetPos.x = targetLocation.x;
+        targetPos.y = targetLocation.y;
         
         while (Time.time - startTime < instance.moveDuration) {
             float t = (Time.time - startTime) / instance.moveDuration;

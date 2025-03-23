@@ -164,16 +164,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  disableFog: 0
+  disableFog: 1
   triggerTerminalObjective: 0
-  triggerHoldObjective: 1
+  triggerHoldObjective: 0
   enemiesStartAlerted: 0
   credits: 0
   difficultyLevel: 1
   groupishness: 0
   armouredness: 0
-  quickness: 0
-  bigness: 50
+  quickness: 30
+  bigness: 0
   weapons:
   - Sniper Rifle
   - Sniper Rifle

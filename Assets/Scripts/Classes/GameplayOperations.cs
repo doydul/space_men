@@ -129,7 +129,7 @@ public static class GameplayOperations {
         var targetTile = target.tile;
         var diff = target.realLocation - alien.realLocation;
         var angle = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(diff.y, diff.x) - 90);
-        CameraController.CentreCameraOn(target.tile);
+        CameraController.CentreCameraOn(false, alien.transform, target.transform);
         yield return PerformTurnAnimation(alien, angle);
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < weapon.shots; i++) {
