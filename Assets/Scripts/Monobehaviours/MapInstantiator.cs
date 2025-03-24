@@ -38,7 +38,7 @@ public class MapInstantiator : MonoBehaviour {
             }
         }
         var blueprint = blueprints[(int)(difficulty * 2)];
-        var objectives = Objectives.GenerateObjectiveList(PlayerSave.current);
+        var objectives = PlayerSave.current.mission.objectives;
         
         // debug
         if (forceTerminalObjective) objectives.Add(new ActivateTerminal { required = true });

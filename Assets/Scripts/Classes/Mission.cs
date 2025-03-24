@@ -1,4 +1,5 @@
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 using System.Linq;
 
 [System.Serializable]
@@ -22,6 +23,8 @@ public class Mission {
             UnityEngine.Debug.Log(enemyProfile.name);
         }
         
+        result.objectives = Objectives.GenerateObjectiveList(playerSave);
+        
         playerSave.mission = result;
         
         return result;
@@ -30,6 +33,7 @@ public class Mission {
     public bool finished { get; private set; }
     
     public EnemyProfileSet enemyProfiles;
+    public List<Objective> objectives;
     
     public void End() {
         finished = true;

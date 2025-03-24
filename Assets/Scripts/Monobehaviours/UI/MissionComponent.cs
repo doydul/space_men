@@ -1,9 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
+using TMPro;
 
 public class MissionComponent : MonoBehaviour {
     
-    void Start() => Close();
+    public TMP_Text objectiveTextElement;
+    
+    void Start() {
+        objectiveTextElement.text = "";
+        foreach (var objective in Mission.current.objectives.Where(objc => objc.required)) {
+            objectiveTextElement.text += $"- {objective.description}\n";
+        }
+        Close();
+    }
     
     public void Open() {
         gameObject.SetActive(true);

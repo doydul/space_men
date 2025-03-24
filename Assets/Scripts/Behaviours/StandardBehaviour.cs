@@ -25,7 +25,7 @@ public class StandardAlienBehaviour : AlienBehaviour {
         }
         if (bestTile != null) {
             if (!body.tile.foggy) {
-                CameraController.CentreCameraOn(body.tile);
+                CameraController.CentreCameraOn(false, body.tile.transform, bestTile.transform);
                 yield return new WaitForSeconds(0.5f);
             }
             var actualPath = Map.instance.ShortestPath(new AlienImpassableTerrain(), body.gridLocation, bestTile.gridLocation);
