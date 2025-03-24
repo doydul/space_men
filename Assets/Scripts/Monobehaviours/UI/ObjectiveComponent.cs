@@ -29,6 +29,6 @@ public class ObjectiveComponent : MonoBehaviour {
     }
     
     public void Zoom() {
-        CameraController.CentreCameraOn(objective.targetLocation);
+        CameraController.CentreCameraOnGridLocation(objective.targetLocation);
     }
 }

@@ -49,6 +49,7 @@ public class CameraController : MonoBehaviour {
             instance.co = instance.StartCoroutine(PerformCentreCameraOn(targetLocation));
         }
     }
+    public static void CentreCameraOnGridLocation(Vector2 targetLocation, bool snap = false) => CentreCameraOn(Map.instance.GetTileAt(targetLocation).realLocation, snap);
     public static void CentreCameraOn(bool snap, params Transform[] transforms) {
         Vector2 avrgPos = transforms.Select(trans => trans.position).Aggregate(Vector3.zero, (agg, next) => agg + next) / transforms.Length;
         Debug.Log(avrgPos);
