@@ -190,6 +190,27 @@ public class MapInstantiator : MonoBehaviour {
 
         if (tile.open) {
             sprite = map.corridorSprite;
+            
+        } else if (!IsWallAtIndex(tile, 5) && !IsWallAtIndex(tile, 1) && !IsWallAtIndex(tile, 3)) {
+            sprite = map.wallTipSprite;
+            background.eulerAngles = new Vector3(0, 0, -0);
+        } else if (!IsWallAtIndex(tile, 7) && !IsWallAtIndex(tile, 1) && !IsWallAtIndex(tile, 3)) {
+            sprite = map.wallTipSprite;
+            background.eulerAngles = new Vector3(0, 0, -90);
+        } else if (!IsWallAtIndex(tile, 5) && !IsWallAtIndex(tile, 7) && !IsWallAtIndex(tile, 3)) {
+            sprite = map.wallTipSprite;
+            background.eulerAngles = new Vector3(0, 0, -180);
+        } else if (!IsWallAtIndex(tile, 5) && !IsWallAtIndex(tile, 1) && !IsWallAtIndex(tile, 7)) {
+            sprite = map.wallTipSprite;
+            background.eulerAngles = new Vector3(0, 0, -270);
+            
+        } else if (!IsWallAtIndex(tile, 5) && !IsWallAtIndex(tile, 3)) {
+            sprite = map.thinWallSprite;
+            background.eulerAngles = new Vector3(0, 0, -0);
+        } else if (!IsWallAtIndex(tile, 7) && !IsWallAtIndex(tile, 1)) {
+            sprite = map.thinWallSprite;
+            background.eulerAngles = new Vector3(0, 0, -90);
+            
         } else if (!IsWallAtIndex(tile, 5) && !IsWallAtIndex(tile, 1)) {
             sprite = map.outerCornerSprite;
             background.eulerAngles = new Vector3(0, 0, -0);
@@ -202,6 +223,7 @@ public class MapInstantiator : MonoBehaviour {
         } else if (!IsWallAtIndex(tile, 7) && !IsWallAtIndex(tile, 5)) {
             sprite = map.outerCornerSprite;
             background.eulerAngles = new Vector3(0, 0, -270);
+            
         } else if (!IsWallAtIndex(tile, 5)) {
             sprite = map.wallSprite;
             background.eulerAngles = new Vector3(0, 0, -0);
@@ -214,6 +236,7 @@ public class MapInstantiator : MonoBehaviour {
         } else if (!IsWallAtIndex(tile, 7)) {
             sprite = map.wallSprite;
             background.eulerAngles = new Vector3(0, 0, -270);
+            
         } else if (!IsWallAtIndex(tile, 8)) {
             sprite = map.innerCornerSprite;
             background.eulerAngles = new Vector3(0, 0, -0);
