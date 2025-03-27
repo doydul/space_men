@@ -28,6 +28,8 @@ public partial class Map : MonoBehaviour {
     public Sprite outerCornerSprite;
     public Sprite corridorSprite;
     public Sprite wallTopSprite;
+    public Sprite thinWallSprite;
+    public Sprite wallTipSprite;
     public Sprite highlightSprite;
     public Sprite fogSprite;
 

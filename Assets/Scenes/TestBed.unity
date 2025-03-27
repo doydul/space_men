@@ -170,7 +170,7 @@ MonoBehaviour:
   enemiesStartAlerted: 0
   credits: 0
   difficultyLevel: 1
-  groupishness: 0
+  groupishness: 50
   armouredness: 0
   quickness: 0
   bigness: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   - Sniper Rifle
   - Sniper Rifle
   - Chain Gun
-  - Chain Gun
+  - Portable Mortar
   armour:
   - Light
   - Light

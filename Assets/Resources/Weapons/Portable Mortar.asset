@@ -10,25 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 330a01776318840bd88dc655a2bd4ab8, type: 3}
-  m_Name: Grenade Launcher
+  m_Name: Portable Mortar
   m_EditorClassIdentifier: 
   icon: {fileID: 1204871286613962954, guid: b6f4c17a5d92e49909b4a68e0116dec4, type: 3}
   techLevel: 1
-  weight: 100
+  weight: 66
   accuracy: 50
-  minDamage: 4
-  maxDamage: 12
+  minDamage: 5
+  maxDamage: 14
   damageType: 0
   shots: 1
-  ammo: 3
-  range: 10
-  blast: 10
+  ammo: 1
+  range: 20
+  blast: 19
   flameDuration: 0
-  type: 0
+  type: 1
   cost: 120
-  description: 'blast weapon
-
-    effective against small to medium enemies'
+  description: a heavy weapon with a wide blast radius. be careful of friendly fire
   abilities:
   - {fileID: 11400000, guid: ff8c339011d9f0d4f8b0fd5f7ef123ab, type: 2}
   traits: 

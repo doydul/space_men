@@ -18,7 +18,7 @@ public class Soldier : Actor {
         var weaponPrefab = Instantiate(_weapon.spritePrefab, gunContainer);
         weaponPrefab.transform.localPosition = Vector3.zero;
         muzzleFlashLocation = weaponPrefab.muzzle;
-        animator.runtimeAnimatorController = (RuntimeAnimatorController)weaponPrefab.animatorController;
+        animator.runtimeAnimatorController = weaponPrefab.animatorController;
     } }
     Transform muzzleFlashLocation;
     public Transform gunContainer;
