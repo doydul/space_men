@@ -49,7 +49,7 @@ public class Weapon : ScriptableObject, IWeighted {
     public string GetFullDescription() {
         string result = $"{name}\naccuracy: {accuracy}";
         if (blast == 0) result += $"\nshots: {shots}";
-        else result += $"\n{StringUtils.RenderTooltipLink("blast_weapon", "blast")}: {blast}";
+        else result += $"\n{StringUtils.RenderTooltipLink("blast_weapon", "blast")}: {blast / 2}";
         result += $"\ndamage: {minDamage}-{maxDamage}\nclip size: {ammo}";
         if (damageType == DamageType.Energy) result += $"\ntrait: {StringUtils.RenderTooltipLink("energy_weapon", "energy")}";
         if (type == Type.Heavy) result += $"\ntrait: {StringUtils.RenderTooltipLink("heavy_weapon", "heavy")}";

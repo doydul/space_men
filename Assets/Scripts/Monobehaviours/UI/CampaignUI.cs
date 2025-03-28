@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 
@@ -111,5 +112,10 @@ public class CampaignUI : MonoBehaviour {
         workshop.DisplayInventoryItems();
         weaponButton.GetComponentInChildren<TMP_Text>().text = selectedSoldier.weapon.name;
         armourButton.GetComponentInChildren<TMP_Text>().text = selectedSoldier.armour.name;
+    }
+    
+    public void ExitToMainMenu() {
+        PlayerSave.current.Save();
+        SceneManager.LoadScene("MainMenu");
     }
 }

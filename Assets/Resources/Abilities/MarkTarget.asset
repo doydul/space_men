@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0002a13185dd5d24791a12a5753203e4, type: 3}
   m_Name: MarkTarget
   m_EditorClassIdentifier: 
-  description: 
+  description: limit 1 use per deployment. all damage inflicted on the target will
+    be amplified by 50% and ignore armour
   sprite: {fileID: 21300000, guid: adeca7b8be77da047a6787332e546b03, type: 3}
   status: {fileID: 11400000, guid: 6b551130a2bcb5f42b4566bb89510a9d, type: 2}
   uses: 1
-  damageMultiplier: 1.5

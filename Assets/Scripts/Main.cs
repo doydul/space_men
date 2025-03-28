@@ -22,7 +22,7 @@ public class Main : MonoBehaviour {
 
             var squad = MetaSquad.GenerateDefault();
             save.squad = squad;
-            save.Save(0);
+            save.Save();
             
             Mission.Generate(save);
         }

@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +6,8 @@ using UnityEngine;
 public class PlayerSave {
     
     public static PlayerSave current;
-
+    
+    public int slot;
     public int levelNumber;
     public int credits;
     public float _difficulty = -0.2f;
@@ -33,10 +33,14 @@ public class PlayerSave {
     
     private PlayerSave() {}
 
-    public void Save(int slot) {
-        string json = UnityEngine.JsonUtility.ToJson(this);
+    public void Save() {
+        string json = JsonUtility.ToJson(this);
         Debug.Log(Application.persistentDataPath);
         File.WriteAllText($"{Application.persistentDataPath}/game_{slot + 1}.save", json);
+    }
+    
+    public void Delete() {
+        File.Delete($"{Application.persistentDataPath}/game_{slot + 1}.save");
     }
 
     public static PlayerSave Load(int slot) {

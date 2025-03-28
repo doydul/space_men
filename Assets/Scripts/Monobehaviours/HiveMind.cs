@@ -107,14 +107,16 @@ public class HiveMind : MonoBehaviour {
     }
 
     private void ContemplateMoves() {
-        if (activeAlien == null) {
-            if (!ChooseActiveAlien()) {
-                GameEvents.Trigger("alien_turn_end");
-                UIState.instance.StartPlayerTurn();
-                GameEvents.Trigger("player_turn_start");
-                return;
+        if (!AnimationManager.instance.animationInProgress) {
+            if (activeAlien == null) {
+                if (!ChooseActiveAlien()) {
+                    GameEvents.Trigger("alien_turn_end");
+                    UIState.instance.StartPlayerTurn();
+                    GameEvents.Trigger("player_turn_start");
+                    return;
+                }
+                AnimationManager.instance.StartAnimation(PerformAlienMove());
             }
-            if (!AnimationManager.instance.animationInProgress) AnimationManager.instance.StartAnimation(PerformAlienMove());
         }
     }
 
@@ -126,6 +128,8 @@ public class HiveMind : MonoBehaviour {
     }
 
     private IEnumerator PerformAlienMove() {
+        Debug.Log("performing alien move");
+        Debug.Log(activeAlien);
         yield return activeAlien.behaviour.PerformTurn();
         activeAlien.hasActed = true;
         activeAlien = null;

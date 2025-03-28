@@ -9,7 +9,7 @@ public class Campaign {
         save.IncreaseDifficulty(1f / 5f);
         MungeMapGenerationValues(save);
         Mission.Generate(save);
-        save.Save(0);
+        save.Save();
     }
     
     public static void MungeMapGenerationValues(PlayerSave save) {

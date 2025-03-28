@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Punch
   m_EditorClassIdentifier: 
   description: deal 1-4 damage to an adjacent enemy, ignoring armour. the action
-    is free if the enemy dies (limit once per turn)
+    point is refunded if the target dies (limit once per turn)
   sprite: {fileID: 21300000, guid: acee28cf6c62a1a4d85d4db2dfa0b76b, type: 3}
   minDamage: 1
   maxDamage: 4

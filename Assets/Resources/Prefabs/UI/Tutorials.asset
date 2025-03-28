@@ -25,10 +25,10 @@ MonoBehaviour:
   - key: objectives1
     value: your main objective each mission will usually be to get all your soldiers
       to the exacuation point. it's advisable to complete the secondary objectives
-      as well, as these will award credits and items
+      as well, as these will award credits and items that you can equip between missions
   - key: objectives2
     value: tapping this button will open up the objectives panel, and tapping on
-      an individual objective within the panel will show where that objectives lies
+      an individual objective within the panel will show where that objective lies
       on the map
   - key: actions
     value: each soldier gets 1ap(action point) per turn. shooting and sprinting take
@@ -62,10 +62,13 @@ MonoBehaviour:
   - key: movement
     value: the number of tiles a soldier can move in a turn is determined by the
       armour it has equipped. its movement can be extended by using the sprint ability
-  - key: abilities
+  - key: abilities1
     value: these are your soldier's abilities, tap them to see what they do. some
       abilities, like sprint, are available to all soldiers, while others are dependant
       on the armour and weapon that the soldier has equipped
+  - key: abilities2
+    value: once you're familiar with each ability, you can untick "confirm abilities"
+      in the settings menu (top right) to speed things up
   - key: crates
     value: every mission will contain crates like this one. they can contain credits,
       weapons and armour. picking up a crate is a free action for any soldier standing
@@ -88,7 +91,7 @@ MonoBehaviour:
   - key: campaign_ui2
     value: over here you can see your current squad. tap one of the icons to select
       a soldier, and tap it again if you want to replace it with a soldier from the
-      reserve
+      reserve or purchase new soldiers
   - key: campaign_ui3
     value: over here you can see your inventory. tap an item from the list to select
       it
@@ -115,8 +118,8 @@ MonoBehaviour:
   - key: energy_weapon
     value: energy weapons ignore 75% of enemy armour
   - key: blast_weapon
-    value: blast weapons deal damage in an area. they're good for dealing with groups
-      of smaller enemies, but cannot overwatch
+    value: blast weapons deal damage in an area, but cannot overwatch. the blast
+      number shows roughly how many tiles the explosion will cover
   - key: accuracy_modifier
     value: the accuracy modifier is added to your weapons accuracy before each shot.
       doesn't effect blast weapons
