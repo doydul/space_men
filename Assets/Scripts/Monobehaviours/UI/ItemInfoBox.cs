@@ -26,7 +26,7 @@ public class ItemInfoBox : MonoBehaviour {
         }
         string lvl = "0";
         if (weapon.techLevel > 0) lvl = new string('I', weapon.techLevel);
-        statsElement.text = $"<allcaps><line-height=0.85em><align=center>{weapon.name} <size=80%> tlvl {lvl}\n" +
+        statsElement.text = $"<allcaps><line-height=0.85em><align=center>{weapon.name} <size=80%> lvl {lvl}\n" +
                             $"<align=left>dpt {weapon.dpt}<line-height=0>\n" +
                             $"<align=right>type {type}";
         descElement.text = $"<allcaps>{weapon.description}";
