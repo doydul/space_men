@@ -304,7 +304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2372680103778566357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3378,8 +3378,8 @@ MonoBehaviour:
   toggleAction:
     m_PersistentCalls:
       m_Calls: []
-  onSprite: {fileID: 21300000, guid: 9319ff00438fb49918acc080d9480d3f, type: 3}
-  offSprite: {fileID: 21300000, guid: 7c8775344e4754f6791305c9a70ba729, type: 3}
+  onSprite: {fileID: 21300000, guid: 7c8775344e4754f6791305c9a70ba729, type: 3}
+  offSprite: {fileID: 21300000, guid: a8a156608a101a9499b5c6ee42dce32b, type: 3}
   image: {fileID: 7485021102590206880}
 --- !u!1 &4662134957082116693
 GameObject:
@@ -4161,8 +4161,8 @@ MonoBehaviour:
   toggleAction:
     m_PersistentCalls:
       m_Calls: []
-  onSprite: {fileID: 21300000, guid: 9319ff00438fb49918acc080d9480d3f, type: 3}
-  offSprite: {fileID: 21300000, guid: 7c8775344e4754f6791305c9a70ba729, type: 3}
+  onSprite: {fileID: 21300000, guid: 7c8775344e4754f6791305c9a70ba729, type: 3}
+  offSprite: {fileID: 21300000, guid: a8a156608a101a9499b5c6ee42dce32b, type: 3}
   image: {fileID: 4266738566833180659}
 --- !u!1 &6202889552051397924
 GameObject:
