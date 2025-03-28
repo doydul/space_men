@@ -6166,7 +6166,7 @@ MonoBehaviour:
   wallTopSprite: {fileID: 21300000, guid: d582a4f6d32dd40e09099209a1abe0de, type: 3}
   thinWallSprite: {fileID: 21300000, guid: 17beb211ba5fd5c49aa2c909e823aac6, type: 3}
   wallTipSprite: {fileID: 21300000, guid: a5de55c86023a0648bc2d362e805abe8, type: 3}
-  highlightSprite: {fileID: 21300000, guid: 32daaed7f1b1a49a6a0ab975d990d86b, type: 3}
+  highlightSprite: {fileID: 21300000, guid: 597483d44016adb45a73dec03577b6f2, type: 3}
   fogSprite: {fileID: 21300000, guid: 80404637635e94149806254b15066c71, type: 3}
   width: 23
   height: 33

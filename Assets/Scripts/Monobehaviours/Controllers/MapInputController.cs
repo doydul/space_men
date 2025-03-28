@@ -42,11 +42,12 @@ public class MapInputController : MonoBehaviour {
             dragging = false;
             var currentDist = (Input.GetTouch(0).position - Input.GetTouch(1).position).magnitude;
             if (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(1).phase == TouchPhase.Began) touchSeperation = currentDist;
-            scaleFactor = touchSeperation / currentDist;
+            scaleFactor = currentDist / touchSeperation;
             touchSeperation = currentDist;
         } else {
             HandleDrag();
         }
+        
         CameraController.size /= scaleFactor;
     }
     
