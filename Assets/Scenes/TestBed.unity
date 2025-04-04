@@ -175,10 +175,10 @@ MonoBehaviour:
   quickness: 0
   bigness: 0
   weapons:
-  - Sniper Rifle
-  - Sniper Rifle
-  - Flamer
-  - Portable Mortar
+  - Chain Gun
+  - Chain Gun
+  - Chain Gun
+  - Chain Gun
   armour:
   - Light
   - Light

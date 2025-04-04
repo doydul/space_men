@@ -76,7 +76,10 @@ public abstract class Actor : MonoBehaviour {
     protected Animator animator;
     protected Material spriteSharedMat;
     AudioPlayer audioPlayer;
-    public void PlayAudio(AudioClipProfile clip) => audioPlayer.PlayAudio(clip);
+    public void PlayAudio(AudioClipProfile clip, bool randomPitch = true) => audioPlayer.PlayAudio(clip, randomPitch);
+    public void PlayAudioRepeat(AudioClipProfile clip) => audioPlayer.PlayAudioRepeat(clip);
+    public void StopRepeatingAudio() => audioPlayer.StopRepeatingAudio();
+    public IEnumerator PerformPlayAudio(AudioClipProfile clip, bool randomPitch = true) => audioPlayer.PerformPlayAudio(clip, randomPitch);
     public virtual bool HasTrait(Trait trait) => false;
     
     // Animations

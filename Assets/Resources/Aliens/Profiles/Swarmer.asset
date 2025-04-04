@@ -29,4 +29,4 @@ MonoBehaviour:
       type: 1
       typeWeight: 50
     groupSize: 5
-  spawnPercentage: 0
+  spawnPercentage: 10

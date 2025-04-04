@@ -32,12 +32,11 @@ MonoBehaviour:
   traits: 
   tracerPrefab: {fileID: 1646889780221744, guid: 2dfac1135958ec84cac2d2cb6fdc3f4b,
     type: 3}
-  explosionPrefab: {fileID: 0}
-  firePrefab: {fileID: 0}
-  audio: {fileID: 11400000, guid: ac62427209487304a8381cbe6228e48d, type: 2}
+  audio: {fileID: 11400000, guid: 3124cdce64bde2c45a2e6fa4da2f155c, type: 2}
   impactEffect: {fileID: 8893649087654275822, guid: 67b64be253f660e4cadc693066054120,
     type: 3}
   missEffect: {fileID: 8893649087654275822, guid: 0a13c0ab899349d4b9a3820dd47329ec,
     type: 3}
   spritePrefab: {fileID: 876625575503601482, guid: 37bd17b14f1f2b3429cf0fc307816a1a,
     type: 3}
+  explosion: {fileID: 0}

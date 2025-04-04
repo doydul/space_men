@@ -16,7 +16,7 @@ public class LayDownFire : ReactionAbility {
     }
 
     public IEnumerator PerformUse() {
-        AbilityInfoPanel.instance.ShowDescription("Lay Down Fire\nChoose Facing");
+        AbilityInfoPanel.instance.ShowDescription($"{userFacingName}\nChoose Facing");
         SideModal.instance.Show(description);
         yield return MapInputController.instance.SelectTileFrom(Color.red, Map.instance.AdjacentTiles(owner.tile).Where(tile => tile.open).ToArray());
         SideModal.instance.Hide();
@@ -42,18 +42,27 @@ public class LayDownFire : ReactionAbility {
 
     private IEnumerator PerformShots() {
         var aliensInSight = Map.instance.GetActors<Alien>().Where(alien => !alien.tile.foggy && owner.CanSee(alien.gridLocation) && owner.InRange(alien.gridLocation) && owner.WithinSightArc(alien.gridLocation)).ToList();
+        bool woundUp = false;
         if (shotsRemaining > 0 && aliensInSight.Count > 0) {
+            woundUp = true;
             owner.AimAnimation();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
+            yield return owner.PerformPlayAudio(owner.weapon.audio.spinUp, randomPitch: false);
+            owner.PlayAudioRepeat(owner.weapon.audio.spinning);
         }
         while (shotsRemaining > 0 && aliensInSight.Count > 0) {
             if (shotsRemaining >= owner.shots) owner.shotsSpent += 1;
             var randAlien = aliensInSight[Random.Range(0, aliensInSight.Count())];
             shotsRemaining -= 1;
             yield return GameplayOperations.PerformSoldierSingleShot(owner, randAlien);
-            if (randAlien.dead) aliensInSight.Remove(randAlien);
+            aliensInSight = aliensInSight.Where(alien => !alien.dead).ToList();
         }
         if (shotsRemaining <= 0) owner.HideAbilityIcon();
+        if (woundUp) {
+            owner.StopRepeatingAudio();
+            owner.PlayAudio(owner.weapon.audio.spinDown, randomPitch: false);
+            yield return new WaitForSeconds(0.3f);
+        }
         owner.IdleAnimation();
     }
 }

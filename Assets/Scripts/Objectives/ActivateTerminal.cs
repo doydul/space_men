@@ -7,7 +7,7 @@ public class ActivateTerminal : Objective {
     
     public const int idealDistance = 20;
     
-    public override string description => "activate terminal";
+    public override string description => "activate terminals";
     public override bool complete => terminalActivated;
     public override Vector2 targetLocation => location;
     Vector2 location;

@@ -8,4 +8,7 @@ public class WeaponAudioProfile : ScriptableObject {
     public AudioClipProfile reload;
     public AudioCollection impact;
     public AudioClipProfile explosion;
+    public AudioClipProfile spinUp;
+    public AudioClipProfile spinning;
+    public AudioClipProfile spinDown;
 }

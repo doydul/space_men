@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6611f84617e588e4290d26eda9217a65, type: 3}
+  m_Name: Minigun
+  m_EditorClassIdentifier: 
+  shoot:
+    volume: 0
+    clip: {fileID: 8300000, guid: c2f1dff683eceeb418e69a6792b4e520, type: 3}
+  reload:
+    volume: 0.3
+    clip: {fileID: 8300000, guid: 01cdeddf7eb278e48bf75151edfaa558, type: 3}
+  impact: {fileID: 11400000, guid: e2f8f719c54d78141ae207225f56e37a, type: 2}
+  explosion:
+    volume: 0.3
+    clip: {fileID: 0}
+  spinUp:
+    volume: 0.3
+    clip: {fileID: 8300000, guid: 5088bcaed45ebd547b33f8d7e5987f3b, type: 3}
+  spinning:
+    volume: 0.3
+    clip: {fileID: 8300000, guid: 3ca27ae4bc3f3d54da8fe1a79ac6e88a, type: 3}
+  spinDown:
+    volume: 0.3
+    clip: {fileID: 8300000, guid: d77af8a031ce70846afc89f77f77ba9e, type: 3}
