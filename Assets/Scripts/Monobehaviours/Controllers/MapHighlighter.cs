@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ public class MapHighlighter : MonoBehaviour {
 
     public Map map;
 
-    List<Tile> highlightedTiles;
+    List<Tile> highlightedTiles = new();
+    List<Border> borders = new();
 
     Soldier selectedUnit;
     Vector2 selectedUnitGridLocation;
@@ -17,7 +19,6 @@ public class MapHighlighter : MonoBehaviour {
 
     void Awake() {
         instance = this;
-        highlightedTiles = new List<Tile>();
         movementPhaseActive = true;
     }
 
@@ -32,11 +33,19 @@ public class MapHighlighter : MonoBehaviour {
         foreach (var tile in highlightedTiles) {
             tile.ClearHighlight();
         }
+        foreach (var border in borders) border.Remove();
         highlightedTiles.Clear();
+        borders.Clear();
     }
 
     public void HighlightTile(Tile tile, Color color) {
         tile.Highlight(color);
         highlightedTiles.Add(tile);
+    }
+    
+    public void BorderTiles(IEnumerable<Tile> tiles, Color color) {
+        var border = SFXLayer.instance.SpawnBorder(tiles.Select(tile => (Vector2)tile.realLocation).ToList());
+        border.SetColor(color);
+        borders.Add(border);
     }
  }

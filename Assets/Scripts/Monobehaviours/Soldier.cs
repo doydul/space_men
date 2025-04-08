@@ -179,9 +179,7 @@ public class Soldier : Actor {
 
     public void HighlightActions() {
         MapHighlighter.instance.ClearHighlights();
-        foreach (var tile in Map.instance.iterator.Exclude(new SoldierImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement)) {
-            MapHighlighter.instance.HighlightTile(tile, Color.green);
-        }
+        MapHighlighter.instance.BorderTiles(Map.instance.iterator.Exclude(new SoldierImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement), Color.green);
         if (hasActions && HasAbility<StandardShoot>()) {
             foreach (var alien in Map.instance.GetActors<Alien>()) {
                 if (!alien.tile.foggy && CanSee(alien.gridLocation) && InRange(alien.gridLocation)) {

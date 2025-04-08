@@ -6067,7 +6067,7 @@ Transform:
   m_GameObject: {fileID: 8640662348792897041}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6086,6 +6086,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 4738354376133644, guid: e4aa511a518774666a1053b9e939d403,
+    type: 3}
+  borderPrefab: {fileID: 8299074351762707814, guid: bfb169541bbea834f9e5ca8685c9f6e6,
     type: 3}
 --- !u!114 &8784434615537042337
 MonoBehaviour:

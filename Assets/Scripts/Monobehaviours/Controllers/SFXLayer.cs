@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class SFXLayer : MonoBehaviour {
     
     public static SFXLayer instance;
 
     public Transform explosionPrefab;
+    public Border borderPrefab;
 
     public GameObject SpawnExplosion(Vector2 location) => SpawnPrefab(explosionPrefab, location);
 
@@ -69,5 +71,87 @@ public class SFXLayer : MonoBehaviour {
     public void SpawnBurst(Vector3 position, Vector3 normal, IEnumerable<ParticleBurst> burstPrefabs) {
         if (burstPrefabs == null) return;
         foreach (var burstPrefab in burstPrefabs) SpawnBurst(position, normal, burstPrefab);
+    }
+    
+    class BorderTile {
+        public Vector2 pos;
+        public Dictionary<int, Dictionary<int, bool>> nodes;
+        
+        public bool hasNodes => nodes[-1][1] || nodes[1][1] || nodes[1][-1] || nodes[-1][-1];
+        
+        public IEnumerable<Vector2> GetNodes() {
+            if (nodes[-1][1]) yield return new Vector2(-1, 1);
+            if (nodes[1][1]) yield return new Vector2(1, 1);
+            if (nodes[1][-1]) yield return new Vector2(1, -1);
+            if (nodes[-1][-1]) yield return new Vector2(-1, -1);
+        }
+        public bool HasNode(Vector2 pos) {
+            return nodes[(int)pos.x][(int)pos.y];
+        }
+        
+        public BorderTile() {
+            nodes = new();
+            nodes[-1] = new Dictionary<int, bool>();
+            nodes[1] = new Dictionary<int, bool>();
+            nodes[-1][-1] = false;
+            nodes[-1][1] = false;
+            nodes[1][-1] = false;
+            nodes[1][1] = false;
+        }
+    }
+    
+    public Border SpawnBorder(List<Vector2> tiles) {
+        var orientationMap = new Dictionary<Vector2, Vector2> {
+            { new Vector2(-1, 1), new Vector2(0, 1) },
+            { new Vector2(1, 1), new Vector2(1, 0) },
+            { new Vector2(1, -1), new Vector2(0, -1) },
+            { new Vector2(-1, -1), new Vector2(-1, 0) }
+        };
+        
+        Dictionary<Vector2, BorderTile> borderTiles = new();
+        foreach (var tilePos in tiles) {
+            borderTiles[tilePos] = new BorderTile { pos = tilePos };
+        }
+        foreach (var borderTile in borderTiles.Values) {
+            foreach (var x in new[] { -1, 1 }) {
+                foreach (var y in new[] { -1, 1 }) {
+                    if (!borderTiles.ContainsKey(new Vector2(x, y) + borderTile.pos)) {
+                        borderTile.nodes[x][y] = true;
+                    }
+                }
+            }
+        }
+        var positions = new List<Vector3>();
+        var firstTile = borderTiles.Values.First();
+        var firstNode = firstTile.GetNodes().First();
+        var activeTile = firstTile;
+        var activeNode = firstNode;
+        int i = 0;
+        while (i < 1000) {
+            i++;
+            positions.Add(new Vector3(activeTile.pos.x + activeNode.x * 0.35f, activeTile.pos.y + activeNode.y * 0.35f, 0));
+            var orientation = orientationMap[activeNode];
+            var transpose = new Vector2(orientation.y, -orientation.x);
+            if (borderTiles.ContainsKey(activeTile.pos + orientation)) {
+                var adjacentTile = borderTiles[activeTile.pos + orientation];
+                if (adjacentTile.HasNode(activeNode - orientation * 2)) {
+                    activeNode = activeNode - orientation * 2;
+                }
+                activeTile = adjacentTile;
+            } else if (activeTile.HasNode(activeNode + transpose * 2)) {
+                activeNode = activeNode + transpose * 2;
+            } else if (borderTiles.ContainsKey(activeTile.pos + transpose)) {
+                activeTile = borderTiles[activeTile.pos + transpose];
+            } else {
+                activeNode += transpose * 2;
+            }
+            if (activeTile == firstTile && activeNode == firstNode) break;
+        }
+        
+        var result = Instantiate(borderPrefab);
+        result.transform.parent = transform;
+        result.transform.localPosition = Vector3.zero;
+        result.SetPoints(positions);
+        return result;
     }
 }
