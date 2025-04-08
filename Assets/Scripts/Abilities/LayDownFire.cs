@@ -5,7 +5,8 @@ using System.Linq;
 [CreateAssetMenu(fileName = "LayDownFire", menuName = "Abilities/LayDownFire", order = 1)]
 public class LayDownFire : ReactionAbility {
     
-    private int shotsRemaining;
+    int shotsRemaining;
+    bool spunUp;
 
     public override bool CanUse() {
         return owner.hasAmmo && owner.hasActions;
@@ -15,6 +16,14 @@ public class LayDownFire : ReactionAbility {
         AnimationManager.instance.StartAnimation(PerformUse());
     }
 
+    public override void Setup() {
+        GameEvents.On(this, "player_turn_start", PlayerTurnStart);
+    }
+    
+    public override void Teardown() {
+        GameEvents.RemoveListener(this, "player_turn_start");
+    }
+    
     public IEnumerator PerformUse() {
         AbilityInfoPanel.instance.ShowDescription($"{userFacingName}\nChoose Facing");
         SideModal.instance.Show(description);
@@ -40,14 +49,17 @@ public class LayDownFire : ReactionAbility {
         yield return PerformShots();
     }
 
-    private IEnumerator PerformShots() {
+    IEnumerator PerformShots() {
         var aliensInSight = Map.instance.GetActors<Alien>().Where(alien => !alien.tile.foggy && owner.CanSee(alien.gridLocation) && owner.InRange(alien.gridLocation) && owner.WithinSightArc(alien.gridLocation)).ToList();
         bool woundUp = false;
         if (shotsRemaining > 0 && aliensInSight.Count > 0) {
             woundUp = true;
             owner.AimAnimation();
             yield return new WaitForSeconds(0.3f);
-            yield return owner.PerformPlayAudio(owner.weapon.audio.spinUp, randomPitch: false);
+            if (!spunUp) {
+                spunUp = true;
+                yield return owner.PerformPlayAudio(owner.weapon.audio.spinUp, randomPitch: false);
+            }
             owner.PlayAudioRepeat(owner.weapon.audio.spinning);
         }
         while (shotsRemaining > 0 && aliensInSight.Count > 0) {
@@ -64,5 +76,9 @@ public class LayDownFire : ReactionAbility {
             yield return new WaitForSeconds(0.3f);
         }
         owner.IdleAnimation();
+    }
+    
+    void PlayerTurnStart() {
+        spunUp = false;
     }
 }
