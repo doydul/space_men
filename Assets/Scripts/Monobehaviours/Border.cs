@@ -28,7 +28,7 @@ public class Border : MonoBehaviour {
         line.startColor = color;
         line.endColor = color;
         var meshColor = color;
-        meshColor.a = 0.3f;
+        meshColor.a *= 0.3f;
         meshRenderer.material.SetColor("_BaseColor", meshColor);
     }
     

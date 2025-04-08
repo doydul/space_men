@@ -6,7 +6,7 @@ using System.Collections;
 public class StandardAlienBehaviour : AlienBehaviour {
     
     [Range(0, 1f)]
-    public float critChance = 1f/6f;
+    public float critChance = 0.35f;
     
     public override IEnumerator PerformTurn() {
         var soldierPositions = Map.instance.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToArray();

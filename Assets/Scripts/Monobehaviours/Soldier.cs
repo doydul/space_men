@@ -179,7 +179,7 @@ public class Soldier : Actor {
 
     public void HighlightActions() {
         MapHighlighter.instance.ClearHighlights();
-        MapHighlighter.instance.BorderTiles(Map.instance.iterator.Exclude(new SoldierImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement), Color.green);
+        MapHighlighter.instance.BorderTiles(Map.instance.iterator.Exclude(new SoldierImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement), new Color(0.6124124f, 0.6886792f, 0.5158597f));
         if (hasActions && HasAbility<StandardShoot>()) {
             foreach (var alien in Map.instance.GetActors<Alien>()) {
                 if (!alien.tile.foggy && CanSee(alien.gridLocation) && InRange(alien.gridLocation)) {
@@ -191,7 +191,6 @@ public class Soldier : Actor {
         foreach (var tile in Map.instance.AdjacentTiles(tile)) {
             if (tile.GetBackgroundActor<Actor>() != null && tile.GetBackgroundActor<Actor>().interactable) MapHighlighter.instance.HighlightTile(tile, Color.yellow);
         }
-        MapHighlighter.instance.HighlightTile(this.tile, new Color(0.75f, 1f, 0.75f));
     }
 
     public override void Select() {

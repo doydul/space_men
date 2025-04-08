@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System.ComponentModel.Design;
 
 public class MapHighlighter : MonoBehaviour {
 
@@ -43,9 +44,37 @@ public class MapHighlighter : MonoBehaviour {
         highlightedTiles.Add(tile);
     }
     
+    public void BorderTile(Tile tile, Color color) => BorderTiles( new[] { tile}, color);
     public void BorderTiles(IEnumerable<Tile> tiles, Color color) {
-        var border = SFXLayer.instance.SpawnBorder(tiles.Select(tile => (Vector2)tile.realLocation).ToList());
-        border.SetColor(color);
-        borders.Add(border);
+        if (!tiles.Any()) return;
+        var continuousGroups = new List<List<Tile>>();
+        var tilesList = tiles.ToList();
+        continuousGroups.Add(new List<Tile>());
+        var firstTile = tilesList[0];
+        tilesList.Remove(firstTile);
+        var activeGroup = continuousGroups[0];
+        activeGroup.Add(firstTile);
+        while (tilesList.Count > 0) {
+            bool tileAdded = false;
+            foreach (var tile in new List<Tile>(tilesList)) {
+                if (activeGroup.Any(activeTile => Map.instance.ManhattanDistance(activeTile.gridLocation, tile.gridLocation) == 1)) {
+                    tilesList.Remove(tile);
+                    activeGroup.Add(tile);
+                    tileAdded = true;
+                }
+            }
+            if (!tileAdded) {
+                var nextTile = tilesList[0];
+                tilesList.Remove(nextTile);
+                activeGroup = new() { nextTile };
+                continuousGroups.Add(activeGroup);
+            }
+        }
+        
+        foreach (var group in continuousGroups) {
+            var border = SFXLayer.instance.SpawnBorder(group.Select(tile => tile.realLocation).ToList());
+            border.SetColor(color);
+            borders.Add(border);
+        }
     }
  }

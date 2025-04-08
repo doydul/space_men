@@ -138,11 +138,17 @@ public class Alien : Actor {
 
     public void HighlightActions() {
         MapHighlighter.instance.ClearHighlights();
-        foreach (var tile in Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement)) {
-            MapHighlighter.instance.HighlightTile(tile, Color.red);
+        var moveTiles = Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement);
+        MapHighlighter.instance.BorderTiles(Map.instance.iterator.Exclude(new AlienImpassableTerrain()).RadiallyFrom(gridLocation, remainingMovement), Color.red);
+        var soldierTiles = new List<Tile>();
+        foreach (var tile in moveTiles) {
             foreach (var adjTile in Map.instance.AdjacentTiles(tile)) {
                 if (adjTile.GetActor<Soldier>() != null) {
-                    MapHighlighter.instance.HighlightTile(adjTile, Color.red);
+                    if (!soldierTiles.Contains(adjTile)) {
+                        soldierTiles.Add(adjTile);
+                        MapHighlighter.instance.BorderTiles(new[] { adjTile }, Color.red);
+                        
+                    }
                 }
             }
         }

@@ -122,14 +122,14 @@ public class SFXLayer : MonoBehaviour {
             }
         }
         var positions = new List<Vector3>();
-        var firstTile = borderTiles.Values.First();
+        var firstTile = borderTiles.Values.Where(tile => tile.hasNodes).First();
         var firstNode = firstTile.GetNodes().First();
         var activeTile = firstTile;
         var activeNode = firstNode;
         int i = 0;
         while (i < 1000) {
             i++;
-            positions.Add(new Vector3(activeTile.pos.x + activeNode.x * 0.35f, activeTile.pos.y + activeNode.y * 0.35f, 0));
+            positions.Add(new Vector3(activeTile.pos.x + activeNode.x * 0.4f, activeTile.pos.y + activeNode.y * 0.4f, 0));
             var orientation = orientationMap[activeNode];
             var transpose = new Vector2(orientation.y, -orientation.x);
             if (borderTiles.ContainsKey(activeTile.pos + orientation)) {
