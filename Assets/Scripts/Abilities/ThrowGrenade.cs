@@ -20,7 +20,7 @@ public class ThrowGrenade : Ability {
 
     private IEnumerator PerformUse() {
         AbilityInfoPanel.instance.ShowDescription("Throw Grenade\nChoose Target");
-        SideModal.instance.Show(description);
+        SideModal.instance.ShowCollapsible(description);
         yield return MapInputController.instance.SelectTileFrom(
             Color.red,
             Map.instance.iterator.Exclude(new SoldierLosMask())

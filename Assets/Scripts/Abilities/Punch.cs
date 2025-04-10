@@ -24,7 +24,7 @@ public class Punch : Ability {
 
     private IEnumerator PerformUse() {
         AbilityInfoPanel.instance.ShowDescription($"{userFacingName}\nChoose Target");
-        SideModal.instance.Show(description);
+        SideModal.instance.ShowCollapsible(description);
         yield return MapInputController.instance.SelectTileFrom(Color.red, possibleTargets);
         SideModal.instance.Hide();
         var hitTile = MapInputController.instance.selectedTile;

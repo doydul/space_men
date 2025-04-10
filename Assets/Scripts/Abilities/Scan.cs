@@ -14,7 +14,7 @@ public class Scan : CooldownAbility {
 
     private IEnumerator PerformUse() {
         AbilityInfoPanel.instance.ShowDescription($"{userFacingName}\nChoose Target");
-        SideModal.instance.Show(description);
+        SideModal.instance.ShowCollapsible(description);
         yield return MapInputController.instance.SelectTileFrom(Color.yellow, Map.instance.iterator.RadiallyFrom(owner.gridLocation, range)
           .Where(tile => tile.open).ToArray());
         var hitTile = MapInputController.instance.selectedTile;

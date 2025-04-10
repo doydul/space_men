@@ -7,15 +7,44 @@ public class SideModal : MonoBehaviour {
     
     public static SideModal instance;
     
-    public bool isOpen => gameObject.activeSelf;
+    public GameObject modalElement;
+    public GameObject collapseButton;
+    public GameObject collapseButtonImage;
     
-    void Awake() => instance = this;
-    void Start() => Hide();
-    
-    public void Show(string text) {
-        modalText.text = text;
-        gameObject.SetActive(true);
+    public bool isOpen { get; private set; }
+    public bool collapsed {
+        get => PlayerPrefs.GetInt("side_modal_collapsed") > 0;
+        set => PlayerPrefs.SetInt("side_modal_collapsed", value ? 1 : 0);
     }
     
-    public void Hide() => gameObject.SetActive(false);
+    void Awake() => instance = this;
+    void Start() {
+        collapseButtonImage.transform.localScale = new Vector3(1, collapsed ? -1 : 1, 1);
+        Hide();
+    }
+    
+    public void Show(string text) {
+        modalElement.SetActive(true);
+        modalText.text = text;
+        isOpen = true;
+    }
+    
+    public void ShowCollapsible(string text) {
+        collapseButton.SetActive(true);
+        modalElement.SetActive(!collapsed);
+        modalText.text = text;
+        isOpen = true;
+    }
+    
+    public void ToggleCollapse() {
+        collapsed = !collapsed;
+        modalElement.SetActive(!collapsed);
+        collapseButtonImage.transform.localScale = new Vector3(1, collapsed ? -1 : 1, 1);
+    }
+    
+    public void Hide() {
+        modalElement.SetActive(false);
+        collapseButton.SetActive(false);
+        isOpen = false;
+    }
 }

@@ -17,7 +17,7 @@ public class HeadShot : CooldownAbility {
 
     private IEnumerator PerformUse() {
         AbilityInfoPanel.instance.ShowDescription($"{userFacingName}\nChoose Target");
-        SideModal.instance.Show(description);
+        SideModal.instance.ShowCollapsible(description);
         var tmp = owner.weapon;
         owner.weapon = weaponProfile;
         yield return MapInputController.instance.SelectTileFrom(Color.red,

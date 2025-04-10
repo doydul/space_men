@@ -21,7 +21,7 @@ public class MarkTarget : Ability {
 
     private IEnumerator PerformUse() {
         AbilityInfoPanel.instance.ShowDescription("Mark Target\nChoose Target");
-        SideModal.instance.Show(description);
+        SideModal.instance.ShowCollapsible(description);
         yield return MapInputController.instance.SelectTileFrom(
             Color.red,
             possibleTargets.Select(alien => alien.tile).ToArray()
