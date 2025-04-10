@@ -175,15 +175,15 @@ MonoBehaviour:
   quickness: 0
   bigness: 0
   weapons:
-  - Chain Gun
-  - Chain Gun
-  - Chain Gun
+  - Sniper Rifle
+  - Grenade Launcher
+  - Flamer
   - Chain Gun
   armour:
-  - Light
-  - Light
-  - Medium
-  - Medium
+  - Heavy
+  - Onyx Battlegear
+  - Photon Vanguard
+  - Void Stalker
   inventoryWeapons: []
   inventoryArmour: []
   unlockedAliens: []

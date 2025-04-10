@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: sprint as a free action
   sprite: {fileID: 21300000, guid: 77ec22448b0764249b61ca242d0e3628, type: 3}
+  spriteColor: {r: 0.37690592, g: 0.7735849, b: 0.3605197, a: 1}
   cooldown: 5

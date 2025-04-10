@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +10,14 @@ public class AbilityIcon : MonoBehaviour {
     public Action OnClick;
 
     public void DisplaySpriteFor(Ability ability) {
-        var sprite = ability.sprite;
-        if (image != null) image.sprite = sprite;
-        if (spriteRenderer != null) spriteRenderer.sprite = sprite;
+        if (image != null) {
+            image.sprite = ability.sprite;
+            image.color = ability.spriteColor;
+        }
+        if (spriteRenderer != null) {
+            spriteRenderer.sprite = ability.sprite;
+            spriteRenderer.color = ability.spriteColor;
+        }
     }
 
     public void HandleClick() => OnClick();
