@@ -170,9 +170,9 @@ MonoBehaviour:
   enemiesStartAlerted: 0
   credits: 0
   difficultyLevel: 1
-  groupishness: 50
+  groupishness: 0
   armouredness: 0
-  quickness: 0
+  quickness: 30
   bigness: 0
   weapons:
   - Sniper Rifle

@@ -145,6 +145,7 @@ public class HiveMind : MonoBehaviour {
                     Weight = Map.instance.GetActors<Soldier>().Select(soldier => Map.instance.ManhattanDistance(soldier.gridLocation, spawner.gridLocation)).Min()
                 }
             );
+            if (weightedSpawners.Where(wSpawner => wSpawner.spawner.pathable).Any()) weightedSpawners = weightedSpawners.Where(wSpawner => wSpawner.spawner.pathable);
             weightedSpawners = weightedSpawners.OrderBy(wSpawner => wSpawner.Weight).Take(10).ToList();
             int i = 0;
             foreach (var ws in weightedSpawners) {
