@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 [CreateAssetMenu(fileName = "Sprint", menuName = "Abilities/Sprint", order = 1)]
 public class Sprint : Ability {
     
-    public override bool CanUse() {
-        return owner.hasActions;
+    public override IEnumerable<AbilityCondition> Conditions() {
+        yield return new HasAction();
     }
 
     public override void Use() {

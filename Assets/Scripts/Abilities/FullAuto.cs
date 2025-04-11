@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 [CreateAssetMenu(fileName = "FullAuto", menuName = "Abilities/Full Auto", order = 1)]
@@ -8,8 +9,8 @@ public class FullAuto : Ability {
     public int ammoCost = 3;
     public int damage = 3;
     
-    public override bool CanUse() {
-        return owner.shotsRemaining >= ammoCost;
+    public override IEnumerable<AbilityCondition> Conditions() {
+        yield return new HasAmmo();
     }
 
     public override void Use() {

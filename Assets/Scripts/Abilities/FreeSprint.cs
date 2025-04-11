@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 [CreateAssetMenu(fileName = "FreeSprint", menuName = "Abilities/FreeSprint", order = 1)]
 public class FreeSprint : CooldownAbility {
     
-    public override bool CanUse() {
-        return base.CanUse() && owner.canAct;
+    public override IEnumerable<AbilityCondition> Conditions() {
+        foreach (var con in base.Conditions()) yield return con;
+        yield return new HasAction();
     }
 
     public override void Use() {

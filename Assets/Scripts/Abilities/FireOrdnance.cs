@@ -1,14 +1,16 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "FireOrdnance", menuName = "Abilities/Fire Ordnance", order = 1)]
 public class FireOrdnance : Ability {
     
     public int scatterDistanceInterval = 5;
-
-    public override bool CanUse() {
-        return owner.hasAmmo && owner.hasActions;
+    
+    public override IEnumerable<AbilityCondition> Conditions() {
+        yield return new HasAmmo();
+        yield return new HasAction();
     }
 
     public override void Use() {

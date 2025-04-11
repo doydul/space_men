@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 [CreateAssetMenu(fileName = "LayDownFire", menuName = "Abilities/LayDownFire", order = 1)]
@@ -7,9 +8,10 @@ public class LayDownFire : ReactionAbility {
     
     int shotsRemaining;
     bool spunUp;
-
-    public override bool CanUse() {
-        return owner.hasAmmo && owner.hasActions;
+    
+    public override IEnumerable<AbilityCondition> Conditions() {
+        yield return new HasAmmo();
+        yield return new HasAction();
     }
 
     public override void Use() {

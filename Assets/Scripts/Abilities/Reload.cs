@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Reload", menuName = "Abilities/Reload", order = 1)]
 public class Reload : Ability {
     
-    public override bool CanUse() {
-        return owner.shotsSpent > 0 && owner.hasActions;
+    public override IEnumerable<AbilityCondition> Conditions() {
+        yield return new ClipNotFull();
+        yield return new HasAction();
     }
     
     public override void Use() {

@@ -6,8 +6,9 @@ using System.Linq;
 [CreateAssetMenu(fileName = "DirectionalOverwatch", menuName = "Abilities/Directional Overwatch", order = 9)]
 public class DirectionalOverwatch : ReactionAbility {
     
-    public override bool CanUse() {
-        return owner.hasAmmo && owner.hasActions;
+    public override IEnumerable<AbilityCondition> Conditions() {
+        yield return new HasAmmo();
+        yield return new HasAction();
     }
 
     public override void Use() {

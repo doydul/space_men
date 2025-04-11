@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Autoload", menuName = "Abilities/Autoload", order = 1)]
 public class Autoload : LimitedUseAbility {
     
-    public override bool CanUse() {
-        return base.CanUse() && owner.shotsSpent > 0;
+    public override IEnumerable<AbilityCondition> Conditions() {
+        foreach (var con in base.Conditions()) yield return con;
+        yield return new ClipNotFull();
     }
     
     public override void Use() {

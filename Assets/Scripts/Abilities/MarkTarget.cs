@@ -9,9 +9,10 @@ public class MarkTarget : LimitedUseAbility {
     public StatusEffect status;
     
     private IEnumerable<Alien> possibleTargets => Map.instance.GetActors<Alien>().Where(alien => !alien.tile.foggy && owner.CanSee(alien.gridLocation));
-
-    public override bool CanUse() {
-        return base.CanUse() && possibleTargets.Any();
+    
+    public override IEnumerable<AbilityCondition> Conditions() {
+        foreach (var con in base.Conditions()) yield return con;
+        yield return new HasTarget(() => possibleTargets.Any());
     }
 
     public override void Use() {

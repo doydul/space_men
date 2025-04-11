@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Overwatch", menuName = "Abilities/Overwatch", order = 1)]
 public class Overwatch : ReactionAbility {
     
-    public override bool CanUse() {
-        return owner.hasAmmo && owner.hasActions;
+    public override IEnumerable<AbilityCondition> Conditions() {
+        yield return new HasAmmo();
+        yield return new HasAction();
     }
     
     public override void Use() {

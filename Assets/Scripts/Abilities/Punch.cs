@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Punch", menuName = "Abilities/Punch", order = 1)]
 public class Punch : Ability {
@@ -11,9 +12,10 @@ public class Punch : Ability {
     public AudioCollection audio;
     
     protected bool freeActionGiven;
-
-    public override bool CanUse() {
-        return owner.hasActions && possibleTargets.Length > 0;
+    
+    public override IEnumerable<AbilityCondition> Conditions() {
+        yield return new HasAction();
+        yield return new HasTarget(() => possibleTargets.Any());
     }
 
     public override void Use() {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 [CreateAssetMenu(fileName = "HeadShot", menuName = "Abilities/Head Shot", order = 10)]
@@ -7,8 +8,13 @@ public class HeadShot : CooldownAbility {
 
     public Weapon weaponProfile;
     
-    public override bool CanUse() {
-        return base.CanUse() && owner.hasActions && owner.shotsRemaining >= 1;
+    private IEnumerable<Tile> possibleTargets => Map.instance.GetActors<Alien>().Where(alien => !alien.tile.foggy && owner.CanSee(alien.gridLocation) && owner.InRange(alien.gridLocation)).Select(alien => alien.tile);
+    
+    public override IEnumerable<AbilityCondition> Conditions() {
+        foreach (var con in base.Conditions()) yield return con;
+        yield return new HasTarget(() => possibleTargets.Any());
+        yield return new HasAction();
+        yield return new HasAmmo();
     }
 
     public override void Use() {
@@ -21,7 +27,7 @@ public class HeadShot : CooldownAbility {
         var tmp = owner.weapon;
         owner.weapon = weaponProfile;
         yield return MapInputController.instance.SelectTileFrom(Color.red,
-            Map.instance.GetActors<Alien>().Where(alien => !alien.tile.foggy && owner.CanSee(alien.gridLocation) && owner.InRange(alien.gridLocation)).Select(alien => alien.tile).ToArray()
+            possibleTargets.ToArray()
         );
         SideModal.instance.Hide();
         if (MapInputController.instance.selectedTile == null) {

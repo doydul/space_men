@@ -1,13 +1,14 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public abstract class CooldownAbility : Ability {
     
     public int cooldown;
     
-    protected int cooldownCounter;
+    public int cooldownCounter;
     
-    public override bool CanUse() {
-        return cooldownCounter <= 0;
+    public override IEnumerable<AbilityCondition> Conditions() {
+        yield return new OffCooldown();
     }
     
     protected void SetCooldown() {
