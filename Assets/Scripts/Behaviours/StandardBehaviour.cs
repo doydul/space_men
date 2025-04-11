@@ -70,7 +70,7 @@ public class StandardAlienBehaviour : AlienBehaviour {
         yield return new WaitForSeconds(0.25f);
         if (Random.value < critChance && !target.HasTrait(Trait.CritImmune)) {
             target.Hurt(body.damage * 2);
-            Debug.Log("!!!CRITICAL HIT!!!");
+            SFXLayer.instance.SpawnNote(target.realLocation, "critical hit!");
         } else {
             target.Hurt(body.damage);
         }

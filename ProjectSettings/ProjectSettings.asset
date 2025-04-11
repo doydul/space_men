@@ -163,7 +163,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.DefaultCompany.space_men
+    Android: com.Wynnsoft.Xenophos
     Standalone: com.DefaultCompany.space-men
   buildNumber:
     Standalone: 0

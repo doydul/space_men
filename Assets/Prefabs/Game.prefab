@@ -698,7 +698,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5.45
+  m_fontSize: 5.4
   m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1774,7 +1774,7 @@ Transform:
   m_GameObject: {fileID: 2613044371142042841}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3253.519, y: 592, z: -10}
+  m_LocalPosition: {x: -3253.519, y: 592, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6230,7 +6230,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2104393105623264521}
   - component: {fileID: 8640662348792897040}
-  - component: {fileID: 8784434615537042337}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -6247,7 +6246,7 @@ Transform:
   m_GameObject: {fileID: 8640662348792897041}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6269,22 +6268,7 @@ MonoBehaviour:
     type: 3}
   borderPrefab: {fileID: 8299074351762707814, guid: bfb169541bbea834f9e5ca8685c9f6e6,
     type: 3}
---- !u!114 &8784434615537042337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8640662348792897041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947138918c3344512b4295a4bd6f91fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  map: {fileID: 8640662348927887907}
-  explosionMarkerPrefab: {fileID: 4738354376133644, guid: e4aa511a518774666a1053b9e939d403,
-    type: 3}
-  radarBlipPrefab: {fileID: 4076588859830896, guid: 004b781f24f1a4c009221d4d795a78a0,
+  notePrefab: {fileID: 783618933428798791, guid: c104de2bf3a954140bf953a6a111dccf,
     type: 3}
 --- !u!1 &8640662348927887908
 GameObject:

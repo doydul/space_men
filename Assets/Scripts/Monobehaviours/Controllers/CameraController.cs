@@ -10,6 +10,9 @@ public class CameraController : MonoBehaviour {
     float startSize;
 
     public static CameraController instance;
+    
+    public float zoom => cam.orthographicSize;
+    
     void Awake() {
         instance = this;
         cam = GetComponent<Camera>();

@@ -9,6 +9,7 @@ public class SFXLayer : MonoBehaviour {
 
     public Transform explosionPrefab;
     public Border borderPrefab;
+    public Note notePrefab;
 
     public GameObject SpawnExplosion(Vector2 location) => SpawnPrefab(explosionPrefab, location);
 
@@ -152,6 +153,12 @@ public class SFXLayer : MonoBehaviour {
         result.transform.parent = transform;
         result.transform.localPosition = Vector3.zero;
         result.SetPoints(positions);
+        return result;
+    }
+    
+    public Note SpawnNote(Vector2 pos, string text) {
+        var result = Instantiate(notePrefab, transform);
+        result.SetPositionAndText(pos + Vector2.up * 0.5f, text);
         return result;
     }
 }
