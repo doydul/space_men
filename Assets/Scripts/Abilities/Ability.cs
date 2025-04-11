@@ -9,8 +9,8 @@ public abstract class Ability : ScriptableObject {
     public Sprite sprite;
     public Color spriteColor = new Color(0.6868184f, 0.764151f, 0.5940192f);
 
-    protected string userFacingName => StringUtils.UserFacingName(name);
     protected AbilityCondition[] conditions;
+    public string userFacingName => StringUtils.UserFacingName(name);
     public  Soldier owner;
 
     public virtual void Attach(Soldier owner) {

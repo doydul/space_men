@@ -41,6 +41,11 @@ public class InterfaceController : MonoBehaviour {
                 Tutorial.Show(abilityIcon.transform, "abilities1", true, true);
                 Tutorial.Show("abilities2");
                 if (ability.CanUse()) ability.Use();
+                else {
+                    AnimationManager.instance.StartAnimation(
+                        NotificationPopup.PerformShow(ability.userFacingName, ability.CantUseExplanation(), new BtnData("ok", () => {}))
+                    );
+                }
             };
             abilityIcon.DisplaySpriteFor(ability); 
             if (!ability.CanUse()) abilityIcon.Disable();
