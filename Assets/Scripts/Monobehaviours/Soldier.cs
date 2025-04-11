@@ -70,8 +70,8 @@ public class Soldier : Actor {
     public override bool HasTrait(Trait trait) => weapon.traits != null && weapon.traits.Contains(trait) || armour.traits != null && armour.traits.Contains(trait);
     
     // Animations
-    public void AimAnimation() => animator.SetBool("Aiming", true);
-    public void IdleAnimation() => animator.SetBool("Aiming", false);
+    public void AimAnimation() { if (animator != null) animator?.SetBool("Aiming", true); }
+    public void IdleAnimation() { if (animator != null) animator.SetBool("Aiming", false); }
     
     public string armourName => armour.name;
     public string weaponName => weapon.name;

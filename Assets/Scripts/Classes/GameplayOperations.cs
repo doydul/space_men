@@ -252,7 +252,7 @@ public static class GameplayOperations {
         actor.StationaryAnimation();
     }
     public static IEnumerator PerformTurnAnimation(Actor actor, Actor.Direction desiredFacing, bool force = false) {
-        if (!force && actor.direction == desiredFacing) yield break;
+        if (actor == null || !force && actor.direction == desiredFacing) yield break;
         yield return PerformTurnAnimation(actor, Actor.DirectionToRotation(desiredFacing));
         actor.TurnTo(desiredFacing);
     }
