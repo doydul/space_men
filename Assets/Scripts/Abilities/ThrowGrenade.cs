@@ -3,16 +3,11 @@ using System.Linq;
 using System.Collections;
 
 [CreateAssetMenu(fileName = "ThrowGrenade", menuName = "Abilities/Throw Grenade", order = 1)]
-public class ThrowGrenade : Ability {
+public class ThrowGrenade : LimitedUseAbility {
     
     public int scatterDistanceInterval = 5;
     
-    public int uses = 1;
     public Weapon weapon;
-
-    public override bool CanUse() {
-        return uses > 0;
-    }
 
     public override void Use() {
         AnimationManager.instance.StartAnimation(PerformUse());
@@ -33,8 +28,7 @@ public class ThrowGrenade : Ability {
         if (hitTile == null) yield break;
         AbilityInfoPanel.instance.Hide();
         
-        uses -= 1;
-        if (uses <= 0) owner.abilities.Remove(this);
+        base.Use();
         var accuracy = weapon.accuracy;
         if (Random.value * 100 > accuracy) {
             // Miss
@@ -61,9 +55,5 @@ public class ThrowGrenade : Ability {
         yield return GameplayOperations.PerformExplosion(owner, hitTile, weapon);
         
         yield return GameplayOperations.PerformTurnAnimation(owner, Actor.FacingToDirection(hitTile.gridLocation - owner.gridLocation), true);
-    }
-    
-    public override void Display(AbilityIcon icon) {
-        icon.smallText = uses.ToString();
     }
 }

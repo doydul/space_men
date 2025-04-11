@@ -4,15 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "MarkTarget", menuName = "Abilities/Mark Target", order = 1)]
-public class MarkTarget : Ability {
+public class MarkTarget : LimitedUseAbility {
     
     public StatusEffect status;
-    public int uses = 1;
     
     private IEnumerable<Alien> possibleTargets => Map.instance.GetActors<Alien>().Where(alien => !alien.tile.foggy && owner.CanSee(alien.gridLocation));
 
     public override bool CanUse() {
-        return uses > 0 && possibleTargets.Any();
+        return base.CanUse() && possibleTargets.Any();
     }
 
     public override void Use() {
@@ -31,12 +30,7 @@ public class MarkTarget : Ability {
         if (hitTile == null) yield break;
         AbilityInfoPanel.instance.Hide();
         
-        uses -= 1;
-        if (uses <= 0) owner.abilities.Remove(this);
         status.Apply(hitTile.GetActor<Alien>());
-    }
-    
-    public override void Display(AbilityIcon icon) {
-        icon.smallText = uses.ToString();
+        base.Use();
     }
 }
