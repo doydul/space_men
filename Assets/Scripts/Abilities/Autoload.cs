@@ -26,4 +26,8 @@ public class Autoload : Ability {
         if (uses <= 0) owner.abilities.Remove(this);
         owner.PlayAudio(owner.weapon.audio.reload);
     }
+    
+    public override void Display(AbilityIcon icon) {
+        icon.smallText = uses.ToString();
+    }
 }

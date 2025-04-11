@@ -62,4 +62,8 @@ public class ThrowGrenade : Ability {
         
         yield return GameplayOperations.PerformTurnAnimation(owner, Actor.FacingToDirection(hitTile.gridLocation - owner.gridLocation), true);
     }
+    
+    public override void Display(AbilityIcon icon) {
+        icon.smallText = uses.ToString();
+    }
 }

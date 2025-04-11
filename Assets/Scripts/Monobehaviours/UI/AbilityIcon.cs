@@ -1,13 +1,19 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AbilityIcon : MonoBehaviour {
 
     public Image image;
     public SpriteRenderer spriteRenderer;
+    public TMP_Text centreTextEl;
+    public TMP_Text smallTextEl;
     public Color disabledColor;
     public Action OnClick;
+    
+    public string centreText { get => centreTextEl.text; set => centreTextEl.text = value; }
+    public string smallText { get => smallTextEl.text; set => smallTextEl.text = value; }
 
     public void DisplaySpriteFor(Ability ability) {
         if (image != null) {
@@ -18,6 +24,7 @@ public class AbilityIcon : MonoBehaviour {
             spriteRenderer.sprite = ability.sprite;
             spriteRenderer.color = ability.spriteColor;
         }
+        ability.Display(this);
     }
 
     public void HandleClick() => OnClick();

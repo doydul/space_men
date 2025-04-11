@@ -35,4 +35,8 @@ public class MarkTarget : Ability {
         if (uses <= 0) owner.abilities.Remove(this);
         status.Apply(hitTile.GetActor<Alien>());
     }
+    
+    public override void Display(AbilityIcon icon) {
+        icon.smallText = uses.ToString();
+    }
 }

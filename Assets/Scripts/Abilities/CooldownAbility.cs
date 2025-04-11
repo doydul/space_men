@@ -23,4 +23,8 @@ public abstract class CooldownAbility : Ability {
     public override void Teardown() {
         GameEvents.RemoveListener(this, "player_turn_start");
     }
+
+    public override void Display(AbilityIcon icon) {
+        if (cooldownCounter > 0) icon.centreText = cooldownCounter.ToString();
+    }
 }

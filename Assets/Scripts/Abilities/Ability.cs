@@ -21,4 +21,5 @@ public abstract class Ability : ScriptableObject {
     public virtual void Teardown() {}
     public virtual bool CanUse() => true;
     public virtual void Use() {}
+    public virtual void Display(AbilityIcon icon) {}
 }
