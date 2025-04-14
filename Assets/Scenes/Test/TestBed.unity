@@ -175,10 +175,10 @@ MonoBehaviour:
   quickness: 30
   bigness: 0
   weapons:
-  - Sniper Rifle
-  - Grenade Launcher
-  - Flamer
   - Chain Gun
+  - Chain Gun
+  - Chain Gun
+  - Assault Rifle
   armour:
   - Heavy
   - Onyx Battlegear

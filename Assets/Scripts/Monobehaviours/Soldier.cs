@@ -14,6 +14,7 @@ public class Soldier : Actor {
     Weapon _weapon;
     public Weapon weapon { get => _weapon; set {
         _weapon = value;
+        backpackSprite.sprite = _weapon.backpackSprite;
         gunContainer.DestroyChildren();
         var weaponPrefab = Instantiate(_weapon.spritePrefab, gunContainer);
         weaponPrefab.transform.localPosition = Vector3.zero;
@@ -23,6 +24,7 @@ public class Soldier : Actor {
     Transform muzzleFlashLocation;
     public Transform gunContainer;
     public SpriteRenderer bodySprite;
+    public SpriteRenderer backpackSprite;
     public SpriteRenderer headSprite;
     public AbilityIcon abilityIcon;
     
