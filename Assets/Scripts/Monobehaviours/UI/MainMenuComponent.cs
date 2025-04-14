@@ -32,7 +32,7 @@ public class MainMenuComponent : MonoBehaviour {
     
     public void Continue() {
         PlayerSave.current = PlayerSave.Load(0);
-        SceneManager.LoadScene("Mission");
+        SceneManager.LoadScene("CampaignUI");
     }
     
     public void Settings() {

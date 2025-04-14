@@ -15,14 +15,14 @@ public class Objectives {
 
     Dictionary<int, Dictionary<int, int>> roomDistances = new();
     
-    public static List<Objective> GenerateObjectiveList(PlayerSave currentSave) {
-        var result = new List<Objective> { new GetToTarget { required = true } };
+    public static List<ObjectiveData> GenerateObjectiveList(PlayerSave currentSave) {
+        var result = new List<ObjectiveData> { new ObjectiveData { objectiveType = "GetToTarget", required = true } };
         if (currentSave.levelNumber > 0 && currentSave.levelNumber % 2 == 0) {
-            if (Random.value < 0.5f) result.Add(new WaveDefence { required = true });
-            else result.Add(new ActivateTerminal { required = true });
+            if (Random.value < 0.5f) result.Add(new ObjectiveData { objectiveType = "WaveDefence", required = true });
+            else result.Add(new ObjectiveData { objectiveType = "ActivateTerminal", required = true });
         }
-        result.Add(new GrabTheLoot());
-        result.Add(new GrabTheLoot());
+        result.Add(new ObjectiveData { objectiveType = "GrabTheLoot" });
+        result.Add(new ObjectiveData { objectiveType = "GrabTheLoot" });
         return result;
     }
     

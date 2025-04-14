@@ -9,8 +9,8 @@ public class MissionComponent : MonoBehaviour {
     
     void Start() {
         objectiveTextElement.text = "";
-        foreach (var objective in Mission.current.objectives.Where(objc => objc.required)) {
-            objectiveTextElement.text += $"- {objective.description}\n";
+        foreach (var objectiveData in Mission.current.objectives.Where(objc => objc.required)) {
+            objectiveTextElement.text += $"- {objectiveData.Dump().description}\n";
         }
         Close();
     }

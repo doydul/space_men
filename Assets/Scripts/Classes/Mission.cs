@@ -33,7 +33,11 @@ public class Mission {
     public bool finished { get; private set; }
     
     public EnemyProfileSet enemyProfiles;
-    public List<Objective> objectives;
+    public List<ObjectiveData> objectives;
+    
+    public List<Objective> GetObjectives() {
+        return objectives.Select(obj => obj.Dump()).ToList();
+    }
     
     public void End() {
         finished = true;
