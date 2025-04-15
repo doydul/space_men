@@ -39,5 +39,6 @@ MonoBehaviour:
     type: 3}
   spritePrefab: {fileID: 876625575503601482, guid: 37bd17b14f1f2b3429cf0fc307816a1a,
     type: 3}
-  backpackSprite: {fileID: 21300000, guid: e14aa1f69aeded948a2e5dd4c3e3d843, type: 3}
+  backpackPrefab: {fileID: 3136563178512152751, guid: 0ca64571d8a5ad14ca4b21b078c7e63a,
+    type: 3}
   explosion: {fileID: 0}

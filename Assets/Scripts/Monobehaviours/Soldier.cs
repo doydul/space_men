@@ -14,7 +14,11 @@ public class Soldier : Actor {
     Weapon _weapon;
     public Weapon weapon { get => _weapon; set {
         _weapon = value;
-        backpackSprite.sprite = _weapon.backpackSprite;
+        backpackContainer.DestroyChildren();
+        if (_weapon.backpackPrefab != null) {
+            var backpack = Instantiate(_weapon.backpackPrefab, backpackContainer);
+            backpack.transform.localPosition = Vector3.zero;
+        }
         gunContainer.DestroyChildren();
         var weaponPrefab = Instantiate(_weapon.spritePrefab, gunContainer);
         weaponPrefab.transform.localPosition = Vector3.zero;
@@ -24,7 +28,7 @@ public class Soldier : Actor {
     Transform muzzleFlashLocation;
     public Transform gunContainer;
     public SpriteRenderer bodySprite;
-    public SpriteRenderer backpackSprite;
+    public Transform backpackContainer;
     public SpriteRenderer headSprite;
     public AbilityIcon abilityIcon;
     
@@ -73,7 +77,7 @@ public class Soldier : Actor {
     
     // Animations
     public void AimAnimation() { if (animator != null) animator?.SetBool("Aiming", true); }
-    public void IdleAnimation() { if (animator != null) animator.SetBool("Aiming", false); }
+    public void IdleAnimation() { if (animator != null) animator?.SetBool("Aiming", false); }
     
     public string armourName => armour.name;
     public string weaponName => weapon.name;

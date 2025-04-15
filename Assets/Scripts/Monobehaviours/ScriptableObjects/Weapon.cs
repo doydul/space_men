@@ -32,7 +32,7 @@ public class Weapon : ScriptableObject, IWeighted {
     public ParticleBurst impactEffect;
     public ParticleBurst missEffect;
     public WeaponSprite spritePrefab;
-    public Sprite backpackSprite;
+    public GameObject backpackPrefab;
     public ExplosionAsset explosion;
 
     public bool ordnance => blast > 0;
