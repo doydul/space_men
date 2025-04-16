@@ -270,15 +270,14 @@ public static class GameplayOperations {
         var chest = tile.GetBackgroundActor<Chest>();
         ModalPopup.instance.ClearContent();
         if (chest.contents.hasItem) {
-            var item = chest.contents.item;
-            PlayerSave.current.inventory.AddItem(chest.contents.item);
-            string weaponOrArmour = item.isWeapon ? "a weapon" : "some armour";
-            // ModalPopup.instance.DisplayContent(Resources.Load<Transform>("Prefabs/UI/ItemReward")).GetComponent<ItemReward>().SetText($"you found {weaponOrArmour}\n{chest.contents.item.name}");
-            var itemInfoBox = ModalPopup.instance.DisplayContentInContainer(Resources.Load<GameObject>("Prefabs/UI/ItemInfoBox")).GetComponent<ItemInfoBox>();
-            if (item.isWeapon) itemInfoBox.SetItem(Weapon.Get(item.name));
-            else itemInfoBox.SetItem(Armour.Get(item.name));
+            foreach (var item in chest.contents.items) {
+                PlayerSave.current.inventory.AddItem(item);
+                var itemInfoBox = ModalPopup.instance.DisplayContentInContainer(Resources.Load<GameObject>("Prefabs/UI/ItemInfoBox")).GetComponent<ItemInfoBox>();
+                if (item.isWeapon) itemInfoBox.SetItem(Weapon.Get(item.name));
+                else itemInfoBox.SetItem(Armour.Get(item.name));
+            }
         }
-        if (chest.contents.credits > 0) {
+        if (chest.contents.hasCredits) {
             PlayerSave.current.credits += chest.contents.credits;
             ModalPopup.instance.DisplayContent(Resources.Load<Transform>("Prefabs/UI/ItemReward")).GetComponent<ItemReward>().SetText($"you found credits\n{chest.contents.credits}");
         }

@@ -3,7 +3,7 @@ using System.Linq;
 
 public class LootGenerator : MonoBehaviour {
     
-    const float megaChestChance = 1f / 6f;
+    const float megaChestChance = 1f;
     
     public static LootGenerator instance;
     void Awake() => instance = this;
@@ -12,16 +12,18 @@ public class LootGenerator : MonoBehaviour {
     private Armour[] allArmour => Resources.LoadAll<Armour>("Armour/");
 
     public Loot MakeLoot(float techLevel) {
-        var result = new Loot();
-        result.item = RandomItem(techLevel);
+        var result = new Loot(RandomItem(techLevel));
+        if (Random.value < megaChestChance) {
+            result.AddItem(RandomItem(techLevel));
+        }
         return result;
     }
     
     public Loot MakeCommonLoot(float techLevel) {
         if (Random.value < megaChestChance) {
-            return new Loot { item = RandomItem(techLevel) };
+            return new Loot(RandomItem(techLevel));
         } else {
-            return new Loot { credits = Mathf.Max(MathUtil.GuassianInt((techLevel + 1) * 50, 20), 10) };
+            return new Loot(Mathf.Max(MathUtil.GuassianInt((techLevel + 1) * 50, 20), 10));
         }
     }
 
