@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class InterfaceController : MonoBehaviour {
@@ -25,9 +27,7 @@ public class InterfaceController : MonoBehaviour {
     }
 
     public void EndTurn() {
-        UIState.instance.EndPlayerTurn();
-        GameEvents.Trigger("alien_turn_start");
-        endTurnButton.SetActive(false);
+        AnimationManager.instance.StartAnimation(PerformEndTurn());
     }
 
     public void DisplayAbilities(Ability[] abilities) {
@@ -57,5 +57,16 @@ public class InterfaceController : MonoBehaviour {
         for (int i = 1; i < parent.childCount; i++) {
             Destroy(parent.GetChild(i).gameObject);
         }
+    }
+    
+    IEnumerator PerformEndTurn() {
+        if (Map.instance.GetActors<Soldier>().Where(soldier => soldier.hasActions).Any()) {
+            bool ok = false;
+            yield return NotificationPopup.PerformShow("end turn", "1 or more soldiers still have action points left, do you really want to end the turn?", new BtnData("cancel"), new BtnData("ok", () => ok = true));
+            if (!ok) yield break;
+        }
+        UIState.instance.EndPlayerTurn();
+        GameEvents.Trigger("alien_turn_start");
+        endTurnButton.SetActive(false);
     }
 }

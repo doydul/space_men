@@ -34,7 +34,7 @@ public class NotificationPopup : MonoBehaviour {
             buttonComponent.action.AddListener(() => {
                 pressed = true;
                 Close();
-                btn.callback();
+                if (btn.callback != null) btn.callback();
             });
         }
         while (!pressed) {
