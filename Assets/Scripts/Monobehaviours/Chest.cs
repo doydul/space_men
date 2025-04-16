@@ -31,7 +31,7 @@ public class Chest : Actor {
     }
     
     void Start() {
-        if (bigChestGraphics.activeSelf && smallChestGraphics.activeSelf) isBig = true;
-        if (Random.value < 0.5f) transform.localRotation = Quaternion.Euler(0, 0, 90);
+        isBig = contents.hasItem;
+        // if (Random.value < 0.5f) transform.localRotation = Quaternion.Euler(0, 0, 90);
     }
 }
