@@ -11,7 +11,7 @@ public class GrabTheLoot : Objective {
 
     public override void Init(Objectives objectives) {
         var room = objectives.GetNextBestRoom();
-        chest = LootGenerator.instance.InstantiateLootChest(LootGenerator.instance.MakeLoot(PlayerSave.current.difficulty), room.centre);
+        chest = LootGenerator.instance.InstantiateLootChest(LootGenerator.instance.MakeLoot(PlayerSave.current.difficulty), room.centre, true);
         location = chest.gridLocation;
         objectives.AddObjective(room, this);
     }

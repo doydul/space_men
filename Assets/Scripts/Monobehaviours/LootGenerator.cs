@@ -33,10 +33,11 @@ public class LootGenerator : MonoBehaviour {
         return new Loot { credits = Mathf.Max(MathUtil.GuassianInt((techLevel + 1) * 50, 20), 10) };
     }
 
-    public Chest InstantiateLootChest(Loot loot, Vector2 gridLocation, bool hidden = false) {
+    public Chest InstantiateLootChest(Loot loot, Vector2 gridLocation, bool big = true, bool hidden = false) {
         var trans = Instantiate(Resources.Load<Transform>("Prefabs/Chest")) as Transform;
         var chest = trans.GetComponent<Chest>();
         chest.contents = loot;
+        chest.isBig = big;
         
         var tile = Map.instance.GetTileAt(gridLocation);
         tile.SetActor(trans, true);

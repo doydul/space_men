@@ -282,7 +282,7 @@ public static class GameplayOperations {
             PlayerSave.current.credits += chest.contents.credits;
             ModalPopup.instance.DisplayContent(Resources.Load<Transform>("Prefabs/UI/ItemReward")).GetComponent<ItemReward>().SetText($"you found credits\n{chest.contents.credits}");
         }
-        chest.Remove();
+        chest.Open();
     }
 
     public static IEnumerator PerformExplosion(Actor player, Tile tile, Weapon weapon) {

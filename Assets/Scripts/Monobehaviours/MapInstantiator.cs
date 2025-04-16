@@ -122,7 +122,7 @@ public class MapInstantiator : MonoBehaviour {
             ventTiles.Remove(ventTile);
             
             var loot = LootGenerator.instance.MakeCommonLoot(PlayerSave.current.difficulty);
-            LootGenerator.instance.InstantiateLootChest(loot, ventTile.gridLocation, true);
+            LootGenerator.instance.InstantiateLootChest(loot, ventTile.gridLocation, false, true);
             remainingLoot--;
         }
         
