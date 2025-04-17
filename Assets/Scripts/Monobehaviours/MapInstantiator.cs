@@ -46,6 +46,7 @@ public class MapInstantiator : MonoBehaviour {
         //
         
         var mapLayout = new MapGenerator(new MapGenerator.Blueprint {
+            seed = PlayerSave.current.levelSeed,
             corridors = blueprint.corridors,
             secondaryCorridors = blueprint.secondaryCorridors,
             loops = blueprint.loops,

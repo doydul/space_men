@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ public class Mission {
         result.objectives = Objectives.GenerateObjectiveList(playerSave);
         
         playerSave.mission = result;
+        playerSave.levelSeed = Random.Range(int.MinValue, int.MaxValue);
         
         return result;
     }

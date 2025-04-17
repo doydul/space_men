@@ -6,6 +6,7 @@ public class MapGenerator {
     
     [System.Serializable]
     public class Blueprint {
+        public int seed;
         public int corridors;
         public int secondaryCorridors;
         public int loops;
@@ -92,6 +93,7 @@ public class MapGenerator {
     }
 
     public MapLayout Generate() {
+        Random.InitState(blueprint.seed);
         Room.currentId = 0;
         var startPoint = new MapPoint(0, 0);
         var connections = new Connections();

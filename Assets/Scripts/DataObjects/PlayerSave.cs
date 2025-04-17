@@ -9,6 +9,7 @@ public class PlayerSave {
     
     public int slot;
     public int levelNumber;
+    public int levelSeed;
     public int credits;
     public float _difficulty = -0.2f;
     public float difficulty => Mathf.Max(_difficulty, 0);
