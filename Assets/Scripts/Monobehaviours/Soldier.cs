@@ -227,7 +227,7 @@ public class Soldier : Actor {
 
 public class SoldierImpassableTerrain : IMask {
     public bool Contains(Tile tile) {
-        return !tile.open || tile.GetActor<Alien>() != null || tile.GetBackgroundActor<Door>() != null || tile.GetBackgroundActor<Chest>() != null;
+        return !tile.open || tile.GetActor<Alien>() != null || tile.GetBackgroundActor<Door>() != null;
     }
 }
 

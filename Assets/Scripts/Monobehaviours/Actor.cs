@@ -37,10 +37,9 @@ public abstract class Actor : MonoBehaviour {
         else return Direction.Right;
     }
 
-    public Tile tile;
+    [HideInInspector] public Tile tile;
     public Transform image;
     public Decal[] bloodSplats;
-    public GameObject deflectIndicator;
     public HealthIndicator healthIndicator;
     public StatusesBar statusesBar;
     public AudioCollection walkSounds;

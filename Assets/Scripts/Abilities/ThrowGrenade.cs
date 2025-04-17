@@ -14,7 +14,7 @@ public class ThrowGrenade : LimitedUseAbility {
     }
 
     private IEnumerator PerformUse() {
-        AbilityInfoPanel.instance.ShowDescription("Throw Grenade\nChoose Target");
+        AbilityInfoPanel.instance.ShowDescription($"{userFacingName}\nChoose Target");
         SideModal.instance.ShowCollapsible(description);
         yield return MapInputController.instance.SelectTileFrom(
             Color.red,

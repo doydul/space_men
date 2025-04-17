@@ -11,7 +11,7 @@ public abstract class Ability : ScriptableObject {
 
     protected AbilityCondition[] conditions;
     public string userFacingName => StringUtils.UserFacingName(name);
-    public  Soldier owner;
+    [HideInInspector] public  Soldier owner;
 
     public virtual void Attach(Soldier owner) {
         var clone = Instantiate(this);
