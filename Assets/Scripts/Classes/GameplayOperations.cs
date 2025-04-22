@@ -291,39 +291,41 @@ public static class GameplayOperations {
         int iLayer = 0;
         foreach (var layer in Map.instance.iterator.Exclude(new ExplosionImpassableTerrain()).EnumerateLayersFrom(tile.gridLocation)) {
             remainingBlast -= iLayer * 2;
-            iLayer++;
             while (layer.Count() > 0 && remainingBlast > 0) {
                 remainingBlast -= 1;
                 var randex = Random.Range(0, layer.Count());
                 var randTile = layer[randex];
                 layer.RemoveAt(randex);
 
-                SFXLayer.instance.SpawnBurst(randTile.realLocation, Vector3.up, weapon.explosion.explosionVFX);
                 var actor = randTile.GetActor<Actor>();
-                if (actor != null) {
-                    var damage = Random.Range(weapon.minDamage, weapon.maxDamage + 1);
-                    actor.Hurt(damage);
-                    actor.SpawnBlood();
-                }
-                if (weapon.flames) {
-                    if (randTile.onFire) {
-                        if (weapon.minDamage + weapon.maxDamage > randTile.fire.minDamage + randTile.fire.maxDamage) {
-                            randTile.fire.minDamage = weapon.minDamage;
-                            randTile.fire.maxDamage = weapon.maxDamage;
-                            randTile.fire.timer = weapon.flameDuration - iLayer;
+                AnimationManager.Delay(iLayer * 0.25f, () => {
+                    if (weapon.flames) {
+                        if (randTile.onFire) {
+                            if (weapon.minDamage + weapon.maxDamage > randTile.fire.minDamage + randTile.fire.maxDamage) {
+                                randTile.fire.minDamage = weapon.minDamage;
+                                randTile.fire.maxDamage = weapon.maxDamage;
+                                randTile.fire.timer = weapon.flameDuration - iLayer;
+                            } else {
+                                randTile.fire.timer += 1;
+                            }
                         } else {
-                            randTile.fire.timer += 1;
+                            var fire = Tile.Instantiate(weapon.explosion.fireVFX);
+                            fire.minDamage = weapon.minDamage;
+                            fire.maxDamage = weapon.maxDamage;
+                            fire.timer = weapon.flameDuration - iLayer;
+                            randTile.SetFire(fire);
                         }
-                    } else {
-                        var fire = Tile.Instantiate(weapon.explosion.fireVFX);
-                        fire.minDamage = weapon.minDamage;
-                        fire.maxDamage = weapon.maxDamage;
-                        fire.timer = weapon.flameDuration - iLayer;
-                        randTile.SetFire(fire);
                     }
-                }
-                if (weapon.explosion.hasDecals) DecalController.instance.SpawnDecal(randTile, weapon.explosion.GetDecal());
+                    SFXLayer.instance.SpawnBurst(randTile.realLocation, Vector3.up, weapon.explosion.explosionVFX);
+                    if (actor != null) {
+                        var damage = Random.Range(weapon.minDamage, weapon.maxDamage + 1);
+                        actor.Hurt(damage);
+                        actor.SpawnBlood();
+                    }
+                    if (weapon.explosion.hasDecals) DecalController.instance.SpawnDecal(randTile, weapon.explosion.GetDecal());
+                });
             }
+            iLayer++;
         }
         yield return new WaitForSeconds(0.5f);
     }

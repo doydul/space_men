@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class AnimationManager : MonoBehaviour {
     
@@ -37,6 +38,15 @@ public class AnimationManager : MonoBehaviour {
             yield return null;
             coroutines.RemoveAll(data => data.finished);
         }
+    }
+    
+    public static void Delay(float seconds, Action callback) {
+        instance.StartCoroutine(PerformDelay(seconds, callback));
+    }
+    
+    private static IEnumerator PerformDelay(float seconds, Action callback) {
+        yield return new WaitForSeconds(seconds);
+        callback();
     }
 
     private IEnumerator AnimationRoutineWrapper(IEnumerator animation) {

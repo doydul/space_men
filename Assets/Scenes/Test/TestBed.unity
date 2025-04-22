@@ -177,8 +177,8 @@ MonoBehaviour:
   weapons:
   - Chain Gun
   - Chain Gun
-  - Flamer
-  - Assault Rifle
+  - Grenade Launcher
+  - Portable Mortar
   armour:
   - Heavy
   - Onyx Battlegear
