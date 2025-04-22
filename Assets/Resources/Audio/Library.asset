@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35eeab04d8cb3a04eb6109448bf8e350, type: 3}
+  m_Name: Library
+  m_EditorClassIdentifier: 
+  buttonClicks: {fileID: 11400000, guid: 11d18a98bad41fb46aa46f7b1ec2bdd7, type: 2}
+  objectiveComplete:
+    volume: 0.3
+    clip: {fileID: 8300000, guid: 662a40a40c828a441be81b0dd2dc9f5f, type: 3}

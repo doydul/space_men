@@ -1,20 +1,24 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class AudioPlayer : MonoBehaviour {
 
     AudioSource audioSource;
     bool repeating;
+    bool destroyOnEnd;
     
     void Awake() {
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.playOnAwake = false;
-        audioSource.minDistance = 500f;
-
+        audioSource = GetComponent<AudioSource>();
     }
+    
+    void Update() {
+        if (destroyOnEnd && !audioSource.isPlaying) Destroy(gameObject);
+    }
+    
+    public void DestroyWhenFinished() => destroyOnEnd = true;
 
-    public void PlayAudio(AudioClipProfile clip, bool randomPitch = true) {
+    public void PlayAudio(AudioClipProfile clip, bool randomPitch = false) {
         if (clip == null || repeating) return;
         audioSource.pitch = randomPitch ? Random.value * 0.2f + 0.9f : 1;
         audioSource.volume = clip.volume;
@@ -35,9 +39,10 @@ public class AudioPlayer : MonoBehaviour {
         repeating = false;
         audioSource.Stop();
         audioSource.loop = false;
+        Destroy(gameObject);
     }
     
-    public IEnumerator PerformPlayAudio(AudioClipProfile clip, bool randomPitch = true) {
+    public IEnumerator PerformPlayAudio(AudioClipProfile clip, bool randomPitch = false) {
         PlayAudio(clip, randomPitch);
         yield return null;
         while (audioSource.isPlaying) {

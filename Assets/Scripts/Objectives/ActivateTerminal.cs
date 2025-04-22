@@ -14,6 +14,7 @@ public class ActivateTerminal : Objective {
     ActivateTerminal other;
     Terminal terminal;
     bool terminalActivated;
+    bool fullyComplete;
     
     public override void Init(Objectives objectives) {
         var room1 = objectives.GetNextBestRoom();
@@ -35,6 +36,9 @@ public class ActivateTerminal : Objective {
         if (!other.terminalActivated) {
             terminalActivated = false;
             terminal.interactEnabled = true;
+        } else if (terminalActivated && !fullyComplete) {
+            fullyComplete = true;
+            AudioManager.ObjectiveComplete();
         }
     }
     

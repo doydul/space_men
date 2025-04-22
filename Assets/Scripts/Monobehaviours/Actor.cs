@@ -74,11 +74,11 @@ public abstract class Actor : MonoBehaviour {
     public bool On(Tile tile) => this.tile == tile;
     protected Animator animator;
     protected Material spriteSharedMat;
-    AudioPlayer audioPlayer;
-    public void PlayAudio(AudioClipProfile clip, bool randomPitch = true) => audioPlayer.PlayAudio(clip, randomPitch);
-    public void PlayAudioRepeat(AudioClipProfile clip) => audioPlayer.PlayAudioRepeat(clip);
-    public void StopRepeatingAudio() => audioPlayer.StopRepeatingAudio();
-    public IEnumerator PerformPlayAudio(AudioClipProfile clip, bool randomPitch = true) => audioPlayer.PerformPlayAudio(clip, randomPitch);
+    public void PlayAudio(AudioClipProfile clip) => AudioManager.Play(realLocation, clip);
+    AudioPlayer repeatingPlayer;
+    public void PlayAudioRepeat(AudioClipProfile clip) => repeatingPlayer = AudioManager.PlayRepeating(realLocation, clip);
+    public void StopRepeatingAudio() => repeatingPlayer.StopRepeatingAudio();
+    public IEnumerator PerformPlayAudio(AudioClipProfile clip) => AudioManager.PerformPlay(realLocation, clip);
     public virtual bool HasTrait(Trait trait) => false;
     
     // Animations
@@ -86,7 +86,6 @@ public abstract class Actor : MonoBehaviour {
     public void StationaryAnimation() => animator?.SetBool("Moving", false);
 
     protected virtual void Awake() {
-        audioPlayer = gameObject.AddComponent<AudioPlayer>();
         animator = GetComponent<Animator>();
         health = maxHealth;
     }

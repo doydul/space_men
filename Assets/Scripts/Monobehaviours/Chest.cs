@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class Chest : Actor {
@@ -8,7 +9,8 @@ public class Chest : Actor {
     
     public Loot contents;
     GameObject activeGraphic;
-    bool isOpen;
+    public bool isOpen { get; private set; }
+    public Action onOpen { get; set; }
     
     public bool isBig {
         get => bigChestGraphics.activeSelf;
@@ -28,6 +30,7 @@ public class Chest : Actor {
         activeGraphic.transform.Find("ClosedSprite").gameObject.SetActive(false);
         activeGraphic.transform.Find("OpenSprite").gameObject.SetActive(true);
         isOpen = true;
+        if (onOpen != null) onOpen();
     }
     
     void Start() {

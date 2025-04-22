@@ -49,6 +49,7 @@ public class WaveDefence : Objective {
                 HiveMind.instance.SpawnInFog(2, 4, spawnings);
             }
             turnCounter--;
+            if (turnCounter <= 0) AudioManager.ObjectiveComplete();
         }
     }
     

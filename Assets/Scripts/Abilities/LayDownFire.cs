@@ -60,7 +60,7 @@ public class LayDownFire : ReactionAbility {
             yield return new WaitForSeconds(0.3f);
             if (!spunUp) {
                 spunUp = true;
-                yield return owner.PerformPlayAudio(owner.weapon.audio.spinUp, randomPitch: false);
+                yield return owner.PerformPlayAudio(owner.weapon.audio.spinUp);
             }
             owner.PlayAudioRepeat(owner.weapon.audio.spinning);
         }
@@ -74,7 +74,7 @@ public class LayDownFire : ReactionAbility {
         if (shotsRemaining <= 0) owner.HideAbilityIcon();
         if (woundUp) {
             owner.StopRepeatingAudio();
-            owner.PlayAudio(owner.weapon.audio.spinDown, randomPitch: false);
+            owner.PlayAudio(owner.weapon.audio.spinDown);
             yield return new WaitForSeconds(0.3f);
         }
         owner.IdleAnimation();
