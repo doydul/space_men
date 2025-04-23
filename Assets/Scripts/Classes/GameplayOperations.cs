@@ -298,7 +298,7 @@ public static class GameplayOperations {
                 layer.RemoveAt(randex);
 
                 var actor = randTile.GetActor<Actor>();
-                AnimationManager.Delay(iLayer * 0.25f, () => {
+                AnimationManager.Delay(iLayer * 0.15f, () => {
                     if (weapon.flames) {
                         if (randTile.onFire) {
                             if (weapon.minDamage + weapon.maxDamage > randTile.fire.minDamage + randTile.fire.maxDamage) {

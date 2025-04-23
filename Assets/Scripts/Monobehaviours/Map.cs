@@ -1,10 +1,17 @@
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
 public partial class Map : MonoBehaviour {
+    
+    [Serializable]
+    public class WeightedSprite : IWeighted {
+        public int weight;
+        public int Weight => weight;
+        public Sprite sprite;
+    }
 
     public class Room {
         public bool start;
@@ -26,10 +33,8 @@ public partial class Map : MonoBehaviour {
     public Sprite wallSprite;
     public Sprite innerCornerSprite;
     public Sprite outerCornerSprite;
-    public Sprite corridorSprite;
+    public WeightedSprite[] corridorSprites;
     public Sprite wallTopSprite;
-    public Sprite thinWallSprite;
-    public Sprite wallTipSprite;
     public Sprite highlightSprite;
     public Sprite fogSprite;
 

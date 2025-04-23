@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour {
     public Transform backgroundActor;
 
     public SpriteRenderer backgroundSprite;
+    public SpriteRenderer[] backgroundSprites;
     public Transform foreground;
     public Transform midground;
     public SpriteRenderer highlightSprite;
@@ -52,7 +53,11 @@ public class Tile : MonoBehaviour {
         actor.localScale = new Vector3(1, 1, 1);
     }
 
-    public void SetTint(Color color) => backgroundSprite.color = color;
+    public void SetTint(Color color) {
+        foreach (var backgroundSprite in backgroundSprites) {
+            backgroundSprite.color = color;
+        }
+    }
 
     public void RemoveActor() {
         actor = null;

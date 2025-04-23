@@ -6389,10 +6389,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b391550e2f54f84879178133d4dbfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallSprite: {fileID: 21300000, guid: 1b6c2642a1fcee9479b4b674acfc7510, type: 3}
-  innerCornerSprite: {fileID: 21300000, guid: 6b5c34e9b5fad894e8047cc221193fde, type: 3}
-  outerCornerSprite: {fileID: 21300000, guid: 700b6d77a562172488dfa08713e5886c, type: 3}
-  corridorSprite: {fileID: 21300000, guid: b0101538717601c4bbd3d0ef3a4c907b, type: 3}
+  wallSprite: {fileID: 21300000, guid: 93effe9c02c8b064eb58d9ba816e650c, type: 3}
+  innerCornerSprite: {fileID: 21300000, guid: eb4caa1fcd0a3664182644bedff39c8c, type: 3}
+  outerCornerSprite: {fileID: 21300000, guid: 118012bb40a0ca44ab4608b72faeeba6, type: 3}
+  corridorSprites:
+  - weight: 100
+    sprite: {fileID: 21300000, guid: b0101538717601c4bbd3d0ef3a4c907b, type: 3}
+  - weight: 7
+    sprite: {fileID: 21300000, guid: b0e2c08d92faecd49bebfc0622eda167, type: 3}
+  - weight: 15
+    sprite: {fileID: 21300000, guid: 61a70abbb25d06c45b622944a5f3f25d, type: 3}
+  - weight: 15
+    sprite: {fileID: 21300000, guid: 6f52765e92cd55c43a53c416883ee8e9, type: 3}
+  - weight: 5
+    sprite: {fileID: 21300000, guid: bb1cb89b13373944b983cd3f40a8cec1, type: 3}
+  - weight: 10
+    sprite: {fileID: 21300000, guid: 43c025de7830716429eed7abcbf4de82, type: 3}
   wallTopSprite: {fileID: 21300000, guid: d582a4f6d32dd40e09099209a1abe0de, type: 3}
   thinWallSprite: {fileID: 21300000, guid: 17beb211ba5fd5c49aa2c909e823aac6, type: 3}
   wallTipSprite: {fileID: 21300000, guid: a5de55c86023a0648bc2d362e805abe8, type: 3}

@@ -103,7 +103,7 @@ public class MapInstantiator : MonoBehaviour {
         map.height = mapLayoutCache[0].Count;
         map.ClearTiles();
         foreach (var tile in tiles) {
-            SetSprite(tile);
+            SetSprites(tile);
         }
         
         // add vents
@@ -141,18 +141,27 @@ public class MapInstantiator : MonoBehaviour {
         var backgroundObject = new GameObject();
         var highlightObject = new GameObject();
         var fogObject = new GameObject();
-        var backgroundSpriteRenderer = backgroundObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
-        var highlightSpriteRenderer = highlightObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
-        var fogSpriteRenderer = fogObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+        var backGroundSpriteObjects = new List<GameObject>();
+        for (int i = 0; i < 4; i++ ) {
+            var go = new GameObject();
+            backGroundSpriteObjects.Add(go);
+            go.transform.parent = backgroundObject.transform;
+            go.transform.localPosition = new Vector3(new [] { -0.25f, 0.25f, 0.25f, -0.25f }[i], new [] { 0.25f, 0.25f, -0.25f, -0.25f }[i], 0);
+            Debug.Log(go.transform.localPosition);
+            go.AddComponent<SpriteRenderer>().sprite = map.wallTopSprite;
+            go.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+        }
+        tile.backgroundSprite = backgroundObject.AddComponent<SpriteRenderer>();
+        
+        var highlightSpriteRenderer = highlightObject.AddComponent<SpriteRenderer>();
+        var fogSpriteRenderer = fogObject.AddComponent<SpriteRenderer>();
         highlightSpriteRenderer.enabled = false;
         fogSpriteRenderer.enabled = false;
         
         tileObject.name = "Tile " + position.x + ", " + position.y;
         tileObject.transform.parent = parent;
         tileObject.transform.localPosition = position;
-        tile.backgroundSprite = backgroundSpriteRenderer;
-        backgroundSpriteRenderer.sprite = map.wallTopSprite;
-        // backgroundObject.transform.localScale = SpriteScale(map.wallTopSprite);
+        tile.backgroundSprites = backGroundSpriteObjects.Select(go => go.GetComponent<SpriteRenderer>()).ToArray();
         tile.highlightSprite = highlightSpriteRenderer;
         highlightSpriteRenderer.sprite = map.highlightSprite;
         highlightObject.transform.localScale = SpriteScale(map.highlightSprite);
@@ -185,79 +194,51 @@ public class MapInstantiator : MonoBehaviour {
         return door;
     }
 
-    private void SetSprite(Tile tile) {
+    private void SetSprites(Tile tile) {
         Sprite sprite = null;
-        var background = tile.backgroundSprite.transform;
-
+        
         if (tile.open) {
-            sprite = map.corridorSprite;
-            
-        } else if (!IsWallAtIndex(tile, 5) && !IsWallAtIndex(tile, 1) && !IsWallAtIndex(tile, 3)) {
-            sprite = map.wallTipSprite;
-            background.eulerAngles = new Vector3(0, 0, -0);
-        } else if (!IsWallAtIndex(tile, 7) && !IsWallAtIndex(tile, 1) && !IsWallAtIndex(tile, 3)) {
-            sprite = map.wallTipSprite;
-            background.eulerAngles = new Vector3(0, 0, -90);
-        } else if (!IsWallAtIndex(tile, 5) && !IsWallAtIndex(tile, 7) && !IsWallAtIndex(tile, 3)) {
-            sprite = map.wallTipSprite;
-            background.eulerAngles = new Vector3(0, 0, -180);
-        } else if (!IsWallAtIndex(tile, 5) && !IsWallAtIndex(tile, 1) && !IsWallAtIndex(tile, 7)) {
-            sprite = map.wallTipSprite;
-            background.eulerAngles = new Vector3(0, 0, -270);
-            
-        } else if (!IsWallAtIndex(tile, 5) && !IsWallAtIndex(tile, 3)) {
-            sprite = map.thinWallSprite;
-            background.eulerAngles = new Vector3(0, 0, -0);
-        } else if (!IsWallAtIndex(tile, 7) && !IsWallAtIndex(tile, 1)) {
-            sprite = map.thinWallSprite;
-            background.eulerAngles = new Vector3(0, 0, -90);
-            
-        } else if (!IsWallAtIndex(tile, 5) && !IsWallAtIndex(tile, 1)) {
-            sprite = map.outerCornerSprite;
-            background.eulerAngles = new Vector3(0, 0, -0);
-        } else if (!IsWallAtIndex(tile, 1) && !IsWallAtIndex(tile, 3)) {
-            sprite = map.outerCornerSprite;
-            background.eulerAngles = new Vector3(0, 0, -90);
-        } else if (!IsWallAtIndex(tile, 3) && !IsWallAtIndex(tile, 7)) {
-            sprite = map.outerCornerSprite;
-            background.eulerAngles = new Vector3(0, 0, -180);
-        } else if (!IsWallAtIndex(tile, 7) && !IsWallAtIndex(tile, 5)) {
-            sprite = map.outerCornerSprite;
-            background.eulerAngles = new Vector3(0, 0, -270);
-            
-        } else if (!IsWallAtIndex(tile, 5)) {
-            sprite = map.wallSprite;
-            background.eulerAngles = new Vector3(0, 0, -0);
-        } else if (!IsWallAtIndex(tile, 1)) {
-            sprite = map.wallSprite;
-            background.eulerAngles = new Vector3(0, 0, -90);
-        } else if (!IsWallAtIndex(tile, 3)) {
-            sprite = map.wallSprite;
-            background.eulerAngles = new Vector3(0, 0, -180);
-        } else if (!IsWallAtIndex(tile, 7)) {
-            sprite = map.wallSprite;
-            background.eulerAngles = new Vector3(0, 0, -270);
-            
-        } else if (!IsWallAtIndex(tile, 8)) {
-            sprite = map.innerCornerSprite;
-            background.eulerAngles = new Vector3(0, 0, -0);
-        } else if (!IsWallAtIndex(tile, 2)) {
-            sprite = map.innerCornerSprite;
-            background.eulerAngles = new Vector3(0, 0, -90);
-        } else if (!IsWallAtIndex(tile, 0)) {
-            sprite = map.innerCornerSprite;
-            background.eulerAngles = new Vector3(0, 0, -180);
-        } else if (!IsWallAtIndex(tile, 6)) {
-            sprite = map.innerCornerSprite;
-            background.eulerAngles = new Vector3(0, 0, -270);
+            sprite = map.corridorSprites.WeightedSelect().sprite;
+            var tmp = tile.backgroundSprite.transform.localScale;
+            if (Random.value < 0.5f) tmp.y = -1;
+            if (Random.value < 0.5f) tmp.x = -1;
+            tile.backgroundSprite.transform.localScale = tmp;
+            if (Random.value < 0.05f) tile.backgroundSprite.transform.rotation = Quaternion.Euler(0, 0, 90);
+            foreach (var renderer in tile.backgroundSprites) renderer.enabled = false;
         } else {
-            tile.backgroundSprite.gameObject.SetActive(false);
+            tile.backgroundSprite.enabled = false;
+            
+            for (int i = 0; i < 4; i++) {
+                // int x = i % 2;
+                // int y = i / 2;
+                var pos = tile.gridLocation;
+                var offset = new Vector2(new[] { 0, 1, 0, -1 }[i], new[] { 1, 0, -1, 0 }[i]);
+                var transpose = new Vector2(-offset.y, offset.x);
+                var background = tile.backgroundSprites[i];
+                background.transform.eulerAngles = new Vector3(0, 0, i * -90);
+                
+                if (!IsWallAt(pos + offset) && !IsWallAt(pos + transpose)) {
+                    background.sprite = map.outerCornerSprite;
+                } else if (!IsWallAt(pos + offset)) {
+                    background.sprite = map.wallSprite;
+                    background.transform.rotation *= Quaternion.Euler(0, 0, -90);
+                } else if (!IsWallAt(pos + transpose)) {
+                    background.sprite = map.wallSprite;
+                } else if (!IsWallAt(pos + transpose + offset)) {
+                    background.sprite = map.innerCornerSprite;
+                } else {
+                    background.enabled = false;
+                }
+            }
         }
         tile.backgroundSprite.sprite = sprite;
     }
 
-    private bool IsWallAt(int x, int y) {
-        var tile = map.GetTileAt(new Vector2(x, y));
+    private bool IsWallAt(float x, float y) {
+        return IsWallAt(new Vector2(x, y));
+    }
+    private bool IsWallAt(Vector2 pos) {
+        var tile = map.GetTileAt(pos);
         return tile == null ? true : !tile.open;
     }
 

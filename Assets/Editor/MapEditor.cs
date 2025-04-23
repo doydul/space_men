@@ -103,7 +103,7 @@ public class MapEditor : Editor {
     private void FlipTile(Tile tile) {
         tile.open = !tile.open;
         if (tile.open) {
-            tile.backgroundSprite.sprite = map.corridorSprite;
+            tile.backgroundSprite.sprite = map.corridorSprites.WeightedSelect().sprite;
         } else {
             SetSprite(tile);
         }
