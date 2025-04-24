@@ -175,12 +175,12 @@ MonoBehaviour:
   quickness: 30
   bigness: 0
   weapons:
-  - Chain Gun
+  - Plasma Gun
   - Chain Gun
   - Grenade Launcher
   - Portable Mortar
   armour:
-  - Heavy
+  - Medium
   - Onyx Battlegear
   - Photon Vanguard
   - Void Stalker
