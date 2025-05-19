@@ -175,10 +175,10 @@ MonoBehaviour:
   quickness: 30
   bigness: 0
   weapons:
-  - Plasma Gun
+  - Laser
   - Chain Gun
   - Grenade Launcher
-  - Portable Mortar
+  - Shoulder Cannon
   armour:
   - Medium
   - Onyx Battlegear

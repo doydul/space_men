@@ -37,7 +37,7 @@ MonoBehaviour:
     type: 3}
   missEffect: {fileID: 8893649087654275822, guid: 0a13c0ab899349d4b9a3820dd47329ec,
     type: 3}
-  spritePrefab: {fileID: 876625575503601482, guid: 37bd17b14f1f2b3429cf0fc307816a1a,
+  spritePrefab: {fileID: 307993567404025824, guid: 0b0edc999d731cb429627bf94939bb8e,
     type: 3}
   backpackPrefab: {fileID: 3136563178512152751, guid: 0ca64571d8a5ad14ca4b21b078c7e63a,
     type: 3}

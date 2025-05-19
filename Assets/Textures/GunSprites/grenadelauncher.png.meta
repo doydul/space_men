@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: c7b251fc478ccae419447250a4be9a50
+guid: 3712a00e9744f2a44bfad37ca4697208
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6754814103503593055
-    second: laserHighlights_0
-  - first:
-      213: -6114038173520417774
-    second: laserHighlights_1
+      213: 5442440137240791037
+    second: grenadelauncher_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: laserHighlights_0
+      name: grenadelauncher_0
       rect:
         serializedVersion: 2
-        x: 293
-        y: 1586
-        width: 83
-        height: 108
+        x: 1208
+        y: 509
+        width: 411
+        height: 971
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a1aed48c541242a0800000000000000
-      internalID: -6754814103503593055
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: laserHighlights_1
-      rect:
-        serializedVersion: 2
-        x: 696
-        y: 1476
-        width: 288
-        height: 164
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 21c232cbca2962ba0800000000000000
-      internalID: -6114038173520417774
+      spriteID: df7c093387e678b40800000000000000
+      internalID: 5442440137240791037
       vertices: []
       indices: 
       edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      laserHighlights_0: -6754814103503593055
-      laserHighlights_1: -6114038173520417774
+      grenadelauncher_0: 5442440137240791037
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
