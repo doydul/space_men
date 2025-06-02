@@ -35,8 +35,8 @@ public class PlayerSave {
     private PlayerSave() {}
 
     public void Save() {
-        string json = JsonUtility.ToJson(this);
         Debug.Log(Application.persistentDataPath);
+        string json = JsonUtility.ToJson(this);
         File.WriteAllText($"{Application.persistentDataPath}/game_{slot + 1}.save", json);
     }
     
@@ -45,6 +45,7 @@ public class PlayerSave {
     }
 
     public static PlayerSave Load(int slot) {
+        Debug.Log(Application.persistentDataPath);
         var filename = $"{Application.persistentDataPath}/game_{slot + 1}.save";
         if (!File.Exists(filename)) return null;
         string json = File.ReadAllText(filename);

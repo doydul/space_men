@@ -15,6 +15,9 @@ MonoBehaviour:
   description: deal 1-4 damage to an adjacent enemy, ignoring armour. the action
     point is refunded if the target dies (limit once per turn)
   sprite: {fileID: 21300000, guid: acee28cf6c62a1a4d85d4db2dfa0b76b, type: 3}
+  spriteColor: {r: 0.6868184, g: 0.764151, b: 0.5940192, a: 1}
+  hotKey: p
+  owner: {fileID: 0}
   minDamage: 1
   maxDamage: 4
   audio: {fileID: 11400000, guid: 49f712e0138d65e44a3a72527668c9a6, type: 2}

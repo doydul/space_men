@@ -164,26 +164,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  disableFog: 1
-  triggerTerminalObjective: 1
+  disableFog: 0
+  triggerTerminalObjective: 0
   triggerHoldObjective: 0
   enemiesStartAlerted: 0
   credits: 0
-  difficultyLevel: 1
+  difficultyLevel: 0
   groupishness: 0
   armouredness: 0
   quickness: 30
   bigness: 0
   weapons:
-  - Laser
-  - Chain Gun
-  - Grenade Launcher
-  - Shoulder Cannon
+  - SIKR-5
+  - SIKR-5
+  - SIKR-5
   armour:
-  - Medium
-  - Onyx Battlegear
-  - Photon Vanguard
-  - Void Stalker
+  - Flak Vest
+  - Flak Vest
+  - Flak Vest
   inventoryWeapons: []
   inventoryArmour: []
   unlockedAliens: []

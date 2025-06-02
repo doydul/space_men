@@ -223,6 +223,16 @@ public class Soldier : Actor {
         InterfaceController.instance.DisplayAbilities(abilities.ToArray());
         AmmoGauge.instance.DisplayAmmo(ammo, shotsRemaining);
     }
+    
+    void Update() {
+        if (UIState.instance.GetSelectedActor() == this) {
+            foreach (var ability in abilities) {
+                if (ability.hotKey != "" && Input.GetKey(ability.hotKey) && ability.CanUse()) {
+                    ability.Use();
+                }
+            }
+        }
+    }
 }
 
 public class SoldierImpassableTerrain : IMask {

@@ -29,6 +29,11 @@ public class InterfaceController : MonoBehaviour {
     public void EndTurn() {
         AnimationManager.instance.StartAnimation(PerformEndTurn());
     }
+    void Update() {
+        if (Input.GetKey(KeyCode.Return)) {
+            EndTurn();
+        }
+    }
 
     public void DisplayAbilities(Ability[] abilities) {
         ClearAbilities();

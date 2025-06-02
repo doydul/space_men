@@ -6,7 +6,7 @@ public class Inventory {
     
     public InventoryItem defaultWeapon;
     public InventoryItem defaultArmour;
-    List<InventoryItem> _items = new();
+    public List<InventoryItem> _items = new();
     public List<InventoryItem> items => ItemsWithDefaults();
     public List<InventoryItem> blueprints = new();
     

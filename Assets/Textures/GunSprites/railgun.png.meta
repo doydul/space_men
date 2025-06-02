@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 49fc3358be5851b4c949d5e203ada7c6
+guid: 7f29abe9a54cdc74192175e1d5b83dbe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -713011722676215096
-    second: chaingun_0
+      213: 7122970657381634655
+    second: railgun_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chaingun_0
+      name: railgun_0
       rect:
         serializedVersion: 2
-        x: 582
-        y: 1034
-        width: 884
-        height: 726
+        x: 1193
+        y: 536
+        width: 533
+        height: 1303
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c2e13dad9fda16f0800000000000000
-      internalID: -713011722676215096
+      spriteID: f5253c2e210e9d260800000000000000
+      internalID: 7122970657381634655
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      railgun_0: 7122970657381634655
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

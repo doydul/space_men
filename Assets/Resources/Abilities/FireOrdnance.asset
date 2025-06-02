@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: fire the currently equipped blast weapon at a chosen tile
   sprite: {fileID: 21300000, guid: dc42a4b6ac7113347bcf32122ed5f035, type: 3}
+  spriteColor: {r: 0.6868184, g: 0.764151, b: 0.5940192, a: 1}
+  hotKey: f
+  owner: {fileID: 0}
   scatterDistanceInterval: 5
