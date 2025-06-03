@@ -22,6 +22,8 @@ public class Tile : MonoBehaviour {
 
     public Fire fire { get; private set; }
     public bool onFire => fire != null;
+    public int roomId { get; set; }
+    public Map.Room room => roomId < 0 ? null : Map.instance.rooms[roomId];
 
     public bool foggy { get; private set; }
     public bool occupied { get { return actor != null; } }
@@ -30,6 +32,16 @@ public class Tile : MonoBehaviour {
     public void Init() {
         fogSprite.color = new Color(1, 1, 1, 0.7f);
         if (SoldierEnter == null) SoldierEnter = new UnityEvent();
+    }
+    
+    void Start() {
+        if (room?.threatPriority == Map.ThreatPriority.High) {
+            SetTint(Color.red);
+        } else if (room?.threatPriority == Map.ThreatPriority.Normal) {
+            SetTint(Color.blue);
+        } else if (room == null) {
+            SetTint(Color.cyan);
+        }
     }
 
     public void SetFire(Fire fire) {
@@ -54,6 +66,7 @@ public class Tile : MonoBehaviour {
     }
 
     public void SetTint(Color color) {
+        backgroundSprite.color = color;
         foreach (var backgroundSprite in backgroundSprites) {
             backgroundSprite.color = color;
         }

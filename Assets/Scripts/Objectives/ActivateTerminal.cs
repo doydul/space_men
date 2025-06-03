@@ -26,6 +26,7 @@ public class ActivateTerminal : Objective {
     }
     
     void PrivInit(Map.Room room, Objectives objectives) {
+        roomId = room.id;
         location = room.centre;
         InstantiateTerminal(location, PerformTerminalInteract);
         objectives.AddObjective(room, this);

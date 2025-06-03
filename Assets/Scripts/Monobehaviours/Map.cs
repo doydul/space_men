@@ -6,6 +6,13 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransform))]
 public partial class Map : MonoBehaviour {
     
+    public enum ThreatPriority {
+        None,
+        Normal,
+        High,
+        Exempt,
+    }
+    
     [Serializable]
     public class WeightedSprite : IWeighted {
         public int weight;
@@ -23,6 +30,8 @@ public partial class Map : MonoBehaviour {
             result.y = Mathf.Round(result.y);
             return result;
         } }
+        public ThreatPriority threatPriority;
+        public bool behindDoor;
     }
     
     public static Map instance { get; private set; }

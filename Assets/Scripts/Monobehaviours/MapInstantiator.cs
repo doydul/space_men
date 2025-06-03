@@ -65,7 +65,7 @@ public class MapInstantiator : MonoBehaviour {
             columnObject.localPosition = Vector3.zero;
             for (int y = 0; y < mapLayoutCache[0].Count; y++) {
                 var tileData = mapLayoutCache[x][y];
-                var tile = MakeTile(new Vector2(x, y), columnObject.transform, !tileData.isWall);
+                var tile = MakeTile(new Vector2(x, y), columnObject.transform, !tileData.isWall, tileData.roomId);
                 
                 if (!tileData.isWall) { // add vents to any 'end' tiles
                     int neighbours = 0;
@@ -93,7 +93,8 @@ public class MapInstantiator : MonoBehaviour {
                 // Add or update room
                 if (tileData.roomId >= 0) {
                     if (!map.rooms.ContainsKey(tileData.roomId)) {
-                        map.rooms[tileData.roomId] = new Map.Room { id = tileData.roomId, start = tileData.roomId == startRoomId };
+                        var newRoom = new Map.Room { id = tileData.roomId, start = tileData.roomId == startRoomId, behindDoor = tileData.behindDoor };
+                        map.rooms[tileData.roomId] = newRoom;
                     }
                     map.rooms[tileData.roomId].tiles.Add(tile);
                 }
@@ -130,9 +131,10 @@ public class MapInstantiator : MonoBehaviour {
         Objectives.AddToMap(map, objectives, map.rooms.FirstOrDefault(roomKV => roomKV.Value.start).Value);
     }
 
-    private Tile MakeTile(Vector2 position, Transform parent, bool open) {
+    private Tile MakeTile(Vector2 position, Transform parent, bool open, int roomId) {
         var tileObject = new GameObject();
         var tile = tileObject.AddComponent<Tile>() as Tile;
+        tile.roomId = roomId;
         tile.open = open;
         if (!open) tile.gameObject.layer = LayerMask.NameToLayer("Walls");
         tileObject.AddComponent<BoxCollider>();
@@ -147,7 +149,6 @@ public class MapInstantiator : MonoBehaviour {
             backGroundSpriteObjects.Add(go);
             go.transform.parent = backgroundObject.transform;
             go.transform.localPosition = new Vector3(new [] { -0.25f, 0.25f, 0.25f, -0.25f }[i], new [] { 0.25f, 0.25f, -0.25f, -0.25f }[i], 0);
-            Debug.Log(go.transform.localPosition);
             go.AddComponent<SpriteRenderer>().sprite = map.wallTopSprite;
             go.transform.localScale = new Vector3(0.5f, 0.5f, 1);
         }

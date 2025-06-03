@@ -155,15 +155,3 @@ public class Alien : Actor {
     }
 
 }
-
-public class AlienImpassableTerrain : IMask {
-    public bool Contains(Tile tile) {
-        return !tile.open || tile.GetActor<Soldier>() != null || tile.GetBackgroundActor<Door>() != null;
-    }
-}
-
-public class AlienLosMask : IMask {
-    public bool Contains(Tile tile) {
-        return !tile.open || tile.GetBackgroundActor<Door>() != null;
-    }
-}

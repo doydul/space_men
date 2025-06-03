@@ -26,9 +26,9 @@ public class RoomTemplate : MonoBehaviour {
         return result.ToArray();
     }
 
-    public void Imprint(MapLayout layout, MapPoint centre, Facing facing, bool mirrored, int roomId) {
+    public void Imprint(MapLayout layout, MapPoint centre, Facing facing, bool mirrored, int roomId, bool behindDoor) {
         foreach (var tile in tiles) {
-            layout.AddOpenTile((tile.point * facing).Mirror(mirrored) + centre, tile.isAlienSpawner, tile.isPlayerSpawner, tile.isLootSpawner, roomId, Door.Facing.None, tile.ignoreOverlap);
+            layout.AddOpenTile((tile.point * facing).Mirror(mirrored) + centre, tile.isAlienSpawner, tile.isPlayerSpawner, tile.isLootSpawner, roomId, Door.Facing.None, tile.ignoreOverlap, behindDoor);
         }
     }
 

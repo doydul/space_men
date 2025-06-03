@@ -330,9 +330,3 @@ public static class GameplayOperations {
         yield return new WaitForSeconds(0.5f);
     }
 }
-
-public class ExplosionImpassableTerrain : IMask {
-    public bool Contains(Tile tile) {
-        return !tile.open || tile.GetBackgroundActor<Door>() != null;
-    }
-}

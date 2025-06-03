@@ -53,7 +53,7 @@ public class MapGenerator {
         }
 
         public Port[] GetPorts() => template.GetPorts(facing, false);
-        public void Imprint(MapLayout layout) => template.Imprint(layout, centre, facing, false, id);
+        public void Imprint(MapLayout layout, bool behindDoor = false) => template.Imprint(layout, centre, facing, false, id, behindDoor);
     }
     
     class Corridor {
@@ -150,8 +150,6 @@ public class MapGenerator {
                                         direction = Facing.East
                                     });
                                 }
-                            } else if (i > start + 1 && i < end - 1 && !connection.doubleWidth && Random.value < 0.1f) {
-                                doorFacing = Door.Facing.NorthSouth;
                             }
                             layout.AddOpenTile(new MapPoint(realNode.x, i), false, false, false, -1, doorFacing);
                         }
@@ -172,8 +170,6 @@ public class MapGenerator {
                                         direction = Facing.North
                                     });
                                 }
-                            } else if (i > start + 1 && i < end - 1 && !connection.doubleWidth && Random.value < 0.1f) {
-                                doorFacing = Door.Facing.EastWest;
                             }
                             layout.AddOpenTile(new MapPoint(i, realNode.y), false, false, false, -1, doorFacing);
                         }
@@ -249,11 +245,13 @@ public class MapGenerator {
         if (layout.Overlaps(newLayout)) {
             return -1;
         } else {
-            room.Imprint(layout);
             var doorFacing = Door.Facing.None;
             if (Random.value < 0.4f) {
+                room.Imprint(layout, true);
                 if (port.direction == Facing.North || port.direction == Facing.South) doorFacing = Door.Facing.NorthSouth;
                 else doorFacing = Door.Facing.EastWest;
+            } else {
+                room.Imprint(layout, false);
             }
             layout.AddOpenTile(port.relativePosition + port.direction.ToVector(), false, false, false, -1, doorFacing);
             ports.Remove(port);

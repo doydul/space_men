@@ -28,8 +28,14 @@ public class Objectives {
     
     public static void AddToMap(Map map, List<Objective> objectiveList, Map.Room startingRoom) {
         var objectives = new Objectives { map = map, startingRoom = startingRoom, objectivesTmp = objectiveList };
+        startingRoom.threatPriority = Map.ThreatPriority.Exempt;
         foreach (var objective in objectiveList) {
             objective.Init(objectives);
+            if (objective is GetToTarget) {
+                map.rooms[objective.roomId].threatPriority = Map.ThreatPriority.Exempt;
+            } else {
+                map.rooms[objective.roomId].threatPriority = Map.ThreatPriority.Normal;
+            }
         }
         map.objectives = objectives;
         
@@ -37,6 +43,18 @@ public class Objectives {
         ObjectivesPanel.instance.DisplaySecondaryObjectives(objectives.objectives.Where(obj => !obj.required).ToList());
 
         GameEvents.On(objectives, "alien_turn_start", objectives.CheckCompletion);
+        
+        // Room threat priority
+        foreach (var room in map.rooms.Values.Where(rom => rom.threatPriority == Map.ThreatPriority.None && !rom.behindDoor)) {
+            room.threatPriority = Map.ThreatPriority.Normal;
+        }
+        var normalPriorityRooms = map.rooms.Values.Where(rom => rom.threatPriority == Map.ThreatPriority.Normal);
+        var firstHighPriorityRoom = normalPriorityRooms.Sample();
+        if (!objectives.roomDistances.ContainsKey(firstHighPriorityRoom.id)) objectives.roomDistances.Add(firstHighPriorityRoom.id, objectives.GetDistancesFrom(firstHighPriorityRoom));
+        firstHighPriorityRoom.threatPriority = Map.ThreatPriority.High;
+        var secondHighPriorityRoom = map.rooms.Values.Where(room => room.threatPriority == Map.ThreatPriority.Normal).MaxBy(room => objectives.roomDistances[firstHighPriorityRoom.id][room.id]);
+        secondHighPriorityRoom.threatPriority = Map.ThreatPriority.High;
+        
         current = objectives;
     }
 
@@ -100,7 +118,7 @@ public class Objectives {
         var roomCentres = new HashSet<Vector2>();
         foreach (var room in map.rooms.Values) roomCentres.Add(room.centre);
 
-        foreach (var node in map.iterator.Exclude(new ObjectivePathingMask()).EnumerateFrom(fromRoom.centre)) {
+        foreach (var node in map.iterator.Exclude(new IgnoreAllPathingMask()).EnumerateFrom(fromRoom.centre)) {
             if (roomCentres.Contains(node.tile.gridLocation)) {
                 var room = map.rooms.Values.ToList().Find(room => room.centre == node.tile.gridLocation);
                 if (room.id == fromRoom.id) continue;
@@ -108,11 +126,5 @@ public class Objectives {
             }
         }
         return roomDistanceMapping;
-    }
-}
-
-public class ObjectivePathingMask : IMask {
-    public bool Contains(Tile tile) {
-        return !tile.open;
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
     
+    public float minZoom = 0.5f;
+    public float maxZoom = 3f;
     public float moveDuration;
     
     Camera cam;
@@ -27,10 +29,10 @@ public class CameraController : MonoBehaviour {
     public static float size {
         get => instance.cam.orthographicSize / instance.startSize;
         set {
-            if (value < 0.5f) {
-                instance.cam.orthographicSize = 0.5f * instance.startSize;
-            } else if (value > 2) {
-                instance.cam.orthographicSize = 2 * instance.startSize;
+            if (value < instance.minZoom) {
+                instance.cam.orthographicSize = instance.minZoom * instance.startSize;
+            } else if (value > instance.maxZoom) {
+                instance.cam.orthographicSize = instance.maxZoom * instance.startSize;
             } else {
                 instance.cam.orthographicSize = value * instance.startSize;
             }

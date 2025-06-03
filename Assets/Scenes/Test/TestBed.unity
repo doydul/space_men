@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTestMap: 0
-  disableFog: 0
+  disableFog: 1
   triggerTerminalObjective: 0
   triggerHoldObjective: 0
   enemiesStartAlerted: 0
