@@ -169,10 +169,10 @@ MonoBehaviour:
   triggerHoldObjective: 0
   enemiesStartAlerted: 0
   credits: 0
-  difficultyLevel: 0
+  difficultyLevel: 1
   groupishness: 0
-  armouredness: 0
-  quickness: 30
+  armouredness: 30
+  quickness: 0
   bigness: 0
   weapons:
   - SIKR-5

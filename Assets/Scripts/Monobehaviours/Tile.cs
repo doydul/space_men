@@ -33,16 +33,6 @@ public class Tile : MonoBehaviour {
         fogSprite.color = new Color(1, 1, 1, 0.7f);
         if (SoldierEnter == null) SoldierEnter = new UnityEvent();
     }
-    
-    void Start() {
-        if (room?.threatPriority == Map.ThreatPriority.High) {
-            SetTint(Color.red);
-        } else if (room?.threatPriority == Map.ThreatPriority.Normal) {
-            SetTint(Color.blue);
-        } else if (room == null) {
-            SetTint(Color.cyan);
-        }
-    }
 
     public void SetFire(Fire fire) {
         this.fire = fire;
