@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70fb773635e66ba4090f36d78163fce9, type: 3}
   m_Name: StandardBehaviour
   m_EditorClassIdentifier: 
-  critChance: 0.16666667
+  critChance: 0.35

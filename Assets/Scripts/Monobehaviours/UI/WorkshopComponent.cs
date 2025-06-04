@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class WorkshopComponent : MonoBehaviour {
     
@@ -79,10 +80,14 @@ public class WorkshopComponent : MonoBehaviour {
         itemElements = new();
         
         foreach (var item in PlayerSave.current.inventory.items) {
+            if (itemElements.FirstOrDefault(el => el.itemName == item.name) != null) {
+                itemElements.First(el => el.itemName == item.name).count++;
+                continue;
+            }
             var itemElement = Instantiate(itemPrototype, itemPrototype.transform.parent);
             itemElement.gameObject.SetActive(true);
-            var textComponent = itemElement.GetComponentInChildren<TMP_Text>();
-            textComponent.text = item.name;
+            itemElement.count = 1;
+            itemElement.itemName = item.name;
             var buttonComponent = itemElement.GetComponentInChildren<ButtonHandler>();
             buttonComponent.action.AddListener(() => {
                 foreach (var itemEl in itemElements) itemEl.Deselect();

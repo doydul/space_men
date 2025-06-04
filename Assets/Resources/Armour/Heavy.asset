@@ -15,11 +15,10 @@ MonoBehaviour:
   icon: {fileID: 6049137105121139426, guid: 7e0702b01691f4610824edfb221641a6, type: 3}
   techLevel: 1
   weight: 100
-  armourValue: 70
   type: 2
   cost: 150
   description: immune to critical hits. has heavy punch ability
-  maxHealth: 26
+  maxHealth: 22
   sightRange: 8
   abilities:
   - {fileID: 11400000, guid: dae4b8a2a02063c488fab0df2f2ed91b, type: 2}

@@ -182,7 +182,13 @@ MonoBehaviour:
   - Flak Vest
   - Flak Vest
   - Flak Vest
-  inventoryWeapons: []
+  inventoryWeapons:
+  - Assault Rifle
+  - Assault Rifle
+  - Assault Rifle
+  - Grenade Launcher
+  - Chain Gun
+  - Chain Gun
   inventoryArmour: []
   unlockedAliens: []
 --- !u!1660057539 &9223372036854775807

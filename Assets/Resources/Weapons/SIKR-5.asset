@@ -19,7 +19,7 @@ MonoBehaviour:
   minDamage: 1
   maxDamage: 6
   damageType: 0
-  shots: 3
+  shots: 2
   ammo: 5
   range: 16
   blast: 0
@@ -33,12 +33,8 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: 4f8613db8b7396148a2bee97be3a698c, type: 2}
   traits: 
-  weaponPrefab: {fileID: 7944426211514159566, guid: f5a4bb87d722bf54498044eb1a11cc64,
-    type: 3}
   tracerPrefab: {fileID: 1646889780221744, guid: 2dfac1135958ec84cac2d2cb6fdc3f4b,
     type: 3}
-  explosionPrefab: {fileID: 0}
-  firePrefab: {fileID: 0}
   audio: {fileID: 11400000, guid: ac62427209487304a8381cbe6228e48d, type: 2}
   impactEffect: {fileID: 8893649087654275822, guid: 67b64be253f660e4cadc693066054120,
     type: 3}
@@ -46,3 +42,5 @@ MonoBehaviour:
     type: 3}
   spritePrefab: {fileID: 876625575503601482, guid: b733c92828cd07c448a30bccf6d4282e,
     type: 3}
+  backpackPrefab: {fileID: 0}
+  explosion: {fileID: 0}

@@ -13,7 +13,7 @@ public class Campaign {
     }
     
     public static void MungeMapGenerationValues(PlayerSave save) {
-        if (save.levelNumber % 3 == 0 || save.enemyGenerationVelocities.Sum() <= 0) {
+        if (save.levelNumber % 5 == 0 || save.enemyGenerationVelocities.Sum() <= 0) {
             // randomize enemy generation values
             var randList = new List<List<float>> {
                 new List<float> { 0, 0, 10, 25 },
