@@ -57,75 +57,22 @@ public class HiveMind : MonoBehaviour {
         }
         
         int totalThreat = spawnTrackers.Aggregate(0, (agg, tracker) => agg + tracker.initialThreat);
-        var rooms = Map.instance.rooms.Values.Where(room => room.threatPriority == Map.ThreatPriority.High).ToList();
-        rooms.AddRange(Map.instance.rooms.Values.Where(room => room.threatPriority == Map.ThreatPriority.Normal).ToList());
-        var threatValues = MathUtil.RandFixedSum(rooms.Count, totalThreat * 0.8f).ToList();
+        var tileLocations = Map.instance.EnumerateTiles().Where(tile => tile.open && (tile.room == null || tile.room.threatPriority == Map.ThreatPriority.Normal || tile.room.threatPriority == Map.ThreatPriority.High)).Select(tile => tile.gridLocation).ToList();
+        var threatValues = MathUtil.RandFixedSum(Map.instance.rooms.Count + 3, totalThreat).ToList();
         threatValues.Sort(); threatValues.Reverse();
         
-        Debug.Log($"total threat: {totalThreat}");
-        foreach (var val in threatValues) Debug.Log(val);
-        
         int i = 0;
-        foreach (var room in rooms) {
-            var threat = threatValues[i];
+        foreach (var value in threatValues) {
+            var threat = value;
+            var location = tileLocations.SampleWithCount(tileLocations.Count);
+            var nearbyTiles = Map.instance.iterator.Exclude(new JustDoorsPathingMask()).EnumerateFrom(location).Take(15).Select(node => node.tile);
             while (threat > 0) {
                 var spawnTracker = spawnTrackers.WeightedSelect();
-                InstantiatePod(spawnTracker.type, spawnTracker.groupSize, room.tiles.Sample().gridLocation, false);
+                InstantiatePod(spawnTracker.type, spawnTracker.groupSize, nearbyTiles.Sample().gridLocation, false);
                 threat -= spawnTracker.totalThreatCost;
             }
             i++;
         }
-        
-        var corridorTiles = Map.instance.EnumerateTiles().Where(tile => tile.roomId < 0 && tile.open).ToList();
-        var corridorThreat = totalThreat * 0.5f;
-        while (corridorThreat > 0) {
-            var spawnTracker = spawnTrackers.WeightedSelect();
-            InstantiatePod(spawnTracker.type, spawnTracker.groupSize, corridorTiles.SampleWithCount(corridorTiles.Count).gridLocation, false);
-            corridorThreat -= spawnTracker.totalThreatCost;
-        }
-        
-        // Noise.Seed = Random.Range(0, 10000);
-        // var weightedTiles = Map.instance.EnumerateTiles().Where(tile => tile.open && !tile.HasActor<Door>()).Select(tile => {
-        //     var wTile = new WeightedTile { tile = tile, Weight = (int)Mathf.Ceil(Mathf.Pow(Noise.CalcPixel2D((int)tile.gridLocation.x, (int)tile.gridLocation.y, 0.03f) / 255, 3) * 100) };
-        //     var minDist = Map.instance.startLocations.Select(st => Map.instance.ManhattanDistance(st.gridLocation, tile.gridLocation)).Min();
-        //     if (minDist < 10) wTile.Weight = (int)Mathf.Max(wTile.Weight - 100 + minDist * 10, 0);
-        //     // // Debug
-        //     // MapHighlighter.instance.HighlightTile(tile, new Color(wTile.Weight / 100f, wTile.Weight / 100f, wTile.Weight / 100f));
-        //     // //
-        //     return wTile;
-        // });
-
-        // foreach (var profile in Map.instance.enemyProfiles.primaries) {
-        //     spawnTrackers.Add(new EnemySpawnTracker {
-        //         profile = profile,
-        //         remainingThreat = threatPerPrimary * 2 / Map.instance.enemyProfiles.primaries.Count,
-        //         startingThreat = threatPerPrimary * 2 / Map.instance.enemyProfiles.primaries.Count
-        //     });
-        //     Debug.Log($"Initialising primary spawn tracker (profile: {profile.name}, threat: {spawnTrackers[spawnTrackers.Count - 1].remainingThreat})");
-        // }
-        // foreach (var profile in Map.instance.enemyProfiles.secondaries) {
-        //     spawnTrackers.Add(new EnemySpawnTracker {
-        //         profile = profile,
-        //         remainingThreat = threatPerSecondary,
-        //         startingThreat = threatPerSecondary
-        //     });
-        //     Debug.Log($"Initialising secondary spawn tracker (profile: {profile.name}, threat: {spawnTrackers[spawnTrackers.Count - 1].remainingThreat})");
-        // }
-
-        // weightedTiles = weightedTiles.Where(wTile => Map.instance.startLocations.Select(st => Map.instance.ManhattanDistance(st.gridLocation, wTile.tile.gridLocation)).Min() > 3).ToList();
-        // int tileCount = weightedTiles.Count();
-
-        // foreach (var tracker in spawnTrackers) {
-        //     int groupSize = tracker.profile.AvailableGroupSize(Map.instance.enemyProfiles);
-        //     int totalThreatCost = tracker.profile.threat * groupSize;
-        //     int initialThreatPortion = (int)(tracker.remainingThreat * (100f - tracker.profile.spawnPercentage) / 100f);
-        //     tracker.remainingThreat -= initialThreatPortion;
-        //     while (initialThreatPortion > totalThreatCost / 2) {
-        //         var wTile = weightedTiles.SampleWithCount(tileCount);
-        //         InstantiatePod(tracker.profile.typeName, groupSize, wTile.tile.gridLocation, false);
-        //         initialThreatPortion -= totalThreatCost;
-        //     }
-        // }
 
         GameEvents.On(this, "alien_turn_start", AlienTurnStart);
         GameEvents.On(this, "threat_increased", IncreaseThreat);

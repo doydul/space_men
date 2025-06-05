@@ -71,11 +71,45 @@ public partial class Map {
             }
         }
     }
-
+    
+    
     public class IterationNode {
 
         public Tile tile;
         public int distanceFromOrigin;
         public int userData;
+    }
+    
+    public List<Vector2> EvenlySpacedPoints(IMask mask, int count) {
+        var result = new List<Vector2>();
+        var viableTiles = EnumerateTiles().Where(tile => !mask.Contains(tile)).ToList();
+        
+        int minDist = (int)Mathf.Sqrt(2 *viableTiles.Count / count);
+        int attempts = 0;
+        
+        while (attempts < 10) {
+            var activeTile = viableTiles.SampleWithCount(viableTiles.Count);
+            while (activeTile != null) {
+                result.Add(activeTile.gridLocation);
+                viableTiles = viableTiles.Where(tile => ManhattanDistance(activeTile.gridLocation, tile.gridLocation) >= minDist).ToList();
+                if (viableTiles.Count > 0) activeTile = viableTiles.SampleWithCount(viableTiles.Count);
+                else activeTile = null;
+            }
+            Debug.Log(result.Count);
+            if (result.Count > count) {
+                minDist += 1;
+                result = new();
+                viableTiles = EnumerateTiles().Where(tile => !mask.Contains(tile)).ToList();
+            } else if (result.Count < count) {
+                minDist -= 1;
+                result = new();
+                viableTiles = EnumerateTiles().Where(tile => !mask.Contains(tile)).ToList();
+            } else {
+                return result;
+            }
+            attempts++;
+            Debug.Log($"attempt number {attempts}");
+        }
+        return result;
     }
 }
