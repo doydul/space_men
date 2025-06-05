@@ -39,3 +39,9 @@ public class ExplosionImpassableTerrain : IMask {
         return !tile.open || tile.GetBackgroundActor<Door>() != null;
     }
 }
+
+public class AlienSpawnMask : IMask {
+    public bool Contains(Tile tile) {
+        return !tile.open || (tile.room != null && (tile.room.threatPriority == Map.ThreatPriority.None || tile.room.threatPriority == Map.ThreatPriority.Exempt));
+    }
+}

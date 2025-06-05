@@ -45,10 +45,6 @@ public class Main : MonoBehaviour {
         StartCoroutine(ShowIntro());
         
         GameEvents.On(this, "player_turn_start", IncrementTurnCounter);
-        
-        foreach (var position in Map.instance.EvenlySpacedPoints(new IgnoreAllPathingMask(), 5)) {
-            Map.instance.GetTileAt(position).SetTint(Color.blue);
-        }
     }
     
     void OnDestroy() {
