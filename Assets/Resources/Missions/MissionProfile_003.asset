@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b40dd76c01a9f4cabb145e11d7b3bf, type: 3}
+  m_Name: MissionProfile_003
+  m_EditorClassIdentifier: 
+  missionEnemies:
+  - randomized: 0
+    threat: 100
+    type: {fileID: 11400000, guid: 0244813e052bdff4fa9aab1fcf67adee, type: 2}
+    difficulty: 0
+    subLevel: 0
+  - randomized: 0
+    threat: 50
+    type: {fileID: 11400000, guid: 26147120c1c375f42a9336afadf45251, type: 2}
+    difficulty: 0
+    subLevel: 0
+  - randomized: 1
+    threat: 50
+    type: {fileID: 11400000, guid: 26147120c1c375f42a9336afadf45251, type: 2}
+    difficulty: 1
+    subLevel: 1
