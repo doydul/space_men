@@ -15,21 +15,21 @@ MonoBehaviour:
   missionEnemies:
   - randomized: 0
     threat: 50
-    type: {fileID: 11400000, guid: 0244813e052bdff4fa9aab1fcf67adee, type: 2}
-    difficulty: 0
-    subLevel: 0
-  - randomized: 0
-    threat: 50
     type: {fileID: 11400000, guid: 26147120c1c375f42a9336afadf45251, type: 2}
     difficulty: 0
     subLevel: 0
+  - randomized: 1
+    threat: 100
+    type: {fileID: 11400000, guid: 26147120c1c375f42a9336afadf45251, type: 2}
+    difficulty: 1
+    subLevel: 2
   - randomized: 1
     threat: 100
     type: {fileID: 11400000, guid: 26147120c1c375f42a9336afadf45251, type: 2}
     difficulty: 1
     subLevel: 1
   - randomized: 1
-    threat: 100
+    threat: 50
     type: {fileID: 11400000, guid: 26147120c1c375f42a9336afadf45251, type: 2}
     difficulty: 1
-    subLevel: 2
+    subLevel: 1

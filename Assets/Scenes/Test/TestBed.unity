@@ -176,7 +176,7 @@ MonoBehaviour:
   quickness: 45
   bigness: 0
   weapons:
-  - SIKR-5
+  - Chain Gun
   - SIKR-5
   - SIKR-5
   armour:

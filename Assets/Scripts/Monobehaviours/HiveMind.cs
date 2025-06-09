@@ -52,6 +52,9 @@ public class HiveMind : MonoBehaviour {
         var locations = Map.instance.EvenlySpacedPoints(new AlienSpawnMask(), threatValues.Count);
         threatValues.Sort(); threatValues.Reverse();
         
+        Debug.Log($"threatValues: ${threatValues.Count}");
+        Debug.Log($"locations: ${locations.Count}");
+        
         int i = 0;
         foreach (var value in threatValues) {
             var threat = value;

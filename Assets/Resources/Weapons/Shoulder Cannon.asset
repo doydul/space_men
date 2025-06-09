@@ -20,7 +20,7 @@ MonoBehaviour:
   maxDamage: 9
   damageType: 0
   shots: 7
-  ammo: 1
+  ammo: 7
   range: 20
   blast: 0
   flameDuration: 0
