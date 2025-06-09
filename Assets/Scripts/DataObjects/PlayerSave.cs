@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,7 +33,19 @@ public class PlayerSave {
     public int quicknessVelocity => (int)enemyGenerationVelocities[2];
     public int bignessVelocity => (int)enemyGenerationVelocities[3];
     
-    private PlayerSave() {}
+    public Mechanic primaryMechanic => (Mechanic)enemyGenerationValues.IndexOf(enemyGenerationValues.Max());
+    public Mechanic secondaryMechanic {
+        get {
+            var newList = new List<float>(enemyGenerationValues);
+            newList.Sort();
+            return (Mechanic)enemyGenerationValues.IndexOf(newList[newList.Count - 2]);
+        }
+    }
+    public float GetValue(Mechanic mechanic) {
+        return enemyGenerationValues[(int)mechanic];
+    }
+    
+    PlayerSave() {}
 
     public void Save() {
         Debug.Log(Application.persistentDataPath);
@@ -58,4 +71,11 @@ public class PlayerSave {
         save.inventory.defaultArmour = new InventoryItem { name = "Flak Vest", type = InventoryItem.Type.Armour };
         return save;
     }
+}
+
+public enum Mechanic {
+    Groupishness,
+    Armouredness,
+    Quickness,
+    Bigness
 }

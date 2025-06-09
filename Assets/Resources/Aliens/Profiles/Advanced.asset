@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeName: Advanced
   difficultyLevel: 1
-  threat: 20
+  subLevel: 1
+  threat: 15
   weight: 10
   typeCondition: 0
   typeInfo:

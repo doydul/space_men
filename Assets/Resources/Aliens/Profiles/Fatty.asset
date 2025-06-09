@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeName: Fatty
   difficultyLevel: 1
+  subLevel: 2
   threat: 50
   weight: 10
   typeCondition: 0
   typeInfo:
   - type: 3
-    typeWeight: 50
+    typeWeight: 30
   groupSizeUnlocks: []
   spawnPercentage: 0

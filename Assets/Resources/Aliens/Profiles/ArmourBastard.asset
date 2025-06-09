@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeName: ArmourBastard
   difficultyLevel: 2
+  subLevel: 2
   threat: 25
   weight: 10
   typeCondition: 0
   typeInfo:
   - type: 2
-    typeWeight: 100
+    typeWeight: 30
   groupSizeUnlocks: []
   spawnPercentage: 0

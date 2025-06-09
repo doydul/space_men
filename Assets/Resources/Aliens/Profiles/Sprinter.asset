@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeName: Sprinter
   difficultyLevel: 1
+  subLevel: 2
   threat: 22
   weight: 10
   typeCondition: 0
   typeInfo:
   - type: 4
-    typeWeight: 60
+    typeWeight: 30
   groupSizeUnlocks: []
   spawnPercentage: 100

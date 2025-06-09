@@ -23,17 +23,17 @@ public struct EnemyProfileTypeInfo {
     [Range(0, 100)]
     public int typeWeight;
 
-    public bool Matches(EnemyProfileSet set) {
+    public bool Matches(PlayerSave save) {
         if (type == EnemyProfileType.Group) {
-            if (typeWeight <= set.groupishness) return true;
+            if (typeWeight <= save.groupishness) return true;
         } else if (type == EnemyProfileType.Armoured) {
-            if (typeWeight <= set.armouredness) return true;
+            if (typeWeight <= save.armouredness) return true;
         } else if (type == EnemyProfileType.Big) {
-            if (typeWeight <= set.bigness) return true;
+            if (typeWeight <= save.bigness) return true;
         } else if (type == EnemyProfileType.Quick) {
-            if (typeWeight <= set.quickness) return true;
+            if (typeWeight <= save.quickness) return true;
         } else {
-            int genericValue = 100 - set.groupishness - set.armouredness - set.quickness - set.bigness;
+            int genericValue = 100 - save.groupishness - save.armouredness - save.quickness - save.bigness;
             if (typeWeight <= genericValue) return true;
         }
         return false;
@@ -51,6 +51,7 @@ public class EnemyProfile : ScriptableObject, IWeighted {
 
     public string typeName; 
     public int difficultyLevel;
+    public int subLevel;
     public int threat;
     public int weight;
     public int Weight => weight;
@@ -65,8 +66,8 @@ public class EnemyProfile : ScriptableObject, IWeighted {
     public static EnemyProfile none => Resources.Load<EnemyProfile>("Aliens/SpecialProfiles/None");
     public static EnemyProfile[] GetAll() => Resources.LoadAll("Aliens/Profiles", typeof(EnemyProfile)).Select(prof => prof as EnemyProfile).ToArray();
 
-    public int BestScore(EnemyProfileSet set) {
-        var matchingWeights = typeInfo.Where(info => info.Matches(set)).Select(info => info.typeWeight);
+    public int BestScore(PlayerSave save) {
+        var matchingWeights = typeInfo.Where(info => info.Matches(save)).Select(info => info.typeWeight);
         if (typeCondition == EnemyProfileCondition.And) {
             return matchingWeights.Sum();
         } else {
@@ -74,16 +75,16 @@ public class EnemyProfile : ScriptableObject, IWeighted {
         }
     }
 
-    public bool Fits(EnemyProfileSet set) {
+    public bool Fits(PlayerSave save) {
         if (typeCondition == EnemyProfileCondition.And) {
-            return typeInfo.All(info => info.Matches(set));
+            return typeInfo.All(info => info.Matches(save));
         } else {
-            return typeInfo.Any(info => info.Matches(set));
+            return typeInfo.Any(info => info.Matches(save));
         }
     }
 
-    public int AvailableGroupSize(EnemyProfileSet set) {
-        var matchingGroupSizes = groupSizeUnlocks.Where(gs => gs.typeInfo.Matches(set));
+    public int AvailableGroupSize(PlayerSave save) {
+        var matchingGroupSizes = groupSizeUnlocks.Where(gs => gs.typeInfo.Matches(save));
         return matchingGroupSizes.Count() > 0 ? matchingGroupSizes.MaxBy(gs => gs.groupSize).groupSize : 1;
     }
 }

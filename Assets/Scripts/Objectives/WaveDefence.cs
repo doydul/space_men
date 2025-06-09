@@ -39,7 +39,7 @@ public class WaveDefence : Objective {
                     var tracker = HiveMind.instance.spawnTrackers[i];
                     if (!tracker.profile.data.spawnsDuringWaveDefence) continue;
                     threatCounters[i] += threatPerTrackerPerWave;
-                    int groupSize = tracker.profile.AvailableGroupSize(Map.instance.enemyProfiles);
+                    int groupSize = tracker.profile.AvailableGroupSize(PlayerSave.current);
                     int totalThreatCost = tracker.profile.threat * groupSize;
                     while (threatCounters[i] >= totalThreatCost) {
                         spawnings.Add(new HiveMind.Spawning { type = tracker.profile.typeName, number = groupSize });

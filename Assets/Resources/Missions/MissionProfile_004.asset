@@ -24,12 +24,12 @@ MonoBehaviour:
     difficulty: 0
     subLevel: 0
   - randomized: 1
-    threat: 50
+    threat: 100
     type: {fileID: 11400000, guid: 26147120c1c375f42a9336afadf45251, type: 2}
     difficulty: 1
     subLevel: 1
   - randomized: 1
-    threat: 50
+    threat: 100
     type: {fileID: 11400000, guid: 26147120c1c375f42a9336afadf45251, type: 2}
     difficulty: 1
     subLevel: 2

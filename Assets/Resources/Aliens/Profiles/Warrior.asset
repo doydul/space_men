@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeName: Warrior
   difficultyLevel: 1
+  subLevel: 2
   threat: 25
   weight: 10
   typeCondition: 0
   typeInfo:
   - type: 3
-    typeWeight: 40
+    typeWeight: 30
   groupSizeUnlocks: []
   spawnPercentage: 20

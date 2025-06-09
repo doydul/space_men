@@ -170,9 +170,10 @@ MonoBehaviour:
   enemiesStartAlerted: 0
   credits: 0
   difficultyLevel: 1
+  levelNumber: 3
   groupishness: 0
-  armouredness: 30
-  quickness: 0
+  armouredness: 50
+  quickness: 45
   bigness: 0
   weapons:
   - SIKR-5
@@ -182,13 +183,7 @@ MonoBehaviour:
   - Flak Vest
   - Flak Vest
   - Flak Vest
-  inventoryWeapons:
-  - Assault Rifle
-  - Assault Rifle
-  - Assault Rifle
-  - Grenade Launcher
-  - Chain Gun
-  - Chain Gun
+  inventoryWeapons: []
   inventoryArmour: []
   unlockedAliens: []
 --- !u!1660057539 &9223372036854775807

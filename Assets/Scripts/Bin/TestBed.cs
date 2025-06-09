@@ -10,6 +10,7 @@ public class TestBed : MonoBehaviour {
     public bool enemiesStartAlerted;
     public int credits;
     public float difficultyLevel;
+    public int levelNumber;
     
     public int groupishness;
     public int armouredness;
@@ -27,6 +28,7 @@ public class TestBed : MonoBehaviour {
     void Start() {
         var save = PlayerSave.New();
         PlayerSave.current = save;
+        save.levelNumber = levelNumber;
         save.IncreaseDifficulty(difficultyLevel + 0.2f);
 
         save.squad = GenerateSquad();

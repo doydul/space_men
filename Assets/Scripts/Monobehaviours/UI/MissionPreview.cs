@@ -1,12 +1,12 @@
 using UnityEngine;
+using System.Linq;
 
 public class MissionPreview : MonoBehaviour {
     
     public Transform alienIconPrototype;
     
     void Start() {
-        foreach (var profile in Mission.current.enemyProfiles.primaries) InstantiateIcon(profile, true);
-        foreach (var profile in Mission.current.enemyProfiles.secondaries) InstantiateIcon(profile, false);
+        foreach (var profile in Mission.current.enemyProfiles.Select(prof => prof.profile)) InstantiateIcon(profile, true);
         alienIconPrototype.gameObject.SetActive(false);
     }
     

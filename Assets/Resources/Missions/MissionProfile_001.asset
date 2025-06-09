@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionEnemies:
   - randomized: 0
-    threat: 100
+    threat: 75
     type: {fileID: 11400000, guid: 81a0a79619229c04aaf28569eabd99bf, type: 2}
     difficulty: 0
     subLevel: 0
   - randomized: 0
     threat: 100
     type: {fileID: 11400000, guid: 0244813e052bdff4fa9aab1fcf67adee, type: 2}
+    difficulty: 0
+    subLevel: 0
+  - randomized: 0
+    threat: 30
+    type: {fileID: 11400000, guid: 26147120c1c375f42a9336afadf45251, type: 2}
     difficulty: 0
     subLevel: 0

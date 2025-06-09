@@ -54,7 +54,6 @@ public partial class Map : MonoBehaviour {
     public int width;
     public int height;
 
-    public EnemyProfileSet enemyProfiles { get; set; }
     public Objectives objectives { get; set; }
 
     private Tile[,] _tiles;

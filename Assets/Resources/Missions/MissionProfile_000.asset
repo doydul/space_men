@@ -10,21 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60b40dd76c01a9f4cabb145e11d7b3bf, type: 3}
-  m_Name: MissionProfile_002
+  m_Name: MissionProfile_000
   m_EditorClassIdentifier: 
   missionEnemies:
+  - randomized: 0
+    threat: 100
+    type: {fileID: 11400000, guid: 81a0a79619229c04aaf28569eabd99bf, type: 2}
+    difficulty: 0
+    subLevel: 0
   - randomized: 0
     threat: 100
     type: {fileID: 11400000, guid: 0244813e052bdff4fa9aab1fcf67adee, type: 2}
     difficulty: 0
     subLevel: 0
-  - randomized: 0
-    threat: 50
-    type: {fileID: 11400000, guid: 26147120c1c375f42a9336afadf45251, type: 2}
-    difficulty: 0
-    subLevel: 0
-  - randomized: 1
-    threat: 50
-    type: {fileID: 11400000, guid: 26147120c1c375f42a9336afadf45251, type: 2}
-    difficulty: 1
-    subLevel: 1

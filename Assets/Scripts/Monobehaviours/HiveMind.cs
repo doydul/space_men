@@ -34,25 +34,16 @@ public class HiveMind : MonoBehaviour {
     void Awake() => instance = this;
 
     public void Init() {
-        foreach (var profile in Map.instance.enemyProfiles.primaries) {
-            var groupSize = profile.AvailableGroupSize(Map.instance.enemyProfiles);
-            var threat = threatPerPrimary * 2 / Map.instance.enemyProfiles.primaries.Count;
+        foreach (var profileWithThreat in Mission.current.enemyProfiles) {
+            var profile = profileWithThreat.profile;
+            var groupSize = profile.AvailableGroupSize(PlayerSave.current);
+            var threat = profileWithThreat.threat;
             spawnTrackers.Add(new EnemySpawnTracker {
                 profile = profile,
                 startingThreat = threat,
                 spawningThreat = threat * profile.spawnPercentage / 100,
                 groupSize = groupSize,
                 weight = threat * 10 / (groupSize * profile.threat)
-            });
-        }
-        foreach (var profile in Map.instance.enemyProfiles.secondaries) {
-            var groupSize = profile.AvailableGroupSize(Map.instance.enemyProfiles);
-            spawnTrackers.Add(new EnemySpawnTracker {
-                profile = profile,
-                startingThreat = threatPerSecondary,
-                spawningThreat = threatPerSecondary * profile.spawnPercentage / 100,
-                groupSize = groupSize,
-                weight = threatPerSecondary * 10 / (groupSize * profile.threat)
             });
         }
         

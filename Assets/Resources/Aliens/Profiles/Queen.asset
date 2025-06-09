@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeName: Queen
   difficultyLevel: 1
+  subLevel: 2
   threat: 40
   weight: 10
   typeCondition: 1
