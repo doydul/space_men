@@ -227,7 +227,7 @@ public class Soldier : Actor {
     void Update() {
         if (UIState.instance.GetSelectedActor() == this) {
             foreach (var ability in abilities) {
-                if (ability.hotKey != "" && Input.GetKey(ability.hotKey) && ability.CanUse()) {
+                if (ability.hotKey != "" && Input.GetKeyDown(ability.hotKey) && ability.CanUse()) {
                     ability.Use();
                 }
             }

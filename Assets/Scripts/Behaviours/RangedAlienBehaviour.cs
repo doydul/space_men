@@ -8,12 +8,15 @@ public class RangedAlienBehaviour : AlienBehaviour {
     public int minDistance;
     public int maxDistance;
     public bool duckBack;
+    public bool waitToSeeSoldier;
     public Weapon weaponProfile;
     
     bool hasSeenSoldier;
     bool notFirstTurn;
     
     public override IEnumerator PerformTurn() {
+        if (!waitToSeeSoldier) hasSeenSoldier = true;
+        
         var soldierPositions = Map.instance.GetActors<Soldier>().Select(soldier => soldier.gridLocation).ToArray();
         if (!hasSeenSoldier && soldierPositions.Where(pos => body.CanSee(pos)).Any()) hasSeenSoldier = true; // enable shooting if enemy was visible at start of turn
 

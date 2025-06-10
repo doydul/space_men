@@ -176,13 +176,15 @@ MonoBehaviour:
   quickness: 45
   bigness: 0
   weapons:
+  - SMG
+  - SMG
+  - Plasma Gun
   - Chain Gun
-  - SIKR-5
-  - SIKR-5
   armour:
-  - Flak Vest
-  - Flak Vest
-  - Flak Vest
+  - Light
+  - Light
+  - Medium
+  - Heavy
   inventoryWeapons: []
   inventoryArmour: []
   unlockedAliens: []

@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 5026745411207313143, guid: e40f3473f69924114bb79a48f410c9e7, type: 3}
   techLevel: 0
   weight: 100
-  accuracy: 60
+  accuracy: 65
   minDamage: 1
   maxDamage: 6
   damageType: 0

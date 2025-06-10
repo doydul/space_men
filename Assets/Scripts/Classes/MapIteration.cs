@@ -95,6 +95,8 @@ public partial class Map {
                 if (viableTiles.Count > 0) activeTile = viableTiles.SampleWithCount(viableTiles.Count);
                 else activeTile = null;
             }
+            Debug.Log($"attempts: {attempts}");
+            Debug.Log($"result.Count: {result.Count}");
             if (result.Count > count) {
                 minDist += 1;
                 result = new();

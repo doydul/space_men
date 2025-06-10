@@ -12,7 +12,7 @@ public class BenchComponent : MonoBehaviour {
     int squadPositionId;
     public MetaSoldier activeBenchSoldier { get; private set; }
     
-    const int hireCost = 200;
+    const int hireCost = 100;
     
     void Start() {
         soldierPrototype.gameObject.SetActive(false);

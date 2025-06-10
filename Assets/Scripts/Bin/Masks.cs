@@ -1,3 +1,5 @@
+using System.Linq;
+
 public class IgnoreAllPathingMask : IMask {
     public bool Contains(Tile tile) {
         return !tile.open;
@@ -41,7 +43,17 @@ public class ExplosionImpassableTerrain : IMask {
 }
 
 public class AlienSpawnMask : IMask {
+    
+    UnityEngine.Vector2 startingRoomCentre;
+    
+    public AlienSpawnMask() {
+        startingRoomCentre = Map.instance.rooms.Values.First(room => room.start).centre;
+    }
+    
     public bool Contains(Tile tile) {
-        return !tile.open || (tile.room != null && (tile.room.threatPriority == Map.ThreatPriority.None || tile.room.threatPriority == Map.ThreatPriority.Exempt));
+        return !tile.open ||
+               (tile.room != null && (tile.room.threatPriority == Map.ThreatPriority.None || tile.room.threatPriority == Map.ThreatPriority.Exempt)) ||
+               Map.instance.ManhattanDistance(startingRoomCentre, tile.gridLocation) < 8 ||
+               tile.HasActor<Door>();
     }
 }

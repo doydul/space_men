@@ -16,8 +16,8 @@ MonoBehaviour:
   techLevel: 1
   weight: 66
   accuracy: 65
-  minDamage: 30
-  maxDamage: 100
+  minDamage: 35
+  maxDamage: 50
   damageType: 0
   shots: 1
   ammo: 2

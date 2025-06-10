@@ -52,14 +52,14 @@ public class HiveMind : MonoBehaviour {
         var locations = Map.instance.EvenlySpacedPoints(new AlienSpawnMask(), threatValues.Count);
         threatValues.Sort(); threatValues.Reverse();
         
-        Debug.Log($"threatValues: ${threatValues.Count}");
-        Debug.Log($"locations: ${locations.Count}");
+        Debug.Log($"threatValues: {threatValues.Count}");
+        Debug.Log($"locations: {locations.Count}");
         
         int i = 0;
         foreach (var value in threatValues) {
             var threat = value;
             var location = locations[i];
-            var nearbyTiles = Map.instance.iterator.Exclude(new JustDoorsPathingMask()).EnumerateFrom(location).Take(15).Select(node => node.tile);
+            var nearbyTiles = Map.instance.iterator.Exclude(new AlienSpawnMask()).EnumerateFrom(location).Take(15).Select(node => node.tile);
             while (threat > 0) {
                 var spawnTracker = spawnTrackers.WeightedSelect();
                 InstantiatePod(spawnTracker.type, spawnTracker.groupSize, nearbyTiles.Sample().gridLocation, false);

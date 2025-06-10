@@ -30,7 +30,7 @@ public class InterfaceController : MonoBehaviour {
         AnimationManager.instance.StartAnimation(PerformEndTurn());
     }
     void Update() {
-        if (Input.GetKey(KeyCode.Return)) {
+        if (Input.GetKeyDown(KeyCode.Return)) {
             EndTurn();
         }
     }
